@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "laya-pokemon"
+version = "0.1.0"
+description = "Reproducible CPU Laya and PyBoy experiments with evidence and video recording"
+requires-python = ">=3.11"
+dependencies = [
+  "laya>=0.3,<1", "pyboy>=2,<3", "psutil>=5",
+  "imageio>=2", "imageio-ffmpeg>=0.5", "Pillow>=10"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+laya-pokemon = "laya_pokemon.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

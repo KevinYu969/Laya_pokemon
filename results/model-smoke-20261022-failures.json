@@ -1,0 +1,16 @@
+[
+  {
+    "status": "failed",
+    "type": "ValueError",
+    "error": "question 'action': no 'instructions'; add the text the model should answer",
+    "recorded_at": "2026-10-22T19:34:02.598223+08:00",
+    "run_id": "model-smoke-20261022-01"
+  },
+  {
+    "status": "failed",
+    "type": "ValueError",
+    "error": "question 'action': a choice question takes 'criteria' as a dict of label -> description, or a list of labels",
+    "recorded_at": "2026-10-22T19:35:22.193445+08:00",
+    "run_id": "model-smoke-20261022-02"
+  }
+]

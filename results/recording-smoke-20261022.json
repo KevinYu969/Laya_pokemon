@@ -1,0 +1,9 @@
+{
+  "kind": "recording_pipeline_smoke_not_gameplay",
+  "filename": "recording-smoke-20261022.mp4",
+  "fps": 30,
+  "frames": 60,
+  "playback_seconds": 2.0,
+  "timing": "emulated_time",
+  "audio": false
+}

@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-22T11:36:41.722094+00:00",
+  "python": "3.11.15",
+  "os": "Windows",
+  "packages": {
+    "laya": "0.4.13",
+    "torch": "2.14.1+cpu",
+    "transformers": "5.20.2",
+    "pyboy": "2.8.1",
+    "psutil": "7.2.2",
+    "imageio": "2.38.1",
+    "imageio-ffmpeg": "0.6.0",
+    "Pillow": "13.0.0"
+  },
+  "code_commit": "d5307bb29a52215a703c4942748873f884cf19ec",
+  "code_dirty": true,
+  "source_sha256": {
+    "src/laya_pokemon/__init__.py": "d40c5e48fe1d84e0360809e148143b68592b39cc00d1f5add32a33e175bfb0cf",
+    "src/laya_pokemon/cli.py": "6c037a62def66ae5acf8cf78ba20078ec7614e7ad350ac78ab2af9a8dd5755d4",
+    "src/laya_pokemon/core.py": "d5340259ff35726f574c351528fdb14bdf07637ff201119a1f62bd9c86243c41",
+    "src/laya_pokemon/game.py": "6a282a9963b1beb732ae5aadb7c6243e73028d18b79fda905bbd3cb41fce99d1",
+    "src/laya_pokemon/policy.py": "f405142e859c1c5eaa30c407ca17bb84b50393870a1a57037705021b91cd8b1b",
+    "src/laya_pokemon/video.py": "45e9a8f4c18e5ad65d22f344805159f59344f252a8775823ff8f29bb13046ee2"
+  },
+  "status": "completed",
+  "kind": "synthetic_control_smoke_not_gameplay",
+  "model": "convaiinnovations/laya",
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "device": "cpu",
+  "threads": 4,
+  "cases": 7,
+  "matches_expected": 7,
+  "model_p50_ms": 1327.556200005347,
+  "model_p95_ms": 1444.0882500057342,
+  "download_and_load_seconds": 5.976802000019234,
+  "warmup_ms": 1328.0033000046387,
+  "wall_seconds": 18.71975449999445,
+  "rss_after_bytes": 2052775936,
+  "limitation": "Seven synthetic control cases; not Pokemon task success or a general benchmark."
+}
