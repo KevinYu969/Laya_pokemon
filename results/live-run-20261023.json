@@ -1,7 +1,7 @@
 {
   "at": "2026-10-23T03:08:06.259611+00:00",
   "kind": "local_laya_red_live_observation",
-  "status": "milestone_snapshot",
+  "status": "completed_bounded_run",
   "run": "pyboy-live-20261023-10",
   "rom_sha256": "5ca7ba01642a3b27b0cc0b5349b52792795b62d3ed977e98a09390659af96b7b",
   "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
@@ -15,7 +15,7 @@
     "大木博士研究所與初始精靈球",
     "勁敵取得小火龍對話"
   ],
-  "steps_observed": 294,
+  "steps_observed": 300,
   "actions_observed": [
     "a",
     "b",
@@ -138,6 +138,17 @@
   "video": {
     "naming_clip_receipt": "results/kevin-naming-clip-20261023.json",
     "files_publicly_uploaded": false,
-    "timing": "emulated_time"
-  }
+    "timing": "emulated_time",
+    "opening_clip_receipt": "results/opening-to-bulbasaur-clip-20261023.json",
+    "full_run": {
+      "filename": "gameplay.mp4",
+      "fps": 30,
+      "frames": 6000,
+      "playback_seconds": 200.0,
+      "timing": "emulated_time",
+      "audio": false
+    }
+  },
+  "stop_reason": "action_budget",
+  "wall_seconds": 351.0560190999822
 }

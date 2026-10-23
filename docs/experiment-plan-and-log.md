@@ -414,3 +414,10 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 - 21秒命名影片與每輪完整 gameplay.mp4 留本機，影片採模擬器時間，不能當牆鐘速度。公開 README 與 results/live-run-20261023.json 更新到本輪證據，ROM／存檔／權重／影片／原始日誌不上傳，網站文章尚未發布。
 
 策略來源：[真新鎮攻略](https://strategywiki.org/wiki/Pok%C3%A9mon_Red_and_Blue/Pallet_Town)、[博士劇情](https://github.com/pret/pokered/blob/master/scripts/PalletTown.asm)、[研究所選初始流程](https://github.com/pret/pokered/blob/master/scripts/OaksLab.asm)。先前開場及命名問題見第14–15節。
+
+### 第16節補記：本輪結束與影片驗證
+
+- run10 達300次決策上限後正常存檔停止（action_budget），不是遊戲崩潰；完整影片200秒／6000幀，牆鐘約351.06秒。達成初始寶可夢後的等待不計為新劇情進度，下一段待實作勁敵對戰。
+- 已另剪90秒開場流程影片 outputs/videos/opening-to-bulbasaur-20261023.mp4，480×432、30fps、2700幀；首尾可解碼，另抽第2240幀目視確認 KEVIN received a BULBASAUR!。影片SHA256為9cc04cc06cb8bc423b5744164cd97be8346c2367937b9364a7deec601d81a4c4，來源run10完整MP4的SHA256為dfd38eab136cc1e846801642c4819f7cdf7f0bdd53bd5d51ff9654f605ba5bb5。
+- 90秒影片省略模型等待，不能當牆鐘實測速度。影片仍留本機，不對外上傳；公開僅保存 results/opening-to-bulbasaur-clip-20261023.json 的整理驗證摘要與README連結。
+

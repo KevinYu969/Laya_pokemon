@@ -1,0 +1,20 @@
+{
+  "kind": "actual_red_gameplay_clip",
+  "recorded_date": "2026-10-23",
+  "file": "outputs/videos/opening-to-bulbasaur-20261023.mp4",
+  "source_run": "pyboy-live-20261023-10",
+  "sha256": "9cc04cc06cb8bc423b5744164cd97be8346c2367937b9364a7deec601d81a4c4",
+  "source_sha256": "dfd38eab136cc1e846801642c4819f7cdf7f0bdd53bd5d51ff9654f605ba5bb5",
+  "frames": 2700,
+  "fps": 30.0,
+  "size": [
+    480,
+    432
+  ],
+  "seconds": 90.0,
+  "decoded_first_and_last": true,
+  "audio": false,
+  "timing": "emulated_time_excludes_model_wait",
+  "scope": "離開自家、真新鎮博士劇情、進研究所與取得妙蛙種子；本機Laya分類按鍵，局部waypoint／BFS／選單提示輔助",
+  "publicly_uploaded": false
+}
