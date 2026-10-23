@@ -110,7 +110,7 @@ def main() -> None:
     play.add_argument("--threads", type=int, default=4)
     play.add_argument("--player-name", default="KEVIN")
     play.add_argument("--opening-route", action="store_true", help="在已核對紅版 SHA 上啟用實驗性開局 waypoint")
-    play.add_argument("--strategy-file", help="本機策略 JSON；可在執行中調整 starter，分類程序不連線")
+    play.add_argument("--strategy-file", help="本機策略 JSON；stage 為 starter/lab_rival/to_parcel/deliver_parcel，分類程序不連線")
     play.add_argument("--revision", default="7b928d828b7b0e022f929d9bd2e44165aa270148")
     play.add_argument("--offline", action=argparse.BooleanOptionalAction, default=True,
                       help="預設使用已快取的固定版本；首次下載可明確指定 --no-offline")

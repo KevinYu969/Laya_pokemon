@@ -3,7 +3,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from laya_pokemon.navigation import LOCATION_ADDRESSES, collision_direction, opening_waypoint, read_location
+from laya_pokemon.navigation import LOCATION_ADDRESSES, collision_direction, opening_waypoint, read_location, verified_down_ledge
 
 
 def location(map_id, x, y):
@@ -153,10 +153,21 @@ def test_collision_bfs_at_goal_and_blocked_player_cell_are_none():
     assert collision_direction([], (0, 0), (3, 4), (4, 4)) is None
 
 
-def test_collision_bfs_offscreen_target_without_reachable_frontier_is_none():
+def test_collision_bfs_offscreen_target_advances_interior_to_reveal_more_map():
     walkable = [[0] * 5 for _ in range(5)]
     walkable[2][2] = walkable[2][3] = 1
-    assert collision_direction(walkable, (2, 2), (5, 5), (20, 5)) is None
+    result = collision_direction(walkable, (2, 2), (5, 5), (20, 5))
+    assert result["direction"] == "right" and result["endpoint"] == [6, 5]
+
+
+@pytest.mark.parametrize("pair", [(0x2C, 0x37), (0x39, 0x36), (0x39, 0x37)])
+def test_verified_down_ledge_requires_matching_tiles_and_clear_landing(pair):
+    walkable = [[1], [0], [1]]
+    tiles = [[pair[0]], [pair[1]], [0x39]]
+    assert verified_down_ledge(walkable, tiles, (0, 0))["landing_cell"] == [0, 2]
+    walkable[2][0] = 0
+    assert verified_down_ledge(walkable, tiles, (0, 0)) is None
+    assert verified_down_ledge([[1], [0], [1]], [[0], [pair[1]], [0x39]], (0, 0)) is None
 
 
 def test_collision_bfs_does_not_mutate_any_inputs():

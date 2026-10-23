@@ -11,6 +11,9 @@ from threading import Thread
 from .core import append_jsonl, parse_rom_header, sha256_file, utc_now, validate_action, write_json
 
 
+RUN_TIME_LIMIT_SECONDS = 60
+
+
 class WindowClosed(RuntimeError):
     """使用者關閉即時視窗，屬正常停止。"""
 
@@ -51,7 +54,7 @@ def run_with_window_events(pyboy, operation, deadline: float, pause_event, unpau
         pyboy.send_input(unpause_event)
 
 
-def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=(), opening_route=False, starter="BULBASAUR") -> dict:
+def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=(), opening_route=False, starter="BULBASAUR", route_stage="starter") -> dict:
     from .observation import read_visible_text, opening_context
     from .progress import read_progress
 
@@ -65,11 +68,20 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
     state["party_summary"] = [{key: mon[key] for key in ("species", "level", "hp", "max_hp")}
                               for mon in progress["party"]]
     if opening_route:
-        from .navigation import read_location, opening_waypoint, collision_direction
+        from .navigation import read_location, opening_waypoint, collision_direction, verified_down_ledge
         state["location"] = read_location(pyboy)
+        if route_stage in {"lab_rival", "to_parcel", "deliver_parcel"}:
+            from .battle import read_battle_state, battle_context
+            state["battle_state"] = read_battle_state(pyboy)
+            context = battle_context(text, state["battle_state"])
+            if context:
+                state.update(context)
+            elif state["battle_state"]["active"] is None:
+                state.update(phase="unknown_battle_state", objective="Wait.", available_actions=["wait", "b"])
         if state["phase"] == "unclassified" and progress["player_name_raw"] == player_name:
             waypoint = opening_waypoint(state["location"], previous_actions,
-                                        progress["story_event_bits"], bool(progress["party"]), starter)
+                                        progress["story_event_bits"], bool(progress["party"]), starter, route_stage,
+                                        any(mon["hp"] < mon["max_hp"] for mon in progress["party"]))
             if waypoint:
                 state.update(waypoint)
                 state["phase"] = "overworld"
@@ -88,8 +100,17 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
                             state["collision_path_hint"] = hint
                         else:
                             target = waypoint["controller_waypoint"]
+                            ledge = None
+                            if (route_stage == "deliver_parcel" and state["location"]["map_id"] == 12
+                                    and target["y"] > state["location"]["y"]):
+                                # PyBoy 的碰撞格不含矮坡方向邊；此私有讀取 helper 與固定 PyBoy 版本一起記錄。
+                                tiles = pyboy.game_wrapper._get_screen_background_tilemap()[1::2, ::2]
+                                ledge = verified_down_ledge(collision, (tiles % 256).tolist(), [sx // 16, (sy + 4) // 16])
                             distance = abs(state["location"]["x"] - target["x"]) + abs(state["location"]["y"] - target["y"])
-                            if distance != 1 or waypoint["goal"] not in {"enter_1f_exit", "step_out_house", "reach_2f_stairs_y"}:
+                            if ledge:
+                                state["objective"] = "Move DOWN."
+                                state["ledge_jump_hint"] = ledge
+                            elif distance != 1 or waypoint["goal"] not in {"enter_1f_exit", "step_out_house", "reach_2f_stairs_y", "step_out_lab", "leave_pallet_north", "route1_north", "enter_viridian_mart", "enter_viridian_center", "step_out_center", "step_out_mart", "leave_viridian_south", "route1_south", "enter_oaks_lab"}:
                                 state["objective"] = "Wait for a verified traversable path."
                                 state["available_actions"] = ["wait", "b"]
                                 state["navigation_warning"] = "No closer reachable collision-grid waypoint."
@@ -158,6 +179,7 @@ def play_game(args) -> None:
         "status": "running", "policy": args.policy, "seed": args.seed, "rom": header,
         "state_sha256": sha256_file(saved_state) if saved_state else None,
         "max_steps": args.steps, "hold_frames": args.hold_frames, "settle_frames": args.settle_frames,
+        "max_wall_seconds": RUN_TIME_LIMIT_SECONDS,
         "window": args.window, "scale": args.scale, "boot_frames": args.boot_frames,
         "offline": args.offline, "threads": args.threads,
         "waiting_behavior": "pause emulation and pump SDL events during model loading/inference",
@@ -174,7 +196,7 @@ def play_game(args) -> None:
     emulator = recorder = None
     sampled_frames = 0
     started = time.perf_counter()
-    deadline = started + 600
+    deadline = started + RUN_TIME_LIMIT_SECONDS
 
     def stage(name):
         metadata["stage"] = name
@@ -224,8 +246,12 @@ def play_game(args) -> None:
             starter = strategy.get("starter", "BULBASAUR")
             if starter not in {"BULBASAUR", "SQUIRTLE", "CHARMANDER"}:
                 raise ValueError("策略檔的 starter 不在允許集合")
-            state = observe(emulator, args.objective, args.player_name, previous_actions, args.opening_route, starter)
+            route_stage = strategy.get("stage", "starter")
+            if route_stage not in {"starter", "lab_rival", "to_parcel", "deliver_parcel"}:
+                raise ValueError("策略檔的 stage 不在允許集合")
+            state = observe(emulator, args.objective, args.player_name, previous_actions, args.opening_route, starter, route_stage)
             state["strategy_starter"] = starter
+            state["strategy_stage"] = route_stage
             state["strategy_sha256"] = hashlib.sha256(strategy_bytes).hexdigest()
             state["previous_actions"] = previous_actions[-3:]
             emulator.screen.image.save(screenshot_dir / f"{index:04d}-before.png")

@@ -16,7 +16,7 @@ FULL_MISSION_MILESTONES = [
 ]
 STORY_EVENT_NAMES = (
     "followed_oak_into_lab", "oak_asked_to_choose_mon", "battled_rival_in_oaks_lab",
-    "got_starter", "got_pokedex", "got_hm01", "got_hm03", "got_hm04", "got_poke_flute",
+    "got_starter", "got_pokedex", "got_oaks_parcel", "oak_got_parcel", "got_hm01", "got_hm03", "got_hm04", "got_poke_flute",
     "beat_silph_co_giovanni", "beat_brock", "beat_misty", "beat_lt_surge", "beat_erika", "beat_koga",
     "beat_sabrina", "beat_blaine", "beat_viridian_gym_giovanni", "beat_loreleis_room_trainer_0",
     "beat_brunos_room_trainer_0", "beat_agathas_room_trainer_0", "beat_lance", "beat_champion_rival",

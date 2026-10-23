@@ -1,0 +1,21 @@
+{
+  "kind": "actual_red_first_rival_battle",
+  "recorded_date": "2026-10-23",
+  "source_run": "pyboy-live-20261023-12",
+  "file": "outputs/videos/first-rival-battle-20261023.mp4",
+  "result": "loss",
+  "sha256": "3341fdad9ece198bd95692f960b6767871757f761992e0d5f3f26e848bc83d4b",
+  "source_sha256": "6ff88326eb792c7e3a43eec8a694d304419bfeac8a2ea1d8a1d151a6b9c01f35",
+  "frames": 3300,
+  "fps": 30.0,
+  "seconds": 110.0,
+  "size": [
+    480,
+    432
+  ],
+  "decoded_first_and_last": true,
+  "timing": "emulated_time_excludes_inference_wait",
+  "audio": false,
+  "publicly_uploaded": false,
+  "scope": "自然觸發勁敵、FIGHT／TACKLE分類與實際敗北；並非勝利影片。"
+}

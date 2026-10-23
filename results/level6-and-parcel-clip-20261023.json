@@ -1,0 +1,21 @@
+{
+  "kind": "actual_red_level6_and_parcel",
+  "recorded_date": "2026-10-23",
+  "source_run": "pyboy-live-20261023-13",
+  "source_start_seconds": 90,
+  "file": "outputs/videos/level6-and-parcel-20261023.mp4",
+  "sha256": "b49964fa56cc6d955ac7dad4ef4f19e2d5039a78ccc2835d11c8328c02d6e362",
+  "source_sha256": "8bc234909f7105ce98f806209c23bdbac330cc94f0df7beeb5d857cbdbd07ab2",
+  "frames": 2700,
+  "fps": 30.0,
+  "seconds": 90.0,
+  "size": [
+    480,
+    432
+  ],
+  "decoded_first_and_last": true,
+  "timing": "emulated_time_excludes_inference_wait",
+  "audio": false,
+  "publicly_uploaded": false,
+  "scope": "擊倒波波、妙蛙種子升等6、前往常磐市取得博士包裹；不是交還包裹或圖鑑的完成證據。"
+}

@@ -421,3 +421,34 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 - 已另剪90秒開場流程影片 outputs/videos/opening-to-bulbasaur-20261023.mp4，480×432、30fps、2700幀；首尾可解碼，另抽第2240幀目視確認 KEVIN received a BULBASAUR!。影片SHA256為9cc04cc06cb8bc423b5744164cd97be8346c2367937b9364a7deec601d81a4c4，來源run10完整MP4的SHA256為dfd38eab136cc1e846801642c4819f7cdf7f0bdd53bd5d51ff9654f605ba5bb5。
 - 90秒影片省略模型等待，不能當牆鐘實測速度。影片仍留本機，不對外上傳；公開僅保存 results/opening-to-bulbasaur-clip-20261023.json 的整理驗證摘要與README連結。
 
+## 17. 2026-10-23 首戰敗北、野生戰獲勝與升等／包裹進度
+
+### 實作與卡點修復
+
+- Kevin要求繼續，接續run10取得妙蛙種子的保存狀態，不重新開局。原本初始階段到此等待，新增strategy JSON的stage：lab_rival、to_parcel、deliver_parcel，逐步擴展並保留每輪程式雜湊。
+- 依[研究所劇情原始碼](https://github.com/pret/pokered/blob/master/scripts/OaksLab.asm)核對，雙方選好後走到y6才自然觸發勁敵。run11直接下行被書架擋在(8,5)；獨立headless存檔複本確認下方不可走，改走中央x5通道，run12實際觸發對戰。工程探測不混入Laya成績。
+- 新battle模組唯讀wIsInBattle旗標0xD057：由[WRAM宣告](https://github.com/pret/pokered/blob/master/ram/wram.asm)與PyBoy已定位wCurOpponent的D059／相鄰欄位交叉核對。0無戰鬥、1野生、2訓練師、255失敗過渡；旗標本身不證明勝利。未知byte維持等待。
+- 可見20×18字格解析FIGHT／ITEM／RUN、TACKLE／GROWL與唯一游標，依局部子目標提供移動或確認候選，再由離線Laya分類。戰鬥動畫／對話會優先於屋內導航，避免戰鬥時仍往出口走。
+- 這輪是控制器供應FIGHT／TACKLE基線，Laya在按鍵層分類，不宣稱它自行選出整套戰術。當敵方連用GROWL降低攻擊，單純維持TACKLE沒有取得首戰勝利；完整失敗紀錄保留。
+- run12畫面HP曾為1/19、party欄仍為5/19，顯示party讀值會落後戰鬥HUD。新增撤退規則使用右側可見HP，排除左側PP；野生戰HP不高於一半時先B退回主選單，再由Laya移向RUN確認，訓練師戰不套此規則。規則實際效果另看對話，不把測試通過當逃跑成功。
+- 常磐市若隊伍受傷則先往寶可夢中心，對話確認治療後再續路線。地址、地圖連接、護理員與商店坐標取自pret/pokered公開原始碼；沒有使用wrapper加怪、改包包、補血或跳戰鬥函式。
+- run14已在常磐中心透過HEAL選單治療10/21→21/21，回程停在Route1(10,1)。根因是BFS對畫面外目標只接受可達畫面邊界，矮坡包住視窗時明明能往內部前進也等待；修正為先走最近可達格、每步重新觀測。另依[矮坡表](https://github.com/pret/pokered/blob/master/data/tilesets/ledge_tiles.asm)與獨立存檔探測加入向下矮坡匹配及落點檢查，只在Route1回程無普通路徑時使用；工程探測不算Laya跳坡證據，實際觸發另由ledge_jump_hint記錄。
+- run15實際通過Route1回程並獲得更多經驗至230，但到Pallet北入口(10,0)時，橫移x9的目標落在樹內；改成先向下到(10,6)開闊列再繞研究所。run16已由Laya實際走到Oak面前並交還包裹。run15未出現ledge_jump_hint，不能把這輪通行寫成矮坡helper已實際觸發。
+- Kevin後續要求Timeout由600秒改60秒。已將game.py的單輪牆鐘上限改為60，metadata新增max_wall_seconds，README／啟動提示同步；保留boot-frames的600幀驗證範圍，因為它不是秒數。舊程序正常存檔關閉，run17以新上限續接。這是縮短單輪除錯等待，不改變模型推論或模擬器速度。
+- run17實際以wall_clock_limit停止，42次決策、28秒模擬器影片；60秒觸發停止，含錄影／存檔收尾約60.659秒。final.state及summary已保存，包裹交還與圖鑑旗標均true。最後隊伍等級6、HP12/21、經驗230；後續道館尚未開始。
+
+### 真實結果（保留成功與失敗）
+
+- run12研究所首戰敗北：第143–145步BULBASAUR fainted!，第147–148步BLUE勝利對話；隊伍HP0、經驗135未增加。劇情正常治療至19/19、設定battled事件。此事件只能表示打過，不能寫成擊敗勁敵。後續從戰後final.state續接，沒有回讀戰前存檔重打改寫結果。
+- run13自然離開研究所，沿真新鎮／一號道路北上，實際擊倒等級3小拉達與波波：第87步小拉達倒下、第89步取得24 EXP；第160步波波倒下、第162步取得23 EXP；第164–167步遊戲顯示升至level6。經驗135→159→182、等級5→6，HP升等後10/21。
+- run13繼續抵達常磐市與商店，第261–264步顯示KEVIN got OAK's PARCEL!，後續got_oaks_parcel為true。沒有把取得包裹寫成已交還或已拿圖鑑。run13達300步正常存檔停止，完整影片200秒遊戲時間。
+- run14治療後接續run15–17，截至第41個零起算步驟，位置map40、(5,3)；常磐中心治療已驗證=True，包裹交還旗標=True，圖鑑旗標=True。run16第42–46步有交還包裹對話，第90–94步有KEVIN got POKéDEX from OAK!；事件旗標在後續對話結束才設定，run17另確認兩者true，沒有只憑對話中途的舊旗標否定實際進度。
+- 本機已核對真正Windows SDL2視窗中的勁敵戰、等級3小拉達對戰與常磐中心HEAL選單；不是Showdown回放。所有遊戲按鍵仍本機固定revision Laya CPU分類，Python遊戲程序封鎖網路，沒有GPT fallback；工程／攻略查詢仍使用Codex額度。
+- 180項本機單元測試通過（3.14秒），包括選單游標、避免確認RUN、野生／訓練師撤退區分、HP／PP區別、劇情前置條件、治療／送件與矮坡／無邊界仍可前進的路線。這些是程式契約，不是遊戲成功率。
+
+### 影片與發布範圍
+
+- 新增110秒首戰敗北片段 outputs/videos/first-rival-battle-20261023.mp4，明確標示loss；另有90秒升等與取得包裹片段 outputs/videos/level6-and-parcel-20261023.mp4，來源run13第90–180秒。兩段480×432、30fps、首尾可解碼，雜湊與來源記公開results收據，MP4不上傳。
+- 另保留25秒圖鑑交付片段 outputs/videos/pokedex-20261023.mp4，來源run16第54–79秒，記錄圖鑑取得對話；最終事件旗標由接續run17核對。原始影片留本機，公開只放results/pokedex-clip-20261023.json驗證收據。
+- 影片採模擬器時間，省略模型等待，不當作牆鐘速度。逐步JSONL、畫面PNG、ROM、存檔、權重與影片留本機；公開只有整理摘要、程式與指定兩份去識別MD。
+- 尚未道館／聯盟通關；網站文章尚未發布。後續需要招式／道具／換人／捕捉與戰術比較，不能將本輪局部按鍵控制當成完全自主遊戲能力。

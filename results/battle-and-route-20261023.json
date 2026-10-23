@@ -1,0 +1,151 @@
+{
+  "at": "2026-10-23T03:55:47.812934+00:00",
+  "kind": "local_laya_battle_and_route_session",
+  "rom_sha256": "5ca7ba01642a3b27b0cc0b5349b52792795b62d3ed977e98a09390659af96b7b",
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "offline": true,
+  "python_network_denied": true,
+  "cloud_model_fallback": false,
+  "decision_backend": "local_laya_cpu",
+  "manual_game_buttons": false,
+  "first_rival_battle": {
+    "run": "pyboy-live-20261023-12",
+    "result": "loss",
+    "exp_before": 135,
+    "exp_after": 135,
+    "faint_step_indices": [
+      143,
+      144,
+      145
+    ],
+    "continued_from_post_battle_state": true,
+    "reloaded_pre_battle_state_to_replace_result": false,
+    "event_flag_is_not_victory_proof": true
+  },
+  "route1_outbound": {
+    "run": "pyboy-live-20261023-13",
+    "wild_victories": [
+      "RATTATA",
+      "PIDGEY"
+    ],
+    "exp_gains": [
+      24,
+      23
+    ],
+    "exp_before": 135,
+    "exp_after": 182,
+    "level_before": 5,
+    "level_after": 6,
+    "level_dialogue_step_indices": [
+      164,
+      165,
+      166,
+      167
+    ],
+    "parcel_received": true,
+    "final_party": [
+      {
+        "species": 153,
+        "species_name": "BULBASAUR",
+        "level": 6,
+        "hp": 10,
+        "max_hp": 21,
+        "exp": 182
+      }
+    ]
+  },
+  "delivery": {
+    "run": "pyboy-live-20261023-17",
+    "status_at_snapshot": "stopped",
+    "steps_observed": 42,
+    "location_at_snapshot": {
+      "map_id": 40,
+      "x": 5,
+      "y": 3
+    },
+    "party_at_snapshot": [
+      {
+        "species": 153,
+        "species_name": "BULBASAUR",
+        "level": 6,
+        "hp": 12,
+        "max_hp": 21,
+        "exp": 230
+      }
+    ],
+    "earlier_runs": [
+      "pyboy-live-20261023-14",
+      "pyboy-live-20261023-15",
+      "pyboy-live-20261023-16"
+    ],
+    "max_wall_seconds": 60,
+    "stop_reason": "wall_clock_limit",
+    "wall_seconds": 60.6590814999945,
+    "healed_in_viridian_center": true,
+    "parcel_delivered": true,
+    "pokedex_received": true,
+    "retreat_rule_step_indices": [],
+    "retreat_success_claim": null
+  },
+  "tests": {
+    "passed": 180,
+    "seconds": 3.14,
+    "scope": "本機單元測試；遊戲與桌面證據另外核對"
+  },
+  "controller_contribution": "局部 waypoint、碰撞 BFS、選單游標解析、FIGHT/TACKLE 子目標及低血量野生戰撤退規則由控制器提供；Laya 在按鍵層分類，未驗證自主戰術規劃",
+  "limitations": [
+    "單次分段實測，沒有成功率數據",
+    "戰鬥中 party HP 可能落後 HUD；撤退規則讀取右側可見 HP，排除 PP",
+    "尚未道館、捕捉新隊員、四天王、冠軍或名人堂",
+    "Python 網路拒絕只作用於遊戲程序；Codex 工程與查攻略仍使用 Codex 額度"
+  ],
+  "source_sha256_at_delivery_start": {
+    "src/laya_pokemon/__init__.py": "d40c5e48fe1d84e0360809e148143b68592b39cc00d1f5add32a33e175bfb0cf",
+    "src/laya_pokemon/battle.py": "665a6c46b805b263fea3829f356db4626bb268516406563ca958cdfa93cccb69",
+    "src/laya_pokemon/cli.py": "3a4c866a7f8bc21d22dc55e7a58c9a724586f052c53993a83e1d5a16eb9cd620",
+    "src/laya_pokemon/core.py": "2e291aa7f8878354021b96df6cd3495ab206fb9c6d8168a143b5df1e5dee7496",
+    "src/laya_pokemon/game.py": "7044c5f77f3030621abfd6d6896fd9892dd3ed3de3260f814f92d4b6afe289a4",
+    "src/laya_pokemon/naming.py": "0788e2914df6256789024ea4ca08ae2628ae61a7326f97c3633bbb10a62afee7",
+    "src/laya_pokemon/navigation.py": "1aed0dfbe392da7cbe651b79d269ac4a90f8035bd70c397d4a9a776ca337b270",
+    "src/laya_pokemon/observation.py": "6cd9caf88313c32e65eba16eec4d272ec4533bbc83c42193e7a8d2d6d7ec055d",
+    "src/laya_pokemon/policy.py": "50e167c88bbf2677448311b2854284ce5d20e8d8630d3ea5aa68c96819cd728a",
+    "src/laya_pokemon/progress.py": "aff7c6b4dee3842efeb16dbb9c9ba39a0f4c2cc4069664b5044976b3a53c934f",
+    "src/laya_pokemon/runtime.py": "fa8bc091a8815c9a278f9c6267fac853b52b97dfe65b093f2fdbeeca5812ec2f",
+    "src/laya_pokemon/showdown.py": "6d16c54e68fbf39f4299e667de99e58268de699748e92397fc1da31c4a2013ac",
+    "src/laya_pokemon/video.py": "45e9a8f4c18e5ad65d22f344805159f59344f252a8775823ff8f29bb13046ee2"
+  },
+  "model_latency_by_phase": {
+    "battle_animation": {
+      "samples": 37,
+      "p50_ms": 339.57,
+      "p95_ms": 425.56
+    },
+    "battle_dialogue": {
+      "samples": 193,
+      "p50_ms": 422.9,
+      "p95_ms": 508.72
+    },
+    "battle_menu": {
+      "samples": 34,
+      "p50_ms": 441.88,
+      "p95_ms": 529.04
+    },
+    "dialogue": {
+      "samples": 49,
+      "p50_ms": 629.6,
+      "p95_ms": 735.03
+    },
+    "overworld": {
+      "samples": 302,
+      "p50_ms": 403.87,
+      "p95_ms": 511.79
+    }
+  },
+  "latency_scope": "runs12、13、17記錄到的每步本機分類，排除模型載入；依階段拆分，含重複狀態，不能當任務成功率或跨模型基準",
+  "videos": [
+    "results/first-rival-battle-clip-20261023.json",
+    "results/level6-and-parcel-clip-20261023.json",
+    "results/pokedex-clip-20261023.json"
+  ],
+  "video_publicly_uploaded": false
+}

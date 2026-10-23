@@ -29,7 +29,7 @@ try {
         '--player-name', $PlayerName,
         '--window', '--scale', '4', '--offline', '--video', '--output', $taskRun)
     if ($State) { $taskArguments += @('--state', $State) }
-    Write-Host '即將開啟 PyBoy 桌面視窗。PAUSED 表示正在載入／等待模型；可關閉視窗停止。'
+    Write-Host '即將開啟 PyBoy 桌面視窗。每輪最多 60 秒；PAUSED 表示正在載入／等待模型，可關閉視窗停止。'
     Write-Host '這是尚待真實 ROM 校準的控制展示，沒有宣稱可以完成開場或破關。'
     & $taskPython @taskArguments
     if ($LASTEXITCODE -ne 0) { throw "遊戲執行失敗，請查看 $taskRun 的 metadata.json／summary.json。" }

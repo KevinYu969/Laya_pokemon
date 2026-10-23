@@ -1,0 +1,21 @@
+{
+  "kind": "actual_red_pokedex_dialogue",
+  "recorded_date": "2026-10-23",
+  "source_run": "pyboy-live-20261023-16",
+  "source_start_seconds": 54,
+  "file": "outputs/videos/pokedex-20261023.mp4",
+  "sha256": "03164ba6092390d01092b92e639935f3a652c1f5fb6689a9745965efd58bed7f",
+  "source_sha256": "f797ba86c18962640ac176a9107adb4bbc62e4df8be698fc8a30b6937b8ad1be",
+  "frames": 750,
+  "fps": 30.0,
+  "seconds": 25.0,
+  "size": [
+    480,
+    432
+  ],
+  "decoded_first_and_last": true,
+  "timing": "emulated_time_excludes_inference_wait",
+  "audio": false,
+  "publicly_uploaded": false,
+  "scope": "圖鑑取得對話；最終旗標在接續run17核對。"
+}
