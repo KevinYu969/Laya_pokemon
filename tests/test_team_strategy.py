@@ -120,3 +120,10 @@ def test_teleport_only_party_is_not_blindly_confirmed_in_trainer_battle():
     result = battle_context(text, {"active": True, "kind": "trainer"},
                             [{"species": 148, "moves": [100, 0, 0, 0], "pp": [20, 0, 0, 0]}])
     assert result["phase"] == "strategy_review"
+
+
+def test_hunting_skips_rattata_but_training_and_trainer_battles_still_fight():
+    text = text_at((1, 0, "RATTATA"), (10, 14, "FIGHT"), (10, 16, "ITEM"), (16, 16, "RUN"), (9, 14, "▶"))
+    assert battle_context(text, {"active": True, "kind": "wild"}, capture_focus=True)["battle_tactic"] == "retreat"
+    assert battle_context(text, {"active": True, "kind": "wild"})["battle_tactic"] == "damage"
+    assert battle_context(text, {"active": True, "kind": "trainer"}, capture_focus=True)["battle_tactic"] == "damage"

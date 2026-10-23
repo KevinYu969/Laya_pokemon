@@ -60,7 +60,7 @@ def _selection_hint(rows, target, menu):
             "battle_strategy": "controller menu subgoal; chosen move or capture tactic logged separately", "source": MENU_SOURCE}
 
 
-def battle_context(text, battle_state, party=(), inventory=None) -> dict | None:
+def battle_context(text, battle_state, party=(), inventory=None, *, capture_focus=False) -> dict | None:
     """僅對已核對 ROM 的實驗性路線提供局部提示；不執行按鍵。"""
     if battle_state["active"] is not True:
         return None
@@ -90,6 +90,8 @@ def battle_context(text, battle_state, party=(), inventory=None) -> dict | None:
         balls = sum(item["quantity"] for item in inventory or [] if item["item"] == 4)
         capture = capture_plan(enemy, owned, balls, wild=battle_state.get("kind") == "wild", party_count=len(party))
         catch = capture["tactic"] == "throw_ball"
+        skip_non_target = capture_focus and enemy is not None and battle_state.get("kind") == "wild" and capture["tactic"] == "not_capture"
+        retreat = retreat or skip_non_target
         fight, item, run = (_label(rows, word) for word in ("FIGHT", "ITEM", "RUN"))
         if fight and item and run:
             if capture["tactic"] == "review":

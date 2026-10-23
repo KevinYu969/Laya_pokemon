@@ -1,0 +1,263 @@
+{
+  "recorded_at": "2026-10-23T04:42:25.484182+00:00",
+  "kind": "team_strategy_and_capture_session",
+  "runs": [
+    {
+      "run": "pyboy-live-20261023-18",
+      "completed_steps": 46,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.42428769997787,
+      "video_seconds_emulated": 30.666666666666668,
+      "summary_sha256": "c70967ce448b639239d4d7fcdcdb6e7d940fa330bc58d8b1fc6f4d539af7304a"
+    },
+    {
+      "run": "pyboy-live-20261023-19",
+      "completed_steps": 47,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.67331209999975,
+      "video_seconds_emulated": 31.333333333333332,
+      "summary_sha256": "c29577b1b741e5fc8abb67445aff86b649617980bb6c1e37d65e8fe9b9adefd7"
+    },
+    {
+      "run": "pyboy-live-20261023-20",
+      "completed_steps": 46,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.97358419999364,
+      "video_seconds_emulated": 30.666666666666668,
+      "summary_sha256": "9d8a6faa2a472a7480d04c26fe5f64d46bf03192abc5201bc610dcd4c6a4ed2b"
+    },
+    {
+      "run": "pyboy-live-20261023-21",
+      "completed_steps": 46,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.443558300001314,
+      "video_seconds_emulated": 30.666666666666668,
+      "summary_sha256": "06d44667e2360c3e624e58eed9d474e9831eb807f1d235ed55f4ff893b3a4244"
+    },
+    {
+      "run": "pyboy-live-20261023-22",
+      "completed_steps": 41,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.415500999981305,
+      "video_seconds_emulated": 27.333333333333332,
+      "summary_sha256": "6bc01c6b63dae43be658c74c7879d05e953e9dad973726b34dd75147a8dfd93c"
+    },
+    {
+      "run": "pyboy-live-20261023-23",
+      "completed_steps": 41,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.41637130000163,
+      "video_seconds_emulated": 27.333333333333332,
+      "summary_sha256": "ae60ca25fbb1e03bff7d86ee9b9bef3696b9422e3ead847df63a3434bfabbceb"
+    },
+    {
+      "run": "pyboy-live-20261023-24",
+      "completed_steps": 40,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.956557299999986,
+      "video_seconds_emulated": 26.666666666666668,
+      "summary_sha256": "7a399e504188e07856be6748ef30ec83b4b517c5a6a8d7a72d28482ea57f8190"
+    },
+    {
+      "run": "pyboy-live-20261023-25",
+      "completed_steps": 39,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.556437899998855,
+      "video_seconds_emulated": 26.0,
+      "summary_sha256": "fba7a7ba0b1c0378104ec8ff9f6e7a23de5ba666f95df15550be26e5842edf67"
+    },
+    {
+      "run": "pyboy-live-20261023-26",
+      "completed_steps": 45,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.92466190000414,
+      "video_seconds_emulated": 30.0,
+      "summary_sha256": "21832e83faf1114bcce456fe0b934839252f6afbd8608d6de4a66f3a88a60971"
+    },
+    {
+      "run": "pyboy-live-20261023-27",
+      "completed_steps": 47,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.6328319000022,
+      "video_seconds_emulated": 31.333333333333332,
+      "summary_sha256": "182783d0fba9bfa60bd647dfba425617384d102cc8f10747251c34910729f5b5"
+    },
+    {
+      "run": "pyboy-live-20261023-28",
+      "completed_steps": 45,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.42617699998664,
+      "video_seconds_emulated": 30.0,
+      "summary_sha256": "f3ccd6e02c1b4b52d9467bfc51d20e4677214da785ff0262c5cd04dab69e4069"
+    },
+    {
+      "run": "pyboy-live-20261023-29",
+      "completed_steps": 43,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.84991900000023,
+      "video_seconds_emulated": 28.666666666666668,
+      "summary_sha256": "759163e393c7e3df5c171f63344a6d4306e503dffb0c54c427407a8d8f8773f1"
+    },
+    {
+      "run": "pyboy-live-20261023-30",
+      "completed_steps": 43,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.72026599998935,
+      "video_seconds_emulated": 28.666666666666668,
+      "summary_sha256": "7e7b352d989f120eb123ea865dc7c61146253362b5852d85ff4a67b228467477"
+    },
+    {
+      "run": "pyboy-live-20261023-31",
+      "completed_steps": 46,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.394535400002496,
+      "video_seconds_emulated": 30.666666666666668,
+      "summary_sha256": "937dccc7fe60c197f4060958b67cd16399c2356eec19a25fce5fe2b9037dbe59"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "completed_steps": 30,
+      "stop_reason": "capture_milestone",
+      "wall_seconds_including_cleanup": 43.479907300003106,
+      "video_seconds_emulated": 20.0,
+      "summary_sha256": "5086af7a32b32e641e3b40368e9315d1ed6cc1bd957421f065b73b14d3c0efd3"
+    }
+  ],
+  "latest_run": "pyboy-live-20261023-32",
+  "final_location": {
+    "map_id": 33,
+    "x": 30,
+    "y": 8
+  },
+  "player_name": "KEVIN",
+  "party": [
+    {
+      "species": 153,
+      "species_name": "BULBASAUR",
+      "level": 7,
+      "hp": 23,
+      "max_hp": 23,
+      "exp": 254,
+      "moves": [
+        33,
+        45,
+        73,
+        0
+      ],
+      "pp": [
+        35,
+        40,
+        10,
+        0
+      ]
+    },
+    {
+      "species": 3,
+      "species_name": "NIDORAN M",
+      "level": 3,
+      "hp": 16,
+      "max_hp": 16,
+      "exp": 57,
+      "moves": [
+        43,
+        33,
+        0,
+        0
+      ],
+      "pp": [
+        30,
+        35,
+        0,
+        0
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "item": 4,
+      "quantity": 7
+    }
+  ],
+  "money": 1400,
+  "final_state_sha256": "0cb4ce024fa227c65f337643dc8b8b2d8ee1bee73099c839f36b0a0ef7b473ad",
+  "captured_nidoran_m_confirmed": true,
+  "dialogue_evidence": [
+    {
+      "run": "pyboy-live-20261023-28",
+      "step": 22,
+      "visible_text": "          BULBASAUR             18/ 23  BULBASAUR learned  LEECH SEED!"
+    },
+    {
+      "run": "pyboy-live-20261023-28",
+      "step": 23,
+      "visible_text": "          BULBASAUR             18/ 23  BULBASAUR learned  LEECH SEED!"
+    },
+    {
+      "run": "pyboy-live-20261023-28",
+      "step": 24,
+      "visible_text": "          BULBASAUR             18/ 23  BULBASAUR learned  LEECH SEED!"
+    },
+    {
+      "run": "pyboy-live-20261023-28",
+      "step": 25,
+      "visible_text": "          BULBASAUR             18/ 23  BULBASAUR learned  LEECH SEED!"
+    },
+    {
+      "run": "pyboy-live-20261023-28",
+      "step": 26,
+      "visible_text": "          BULBASAUR             18/ 23  BULBASAUR learned  LEECH SEED!      ▼"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "step": 12,
+      "visible_text": " NIDORAN♂           BULBASAUR             23/ 23  NIDORAN♂ was  caught!"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "step": 13,
+      "visible_text": " NIDORAN♂           BULBASAUR             23/ 23  NIDORAN♂ was  caught!"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "step": 14,
+      "visible_text": " NIDORAN♂           BULBASAUR             23/ 23  NIDORAN♂ was  caught!"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "step": 15,
+      "visible_text": " NIDORAN♂           BULBASAUR             23/ 23  NIDORAN♂ was  caught!"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "step": 16,
+      "visible_text": " NIDORAN♂           BULBASAUR             23/ 23  NIDORAN♂ was  caught!          ▼"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "step": 17,
+      "visible_text": " NIDORAN♂           BULBASAUR             23/ 23  New POKéDEX dat"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "step": 18,
+      "visible_text": " NIDORAN♂           BULBASAUR             23/ 23  New POKéDEX data  will be added for▼"
+    }
+  ],
+  "tests_passed": 193,
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "reference_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "classification_backend": "local_laya_cpu_offline",
+  "cloud_model_fallback": false,
+  "desktop_verified_runs": [
+    18,
+    21,
+    24,
+    32
+  ],
+  "limitations": [
+    "組隊、導航、選招與候選遮罩由本機控制器提供，Laya分類按鍵；非模型自行發現的戰術。",
+    "四招遺忘介面、稀有怪削血／狀態與PC管理仍待實機校準。",
+    "原生桌面另以Computer Use核對；影片省略模型等待，不能當牆鐘速度。",
+    "ROM、存檔、影片與原始輸出只留本機；尚未道館或聯盟通關。"
+  ]
+}

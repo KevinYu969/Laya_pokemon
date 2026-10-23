@@ -83,7 +83,8 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
             state["battle_state"] = read_battle_state(pyboy)
             context = learning_context(text, progress["party"])
             if context is None and "NICKNAME" not in " ".join(text["lines"]).upper():
-                context = battle_context(text, state["battle_state"], progress["party"], progress["inventory"])
+                context = battle_context(text, state["battle_state"], progress["party"], progress["inventory"],
+                                         capture_focus=route_stage == "team_capture")
             if context:
                 state.update(context)
             elif state["battle_state"]["active"] is None:

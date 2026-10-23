@@ -1,0 +1,34 @@
+{
+  "recorded_date": "2026-10-23",
+  "kind": "real_pyboy_team_building_video",
+  "filename": "team-building-20261023.mp4",
+  "sha256": "a5f8fd25f5356329d9491a33cfe4343633a718e6c1aab2b4a2592b96fdeef1e0",
+  "fps": 30,
+  "frames": 900,
+  "seconds": 30.0,
+  "frame_shape": [
+    432,
+    480,
+    3
+  ],
+  "first_and_last_decoded": true,
+  "sources": [
+    {
+      "run": "pyboy-live-20261023-28",
+      "from_seconds": 8,
+      "to_seconds": 19,
+      "sha256": "e6374dd79a8db03335df94942a4b5546f65fae19318b56ccf285451e78a96610"
+    },
+    {
+      "run": "pyboy-live-20261023-32",
+      "from_seconds": 0,
+      "to_seconds": 19,
+      "sha256": "54a2af1eeeb30ea7f2164227765619ac88ccb3aff977530e1745f2cb7c945c3d"
+    }
+  ],
+  "description": "真實紅版升7級／學寄生種子，以及投球捕捉尼多朗♂；兩段剪接。",
+  "timing": "emulated_time_omits_model_wait",
+  "audio": false,
+  "public_video_uploaded": false,
+  "limitation": "遊戲轉場中的部分幀可能不完整；不是牆鐘速度或完全自主通關證據。"
+}
