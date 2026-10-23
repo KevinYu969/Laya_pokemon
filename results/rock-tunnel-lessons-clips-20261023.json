@@ -1,0 +1,411 @@
+{
+  "at": "2026-10-23T14:09:15.419349+00:00",
+  "source_run": "league-campaign-20261023-13",
+  "status": "local_closed_sources_fully_decoded_verified_unpublished",
+  "published": false,
+  "clip_count": 2,
+  "closed_source_videos_only": true,
+  "timing_caution_zh_tw": "兩片均為遊戲影格後製4x，省略推論及debug/review暫停；非真實牆鐘、非模型加速對照，片長不能當通關時間。敗北片末尾另定格3秒。",
+  "scenes": [
+    {
+      "caption_zh_tw": "封招迴圈剪選→修正後改選Fury Attack但未命中→正常換尼多力諾以Horn Attack獲勝",
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-13/game/video-017.mp4",
+          "source_video_sha256": "bfd26b5477b1ab9aebe60a06082b942c50c99b54c1cb71c69832713ff18fd103",
+          "source_log": "outputs/league-campaign-20261023-13/game/steps-017.jsonl",
+          "source_log_sha256": "47d132a83980af3599d1a1616f0c6f80a98946cafe30f7c81c669fd49a6e80f4",
+          "source_steps": [
+            3290,
+            3338
+          ],
+          "source_start_emulated_seconds": 281.8666666666667,
+          "source_duration_emulated_seconds": 81.06666666666666,
+          "logged_actions_emulated_seconds": 81.06666666666666,
+          "source_first_action_recorded_at": "2026-10-23T13:43:37.782347+00:00",
+          "source_last_action_recorded_at": "2026-10-23T13:52:01.426158+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 503.797,
+            "review_pause_seconds": 497.782,
+            "model_wait_seconds": 0.047,
+            "non_review_wall_seconds": 6.015
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-13/game/video-018.mp4",
+          "source_video_sha256": "d551ebe3458698fa1a14b8f8117f99ded7048304bcc6c2f294c9e93ff7913698",
+          "source_log": "outputs/league-campaign-20261023-13/game/steps-018.jsonl",
+          "source_log_sha256": "9b54808ec3ef1b0431800ce01dead9ab982e475c77772cb997b4104b308e196a",
+          "source_steps": [
+            3339,
+            3371
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 49.86666666666667,
+          "logged_actions_emulated_seconds": 49.86666666666667,
+          "source_first_action_recorded_at": "2026-10-23T13:52:01.873704+00:00",
+          "source_last_action_recorded_at": "2026-10-23T13:52:04.190969+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 2.766,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.266,
+            "non_review_wall_seconds": 2.766
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/rock-tunnel-lessons-20261023/disable-fix-switch-victory-post4x.mp4",
+          "sha256": "f51d49731a6afb8a240c2f94b390830565f944f5a4c0d74d1726f72ed3488d42",
+          "frames_decoded": 982,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 32.733333333333334,
+          "full_frame_decode_passed": true,
+          "postproduction_speed": 4,
+          "final_frame_freeze_seconds": 0,
+          "expected_playback_seconds": 32.733333333333334,
+          "editing_zh_tw": "原始PyBoy像素，後製4倍播放；推論、開發與檢討等待未呈現。片長不是模型推論速度、真實牆鐘或通關耗時。"
+        }
+      ],
+      "omissions_zh_tw": "只選迴圈尾段；略去更早重複按啄、實作測試及operator review等待。同一場戰鬥接續，未重開或重打。不能宣稱Fury Attack命中致勝。",
+      "verified_events": [
+        {
+          "step": 3343,
+          "event": "FURY_ATTACK_selected_while_PECK_disabled"
+        },
+        {
+          "step": 3345,
+          "event": "FURY_ATTACK_missed"
+        },
+        {
+          "step": 3354,
+          "event": "NIDORINO_visible_active_after_normal_switch"
+        },
+        {
+          "step": 3362,
+          "event": "NIDORINO_used_HORN_ATTACK"
+        },
+        {
+          "step": 3367,
+          "event": "KEVIN_defeated_BUG_CATCHER"
+        }
+      ]
+    },
+    {
+      "caption_zh_tw": "岩山隧道最後一場連戰：藤鞭耗盡→居合斬弱效→全隊倒下→檢討後正常blackout回中心",
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-13/game/video-019.mp4",
+          "source_video_sha256": "1b2e4575fb5747b1efcabd58f90557d5b919d33f87d72daaf2dae864e3f92e2f",
+          "source_log": "outputs/league-campaign-20261023-13/game/steps-019.jsonl",
+          "source_log_sha256": "21d691b6b4fcac24b88efc912fe218c7671b297e09267bfc96b4743612ed35c3",
+          "source_steps": [
+            4107,
+            4186
+          ],
+          "source_start_emulated_seconds": 904.1333333333333,
+          "source_duration_emulated_seconds": 135.80000000000007,
+          "logged_actions_emulated_seconds": 135.46666666666667,
+          "source_first_action_recorded_at": "2026-10-23T13:54:52.760387+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:03:49.661685+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 537.0,
+            "review_pause_seconds": 528.937,
+            "model_wait_seconds": 1.439,
+            "non_review_wall_seconds": 8.063
+          },
+          "unlogged_frame_allowance_seconds": 0.333333,
+          "unlogged_frame_note_zh_tw": "每幀全敗鎖在動作中攔停，未完成動作的20幀已錄影但未寫入一般step；保留到容器實際結尾，勿只用step總和截掉敗北畫面。"
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-13/game/video-020.mp4",
+          "source_video_sha256": "434e244ad02e1088f8570c71299cec45d0226ff29847001d8a889cb7b946c754",
+          "source_log": "outputs/league-campaign-20261023-13/game/steps-020.jsonl",
+          "source_log_sha256": "ca413999c194af3eae7ea21f0596109f81d0635d2d574f7b13c6cfaf61f41eee",
+          "source_steps": [
+            4187,
+            4189
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 6.4,
+          "logged_actions_emulated_seconds": 6.4,
+          "source_first_action_recorded_at": "2026-10-23T14:03:49.849626+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:03:50.049647+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.39,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.39
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/rock-tunnel-lessons-20261023/rock-tunnel-pp-exhaustion-blackout-recovery-post4x.mp4",
+          "sha256": "8912e98910bf38e295b70d378620f3935190c182a78c70f450e894dcc6345565",
+          "frames_decoded": 1157,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 38.56666666666667,
+          "full_frame_decode_passed": true,
+          "postproduction_speed": 4,
+          "final_frame_freeze_seconds": 3,
+          "expected_playback_seconds": 38.55000000000002,
+          "editing_zh_tw": "原始PyBoy像素，後製4倍播放；推論、開發與檢討等待未呈現。片長不是模型推論速度、真實牆鐘或通關耗時。"
+        }
+      ],
+      "omissions_zh_tw": "保留最後一場完整戰鬥至blackout及回中心；更早兩隻隊員倒下過程未收入此片。略去敗北後鎖定檢討，沒有回讀洗掉失敗；末尾中心畫面定格3秒以利閱讀。",
+      "battle_loss_recorded_at": "2026-10-23T13:55:00.578285+00:00",
+      "normal_recovery_recorded_at": "2026-10-23T14:03:50.070752+00:00",
+      "recovered_location": {
+        "map_id": 21,
+        "x": 11,
+        "y": 20
+      },
+      "recovered_money": 11572,
+      "money_before_loss": 23145,
+      "recovered_party": [
+        {
+          "species_name": "FEAROW",
+          "level": 22,
+          "hp": 70,
+          "max_hp": 70,
+          "exp": 11599,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            40,
+            30,
+            20
+          ],
+          "status": 0
+        },
+        {
+          "species_name": "NIDORINO",
+          "level": 25,
+          "hp": 76,
+          "max_hp": 76,
+          "exp": 12478,
+          "moves": [
+            43,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            30,
+            35,
+            25,
+            35
+          ],
+          "status": 0
+        },
+        {
+          "species_name": "IVYSAUR",
+          "level": 28,
+          "hp": 79,
+          "max_hp": 79,
+          "exp": 19331,
+          "moves": [
+            77,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            35,
+            30,
+            10,
+            10
+          ],
+          "status": 0
+        }
+      ],
+      "verified_events": [
+        {
+          "step": 4166,
+          "event": "VINE_WHIP_zero_PP"
+        },
+        {
+          "step": 4171,
+          "event": "CUT_not_very_effective"
+        },
+        {
+          "step": 4189,
+          "event": "KEVIN_blacked_out"
+        },
+        {
+          "record": "review-request.json",
+          "event": "recovery_complete_full_HP_PP_money_loss_retained"
+        }
+      ]
+    }
+  ],
+  "source_video_validation": [
+    {
+      "file": "outputs/league-campaign-20261023-13/game/video-017.mp4",
+      "sha256": "bfd26b5477b1ab9aebe60a06082b942c50c99b54c1cb71c69832713ff18fd103",
+      "frames_decoded": 5444,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 362.93333333333334,
+      "full_frame_decode_passed": true
+    },
+    {
+      "file": "outputs/league-campaign-20261023-13/game/video-018.mp4",
+      "sha256": "d551ebe3458698fa1a14b8f8117f99ded7048304bcc6c2f294c9e93ff7913698",
+      "frames_decoded": 2764,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 184.26666666666668,
+      "full_frame_decode_passed": true
+    },
+    {
+      "file": "outputs/league-campaign-20261023-13/game/video-019.mp4",
+      "sha256": "1b2e4575fb5747b1efcabd58f90557d5b919d33f87d72daaf2dae864e3f92e2f",
+      "frames_decoded": 15599,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 1039.9333333333334,
+      "full_frame_decode_passed": true
+    },
+    {
+      "file": "outputs/league-campaign-20261023-13/game/video-020.mp4",
+      "sha256": "434e244ad02e1088f8570c71299cec45d0226ff29847001d8a889cb7b946c754",
+      "frames_decoded": 96,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 6.4,
+      "full_frame_decode_passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/disable-loop.png",
+      "sha256": "13cce3a497fee0117372232527572969be5a10df634c7c12b689ef0255ba6b57",
+      "source_video": "outputs/league-campaign-20261023-13/game/video-017.mp4",
+      "source_step_observation": 3336,
+      "source_emulated_seconds": 357.93333333333334,
+      "kind": "original_video_frame"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/fury-attack-selected.png",
+      "sha256": "80c7b4f2bc5a541eb0d43ddd0ecd664b53ef96a5b5e95fc829dcb3d884d59a07",
+      "source_video": "outputs/league-campaign-20261023-13/game/video-018.mp4",
+      "source_step_observation": 3343,
+      "source_emulated_seconds": 4.066666666666667,
+      "kind": "original_video_frame"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/fury-attack-missed.png",
+      "sha256": "65b991f144a157cfbb3d42437b5f3d70a0b3543f23cb1688db702681ed008913",
+      "source_video": "outputs/league-campaign-20261023-13/game/video-018.mp4",
+      "source_step_observation": 3345,
+      "source_emulated_seconds": 6.866666666666667,
+      "kind": "original_video_frame"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/disable-fixed-trainer-victory.png",
+      "sha256": "add9547e9d08bb98ebaf1e7c1e2f5dcb9bc06b19f826f49a6ed59ed6ab82b63c",
+      "source_video": "outputs/league-campaign-20261023-13/game/video-018.mp4",
+      "source_step_observation": 3367,
+      "source_emulated_seconds": 40.599999999999994,
+      "kind": "original_video_frame"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/vine-whip-zero-pp.png",
+      "sha256": "7facc5ede72cd9bb843576345c6144ef5ba24674ebc5482ece9ad272efc5c466",
+      "source_video": "outputs/league-campaign-20261023-13/game/video-019.mp4",
+      "source_step_observation": 4166,
+      "source_emulated_seconds": 1005.0,
+      "kind": "original_video_frame"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/last-pokemon-four-hp.png",
+      "sha256": "bf16e7f95c1223e03dd24ac45ae743840213ad85a3a79a5db6bdd06508eefea8",
+      "source_video": "outputs/league-campaign-20261023-13/game/video-019.mp4",
+      "source_step_observation": 4180,
+      "source_emulated_seconds": 1027.5333333333333,
+      "kind": "original_video_frame"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/kevin-blacked-out.png",
+      "sha256": "94f36cd29adafa0f509939df3e6be81c80850d3e566b5128838599999f893e4c",
+      "source_video": "outputs/league-campaign-20261023-13/game/video-020.mp4",
+      "source_step_observation": 4189,
+      "source_emulated_seconds": 4.2,
+      "kind": "original_video_frame"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/true-party-loss-original.png",
+      "sha256": "53550fd4ab195d8c8bda708be54ce859067a474618690d902cf80f1c04d60ff9",
+      "source_file": "outputs/league-campaign-20261023-13/game/keyframes/00118-battle-loss.png",
+      "source_sha256": "53550fd4ab195d8c8bda708be54ce859067a474618690d902cf80f1c04d60ff9",
+      "kind": "byte_identical_copy_of_game_capture"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/recovered-center-original.png",
+      "sha256": "9a29d981fa13ffd7b3091ad890fa47ec9ae858ad782b486b8d4cf8082240327c",
+      "source_file": "outputs/league-campaign-20261023-13/game/keyframes/00120-review-recovery_complete.png",
+      "source_sha256": "9a29d981fa13ffd7b3091ad890fa47ec9ae858ad782b486b8d4cf8082240327c",
+      "kind": "byte_identical_copy_of_game_capture"
+    },
+    {
+      "file": "outputs/videos/rock-tunnel-lessons-20261023/normal-stopped-final-original.png",
+      "sha256": "9a29d981fa13ffd7b3091ad890fa47ec9ae858ad782b486b8d4cf8082240327c",
+      "source_file": "outputs/league-campaign-20261023-13/game/last-frame.png",
+      "source_sha256": "9a29d981fa13ffd7b3091ad890fa47ec9ae858ad782b486b8d4cf8082240327c",
+      "kind": "byte_identical_copy_of_game_capture"
+    }
+  ],
+  "supporting_evidence": [
+    {
+      "file": "outputs/league-campaign-20261023-13/game/battle-losses.jsonl",
+      "sha256": "1a9f76860464caed6c7b05407989d9f5e304650916c8d3b9803ce5cf8767962f"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-13/game/review-request.json",
+      "sha256": "20b73c20ee3b0cfb710d5da6f17b9f835c46695ea85b15e8dacd7be8bc21b198"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-13/game/reviews.jsonl",
+      "sha256": "39fa6e91c5d7bcb3054caa2d045fb3a7a783ebcad806e8b7bad001439eed3711"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-13/game/summary.json",
+      "sha256": "fe5611697e026f5353cf924274d15f24dffeac10144b9fa22fba31a2456a6dac"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-13/game/segments.jsonl",
+      "sha256": "5f6b17e8f259ea0b7bc07271bd9f32dbb90ef23f1997b3e44a5742c25e3fa3aa"
+    }
+  ],
+  "unchanged_source_footage": true,
+  "game_or_state_operations": false,
+  "source_frame_alignment_note_zh_tw": "step是按鍵前觀測、at在按鍵後寫入；截圖取同分段累計emulated_frames映射前一個15fps影格，保留按鍵前選單或對話，仍可有一幀量化差。全敗中斷另有20個未完成動作影格，來源019以實際閉合尾端補足。",
+  "manual_visual_qa_zh_tw": "人工逐張檢視已確認Fury Attack游標、attack missed、捕蟲少年勝利、藤鞭0/10、blacked out文字與回到中心外；沒有將下一按鍵後的部分文字誤標為選單截圖。"
+}

@@ -9,7 +9,11 @@ GYMS=[('brock','灰色徽章／小剛',1),('misty','藍色徽章／小霞',2),('
 class Journal:
     def __init__(self,output,baseline):
         self.output=Path(output);self.seen_events={k for k,v in baseline['story_event_bits'].items() if v}
+        self.known_event_names=set(baseline['story_event_bits'])
+        self.readable_event_names={k for k,v in baseline['story_event_bits'].items() if type(v) is bool}
         self.seen_gyms={name for name,label,bit in GYMS if baseline['story_event_bits'].get('beat_'+name) and (baseline['badges_raw'] or 0)&bit}
+        self.armed_gyms={name for name,label,bit in GYMS if baseline['story_event_bits'].get('beat_'+name) is False
+                         and type(baseline.get('badges_raw')) is int and not baseline['badges_raw']&bit}
         self.captures=set();self.serial=0
     def battle_loss(self,pyboy,state,evidence,timing,save):
         capture=self.capture(pyboy,'battle-loss',state,timing)
@@ -31,10 +35,19 @@ class Journal:
     def observe(self,pyboy,state,timing,save):
         progress=state['progress'];new=[]
         for name,label,bit in GYMS:
-            if name not in self.seen_gyms and progress['story_event_bits'].get('beat_'+name) and (progress['badges_raw'] or 0)&bit and state['phase']=='unclassified' and state.get('battle_state',{}).get('kind')=='none':
+            event=progress['story_event_bits'].get('beat_'+name);badges=progress.get('badges_raw')
+            if event is False and type(badges) is int and not badges&bit:self.armed_gyms.add(name)
+            if name not in self.seen_gyms and event is True and (badges or 0)&bit and name not in self.armed_gyms:
+                self.seen_gyms.add(name)  # 首次可讀就已完成；沒有本輪完成時間證據。
+            if name not in self.seen_gyms and event is True and (badges or 0)&bit and state['phase']=='unclassified' and state.get('battle_state',{}).get('kind')=='none':
                 self.seen_gyms.add(name);new.append((name,label,'gym'))
         for name,value in progress['story_event_bits'].items():
-            if value and name not in self.seen_events:
+            if name not in self.known_event_names or name not in self.readable_event_names:
+                self.known_event_names.add(name)
+                if type(value) is bool:self.readable_event_names.add(name)
+                if value is True:self.seen_events.add(name)
+                continue  # 熱增觀測項的已成立事件只作基線，不杜撰完成時間。
+            if value is True and name not in self.seen_events:
                 self.seen_events.add(name)
                 if not name.startswith('beat_') or name in {'beat_cerulean_rival','beat_mt_moon_exit_super_nerd','beat_loreleis_room_trainer_0','beat_brunos_room_trainer_0','beat_agathas_room_trainer_0','beat_lance','beat_champion_rival'}:new.append((name,name,'story'))
         records=[]

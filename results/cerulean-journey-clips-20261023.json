@@ -1,0 +1,258 @@
+{
+  "at": "2026-10-23T13:00:11.759419+00:00",
+  "status": "local_verified_unpublished",
+  "clip_count": 5,
+  "interpretation_zh_tw": "所有影片為真實PyBoy遊戲影格。post4x為後製四倍，不代表模型推論或實際牆鐘速度；1x同樣不含推論等待。wall_reconstructed版按每步日誌重建節奏，不是未剪輯桌面錄影。",
+  "milestone_caution_zh_tw": "10/milestones的got_nugget於20:46:21為新增監測項後首次觀測舊旗標，不作金珠橋完成時間；本次船票取得為20:45:10。",
+  "clips": [
+    {
+      "path": "outputs/videos/cerulean-rival-20261023/cerulean-rival-post4x.mp4",
+      "file": "cerulean-rival-post4x.mp4",
+      "sha256": "33f43c90731bdef6525f91e257dd3a26e04011a88d1bbe85dc2fe4d9dd78ac2c",
+      "frames_decoded": 1214,
+      "fps": 30.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 40.46666666666667,
+      "source_run": "league-campaign-20261023-09",
+      "source_video": "video-000.mp4",
+      "source_video_sha256": "f373b2286d84558c597690bbc18ec4c35addb91fd2af9a7d885c7dfac4083f8b",
+      "source_log": "steps-000.jsonl",
+      "source_log_sha256": "224739f2dab9b256f5d3847bf562f5509eeba3607e0d302c06441fc9c1bd2b25",
+      "source_steps": [
+        52,
+        142
+      ],
+      "source_last_action_partial": false,
+      "source_start_emulated_seconds": 34.0,
+      "source_duration_emulated_seconds": 161.86666666666667,
+      "editing_kind": "post4x",
+      "published": false,
+      "scene_zh_tw": "華藍市勁敵 BLUE 戰：開場、四隻對手、勝利與獎金",
+      "verified_opponent_order": [
+        "PIDGEOTTO",
+        "ABRA",
+        "RATTATA",
+        "CHARMANDER"
+      ],
+      "visible_evidence": [
+        {
+          "step": 67,
+          "visible_text": [
+            " BLUE wants",
+            " to fight!        ▼"
+          ]
+        },
+        {
+          "step": 138,
+          "visible_text": [
+            "          NIDORINO",
+            "               20",
+            "            35/ 62",
+            " KEVIN defeated",
+            " BLUE!"
+          ]
+        },
+        {
+          "step": 142,
+          "visible_text": [
+            "          NIDORINO",
+            "               20",
+            "            35/ 62",
+            " KEVIN got ¥595",
+            " for winning!     ▼"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "outputs/videos/bill-journey-20261023/bill-help-ticket-post4x.mp4",
+      "file": "bill-help-ticket-post4x.mp4",
+      "sha256": "27bf553290d21d38f9b6801fc7003f9a8567e5864b7edc37f4e1603cb1694806",
+      "frames_decoded": 844,
+      "fps": 30.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 28.133333333333333,
+      "source_run": "league-campaign-20261023-10",
+      "source_video": "video-000.mp4",
+      "source_video_sha256": "a8299ddb0b74b75d62905acbabfd2459523d8fe9d060081175413ecff5fbdbd0",
+      "source_log": "steps-000.jsonl",
+      "source_log_sha256": "944c976370aa5f1bd8fb3a6639ec6fe6bcaa9be5ce4fe1ee0c226c7496839220",
+      "source_steps": [
+        367,
+        449
+      ],
+      "source_last_action_partial": false,
+      "source_start_emulated_seconds": 352.53333333333336,
+      "source_duration_emulated_seconds": 112.53333333333333,
+      "editing_kind": "post4x",
+      "published": false,
+      "scene_zh_tw": "進入正輝家、答應協助、操作細胞分離器、取得船票並離屋",
+      "visible_evidence": [
+        {
+          "step": 387,
+          "visible_text": [
+            "               ▶YES",
+            "                NO",
+            " So, how about it?",
+            " Help me out here!"
+          ]
+        },
+        {
+          "step": 390,
+          "visible_text": [
+            " my PC and run the",
+            " Cell Separation"
+          ]
+        },
+        {
+          "step": 391,
+          "visible_text": [
+            " Cell Separation",
+            " System!"
+          ]
+        },
+        {
+          "step": 425,
+          "visible_text": [
+            " BILL: Yeehah!",
+            " Thanks, bud! I"
+          ]
+        },
+        {
+          "step": 426,
+          "visible_text": [
+            " Thanks, bud! I",
+            " owe you one!     ▼"
+          ]
+        },
+        {
+          "step": 433,
+          "visible_text": [
+            " KEVIN received",
+            " an S.S.TICKET!"
+          ]
+        },
+        {
+          "step": 434,
+          "visible_text": [
+            " KEVIN received",
+            " an S.S.TICKET!"
+          ]
+        }
+      ],
+      "got_ss_ticket_completed_at_taipei": "2026-10-23T20:45:10.042669+08:00"
+    },
+    {
+      "path": "outputs/videos/route25-battle-20261023/battle-4x.mp4",
+      "file": "battle-4x.mp4",
+      "sha256": "d8d9a12c607badf7a0d770db3591698e499cb55f5fc9c01e56d5a840e94c99cd",
+      "frames_decoded": 600,
+      "fps": 30.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 20.0,
+      "source_run": "league-campaign-20261023-09",
+      "source_video": "video-003.mp4",
+      "source_video_sha256": "7230a4a422181064b6e981edd3e67ae465a6fd4addc5e89ced7852a72d7a2fce",
+      "source_log": "steps-003.jsonl",
+      "source_log_sha256": "d55390aa3b6bcf021e456be27c53d7f921ac44eb6bb0d2d7b441dc234f19848f",
+      "source_steps": [
+        816,
+        861
+      ],
+      "source_last_action_partial": true,
+      "source_start_emulated_seconds": 134.53333333333333,
+      "source_duration_emulated_seconds": 80,
+      "editing_kind": "post4x",
+      "published": false,
+      "scene_zh_tw": "25號道路登山男戰鬥；不是華藍勁敵，也不是道館",
+      "enemy_source_signal_sequence": [
+        "ZUBAT",
+        "MACHOP",
+        "GEODUDE"
+      ],
+      "signal_caution": "戰鬥開場前幾步 ZUBAT 為上一戰殘留訊號；可見本戰對手 MACHOP、GEODUDE。原腳本receipt的816–930是完整候選戰鬥範圍，4x版本受80秒來源上限而只含其開頭。"
+    },
+    {
+      "path": "outputs/videos/route25-battle-20261023/battle-wall-clock-reconstructed.mp4",
+      "file": "battle-wall-clock-reconstructed.mp4",
+      "sha256": "3db7271fe34cc9c6e56c8f1fb0dc25aa5e49951668e96efbd1dce0f49935332a",
+      "frames_decoded": 173,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 11.533333333333333,
+      "editing": "Approximate per-action wall-clock reconstruction; manual review pauses omitted; waiting position within an action is approximate.",
+      "logged_active_wall_seconds": 11.547000000000025,
+      "source_run": "league-campaign-20261023-09",
+      "source_video": "video-003.mp4",
+      "source_video_sha256": "7230a4a422181064b6e981edd3e67ae465a6fd4addc5e89ced7852a72d7a2fce",
+      "source_log": "steps-003.jsonl",
+      "source_log_sha256": "d55390aa3b6bcf021e456be27c53d7f921ac44eb6bb0d2d7b441dc234f19848f",
+      "source_steps": [
+        816,
+        930
+      ],
+      "source_last_action_partial": false,
+      "source_start_emulated_seconds": 134.53333333333333,
+      "source_duration_emulated_seconds": 198.4,
+      "editing_kind": "wall_reconstructed",
+      "published": false,
+      "scene_zh_tw": "25號道路登山男戰鬥；不是華藍勁敵，也不是道館",
+      "enemy_source_signal_sequence": [
+        "ZUBAT",
+        "MACHOP",
+        "GEODUDE"
+      ],
+      "signal_caution": "戰鬥開場前幾步 ZUBAT 為上一戰殘留訊號；可見本戰對手 MACHOP、GEODUDE。原腳本receipt的816–930是完整候選戰鬥範圍，4x版本受80秒來源上限而只含其開頭。"
+    },
+    {
+      "path": "outputs/videos/cerulean-party-reorder-20261023/party-1x.mp4",
+      "file": "party-1x.mp4",
+      "sha256": "b89fc930f11b0f99d337758555f629efa35e3eafff60965298bea29cb359a0e2",
+      "frames_decoded": 260,
+      "fps": 30.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 8.666666666666666,
+      "source_run": "league-campaign-20261023-09",
+      "source_video": "video-000.mp4",
+      "source_video_sha256": "f373b2286d84558c597690bbc18ec4c35addb91fd2af9a7d885c7dfac4083f8b",
+      "source_log": "steps-000.jsonl",
+      "source_log_sha256": "224739f2dab9b256f5d3847bf562f5509eeba3607e0d302c06441fc9c1bd2b25",
+      "source_steps": [
+        1,
+        13
+      ],
+      "source_last_action_partial": false,
+      "source_start_emulated_seconds": 0.0,
+      "source_duration_emulated_seconds": 8.666666666666666,
+      "editing_kind": "emulated1x",
+      "published": false,
+      "scene_zh_tw": "將尼多力諾移到首位，準備華藍勁敵戰",
+      "party_species_before": [
+        9,
+        167,
+        5
+      ],
+      "party_species_after": [
+        167,
+        9,
+        5
+      ],
+      "party_verification_step": 14
+    }
+  ]
+}

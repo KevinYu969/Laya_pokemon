@@ -1,5 +1,5 @@
 """以真實可見選單正常調整首位；不寫入隊伍記憶體。"""
-from .team_strategy import normalize,species_key
+from .team_strategy import family,normalize,species_key
 
 
 def selection(rows,label,kind='party_menu'):
@@ -39,7 +39,12 @@ def lead_context(text,party,target_species,*,open_menu=True):
     if len(cells)!=18:return None
     rows=[''.join(row).upper() for row in cells];joined=normalize(' '.join(rows))
     target=next((i for i,m in enumerate(party) if m['species']==target_species),None)
-    if target is None:return {'phase':'campaign_review','review_reason':'training_member_missing'}
+    if target is None:
+        target_family=family(target_species)
+        matches=[i for i,m in enumerate(party) if target_family is not None and family(m['species'])==target_family]
+        if not matches:return {'phase':'campaign_review','review_reason':'training_member_missing'}
+        if len(matches)!=1:return {'phase':'campaign_review','review_reason':'training_member_ambiguous'}
+        target=matches[0]
     # 切換完成後先關閉所有選單，隊伍順序以唯讀實際資料核對。
     party_visible=all(any(normalize(species_key(m['species'])) in normalize(row) for row in rows[:12]) for m in party)
     if target==0 and (party_visible or any(token in joined for token in ['CHOOSEAPOKEMON','MOVEPOKEMON'])):

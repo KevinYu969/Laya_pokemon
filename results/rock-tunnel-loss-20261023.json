@@ -1,0 +1,312 @@
+{
+  "at": "2026-10-23T14:03:49.433473+00:00",
+  "status": "loss_preserved_natural_recovery_completed_guard_live_verified",
+  "loss": {
+    "at": "2026-10-23T13:55:00.578285+00:00",
+    "kind": "battle_loss",
+    "evidence": {
+      "signals": [
+        "all_party_fainted"
+      ],
+      "last_battle": {
+        "raw": 2,
+        "active": true,
+        "kind": "trainer",
+        "wild_opponent_species": null,
+        "opponent_species": "GEODUDE",
+        "opponent_source": "https://github.com/pret/pokered/blob/53ae0e93fad9f4c3eaef92f102b1eeb531e59d68/wram.asm#L641",
+        "source": "https://github.com/pret/pokered/blob/master/ram/wram.asm",
+        "victory_confirmed": null,
+        "player_disabled_move": {
+          "state": "clear",
+          "valid": true,
+          "address": 53357,
+          "source": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/effects.asm",
+          "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+          "raw": 0,
+          "slot": null,
+          "turns_left": 0
+        }
+      },
+      "party": [
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 22,
+          "hp": 0,
+          "max_hp": 70,
+          "exp": 11599,
+          "status": 0,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            22,
+            40,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 167,
+          "species_name": "NIDORINO",
+          "level": 25,
+          "hp": 0,
+          "max_hp": 76,
+          "exp": 12478,
+          "status": 0,
+          "moves": [
+            43,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            30,
+            35,
+            15,
+            35
+          ]
+        },
+        {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 28,
+          "hp": 0,
+          "max_hp": 79,
+          "exp": 19331,
+          "status": 0,
+          "moves": [
+            77,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            35,
+            27,
+            10,
+            0
+          ]
+        }
+      ],
+      "location": {
+        "map_id": 82,
+        "x": 7,
+        "y": 6
+      },
+      "visible_text": [
+        " GEODUDE",
+        "     19",
+        " Critical hit!"
+      ]
+    },
+    "timing": {
+      "wall_seconds": 2888.031,
+      "model_wait_seconds": 49.061,
+      "review_pause_seconds": 2514.034,
+      "non_review_session_seconds": 373.997,
+      "emulated_seconds": 5377.55
+    },
+    "checkpoint_sha256": "66ad1c470f0baee3424f449836f906a4be49edca999eb47346881edbc6cf5be1",
+    "capture": {
+      "at": "2026-10-23T13:55:00.552364+00:00",
+      "kind": "battle-loss",
+      "file": "keyframes/00118-battle-loss.png",
+      "sha256": "53550fd4ab195d8c8bda708be54ce859067a474618690d902cf80f1c04d60ff9",
+      "location": {
+        "map_id": 82,
+        "x": 7,
+        "y": 6
+      },
+      "text": [
+        " GEODUDE",
+        "     19",
+        " Critical hit!"
+      ],
+      "timing": {
+        "wall_seconds": 2888.031,
+        "model_wait_seconds": 49.061,
+        "review_pause_seconds": 2514.034,
+        "non_review_session_seconds": 373.997,
+        "emulated_seconds": 5377.55
+      }
+    },
+    "review_status": "required"
+  },
+  "review": {
+    "cause": "連戰後全隊低血仍導航；82/232沒有補血分支時沒有依規則停機。support要求HP>50%使全隊低血時沒有救援候選；藤鞭耗盡後弱效Cut無法收尾。封招迴圈已先修並勝利，不能把此敗歸因Strata速度。",
+    "evidence": "13段3814戰後HP21/29/38；4003兩隻倒下仍探路；4181/4185藤鞭0改Cut，2026-10-23台北21:55:00.578全隊0，checkpoint SHA 66ad1c470f0baee3424f449836f906a4be49edca999eb47346881edbc6cf5be1。REVIEW mtime21:55:16晚於敗北，沒有證據顯示已送出的旗標被跳過。",
+    "adjustments": "新增非戰鬥損耗閘門：任一倒下或首名HP<=2/3立即存證檢討；只容許明確move/heal補給路徑繼續。模式須符合Strata核准階段。這次先僅battle_recovery自然完成敗北回城，保留金錢損失與經驗；補滿後停止並從最新final啟動含新閘門14，不回讀戰前。",
+    "validation": "566完整測試通過；用本次原始trace重播新pure gate最早於step3814即要求中心，早於4186全敗。新閘門尚待14實戰；不聲稱已保證勝率。"
+  },
+  "replayed_gate_first_stop": {
+    "step": 3814,
+    "at": "2026-10-23T13:54:27.529021+00:00",
+    "location": {
+      "map_id": 232,
+      "x": 26,
+      "y": 31
+    },
+    "review_reason": "party_attrition_requires_center",
+    "party": [
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 22,
+        "hp": 21,
+        "max_hp": 70,
+        "exp": 10931,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          28,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 167,
+        "species_name": "NIDORINO",
+        "level": 25,
+        "hp": 29,
+        "max_hp": 76,
+        "exp": 12172,
+        "status": 0,
+        "moves": [
+          43,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          30,
+          35,
+          18,
+          35
+        ]
+      },
+      {
+        "species": 9,
+        "species_name": "IVYSAUR",
+        "level": 28,
+        "hp": 38,
+        "max_hp": 79,
+        "exp": 17407,
+        "status": 0,
+        "moves": [
+          77,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          35,
+          30,
+          10,
+          7
+        ]
+      }
+    ]
+  },
+  "whole_test_suite": {
+    "passed": 566,
+    "warning": "SDL2 binary version info"
+  },
+  "no_rollback": true,
+  "new_guard_live_verified": true,
+  "live_guard_evidence": {
+    "run": 14,
+    "at": "2026-10-23T14:06:05.159420+00:00",
+    "location": {
+      "map_id": 82,
+      "x": 20,
+      "y": 4
+    },
+    "party": [
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 22,
+        "hp": 39,
+        "max_hp": 70,
+        "exp": 11807,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          25,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 167,
+        "species_name": "NIDORINO",
+        "level": 25,
+        "hp": 76,
+        "max_hp": 76,
+        "exp": 12478,
+        "status": 0,
+        "moves": [
+          43,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          30,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 9,
+        "species_name": "IVYSAUR",
+        "level": 28,
+        "hp": 79,
+        "max_hp": 79,
+        "exp": 19331,
+        "status": 0,
+        "moves": [
+          77,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          35,
+          30,
+          10,
+          10
+        ]
+      }
+    ],
+    "reason": "party_attrition_requires_center"
+  },
+  "natural_recovery": {
+    "run": 13,
+    "state_sha256": "6a9f2860ee27d24a9caebb5511f3498289270d7713d9276cc47065171d93cb4a",
+    "money": 11572,
+    "all_hp_pp_restored": true
+  },
+  "traversal_optimization": {
+    "tests_total_passed": 577,
+    "resisted_wild_attack": "All available damaging moves resisted: prefer RUN for verified wild non-capture target; trainer and capture unaffected. Awaiting live evidence."
+  }
+}

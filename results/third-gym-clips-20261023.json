@@ -1,0 +1,610 @@
+{
+  "at": "2026-10-23T13:37:44.776782+00:00",
+  "status": "local_decoded_verified_unpublished",
+  "source_run": "league-campaign-20261023-13",
+  "closed_source_videos_only": true,
+  "clip_count": 5,
+  "timing_caution_zh_tw": "4x是後製四倍播放；1x是遊戲影格時間，兩者均省略推論與檢討等待。影片長度不代表實際通關耗時。",
+  "scenes": [
+    {
+      "at": "2026-10-23T13:37:42.507428+00:00",
+      "source_run": "league-campaign-20261023-13",
+      "caption_zh_tw": "正常選HM01、指定妙蛙草、只遺忘Growl並學會CUT",
+      "source_intervals": [
+        [
+          487,
+          537
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "video-004.mp4",
+          "source_video_sha256": "75e2d7534d864ea85d965042c972ca70a41a57ef2b17ecdc0b8b78ff88004a84",
+          "source_log": "steps-004.jsonl",
+          "source_log_sha256": "9af33c3a9ba6dcd7b8e5ad65282f8eb425285e0008096e4f999799fce8395fed",
+          "source_steps": [
+            487,
+            487
+          ],
+          "source_start_emulated_seconds": 245.86666666666667,
+          "source_duration_emulated_seconds": 0.6666666666666666
+        },
+        {
+          "source_video": "video-005.mp4",
+          "source_video_sha256": "f0282cdde3018fa3726b4c67dc147f169e956e6c71f6704d3f5a78ebb67222dd",
+          "source_log": "steps-005.jsonl",
+          "source_log_sha256": "45a5ccd74f39911db5f1c4b21b911c98685a43106d54c649e114ac68811f980d",
+          "source_steps": [
+            488,
+            491
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 2.6666666666666665
+        },
+        {
+          "source_video": "video-006.mp4",
+          "source_video_sha256": "283ed7a455bf01c3d9720c58eb7da9ebb177f69ff7bf40562ff30fe58a30355e",
+          "source_log": "steps-006.jsonl",
+          "source_log_sha256": "547673043bd72b5c53a685e35d0aa6e6c56765668f822a8bd3511d08051c542f",
+          "source_steps": [
+            492,
+            530
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 26.0
+        },
+        {
+          "source_video": "video-007.mp4",
+          "source_video_sha256": "bf6a340037fa11074294ab54f8a0d053fa1a033f9bef385a7bd1f505a5bb1330",
+          "source_log": "steps-007.jsonl",
+          "source_log_sha256": "8e5efffefe563815f95bb757dfce71d7b815c498b964a41f1353dd4a62bf7fbc",
+          "source_steps": [
+            531,
+            537
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 4.666666666666667
+        }
+      ],
+      "source_total_emulated_seconds": 34.0,
+      "source_action_timing_intervals": [
+        {
+          "source_steps": [
+            487,
+            537
+          ],
+          "logged_first_action_at_utc": "2026-10-23T13:14:16.534593+00:00",
+          "logged_last_action_at_utc": "2026-10-23T13:21:52.793334+00:00",
+          "logged_wall_seconds": 566.703,
+          "logged_model_wait_seconds": 1.327,
+          "logged_review_pause_seconds": 562.875,
+          "logged_non_review_seconds": 3.828,
+          "logged_preceding_action_at_utc": "2026-10-23T13:12:26.077198+00:00",
+          "timing_method": "Cumulative timing difference from the immediately preceding action to the final selected action; includes waits before the first selected action. First/last action timestamps are log timestamps, not video duration."
+        }
+      ],
+      "timing_caution_zh_tw": "日誌時間區間含模型與人工檢討等待；這些等待未錄成遊戲影格。播放片長不得當成遊玩或模型判斷耗時。",
+      "selected_intervals_montage": false,
+      "published": false,
+      "visible_evidence": [
+        {
+          "step": 529,
+          "visible_text": [
+            "   NIDORINO   24",
+            "            NOT ABLE",
+            "   IVYSAUR    26",
+            "▷           ABLE",
+            "   SPEAROW    19",
+            "            NOT ABLE",
+            " IVYSAUR forgot",
+            " GROWL!"
+          ],
+          "tactic": "advance_verified_growl_forget"
+        }
+      ],
+      "clips": [
+        {
+          "path": "outputs/videos/cut-teaching-20261023/cut-teaching-emulated1x.mp4",
+          "file": "cut-teaching-emulated1x.mp4",
+          "sha256": "ce53ccf014139f38f691b4f7d30a462e3174815f9b35a1f5c0683b7921f9485f",
+          "frames_decoded": 1020,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 34.0,
+          "postproduction_speed": 1,
+          "editing": "Original PyBoy pixels; emulated time resampled for playback. Inference and manual review waits omitted; not inference speed or wall-clock speed."
+        },
+        {
+          "path": "outputs/videos/cut-teaching-20261023/cut-teaching-post4x.mp4",
+          "file": "cut-teaching-post4x.mp4",
+          "sha256": "9ddd66ae221b01ad3db55c57a2c9ef4bfa24d79cc6f9be73dc54c5c0501a3fc1",
+          "frames_decoded": 255,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 8.5,
+          "postproduction_speed": 4,
+          "editing": "Original PyBoy pixels; emulated time resampled for playback. Inference and manual review waits omitted; not inference speed or wall-clock speed."
+        }
+      ],
+      "verified_event": {
+        "at_utc": "2026-10-23T13:21:52.452658+00:00",
+        "moves": [
+          77,
+          15,
+          73,
+          22
+        ],
+        "forgotten_move": 45,
+        "protected_move": 22
+      },
+      "keyframes": [
+        {
+          "path": "outputs/videos/cut-teaching-20261023/cut-forget-growl-selected.png",
+          "sha256": "9dde433e00d490e3fb2abb29bd32b5beef505efd3e3334249992685956ae2960",
+          "size": [
+            480,
+            432
+          ],
+          "caption_zh_tw": "遺忘招式選單明確選Growl",
+          "observation_step": 524,
+          "source_video": "video-006.mp4",
+          "source_video_offset_emulated_seconds": 21.266666666666666,
+          "method": "Unmodified original video frame immediately before the logged observation; sample alignment within one source frame."
+        },
+        {
+          "path": "outputs/videos/cut-teaching-20261023/cut-learned.png",
+          "sha256": "b5eafcde49d27b2a2143f281df5dc123df1fab38bb3248b86c30b8d443ad0c9c",
+          "size": [
+            480,
+            432
+          ],
+          "caption_zh_tw": "實際學會CUT",
+          "observation_step": 533,
+          "source_video": "video-007.mp4",
+          "source_video_offset_emulated_seconds": 1.2666666666666666,
+          "method": "Unmodified original video frame immediately before the logged observation; sample alignment within one source frame."
+        }
+      ],
+      "keyframes_visually_inspected": true
+    },
+    {
+      "at": "2026-10-23T13:37:42.815164+00:00",
+      "source_run": "league-campaign-20261023-13",
+      "caption_zh_tw": "正常隊伍CUT選單、砍樹、走入枯葉道館",
+      "source_intervals": [
+        [
+          777,
+          800
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "video-009.mp4",
+          "source_video_sha256": "919439b48ec392a2a7dcf93c17bc0fc64f84eb9b631d2d6951ceef02d574bbf5",
+          "source_log": "steps-009.jsonl",
+          "source_log_sha256": "712ae9015ccced20bb13a5021acc794c80b296de56d922062c9a4de9067fc1ba",
+          "source_steps": [
+            777,
+            800
+          ],
+          "source_start_emulated_seconds": 88.8,
+          "source_duration_emulated_seconds": 16.0
+        }
+      ],
+      "source_total_emulated_seconds": 16.0,
+      "source_action_timing_intervals": [
+        {
+          "source_steps": [
+            777,
+            800
+          ],
+          "logged_first_action_at_utc": "2026-10-23T13:24:29.858292+00:00",
+          "logged_last_action_at_utc": "2026-10-23T13:24:31.572756+00:00",
+          "logged_wall_seconds": 1.766,
+          "logged_model_wait_seconds": 0.625,
+          "logged_review_pause_seconds": 0.0,
+          "logged_non_review_seconds": 1.766,
+          "logged_preceding_action_at_utc": "2026-10-23T13:24:29.810583+00:00",
+          "timing_method": "Cumulative timing difference from the immediately preceding action to the final selected action; includes waits before the first selected action. First/last action timestamps are log timestamps, not video duration."
+        }
+      ],
+      "timing_caution_zh_tw": "日誌時間區間含模型與人工檢討等待；這些等待未錄成遊戲影格。播放片長不得當成遊玩或模型判斷耗時。",
+      "selected_intervals_montage": false,
+      "published": false,
+      "visible_evidence": [
+        {
+          "step": 785,
+          "visible_text": [
+            " IVYSAUR hacked",
+            " away with CUT!   ▼"
+          ],
+          "tactic": "advance_verified_cut_field_message"
+        }
+      ],
+      "clips": [
+        {
+          "path": "outputs/videos/cut-tree-entry-20261023/cut-tree-entry-post4x.mp4",
+          "file": "cut-tree-entry-post4x.mp4",
+          "sha256": "8ec99592fc7d51be0eb9074b19aeba8383acad324cd85621eabfe9ed2cfd00b8",
+          "frames_decoded": 120,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 4.0,
+          "postproduction_speed": 4,
+          "editing": "Original PyBoy pixels; emulated time resampled for playback. Inference and manual review waits omitted; not inference speed or wall-clock speed."
+        }
+      ],
+      "verified_event": {
+        "at_utc": "2026-10-23T13:24:30.274968+00:00",
+        "tree_position": [
+          15,
+          18
+        ],
+        "before_tile": 61,
+        "after_tile": 44,
+        "tree_removal_verified": true
+      },
+      "keyframes": [
+        {
+          "path": "outputs/videos/cut-tree-entry-20261023/cut-tree-removed.png",
+          "sha256": "ca8eae38cfbb1665af50d15e6ff64dcf19f2853c4e497f0c82cc238e9e65a831",
+          "size": [
+            480,
+            432
+          ],
+          "caption_zh_tw": "CUT後樹格移除",
+          "observation_step": 786,
+          "source_video": "video-009.mp4",
+          "source_video_offset_emulated_seconds": 94.73333333333333,
+          "method": "Unmodified original video frame immediately before the logged observation; sample alignment within one source frame."
+        }
+      ],
+      "keyframes_visually_inspected": true
+    },
+    {
+      "at": "2026-10-23T13:37:43.264116+00:00",
+      "source_run": "league-campaign-20261023-13",
+      "caption_zh_tw": "機關剪選：一次找錯重置，以及最後兩鎖與電動門打開",
+      "source_intervals": [
+        [
+          1023,
+          1040
+        ],
+        [
+          1416,
+          1444
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "video-010.mp4",
+          "source_video_sha256": "e36209f401b4b580c75d00d8d58518fbe47bcf15c654b5a3cea8acda8ac8baee",
+          "source_log": "steps-010.jsonl",
+          "source_log_sha256": "a27b25ae1a9a3df6a9e0a0f2251e7a48d92a5171322a38fc800331fb738c4800",
+          "source_steps": [
+            1023,
+            1040
+          ],
+          "source_start_emulated_seconds": 303.3333333333333,
+          "source_duration_emulated_seconds": 17.866666666666667
+        },
+        {
+          "source_video": "video-010.mp4",
+          "source_video_sha256": "e36209f401b4b580c75d00d8d58518fbe47bcf15c654b5a3cea8acda8ac8baee",
+          "source_log": "steps-010.jsonl",
+          "source_log_sha256": "a27b25ae1a9a3df6a9e0a0f2251e7a48d92a5171322a38fc800331fb738c4800",
+          "source_steps": [
+            1416,
+            1438
+          ],
+          "source_start_emulated_seconds": 665.0666666666667,
+          "source_duration_emulated_seconds": 19.733333333333334
+        },
+        {
+          "source_video": "video-011.mp4",
+          "source_video_sha256": "59813f349165895f013465cb1d9d7240b16a2064da7eca0ed70ee7d0cd606c9d",
+          "source_log": "steps-011.jsonl",
+          "source_log_sha256": "43a2cb53a0bc20af7ea3fd73f8a921e12cbabad515e406d06bafc944a65525e4",
+          "source_steps": [
+            1439,
+            1439
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 0.6666666666666666
+        },
+        {
+          "source_video": "video-012.mp4",
+          "source_video_sha256": "b12c19db3fee0c78be493e74fc7ab21d36634df13f0434de2a307142f51354c6",
+          "source_log": "steps-012.jsonl",
+          "source_log_sha256": "585b33d5e0d628abe4095688ca4b8fe6eb280ddb1907d99bd3ec5f1fcc651572",
+          "source_steps": [
+            1440,
+            1444
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 3.3333333333333335
+        }
+      ],
+      "source_total_emulated_seconds": 41.6,
+      "source_action_timing_intervals": [
+        {
+          "source_steps": [
+            1023,
+            1040
+          ],
+          "logged_first_action_at_utc": "2026-10-23T13:26:54.593391+00:00",
+          "logged_last_action_at_utc": "2026-10-23T13:26:55.704399+00:00",
+          "logged_wall_seconds": 1.172,
+          "logged_model_wait_seconds": 0.031,
+          "logged_review_pause_seconds": 0.0,
+          "logged_non_review_seconds": 1.172,
+          "logged_preceding_action_at_utc": "2026-10-23T13:26:54.544713+00:00",
+          "timing_method": "Cumulative timing difference from the immediately preceding action to the final selected action; includes waits before the first selected action. First/last action timestamps are log timestamps, not video duration."
+        },
+        {
+          "source_steps": [
+            1416,
+            1444
+          ],
+          "logged_first_action_at_utc": "2026-10-23T13:27:17.307988+00:00",
+          "logged_last_action_at_utc": "2026-10-23T13:29:23.715837+00:00",
+          "logged_wall_seconds": 126.437,
+          "logged_model_wait_seconds": 0.061,
+          "logged_review_pause_seconds": 124.657,
+          "logged_non_review_seconds": 1.78,
+          "logged_preceding_action_at_utc": "2026-10-23T13:27:17.267932+00:00",
+          "timing_method": "Cumulative timing difference from the immediately preceding action to the final selected action; includes waits before the first selected action. First/last action timestamps are log timestamps, not video duration."
+        }
+      ],
+      "timing_caution_zh_tw": "日誌時間區間含模型與人工檢討等待；這些等待未錄成遊戲影格。播放片長不得當成遊玩或模型判斷耗時。",
+      "selected_intervals_montage": true,
+      "published": false,
+      "visible_evidence": [
+        {
+          "step": 1038,
+          "visible_text": [
+            " Hey! The electric",
+            " locks were reset!"
+          ],
+          "tactic": null
+        },
+        {
+          "step": 1442,
+          "visible_text": [
+            " The motorized door",
+            " op"
+          ],
+          "tactic": null
+        },
+        {
+          "step": 1443,
+          "visible_text": [
+            " The motorized door",
+            " opened!"
+          ],
+          "tactic": null
+        }
+      ],
+      "clips": [
+        {
+          "path": "outputs/videos/vermilion-switches-20261023/vermilion-switches-selected-post4x.mp4",
+          "file": "vermilion-switches-selected-post4x.mp4",
+          "sha256": "ae7e81a30f69692281e7d6175775a7a202ba35db341a4b776c5ad118d3461c01",
+          "frames_decoded": 312,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 10.4,
+          "postproduction_speed": 4,
+          "editing": "Original PyBoy pixels; emulated time resampled for playback. Inference and manual review waits omitted; not inference speed or wall-clock speed."
+        }
+      ],
+      "verified_event": {
+        "at_utc": "2026-10-23T13:29:23.675562+00:00",
+        "door_grid_verified": true,
+        "recorded_attempts": 71,
+        "recorded_resets": 5
+      },
+      "montage_note_zh_tw": "保留一次錯誤重置與最後成功片段；中間檢查與四次其他重置未收錄，不能將此片當完整71次搜索過程。",
+      "keyframes": [
+        {
+          "path": "outputs/videos/vermilion-switches-20261023/switch-door-opened.png",
+          "sha256": "91cca5e64cf38949d887d7e796ae03cc73d06243a4286a2053fce820b6801b4d",
+          "size": [
+            480,
+            432
+          ],
+          "caption_zh_tw": "兩道鎖解除後電動門打開",
+          "observation_step": 1443,
+          "source_video": "video-012.mp4",
+          "source_video_offset_emulated_seconds": 1.9333333333333333,
+          "method": "Unmodified original video frame immediately before the logged observation; sample alignment within one source frame."
+        }
+      ],
+      "keyframes_visually_inspected": true
+    },
+    {
+      "at": "2026-10-23T13:37:44.775093+00:00",
+      "source_run": "league-campaign-20261023-13",
+      "caption_zh_tw": "馬志士完整戰鬥、主動換尼多力諾、雷電徽章與TM24",
+      "source_intervals": [
+        [
+          1483,
+          1613
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "video-012.mp4",
+          "source_video_sha256": "b12c19db3fee0c78be493e74fc7ab21d36634df13f0434de2a307142f51354c6",
+          "source_log": "steps-012.jsonl",
+          "source_log_sha256": "585b33d5e0d628abe4095688ca4b8fe6eb280ddb1907d99bd3ec5f1fcc651572",
+          "source_steps": [
+            1483,
+            1613
+          ],
+          "source_start_emulated_seconds": 60.93333333333333,
+          "source_duration_emulated_seconds": 229.6
+        }
+      ],
+      "source_total_emulated_seconds": 229.6,
+      "source_action_timing_intervals": [
+        {
+          "source_steps": [
+            1483,
+            1613
+          ],
+          "logged_first_action_at_utc": "2026-10-23T13:29:27.569287+00:00",
+          "logged_last_action_at_utc": "2026-10-23T13:33:29.196904+00:00",
+          "logged_wall_seconds": 241.672,
+          "logged_model_wait_seconds": 4.831,
+          "logged_review_pause_seconds": 223.719,
+          "logged_non_review_seconds": 17.953,
+          "logged_preceding_action_at_utc": "2026-10-23T13:29:27.525886+00:00",
+          "timing_method": "Cumulative timing difference from the immediately preceding action to the final selected action; includes waits before the first selected action. First/last action timestamps are log timestamps, not video duration."
+        }
+      ],
+      "timing_caution_zh_tw": "日誌時間區間含模型與人工檢討等待；這些等待未錄成遊戲影格。播放片長不得當成遊玩或模型判斷耗時。",
+      "selected_intervals_montage": false,
+      "published": false,
+      "visible_evidence": [
+        {
+          "step": 1549,
+          "visible_text": [
+            " PIKACHU",
+            "     18",
+            "          IVYSAUR",
+            "               27",
+            "            22/ 76",
+            " IVYSAUR good!"
+          ],
+          "tactic": null
+        },
+        {
+          "step": 1550,
+          "visible_text": [
+            " PIKACHU",
+            "     18",
+            "          NIDORINO",
+            "               24",
+            "            73/ 73",
+            " Get'm! NIDORINO!"
+          ],
+          "tactic": null
+        },
+        {
+          "step": 1597,
+          "visible_text": [
+            "          NIDORINO",
+            "               24",
+            "            65/ 73",
+            " KEVIN defeated",
+            " LT.SURGE!"
+          ],
+          "tactic": null
+        },
+        {
+          "step": 1601,
+          "visible_text": [
+            "          NIDORINO",
+            "               24",
+            "            65/ 73",
+            " Fine then, take",
+            " the THUNDERBADGE!▼"
+          ],
+          "tactic": null
+        },
+        {
+          "step": 1603,
+          "visible_text": [
+            " The THUNDERBADGE"
+          ],
+          "tactic": null
+        },
+        {
+          "step": 1604,
+          "visible_text": [
+            " The THUNDERBADGE",
+            " cranks up your   ▼"
+          ],
+          "tactic": null
+        }
+      ],
+      "clips": [
+        {
+          "path": "outputs/videos/third-gym-cleared-20261023/lt-surge-full-badge-post4x.mp4",
+          "file": "lt-surge-full-badge-post4x.mp4",
+          "sha256": "3add172b9d2e2bea790050dbd4d7332fc339128ab11300d2fcbf681ea57665ce",
+          "frames_decoded": 1722,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 57.4,
+          "postproduction_speed": 4,
+          "editing": "Original PyBoy pixels; emulated time resampled for playback. Inference and manual review waits omitted; not inference speed or wall-clock speed."
+        }
+      ],
+      "verified_event": {
+        "id": "lt_surge",
+        "completed_at_utc": "2026-10-23T13:29:45.387780+00:00",
+        "completed_at_taipei": "2026-10-23T21:29:45.387780+08:00",
+        "badges_raw": 7,
+        "timing": {
+          "wall_seconds": 1372.875,
+          "model_wait_seconds": 31.842,
+          "review_pause_seconds": 1235.689,
+          "non_review_session_seconds": 137.186,
+          "emulated_seconds": 1740.533
+        }
+      },
+      "verified_opponents": [
+        "VOLTORB",
+        "PIKACHU",
+        "RAICHU"
+      ],
+      "battle_note_zh_tw": "妙蛙草22/76時主動換尼多力諾；不是倒下或全隊戰敗。完整保留開戰、三名對手、換人、勝利、雷電徽章及TM24。",
+      "keyframes": [
+        {
+          "path": "outputs/videos/third-gym-cleared-20261023/lt-surge-defeated.png",
+          "sha256": "bf84d603d8b51d0cfba589f09a06ea8712e874de463c0fb0d7ae2543f565a938",
+          "size": [
+            480,
+            432
+          ],
+          "caption_zh_tw": "擊敗馬志士",
+          "observation_step": 1597,
+          "source_video": "video-012.mp4",
+          "source_video_offset_emulated_seconds": 255.66666666666666,
+          "method": "Unmodified original video frame immediately before the logged observation; sample alignment within one source frame."
+        },
+        {
+          "path": "outputs/videos/third-gym-cleared-20261023/thunderbadge-reward.png",
+          "sha256": "82958a9e0071fa5c4ccabd58d84cea061e53d3d5ec22a2a924e891068af045d6",
+          "size": [
+            480,
+            432
+          ],
+          "caption_zh_tw": "雷電徽章獎勵對話",
+          "observation_step": 1601,
+          "source_video": "video-012.mp4",
+          "source_video_offset_emulated_seconds": 264.2,
+          "method": "Unmodified original video frame immediately before the logged observation; sample alignment within one source frame."
+        }
+      ],
+      "keyframes_visually_inspected": true
+    }
+  ]
+}

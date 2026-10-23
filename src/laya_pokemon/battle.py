@@ -3,13 +3,121 @@ from __future__ import annotations
 
 from numbers import Integral
 import re
+import importlib
+from . import levelup_control, levelup_moves
+importlib.reload(levelup_control)
+importlib.reload(levelup_moves)
 
 
 # wram.asm: wIsInBattle、單 byte wPartyGainExpFlags、wCurOpponent；後者由 PyBoy 定位 D059。
 BATTLE_STATE_ADDRESS = 0xD057
+PLAYER_DISABLED_MOVE_ADDRESS = 0xD06D
+PLAYER_BATTLE_SPECIES_ADDRESS = 0xD014
+PLAYER_BATTLE_MOVES_ADDRESS = 0xD01C
+PLAYER_PARTY_INDEX_ADDRESS = 0xCC2F
+DISABLE_SOURCE_COMMIT = 'a53671100ec22e5394ff26ec028d0812a238dae2'
+DISABLE_SOURCE = f'https://github.com/pret/pokered/blob/{DISABLE_SOURCE_COMMIT}/engine/battle/effects.asm'
+DISABLE_SOURCE_SHA256 = {
+    'engine/battle/effects.asm': '6e7650408de33069aae9521473f62a1078697f7b539a3978daa49a0e6df825d3',
+    'engine/battle/core.asm': '36d8ff785fe642d61f6917156e70b78c36fd7cde6c0b8fb582e02f6552e786d0',
+    'ram/wram.asm': '00683cd430a9ef30794d2aeaee51f3a5440e4bb14dca13e9f9cb5fa88f130e34',
+    'macros/ram.asm': 'cfb685afd3d00f3f4ee083014424e185f40250bf508579e007e686117a6b2a30',
+}
 SOURCE = "https://github.com/pret/pokered/blob/master/ram/wram.asm"
 MENU_SOURCE = "https://github.com/pret/pokered/blob/master/engine/battle/core.asm"
 _no_pp_switch = globals().get('_no_pp_switch')
+
+
+def _read_player_disabled_move(pyboy):
+    """唯讀玩家封招；D057錨點+固定wram排列、舊符號D06D獨立交叉核對。"""
+    result = {'state': 'unknown', 'valid': False, 'address': PLAYER_DISABLED_MOVE_ADDRESS,
+              'source': DISABLE_SOURCE, 'source_commit': DISABLE_SOURCE_COMMIT}
+    def byte(address):
+        value = pyboy.memory[address]
+        if not isinstance(value, Integral) or isinstance(value, bool) or not 0 <= value <= 255:
+            raise ValueError('not a byte')
+        return int(value)
+    try:
+        packed = byte(PLAYER_DISABLED_MOVE_ADDRESS)
+        result['raw'] = packed
+        if packed == 0:
+            return {**result, 'state': 'clear', 'valid': True, 'slot': None, 'turns_left': 0}
+        slot, turns = packed >> 4, packed & 15
+        if not 1 <= slot <= 4 or not 1 <= turns <= 8:
+            return {**result, 'state': 'invalid', 'reason': 'disabled_move_bits_out_of_source_range'}
+        species = byte(PLAYER_BATTLE_SPECIES_ADDRESS)
+        moves = [byte(PLAYER_BATTLE_MOVES_ADDRESS + index) for index in range(4)]
+        party_index = byte(PLAYER_PARTY_INDEX_ADDRESS)
+        from .team_strategy import species_key
+        if (species_key(species) is None or not 0 <= party_index <= 5
+                or any(move > 165 for move in moves) or moves[slot - 1] == 0):
+            return {**result, 'state': 'invalid', 'reason': 'disabled_move_owner_or_slot_not_verified'}
+        return {**result, 'state': 'disabled', 'valid': True, 'slot': slot - 1,
+                'turns_left': turns, 'move_id': moves[slot - 1], 'species': species,
+                'party_index': party_index, 'battle_moves': moves}
+    except (AttributeError, IndexError, KeyError, TypeError, ValueError):
+        return {**result, 'reason': 'disabled_move_signal_unreadable'}
+
+
+def _disabled_policy_party(party, signal):
+    """只遮策略副本的PP，封招絕不外溢至其他隊員，不寫入SDK或遊戲。"""
+    if signal is None:
+        return party, None  # 舊合成呼叫沒有RAM訊號；真實read_battle_state總會附帶。
+    if not isinstance(signal, dict):
+        return None, 'player_disabled_move_signal_not_verified'
+    if signal.get('valid') is not True or signal.get('state') not in {'clear', 'disabled'}:
+        return None, 'player_disabled_move_signal_not_verified'
+    if signal['state'] == 'clear':
+        if type(signal.get('raw')) is not int or signal['raw'] != 0:
+            return None, 'player_disabled_move_signal_inconsistent'
+        return party, None
+    index, slot = signal.get('party_index'), signal.get('slot')
+    turns = signal.get('turns_left')
+    if (type(index) is not int or type(slot) is not int or not 0 <= index < len(party)
+            or not 0 <= slot < 4 or type(turns) is not int or not 1 <= turns <= 8
+            or type(signal.get('raw')) is not int or signal['raw'] != ((slot + 1) << 4 | turns)):
+        return None, 'player_disabled_move_signal_inconsistent'
+    mon = party[index]
+    moves = mon.get('moves')
+    if (not isinstance(moves, list) or len(moves) != 4 or any(type(move) is not int or not 0 <= move <= 165 for move in moves)
+            or mon.get('species') != signal.get('species') or moves != signal.get('battle_moves')
+            or moves[slot] != signal.get('move_id')):
+        return None, 'player_disabled_move_owner_disagrees_with_party'
+    pp = mon.get('pp', [])
+    if (not isinstance(pp, (list, tuple)) or len(pp) != 4 or any(not isinstance(value, Integral) or isinstance(value, bool)
+                           or not 0 <= value <= 255 for value in pp)):
+        return None, 'player_disabled_move_pp_unreadable'
+    masked = list(party)
+    masked_pp = list(pp)
+    masked_pp[slot] = 0
+    masked[index] = {**mon, 'pp': masked_pp}
+    return masked, None
+
+
+def _all_available_attacks_resisted(active, enemy):
+    """只比較已知、可用的一般傷害招；未知或沒有攻擊候選不推論該逃跑。"""
+    from .team_strategy import effective_power, move_key, species_key
+    if not active or species_key(active.get('species')) is None or species_key(enemy) is None:
+        return None
+    moves, pp = active.get('moves'), active.get('pp')
+    if not isinstance(moves, list) or not isinstance(pp, list) or len(moves) != 4 or len(pp) != 4:
+        return None
+    evidence = []
+    for move, remaining in zip(moves, pp):
+        if not isinstance(remaining, Integral) or isinstance(remaining, bool) or not 0 <= remaining <= 255:
+            return None
+        if not remaining & 63 or move == 0:
+            continue
+        if move_key(move) is None:
+            return None
+        base = effective_power(move, active['species'])
+        if base <= 0:
+            continue
+        effective = effective_power(move, active['species'], enemy)
+        if effective >= base:
+            return None
+        evidence.append({'move': move_key(move), 'base_effective_power': base, 'effective_power': effective})
+    return evidence or None
 
 
 def read_battle_state(pyboy) -> dict:
@@ -32,7 +140,9 @@ def read_battle_state(pyboy) -> dict:
             "kind": {0: "none", 1: "wild", 2: "trainer", 255: "lost_transition"}.get(raw, "unknown"),
             "wild_opponent_species": opponent if raw==1 else None, "opponent_species":opponent,
             "opponent_source": "https://github.com/pret/pokered/blob/53ae0e93fad9f4c3eaef92f102b1eeb531e59d68/wram.asm#L641",
-            "source": SOURCE, "victory_confirmed": None}
+            "source": SOURCE, "victory_confirmed": None,
+            "player_disabled_move": _read_player_disabled_move(pyboy) if raw in {1, 2}
+                else {'state': 'not_in_battle', 'valid': True}}
 
 
 def _label(rows, label):
@@ -69,10 +179,22 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
     if battle_state["active"] is not True:
         _no_pp_switch=None
         return None
+    signal = battle_state.get('player_disabled_move')
+    party, disabled_error = _disabled_policy_party(party, signal)
+    if disabled_error:
+        return {'phase': 'strategy_review', 'objective': 'Wait.', 'available_actions': ['wait'],
+                'review_reason': disabled_error, 'player_disabled_move': signal}
     cells = text.get("cells", [])
     if len(cells) == 18 and all(len(row) == 20 for row in cells):
         rows = ["".join(row).upper() for row in cells]
         dialogue = " ".join(rows[12:])
+        if 'THEMOVEISDISABLED' in re.sub(r'[^A-Z]', '', dialogue):
+            if not signal or signal.get('state') != 'disabled':
+                return {'phase': 'strategy_review', 'objective': 'Wait.', 'available_actions': ['wait'],
+                        'review_reason': 'disabled_move_message_without_verified_signal'}
+            return {'phase': 'battle_dialogue', 'objective': 'Confirm the current selection.',
+                    'available_actions': ['a', 'wait'], 'battle_tactic': 'dismiss_verified_disabled_move_message',
+                    'player_disabled_move': signal}
         if "CHANGE" in dialogue and ("POKÉMON" in dialogue or "POKEMON" in dialogue):
             return {"phase": "battle_menu", "objective": "Cancel to keep the current active Pokemon.",
                     "available_actions": ["b", "wait"], "battle_tactic": "keep_active",
@@ -91,7 +213,8 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
         names = reference()["species"]
         party_form = len(party)>1 and all(species_key(mon["species"]) and any(normalize(species_key(mon["species"])) in normalize(row) for row in rows[:12]) for mon in party)
         enemy_rows = [] if party_form else [normalize(row.strip()) for row in rows[:4]]
-        enemy = next((key for key in names if normalize(key) in enemy_rows), None)
+        enemy_matches = [key for key in names if normalize(key) in enemy_rows]
+        enemy = next(iter(enemy_matches), None)
         ram_enemy = battle_state.get("opponent_species") or battle_state.get("wild_opponent_species")
         if enemy and ram_enemy and enemy != ram_enemy:
             return {"phase": "strategy_review", "review_reason": "visible_enemy_and_wild_opponent_signal_disagree"}
@@ -132,8 +255,37 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
         catch = capture["tactic"] == "throw_ball"
         skip_non_target = capture_focus and enemy is not None and battle_state.get("kind") == "wild" and capture["tactic"] == "not_capture"
         retreat = retreat or skip_non_target
+        resisted_retreat = {}
+        if (not retreat and not catch and capture['tactic'] == 'not_capture'
+                and battle_state.get('kind') == 'wild' and len(enemy_matches) == 1 and len(matches) == 1):
+            resisted = _all_available_attacks_resisted(active, enemy)
+            if resisted:
+                retreat = True
+                resisted_retreat = {'retreat_reason': 'all_available_damage_moves_resisted',
+                                    'resisted_attacks': resisted, 'enemy_species': enemy}
         fight, item, run = (_label(rows, word) for word in ("FIGHT", "ITEM", "RUN"))
         if fight and item and run:
+            if resisted_retreat:
+                result = _selection_hint(rows, run, 'command')
+                result.update(battle_tactic='retreat', **resisted_retreat)
+                return result
+            if _no_pp_switch:
+                result=_selection_hint(rows,(run[0],fight[1]),'command')
+                result.update(battle_tactic='switch_pending_party',party_target_species=_no_pp_switch['species'],enemy_species=enemy)
+                return result
+            # 岩系等明顯抗性對手改派有效隊員；不為練等反覆用弱效招硬打。
+            if active and enemy and battle_state.get('kind')=='trainer' and not _no_pp_switch:
+                from .team_strategy import effective_power
+                def attack_score(mon):
+                    return max((effective_power(move,mon['species'],enemy) for move,pp in zip(mon.get('moves',[]),mon.get('pp',[])) if pp&63),default=0)*mon.get('level',1)
+                supports=[mon for mon in party if mon['species']!=active['species'] and mon['hp']*2>mon['max_hp'] and attack_score(mon)>0]
+                target=max(supports,key=attack_score,default=None)
+                low_hp=active['hp']*3<=active['max_hp']
+                if target and (attack_score(target)>max(1,attack_score(active))*2.5 or low_hp and attack_score(target)>=attack_score(active)*.75):
+                    _no_pp_switch={'species':target['species']}
+                    result=_selection_hint(rows,(run[0],fight[1]),'command')
+                    result.update(battle_tactic='switch_low_hp_support' if low_hp else 'switch_type_advantage',party_target_species=target['species'],enemy_species=enemy)
+                    return result
             if active and 'moves' in active and 'pp' in active and choose_damage_move(active['species'],active['moves'],active['pp'],enemy) is None:
                 from .team_strategy import effective_power
                 candidates=[m for m in party if m['species']!=active['species'] and m['hp']>0 and choose_damage_move(m['species'],m.get('moves',[]),m.get('pp',[]),enemy)]
@@ -176,12 +328,14 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
             if labels and len(cursor_rows) == 1 and cursor_rows[0] in {pos[1] for pos in labels.values()}:
                 if retreat or catch:
                     return {"phase": "battle_menu", "objective": "Cancel and return to the battle command menu.",
-                            "available_actions": ["b", "wait"], "battle_tactic": "retreat" if retreat else "capture"}
+                            "available_actions": ["b", "wait"], "battle_tactic": "retreat" if retreat else "capture",
+                            **resisted_retreat}
                 selected = choose_damage_move(active["species"], active["moves"], active["pp"], enemy)
                 if selected in labels:
                     result = _selection_hint(rows, labels[selected], "moves")
                     result.update(chosen_move=selected, enemy_species=enemy,
-                                  battle_strategy="Gen I power/accuracy/STAB/type heuristic; not full damage simulation")
+                                  battle_strategy="Gen I power/accuracy/STAB/type heuristic; not full damage simulation",
+                                  player_disabled_move=signal)
                     return result
                 if any(m['species']!=active['species'] and m['hp']>0 and choose_damage_move(m['species'],m.get('moves',[]),m.get('pp',[]),enemy) for m in party):
                     return {'phase':'battle_menu','objective':'Cancel and return to the battle command menu.','available_actions':['b','wait'],'battle_tactic':'return_for_no_pp_switch'}
@@ -241,15 +395,25 @@ def poisonpowder_skip_context(text,party):
     return command('a','learning_menu',{'learning_tactic':'advance_poisonpowder_intro'})
 
 
-def learning_context(text, party):
+def learning_context(text, party, progress=None):
     """有四招的學招流程暫停並留下計畫；待真實忘招畫面校準後才能執行。"""
     from .team_strategy import normalize, reference, learn_move_plan
+    specific=levelup_control.skip_context(text,party)
+    if specific:return specific
     skip=poisonpowder_skip_context(text,party)
     if skip:return skip
+    if progress is not None:
+        if progress.get('party') != party:
+            return {'phase':'strategy_review','objective':'Wait.','available_actions':['wait'],
+                    'review_reason':'natural_learning_progress_party_mismatch'}
+        natural=levelup_moves.context(text,progress)
+        if natural:return natural
     upper = " ".join(text.get("lines", [])).upper()
     compact = normalize(upper)
     if not any(normalize(phrase) in compact for phrase in
-               ("TRYING TO LEARN", "DELETE A MOVE", "FORGET WHICH MOVE", "WHICH MOVE SHOULD", "STOP LEARNING")):
+               ("TRYING TO LEARN", "DELETE A MOVE", "DELETE AN OLDER", "MOVE TO MAKE ROOM",
+                "FORGET WHICH MOVE", "WHICH MOVE SHOULD", "BE FORGOTTEN", "STOP LEARNING",
+                "ABANDON LEARNING", "FORGOT", "POOF")):
         return None
     if len(party) != 1 or len([move for move in party[0].get("moves", []) if move]) == 4:
         new_moves = [key for key in reference()["moves"]

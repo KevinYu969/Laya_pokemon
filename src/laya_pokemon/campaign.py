@@ -15,10 +15,21 @@ from .progress import read_progress
 from .video import VideoRecorder
 from .campaign_journal import Journal
 from .loss_review import LossGuard,parse_loss_review,frame_loss_signal
+from .campaign_plan import load_plan
 
 
 class BattleLossDuringAction(Exception):
     pass
+
+
+def take_control_file(path):
+    """寫入端尚未關檔時留到下輪，不讓Windows短暫sharing lock終止遊戲。"""
+    try:
+        text=path.read_text(encoding='utf-8')
+        path.unlink()
+        return text
+    except (FileNotFoundError,PermissionError):
+        return None
 
 
 def main():
@@ -52,15 +63,17 @@ def main():
                 if not emulator.tick(1,True,False):raise WindowClosed('使用者關窗')
                 if (out/'STOP').exists():raise KeyboardInterrupt
                 if (out/'RESUME').exists():
-                    resume=(out/'RESUME').read_text(encoding='utf-8')
-                    review=parse_loss_review(resume) if reason=='battle_loss_requires_review' else resume
+                    resume=take_control_file(out/'RESUME')
+                    review=parse_loss_review(resume) if resume is not None and reason=='battle_loss_requires_review' else resume
                     if review is not None:
-                        (out/'RESUME').unlink();append_jsonl(out/'reviews.jsonl',{'at':utc_now(),'reason':reason,'review':review});break
+                        append_jsonl(out/'reviews.jsonl',{'at':utc_now(),'reason':reason,'review':review});break
                 if reason not in {'gym_review','battle_loss_requires_review'} and sha256_file(plan_path)!=old_plan_hash:break
                 time.sleep(.1)
         finally:
             emulator.send_input(WindowEvent.UNPAUSE);stats['review_pause_seconds']+=time.monotonic()-pause_start;stats['status']='running';persist()
         importlib.reload(campaign_route)
+        import laya_pokemon.progress as progress_module
+        importlib.reload(progress_module)
         import laya_pokemon.battle as battle_module
         importlib.reload(battle_module)
     def frame_ready(frame):
@@ -72,6 +85,12 @@ def main():
         emulator=PyBoy(str(rom),window='SDL2',scale=4,sound_emulated=False,title_status=True);emulator.set_emulation_speed(0)
         with source.open('rb') as stream:emulator.load_state(stream)
         advance_action(emulator,'wait',1,0)
+        initial_plan=load_plan(plan_path)
+        if initial_plan.get('levelup_resume'):
+            resume_path=(root/initial_plan['levelup_resume']).resolve()
+            if not resume_path.is_relative_to(root/'.local'):raise ValueError('學招恢復記錄只接受本機.local')
+            from .levelup_control import restore_after_review
+            restore_after_review(json.loads(resume_path.read_text(encoding='utf-8')),read_progress(emulator)['party'],sha256_file(source))
         journal=Journal(out,read_progress(emulator));recorder=VideoRecorder(out/'video-000.mp4',fps=15,scale=3)
         t=time.monotonic();policy=run_with_window_events(emulator,lambda:LayaPolicy(revision=PINNED_REVISION,threads=4,offline=True,cache=True),time.perf_counter()+60,WindowEvent.PAUSE,WindowEvent.UNPAUSE)
         stats['model_wait_seconds']+=time.monotonic()-t;stats['model_load_count']=1;stats['model_load_seconds']=policy.load_seconds
@@ -79,8 +98,17 @@ def main():
         while True:
             if (out/'STOP').exists():raise KeyboardInterrupt
             if (out/'REVIEW').exists():
-                (out/'REVIEW').unlink();pause('operator_review',state,plan_sha)
-            plan=json.loads(plan_path.read_text(encoding='utf-8'));plan_sha=sha256_file(plan_path)
+                if take_control_file(out/'REVIEW') is None:
+                    time.sleep(.05);continue
+                state=observe(emulator,'Review operator request.','KEVIN',previous,True,'BULBASAUR','first_gym')
+                plan_sha=sha256_file(plan_path)
+                pause('operator_review',state,plan_sha)
+            try:
+                plan=load_plan(plan_path)
+            except (ValueError,UnicodeError):
+                state=observe(emulator,'Review invalid itinerary.','KEVIN',previous,True,'BULBASAUR','first_gym')
+                pause('invalid_campaign_plan',state,sha256_file(plan_path));continue
+            plan_sha=sha256_file(plan_path)
             if plan.get('resume_revision')!=cursor_revision:
                 step_id=plan.get('resume_step',step_id);cursor_revision=plan.get('resume_revision')
             state=observe(emulator,'Continue Pokemon Red toward the Champion.','KEVIN',previous,True,'BULBASAUR','first_gym')
@@ -99,12 +127,26 @@ def main():
             if any(m['kind']=='gym' for m in milestones):pause('gym_review',state,plan_sha);continue
             if any(m['id']=='beat_champion_rival' for m in milestones):
                 stats['champion_event_seen']=True
+            from .campaign_safety import attrition_context
+            attrition=attrition_context(state,plan,step_id)
+            if attrition:
+                state.update(attrition);pause(attrition['review_reason'],state,plan_sha);continue
+            field=campaign_route.field_context(emulator,state,plan,step_id)
+            if not field:field=campaign_route.switch_context(emulator,state,plan,step_id,previous)
+            if field:
+                context,step_id=field;state.update(context)
+                if context.get('field_move_complete') or context.get('gym_switches_complete'):
+                    verified_kind=context.get('field_move_kind','gym-switches')
+                    journal.capture(emulator,verified_kind+'-verified',state,timing())
+                    save(verified_kind+'-verified.state')
+                    append_jsonl(out/'field-moves.jsonl',{'at':utc_now(),'context':context,'party':state['progress']['party'],'timing':timing()})
+                    continue
             if state['phase']=='strategy_review':pause(state.get('review_reason','strategy_review'),state,plan_sha);continue
             if plan.get('mode')=='balanced_training':
                 from .balanced_training import context as training_context
                 training=training_context(emulator,state,plan,previous)
                 if training:state.update(training)
-            if plan.get('mode')=='league_campaign' and plan.get('lead_species') and state.get('battle_state',{}).get('kind')=='none':
+            if not field and plan.get('mode')=='league_campaign' and plan.get('lead_species') and state.get('battle_state',{}).get('kind')=='none':
                 from .party_control import lead_context
                 from .observation import read_visible_text
                 reorder=lead_context(read_visible_text(emulator),state['progress']['party'],plan['lead_species'],open_menu=state['phase'] in {'unclassified','overworld'})
@@ -137,7 +179,10 @@ def main():
                 journal.battle_loss(emulator,state,loss,timing(),save)
                 pause('battle_loss_requires_review',state,plan_sha);continue
             previous.append(decision['action']);previous=previous[-8:]
-            stats['actions']+=1;stats['cache_hits']+=bool(decision.get('prediction_cache_hit'));stats['uncached_choices']+=not decision.get('prediction_cache_hit',False)
+            stats['actions']+=1
+            if decision.get('passive_wait'):stats['passive_waits']=stats.get('passive_waits',0)+1
+            else:
+                stats['cache_hits']+=bool(decision.get('prediction_cache_hit'));stats['uncached_choices']+=not decision.get('prediction_cache_hit',False)
             append_jsonl(out/f'steps-{segment:03}.jsonl',{'at':utc_now(),'step':stats['actions'],'state':state,**decision,'emulated_frames':frames,'timing':timing()})
             if time.monotonic()-last_checkpoint>=10:save('checkpoint.state');last_checkpoint=time.monotonic();persist()
             if time.monotonic()-segment_started>=60:

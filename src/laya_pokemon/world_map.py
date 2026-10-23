@@ -2,6 +2,43 @@
 from collections import deque
 
 
+CAVERN_TILESET_ID = 17
+CAVERN_LAND_TILE_PAIRS = ((0x20, 0x05), (0x41, 0x05), (0x2A, 0x05), (0x05, 0x21))
+PAIR_COLLISION_SOURCE = "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/pair_collision_tile_ids.asm"
+
+
+def cavern_pair_blocked_edges(grid):
+    """將固定紅版洞穴陸地雙格碰撞轉成相鄰雙向禁邊，不把整格當牆。
+
+    上游 ``read_world_grid`` 已將每個移動格的左下背景圖塊與畫面核對。
+    其他 tileset／一般網格不加規則；聲明為 CAVERN 卻缺少完整圖塊矩陣
+    時回傳 ``None``，避免用不完整資料規劃可能穿過高低差的路線。
+    """
+    if grid.get('tileset_id') != CAVERN_TILESET_ID:
+        return set()
+    cells, tiles = grid.get('walkable'), grid.get('tiles')
+    if (not isinstance(cells, (list, tuple)) or not cells or not cells[0]
+            or not isinstance(tiles, (list, tuple)) or len(tiles) != len(cells)):
+        return None
+    width = len(cells[0])
+    if any(not isinstance(row, (list, tuple)) or len(row) != width for row in cells):
+        return None
+    if any(not isinstance(row, (list, tuple)) or len(row) != width
+           or any(type(tile) is not int or not 0 <= tile <= 255 for tile in row) for row in tiles):
+        return None
+    pairs = {frozenset(pair) for pair in CAVERN_LAND_TILE_PAIRS}
+    edges = set()
+    for y, row in enumerate(tiles):
+        for x, tile in enumerate(row):
+            for nx, ny in ((x+1, y), (x, y+1)):
+                if nx >= width or ny >= len(tiles):
+                    continue
+                if frozenset((tile, tiles[ny][nx])) in pairs:
+                    edges.add(((x, y), (nx, ny)))
+                    edges.add(((nx, ny), (x, y)))
+    return edges
+
+
 def read_npc_obstacles(pyboy,grid,expected):
     """固定紅版SpriteStateData2：NPC格座標含4格邊界；須有來源座標錨點才使用。"""
     try:
@@ -69,7 +106,10 @@ def world_direction(grid, location, target, blocked=(), blocked_edges=()):
     """BFS找完整路線；圖外出口先走到邊界，下一步才踏出。"""
     cells = grid['walkable'];height=len(cells);width=len(cells[0])
     start = location['x'],location['y'];raw = target['x'],target['y']
-    forbidden=set(blocked_edges)
+    pair_edges = cavern_pair_blocked_edges(grid)
+    if pair_edges is None:
+        return None
+    forbidden=set(blocked_edges) | pair_edges
     end = max(0,min(width-1,raw[0])),max(0,min(height-1,raw[1]))
     if raw != end and not cells[end[1]][end[0]]:
         if raw[1]<0:candidates=[(x,0) for x,v in enumerate(cells[0]) if v]

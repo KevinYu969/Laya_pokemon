@@ -76,6 +76,9 @@ class LayaPolicy:
                     and state.get('battle_state', {}).get('active') is True)):
             model_state = {key: state[key] for key in ('objective', 'phase')}
         available = state.get("available_actions", [action.key for action in ACTIONS])
+        if available==['wait']:
+            return {'action':'wait','model_ms':0.0,'raw':{'backend':'controller_passive_wait'},
+                    'prediction_cache_hit':False,'passive_wait':True,'model_state':model_state,'candidate_actions':available}
         if len(available) < 2 or len(set(available)) != len(available):
             raise ValueError("分類須有至少兩個不重複的候選動作")
         for key in available:

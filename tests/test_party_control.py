@@ -24,6 +24,41 @@ def test_order_change_is_verified_and_menu_closed_before_travel():
     assert result['party_order_verified'] and result['available_actions']==['b','wait']
 
 
+def test_evolved_spearow_is_selected_by_unique_family_member():
+    party=[{'species':9},{'species':3},{'species':35}]
+    text=text_at((3,0,'IVYSAUR'),(0,1,'▶'),(3,2,'NIDORAN♂'),(3,4,'FEAROW'))
+    result=lead_context(text,party,5)
+    assert result['party_target_index']==2 and result['objective']=='Move DOWN.'
+
+
+def test_evolved_target_already_first_is_verified_and_menu_closed():
+    party=[{'species':35},{'species':9},{'species':3}]
+    text=text_at((3,0,'FEAROW'),(0,1,'▶'),(3,2,'IVYSAUR'),(3,4,'NIDORAN♂'))
+    result=lead_context(text,party,5)
+    assert result['party_order_verified'] and result['available_actions']==['b','wait']
+
+
+def test_exact_target_takes_precedence_over_another_family_member():
+    party=[{'species':35},{'species':5},{'species':9}]
+    text=text_at((3,0,'FEAROW'),(0,1,'▶'),(3,2,'SPEAROW'),(3,4,'IVYSAUR'))
+    assert lead_context(text,party,5)['party_target_index']==1
+
+
+def test_missing_target_and_family_require_review_without_opening_menu():
+    result=lead_context(text_at(),[{'species':9},{'species':3}],5)
+    assert result=={'phase':'campaign_review','review_reason':'training_member_missing'}
+
+
+def test_multiple_family_candidates_require_review_without_selecting_one():
+    result=lead_context(text_at(),[{'species':9},{'species':35},{'species':35}],5)
+    assert result=={'phase':'campaign_review','review_reason':'training_member_ambiguous'}
+
+
+def test_unknown_species_do_not_match_each_other_as_a_family():
+    result=lead_context(text_at(),[{'species':0}],255)
+    assert result=={'phase':'campaign_review','review_reason':'training_member_missing'}
+
+
 def test_does_not_open_start_over_a_nurse_dialogue():
     text=text_at((1,14,'We hope to see'),(1,16,'you again!'))
     assert lead_context(text,PARTY,5,open_menu=False) is None

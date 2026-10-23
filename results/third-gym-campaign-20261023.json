@@ -1,0 +1,594 @@
+{
+  "recorded_at": "2026-10-23T14:01:50.058636+00:00",
+  "status": "third_gym_verified",
+  "evidence_cutoff_step": 1612,
+  "scope_zh_tw": "固定至第三館切點；之後岩山隧道全隊敗北另記，不能將本收據當成最新無敗北狀態。",
+  "gym": {
+    "id": "lt_surge",
+    "label": "橘色徽章／馬志士",
+    "kind": "gym",
+    "completed_at_utc": "2026-10-23T13:29:45.387780+00:00",
+    "completed_at_taipei": "2026-10-23T21:29:45.387780+08:00",
+    "timing": {
+      "wall_seconds": 1372.875,
+      "model_wait_seconds": 31.842,
+      "review_pause_seconds": 1235.689,
+      "non_review_session_seconds": 137.186,
+      "emulated_seconds": 1740.533
+    },
+    "badges_raw": 7,
+    "story_event_bits": {
+      "followed_oak_into_lab": true,
+      "oak_asked_to_choose_mon": true,
+      "battled_rival_in_oaks_lab": true,
+      "got_starter": true,
+      "got_pokedex": true,
+      "got_oaks_parcel": true,
+      "oak_got_parcel": true,
+      "got_hm01": true,
+      "got_hm03": false,
+      "got_hm04": false,
+      "got_poke_flute": false,
+      "beat_silph_co_giovanni": false,
+      "beat_brock": true,
+      "beat_misty": true,
+      "beat_lt_surge": true,
+      "beat_erika": false,
+      "beat_koga": false,
+      "beat_sabrina": false,
+      "beat_blaine": false,
+      "beat_viridian_gym_giovanni": false,
+      "beat_loreleis_room_trainer_0": false,
+      "beat_brunos_room_trainer_0": false,
+      "beat_agathas_room_trainer_0": false,
+      "beat_lance": false,
+      "beat_champion_rival": false,
+      "hall_of_fame_dex_rating": false,
+      "beat_cerulean_rival": true,
+      "beat_cerulean_rocket_thief": true,
+      "got_nugget": true,
+      "beat_route24_rocket": true,
+      "got_hm02": false,
+      "got_hm05": false,
+      "met_bill": true,
+      "bill_said_use_cell_separator": true,
+      "used_cell_separator_on_bill": true,
+      "got_ss_ticket": true,
+      "left_bills_house_after_helping": true,
+      "beat_mt_moon_exit_super_nerd": true,
+      "got_dome_fossil": false,
+      "got_helix_fossil": true,
+      "got_master_ball": false,
+      "first_lock_opened": true,
+      "second_lock_opened": true,
+      "ss_anne_left": true
+    },
+    "party": [
+      {
+        "species": 9,
+        "species_name": "IVYSAUR",
+        "level": 27,
+        "hp": 22,
+        "max_hp": 76,
+        "exp": 16709,
+        "status": 0,
+        "moves": [
+          77,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          35,
+          21,
+          10,
+          0
+        ]
+      },
+      {
+        "species": 167,
+        "species_name": "NIDORINO",
+        "level": 24,
+        "hp": 65,
+        "max_hp": 73,
+        "exp": 11287,
+        "status": 0,
+        "moves": [
+          43,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          30,
+          35,
+          21,
+          35
+        ]
+      },
+      {
+        "species": 5,
+        "species_name": "SPEAROW",
+        "level": 19,
+        "hp": 52,
+        "max_hp": 52,
+        "exp": 7949,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      }
+    ],
+    "checkpoint_sha256": "81192d54b98b141d688951d1d6e6664ea322db989c0063f4eee05d6162920cb3",
+    "capture": {
+      "at": "2026-10-23T13:29:45.388814+00:00",
+      "kind": "milestone-lt_surge",
+      "file": "keyframes/00053-milestone-lt_surge.png",
+      "sha256": "8ea41f3df1b366adb339c19f976bb5ddc6ec5418a3ae13aa4fbad9439b008d43",
+      "location": {
+        "map_id": 92,
+        "x": 5,
+        "y": 2
+      },
+      "text": [],
+      "timing": {
+        "wall_seconds": 1372.875,
+        "model_wait_seconds": 31.842,
+        "review_pause_seconds": 1235.689,
+        "non_review_session_seconds": 137.186,
+        "emulated_seconds": 1740.533
+      }
+    }
+  },
+  "model_role": "Configured private Strata selects implemented stages; offline Laya selects buttons; controller supplies routes, menus and tactics. Passive wait sends no button and makes no inference.",
+  "review": {
+    "laya_load_count": 1,
+    "uncached_choices": 51,
+    "cache_hits": 1533,
+    "passive_waits": 28,
+    "classification_samples": 51,
+    "classification_p50_ms": 464.31890001986176,
+    "classification_p95_nearest_rank_ms": 779.6315000159666,
+    "timing_caution": "137.186 seconds excludes explicit review pauses across this entire resumed run, including menus and ship; it is not pure gym clear time or a controlled hardware benchmark."
+  },
+  "verified_field_mechanics": [
+    {
+      "at": "2026-10-23T13:21:52.452658+00:00",
+      "context": {
+        "phase": "field_move_complete",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "field_move_complete": true,
+        "field_move_kind": "teach_cut",
+        "sources": [
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/learn_move.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/start_sub_menus.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/cut.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/window.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_4.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_7.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/ivysaur.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/list_menu.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/names.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/key_items.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm"
+        ],
+        "moves_verified": [
+          77,
+          15,
+          73,
+          22
+        ],
+        "forgotten_move": 45,
+        "protected_move": 22
+      },
+      "party": [
+        {
+          "species": 167,
+          "species_name": "NIDORINO",
+          "level": 24,
+          "hp": 0,
+          "max_hp": 73,
+          "exp": 10503,
+          "status": 0,
+          "moves": [
+            43,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            30,
+            35,
+            18,
+            35
+          ]
+        },
+        {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 26,
+          "hp": 42,
+          "max_hp": 73,
+          "exp": 13685,
+          "status": 16,
+          "moves": [
+            77,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            35,
+            30,
+            10,
+            8
+          ]
+        },
+        {
+          "species": 5,
+          "species_name": "SPEAROW",
+          "level": 19,
+          "hp": 52,
+          "max_hp": 52,
+          "exp": 7949,
+          "status": 0,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            40,
+            30,
+            20
+          ]
+        }
+      ],
+      "timing": {
+        "wall_seconds": 899.953,
+        "model_wait_seconds": 18.634,
+        "review_pause_seconds": 847.032,
+        "non_review_session_seconds": 52.921,
+        "emulated_seconds": 555.333
+      }
+    },
+    {
+      "at": "2026-10-23T13:24:30.274968+00:00",
+      "context": {
+        "phase": "field_move_complete",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "field_move_complete": true,
+        "field_move_kind": "use_cut",
+        "sources": [
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/learn_move.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/start_sub_menus.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/cut.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/window.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_4.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_7.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/ivysaur.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/list_menu.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/names.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/key_items.asm",
+          "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm"
+        ],
+        "tree_removal_verified": true,
+        "tree_position": [
+          15,
+          18
+        ],
+        "before_tile": 61,
+        "after_tile": 44
+      },
+      "party": [
+        {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 26,
+          "hp": 73,
+          "max_hp": 73,
+          "exp": 13685,
+          "status": 0,
+          "moves": [
+            77,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            35,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 167,
+          "species_name": "NIDORINO",
+          "level": 24,
+          "hp": 73,
+          "max_hp": 73,
+          "exp": 10503,
+          "status": 0,
+          "moves": [
+            43,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            30,
+            35,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 5,
+          "species_name": "SPEAROW",
+          "level": 19,
+          "hp": 52,
+          "max_hp": 52,
+          "exp": 7949,
+          "status": 0,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            40,
+            30,
+            20
+          ]
+        }
+      ],
+      "timing": {
+        "wall_seconds": 1057.766,
+        "model_wait_seconds": 22.009,
+        "review_pause_seconds": 989.938,
+        "non_review_session_seconds": 67.828,
+        "emulated_seconds": 737.467
+      }
+    },
+    {
+      "at": "2026-10-23T13:29:23.675562+00:00",
+      "context": {
+        "phase": "overworld",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "goal": "vermilion-gym-switches",
+        "controller_menu_verified": true,
+        "phase_source": "visible gym switch dialogue and source-verified adjacent-cell navigation",
+        "gym_switch_state": "complete",
+        "gym_switch_can": 13,
+        "gym_switch_first_can": 14,
+        "gym_switch_attempts": 71,
+        "gym_switch_resets": 5,
+        "gym_switch_active_seconds": 31.01500000001397,
+        "gym_switch_version_bug": "second lock may be can0; fixed original Red source",
+        "gym_switches_complete": true,
+        "gym_switch_door_grid_verified": true
+      },
+      "party": [
+        {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 27,
+          "hp": 31,
+          "max_hp": 76,
+          "exp": 15686,
+          "status": 0,
+          "moves": [
+            77,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            35,
+            27,
+            10,
+            0
+          ]
+        },
+        {
+          "species": 167,
+          "species_name": "NIDORINO",
+          "level": 24,
+          "hp": 73,
+          "max_hp": 73,
+          "exp": 10503,
+          "status": 0,
+          "moves": [
+            43,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            30,
+            35,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 5,
+          "species_name": "SPEAROW",
+          "level": 19,
+          "hp": 52,
+          "max_hp": 52,
+          "exp": 7949,
+          "status": 0,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            40,
+            30,
+            20
+          ]
+        }
+      ],
+      "timing": {
+        "wall_seconds": 1351.172,
+        "model_wait_seconds": 26.525,
+        "review_pause_seconds": 1235.689,
+        "non_review_session_seconds": 115.483,
+        "emulated_seconds": 1453.333
+      }
+    }
+  ],
+  "strata_decisions": [
+    {
+      "run": 9,
+      "at": "2026-10-23T12:37:05.752593+00:00",
+      "stage": "league_campaign",
+      "reason": "Continue validated itinerary to trigger Cerulean rival battle.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 3081,
+        "completion_tokens": 24,
+        "total_tokens": 3105,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 2.437999999965541,
+      "guide_sha256": "6c46e45aa5b28ffe8029c2848dde1e51e072e6287ca19abe5879fe800580c7ef",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": 10,
+      "at": "2026-10-23T12:44:27.865669+00:00",
+      "stage": "battle_recovery",
+      "reason": "Active trainer battle with healthy party members; must switch and continue.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 2355,
+        "completion_tokens": 26,
+        "total_tokens": 2381,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 2.0469999999622814,
+      "guide_sha256": "6c46e45aa5b28ffe8029c2848dde1e51e072e6287ca19abe5879fe800580c7ef",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": 11,
+      "at": "2026-10-23T12:53:03.357581+00:00",
+      "stage": "league_campaign",
+      "reason": "Spearow fainted; heal at Vermilion center before continuing to SS Anne.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 3748,
+        "completion_tokens": 30,
+        "total_tokens": 3778,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 2.5619999999762513,
+      "guide_sha256": "6c46e45aa5b28ffe8029c2848dde1e51e072e6287ca19abe5879fe800580c7ef",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": 12,
+      "at": "2026-10-23T13:06:16.804600+00:00",
+      "stage": "review",
+      "reason": "Nidorino has low HP and is in a move deletion menu, requiring pause for safety.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 3775,
+        "completion_tokens": 31,
+        "total_tokens": 3806,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 2.6880000000237487,
+      "guide_sha256": "6c46e45aa5b28ffe8029c2848dde1e51e072e6287ca19abe5879fe800580c7ef",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": 13,
+      "at": "2026-10-23T13:06:51.968389+00:00",
+      "stage": "league_campaign",
+      "reason": "Current state matches verified Focus Energy skip controller; proceed with bounded flow.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 3863,
+        "completion_tokens": 27,
+        "total_tokens": 3890,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 2.6880000000237487,
+      "guide_sha256": "6c46e45aa5b28ffe8029c2848dde1e51e072e6287ca19abe5879fe800580c7ef",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    }
+  ],
+  "strata_usage_runs_09_to_13": {
+    "prompt_tokens": 16822,
+    "completion_tokens": 138,
+    "total_tokens": 16960
+  },
+  "strata_configuration_unchanged": true,
+  "notable_failures_and_fixes_zh_tw": [
+    "第三館切點前，兩次烈雀單隻倒下及船戰尼多力諾單隻倒下均保留，沒有回讀洗結果；岩隧其後全隊敗北另記。",
+    "REVIEW短暫Windows鎖定及錯誤null路線使09/10保存停止；新增控制檔重試、tmp/rename與路線格式驗證。",
+    "只等待單一候選與Laya舊介面不相容使11保存停止；被動wait現在明示免推論，其他按鍵仍分類。",
+    "聚氣略過先因逐字Delete與實版Abandon措辭暫停；13第11步已驗證did not learn及四招未變。",
+    "低血換人RIGHT後被FIGHT覆蓋；修正意圖延續後13第1544至1545步RIGHT→A，館主戰成功換人。",
+    "HM01在背包末頁，須依真實游標、可見標籤、數量與inventory順序正常下捲；只刪已確認的Growl。",
+    "機關71次檢查、5次第二鎖重設；以可見訊息、兩鎖事件和實際開門網格共同核對，沒有讀隱藏答案。",
+    "10的got_nugget首次新增觀測時間不是實際金珠橋完成時間；原始紀錄保留且Journal已修基線。"
+  ],
+  "limitations_zh_tw": [
+    "尚未第四館、八館、聯盟或名人堂。",
+    "烈雀仍19級，隊伍尚未均等與最佳六人組成。",
+    "影片留本機；網站既有登入待使用者完成，尚未發布。"
+  ],
+  "evidence_files": {
+    "checkpoint": "milestone-lt_surge.state",
+    "checkpoint_sha256": "81192d54b98b141d688951d1d6e6664ea322db989c0063f4eee05d6162920cb3"
+  }
+}

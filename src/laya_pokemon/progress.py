@@ -20,10 +20,12 @@ STORY_EVENT_NAMES = (
     "beat_silph_co_giovanni", "beat_brock", "beat_misty", "beat_lt_surge", "beat_erika", "beat_koga",
     "beat_sabrina", "beat_blaine", "beat_viridian_gym_giovanni", "beat_loreleis_room_trainer_0",
     "beat_brunos_room_trainer_0", "beat_agathas_room_trainer_0", "beat_lance", "beat_champion_rival",
-    "hall_of_fame_dex_rating", "beat_cerulean_rival", "got_hm02", "got_hm05",
-    "met_bill", "used_cell_separator_on_bill", "got_ss_ticket", "left_bills_house_after_helping",
+    "hall_of_fame_dex_rating", "beat_cerulean_rival", "beat_cerulean_rocket_thief", "got_nugget", "beat_route24_rocket", "got_hm02", "got_hm05",
+    "met_bill", "bill_said_use_cell_separator", "used_cell_separator_on_bill", "got_ss_ticket", "left_bills_house_after_helping",
     "beat_mt_moon_exit_super_nerd", "got_dome_fossil", "got_helix_fossil", "got_master_ball",
+    "first_lock_opened", "second_lock_opened", "ss_anne_left",
 )
+EVENT_FLAG_ALIASES={'first_lock_opened':'1st_lock_opened','second_lock_opened':'2nd_lock_opened'}
 
 
 def _integer(value) -> bool:
@@ -125,7 +127,7 @@ def read_progress(pyboy, constants=None) -> dict:
     badges = read_byte(constants.OBTAINED_BADGES_ADDRESS)
     result["badges_raw"] = badges
     for name in STORY_EVENT_NAMES:
-        event_id = constants.EVENT_FLAGS.get(name)
+        event_id = constants.EVENT_FLAGS.get(EVENT_FLAG_ALIASES.get(name,name))
         if event_id is None:
             result["story_event_bits"][name] = None
             continue

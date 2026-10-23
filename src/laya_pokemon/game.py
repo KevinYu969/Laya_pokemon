@@ -86,7 +86,7 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
         if route_stage in {"lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture", "team_training", "first_gym"}:
             from .battle import read_battle_state, battle_context, learning_context
             state["battle_state"] = read_battle_state(pyboy)
-            context = learning_context(text, progress["party"])
+            context = learning_context(text, progress["party"], progress=progress)
             if context is None and "NICKNAME" not in " ".join(text["lines"]).upper():
                 context = battle_context(text, state["battle_state"], progress["party"], progress["inventory"],
                                          capture_focus=route_stage == "team_capture")
