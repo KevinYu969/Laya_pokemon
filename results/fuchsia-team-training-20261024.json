@@ -482,7 +482,7 @@
     "scope": "四枚徽章；本批為全隊補練，沒有宣稱第五館或聯盟完成。"
   },
   "latest_full_party_snapshot": {
-    "at": "2026-10-23T21:13:29.649073+00:00",
+    "at": "2026-10-23T21:22:27.668778+00:00",
     "location": {
       "map_id": 154,
       "x": 3,
@@ -495,7 +495,7 @@
         "level": 34,
         "hp": 108,
         "max_hp": 108,
-        "exp": 35622,
+        "exp": 36352,
         "status": 0,
         "moves": [
           75,
@@ -513,10 +513,10 @@
       {
         "species": 7,
         "species_name": "NIDOKING",
-        "level": 32,
-        "hp": 108,
-        "max_hp": 108,
-        "exp": 29184,
+        "level": 35,
+        "hp": 118,
+        "max_hp": 118,
+        "exp": 36902,
         "status": 0,
         "moves": [
           61,
@@ -532,33 +532,12 @@
         ]
       },
       {
-        "species": 102,
-        "species_name": "EEVEE",
-        "level": 32,
-        "hp": 82,
-        "max_hp": 82,
-        "exp": 32929,
-        "status": 0,
-        "moves": [
-          33,
-          28,
-          98,
-          39
-        ],
-        "pp": [
-          35,
-          15,
-          30,
-          30
-        ]
-      },
-      {
         "species": 132,
         "species_name": "SNORLAX",
-        "level": 31,
-        "hp": 147,
-        "max_hp": 147,
-        "exp": 39488,
+        "level": 34,
+        "hp": 163,
+        "max_hp": 163,
+        "exp": 49189,
         "status": 0,
         "moves": [
           29,
@@ -574,31 +553,54 @@
         ]
       },
       {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 34,
+        "hp": 87,
+        "max_hp": 87,
+        "exp": 39334,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
         "species": 35,
         "species_name": "FEAROW",
-        "level": 33,
-        "hp": 102,
-        "max_hp": 102,
-        "exp": 38783,
+        "level": 34,
+        "hp": 105,
+        "max_hp": 105,
+        "exp": 39496,
         "status": 0,
         "moves": [
           64,
-          45,
+          65,
           43,
           31
         ],
         "pp": [
           35,
-          40,
+          20,
           30,
           20
         ]
       }
     ],
     "badge_count": 4,
-    "frame": 47825,
+    "frame": 507361,
     "hp_status_pp_full": true,
-    "note": "After native Ditto KO, full-PP nurse verification and publication consistency review; before remaining bounded training",
+    "new_job": "fuchsia-team35-run23-batch3-20261024",
+    "seconds": 900,
+    "appends": 240,
     "all_team_level35": false,
     "fifth_gym_completed": false,
     "league_completed": false,
@@ -745,50 +747,50 @@
     }
   },
   "latest_runtime_snapshot": {
-    "frame": 129074,
-    "at": "2026-10-23T21:14:29.734349+00:00",
+    "frame": 674154,
+    "at": "2026-10-23T21:24:29.722488+00:00",
     "status": "running",
     "phase": "overworld",
     "review_reason": null,
     "location": {
-      "map_id": 7,
-      "x": 17,
-      "y": 20
+      "map_id": 26,
+      "x": 19,
+      "y": 8
     },
     "party": [
       {
-        "species_name": "VENUSAUR",
-        "level": 34,
-        "hp": 108,
-        "max_hp": 108,
-        "status": 0
-      },
-      {
         "species_name": "SNORLAX",
-        "level": 32,
-        "hp": 152,
-        "max_hp": 152,
-        "status": 0
-      },
-      {
-        "species_name": "EEVEE",
-        "level": 32,
-        "hp": 46,
-        "max_hp": 82,
+        "level": 34,
+        "hp": 163,
+        "max_hp": 163,
         "status": 0
       },
       {
         "species_name": "NIDOKING",
-        "level": 33,
+        "level": 35,
+        "hp": 118,
+        "max_hp": 118,
+        "status": 0
+      },
+      {
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 77,
+        "max_hp": 90,
+        "status": 0
+      },
+      {
+        "species_name": "VENUSAUR",
+        "level": 35,
         "hp": 111,
         "max_hp": 111,
         "status": 0
       },
       {
         "species_name": "FEAROW",
-        "level": 33,
-        "hp": 102,
-        "max_hp": 102,
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
         "status": 0
       }
     ],
@@ -810,5 +812,40 @@
     "supervisor_refused_to_start": true,
     "adjustment": "require_full_pp只在明確標記的heal路標要求每位隊員所有招式補滿；正常護士完成後再驗。",
     "verified_snapshot_at": "2026-10-23T21:13:29.649073+00:00"
+  },
+  "fearow_drill_peck_verified": {
+    "observed_at": "2026-10-23T21:19:29.290910+00:00",
+    "species": 35,
+    "level": 34,
+    "before_moves": [
+      64,
+      45,
+      43,
+      31
+    ],
+    "after_moves": [
+      64,
+      65,
+      43,
+      31
+    ],
+    "observed_pp": [
+      35,
+      20,
+      30,
+      20
+    ],
+    "verified": "真實關閉草地review中的隊伍招式與PP；未宣稱已人工逐頁核對整段學招影片。"
+  },
+  "current_training_batch": {
+    "name": "fuchsia-team35-run23-batch3-20261024",
+    "target_all_members_level": 35,
+    "max_seconds": 900,
+    "max_appends": 240,
+    "prior_batch_used_appends": 180,
+    "prior_batch_closed_at": "2026-10-23T21:20:30.699638+00:00",
+    "new_batch_after_parent_review_and_full_center": true,
+    "classification_backend": "offline_laya",
+    "new_strata_api_calls": 0
   }
 }

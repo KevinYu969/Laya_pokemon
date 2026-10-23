@@ -8,7 +8,7 @@
 
 ## 目前進度
 
-**2026-10-24 台北05:14補練快照：伊布32／卡比獸32／尼多王33／大嘴雀33／妙蛙花34，仍四枚徽章。** 已實際自動換較低等級隊員當首位、打怪、由健康隊員護送回中心並重新出發。第五館前繼續補強全隊；[補練與問題紀錄](docs/fuchsia-training-progress.md)及[成果收據](results/fuchsia-team-training-20261024.json)列明驗證範圍。
+**2026-10-24 台北05:24補練快照：伊布35／卡比獸34／尼多王35／大嘴雀35／妙蛙花35，仍四枚徽章。** 已實際自動換較低等級隊員當首位、打怪、由健康隊員護送回中心並重新出發。第五館前繼續補強全隊；[補練與問題紀錄](docs/fuchsia-training-progress.md)及[成果收據](results/fuchsia-team-training-20261024.json)列明驗證範圍。
 
 Windows 原生視窗事件阻塞正在排查，現有 PyBoy 可分離遊戲運算與顯示，用[本機即時頁面](docs/live-game-view.md)直接觀看當前真實遊戲影格。離線 Laya 與私人 Strata 配置維持。新增[一輪自動補練的原速／四倍速影片收據](results/fuchsia-training-clips-20261024.json)，影片與截圖保留本機。
 

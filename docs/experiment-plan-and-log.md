@@ -873,3 +873,16 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 - 本次最終完整回歸3706通過（SDL2既有warning）；前一完整3667/12.62秒，Node --check即時頁JS通過。之前loopback socket測試因沙盒WinError10013，改真HTTP parser+BytesIO路由測試，再另作已授權本機HTTP實取；沒有減弱OS網路保護。上次已核GitHub5d9fa2b/Actions40015897841成功，本節後由白名單備份腳本正常push並核遠端SHA。ROM/state/weights/video/raw outputs/憑證與其他筆記不備份。
 - 滿血卻Headbutt4/15的護士略過已用可選require_full_pp修正；全隊每招依固定reference基礎PP核對，空槽須0，未知/PPUp未支援不算滿。05:11:38正常護士全補實驗成功。私人監督雙讀遇發布中版本變化曾保守停止；現在不以混合版本決策，而是在同一有界批次稍後重讀穩定版本，穩定未知原因仍停；來源/owner/SHA/party/控制檔驗證保留。前批64次因未知結束後，父層依持續遊玩授權審查新900秒180次補練；首9次出版競態後保留剩890秒171次，並未靜默重設同一job。05:13:56本機HTTP真frame78642→79611，running，卡比獸升32並自然把首位換尼多王；不宣稱瀏覽器UI成功渲染。
 
+## 43. 2026-10-24 備份驗證與持續全隊補練
+
+- GitHub已正常push並核遠端SHA **ef2db93c0c64957cffc57d6fa719096a5edcc73f**，212個白名單檔，Actions **40025391399成功**。包含第42節、真圖顯示、Ditto alive/KO、全PP護士、JSON讀寫共享鎖修正與3706完整測試。ROM/state/weights/video/raw outputs/憑證及其他筆記不在備份；本節在該備份之後新增，後續既有備份再匯出。
+- 最新實際觀測 2026-10-24T05:19:21.718897+08:00：EEVEE34／VENUSAUR34／NIDOKING34／SNORLAX33／FEAROW34，狀態running，位置{'map_id': 26, 'x': 18, 'y': 8}，四徽章。已自然把全隊最低提升至33，尼多王進34；尚未全隊35、第五館或聯盟。維持本機Laya按鍵分類，Strata配置不變，沒有新增策略API使用。
+- 同一批次曾在私人plan原子replace遇WinError5，保留失敗nonce檔與當時96次/約184秒，不重設額度。父層用隔離fixture驗證同一tmp bytes兩次PermissionError後成功、每次再核owner/原plan/控制檔；沒有改真plan或遊戲。正常回中心全隊補給後，剩706秒75次以新continuation job接續。持續鎖/所有者變更/其他錯仍停，並未force修改檔案或忽視不一致。
+- 即時串流已實驗證影格增加，瀏覽器工具自動開頁仍受政策限制，需本機開http://127.0.0.1:8767/；不是已根治Windows原生事件阻塞。尚未發布網站/影片，也沒有Champion耗時數字。
+
+## 44. 2026-10-24 啄鑽實戰、全隊最低34級與新補練批次
+
+- 2026-10-24T05:24:29.722488+08:00實際觀測SNORLAX34／NIDOKING35／EEVEE35／VENUSAUR35／FEAROW35，狀態running；四枚徽章，尚未第五館／聯盟。05:19:29關閉草地review驗Fearow34將Growl45換DrillPeck65，moves[64,65,43,31]、PP[35,20,30,20]，此前純候選已變成實機結果；沒有宣稱已人工完整觀看所有學招頁。
+- 第2批9+96+75=180次排程於05:20:30.699638達上限，最後一段128.094秒；沒有未知、戰敗或新FNT訊號。正常回中心全隊HP/status/PP滿，再依既有持續遊玩授權啟第3批900秒240次，目標仍五人至少35，並非重設舊job。Strata配置/API使用不變，按鍵由離線Laya。
+- README／公開補練JSON與MD已加入帶時間最新快照、啄鑽證據與新批次範圍。3706完整回歸和既有ef2db93c/Actions40025391399成功；本節接著由既有白名單備份，影片14片58PNG及ROM/state仍只留本機，網站未發布。
+
