@@ -1,0 +1,1095 @@
+{
+  "schema": "laya-safari-zone-campaign-v1",
+  "date": "2026-10-24",
+  "timezone": "Asia/Taipei",
+  "language": "zh-TW",
+  "completed": true,
+  "title": "Safari 正常入場、取得HM03衝浪／HM04怪力",
+  "scope": {
+    "start_before_fee": {
+      "at_utc": "2026-10-23T21:43:07.464216+00:00",
+      "at_taipei": "2026-10-24T05:43:07.464216+08:00",
+      "frame": 798873,
+      "location": {
+        "map_id": 156,
+        "x": 3,
+        "y": 4
+      }
+    },
+    "end_after_warden_before_teaching": {
+      "at_utc": "2026-10-23T22:30:20.859460+00:00",
+      "at_taipei": "2026-10-24T06:30:20.859460+08:00",
+      "frame": 836225,
+      "location": {
+        "map_id": 155,
+        "x": 4,
+        "y": 5
+      }
+    },
+    "action_log_frame_maximum_exclusive": 836225,
+    "note_zh_tw": "僅本段Safari與園長換取HM；HM教學與野外使用不在本收據範圍。"
+  },
+  "money_ledger": {
+    "before": 41066,
+    "after": 40566,
+    "delta": -500,
+    "entry_fee": 500,
+    "observed_fee_confirmations": 1,
+    "approve_fee_step": 12929,
+    "money_changes": [
+      {
+        "step": 12930,
+        "at_utc": "2026-10-23T22:05:05.813586+00:00",
+        "before": 41066,
+        "after": 40566
+      }
+    ],
+    "no_other_money_changes_in_covered_logs": true,
+    "entry_completed": {
+      "step": 12975,
+      "at_utc": "2026-10-23T22:16:18.039917+00:00",
+      "frame": 801353,
+      "balls": 30,
+      "steps": 500,
+      "fee_paid": 500
+    }
+  },
+  "inventory_ledger": {
+    "before_ordered": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      }
+    ],
+    "after_ordered": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      }
+    ],
+    "all_other_item_order_and_quantities_unchanged": true,
+    "gold_teeth": {
+      "item": 64,
+      "quantity_received": 1,
+      "quantity_returned": 1,
+      "final_quantity": 0,
+      "first_presence": {
+        "step": 13401,
+        "at_utc": "2026-10-23T22:23:21.569480+00:00",
+        "frame": 818393
+      },
+      "first_absence_after_warden_return": {
+        "step": 13772,
+        "at_utc": "2026-10-23T22:30:20.370258+00:00",
+        "frame": 835081
+      },
+      "native_return_text_steps": [
+        13769,
+        13770
+      ]
+    },
+    "obtained_hms": [
+      {
+        "id": "got_hm03",
+        "item": 198,
+        "quantity": 1,
+        "first_journal_flag_at_utc": "2026-10-23T22:24:07.839903+00:00",
+        "first_journal_flag_at_taipei": "2026-10-24T06:24:07.839903+08:00",
+        "first_action_log_presence": {
+          "step": 13438,
+          "frame": 820665,
+          "at_utc": "2026-10-23T22:24:07.924852+00:00"
+        },
+        "native_receipt_text": [
+          " KEVIN received",
+          " HM03!"
+        ],
+        "keyframe": {
+          "path": "outputs/league-campaign-20261024-23/game/keyframes/00090-milestone-got_hm03.png",
+          "sha256": "6f519fdde9fbffb6e57f1480c12878559193a325bfcb7309208855176b3735e7"
+        },
+        "timing_at_milestone": {
+          "wall_seconds": 5119.344,
+          "model_wait_seconds": 78.168,
+          "review_pause_seconds": 4607.517,
+          "non_review_session_seconds": 511.827,
+          "emulated_seconds": 13677.733
+        }
+      },
+      {
+        "id": "got_hm04",
+        "item": 199,
+        "quantity": 1,
+        "first_journal_flag_at_utc": "2026-10-23T22:30:20.672189+00:00",
+        "first_journal_flag_at_taipei": "2026-10-24T06:30:20.672189+08:00",
+        "first_action_log_presence": {
+          "step": 13779,
+          "frame": 835977,
+          "at_utc": "2026-10-23T22:30:20.756738+00:00"
+        },
+        "native_receipt_text": [
+          " KEVIN received",
+          " HM04!"
+        ],
+        "keyframe": {
+          "path": "outputs/league-campaign-20261024-23/game/keyframes/00095-milestone-got_hm04.png",
+          "sha256": "320fa9e56851bb5c33c505cf29fff0713dacc243d4d4c367b318a0708ff3877c"
+        },
+        "timing_at_milestone": {
+          "wall_seconds": 5492.172,
+          "model_wait_seconds": 78.899,
+          "review_pause_seconds": 4970.174,
+          "non_review_session_seconds": 521.998,
+          "emulated_seconds": 13932.933
+        }
+      }
+    ]
+  },
+  "party_verification": {
+    "before_ordered": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 56987,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "after_identical": true,
+    "all_covered_observations_identical": true,
+    "checked_progress_observations": 878,
+    "fields": [
+      "species",
+      "species_name",
+      "level",
+      "hp",
+      "max_hp",
+      "exp",
+      "status",
+      "moves",
+      "pp",
+      "party_order"
+    ],
+    "new_members": 0,
+    "fainted_members": 0,
+    "damage_observed": 0
+  },
+  "runs": [
+    {
+      "species_name": "EXEGGCUTE",
+      "level": 24,
+      "location": {
+        "map_id": 220,
+        "x": 22,
+        "y": 13
+      },
+      "balls_displayed_before_run": 30,
+      "ball_throw_actions": 0,
+      "intro_step": 13006,
+      "run_confirm_step": 13010,
+      "got_away_step": 13012,
+      "first_closed_step": 13013,
+      "source_complete_step": 13014,
+      "completed_at_utc": "2026-10-23T22:20:28.022550+00:00",
+      "completed_at_taipei": "2026-10-24T06:20:28.022550+08:00",
+      "source_complete_frame": 802913,
+      "party_unchanged": true,
+      "capture_claimed": false
+    },
+    {
+      "species_name": "PARASECT",
+      "level": 25,
+      "location": {
+        "map_id": 217,
+        "x": 14,
+        "y": 24
+      },
+      "balls_displayed_before_run": 30,
+      "ball_throw_actions": 0,
+      "intro_step": 13076,
+      "run_confirm_step": 13080,
+      "got_away_step": 13082,
+      "first_closed_step": 13083,
+      "source_complete_step": 13084,
+      "completed_at_utc": "2026-10-23T22:22:06.263458+00:00",
+      "completed_at_taipei": "2026-10-24T06:22:06.263458+08:00",
+      "source_complete_frame": 805713,
+      "party_unchanged": true,
+      "capture_claimed": false
+    },
+    {
+      "species_name": "NIDORAN_M",
+      "level": 24,
+      "location": {
+        "map_id": 217,
+        "x": 9,
+        "y": 9
+      },
+      "balls_displayed_before_run": 30,
+      "ball_throw_actions": 0,
+      "intro_step": 13129,
+      "run_confirm_step": 13133,
+      "got_away_step": 13135,
+      "first_closed_step": 13136,
+      "source_complete_step": 13137,
+      "completed_at_utc": "2026-10-23T22:22:07.651676+00:00",
+      "completed_at_taipei": "2026-10-24T06:22:07.651676+08:00",
+      "source_complete_frame": 807833,
+      "party_unchanged": true,
+      "capture_claimed": false
+    },
+    {
+      "species_name": "NIDORAN_M",
+      "level": 24,
+      "location": {
+        "map_id": 217,
+        "x": 16,
+        "y": 3
+      },
+      "balls_displayed_before_run": 30,
+      "ball_throw_actions": 0,
+      "intro_step": 13171,
+      "run_confirm_step": 13175,
+      "got_away_step": 13177,
+      "first_closed_step": 13178,
+      "source_complete_step": 13179,
+      "completed_at_utc": "2026-10-23T22:22:08.730139+00:00",
+      "completed_at_taipei": "2026-10-24T06:22:08.730139+08:00",
+      "source_complete_frame": 809513,
+      "party_unchanged": true,
+      "capture_claimed": false
+    },
+    {
+      "species_name": "EXEGGCUTE",
+      "level": 23,
+      "location": {
+        "map_id": 217,
+        "x": 9,
+        "y": 3
+      },
+      "balls_displayed_before_run": 30,
+      "ball_throw_actions": 0,
+      "intro_step": 13196,
+      "run_confirm_step": 13200,
+      "got_away_step": 13202,
+      "first_closed_step": 13203,
+      "source_complete_step": 13204,
+      "completed_at_utc": "2026-10-23T22:22:09.338489+00:00",
+      "completed_at_taipei": "2026-10-24T06:22:09.338489+08:00",
+      "source_complete_frame": 810513,
+      "party_unchanged": true,
+      "capture_claimed": false
+    },
+    {
+      "species_name": "NIDORINO",
+      "level": 30,
+      "location": {
+        "map_id": 218,
+        "x": 24,
+        "y": 24
+      },
+      "balls_displayed_before_run": 30,
+      "ball_throw_actions": 0,
+      "intro_step": 13248,
+      "run_confirm_step": 13252,
+      "got_away_step": 13254,
+      "first_closed_step": 13255,
+      "source_complete_step": 13256,
+      "completed_at_utc": "2026-10-23T22:23:17.062490+00:00",
+      "completed_at_taipei": "2026-10-24T06:23:17.062490+08:00",
+      "source_complete_frame": 812593,
+      "party_unchanged": true,
+      "capture_claimed": false
+    },
+    {
+      "species_name": "NIDORAN_M",
+      "level": 22,
+      "location": {
+        "map_id": 218,
+        "x": 28,
+        "y": 5
+      },
+      "balls_displayed_before_run": 30,
+      "ball_throw_actions": 0,
+      "intro_step": 13322,
+      "run_confirm_step": 13326,
+      "got_away_step": 13328,
+      "first_closed_step": 13329,
+      "source_complete_step": 13330,
+      "completed_at_utc": "2026-10-23T22:23:19.046062+00:00",
+      "completed_at_taipei": "2026-10-24T06:23:19.046062+08:00",
+      "source_complete_frame": 815553,
+      "party_unchanged": true,
+      "capture_claimed": false
+    }
+  ],
+  "run_count": 7,
+  "normal_exit": {
+    "method": "walked remaining Safari step budget to native time-out, then native exit",
+    "native_pa_text_observed_steps": [
+      13646,
+      13647
+    ],
+    "landing": {
+      "map_id": 156,
+      "x": 4,
+      "y": 3
+    },
+    "final_source_signal": {
+      "read_valid": true,
+      "in_safari": false,
+      "game_over": false,
+      "steps": 0,
+      "balls": 0,
+      "gate_script": 0
+    },
+    "balls_note_zh_tw": "七場RUN選單均仍顯示30球，離園後0球為原生退園清理，不是投掉30球。"
+  },
+  "timing_delta": {
+    "source": "end review timing minus before-fee review timing",
+    "values": {
+      "wall_seconds": 2833.39,
+      "model_wait_seconds": 3.34,
+      "review_pause_seconds": 2805.328,
+      "non_review_session_seconds": 28.062,
+      "emulated_seconds": 622.534
+    },
+    "iso_wall_seconds": 2833.395244,
+    "note_zh_tw": "2833.390秒牆鐘含2805.328秒工程review暫停；非review session28.062秒仍包含模型及其他運行開銷。622.534秒為模擬時間；不是全遊戲通關耗時。"
+  },
+  "activity_counts": {
+    "coverage": "only explicit selected steps019..028, frame798913 through836225",
+    "first_step": 12914,
+    "last_step": 13782,
+    "action_records": 869,
+    "non_wait_action_records": 681,
+    "by_action": {
+      "wait": 188,
+      "up": 92,
+      "a": 67,
+      "left": 224,
+      "right": 201,
+      "down": 97
+    },
+    "passive_wait_records": 135,
+    "prediction_cache_hits": 726,
+    "uncached_laya_classifications": 8,
+    "uncached_raw_model_ms_sum": 2871.1633998318575,
+    "model_wait_timing_delta_seconds": 3.34,
+    "covered_emulated_frames": 37312,
+    "uncovered_start_interval": {
+      "frame_start_inclusive": 798873,
+      "frame_end_exclusive": 798913,
+      "emulated_frames": 40,
+      "emulated_seconds": 0.6666666666666666,
+      "action_count": null,
+      "note_zh_tw": "此40幀落在未授權讀取的更早steps檔；不推測動作或快取次數。"
+    },
+    "count_note_zh_tw": "按鍵數為已紀錄非wait動作筆數681，不表示作業系統鍵盤事件數；完整區間可能尚有未覆蓋動作。"
+  },
+  "classification": {
+    "backend": "local_offline_laya",
+    "raw_model_label": "laya-rl-agent",
+    "new_strata_api_calls": 0,
+    "strata_configuration_changed": false,
+    "gpt_gameplay_classification": false,
+    "cloud_fallback": false,
+    "evidence_scope_zh_tw": "8筆未命中快取的分類均標為laya-rl-agent；其餘為既有快取或被動等待。零新增Strata與無雲端fallback沿用父層本段執行契約，未以網路封包追蹤獨立驗證。"
+  },
+  "checkpoints": [
+    {
+      "id": "before_fee",
+      "evidence": {
+        "path": ".local/gym-reviewed-history/safari-paid-entry-20261024-review.json",
+        "sha256": "1543246fbdaf63b234c24c90929f7b7a46cd1e9324c8b2b1b1c3c166f131a498"
+      },
+      "at_utc": "2026-10-23T21:43:07.464216+00:00",
+      "at_taipei": "2026-10-24T05:43:07.464216+08:00",
+      "campaign_frame": 798873,
+      "location": {
+        "map_id": 156,
+        "x": 3,
+        "y": 4
+      },
+      "money": 41066,
+      "temporary_and_obtained_items": [],
+      "party_unchanged": true,
+      "got_hm03": false,
+      "got_hm04": false
+    },
+    {
+      "id": "after_gold_teeth",
+      "evidence": {
+        "path": ".local/gym-reviewed-history/safari-secret-hm03-20261024-review.json",
+        "sha256": "87b0e1791c15098c32f4b747711bfcc6173c0b67a4203dbca9adc913d67e5140"
+      },
+      "at_utc": "2026-10-23T22:23:21.626469+00:00",
+      "at_taipei": "2026-10-24T06:23:21.626469+08:00",
+      "campaign_frame": 818561,
+      "location": {
+        "map_id": 219,
+        "x": 19,
+        "y": 5
+      },
+      "money": 40566,
+      "temporary_and_obtained_items": [
+        {
+          "item": 64,
+          "quantity": 1
+        }
+      ],
+      "party_unchanged": true,
+      "got_hm03": false,
+      "got_hm04": false
+    },
+    {
+      "id": "after_hm03",
+      "evidence": {
+        "path": ".local/gym-reviewed-history/safari-normal-timeout-20261024-review.json",
+        "sha256": "2fd88868ca6c6852f1854dcf3ea5b0a4389d861b6a1b84f477c4974fc454dcd1"
+      },
+      "at_utc": "2026-10-23T22:24:08.003493+00:00",
+      "at_taipei": "2026-10-24T06:24:08.003493+08:00",
+      "campaign_frame": 820873,
+      "location": {
+        "map_id": 222,
+        "x": 2,
+        "y": 5
+      },
+      "money": 40566,
+      "temporary_and_obtained_items": [
+        {
+          "item": 64,
+          "quantity": 1
+        },
+        {
+          "item": 198,
+          "quantity": 1
+        }
+      ],
+      "party_unchanged": true,
+      "got_hm03": true,
+      "got_hm04": false
+    },
+    {
+      "id": "after_native_exit",
+      "evidence": {
+        "path": ".local/gym-reviewed-history/warden-hm04-20261024-review.json",
+        "sha256": "4fd72787f2e1f28b7522d59af93da5d5dc1d3f902a442f49c14827a84266872a"
+      },
+      "at_utc": "2026-10-23T22:28:43.420497+00:00",
+      "at_taipei": "2026-10-24T06:28:43.420497+08:00",
+      "campaign_frame": 829969,
+      "location": {
+        "map_id": 156,
+        "x": 4,
+        "y": 3
+      },
+      "money": 40566,
+      "temporary_and_obtained_items": [
+        {
+          "item": 64,
+          "quantity": 1
+        },
+        {
+          "item": 198,
+          "quantity": 1
+        }
+      ],
+      "party_unchanged": true,
+      "got_hm03": true,
+      "got_hm04": false
+    },
+    {
+      "id": "after_warden_hm04",
+      "evidence": {
+        "path": ".local/gym-reviewed-history/teach-surf-nidoking-20261024-review.json",
+        "sha256": "e4ef789773d574f321d65902db1d5a63b78a534c359f4176c8abd7ea73f64ab5"
+      },
+      "at_utc": "2026-10-23T22:30:20.859460+00:00",
+      "at_taipei": "2026-10-24T06:30:20.859460+08:00",
+      "campaign_frame": 836225,
+      "location": {
+        "map_id": 155,
+        "x": 4,
+        "y": 5
+      },
+      "money": 40566,
+      "temporary_and_obtained_items": [
+        {
+          "item": 198,
+          "quantity": 1
+        },
+        {
+          "item": 199,
+          "quantity": 1
+        }
+      ],
+      "party_unchanged": true,
+      "got_hm03": true,
+      "got_hm04": true
+    }
+  ],
+  "closed_proofs": [
+    {
+      "evidence": {
+        "path": "outputs/research/safari-entry-closed-proof-20261024.json",
+        "sha256": "986d500a4a6e49994e0abd4276736875a96aebbe58c3ff68c8de59f2055d1756"
+      },
+      "location": {
+        "map_id": 220,
+        "x": 15,
+        "y": 24
+      },
+      "proof_local_frame": 1,
+      "frame_scope": "independent closed-proof observation, not campaign global frame",
+      "overworld_ready": true,
+      "decoder_read_valid": true,
+      "alignment_verified": true,
+      "window_visible": false,
+      "visible_text_blank": true,
+      "party_unchanged": true,
+      "safari": null
+    },
+    {
+      "evidence": {
+        "path": "outputs/research/safari-hm03-closed-proof-20261024.json",
+        "sha256": "20fbb2d48d83fd05840e6453b788f62fc1e40ca0d14cf557fb86b23f63177f13"
+      },
+      "location": {
+        "map_id": 222,
+        "x": 2,
+        "y": 5
+      },
+      "proof_local_frame": 1,
+      "frame_scope": "independent closed-proof observation, not campaign global frame",
+      "overworld_ready": true,
+      "decoder_read_valid": true,
+      "alignment_verified": true,
+      "window_visible": false,
+      "visible_text_blank": true,
+      "party_unchanged": true,
+      "safari": {
+        "profile": "red-en-safari-source-v1",
+        "read_valid": true,
+        "observation_frame": 1,
+        "in_safari": true,
+        "game_over": false,
+        "steps": 203,
+        "balls": 30,
+        "gate_script": 3
+      }
+    },
+    {
+      "evidence": {
+        "path": "outputs/research/safari-native-exit-closed-proof-20261024.json",
+        "sha256": "95bceb1ac6161234a84242a34d79eeda62c8891be599850d8c8c5adae4863354"
+      },
+      "location": {
+        "map_id": 156,
+        "x": 4,
+        "y": 3
+      },
+      "proof_local_frame": 1,
+      "frame_scope": "independent closed-proof observation, not campaign global frame",
+      "overworld_ready": true,
+      "decoder_read_valid": true,
+      "alignment_verified": true,
+      "window_visible": false,
+      "visible_text_blank": true,
+      "party_unchanged": true,
+      "safari": {
+        "profile": "red-en-safari-source-v1",
+        "read_valid": true,
+        "observation_frame": 1,
+        "in_safari": false,
+        "game_over": false,
+        "steps": 0,
+        "balls": 0,
+        "gate_script": 0
+      }
+    },
+    {
+      "evidence": {
+        "path": "outputs/research/warden-hm04-closed-proof-20261024.json",
+        "sha256": "9832080c659bf79d72882047f802b1b5378f277344cd8ed79f3811c0dcb1293a"
+      },
+      "location": {
+        "map_id": 155,
+        "x": 4,
+        "y": 5
+      },
+      "proof_local_frame": 1,
+      "frame_scope": "independent closed-proof observation, not campaign global frame",
+      "overworld_ready": true,
+      "decoder_read_valid": true,
+      "alignment_verified": true,
+      "window_visible": false,
+      "visible_text_blank": true,
+      "party_unchanged": true,
+      "safari": {
+        "profile": "red-en-safari-source-v1",
+        "read_valid": true,
+        "observation_frame": 1,
+        "in_safari": false,
+        "game_over": false,
+        "steps": 0,
+        "balls": 0,
+        "gate_script": 0
+      }
+    }
+  ],
+  "keyframes": [
+    {
+      "kind": "map-220",
+      "at_utc": "2026-10-23T22:16:18.055038+00:00",
+      "location": {
+        "map_id": 220,
+        "x": 15,
+        "y": 25
+      },
+      "text": [],
+      "path": "outputs/league-campaign-20261024-23/game/keyframes/00079-map-220.png",
+      "sha256": "a747e4e5320367b91f695aa2f11ee81c0019b39f2ec642c9456e7233c917ac17"
+    },
+    {
+      "kind": "milestone-got_hm03",
+      "at_utc": "2026-10-23T22:24:07.839903+00:00",
+      "location": {
+        "map_id": 222,
+        "x": 2,
+        "y": 3
+      },
+      "text": [
+        " KEVIN received",
+        " HM03!"
+      ],
+      "path": "outputs/league-campaign-20261024-23/game/keyframes/00090-milestone-got_hm03.png",
+      "sha256": "6f519fdde9fbffb6e57f1480c12878559193a325bfcb7309208855176b3735e7"
+    },
+    {
+      "kind": "review-unexpected_map",
+      "at_utc": "2026-10-23T22:28:43.425544+00:00",
+      "location": {
+        "map_id": 156,
+        "x": 4,
+        "y": 3
+      },
+      "text": [],
+      "path": "outputs/league-campaign-20261024-23/game/keyframes/00092-review-unexpected_map.png",
+      "sha256": "27ff344c2f233b621ad69325edf81f78d2934be16ee596135af3ad6dfef287c1"
+    },
+    {
+      "kind": "milestone-got_hm04",
+      "at_utc": "2026-10-23T22:30:20.672189+00:00",
+      "location": {
+        "map_id": 155,
+        "x": 2,
+        "y": 4
+      },
+      "text": [
+        " KEVIN received",
+        " HM04!"
+      ],
+      "path": "outputs/league-campaign-20261024-23/game/keyframes/00095-milestone-got_hm04.png",
+      "sha256": "320fa9e56851bb5c33c505cf29fff0713dacc243d4d4c367b318a0708ff3877c"
+    }
+  ],
+  "evidence": {
+    "selected_step_logs": [
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-019.jsonl",
+        "selected_records": 17,
+        "selected_jsonl_bytes_sha256": "b5dff05dd7ef0f9c7d06a8e82fd02b0792487635f5d7071a4107363c2113619c",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 12914,
+        "last_step": 12930
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-020.jsonl",
+        "selected_records": 25,
+        "selected_jsonl_bytes_sha256": "fb13a207bb732df16074d487e28469e3d7879c26109697d0bffd6d6032931f73",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 12931,
+        "last_step": 12955
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-021.jsonl",
+        "selected_records": 18,
+        "selected_jsonl_bytes_sha256": "e20b98d52c4e06be81fd6f1bdc0ac887e39f52c31e9787f57a31821d18c0e418",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 12956,
+        "last_step": 12973
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-022.jsonl",
+        "selected_records": 24,
+        "selected_jsonl_bytes_sha256": "93e7e5bbbf117da0c3843c0bb7fad66bd565d7ffc9f5d8843adaccc2968648e7",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 12974,
+        "last_step": 12997
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-023.jsonl",
+        "selected_records": 55,
+        "selected_jsonl_bytes_sha256": "333458aed15a6dac8febe5a1175e6626589edb11c6d5b0d012097f3b0b9ac24b",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 12998,
+        "last_step": 13052
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-024.jsonl",
+        "selected_records": 168,
+        "selected_jsonl_bytes_sha256": "24b461e3b2140b9623cbe92bc7d4229e0348490ed1a73c131f14df9084851d07",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 13053,
+        "last_step": 13220
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-025.jsonl",
+        "selected_records": 221,
+        "selected_jsonl_bytes_sha256": "c1cb1bb038d738ff8e9687ac0359a4b587811d026c12a9d965cfce2e6e8e2eec",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 13221,
+        "last_step": 13441
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-026.jsonl",
+        "selected_records": 204,
+        "selected_jsonl_bytes_sha256": "ea3a672a2386e7fe69076050a31a86e23dad651a227d4d7b77d6cc89e925321f",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 13442,
+        "last_step": 13645
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-027.jsonl",
+        "selected_records": 11,
+        "selected_jsonl_bytes_sha256": "34fbfd265e6f20f2d94bf2aa982834a8e572005ca78432a1b64e710406b0c389",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 13646,
+        "last_step": 13656
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-028.jsonl",
+        "selected_records": 126,
+        "selected_jsonl_bytes_sha256": "368574b960e59e18fab3e4b5543f29c42af04ab3bf3a984f72a7b908bfe6b8eb",
+        "hash_scope": "only the selected original JSONL lines",
+        "frame_filter": {
+          "minimum_inclusive": 798873,
+          "maximum_exclusive": 836225
+        },
+        "first_step": 13657,
+        "last_step": 13782
+      }
+    ],
+    "milestones": {
+      "path": "outputs/league-campaign-20261024-23/game/milestones.jsonl",
+      "selected_records": 2,
+      "selected_jsonl_bytes_sha256": "201640c9785e2fea1985ee7a3a386be4ef28576e102c2e180595623193209388",
+      "hash_scope": "only the selected original JSONL lines",
+      "time_filter": {
+        "minimum_inclusive": "2026-10-23T21:43:07.464216+00:00",
+        "maximum_inclusive": "2026-10-23T22:30:20.859460+00:00"
+      }
+    },
+    "captures": {
+      "path": "outputs/league-campaign-20261024-23/game/captures.jsonl",
+      "selected_records": 21,
+      "selected_jsonl_bytes_sha256": "1d76dc507405f2a6aaac4367ac3eca66576ec9668af731607212ffac924c0a5f",
+      "hash_scope": "only the selected original JSONL lines",
+      "time_filter": {
+        "minimum_inclusive": "2026-10-23T21:43:07.464216+00:00",
+        "maximum_inclusive": "2026-10-23T22:30:20.859460+00:00"
+      }
+    },
+    "first_run_media": {
+      "path": "results/safari-first-run-clips-20261024.json",
+      "sha256": "48d5ae56bd1baab6bba173da9297dabd1ad9c3efa191fac9eda6e2b5dc853bb2"
+    },
+    "previous_koga_receipt": {
+      "path": "results/koga-gym-campaign-20261024.json",
+      "sha256": "8dd3fcc9b7ee309a453e68a19533e02f07580a5bd0d82ddebeac91487f2555d8"
+    }
+  },
+  "validation": {
+    "json_parse": true,
+    "single_fee_500": true,
+    "inventory_order_and_quantity": true,
+    "gold_received_then_returned": true,
+    "hms_each_one": true,
+    "full_party_equal": true,
+    "all_seven_runs_have_exact_menu_receipt_and_two_closed_observations": true,
+    "native_hm_received_keyframe_hashes_verified": true,
+    "normal_exit_flags_verified": true,
+    "no_new_capture": true,
+    "no_hm_teaching_in_scope": true
+  },
+  "league_completed": false,
+  "website_published": false,
+  "new_capture": false,
+  "hm_teaching_completed": false,
+  "new_field_move_use_completed": false,
+  "limits_zh_tw": [
+    "起訖review檔名代表下一個待辦，不能把檔名當成已完成教學；本段終點Nidoking仍有Tackle33。",
+    "里程碑時間是首次觀測旗標與原生received頁的時間，不是任意事件的絕對內部寫入瞬間。",
+    "Gold Teeth首次入袋依inventory紀錄；未宣稱已有完整拾取文字截圖。",
+    "完整起訖時間可由review計時器相減；動作日誌前40模擬幀未覆蓋，計數不假裝全段完整。",
+    "閉合proof中的frame1是獨立觀測編號，不與campaign全域frame混算。",
+    "此次無新收服、無HM教學或野外使用、無新聯盟完成、無網站發布。",
+    "不含ROM、存檔內容、私人完整路徑、主機名稱、模型端點或憑證；證據僅列本專案相對路徑與雜湊。"
+  ]
+}

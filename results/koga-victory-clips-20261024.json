@@ -1,0 +1,1692 @@
+{
+  "schema": "laya-closed-media-receipt-v1",
+  "updated_at_taipei": "2026-10-24T05:40:33.908905+08:00",
+  "title": "第五道館阿桔末戰：自爆造成雙方倒下，獲得SoulBadge與TM06",
+  "status": "離線成品已驗證並凍結，待父層獨立核對；影片留本機未上傳",
+  "run": "league-campaign-20261024-23",
+  "selection": {
+    "initial_highest_closed": 15,
+    "initial_current_not_opened": "video-016.mp4",
+    "highest_closed_at_video_read": 16,
+    "current_filename_seen_not_opened": "video-017.mp4",
+    "selected_at_utc": "2026-10-23T21:38:33.470991+00:00",
+    "manifest_sha256": "06f19527d11856eb0276012cec75aa3743dd5bf742ea484e2501785bdd2d1ca8",
+    "read_open_video": false,
+    "read_live_frame": false,
+    "source_segment": 16,
+    "source_local_frames_inclusive_exclusive": [
+      6630,
+      7558
+    ],
+    "source_global_frames_inclusive_exclusive": [
+      196458,
+      197386
+    ],
+    "selected_source_frames": 928,
+    "steps_in_selection": [
+      12673,
+      12703
+    ],
+    "internal_video_frames_removed": 0,
+    "scope": "只剪最後雙彈瓦斯交手至獎勵對話閉合，省略前面的道館戰鬥。"
+  },
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-016.mp4",
+      "sha256": "d5685b759711977fbf34d751773258d224471f9ca2abd424d1c113f01ea7bb1c",
+      "bytes": 2813369,
+      "frames": 7558,
+      "width": 480,
+      "height": 432,
+      "fps": 15.0,
+      "duration_seconds": 503.8666666666667,
+      "video_stream": "h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 43 kb/s, 15 fps, 15 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "segment": 16,
+      "closed_at_utc": "2026-10-23T21:38:13.593778+00:00",
+      "global_frame_start": 189828,
+      "global_frame_end_exclusive": 197386,
+      "steps_path": "outputs/league-campaign-20261024-23/game/steps-016.jsonl",
+      "steps_sha256": "978163637763fc8bad1659fb2cb66ec8ab78c585064be166ca2250b8a1c17130"
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-1x.mp4",
+      "sha256": "7195112b520cdf54ee1c515c9261ca05c710edc80907906adda013b225f7fc7f",
+      "bytes": 929500,
+      "frames": 1856,
+      "width": 480,
+      "height": 432,
+      "fps": 30.0,
+      "duration_seconds": 61.86666666666667,
+      "video_stream": "h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 119 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "speed": 1,
+      "topic": "koga-final-battle",
+      "encoding": "libx264 -preset medium -qp 0 -pix_fmt yuv420p",
+      "audio": false,
+      "speed_meaning": "模擬器影格時間"
+    },
+    {
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-4x.mp4",
+      "sha256": "45ee37bb82759f10f38b0183594bee0effdc6318b2a48cf235aa073f1fd30138",
+      "bytes": 535216,
+      "frames": 464,
+      "width": 480,
+      "height": 432,
+      "fps": 30.0,
+      "duration_seconds": 15.466666666666667,
+      "video_stream": "h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 275 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "speed": 4,
+      "topic": "koga-final-battle",
+      "encoding": "libx264 -preset medium -qp 0 -pix_fmt yuv420p",
+      "audio": false,
+      "speed_meaning": "後製四倍速"
+    }
+  ],
+  "screenshots": [
+    {
+      "topic": "koga-final-battle",
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-step12677-selfdestruct-nido51-weezing43.png",
+      "sha256": "0d01dd3568f667aa7c9f5530f0684e68b620d6f4bff0be45bcbbb1207f771076",
+      "bytes": 39617,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "3fde35105dc8e1641425ef940a3503fd321e803f9ea4d14f26a0e87c04c40641",
+      "png_rgb24_sha256": "3fde35105dc8e1641425ef940a3503fd321e803f9ea4d14f26a0e87c04c40641",
+      "source_segment": 16,
+      "source_frame_zero_based": 6715,
+      "global_video_frame_zero_based": 196543,
+      "source_emulator_frame": 786176,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 12677,
+        "at_utc": "2026-10-23T21:35:45.729271+00:00",
+        "at_taipei": "2026-10-24T05:35:45.729271+08:00",
+        "observed_emulator_frame": 786177,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          " WEEZING",
+          "     43",
+          "          NIDOKING",
+          "               36",
+          "            51/121",
+          " Enemy WEEZING",
+          " used SELFDESTRUCT!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "badge_count": 4,
+        "badges_observed": [
+          "boulder",
+          "cascade",
+          "thunder",
+          "rainbow"
+        ],
+        "badges_raw": 15,
+        "beat_koga": false,
+        "got_tm06": false,
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 157,
+          "x": 4,
+          "y": 11
+        },
+        "nidoking": {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 51,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            0,
+            35,
+            13,
+            35
+          ]
+        },
+        "other_party_alive_count": 4,
+        "tm06_quantity": 0
+      }
+    },
+    {
+      "topic": "koga-final-battle",
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-step12680-critical-hit-nido-zero.png",
+      "sha256": "4247068739f9a36e406e906ba55e5aa71439f0507e26c32df71c5f77cb55d0a8",
+      "bytes": 17597,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "33a1dbb5244a5ac5141af7b49b508cbdf454a54e23227632848dc08bddca4bf2",
+      "png_rgb24_sha256": "33a1dbb5244a5ac5141af7b49b508cbdf454a54e23227632848dc08bddca4bf2",
+      "source_segment": 16,
+      "source_frame_zero_based": 6811,
+      "global_video_frame_zero_based": 196639,
+      "source_emulator_frame": 786560,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 12680,
+        "at_utc": "2026-10-23T21:35:45.937361+00:00",
+        "at_taipei": "2026-10-24T05:35:45.937361+08:00",
+        "observed_emulator_frame": 786561,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          " WEEZING",
+          "     43",
+          "          NIDOKING",
+          "               36",
+          "             0/121",
+          " Critical hit!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "badge_count": 4,
+        "badges_observed": [
+          "boulder",
+          "cascade",
+          "thunder",
+          "rainbow"
+        ],
+        "badges_raw": 15,
+        "beat_koga": false,
+        "got_tm06": false,
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 157,
+          "x": 4,
+          "y": 11
+        },
+        "nidoking": {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 51,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            0,
+            35,
+            13,
+            35
+          ]
+        },
+        "other_party_alive_count": 4,
+        "tm06_quantity": 0
+      }
+    },
+    {
+      "topic": "koga-final-battle",
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-step12682-nidoking-fainted.png",
+      "sha256": "5fe26bf2612cadd8c75dce53f3ee48f622f119f6ad28f9de747fcccb225fe8fb",
+      "bytes": 10596,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "02e27f9b3975e70f660ea1b469a7096864387195f52cfa986dd93efb98ee3285",
+      "png_rgb24_sha256": "02e27f9b3975e70f660ea1b469a7096864387195f52cfa986dd93efb98ee3285",
+      "source_segment": 16,
+      "source_frame_zero_based": 6875,
+      "global_video_frame_zero_based": 196703,
+      "source_emulator_frame": 786816,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 12682,
+        "at_utc": "2026-10-23T21:35:46.068948+00:00",
+        "at_taipei": "2026-10-24T05:35:46.068948+08:00",
+        "observed_emulator_frame": 786817,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          " WEEZING",
+          "     43",
+          " NIDOKING",
+          " fainted!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "badge_count": 4,
+        "badges_observed": [
+          "boulder",
+          "cascade",
+          "thunder",
+          "rainbow"
+        ],
+        "badges_raw": 15,
+        "beat_koga": false,
+        "got_tm06": false,
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 157,
+          "x": 4,
+          "y": 11
+        },
+        "nidoking": {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 0,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            0,
+            35,
+            13,
+            35
+          ]
+        },
+        "other_party_alive_count": 4,
+        "tm06_quantity": 0
+      }
+    },
+    {
+      "topic": "koga-final-battle",
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-step12683-enemy-weezing-fainted.png",
+      "sha256": "6f05ae2334392666f8e05397dae2f9d22d20140f2bf92e888241fe5a21a79624",
+      "bytes": 9897,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "063c708d3f3f75848afc7f8e15e20887e23206187c744f178ae5a5b6b4d6c4da",
+      "png_rgb24_sha256": "063c708d3f3f75848afc7f8e15e20887e23206187c744f178ae5a5b6b4d6c4da",
+      "source_segment": 16,
+      "source_frame_zero_based": 6907,
+      "global_video_frame_zero_based": 196735,
+      "source_emulator_frame": 786944,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 12683,
+        "at_utc": "2026-10-23T21:35:46.122650+00:00",
+        "at_taipei": "2026-10-24T05:35:46.122650+08:00",
+        "observed_emulator_frame": 786945,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          " Enemy WEEZING",
+          " fainted!         ▼"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "badge_count": 4,
+        "badges_observed": [
+          "boulder",
+          "cascade",
+          "thunder",
+          "rainbow"
+        ],
+        "badges_raw": 15,
+        "beat_koga": false,
+        "got_tm06": false,
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 157,
+          "x": 4,
+          "y": 11
+        },
+        "nidoking": {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 0,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            0,
+            35,
+            13,
+            35
+          ]
+        },
+        "other_party_alive_count": 4,
+        "tm06_quantity": 0
+      }
+    },
+    {
+      "topic": "koga-final-battle",
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-step12684-kevin-defeated-koga.png",
+      "sha256": "ce7e2261337e351f7f25976838d794f5ee91e8899f9612d2c32977941351844b",
+      "bytes": 8397,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "ee4a9ab6d739b82724157204e03e5a90b5397ecb43f8628755f227ebff7efd78",
+      "png_rgb24_sha256": "ee4a9ab6d739b82724157204e03e5a90b5397ecb43f8628755f227ebff7efd78",
+      "source_segment": 16,
+      "source_frame_zero_based": 6939,
+      "global_video_frame_zero_based": 196767,
+      "source_emulator_frame": 787072,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 12684,
+        "at_utc": "2026-10-23T21:35:46.198210+00:00",
+        "at_taipei": "2026-10-24T05:35:46.198210+08:00",
+        "observed_emulator_frame": 787073,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          " KEVIN defeated",
+          " KOGA!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "badge_count": 4,
+        "badges_observed": [
+          "boulder",
+          "cascade",
+          "thunder",
+          "rainbow"
+        ],
+        "badges_raw": 15,
+        "beat_koga": false,
+        "got_tm06": false,
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 157,
+          "x": 4,
+          "y": 11
+        },
+        "nidoking": {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 0,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            0,
+            35,
+            13,
+            35
+          ]
+        },
+        "other_party_alive_count": 4,
+        "tm06_quantity": 0
+      }
+    },
+    {
+      "topic": "koga-final-battle",
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-step12688-soulbadge-visible.png",
+      "sha256": "4431d8e8ba0d999cd49ef53f2903e3256dc4388712c65b30003685bf581f7de5",
+      "bytes": 18505,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "7a9b051965b78dc68d899a71075b6b0f54bc504bb8dd1a30c8ab8a28241225f0",
+      "png_rgb24_sha256": "7a9b051965b78dc68d899a71075b6b0f54bc504bb8dd1a30c8ab8a28241225f0",
+      "source_segment": 16,
+      "source_frame_zero_based": 7067,
+      "global_video_frame_zero_based": 196895,
+      "source_emulator_frame": 787584,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 12688,
+        "at_utc": "2026-10-23T21:35:46.418537+00:00",
+        "at_taipei": "2026-10-24T05:35:46.418537+08:00",
+        "observed_emulator_frame": 787585,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          " Here! Take the",
+          " SOULBADGE!       ▼"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "badge_count": 4,
+        "badges_observed": [
+          "boulder",
+          "cascade",
+          "thunder",
+          "rainbow"
+        ],
+        "badges_raw": 15,
+        "beat_koga": false,
+        "got_tm06": false,
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 157,
+          "x": 4,
+          "y": 11
+        },
+        "nidoking": {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 0,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            0,
+            35,
+            13,
+            35
+          ]
+        },
+        "other_party_alive_count": 4,
+        "tm06_quantity": 0
+      }
+    },
+    {
+      "topic": "koga-final-battle",
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-step12699-tm06-received.png",
+      "sha256": "5497e07abcfed1d5b2dfb67cee8b9b59bc35e5ef02e76cf5a521059923291c77",
+      "bytes": 16924,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "8ec1cdc1b82ec7da32c9987807869189c0b78d575095ebef302f56a108fd5edc",
+      "png_rgb24_sha256": "8ec1cdc1b82ec7da32c9987807869189c0b78d575095ebef302f56a108fd5edc",
+      "source_segment": 16,
+      "source_frame_zero_based": 7419,
+      "global_video_frame_zero_based": 197247,
+      "source_emulator_frame": 788992,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 12699,
+        "at_utc": "2026-10-23T21:35:47.091525+00:00",
+        "at_taipei": "2026-10-24T05:35:47.091525+08:00",
+        "observed_emulator_frame": 788993,
+        "action": "a",
+        "phase": "dialogue",
+        "visible_text": [
+          " KEVIN received",
+          " TM06!            ▼"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "badge_count": 4,
+        "badges_observed": [
+          "boulder",
+          "cascade",
+          "thunder",
+          "rainbow"
+        ],
+        "badges_raw": 15,
+        "beat_koga": true,
+        "got_tm06": false,
+        "battle_kind": "none",
+        "location": {
+          "map_id": 157,
+          "x": 4,
+          "y": 11
+        },
+        "nidoking": {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 0,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            0,
+            35,
+            13,
+            35
+          ]
+        },
+        "other_party_alive_count": 4,
+        "tm06_quantity": 1
+      }
+    },
+    {
+      "topic": "koga-final-battle",
+      "path": "outputs/videos/koga-victory-20261024/koga-final-battle-step12703-closed-dialogue-badges-five.png",
+      "sha256": "cf54d869ed483636164d9b025a69a479022d1559f804acf149d49ff1729f0828",
+      "bytes": 20308,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "b5080297469cf9220324b4bd02a1c821d4773953d085598e72fd7315294058cd",
+      "png_rgb24_sha256": "b5080297469cf9220324b4bd02a1c821d4773953d085598e72fd7315294058cd",
+      "source_segment": 16,
+      "source_frame_zero_based": 7547,
+      "global_video_frame_zero_based": 197375,
+      "source_emulator_frame": 789504,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 12703,
+        "at_utc": "2026-10-23T21:38:13.526088+00:00",
+        "at_taipei": "2026-10-24T05:38:13.526088+08:00",
+        "observed_emulator_frame": 789505,
+        "action": "start",
+        "phase": "party_menu",
+        "visible_text": [],
+        "party_count": 5,
+        "party_read_valid": true,
+        "badge_count": 5,
+        "badges_observed": [
+          "boulder",
+          "cascade",
+          "thunder",
+          "rainbow",
+          "soul"
+        ],
+        "badges_raw": 31,
+        "beat_koga": true,
+        "got_tm06": true,
+        "battle_kind": "none",
+        "location": {
+          "map_id": 157,
+          "x": 4,
+          "y": 11
+        },
+        "nidoking": {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 0,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            0,
+            35,
+            13,
+            35
+          ]
+        },
+        "other_party_alive_count": 4,
+        "tm06_quantity": 1
+      }
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/koga-victory-20261024/qa-koga-final-battle.png",
+    "sha256": "3750ed11198636e20ea297956abc893e62a6b76c9570e326c77ac51e1c5af2c3",
+    "visually_inspected": true,
+    "purpose": "唯一加步驟文字的QA拼貼；正式PNG沒有加字、縮放或裁切。"
+  },
+  "events": [
+    {
+      "step": 12673,
+      "at_utc": "2026-10-23T21:35:45.528695+00:00",
+      "at_taipei": "2026-10-24T05:35:45.528695+08:00",
+      "observed_emulator_frame": 785841,
+      "action": "a",
+      "phase": "battle_menu",
+      "visible_text": [
+        " WEEZING",
+        "     43",
+        "          NIDOKING",
+        "               36",
+        "            51/121",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 51,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          14,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12674,
+      "at_utc": "2026-10-23T21:35:45.551865+00:00",
+      "at_taipei": "2026-10-24T05:35:45.551865+08:00",
+      "observed_emulator_frame": 785881,
+      "action": "a",
+      "phase": "battle_menu",
+      "visible_text": [
+        " WEEZING",
+        "     43",
+        "          NIDOKING",
+        "               36",
+        " TYPE/",
+        "  NORMAL    51/121",
+        "     14/25",
+        "      BUBBLEBEAM",
+        "      TACKLE",
+        "     ▶HORN ATTACK",
+        "      POISON STING"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 51,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          14,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12676,
+      "at_utc": "2026-10-23T21:35:45.674591+00:00",
+      "at_taipei": "2026-10-24T05:35:45.674591+08:00",
+      "observed_emulator_frame": 786049,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " WEEZING",
+        "     43",
+        "          NIDOKING",
+        "               36",
+        "            51/121",
+        " NIDOKING's",
+        " attack missed!   ▼"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 51,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12677,
+      "at_utc": "2026-10-23T21:35:45.729271+00:00",
+      "at_taipei": "2026-10-24T05:35:45.729271+08:00",
+      "observed_emulator_frame": 786177,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " WEEZING",
+        "     43",
+        "          NIDOKING",
+        "               36",
+        "            51/121",
+        " Enemy WEEZING",
+        " used SELFDESTRUCT!"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 51,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12679,
+      "at_utc": "2026-10-23T21:35:45.869618+00:00",
+      "at_taipei": "2026-10-24T05:35:45.869618+08:00",
+      "observed_emulator_frame": 786433,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " WEEZING",
+        "     43",
+        "          NIDOKING",
+        "               36",
+        "            38/121",
+        " Enemy WEEZING",
+        " used SELFDESTRUCT!"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 51,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12680,
+      "at_utc": "2026-10-23T21:35:45.937361+00:00",
+      "at_taipei": "2026-10-24T05:35:45.937361+08:00",
+      "observed_emulator_frame": 786561,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " WEEZING",
+        "     43",
+        "          NIDOKING",
+        "               36",
+        "             0/121",
+        " Critical hit!"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 51,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12681,
+      "at_utc": "2026-10-23T21:35:46.010573+00:00",
+      "at_taipei": "2026-10-24T05:35:46.010573+08:00",
+      "observed_emulator_frame": 786689,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " WEEZING",
+        "     43",
+        " NIDOKIN"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12682,
+      "at_utc": "2026-10-23T21:35:46.068948+00:00",
+      "at_taipei": "2026-10-24T05:35:46.068948+08:00",
+      "observed_emulator_frame": 786817,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " WEEZING",
+        "     43",
+        " NIDOKING",
+        " fainted!"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12683,
+      "at_utc": "2026-10-23T21:35:46.122650+00:00",
+      "at_taipei": "2026-10-24T05:35:46.122650+08:00",
+      "observed_emulator_frame": 786945,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " Enemy WEEZING",
+        " fainted!         ▼"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12684,
+      "at_utc": "2026-10-23T21:35:46.198210+00:00",
+      "at_taipei": "2026-10-24T05:35:46.198210+08:00",
+      "observed_emulator_frame": 787073,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " KEVIN defeated",
+        " KOGA!"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12688,
+      "at_utc": "2026-10-23T21:35:46.418537+00:00",
+      "at_taipei": "2026-10-24T05:35:46.418537+08:00",
+      "observed_emulator_frame": 787585,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " Here! Take the",
+        " SOULBADGE!       ▼"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12689,
+      "at_utc": "2026-10-23T21:35:46.469895+00:00",
+      "at_taipei": "2026-10-24T05:35:46.469895+08:00",
+      "observed_emulator_frame": 787713,
+      "action": "a",
+      "phase": "battle_dialogue",
+      "visible_text": [
+        " KEVIN got ¥4257",
+        " for winning!     ▼"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": false,
+      "got_tm06": false,
+      "battle_kind": "trainer",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 0
+    },
+    {
+      "step": 12698,
+      "at_utc": "2026-10-23T21:35:47.029525+00:00",
+      "at_taipei": "2026-10-24T05:35:47.029525+08:00",
+      "observed_emulator_frame": 788865,
+      "action": "a",
+      "phase": "dialogue",
+      "visible_text": [
+        " KEVIN received",
+        " TM06!"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": true,
+      "got_tm06": false,
+      "battle_kind": "none",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 1
+    },
+    {
+      "step": 12699,
+      "at_utc": "2026-10-23T21:35:47.091525+00:00",
+      "at_taipei": "2026-10-24T05:35:47.091525+08:00",
+      "observed_emulator_frame": 788993,
+      "action": "a",
+      "phase": "dialogue",
+      "visible_text": [
+        " KEVIN received",
+        " TM06!            ▼"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": true,
+      "got_tm06": false,
+      "battle_kind": "none",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 1
+    },
+    {
+      "step": 12700,
+      "at_utc": "2026-10-23T21:35:47.149814+00:00",
+      "at_taipei": "2026-10-24T05:35:47.149814+08:00",
+      "observed_emulator_frame": 789121,
+      "action": "a",
+      "phase": "dialogue",
+      "visible_text": [
+        " TM06 contains",
+        " TOXIC!"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": true,
+      "got_tm06": false,
+      "battle_kind": "none",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 1
+    },
+    {
+      "step": 12702,
+      "at_utc": "2026-10-23T21:35:47.282055+00:00",
+      "at_taipei": "2026-10-24T05:35:47.282055+08:00",
+      "observed_emulator_frame": 789377,
+      "action": "a",
+      "phase": "dialogue",
+      "visible_text": [
+        " technique over",
+        " 400 years old!"
+      ],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 4,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow"
+      ],
+      "badges_raw": 15,
+      "beat_koga": true,
+      "got_tm06": false,
+      "battle_kind": "none",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 1
+    },
+    {
+      "step": 12703,
+      "at_utc": "2026-10-23T21:38:13.526088+00:00",
+      "at_taipei": "2026-10-24T05:38:13.526088+08:00",
+      "observed_emulator_frame": 789505,
+      "action": "start",
+      "phase": "party_menu",
+      "visible_text": [],
+      "party_count": 5,
+      "party_read_valid": true,
+      "badge_count": 5,
+      "badges_observed": [
+        "boulder",
+        "cascade",
+        "thunder",
+        "rainbow",
+        "soul"
+      ],
+      "badges_raw": 31,
+      "beat_koga": true,
+      "got_tm06": true,
+      "battle_kind": "none",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "nidoking": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      "other_party_alive_count": 4,
+      "tm06_quantity": 1
+    }
+  ],
+  "outcome": {
+    "koga_defeated_visible_step": 12684,
+    "koga_defeated_at_taipei": "2026-10-24T05:35:46.198210+08:00",
+    "single_party_member_fainted": true,
+    "fainted_species": "NIDOKING",
+    "fainted_level": 36,
+    "other_four_party_members_alive": true,
+    "whole_party_defeated": false,
+    "badge_and_tm_closed_step": 12703,
+    "badge_and_tm_closed_at_taipei": "2026-10-24T05:38:13.526088+08:00",
+    "closed_badges_raw": 31,
+    "closed_badge_count": 5,
+    "closed_got_tm06": true,
+    "tm06_item": 206,
+    "tm06_quantity": 1,
+    "native_party_hp_lag": "12680畫面已0/121，進度隊伍暫仍51；12681起進度回寫0。以完整fainted頁與後續回寫交叉，不改原紀錄。",
+    "badge_flag_lag": "收取TM06頁已入袋，但got_tm06與徽章位元到對話閉合後12703才為true/31；沒有把早期false改成true。"
+  },
+  "closure_crosscheck": {
+    "path": "outputs/research/koga-closed-proof-20261024.json",
+    "sha256": "907fb13f3abfb06990252f7607b432e23718ff23deeb699c679bf3215e601b47",
+    "separate_readonly_proof": true,
+    "proof_frame": 1,
+    "location": {
+      "map_id": 157,
+      "x": 4,
+      "y": 11
+    },
+    "overworld_ready": true,
+    "text_empty": true,
+    "window_visible": false,
+    "badges_raw": 31,
+    "scope": "父層獨立閉合證據，非本次影片影格；不混用其frame1作遊戲全局frame。"
+  },
+  "timing_policy": {
+    "one_x": "模擬器影格時間，來源15fps轉輸出30fps逐格重複；不是牆鐘時間。",
+    "four_x": "後製四倍速，取來源偶數影格；不是模型推論效能證據。",
+    "engineering_review_gap": {
+      "from_step": 12702,
+      "to_step": 12703,
+      "wall_seconds": 146.244033,
+      "emulator_frames_delta": 128,
+      "emulator_seconds_delta": 2.1333333333333333,
+      "note": "此處牆鐘包含工程暫停；影片沒有等長靜止錄影，不可用片長當破關耗時。"
+    },
+    "original_phase_note": "12703原紀錄phase=party_menu、action=start，但抽出的前一模擬器frame實際為無對話道館；保留原值，並用PNG及獨立overworld proof交叉。"
+  },
+  "verification": {
+    "source_full_decode_frames": 7558,
+    "output_full_decode_frames": 2320,
+    "all_full_decode_xerror_exit": 0,
+    "all_stderr_empty": true,
+    "pixel_checks": [
+      {
+        "topic": "koga-final-battle",
+        "selected_source_frames": 928,
+        "output_1x_frames": 1856,
+        "output_4x_frames": 464,
+        "yuv420p_md5_each_frame_equal": true,
+        "one_x_rule": "output[2*i] == output[2*i+1] == source[i]",
+        "four_x_rule": "output[i] == source[2*i]",
+        "selected_source_framehash_sequence_sha256": "89f46ad69d83a8ffc7fb2bf0318b90dd72104f08e737a85b2a0868912df874c9",
+        "one_x_framehash_sequence_sha256": "684abf2593234d373f40ecd762c44f98bc72ff5a853d273f846479f50664f2f2",
+        "four_x_framehash_sequence_sha256": "18b86fd672712cccc21c3dabd5c2f8062893fbc01ee6e9a76444c3b60ff9198b"
+      }
+    ],
+    "all_formal_png_rgb_equal_source": true,
+    "source_and_output_sha256_rechecked": true,
+    "all_video_dimensions": [
+      480,
+      432
+    ],
+    "formal_png_dimensions": [
+      480,
+      432
+    ],
+    "audio": false,
+    "frame_mapping": "global_video_frame=observed_emulator_frame//4-1；影格比步驟觀測少1個模擬器frame。",
+    "cpu_policy": "逐次單一ffmpeg；decoder1、encoder2、filter/filter_complex2 threads。",
+    "web_browser_compatibility_tested": false
+  },
+  "limitations": [
+    "不是完整阿桔全隊戰；為最後一隻雙彈瓦斯至領獎閉合的連續片段。",
+    "尼多王明確倒下；不能稱無傷勝利，也不能把單隻倒下稱全隊敗北。",
+    "不含返回中心治療影片；不聲稱已完成第六館或聯盟。",
+    "原影片與私人原始輸出不上傳，Git僅可收整理metadata；本任務沒有提交、推送或網站發布。"
+  ],
+  "parent_review": {
+    "accepted": true,
+    "frozen_files_rehashed": 19,
+    "mismatches": 0,
+    "qa_images_viewed": 1,
+    "notes": "保留自爆會心、雙方倒下與原生勝利；父層另核閉合介面與中心恢復。"
+  }
+}

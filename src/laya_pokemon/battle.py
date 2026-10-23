@@ -35,6 +35,197 @@ FIXED_DAMAGE_SOURCES = {
     'constants/move_constants.asm#L90': 'e8ac9263abd68b85c1292893b7a55d0664005e52ffc832fe8f6abe2c9d48c74d',
 }
 _VISIBLE_PROFILE = 'gen1-visible-tile-text-candidates-v1-unvalidated'
+TRAINER_HALF_HP_PROFILE = 'red-en-trainer-half-hp-v1'
+_TRAINER_HALF_REASON = 'trainer_half_hp_support'
+
+
+def _trainer_half_review(reason):
+    return {'phase': 'strategy_review', 'objective': 'Wait.', 'available_actions': ['wait'],
+            'review_reason': 'trainer_half_hp_' + reason}
+
+
+def _trainer_half_rows(text):
+    rows=_fixed_damage_rows(text)
+    if rows is None:return None
+    if 'lines' in text or 'line_rows' in text:
+        raw=[''.join(row) for row in text['cells']]
+        selected=[(i,row.rstrip()) for i,row in enumerate(raw) if re.search(r'[A-Za-z0-9]{2,}',row)][:12]
+        if text.get('lines') != [row for _,row in selected] or text.get('line_rows') != [i for i,_ in selected]:
+            return None
+    return rows
+
+
+def _trainer_half_party_valid(party):
+    return (isinstance(party, (list, tuple)) and 1 <= len(party) <= 6
+            and all(_fixed_damage_mon_valid(m) and type(m.get('status')) is int
+                    and m['status'] in {*range(8),8,16,32,64} for m in party)
+            and len({m['species'] for m in party}) == len(party))
+
+
+def _trainer_half_score(mon, enemy):
+    from .team_strategy import effective_power
+    return max((effective_power(move, mon['species'], enemy) for move, pp in zip(mon['moves'], mon['pp'])
+                if pp & 63), default=0) * mon['level']
+
+
+def _trainer_half_support(mon, enemy):
+    return (mon['hp'] * 2 > mon['max_hp'] and mon['status'] == 0
+            and _trainer_half_score(mon, enemy) > 0)
+
+
+def _trainer_half_status(mon):
+    if mon['status']==0:return str(mon['level'])
+    return 'SLP' if mon['status']<8 else {8:'PSN',16:'BRN',32:'FRZ',64:'PAR'}[mon['status']]
+
+
+def _trainer_half_command_layout(rows):
+    cursors=[(x,y) for y,row in enumerate(rows) for x,c in enumerate(row) if c=='▶']
+    if len(cursors)!=1 or cursors[0] not in {(9,14),(15,14),(9,16),(15,16)}:
+        return False
+    expected=[[' ']*20 for _ in range(6)]
+    for x,y,label in ((10,14,'FIGHT'),(10,16,'ITEM'),(16,16,'RUN')):
+        expected[y-12][x:x+len(label)]=label
+    x,y=cursors[0];expected[y-12][x]='▶'
+    return rows[12:]==[''.join(row) for row in expected] and not any('▷' in row for row in rows)
+
+
+def _trainer_half_party_view(party,index,submenu=False,*,inactive=False):
+    """固定普通隊伍頁；保留原生一格level符號解碼空白，正常名字/HP/狀態可核。"""
+    from .team_strategy import species_key
+    cells=[[' ']*20 for _ in range(18)]
+    def put(x,y,value):cells[y][x:x+len(value)]=value
+    for i,mon in enumerate(party):
+        y=i*2;put(3,y,species_key(mon['species']))
+        put(13 if mon['level']==100 else 14,y,str(mon['level']))
+        status='SLP' if 0<mon['status']<8 else {0:'',8:'PSN',16:'BRN',32:'FRZ',64:'PAR'}[mon['status']]
+        put(17,y,status);put(13,y+1,f"{mon['hp']:3}/{mon['max_hp']:3}")
+    put(1,14,'CHOOSE A POKÉMON.');put(0,index*2+1,'▷' if submenu or inactive else '▶')
+    if submenu:
+        for y in range(11,18):cells[y][11:20]=[' ']*9
+        for y,label in ((12,'SWITCH'),(14,'STATS'),(16,'CANCEL')):put(13,y,label)
+        put(12,12,'▷' if inactive else '▶')
+    return [''.join(row) for row in cells]
+
+
+def _trainer_half_command(text, rows, party, health):
+    """只驗新1/3..1/2區間，不把reader opt-in當成UI證據或修改legacy策略。"""
+    from .team_strategy import reference, normalize, choose_damage_move
+    if not re.search(r'\b(?:FIGHT|ITEM|RUN)\b', ' '.join(rows[12:])):
+        return None
+    possible = (not _trainer_half_party_valid(party)
+                or any(m['hp'] * 3 > m['max_hp'] and m['hp'] * 2 <= m['max_hp'] for m in party)
+                or any(h['hp'] * 3 > h['max_hp'] and h['hp'] * 2 <= h['max_hp'] for h in health))
+    if not possible:
+        return None
+    if _trainer_half_rows(text) is None or not _trainer_half_party_valid(party):
+        return _trainer_half_review('command_or_party_unverified')
+    names = reference()['species']
+    enemies = [name for row in rows[:4] for name in names if normalize(row.strip()) == normalize(name)]
+    active = [m for row in rows[6:10] for m in party
+              if normalize(row.strip()) == normalize(next(k for k,v in names.items() if v['id']==m['species']))]
+    cursors = [(x,y) for y,row in enumerate(rows) for x,c in enumerate(row) if c=='▶']
+    if (len(enemies) != 1 or len(active) != 1 or len(health) != 1
+            or health[0] != {'hp':active[0]['hp'], 'max_hp':active[0]['max_hp']}
+            or active[0]['hp'] <= 0 or rows[8].strip()!=_trainer_half_status(active[0])
+            or any('▷' in row or '▼' in row for row in rows)
+            or (_label(rows,'FIGHT'),_label(rows,'ITEM'),_label(rows,'RUN')) != ((10,14),(10,16),(16,16))
+            or not _trainer_half_command_layout(rows)):
+        return _trainer_half_review('command_hud_or_identity_unverified')
+    current = active[0]
+    if not (current['hp'] * 3 > current['max_hp'] and current['hp'] * 2 <= current['max_hp']):
+        return None
+    # 全無攻擊PP仍由原有no-PP策略處理，這裡不改其優先序。
+    if choose_damage_move(current['species'],current['moves'],current['pp'],enemies[0]) is None:
+        return None
+    return {'active':current, 'enemy':enemies[0]}
+
+
+def _trainer_half_pending(text, battle_state, party):
+    """新reason沿正常PKMN/party/SWITCH；未知不落入legacy的對話A。"""
+    global _no_pp_switch
+    from .team_strategy import species_key, normalize
+    from .party_control import party_choice, selection
+    record = _no_pp_switch
+    rows = _trainer_half_rows(text)
+    if (rows is None or not _trainer_half_party_valid(party)
+            or tuple(m['species'] for m in party) != record['party_species']
+            or species_key(battle_state.get('opponent_species')) != record['enemy_species']):
+        return _trainer_half_review('pending_observation_or_enemy_changed')
+    target = [m for m in party if m['species'] == record['species']]
+    if len(target) != 1:
+        return _trainer_half_review('pending_target_ambiguous')
+    target = target[0]
+    party_view = all(normalize(rows[i*2][3:13]) == normalize(species_key(m['species']))
+                     for i,m in enumerate(party))
+    lower = ' '.join(' '.join(rows[12:]).split())
+    if not party_view:
+        active = [m for row in rows[6:10] for m in party
+                  if normalize(row.strip()) == normalize(species_key(m['species']))]
+        hp = [tuple(map(int,match.groups())) for row in rows[8:12]
+              if (match:=re.fullmatch(r'\s*(\d+)\s*/\s*(\d+)\s*',row[10:]))]
+        command = all(_label(rows,label) for label in ('FIGHT','ITEM','RUN'))
+        visible_enemies=[species_key(row.strip()) for row in rows[:4] if species_key(row.strip())]
+        if command and visible_enemies != [record['enemy_species']]:
+            return _trainer_half_review('pending_visible_enemy_changed')
+        if (record.get('switch_requested') and len(active)==1 and active[0]['species']==target['species']
+                and hp==[(target['hp'],target['max_hp'])] and target['hp']>0 and target['status']==0
+                and rows[8].strip()==_trainer_half_status(target)):
+            sent = [f'GO! {species_key(target["species"])}!',f'DO IT! {species_key(target["species"])}!',
+                    f"GET'M! {species_key(target['species'])}!"]
+            if command and _trainer_half_command_layout(rows) or lower in sent:
+                _no_pp_switch=None
+                return None
+        if command and not record.get('party_open_requested'):
+            checked = _trainer_half_command(text,rows,party,[{'hp':a,'max_hp':b} for a,b in hp])
+            if checked is None or 'review_reason' in checked or checked['enemy']!=record['enemy_species']:
+                return _trainer_half_review('pending_command_unverified')
+            if not _trainer_half_support(target,record['enemy_species']):
+                return _trainer_half_review('pending_support_unverified')
+            hint=_selection_hint(rows,(16,14),'command')
+            if hint['objective']=='Confirm the current selection.':record['party_open_requested']=True
+            return {**hint,'battle_tactic':'switch_pending_party','party_target_species':target['species']}
+        if record.get('switch_requested'):
+            name=species_key(record['active_species']); wanted=species_key(target['species'])
+            messages=[f'{name} ENOUGH! COME BACK!',f'{name} OK! COME BACK!',f'{name} GOOD! COME BACK!',
+                      f'{name} COME BACK!',f'GO! {wanted}!',f'DO IT! {wanted}!',f"GET'M! {wanted}!"]
+            if lower in messages:
+                return {'phase':'battle_dialogue','objective':'Confirm the current selection.',
+                        'available_actions':['a','wait'],'battle_tactic':'verified_switch_dialogue'}
+            if lower and not any(message.startswith(lower) for message in messages):
+                return _trainer_half_review('pending_ui_unverified')
+        elif not command:
+            return _trainer_half_review('pending_ui_unverified')
+    else:
+        if not _trainer_half_support(target,record['enemy_species']):
+            return _trainer_half_review('pending_support_unverified')
+        index=next(i for i,m in enumerate(party) if m['species']==target['species'])
+        markers=[(x,y,c) for y,row in enumerate(rows) for x,c in enumerate(row) if c in {'▶','▷','▼'}]
+        submenu=any('SWITCH' in row or 'STATS' in row or 'CANCEL' in row for row in rows[12:])
+        if submenu:
+            if rows != _trainer_half_party_view(party,index,True):
+                if not (record.get('switch_requested') and rows == _trainer_half_party_view(party,index,True,inactive=True)):
+                    return _trainer_half_review('pending_switch_menu_unverified')
+            elif not record.get('switch_requested'):
+                result=selection(rows,'SWITCH','battle_menu')
+                if not result:return _trainer_half_review('pending_switch_menu_unverified')
+                record['switch_requested']=True
+                return {**result,'battle_tactic':'switch_trainer_half_hp'}
+        elif (len(markers)==1 and markers[0][0]==0 and markers[0][1]%2==1
+              and markers[0][1]//2<len(party) and markers[0][2] in {'▶','▷'}):
+            cursor=markers[0][1]//2
+            if rows != _trainer_half_party_view(party,cursor,inactive=markers[0][2]=='▷'):
+                return _trainer_half_review('pending_party_menu_unverified')
+            if not record.get('member_selected') and markers[0][2]=='▶':
+                result=party_choice(rows,party,index)
+                if not result:return _trainer_half_review('pending_party_menu_unverified')
+                if result['objective']=='Confirm the current selection.':record['member_selected']=True
+                return {**result,'phase':'battle_menu','battle_tactic':'switch_trainer_half_hp'}
+        else:
+            return _trainer_half_review('pending_party_menu_unverified')
+    record['waits']=record.get('waits',0)+1
+    if record['waits']>25:return _trainer_half_review('pending_transition_wait_exhausted')
+    return {'phase':'battle_animation','objective':'Wait.','available_actions':['wait'],
+            'battle_tactic':'wait_trainer_half_hp_switch'}
 
 
 def _clear_fixed_damage_risk():
@@ -307,7 +498,7 @@ def read_battle_state(pyboy) -> dict:
                                          constants=sdk, reference_data=reference())
         ko_transition = read_ditto_ko_transition(pyboy, observation_frame=battle_frame,
                                                 constants=sdk, reference_data=reference())
-    return {"raw": raw, "active": raw in (1, 2) if raw in (0, 1, 2, 255) else None,
+    result = {"raw": raw, "active": raw in (1, 2) if raw in (0, 1, 2, 255) else None,
             "kind": {0: "none", 1: "wild", 2: "trainer", 255: "lost_transition"}.get(raw, "unknown"),
             "wild_opponent_species": opponent if raw==1 else None, "opponent_species":opponent,
             "observation_frame": battle_frame, "ditto_transform": transform,
@@ -316,6 +507,11 @@ def read_battle_state(pyboy) -> dict:
             "source": SOURCE, "victory_confirmed": None,
             "player_disabled_move": _read_player_disabled_move(pyboy) if raw in {1, 2}
                 else {'state': 'not_in_battle', 'valid': True}}
+    if raw == 2:
+        # 真實唯讀reader明確啟用；legacy合成呼叫不帶此欄仍維持原政策。
+        # 此marker不是UI／HP／敵人證據，battle_context仍須逐項驗證。
+        result['trainer_half_hp_profile'] = TRAINER_HALF_HP_PROFILE
+    return result
 
 
 def _label(rows, label):
@@ -410,6 +606,12 @@ def _ditto_ko_context(text, battle_state, party):
 def battle_context(text, battle_state, party=(), inventory=None, *, capture_focus=False) -> dict | None:
     """僅對已核對 ROM 的實驗性路線提供局部提示；不執行按鍵。"""
     global _no_pp_switch
+    half_opted = 'trainer_half_hp_profile' in battle_state
+    if half_opted and (battle_state.get('trainer_half_hp_profile') != TRAINER_HALF_HP_PROFILE
+                      or type(battle_state.get('raw')) is not int or battle_state['raw'] != 2
+                      or battle_state.get('active') is not True or battle_state.get('kind') != 'trainer'):
+        return _trainer_half_review('reader_contract_unverified')
+    if half_opted and not isinstance(text,dict):return _trainer_half_review('text_packet_unverified')
     observed_fixed_move = _observe_fixed_damage(text, battle_state)
     if battle_state.get("kind")=="lost_transition":
         return {"phase":"strategy_review","objective":"Wait.","available_actions":["wait","b"],"review_reason":"battle_loss_requires_review","battle_loss_confirmed":True,"phase_source":"read-only wIsInBattle LOST_BATTLE=255; save and review before continuing"}
@@ -434,10 +636,21 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
                     'observed_fixed_damage': dict(_fixed_damage_risk)}
         _fixed_damage_risk['unreadable_waits'] = 0
     if observed_fixed_move:
+        if _no_pp_switch and _no_pp_switch.get('reason') == _TRAINER_HALF_REASON:
+            _no_pp_switch=None  # 已觀測固定40傷害的原有保護優先接管。
         return {'phase': 'battle_dialogue', 'objective': 'Confirm the current selection.',
                 'available_actions': ['a', 'wait'], 'battle_tactic': 'observe_enemy_dragon_rage',
                 'observed_fixed_damage': dict(_fixed_damage_risk)}
+    if _no_pp_switch and _no_pp_switch.get('reason') == _TRAINER_HALF_REASON:
+        if not half_opted:
+            return _trainer_half_review('pending_reader_contract_missing')
+        pending = _trainer_half_pending(text,battle_state,party)
+        if pending is not None:
+            return pending
     cells = text.get("cells", [])
+    if half_opted and (not isinstance(cells,(list,tuple)) or len(cells)!=18
+                      or any(not isinstance(row,(str,list,tuple)) or len(row)!=20 for row in cells)):
+        return _trainer_half_review('text_cells_unverified')
     if len(cells) == 18 and all(len(row) == 20 for row in cells):
         rows = ["".join(row).upper() for row in cells]
         dialogue = " ".join(rows[12:])
@@ -462,6 +675,13 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
                     health.append({"hp": hp, "max_hp": maximum})
         retreat = (battle_state.get("kind") == "wild" and len(health) == 1
                    and health[0]["hp"] * 2 <= health[0]["max_hp"])
+        half_command = _trainer_half_command(text,rows,party,health) if half_opted and not _fixed_damage_risk else None
+        if half_command and 'review_reason' in half_command:
+            return half_command
+        if half_command:
+            from .team_strategy import species_key
+            if species_key(battle_state.get('opponent_species')) != half_command['enemy']:
+                return _trainer_half_review('actual_enemy_unverified')
         from .team_strategy import reference, normalize, species_key, move_key, choose_damage_move, capture_plan
         names = reference()["species"]
         party_form = len(party)>1 and all(species_key(mon["species"]) and any(normalize(species_key(mon["species"])) in normalize(row) for row in rows[:12]) for mon in party)
@@ -570,6 +790,21 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
                 target=max(candidates,key=lambda m:max((effective_power(move,m['species'],enemy) for move,pp in zip(m['moves'],m['pp']) if pp&63),default=0)*m.get('level',1))
                 _no_pp_switch={'species':target['species']}
                 result=_selection_hint(rows,(run[0],fight[1]),'command');result['battle_tactic']='switch_no_attack_pp';return result
+            if half_command:
+                current=half_command['active']
+                supports=[mon for mon in party if mon['species']!=current['species']
+                          and _trainer_half_support(mon,enemy)
+                          and _trainer_half_score(mon,enemy)>=_trainer_half_score(current,enemy)*.75]
+                target=max(supports,key=lambda mon:_trainer_half_score(mon,enemy),default=None)
+                if target is None:return _trainer_half_review('no_healthy_attacking_support')
+                _no_pp_switch={'species':target['species'],'reason':_TRAINER_HALF_REASON,
+                               'enemy_species':enemy,'active_species':current['species'],
+                               'party_species':tuple(mon['species'] for mon in party)}
+                result=_selection_hint(rows,(16,14),'command')
+                if result['objective']=='Confirm the current selection.':
+                    _no_pp_switch['party_open_requested']=True
+                return {**result,'battle_tactic':'switch_trainer_half_hp',
+                        'party_target_species':target['species'],'enemy_species':enemy}
             if capture["tactic"] == "review":
                 return {"phase": "strategy_review", "objective": "Wait.", "available_actions": ["wait", "b"],
                         "capture_plan": capture, "review_reason": capture["reason"]}

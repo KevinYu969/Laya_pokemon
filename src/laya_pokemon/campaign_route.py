@@ -1,5 +1,6 @@
 """可核對的正常遊戲行程；路線資料可熱更新，不寫遊戲記憶體。"""
 import importlib
+import json
 import time
 from . import party_control,balanced_training
 if 'waypoint' in globals():
@@ -13,6 +14,7 @@ _LAST_ATTEMPT=globals().get('_LAST_ATTEMPT')
 _FIELD_CONTROLLERS=globals().get('_FIELD_CONTROLLERS',{})
 _GYM_CONTROLLERS=globals().get('_GYM_CONTROLLERS',{})
 _SCRIPT_WAITS=globals().get('_SCRIPT_WAITS',{})
+_VIA_PROGRESS=globals().get('_VIA_PROGRESS',{})
 from . import field_moves as field_moves_module
 importlib.reload(field_moves_module)
 from . import gym_switches as gym_switches_module
@@ -22,6 +24,12 @@ importlib.reload(campaign_transactions)
 from . import capture_transaction
 importlib.reload(capture_transaction)
 from . import campaign_safety,capture_closing_gate
+from . import safari_entry
+importlib.reload(safari_entry)
+from . import hm_teaching_bridge
+importlib.reload(hm_teaching_bridge)
+from . import vending_bridge
+importlib.reload(vending_bridge)
 importlib.reload(campaign_safety)
 importlib.reload(capture_closing_gate)
 for controller in _GYM_CONTROLLERS.values():controller._last_now=None
@@ -53,6 +61,30 @@ def switch_context(pyboy,state,plan,step_id,previous):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if vending_bridge.applies(step_id,step):
+        if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
+                or safari_entry._RUN_CONTROLLER is not None
+                or set(hm_teaching_bridge._BINDINGS)-hm_teaching_bridge._COMPLETED
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())
+                or set(campaign_transactions._BINDINGS)-campaign_transactions._COMPLETED):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'vending_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return vending_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                      read_world_grid(pyboy,state['location']))
+    if hm_teaching_bridge.applies(step_id,step):
+        if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
+                or safari_entry._RUN_CONTROLLER is not None
+                or set(campaign_transactions._BINDINGS)-campaign_transactions._COMPLETED):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'hm_teaching_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return hm_teaching_bridge.context(state,plan,step_id,read_visible_text(pyboy),
+                                          read_world_grid(pyboy,state['location']))
+    if safari_entry.applies(step_id,step,state):
+        from .observation import read_visible_text
+        return safari_entry.field_context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                         read_world_grid(pyboy,state['location']))
     if capture_transaction.applies(step_id,step):
         from .observation import read_visible_text
         closing=capture_closing_gate.eligible(state,plan,step_id)
@@ -155,6 +187,25 @@ def coordinate_script_wait(state, step):
             'phase_source':'PokemonTower6F.asm:25-47；保留10,16，讓原生座標腳本啟動，不把到站當成戰勝。'}
 
 
+def _via_target(plan,step,position):
+    """只消費實際抵達的下一中繼點；暫停、戰鬥與熱載入不重設游標。"""
+    via=step.get('via',[])
+    if not via:return step.get('target',list(position))
+    # 工程解除的resume_revision與blocked修正不是新旅程；幾何或job改變才另建進度。
+    fields=('id','kind','map_id','target','via','next_map','terminal',
+            'event','item','badge','await_script_event','face','require_full_pp')
+    geometry=[{key:s[key] for key in fields if key in s} for s in plan['steps']]
+    canonical=lambda value:json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=True)
+    job=plan.get('training_job')
+    scope=('training_job',canonical(job)) if job not in (None,'',{},[]) else ('unscoped_route',)
+    key=(scope,canonical(geometry),step['id'])
+    following=_VIA_PROGRESS.get(key,0)
+    while following<len(via) and tuple(via[following])==position:
+        following+=1
+    _VIA_PROGRESS[key]=following
+    return via[following] if following<len(via) else step.get('target',list(position))
+
+
 def waypoint(pyboy,state,plan,step_id,previous):
     global _LAST_ATTEMPT
     steps=plan['steps'];ids=[s['id'] for s in steps]
@@ -195,12 +246,7 @@ def waypoint(pyboy,state,plan,step_id,previous):
         if satisfied(step,progress) or ('next_map' in step and mid==step['next_map']):index+=1;continue
         if mid!=step['map_id']:
             return {'phase':'campaign_review','review_reason':'unexpected_map','expected_map':step['map_id'],'route_step':step['id']},step['id']
-        target=step.get('target',[x,y])
-        via=[tuple(point) for point in step.get('via',[])]
-        if via:
-            position=(x,y)
-            following=via.index(position)+1 if position in via else 0
-            if following<len(via):target=via[following]
+        target=_via_target(plan,step,(x,y))
         target={'x':target[0],'y':target[1]}
         if 'await_script_event' in step and [x,y]==list(target.values()):
             return coordinate_script_wait(state,step),step['id']

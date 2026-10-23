@@ -1,0 +1,1538 @@
+{
+  "schema": "laya-closed-media-receipt-v1",
+  "updated_at_taipei": "2026-10-24T05:35:11.768741+08:00",
+  "title": "五人隊35級訓練期間的正常學招：鑽啄與泰山壓頂",
+  "status": "已封片離線製作並凍結，待父層獨立核對；沒有上傳影片",
+  "run": "league-campaign-20261024-23",
+  "closed_source_policy": {
+    "read_open_video": false,
+    "read_live_frame": false,
+    "used_segments": [
+      7,
+      12
+    ],
+    "initial_highest_closed": 11,
+    "initial_current_not_opened": "video-012.mp4",
+    "complete_highest_closed": 12,
+    "complete_current_not_opened": "video-013.mp4",
+    "complete_manifest_snapshot_sha256": "30e87392323e27c3ecb39e2477f895a56fc4597b4b1a0bea20aa0e3859dda7e6",
+    "complete_selection_at_utc": "2026-10-23T21:32:28.715831+00:00",
+    "snapshot_files": [
+      "outputs/videos/party35-moves-20261024/segments-selection-snapshot.json",
+      "outputs/videos/party35-moves-20261024/segments-complete-selection-snapshot.json"
+    ]
+  },
+  "timing_policy": {
+    "one_x": "依模擬器影格時間：來源15fps，輸出30fps每原影格重複兩次；不是牆鐘時間。",
+    "four_x": "後製四倍速，均勻取來源偶數影格；不是模型推論提速證據。",
+    "wall_time": "步驟UTC與台北時間列在events，只供事件對照；不可拿片長計算破關耗時。",
+    "engineering_pause": "工程暫停通常不推進模擬器影格，未錄入影片；不能據短片推算等待或全程速度。",
+    "edits": "兩主題各自連續裁切，沒有內部刪幀或跨段跳接；僅省略區間外的練等、移動與工程等待。"
+  },
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-007.mp4",
+      "sha256": "e59aa714b293ecfc2d5924bd9c1af17f815d97114524f78c3d8ee89c3ba7b97c",
+      "bytes": 19687886,
+      "frames": 21404,
+      "width": 480,
+      "height": 432,
+      "fps": 15.0,
+      "duration_seconds": 1426.9333333333334,
+      "video_stream": "h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 109 kb/s, 15 fps, 15 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "segment": 7,
+      "closed_at_utc": "2026-10-23T21:19:16.664335+00:00",
+      "global_frame_start": 76706,
+      "global_frame_end_exclusive": 98110,
+      "steps_path": "outputs/league-campaign-20261024-23/game/steps-007.jsonl",
+      "steps_sha256": "85a7a377487f5ee36d68eb5b49520332f3ed3fdb2a2e2c7e86c24b41e25ff2d5"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-012.mp4",
+      "sha256": "c1ee2f9bce62138b241142e2babf7d3c94167e183d559d8a00b06d7908d8461f",
+      "bytes": 15071985,
+      "frames": 15110,
+      "width": 480,
+      "height": 432,
+      "fps": 15.0,
+      "duration_seconds": 1007.3333333333334,
+      "video_stream": "h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 118 kb/s, 15 fps, 15 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "segment": 12,
+      "closed_at_utc": "2026-10-23T21:31:38.968657+00:00",
+      "global_frame_start": 166454,
+      "global_frame_end_exclusive": 181564,
+      "steps_path": "outputs/league-campaign-20261024-23/game/steps-012.jsonl",
+      "steps_sha256": "7b85189ffee04928efbcdba39f17b6c505f48d6eee2756aa469daabe35658658"
+    }
+  ],
+  "topics": [
+    {
+      "id": "fearow-drill-peck",
+      "title": "大嘴雀34級正常忘Growl並學會Drill Peck",
+      "parts": [
+        {
+          "segment": 7,
+          "start_frame": 18990,
+          "end_frame_exclusive": 19350
+        }
+      ],
+      "selection_snapshot": "outputs/videos/party35-moves-20261024/segments-selection-snapshot.json",
+      "source_steps_in_clip": [
+        6465,
+        6495
+      ],
+      "source_frame_start_inclusive": 18990,
+      "source_frame_end_exclusive": 19350,
+      "global_video_frame_start": 95696,
+      "global_video_frame_end_exclusive": 96056,
+      "selected_source_frames": 360,
+      "internal_video_frames_removed": 0,
+      "visible_sequence": [
+        "升34級",
+        "嘗試學DRILL PECK",
+        "DELETE選YES",
+        "選GROWL",
+        "Poof",
+        "FORGOT GROWL",
+        "And",
+        "LEARNED DRILL PECK",
+        "返回野外"
+      ],
+      "move_transaction": {
+        "before_step": 6483,
+        "after_step": 6495,
+        "learner_before": {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 34,
+          "hp": 105,
+          "max_hp": 105,
+          "exp": 39496,
+          "status": 64,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            33,
+            40,
+            30,
+            20
+          ]
+        },
+        "learner_after": {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 34,
+          "hp": 105,
+          "max_hp": 105,
+          "exp": 39496,
+          "status": 64,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            33,
+            20,
+            30,
+            20
+          ]
+        },
+        "other_four_party_members_unchanged": true,
+        "inventory_unchanged": true,
+        "only_moves_and_pp_changed_between_transaction_baselines": true
+      },
+      "events": [
+        {
+          "step": 6465,
+          "at_utc": "2026-10-23T21:19:08.323729+00:00",
+          "at_taipei": "2026-10-24T05:19:08.323729+08:00",
+          "observed_emulator_frame": 382817,
+          "action": "a",
+          "phase": "battle_dialogue",
+          "visible_text": [
+            "          FEAROW",
+            "               PAR",
+            "           105/105",
+            " FEAROW grew",
+            " to level 34!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 34,
+            "hp": 105,
+            "max_hp": 105,
+            "exp": 39496,
+            "status": 64,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              33,
+              40,
+              30,
+              20
+            ]
+          }
+        },
+        {
+          "step": 6469,
+          "at_utc": "2026-10-23T21:19:08.705532+00:00",
+          "at_taipei": "2026-10-24T05:19:08.705532+08:00",
+          "observed_emulator_frame": 383153,
+          "action": "a",
+          "phase": "learning_menu",
+          "visible_text": [
+            "          FEAROW",
+            "               PAR",
+            "           105/105",
+            " trying to learn",
+            " DRILL PECK!      ▼"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 34,
+            "hp": 105,
+            "max_hp": 105,
+            "exp": 39496,
+            "status": 64,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              33,
+              40,
+              30,
+              20
+            ]
+          }
+        },
+        {
+          "step": 6479,
+          "at_utc": "2026-10-23T21:19:08.905828+00:00",
+          "at_taipei": "2026-10-24T05:19:08.905828+08:00",
+          "observed_emulator_frame": 383553,
+          "action": "a",
+          "phase": "learning_menu",
+          "visible_text": [
+            "          FEAR",
+            "               ▶YES",
+            "           105  NO",
+            " move to make room",
+            " for DRILL PECK?"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 34,
+            "hp": 105,
+            "max_hp": 105,
+            "exp": 39496,
+            "status": 64,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              33,
+              40,
+              30,
+              20
+            ]
+          }
+        },
+        {
+          "step": 6483,
+          "at_utc": "2026-10-23T21:19:09.209906+00:00",
+          "at_taipei": "2026-10-24T05:19:09.209906+08:00",
+          "observed_emulator_frame": 383713,
+          "action": "a",
+          "phase": "learning_menu",
+          "visible_text": [
+            "      PECK",
+            "     ▶GROWL",
+            "      LEER",
+            "      FURY ATTACK",
+            " Which move should",
+            " be forgotten?"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 34,
+            "hp": 105,
+            "max_hp": 105,
+            "exp": 39496,
+            "status": 64,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              33,
+              40,
+              30,
+              20
+            ]
+          }
+        },
+        {
+          "step": 6488,
+          "at_utc": "2026-10-23T21:19:09.305588+00:00",
+          "at_taipei": "2026-10-24T05:19:09.305588+08:00",
+          "observed_emulator_frame": 383913,
+          "action": "a",
+          "phase": "learning_menu",
+          "visible_text": [
+            "          FEAROW",
+            "               PAR",
+            "           105/105",
+            " FEAROW forgot",
+            " GROWL!           ▼"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 34,
+            "hp": 105,
+            "max_hp": 105,
+            "exp": 39496,
+            "status": 64,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              33,
+              40,
+              30,
+              20
+            ]
+          }
+        },
+        {
+          "step": 6491,
+          "at_utc": "2026-10-23T21:19:09.388411+00:00",
+          "at_taipei": "2026-10-24T05:19:09.388411+08:00",
+          "observed_emulator_frame": 384033,
+          "action": "a",
+          "phase": "learning_menu",
+          "visible_text": [
+            "          FEAROW",
+            "               PAR",
+            "           105/105",
+            " FEAROW learned",
+            " DRILL PECK!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 34,
+            "hp": 105,
+            "max_hp": 105,
+            "exp": 39496,
+            "status": 64,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              33,
+              20,
+              30,
+              20
+            ]
+          }
+        },
+        {
+          "step": 6494,
+          "at_utc": "2026-10-23T21:19:09.447334+00:00",
+          "at_taipei": "2026-10-24T05:19:09.447334+08:00",
+          "observed_emulator_frame": 384153,
+          "action": "a",
+          "phase": "learning_menu",
+          "visible_text": [
+            "          FEAROW",
+            "               PAR",
+            "           105/105",
+            " FEAROW learned",
+            " DRILL PECK!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 34,
+            "hp": 105,
+            "max_hp": 105,
+            "exp": 39496,
+            "status": 64,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              33,
+              20,
+              30,
+              20
+            ]
+          }
+        },
+        {
+          "step": 6495,
+          "at_utc": "2026-10-23T21:19:09.468592+00:00",
+          "at_taipei": "2026-10-24T05:19:09.468592+08:00",
+          "observed_emulator_frame": 384193,
+          "action": "right",
+          "phase": "overworld",
+          "visible_text": [],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "none",
+          "learner": {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 34,
+            "hp": 105,
+            "max_hp": 105,
+            "exp": 39496,
+            "status": 64,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              33,
+              20,
+              30,
+              20
+            ]
+          }
+        }
+      ],
+      "claims_limit": "大嘴雀學招發生於34級，畫面仍有麻痺；不是全隊35級或中心全補畫面。"
+    },
+    {
+      "id": "snorlax-body-slam",
+      "title": "卡比獸35級自然在第四空槽學會Body Slam",
+      "parts": [
+        {
+          "segment": 12,
+          "start_frame": 13315,
+          "end_frame_exclusive": 13565
+        }
+      ],
+      "selection_snapshot": "outputs/videos/party35-moves-20261024/segments-complete-selection-snapshot.json",
+      "source_steps_in_clip": [
+        11777,
+        11785
+      ],
+      "source_frame_start_inclusive": 13315,
+      "source_frame_end_exclusive": 13565,
+      "global_video_frame_start": 179769,
+      "global_video_frame_end_exclusive": 180019,
+      "selected_source_frames": 250,
+      "internal_video_frames_removed": 0,
+      "visible_sequence": [
+        "Enemy DITTO fainted",
+        "獲得226 EXP",
+        "升35級",
+        "能力值頁",
+        "LEARNED BODY SLAM",
+        "返回野外"
+      ],
+      "move_transaction": {
+        "before_step": 11781,
+        "after_step": 11784,
+        "learner_before": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 35,
+          "hp": 155,
+          "max_hp": 168,
+          "exp": 53702,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            0
+          ],
+          "pp": [
+            6,
+            20,
+            10,
+            0
+          ]
+        },
+        "learner_after": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 35,
+          "hp": 155,
+          "max_hp": 168,
+          "exp": 53702,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            6,
+            20,
+            10,
+            15
+          ]
+        },
+        "other_four_party_members_unchanged": true,
+        "inventory_unchanged": true,
+        "only_moves_and_pp_changed_between_transaction_baselines": true
+      },
+      "events": [
+        {
+          "step": 11777,
+          "at_utc": "2026-10-23T21:25:02.497334+00:00",
+          "at_taipei": "2026-10-24T05:25:02.497334+08:00",
+          "observed_emulator_frame": 719113,
+          "action": "a",
+          "phase": "battle_dialogue",
+          "visible_text": [
+            "          SNORLAX",
+            "               34",
+            "           150/163",
+            " Enemy DITTO",
+            " fainted!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 34,
+            "hp": 150,
+            "max_hp": 163,
+            "exp": 53476,
+            "status": 0,
+            "moves": [
+              29,
+              133,
+              156,
+              0
+            ],
+            "pp": [
+              6,
+              20,
+              10,
+              0
+            ]
+          }
+        },
+        {
+          "step": 11779,
+          "at_utc": "2026-10-23T21:25:02.596792+00:00",
+          "at_taipei": "2026-10-24T05:25:02.596792+08:00",
+          "observed_emulator_frame": 719369,
+          "action": "a",
+          "phase": "battle_dialogue",
+          "visible_text": [
+            "          SNORLAX",
+            "               34",
+            "           150/163",
+            " SNORLAX gained",
+            " 226 EXP. Points!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 34,
+            "hp": 150,
+            "max_hp": 163,
+            "exp": 53702,
+            "status": 0,
+            "moves": [
+              29,
+              133,
+              156,
+              0
+            ],
+            "pp": [
+              6,
+              20,
+              10,
+              0
+            ]
+          }
+        },
+        {
+          "step": 11780,
+          "at_utc": "2026-10-23T21:25:02.662123+00:00",
+          "at_taipei": "2026-10-24T05:25:02.662123+08:00",
+          "observed_emulator_frame": 719497,
+          "action": "a",
+          "phase": "battle_dialogue",
+          "visible_text": [
+            "          SNORLAX",
+            "               35",
+            "           155/168",
+            " SNORLAX grew",
+            " to level 35!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 35,
+            "hp": 155,
+            "max_hp": 168,
+            "exp": 53702,
+            "status": 0,
+            "moves": [
+              29,
+              133,
+              156,
+              0
+            ],
+            "pp": [
+              6,
+              20,
+              10,
+              0
+            ]
+          }
+        },
+        {
+          "step": 11781,
+          "at_utc": "2026-10-23T21:25:02.730372+00:00",
+          "at_taipei": "2026-10-24T05:25:02.730372+08:00",
+          "observed_emulator_frame": 719625,
+          "action": "a",
+          "phase": "battle_dialogue",
+          "visible_text": [
+            "           ATTACK",
+            "                87",
+            "           DEFENSE",
+            "                58",
+            "           SPEED",
+            "                36",
+            "           SPECIAL",
+            "                63",
+            " SNORLAX grew",
+            " to level 35!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 35,
+            "hp": 155,
+            "max_hp": 168,
+            "exp": 53702,
+            "status": 0,
+            "moves": [
+              29,
+              133,
+              156,
+              0
+            ],
+            "pp": [
+              6,
+              20,
+              10,
+              0
+            ]
+          }
+        },
+        {
+          "step": 11782,
+          "at_utc": "2026-10-23T21:25:02.805463+00:00",
+          "at_taipei": "2026-10-24T05:25:02.805463+08:00",
+          "observed_emulator_frame": 719753,
+          "action": "a",
+          "phase": "battle_dialogue",
+          "visible_text": [
+            "          SNORLAX",
+            "               35",
+            "           155/168",
+            " SNORLAX learned",
+            " BODY SLAM!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 35,
+            "hp": 155,
+            "max_hp": 168,
+            "exp": 53702,
+            "status": 0,
+            "moves": [
+              29,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              6,
+              20,
+              10,
+              15
+            ]
+          }
+        },
+        {
+          "step": 11783,
+          "at_utc": "2026-10-23T21:25:02.849258+00:00",
+          "at_taipei": "2026-10-24T05:25:02.849258+08:00",
+          "observed_emulator_frame": 719881,
+          "action": "a",
+          "phase": "battle_dialogue",
+          "visible_text": [
+            "          SNORLAX",
+            "               35",
+            "           155/168",
+            " SNORLAX learned",
+            " BODY SLAM!"
+          ],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "wild",
+          "learner": {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 35,
+            "hp": 155,
+            "max_hp": 168,
+            "exp": 53702,
+            "status": 0,
+            "moves": [
+              29,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              6,
+              20,
+              10,
+              15
+            ]
+          }
+        },
+        {
+          "step": 11784,
+          "at_utc": "2026-10-23T21:25:02.879655+00:00",
+          "at_taipei": "2026-10-24T05:25:02.879655+08:00",
+          "observed_emulator_frame": 720009,
+          "action": "right",
+          "phase": "overworld",
+          "visible_text": [],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "none",
+          "learner": {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 35,
+            "hp": 155,
+            "max_hp": 168,
+            "exp": 53702,
+            "status": 0,
+            "moves": [
+              29,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              6,
+              20,
+              10,
+              15
+            ]
+          }
+        },
+        {
+          "step": 11785,
+          "at_utc": "2026-10-23T21:25:02.909709+00:00",
+          "at_taipei": "2026-10-24T05:25:02.909709+08:00",
+          "observed_emulator_frame": 720049,
+          "action": "left",
+          "phase": "overworld",
+          "visible_text": [],
+          "party_count": 5,
+          "party_read_valid": true,
+          "battle_kind": "none",
+          "learner": {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 35,
+            "hp": 155,
+            "max_hp": 168,
+            "exp": 53702,
+            "status": 0,
+            "moves": [
+              29,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              6,
+              20,
+              10,
+              15
+            ]
+          }
+        }
+      ],
+      "claims_limit": "35級自然補第四空槽，無忘招選單；首招PP仍6，並不是中心全補畫面。"
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/party35-moves-20261024/fearow-drill-peck-1x.mp4",
+      "sha256": "d8a5af90a1470a1085b48af0e86858aa81204188b559d61cf006d4384f277757",
+      "bytes": 387919,
+      "frames": 720,
+      "width": 480,
+      "height": 432,
+      "fps": 30.0,
+      "duration_seconds": 24.0,
+      "video_stream": "h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 128 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "speed": 1,
+      "topic": "fearow-drill-peck",
+      "encoding": "libx264 -preset medium -qp 0 -pix_fmt yuv420p",
+      "audio": false,
+      "speed_meaning": "模擬器影格時間"
+    },
+    {
+      "path": "outputs/videos/party35-moves-20261024/fearow-drill-peck-4x.mp4",
+      "sha256": "688ae8cd7f4682003d53d573b8032e4dd8a84f155bef04ab9dcce22b00d81d09",
+      "bytes": 322616,
+      "frames": 180,
+      "width": 480,
+      "height": 432,
+      "fps": 30.0,
+      "duration_seconds": 6.0,
+      "video_stream": "h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 428 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "speed": 4,
+      "topic": "fearow-drill-peck",
+      "encoding": "libx264 -preset medium -qp 0 -pix_fmt yuv420p",
+      "audio": false,
+      "speed_meaning": "後製四倍速"
+    },
+    {
+      "path": "outputs/videos/party35-moves-20261024/snorlax-body-slam-1x.mp4",
+      "sha256": "c6fe40b42d01500abd3dfa208c89c5a7dc2e86d3bd0a6926ae2a03aa484b5531",
+      "bytes": 428072,
+      "frames": 500,
+      "width": 480,
+      "height": 432,
+      "fps": 30.0,
+      "duration_seconds": 16.666666666666668,
+      "video_stream": "h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 204 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "speed": 1,
+      "topic": "snorlax-body-slam",
+      "encoding": "libx264 -preset medium -qp 0 -pix_fmt yuv420p",
+      "audio": false,
+      "speed_meaning": "模擬器影格時間"
+    },
+    {
+      "path": "outputs/videos/party35-moves-20261024/snorlax-body-slam-4x.mp4",
+      "sha256": "cbc9f907155dff0ea6e5f8fce60388aff28c2ea90acf9fe05cc1caf0347287eb",
+      "bytes": 323601,
+      "frames": 125,
+      "width": 480,
+      "height": 432,
+      "fps": 30.0,
+      "duration_seconds": 4.166666666666667,
+      "video_stream": "h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 618 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "full_decode_xerror_exit": 0,
+      "decoder_stderr": "",
+      "speed": 4,
+      "topic": "snorlax-body-slam",
+      "encoding": "libx264 -preset medium -qp 0 -pix_fmt yuv420p",
+      "audio": false,
+      "speed_meaning": "後製四倍速"
+    }
+  ],
+  "screenshots": [
+    {
+      "topic": "fearow-drill-peck",
+      "path": "outputs/videos/party35-moves-20261024/fearow-drill-peck-step6465-fearow-grew34.png",
+      "sha256": "8fde700b48a88e7d0ab24421957c784793d1a60be25df864e57709edb2921493",
+      "bytes": 15199,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "cdf5d5dbd20af1d5c6dc7fa51b5cd5b8664cd9a2d0d11f1b8abfad01ecd1e941",
+      "png_rgb24_sha256": "cdf5d5dbd20af1d5c6dc7fa51b5cd5b8664cd9a2d0d11f1b8abfad01ecd1e941",
+      "source_segment": 7,
+      "source_frame_zero_based": 18997,
+      "global_video_frame_zero_based": 95703,
+      "source_emulator_frame": 382816,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 6465,
+        "at_utc": "2026-10-23T21:19:08.323729+00:00",
+        "at_taipei": "2026-10-24T05:19:08.323729+08:00",
+        "observed_emulator_frame": 382817,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          "          FEAROW",
+          "               PAR",
+          "           105/105",
+          " FEAROW grew",
+          " to level 34!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 34,
+          "hp": 105,
+          "max_hp": 105,
+          "exp": 39496,
+          "status": 64,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            33,
+            40,
+            30,
+            20
+          ]
+        }
+      }
+    },
+    {
+      "topic": "fearow-drill-peck",
+      "path": "outputs/videos/party35-moves-20261024/fearow-drill-peck-step6469-trying-drill-peck-complete.png",
+      "sha256": "9a0e6bb7f371f99ae2cb906ac8b1af129be0f4ac2676c8fcf5ea5d307c7421f9",
+      "bytes": 16420,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "3ac034132122c767e14b84d9bac0952cc23ab1fccbb89e5f45ab2b6755021b28",
+      "png_rgb24_sha256": "3ac034132122c767e14b84d9bac0952cc23ab1fccbb89e5f45ab2b6755021b28",
+      "source_segment": 7,
+      "source_frame_zero_based": 19081,
+      "global_video_frame_zero_based": 95787,
+      "source_emulator_frame": 383152,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 6469,
+        "at_utc": "2026-10-23T21:19:08.705532+00:00",
+        "at_taipei": "2026-10-24T05:19:08.705532+08:00",
+        "observed_emulator_frame": 383153,
+        "action": "a",
+        "phase": "learning_menu",
+        "visible_text": [
+          "          FEAROW",
+          "               PAR",
+          "           105/105",
+          " trying to learn",
+          " DRILL PECK!      ▼"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 34,
+          "hp": 105,
+          "max_hp": 105,
+          "exp": 39496,
+          "status": 64,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            33,
+            40,
+            30,
+            20
+          ]
+        }
+      }
+    },
+    {
+      "topic": "fearow-drill-peck",
+      "path": "outputs/videos/party35-moves-20261024/fearow-drill-peck-step6479-delete-yes-confirm.png",
+      "sha256": "21176217f361f2b189b355ba7f1ec83588967e6523ca5ea74869741cc67656eb",
+      "bytes": 18483,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "81456d349dc37f4de81490c83a456db352b20aaee8780a451c018e65807e5e73",
+      "png_rgb24_sha256": "81456d349dc37f4de81490c83a456db352b20aaee8780a451c018e65807e5e73",
+      "source_segment": 7,
+      "source_frame_zero_based": 19181,
+      "global_video_frame_zero_based": 95887,
+      "source_emulator_frame": 383552,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 6479,
+        "at_utc": "2026-10-23T21:19:08.905828+00:00",
+        "at_taipei": "2026-10-24T05:19:08.905828+08:00",
+        "observed_emulator_frame": 383553,
+        "action": "a",
+        "phase": "learning_menu",
+        "visible_text": [
+          "          FEAR",
+          "               ▶YES",
+          "           105  NO",
+          " move to make room",
+          " for DRILL PECK?"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 34,
+          "hp": 105,
+          "max_hp": 105,
+          "exp": 39496,
+          "status": 64,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            33,
+            40,
+            30,
+            20
+          ]
+        }
+      }
+    },
+    {
+      "topic": "fearow-drill-peck",
+      "path": "outputs/videos/party35-moves-20261024/fearow-drill-peck-step6483-growl-selected.png",
+      "sha256": "4a266141362e4d72f1f4a1f8156591ac66a6af2bc92515147f7d23f2b0d3af45",
+      "bytes": 18785,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "699e728652e69153155e4254cbf14232b64fec9b302d04f7d270f3b8c5d3da2e",
+      "png_rgb24_sha256": "699e728652e69153155e4254cbf14232b64fec9b302d04f7d270f3b8c5d3da2e",
+      "source_segment": 7,
+      "source_frame_zero_based": 19221,
+      "global_video_frame_zero_based": 95927,
+      "source_emulator_frame": 383712,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 6483,
+        "at_utc": "2026-10-23T21:19:09.209906+00:00",
+        "at_taipei": "2026-10-24T05:19:09.209906+08:00",
+        "observed_emulator_frame": 383713,
+        "action": "a",
+        "phase": "learning_menu",
+        "visible_text": [
+          "      PECK",
+          "     ▶GROWL",
+          "      LEER",
+          "      FURY ATTACK",
+          " Which move should",
+          " be forgotten?"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 34,
+          "hp": 105,
+          "max_hp": 105,
+          "exp": 39496,
+          "status": 64,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            33,
+            40,
+            30,
+            20
+          ]
+        }
+      }
+    },
+    {
+      "topic": "fearow-drill-peck",
+      "path": "outputs/videos/party35-moves-20261024/fearow-drill-peck-step6488-forgot-growl-complete.png",
+      "sha256": "bc69decd671cb4570c0316898ddb6b667ecd089f0b7d8ccee358d7c9b46dfcf3",
+      "bytes": 17719,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "ad3bb6fa462ba9ba9163a1e341222e109374f28228c4a4052b2ee010af23b877",
+      "png_rgb24_sha256": "ad3bb6fa462ba9ba9163a1e341222e109374f28228c4a4052b2ee010af23b877",
+      "source_segment": 7,
+      "source_frame_zero_based": 19271,
+      "global_video_frame_zero_based": 95977,
+      "source_emulator_frame": 383912,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 6488,
+        "at_utc": "2026-10-23T21:19:09.305588+00:00",
+        "at_taipei": "2026-10-24T05:19:09.305588+08:00",
+        "observed_emulator_frame": 383913,
+        "action": "a",
+        "phase": "learning_menu",
+        "visible_text": [
+          "          FEAROW",
+          "               PAR",
+          "           105/105",
+          " FEAROW forgot",
+          " GROWL!           ▼"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 34,
+          "hp": 105,
+          "max_hp": 105,
+          "exp": 39496,
+          "status": 64,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            33,
+            40,
+            30,
+            20
+          ]
+        }
+      }
+    },
+    {
+      "topic": "fearow-drill-peck",
+      "path": "outputs/videos/party35-moves-20261024/fearow-drill-peck-step6494-learned-drill-peck-complete.png",
+      "sha256": "cdf198deb0fb77834d4e6d1938abca6876cd49e638f4cff229efb0aebb16f710",
+      "bytes": 17069,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "b41bd68a1405fc4c2a4f9df6d8c46b71d1f46d63b04c6e814372a82cdf1e79f0",
+      "png_rgb24_sha256": "b41bd68a1405fc4c2a4f9df6d8c46b71d1f46d63b04c6e814372a82cdf1e79f0",
+      "source_segment": 7,
+      "source_frame_zero_based": 19331,
+      "global_video_frame_zero_based": 96037,
+      "source_emulator_frame": 384152,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 6494,
+        "at_utc": "2026-10-23T21:19:09.447334+00:00",
+        "at_taipei": "2026-10-24T05:19:09.447334+08:00",
+        "observed_emulator_frame": 384153,
+        "action": "a",
+        "phase": "learning_menu",
+        "visible_text": [
+          "          FEAROW",
+          "               PAR",
+          "           105/105",
+          " FEAROW learned",
+          " DRILL PECK!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 34,
+          "hp": 105,
+          "max_hp": 105,
+          "exp": 39496,
+          "status": 64,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            33,
+            20,
+            30,
+            20
+          ]
+        }
+      }
+    },
+    {
+      "topic": "snorlax-body-slam",
+      "path": "outputs/videos/party35-moves-20261024/snorlax-body-slam-step11779-snorlax-exp226.png",
+      "sha256": "d55c50165cfab1562efe0b12846336bf56dc578938a7f2595bb81c3f5bfff308",
+      "bytes": 15756,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "60eb9b29fc5dc9378fbcfd8274f536cda63abcdefefc3085653c6615118dcc99",
+      "png_rgb24_sha256": "60eb9b29fc5dc9378fbcfd8274f536cda63abcdefefc3085653c6615118dcc99",
+      "source_segment": 12,
+      "source_frame_zero_based": 13387,
+      "global_video_frame_zero_based": 179841,
+      "source_emulator_frame": 719368,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 11779,
+        "at_utc": "2026-10-23T21:25:02.596792+00:00",
+        "at_taipei": "2026-10-24T05:25:02.596792+08:00",
+        "observed_emulator_frame": 719369,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          "          SNORLAX",
+          "               34",
+          "           150/163",
+          " SNORLAX gained",
+          " 226 EXP. Points!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 34,
+          "hp": 150,
+          "max_hp": 163,
+          "exp": 53702,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            0
+          ],
+          "pp": [
+            6,
+            20,
+            10,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "topic": "snorlax-body-slam",
+      "path": "outputs/videos/party35-moves-20261024/snorlax-body-slam-step11780-snorlax-grew35.png",
+      "sha256": "1071cbe8a6350cf70e9d56314ae76e794cce612e9897f17c45f3b7a5d2a4e180",
+      "bytes": 15359,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "fdf1eadae0ac831469fcf931c283a9205db49a18af7d695139775467d57474ed",
+      "png_rgb24_sha256": "fdf1eadae0ac831469fcf931c283a9205db49a18af7d695139775467d57474ed",
+      "source_segment": 12,
+      "source_frame_zero_based": 13419,
+      "global_video_frame_zero_based": 179873,
+      "source_emulator_frame": 719496,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 11780,
+        "at_utc": "2026-10-23T21:25:02.662123+00:00",
+        "at_taipei": "2026-10-24T05:25:02.662123+08:00",
+        "observed_emulator_frame": 719497,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          "          SNORLAX",
+          "               35",
+          "           155/168",
+          " SNORLAX grew",
+          " to level 35!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 35,
+          "hp": 155,
+          "max_hp": 168,
+          "exp": 53702,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            0
+          ],
+          "pp": [
+            6,
+            20,
+            10,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "topic": "snorlax-body-slam",
+      "path": "outputs/videos/party35-moves-20261024/snorlax-body-slam-step11783-learned-body-slam-complete.png",
+      "sha256": "2353df50ddd2d3d75d14fbc1d9bed87e3977b5ee1e20d397af2fa78baa29527b",
+      "bytes": 16025,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "24dfb70ffe7cdeded11318fcacc280619330b357815af15ab523f9eb9e98103d",
+      "png_rgb24_sha256": "24dfb70ffe7cdeded11318fcacc280619330b357815af15ab523f9eb9e98103d",
+      "source_segment": 12,
+      "source_frame_zero_based": 13515,
+      "global_video_frame_zero_based": 179969,
+      "source_emulator_frame": 719880,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 11783,
+        "at_utc": "2026-10-23T21:25:02.849258+00:00",
+        "at_taipei": "2026-10-24T05:25:02.849258+08:00",
+        "observed_emulator_frame": 719881,
+        "action": "a",
+        "phase": "battle_dialogue",
+        "visible_text": [
+          "          SNORLAX",
+          "               35",
+          "           155/168",
+          " SNORLAX learned",
+          " BODY SLAM!"
+        ],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "wild",
+        "learner": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 35,
+          "hp": 155,
+          "max_hp": 168,
+          "exp": 53702,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            6,
+            20,
+            10,
+            15
+          ]
+        }
+      }
+    },
+    {
+      "topic": "snorlax-body-slam",
+      "path": "outputs/videos/party35-moves-20261024/snorlax-body-slam-step11784-normal-overworld-after-learning.png",
+      "sha256": "fc0d1a163c530608d029cf959fce47f73e0a675ae7055bbb44c9ace425bc1d89",
+      "bytes": 84005,
+      "width": 480,
+      "height": 432,
+      "source_rgb24_sha256": "c2ab7f551f37ef55127cb57bbcb5b0d1c009b1eff2bcb10143937bc225023a94",
+      "png_rgb24_sha256": "c2ab7f551f37ef55127cb57bbcb5b0d1c009b1eff2bcb10143937bc225023a94",
+      "source_segment": 12,
+      "source_frame_zero_based": 13547,
+      "global_video_frame_zero_based": 180001,
+      "source_emulator_frame": 720008,
+      "observation_offset_frames": -1,
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 11784,
+        "at_utc": "2026-10-23T21:25:02.879655+00:00",
+        "at_taipei": "2026-10-24T05:25:02.879655+08:00",
+        "observed_emulator_frame": 720009,
+        "action": "right",
+        "phase": "overworld",
+        "visible_text": [],
+        "party_count": 5,
+        "party_read_valid": true,
+        "battle_kind": "none",
+        "learner": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 35,
+          "hp": 155,
+          "max_hp": 168,
+          "exp": 53702,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            6,
+            20,
+            10,
+            15
+          ]
+        }
+      }
+    }
+  ],
+  "qa_sheets": [
+    {
+      "path": "outputs/videos/party35-moves-20261024/qa-fearow-drill-peck.png",
+      "sha256": "491f5d5c6ad3a6295aba25413e0c61d1cfea1fa3282436503aa58966d38847b1",
+      "purpose": "拼貼檢視表，僅此檢視表另加步驟標籤；正式PNG沒有加字或改像素。",
+      "visually_inspected": true
+    },
+    {
+      "path": "outputs/videos/party35-moves-20261024/qa-snorlax-body-slam.png",
+      "sha256": "abe370b15416bc388c56ec617cb33e4d977a425803de7dd73164b2ce465116ec",
+      "purpose": "拼貼檢視表，僅此檢視表另加步驟標籤；正式PNG沒有加字或改像素。",
+      "visually_inspected": true
+    }
+  ],
+  "verification": {
+    "source_decode_frames_total": 36514,
+    "output_decode_frames_total": 1525,
+    "selected_source_frames_total": 610,
+    "all_source_and_output_full_decode_xerror_exit": 0,
+    "pixel_checks": [
+      {
+        "topic": "fearow-drill-peck",
+        "selected_source_frames": 360,
+        "output_1x_frames": 720,
+        "output_4x_frames": 180,
+        "yuv420p_md5_each_frame_equal": true,
+        "one_x_rule": "output[2*i] == output[2*i+1] == source[i]",
+        "four_x_rule": "output[i] == source[2*i]",
+        "selected_source_framehash_sequence_sha256": "1d9160c2e52cbf80d9b68c969f75179feb9bc89dc11c12a84955d18f577a21b0",
+        "one_x_framehash_sequence_sha256": "f95abbf318836659fa8225aaee6a9eb3b7d9d75153c5003f408cb134908ef9cf",
+        "four_x_framehash_sequence_sha256": "27bba8a4714e773549f81e5d26f175fe82ff2dc301dc36fcea588b990c1aca7f"
+      },
+      {
+        "topic": "snorlax-body-slam",
+        "selected_source_frames": 250,
+        "output_1x_frames": 500,
+        "output_4x_frames": 125,
+        "yuv420p_md5_each_frame_equal": true,
+        "one_x_rule": "output[2*i] == output[2*i+1] == source[i]",
+        "four_x_rule": "output[i] == source[2*i]",
+        "selected_source_framehash_sequence_sha256": "6bb9c54de874649d51b42687dab89998f852aa1e643a4fc709834e3c15b43da6",
+        "one_x_framehash_sequence_sha256": "faf4bab004926dbf8a30670711ba3fd27fb162f6807faf452edeb63414c56dfa",
+        "four_x_framehash_sequence_sha256": "c52c57afadcd9bb9ef618e6a87963ac8461e095bc8b57ccada0bad2862fc5345"
+      }
+    ],
+    "all_formal_png_rgb_equal_source": true,
+    "screenshots_unmodified_size": [
+      480,
+      432
+    ],
+    "source_and_output_sha256_rechecked_after_build": true,
+    "source_frames_per_step_mapping": "global_video_frame=observed_emulator_frame//4-1；抽到的原影片影格比觀測少1個模擬器frame。",
+    "cpu_policy": "逐次單一ffmpeg；decoder threads1、encoder threads2、filter/filter_complex threads2。",
+    "audio": false,
+    "web_browser_playback_compatibility_tested": false
+  },
+  "scope": "只有正常學招素材；不含全隊35級中心全補鏡頭，不以此聲稱第五道館或聯盟已通關。影片與私人原始輸出留本機，公開項目僅整理過的此JSON。",
+  "parent_review": {
+    "accepted": true,
+    "frozen_files_rehashed": 25,
+    "mismatches": 0,
+    "qa_images_viewed": 2,
+    "notes": "父層獨立重算來源與成品雜湊、檢視兩主題QA，未宣稱片長等於牆鐘。"
+  }
+}

@@ -1,0 +1,1282 @@
+{
+  "schema": "laya-hm-teaching-clips-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "title": "尼多王學衝浪、卡比獸學怪力：真實選單操作與關閉驗收",
+  "campaign_receipt": {
+    "path": "results/hm-teaching-campaign-20261024.json",
+    "sha256": "de97168e1903f37dbfb9a47c40106fbcf7ec9f99089680151b319476caf4e8c1"
+  },
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-028.mp4",
+      "sha256": "c74d3d19c30fa9db8528034eeb595ff4c3239769934fbe5318aaf97979363310",
+      "closure": {
+        "at": "2026-10-23T22:34:51.824181+00:00",
+        "segment": 28,
+        "timing": {
+          "wall_seconds": 5763.328,
+          "model_wait_seconds": 79.18,
+          "review_pause_seconds": 5240.736,
+          "non_review_session_seconds": 522.592,
+          "emulated_seconds": 13937.733
+        },
+        "video": {
+          "filename": "video-028.mp4",
+          "fps": 15,
+          "frames": 1534,
+          "playback_seconds": 102.26666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "241d963954dafd40ff204e3e6375a1df9f0fc91a236b9dd6e948ba71e1cfb97b",
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "102.266667",
+          "nb_frames": "1534",
+          "nb_read_frames": "1534"
+        },
+        "duration_seconds": 102.266667
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 1534,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-source-028.framemd5",
+        "sha256": "e00ae77732362c71bf19805adcdfd2f2d9aa492409e76bd8d4ad56f37a399fbe"
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-029.mp4",
+      "sha256": "7e159ca356bc4558e40d90eab939e1a1f8eed09f02592b5e5971b3742d4985ac",
+      "closure": {
+        "at": "2026-10-23T22:38:38.039147+00:00",
+        "segment": 29,
+        "timing": {
+          "wall_seconds": 5989.531,
+          "model_wait_seconds": 79.68,
+          "review_pause_seconds": 5466.158,
+          "non_review_session_seconds": 523.373,
+          "emulated_seconds": 13941.067
+        },
+        "video": {
+          "filename": "video-029.mp4",
+          "fps": 15,
+          "frames": 50,
+          "playback_seconds": 3.3333333333333335,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "05bccb6d5c8a6772058694da24aafb3efbde9affdbb82d13dee1af3f23774aca",
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "3.333333",
+          "nb_frames": "50",
+          "nb_read_frames": "50"
+        },
+        "duration_seconds": 3.333333
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 50,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-source-029.framemd5",
+        "sha256": "d8cf6b6677e096b2784c76f7171536d476d1640530839456abfab2fe49b6c390"
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-030.mp4",
+      "sha256": "2bb7d2e11ec483c3870d8168ad674d6e79f848a54b4c39516ae521f66796a4b9",
+      "closure": {
+        "at": "2026-10-23T22:44:30.653287+00:00",
+        "segment": 30,
+        "timing": {
+          "wall_seconds": 6342.156,
+          "model_wait_seconds": 79.695,
+          "review_pause_seconds": 5817.471,
+          "non_review_session_seconds": 524.685,
+          "emulated_seconds": 13972.4
+        },
+        "video": {
+          "filename": "video-030.mp4",
+          "fps": 15,
+          "frames": 470,
+          "playback_seconds": 31.333333333333332,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "207cc53c2c3183d662b07859bbc3fd03e2b85ebcb6ad1ae0a651c7a1cf147017",
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "31.333333",
+          "nb_frames": "470",
+          "nb_read_frames": "470"
+        },
+        "duration_seconds": 31.333333
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 470,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-source-030.framemd5",
+        "sha256": "679bbe897bbf0c370f38aa094d40ca9538ce21bb9c80364d579aab691f8dd89f"
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-031.mp4",
+      "sha256": "3aabd7ba73b9c87550f708183a454a1e703dd171a15ad3f561f1cb2c6b323681",
+      "closure": {
+        "at": "2026-10-23T22:47:10.058325+00:00",
+        "segment": 31,
+        "timing": {
+          "wall_seconds": 6501.562,
+          "model_wait_seconds": 79.711,
+          "review_pause_seconds": 5976.175,
+          "non_review_session_seconds": 525.387,
+          "emulated_seconds": 13987.067
+        },
+        "video": {
+          "filename": "video-031.mp4",
+          "fps": 15,
+          "frames": 220,
+          "playback_seconds": 14.666666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "0d2e3894c9cc49a3583c4106996107bc249a7f1eac698d40373d641155a13438",
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "14.666667",
+          "nb_frames": "220",
+          "nb_read_frames": "220"
+        },
+        "duration_seconds": 14.666667
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 220,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-source-031.framemd5",
+        "sha256": "538a5e6e9b8ce6eb633d3f4379294f060ea9c908c3d13357a0b0f5d5ac31940e"
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-032.mp4",
+      "sha256": "4d4a9055c3e1a71455b0f54bf589136545adfaa3a24a78efcfb7a875a1650f68",
+      "closure": {
+        "at": "2026-10-23T22:52:41.533867+00:00",
+        "segment": 32,
+        "timing": {
+          "wall_seconds": 6833.031,
+          "model_wait_seconds": 79.711,
+          "review_pause_seconds": 6306.582,
+          "non_review_session_seconds": 526.449,
+          "emulated_seconds": 14011.067
+        },
+        "video": {
+          "filename": "video-032.mp4",
+          "fps": 15,
+          "frames": 360,
+          "playback_seconds": 24.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "cfcca8b407b14555589c6ddd5daaf97285a702846dd299189dc2709f186d477d",
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "24.000000",
+          "nb_frames": "360",
+          "nb_read_frames": "360"
+        },
+        "duration_seconds": 24.0
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 360,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-source-032.framemd5",
+        "sha256": "df37550189fe3246d00cd15915b3f4a9c3e4e8550d541689272986aa624ea2f7"
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-033.mp4",
+      "sha256": "36e8fc0229a5257ca2b3b33cdcb184b20d0fc00aca7edf15dfeb2c5b0a8ce25c",
+      "closure": {
+        "at": "2026-10-23T22:54:13.893359+00:00",
+        "segment": 33,
+        "timing": {
+          "wall_seconds": 6925.391,
+          "model_wait_seconds": 79.711,
+          "review_pause_seconds": 6398.707,
+          "non_review_session_seconds": 526.684,
+          "emulated_seconds": 14013.067
+        },
+        "video": {
+          "filename": "video-033.mp4",
+          "fps": 15,
+          "frames": 30,
+          "playback_seconds": 2.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "491c0b2465800d5084a63125fc6e4125b6828d663e68f6dedd9954d0661e648f",
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "2.000000",
+          "nb_frames": "30",
+          "nb_read_frames": "30"
+        },
+        "duration_seconds": 2.0
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 30,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-source-033.framemd5",
+        "sha256": "05b804c27fac5ffa3ce6028a5b536aefc1cb1fa1fa8d8035f7a4413c265f736d"
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-034.mp4",
+      "sha256": "8de2341d26798268e4e9e06f6f996cb0a81b24268c24ceec6823add1f40e1775",
+      "closure": {
+        "at": "2026-10-23T22:55:54.733099+00:00",
+        "segment": 34,
+        "timing": {
+          "wall_seconds": 7026.234,
+          "model_wait_seconds": 79.93,
+          "review_pause_seconds": 6499.019,
+          "non_review_session_seconds": 527.215,
+          "emulated_seconds": 14017.067
+        },
+        "video": {
+          "filename": "video-034.mp4",
+          "fps": 15,
+          "frames": 60,
+          "playback_seconds": 4.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "c000b30154b4e4a88fc9651eb492790ce63bbe84cbcd0e343c64a03bc58b1c33",
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "4.000000",
+          "nb_frames": "60",
+          "nb_read_frames": "60"
+        },
+        "duration_seconds": 4.0
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 60,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-source-034.framemd5",
+        "sha256": "bb1116f8057d166d6a36d8b04f315fdf59063c6cb0f6d66ea600dfa50ba5dede"
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-035.mp4",
+      "sha256": "a401f7f951c975147e2bb7f1a48da358ead7c6ec7d9725341912792f0d99ba00",
+      "closure": {
+        "at": "2026-10-23T22:59:48.113645+00:00",
+        "segment": 35,
+        "timing": {
+          "wall_seconds": 7259.609,
+          "model_wait_seconds": 80.195,
+          "review_pause_seconds": 6730.753,
+          "non_review_session_seconds": 528.856,
+          "emulated_seconds": 14049.733
+        },
+        "video": {
+          "filename": "video-035.mp4",
+          "fps": 15,
+          "frames": 490,
+          "playback_seconds": 32.666666666666664,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "a1f73ad6185a56334837a1873a94791698daafe1d625e4b703d2765f96a67568",
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "32.666667",
+          "nb_frames": "490",
+          "nb_read_frames": "490"
+        },
+        "duration_seconds": 32.666667
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 490,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-source-035.framemd5",
+        "sha256": "c1e82954aa33b614a7f72b6dd9db5994ee6da1abf000450ca02a02215d5b2815"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "kind": "surf",
+      "path": "outputs/videos/hm-teaching-20261024/surf-teaching-emulated-1x.mp4",
+      "sha256": "eb28a578a354ed99a3fabd5d2c5ede8d2e3a294edebc189c807169407d3f3487",
+      "speed": 1,
+      "speed_label": "1x original emulated-time recording",
+      "playback_seconds": 79.333333,
+      "expected_seconds": 79.33333333333333,
+      "frames": 1190,
+      "source_spans": [
+        {
+          "source_segment": 28,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-028.mp4",
+          "source_frame_start_inclusive": 1524,
+          "source_frame_end_exclusive": 1534,
+          "source_seconds": [
+            101.6,
+            102.26666666666667
+          ],
+          "relative_emulated_frame_interval": [
+            6096,
+            6136
+          ],
+          "source_steps": [
+            13783,
+            13783
+          ],
+          "first_action_at_utc": "2026-10-23T22:34:51.747040+00:00",
+          "last_action_at_utc": "2026-10-23T22:34:51.747040+00:00",
+          "campaign_frames": [
+            836225,
+            836265
+          ]
+        },
+        {
+          "source_segment": 29,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-029.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 50,
+          "source_seconds": [
+            0.0,
+            3.3333333333333335
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            200
+          ],
+          "source_steps": [
+            13784,
+            13788
+          ],
+          "first_action_at_utc": "2026-10-23T22:34:52.115181+00:00",
+          "last_action_at_utc": "2026-10-23T22:38:37.969799+00:00",
+          "campaign_frames": [
+            836265,
+            836465
+          ]
+        },
+        {
+          "source_segment": 30,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-030.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 470,
+          "source_seconds": [
+            0.0,
+            31.333333333333332
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            1880
+          ],
+          "source_steps": [
+            13789,
+            13835
+          ],
+          "first_action_at_utc": "2026-10-23T22:38:38.092332+00:00",
+          "last_action_at_utc": "2026-10-23T22:44:30.579548+00:00",
+          "campaign_frames": [
+            836465,
+            838345
+          ]
+        },
+        {
+          "source_segment": 31,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-031.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 220,
+          "source_seconds": [
+            0.0,
+            14.666666666666666
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            880
+          ],
+          "source_steps": [
+            13836,
+            13857
+          ],
+          "first_action_at_utc": "2026-10-23T22:44:30.703447+00:00",
+          "last_action_at_utc": "2026-10-23T22:47:09.991409+00:00",
+          "campaign_frames": [
+            838345,
+            839225
+          ]
+        },
+        {
+          "source_segment": 32,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-032.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 360,
+          "source_seconds": [
+            0.0,
+            24.0
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            1440
+          ],
+          "source_steps": [
+            13858,
+            13893
+          ],
+          "first_action_at_utc": "2026-10-23T22:47:10.110608+00:00",
+          "last_action_at_utc": "2026-10-23T22:52:41.459914+00:00",
+          "campaign_frames": [
+            839225,
+            840665
+          ]
+        },
+        {
+          "source_segment": 33,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-033.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 30,
+          "source_seconds": [
+            0.0,
+            2.0
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            120
+          ],
+          "source_steps": [
+            13894,
+            13896
+          ],
+          "first_action_at_utc": "2026-10-23T22:52:41.585258+00:00",
+          "last_action_at_utc": "2026-10-23T22:54:13.827336+00:00",
+          "campaign_frames": [
+            840665,
+            840785
+          ]
+        },
+        {
+          "source_segment": 34,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-034.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 50,
+          "source_seconds": [
+            0.0,
+            3.3333333333333335
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            200
+          ],
+          "source_steps": [
+            13897,
+            13901
+          ],
+          "first_action_at_utc": "2026-10-23T22:54:14.163372+00:00",
+          "last_action_at_utc": "2026-10-23T22:54:14.256735+00:00",
+          "campaign_frames": [
+            840785,
+            840985
+          ]
+        }
+      ],
+      "source_steps": [
+        13783,
+        13901
+      ],
+      "full_decode_verified": true,
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "79.333333",
+          "nb_frames": "1190",
+          "nb_read_frames": "1190"
+        },
+        "duration_seconds": 79.333333
+      },
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-surf-1x.framemd5",
+        "sha256": "f7c2fd7dad15959cc923853febf4f1e0740d758ba6e435df8fdd56c72a830925"
+      },
+      "verification": {
+        "raw_source_selection_frame_md5_matches": 1190,
+        "one_x_source_all_frame_ssim": {
+          "compared_frames": 1190,
+          "minimum": 0.999168,
+          "mean": 0.9997886294117612,
+          "evidence": {
+            "path": "outputs/videos/hm-teaching-20261024/qa-surf-ssim.log",
+            "sha256": "b48e70c13e8c44a275d275655867a1af5496578e0ea5755678bd626f5c7ed3a9"
+          }
+        },
+        "post4x_decoded_frames_exactly_equal_to_1x": true,
+        "frame_order_reference": {
+          "path": "outputs/videos/hm-teaching-20261024/qa-surf-source-concat.framemd5",
+          "sha256": "d03b4ee895187f5c9b50bdf03445608078242e345c128a71651cc41afa24d944"
+        }
+      },
+      "continuous_wall_recording_claimed": false,
+      "sequence_note_zh_tw": "跨已封閉錄影段按ledger原序串接，保留所有本段模擬幀；工程暫停本來未錄入，不宣稱牆鐘連續。"
+    },
+    {
+      "kind": "surf",
+      "path": "outputs/videos/hm-teaching-20261024/surf-teaching-post4x.mp4",
+      "sha256": "df223bc55df5d88b887c29fed6697a05c337c10c908be550aea6048443f65bd6",
+      "speed": 4,
+      "speed_label": "post-production 4x; packet timestamps and durations divided by 4",
+      "playback_seconds": 19.833333,
+      "expected_seconds": 19.833333333333332,
+      "frames": 1190,
+      "source_spans": [
+        {
+          "source_segment": 28,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-028.mp4",
+          "source_frame_start_inclusive": 1524,
+          "source_frame_end_exclusive": 1534,
+          "source_seconds": [
+            101.6,
+            102.26666666666667
+          ],
+          "relative_emulated_frame_interval": [
+            6096,
+            6136
+          ],
+          "source_steps": [
+            13783,
+            13783
+          ],
+          "first_action_at_utc": "2026-10-23T22:34:51.747040+00:00",
+          "last_action_at_utc": "2026-10-23T22:34:51.747040+00:00",
+          "campaign_frames": [
+            836225,
+            836265
+          ]
+        },
+        {
+          "source_segment": 29,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-029.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 50,
+          "source_seconds": [
+            0.0,
+            3.3333333333333335
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            200
+          ],
+          "source_steps": [
+            13784,
+            13788
+          ],
+          "first_action_at_utc": "2026-10-23T22:34:52.115181+00:00",
+          "last_action_at_utc": "2026-10-23T22:38:37.969799+00:00",
+          "campaign_frames": [
+            836265,
+            836465
+          ]
+        },
+        {
+          "source_segment": 30,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-030.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 470,
+          "source_seconds": [
+            0.0,
+            31.333333333333332
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            1880
+          ],
+          "source_steps": [
+            13789,
+            13835
+          ],
+          "first_action_at_utc": "2026-10-23T22:38:38.092332+00:00",
+          "last_action_at_utc": "2026-10-23T22:44:30.579548+00:00",
+          "campaign_frames": [
+            836465,
+            838345
+          ]
+        },
+        {
+          "source_segment": 31,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-031.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 220,
+          "source_seconds": [
+            0.0,
+            14.666666666666666
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            880
+          ],
+          "source_steps": [
+            13836,
+            13857
+          ],
+          "first_action_at_utc": "2026-10-23T22:44:30.703447+00:00",
+          "last_action_at_utc": "2026-10-23T22:47:09.991409+00:00",
+          "campaign_frames": [
+            838345,
+            839225
+          ]
+        },
+        {
+          "source_segment": 32,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-032.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 360,
+          "source_seconds": [
+            0.0,
+            24.0
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            1440
+          ],
+          "source_steps": [
+            13858,
+            13893
+          ],
+          "first_action_at_utc": "2026-10-23T22:47:10.110608+00:00",
+          "last_action_at_utc": "2026-10-23T22:52:41.459914+00:00",
+          "campaign_frames": [
+            839225,
+            840665
+          ]
+        },
+        {
+          "source_segment": 33,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-033.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 30,
+          "source_seconds": [
+            0.0,
+            2.0
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            120
+          ],
+          "source_steps": [
+            13894,
+            13896
+          ],
+          "first_action_at_utc": "2026-10-23T22:52:41.585258+00:00",
+          "last_action_at_utc": "2026-10-23T22:54:13.827336+00:00",
+          "campaign_frames": [
+            840665,
+            840785
+          ]
+        },
+        {
+          "source_segment": 34,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-034.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 50,
+          "source_seconds": [
+            0.0,
+            3.3333333333333335
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            200
+          ],
+          "source_steps": [
+            13897,
+            13901
+          ],
+          "first_action_at_utc": "2026-10-23T22:54:14.163372+00:00",
+          "last_action_at_utc": "2026-10-23T22:54:14.256735+00:00",
+          "campaign_frames": [
+            840785,
+            840985
+          ]
+        }
+      ],
+      "source_steps": [
+        13783,
+        13901
+      ],
+      "full_decode_verified": true,
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "avg_frame_rate": "60/1",
+          "duration": "19.833333",
+          "nb_frames": "1190",
+          "nb_read_frames": "1190"
+        },
+        "duration_seconds": 19.833333
+      },
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-surf-4x.framemd5",
+        "sha256": "7b386dd616ce720df2ab3ccfce255fd7c754ea851790fc7e9f3a11d2d9e5c5fd"
+      },
+      "verification": {
+        "raw_source_selection_frame_md5_matches": 1190,
+        "one_x_source_all_frame_ssim": {
+          "compared_frames": 1190,
+          "minimum": 0.999168,
+          "mean": 0.9997886294117612,
+          "evidence": {
+            "path": "outputs/videos/hm-teaching-20261024/qa-surf-ssim.log",
+            "sha256": "b48e70c13e8c44a275d275655867a1af5496578e0ea5755678bd626f5c7ed3a9"
+          }
+        },
+        "post4x_decoded_frames_exactly_equal_to_1x": true,
+        "frame_order_reference": {
+          "path": "outputs/videos/hm-teaching-20261024/qa-surf-source-concat.framemd5",
+          "sha256": "d03b4ee895187f5c9b50bdf03445608078242e345c128a71651cc41afa24d944"
+        }
+      },
+      "continuous_wall_recording_claimed": false,
+      "sequence_note_zh_tw": "跨已封閉錄影段按ledger原序串接，保留所有本段模擬幀；工程暫停本來未錄入，不宣稱牆鐘連續。"
+    },
+    {
+      "kind": "strength",
+      "path": "outputs/videos/hm-teaching-20261024/strength-teaching-emulated-1x.mp4",
+      "sha256": "3a19878b1cc9cb9b7633f8512472726f4b833c12d91699517b40e35540aab8af",
+      "speed": 1,
+      "speed_label": "1x original emulated-time recording",
+      "playback_seconds": 32.666667,
+      "expected_seconds": 32.666666666666664,
+      "frames": 490,
+      "source_spans": [
+        {
+          "source_segment": 34,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-034.mp4",
+          "source_frame_start_inclusive": 50,
+          "source_frame_end_exclusive": 60,
+          "source_seconds": [
+            3.3333333333333335,
+            4.0
+          ],
+          "relative_emulated_frame_interval": [
+            200,
+            240
+          ],
+          "source_steps": [
+            13902,
+            13902
+          ],
+          "first_action_at_utc": "2026-10-23T22:55:54.650923+00:00",
+          "last_action_at_utc": "2026-10-23T22:55:54.650923+00:00",
+          "campaign_frames": [
+            840985,
+            841025
+          ]
+        },
+        {
+          "source_segment": 35,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-035.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 480,
+          "source_seconds": [
+            0.0,
+            32.0
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            1920
+          ],
+          "source_steps": [
+            13903,
+            13950
+          ],
+          "first_action_at_utc": "2026-10-23T22:55:54.779717+00:00",
+          "last_action_at_utc": "2026-10-23T22:55:56.199141+00:00",
+          "campaign_frames": [
+            841025,
+            842945
+          ]
+        }
+      ],
+      "source_steps": [
+        13902,
+        13950
+      ],
+      "full_decode_verified": true,
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "32.666667",
+          "nb_frames": "490",
+          "nb_read_frames": "490"
+        },
+        "duration_seconds": 32.666667
+      },
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-strength-1x.framemd5",
+        "sha256": "7e654e3c4fdcea4afae8f6c32c0e64962c5d31af1bd5f7a8ca4e97e7beaaf70b"
+      },
+      "verification": {
+        "raw_source_selection_frame_md5_matches": 490,
+        "one_x_source_all_frame_ssim": {
+          "compared_frames": 490,
+          "minimum": 0.999088,
+          "mean": 0.9998276387755095,
+          "evidence": {
+            "path": "outputs/videos/hm-teaching-20261024/qa-strength-ssim.log",
+            "sha256": "8ee9571cc5c7da7a4f2b6b407c54139f8ace5aafa47dd1c2dc3e0100b7125dd5"
+          }
+        },
+        "post4x_decoded_frames_exactly_equal_to_1x": true,
+        "frame_order_reference": {
+          "path": "outputs/videos/hm-teaching-20261024/qa-strength-source-concat.framemd5",
+          "sha256": "b2f08d1c993ec706e77792d176e07efff0aa45b38c29755477fbe3368155c498"
+        }
+      },
+      "continuous_wall_recording_claimed": false,
+      "sequence_note_zh_tw": "跨已封閉錄影段按ledger原序串接，保留所有本段模擬幀；工程暫停本來未錄入，不宣稱牆鐘連續。"
+    },
+    {
+      "kind": "strength",
+      "path": "outputs/videos/hm-teaching-20261024/strength-teaching-post4x.mp4",
+      "sha256": "3b2a33b111b9796211e388e3f55a81a13dee4436e54c8aa15d9a20c64ded4c9b",
+      "speed": 4,
+      "speed_label": "post-production 4x; packet timestamps and durations divided by 4",
+      "playback_seconds": 8.166667,
+      "expected_seconds": 8.166666666666666,
+      "frames": 490,
+      "source_spans": [
+        {
+          "source_segment": 34,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-034.mp4",
+          "source_frame_start_inclusive": 50,
+          "source_frame_end_exclusive": 60,
+          "source_seconds": [
+            3.3333333333333335,
+            4.0
+          ],
+          "relative_emulated_frame_interval": [
+            200,
+            240
+          ],
+          "source_steps": [
+            13902,
+            13902
+          ],
+          "first_action_at_utc": "2026-10-23T22:55:54.650923+00:00",
+          "last_action_at_utc": "2026-10-23T22:55:54.650923+00:00",
+          "campaign_frames": [
+            840985,
+            841025
+          ]
+        },
+        {
+          "source_segment": 35,
+          "source_path": "outputs/league-campaign-20261024-23/game/video-035.mp4",
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 480,
+          "source_seconds": [
+            0.0,
+            32.0
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            1920
+          ],
+          "source_steps": [
+            13903,
+            13950
+          ],
+          "first_action_at_utc": "2026-10-23T22:55:54.779717+00:00",
+          "last_action_at_utc": "2026-10-23T22:55:56.199141+00:00",
+          "campaign_frames": [
+            841025,
+            842945
+          ]
+        }
+      ],
+      "source_steps": [
+        13902,
+        13950
+      ],
+      "full_decode_verified": true,
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "avg_frame_rate": "60/1",
+          "duration": "8.166667",
+          "nb_frames": "490",
+          "nb_read_frames": "490"
+        },
+        "duration_seconds": 8.166667
+      },
+      "frame_md5_evidence": {
+        "path": "outputs/videos/hm-teaching-20261024/qa-strength-4x.framemd5",
+        "sha256": "384153f134daf58a33dcf0c008a7bbeaa25936be9bbc0d71477830ca8a727aeb"
+      },
+      "verification": {
+        "raw_source_selection_frame_md5_matches": 490,
+        "one_x_source_all_frame_ssim": {
+          "compared_frames": 490,
+          "minimum": 0.999088,
+          "mean": 0.9998276387755095,
+          "evidence": {
+            "path": "outputs/videos/hm-teaching-20261024/qa-strength-ssim.log",
+            "sha256": "8ee9571cc5c7da7a4f2b6b407c54139f8ace5aafa47dd1c2dc3e0100b7125dd5"
+          }
+        },
+        "post4x_decoded_frames_exactly_equal_to_1x": true,
+        "frame_order_reference": {
+          "path": "outputs/videos/hm-teaching-20261024/qa-strength-source-concat.framemd5",
+          "sha256": "b2f08d1c993ec706e77792d176e07efff0aa45b38c29755477fbe3368155c498"
+        }
+      },
+      "continuous_wall_recording_claimed": false,
+      "sequence_note_zh_tw": "跨已封閉錄影段按ledger原序串接，保留所有本段模擬幀；工程暫停本來未錄入，不宣稱牆鐘連續。"
+    }
+  ],
+  "screenshots": [
+    {
+      "kind": "surf",
+      "path": "outputs/videos/hm-teaching-20261024/01-surf-select-only-tackle.png",
+      "sha256": "fd35dd225ad0c1643e2a27c6b6dd9ba4896ae7b7b58ced4635d7f8f1ef385992",
+      "caption_zh_tw": "尼多王只選TACKLE作遺忘目標",
+      "source_segment": 32,
+      "source_video_frame": 19,
+      "source_video_seconds": 1.2666666666666666,
+      "relative_emulated_frame_interval": [
+        76,
+        80
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "facaa4fe18cac1efba099fb67355b3ec0d9ac0c2b31225213f269ada5a63b124"
+    },
+    {
+      "kind": "surf",
+      "path": "outputs/videos/hm-teaching-20261024/02-surf-forgot-tackle.png",
+      "sha256": "149304bf9855cd8d092ca9c252811368b059934c2c73c30e5c22f2150004045c",
+      "caption_zh_tw": "原生NIDOKING forgot TACKLE!",
+      "source_segment": 32,
+      "source_video_frame": 79,
+      "source_video_seconds": 5.266666666666667,
+      "relative_emulated_frame_interval": [
+        316,
+        320
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "6842c26321d1b724b33bb4344e4a0e4a2ac0728194b24f568895ebc40ca84cb2"
+    },
+    {
+      "kind": "surf",
+      "path": "outputs/videos/hm-teaching-20261024/03-nidoking-learned-surf.png",
+      "sha256": "6ae73e0c6a276694a8813c6c60c02a98243423a998015d0d14fd1b556d2e1d4a",
+      "caption_zh_tw": "原生NIDOKING learned SURF!及prompt",
+      "source_segment": 32,
+      "source_video_frame": 129,
+      "source_video_seconds": 8.6,
+      "relative_emulated_frame_interval": [
+        516,
+        520
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "767d3ff467700ff4f2702f7e378c1a81c6835c87a5e33c0b7b42a134a74135e2"
+    },
+    {
+      "kind": "surf",
+      "path": "outputs/videos/hm-teaching-20261024/04-surf-menu-closed.png",
+      "sha256": "6c087347ba768072b81643a9e3720c5dd29dfdf3175ce237f0dae4b4641b733b",
+      "caption_zh_tw": "Surf教學完成後正常關閉選單",
+      "source_segment": 34,
+      "source_video_frame": 39,
+      "source_video_seconds": 2.6,
+      "relative_emulated_frame_interval": [
+        156,
+        160
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "58eee2f077b79a64b7f960bdadc4eb0cee74f57f7979bcdbde55d437d1ae6e2a"
+    },
+    {
+      "kind": "strength",
+      "path": "outputs/videos/hm-teaching-20261024/05-strength-select-only-headbutt.png",
+      "sha256": "dc8886892daa67b9b150db620aefa1ecf9b89ef6d703cbefa899b7e359737ebf",
+      "caption_zh_tw": "卡比獸只選HEADBUTT作遺忘目標",
+      "source_segment": 35,
+      "source_video_frame": 299,
+      "source_video_seconds": 19.933333333333334,
+      "relative_emulated_frame_interval": [
+        1196,
+        1200
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "6c9e895bd5561d5f8d8f97864d21277db05ec02ff2f26f6dcbb5e741c624eee0"
+    },
+    {
+      "kind": "strength",
+      "path": "outputs/videos/hm-teaching-20261024/06-strength-forgot-headbutt.png",
+      "sha256": "6c43621db95758285bdf6dcb834592befc14c2f3b70e591686240be6629dea1c",
+      "caption_zh_tw": "原生SNORLAX forgot HEADBUTT!",
+      "source_segment": 35,
+      "source_video_frame": 359,
+      "source_video_seconds": 23.933333333333334,
+      "relative_emulated_frame_interval": [
+        1436,
+        1440
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "f100f78248fa04c9c565e0e150e64b92f3404b1bf3b9f14d273542813f7be66b"
+    },
+    {
+      "kind": "strength",
+      "path": "outputs/videos/hm-teaching-20261024/07-snorlax-learned-strength.png",
+      "sha256": "8d3c716f26dfc3462102fb35f92e519fb946a45a7ddfa527ba4044f5980d9630",
+      "caption_zh_tw": "原生SNORLAX learned STRENGTH!及prompt",
+      "source_segment": 35,
+      "source_video_frame": 409,
+      "source_video_seconds": 27.266666666666666,
+      "relative_emulated_frame_interval": [
+        1636,
+        1640
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "3e0004389e8018a91614a871a0644c3c6b0e284f7531594b4b4b6fc78095c78d"
+    },
+    {
+      "kind": "strength",
+      "path": "outputs/videos/hm-teaching-20261024/08-strength-menu-closed.png",
+      "sha256": "3ee880fd293ad09ac66df50146170611b656785c74430da07f4cc740ee5173cc",
+      "caption_zh_tw": "Strength教學完成後正常關閉選單",
+      "source_segment": 35,
+      "source_video_frame": 469,
+      "source_video_seconds": 31.266666666666666,
+      "relative_emulated_frame_interval": [
+        1876,
+        1880
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "e7ebce93cb96d82031f084395a428e20e5bcf90e7ff88dab2a7d852cf85b5c96"
+    }
+  ],
+  "qa_contactsheet": {
+    "path": "outputs/videos/hm-teaching-20261024/qa-contactsheet.png",
+    "sha256": "9905c1b35eed6ec52f379f9604a701d1df397d56aeda5e963234aeb9bc97de1e"
+  },
+  "selection": {
+    "surf_source_steps": [
+      13783,
+      13901
+    ],
+    "strength_source_steps": [
+      13902,
+      13950
+    ],
+    "surf_campaign_frames": [
+      836225,
+      840985
+    ],
+    "strength_campaign_frames": [
+      840985,
+      842945
+    ],
+    "first_source_open_segment_not_read": 36,
+    "all_source_segments_closed_before_read": true,
+    "all_teaching_action_frames_preserved": true,
+    "cross_segment_joins_explicit": true
+  },
+  "limits_zh_tw": [
+    "來源15fps／每4模擬幀取樣，1x為原錄影模擬時間，並非牆鐘實際操作或模型推論速度。",
+    "Surf跨028尾至034前、Strength跨034尾至035前；按原始ledger順序串接，未重演或跳過本段模擬幀，但工程暫停未錄入，不能稱牆鐘連續實錄。",
+    "4x為同一批壓縮畫格僅改封裝時間戳及duration；逐幀解碼像素與1x完全一致，不是Strata執行速度量測。",
+    "1x採常規H.264有損編碼，與原序來源全幀SSIM對照；正式PNG全部RGB通道與來源指定幀相同。",
+    "來源室內地圖邊界的黑色區域保留，沒有裁掉、補繪或掩蓋遊戲畫面。",
+    "未讀未封閉036、ROM、存檔、live、plan、vault，沒有API／模型呼叫或部署。",
+    "展示已驗證教學；沒有宣稱野外Surf／Strength已使用、抓到新寶可夢或聯盟破關。"
+  ],
+  "validation_note_zh_tw": "SSIM初次檢查因concat與成片timebase不同，多計一個framesync尾幀；已將兩輸入設成1/15時間基、依N編號並禁用尾幀重複，校準後1190／490幀精確相符，沒有修改影片內容。",
+  "ledger_evidence": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-028.jsonl",
+      "selected_records": 1,
+      "selected_jsonl_bytes_sha256": "af0e480c12eba40851db699633ebe96af53dff98d1e7c1eddaa82bdb09cf6c03",
+      "hash_scope": "only selected original lines",
+      "frame_filter": [
+        836225,
+        842945
+      ]
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-029.jsonl",
+      "selected_records": 5,
+      "selected_jsonl_bytes_sha256": "61096fda56b00a98718a71a8208e17465b849a73556c5f2f91842c578e0ddcec",
+      "hash_scope": "only selected original lines",
+      "frame_filter": [
+        836225,
+        842945
+      ]
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-030.jsonl",
+      "selected_records": 47,
+      "selected_jsonl_bytes_sha256": "9b53375012d65a80cda6a841ac3d9b3c98617acae06aeacfbb58586f48a2a120",
+      "hash_scope": "only selected original lines",
+      "frame_filter": [
+        836225,
+        842945
+      ]
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-031.jsonl",
+      "selected_records": 22,
+      "selected_jsonl_bytes_sha256": "449535d8c473cb4f57f065114db210b2099e421cbfa5d08b69d21529f1de854e",
+      "hash_scope": "only selected original lines",
+      "frame_filter": [
+        836225,
+        842945
+      ]
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-032.jsonl",
+      "selected_records": 36,
+      "selected_jsonl_bytes_sha256": "9ef2d626bb69f12d43db829335c97fdddff3e56b21719a958ae130424ad50a5b",
+      "hash_scope": "only selected original lines",
+      "frame_filter": [
+        836225,
+        842945
+      ]
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-033.jsonl",
+      "selected_records": 3,
+      "selected_jsonl_bytes_sha256": "2d4a7bace57d26724db39a5cc3a1f7c4b4def279b46d199e8a65989db6772b9f",
+      "hash_scope": "only selected original lines",
+      "frame_filter": [
+        836225,
+        842945
+      ]
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-034.jsonl",
+      "selected_records": 6,
+      "selected_jsonl_bytes_sha256": "e484f1cb4d0d0f3edf45885e96e441072ab4fa013d5dbfb0473886d8dcd4c638",
+      "hash_scope": "only selected original lines",
+      "frame_filter": [
+        836225,
+        842945
+      ]
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-035.jsonl",
+      "selected_records": 48,
+      "selected_jsonl_bytes_sha256": "c17a877928577075a4d1a475eec2bbed809e02aa259ffa360feff6a2a284f799",
+      "hash_scope": "only selected original lines",
+      "frame_filter": [
+        836225,
+        842945
+      ]
+    }
+  ]
+}

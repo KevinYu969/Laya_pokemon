@@ -1,0 +1,165 @@
+{
+  "schema": "laya-northbound-celadon-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "completed_segment": "Fuchsia center to Celadon department roof; no water purchase in scope",
+  "milestones": [
+    {
+      "at_utc": "2026-10-23T22:59:50.161246+00:00",
+      "reason": "route_extension_required",
+      "frame": 846305,
+      "location": {
+        "map_id": 154,
+        "x": 3,
+        "y": 4
+      },
+      "evidence": {
+        "path": ".local/gym-reviewed-history/north-lavender-20261024-review.json",
+        "sha256": "5f9a8348cd4abf41bcc2394841a67a5b9f6af928d58f862f30a2714f8e9c4879"
+      }
+    },
+    {
+      "at_utc": "2026-10-23T23:07:16.754584+00:00",
+      "reason": "operator_review",
+      "frame": 969585,
+      "location": {
+        "map_id": 25,
+        "x": 13,
+        "y": 44
+      },
+      "evidence": {
+        "path": ".local/gym-reviewed-history/north14-via-split-20261024-review.json",
+        "sha256": "195a92532fbc24552eefc0ddb3f0d8267889463d321a62b05fe614307b5528a4"
+      }
+    },
+    {
+      "at_utc": "2026-10-23T23:08:38.145786+00:00",
+      "reason": "route_extension_required",
+      "frame": 983705,
+      "location": {
+        "map_id": 141,
+        "x": 3,
+        "y": 4
+      },
+      "evidence": {
+        "path": ".local/gym-reviewed-history/lavender-celadon-20261024-review.json",
+        "sha256": "2df0d2634aa4dc918e8cb6a05a5fdfae2b8d6758b4509dc689118a633595a401"
+      }
+    },
+    {
+      "at_utc": "2026-10-23T23:09:09.762264+00:00",
+      "reason": "route_extension_required",
+      "frame": 990985,
+      "location": {
+        "map_id": 133,
+        "x": 3,
+        "y": 4
+      },
+      "evidence": {
+        "path": ".local/gym-reviewed-history/celadon-roof-20261024-review.json",
+        "sha256": "59ba03db3b0f0b6ebd5ba0cddea873b1be79780d573c7ef6da118a39695e3c4a"
+      }
+    },
+    {
+      "at_utc": "2026-10-23T23:12:11.191117+00:00",
+      "reason": "route_extension_required",
+      "frame": 994585,
+      "location": {
+        "map_id": 126,
+        "x": 11,
+        "y": 2
+      },
+      "evidence": {
+        "path": ".local/celadon-roof-final-review-20261024.json",
+        "sha256": "a2f5ebc03f59cbae1c2bd7fe3e4980ffc92378b2badadc338dcac3daac7ebf9c"
+      }
+    }
+  ],
+  "route14_failure": {
+    "type": "via cursor reset outside an exact via position",
+    "observed_pair": [
+      [
+        13,
+        44
+      ],
+      [
+        13,
+        43
+      ]
+    ],
+    "action_records_on_pair": 2924,
+    "first_step": 14193,
+    "last_step": 17116,
+    "resolution": "Operator review preserved the state; remaining vias split into sequential move steps. Persistent via cursor then independently reviewed, tested and used on department stairs."
+  },
+  "timing_delta": {
+    "wall_seconds": 741.031,
+    "model_wait_seconds": 2.088,
+    "review_pause_seconds": 637.922,
+    "non_review_session_seconds": 103.109,
+    "emulated_seconds": 2471.333
+  },
+  "actions": 3707,
+  "uncached_laya_choices": 0,
+  "cache_hits": 3707,
+  "passive_waits": 0,
+  "ordered_party_unchanged": true,
+  "ordered_bag_unchanged": true,
+  "money": 40566,
+  "badges_raw": 31,
+  "no_battle_or_new_capture": true,
+  "selected_ledgers": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-036.jsonl",
+      "selected_records": 1,
+      "selected_original_lines_sha256": "9a1cb826dbf618cce8e0d07107de8f16fad02d6c3edcd8ca4f24a3a0e5da90ee"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-037.jsonl",
+      "selected_records": 2198,
+      "selected_original_lines_sha256": "6251fbc4d2f1cd3003162558cb421f8abb8464795ba234f5fb823807c85c7037"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-038.jsonl",
+      "selected_records": 884,
+      "selected_original_lines_sha256": "3d92cb119a09eb4a818755a22629a8aa4a37d75cce87e002cad29cfe089796ad"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-039.jsonl",
+      "selected_records": 535,
+      "selected_original_lines_sha256": "349fd0f14c9623f724b4b29f7ae1b50d1ddc940d0fd2883fe5074faedb75f13f"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-040.jsonl",
+      "selected_records": 89,
+      "selected_original_lines_sha256": "fbe702bf97af24ca6b06abaea20fabf39d0f3f91ddd761dbce8eed3b6c9f2bac"
+    }
+  ],
+  "independent_closed_proof": {
+    "path": "outputs/research/celadon-roof-closed-proof-20261024.json",
+    "sha256": "13bde21c08f296e74d040ee636dc3130d4a58334f4a9776155d6b9fe5d05c49b",
+    "local_observation_frame": 1,
+    "campaign_frame": 994585
+  },
+  "navigation_validation": {
+    "new_via_tests": 23,
+    "parent_targeted_passed": 76,
+    "parent_full_passed_at_via_snapshot": 4691,
+    "warnings": 1,
+    "seconds": 19.29,
+    "scope_note_zh_tw": "整套當時亦收集未接實況的販賣機候選測試；不代表後續候選版本自動驗證。"
+  },
+  "new_strata_api_calls": 0,
+  "gpt_gameplay_classification": false,
+  "cloud_fallback": false,
+  "water_purchase_completed": false,
+  "sixth_gym_completed": false,
+  "league_completed": false,
+  "website_published": false,
+  "limits_zh_tw": [
+    "3707動作含失敗空轉，不能當有效移動速度。",
+    "非review時長仍含導航、儲存、錄影及分類快取成本，不是純推論耗時。",
+    "重啟程序不保留記憶體內via游標，須提供明確剩餘步驟；相同job與相同路線新旅程要換training_job。",
+    "全程通關起算尚不完整，不用本段或影片長度充當全紅版耗時。"
+  ]
+}

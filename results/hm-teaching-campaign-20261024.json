@@ -1,0 +1,849 @@
+{
+  "schema": "laya-hm-teaching-campaign-v1",
+  "date": "2026-10-24",
+  "timezone": "Asia/Taipei",
+  "language": "zh-TW",
+  "title": "正常教會尼多王衝浪、卡比獸怪力，兩份HM保留",
+  "completed": true,
+  "scope": {
+    "campaign_frame_start_inclusive": 836225,
+    "campaign_frame_end_exclusive": 842945,
+    "from_utc": "2026-10-23T22:30:20.859460+00:00",
+    "to_utc": "2026-10-23T22:55:56.227746+00:00",
+    "from_taipei": "2026-10-24T06:30:20.859460+08:00",
+    "to_taipei": "2026-10-24T06:55:56.227746+08:00",
+    "note_zh_tw": "只含教學與關閉選單驗收；不代表已完成衝浪或推石的野外使用。"
+  },
+  "transactions": [
+    {
+      "kind": "teach_surf_nidoking",
+      "target_species": 7,
+      "target_name": "NIDOKING",
+      "target_party_index_zero_based": 1,
+      "move_slot_zero_based": 1,
+      "move_slot_one_based": 2,
+      "replaced_move": 33,
+      "new_move": 57,
+      "new_move_pp": 15,
+      "before_moves": [
+        61,
+        33,
+        30,
+        40
+      ],
+      "before_pp": [
+        20,
+        35,
+        25,
+        35
+      ],
+      "after_moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "after_pp": [
+        20,
+        15,
+        25,
+        35
+      ],
+      "hm_item": 198,
+      "hm_quantity_before": 1,
+      "hm_quantity_after": 1,
+      "hm_quantity_used": 0,
+      "forget_confirmation_count": 1,
+      "forget_confirmation_step": 13860,
+      "first_after_moves_log": {
+        "step": 13868,
+        "at_utc": "2026-10-23T22:47:10.338008+00:00",
+        "frame": 839625
+      },
+      "native_learned_receipts": [
+        {
+          "at_utc": "2026-10-23T22:47:10.350068+00:00",
+          "at_taipei": "2026-10-24T06:47:10.350068+08:00",
+          "text": [
+            " NIDOKING learned",
+            " SURF!"
+          ],
+          "keyframe": {
+            "path": "outputs/league-campaign-20261024-23/game/keyframes/00100-move-learned.png",
+            "sha256": "265cf961ce5952e758c5ea8cde1cfa2a81f7c7a186d52f2888149065487fb5e1"
+          }
+        },
+        {
+          "at_utc": "2026-10-23T22:47:10.420680+00:00",
+          "at_taipei": "2026-10-24T06:47:10.420680+08:00",
+          "text": [
+            " NIDOKING learned",
+            " SURF!            ▼"
+          ],
+          "keyframe": {
+            "path": "outputs/league-campaign-20261024-23/game/keyframes/00101-move-learned.png",
+            "sha256": "93f9d3114be2b6fbbf4ae4d19c96cc318fd5d7d1822e13aa7bde4193e1f2c414"
+          }
+        }
+      ],
+      "first_closed_step": 13899,
+      "complete_context": {
+        "step": 13900,
+        "at_utc": "2026-10-23T22:54:14.228457+00:00",
+        "at_taipei": "2026-10-24T06:54:14.228457+08:00",
+        "frame": 840905,
+        "hm_teaching_complete": true,
+        "available_actions": [
+          "wait"
+        ]
+      },
+      "independent_closed_proof": {
+        "evidence": {
+          "path": "outputs/research/surf-teaching-closed-proof-20261024.json",
+          "sha256": "03dcc2de9894c78be760c10a65ddd58e8ab509b50fbc71f11e12d58f0758af0e"
+        },
+        "local_frame": 1,
+        "frame_scope": "independent proof observation, not campaign frame",
+        "location": {
+          "map_id": 155,
+          "x": 4,
+          "y": 6
+        },
+        "overworld_ready": true,
+        "decoder_read_valid": true,
+        "alignment_verified": true,
+        "window_visible": false,
+        "visible_text_blank": true
+      },
+      "review_start": {
+        "evidence": {
+          "path": ".local/gym-reviewed-history/teach-surf-nidoking-20261024-review.json",
+          "sha256": "e4ef789773d574f321d65902db1d5a63b78a534c359f4176c8abd7ea73f64ab5"
+        },
+        "at_utc": "2026-10-23T22:30:20.859460+00:00",
+        "at_taipei": "2026-10-24T06:30:20.859460+08:00",
+        "frame": 836225
+      },
+      "review_end": {
+        "evidence": {
+          "path": ".local/gym-reviewed-history/teach-strength-snorlax-20261024-review.json",
+          "sha256": "239149129f7c3dda8bd6f637137e1b5f30be0e0a649326bb3b05f35c28d01ec6"
+        },
+        "at_utc": "2026-10-23T22:54:14.286156+00:00",
+        "at_taipei": "2026-10-24T06:54:14.286156+08:00",
+        "frame": 840985
+      },
+      "action_counts": {
+        "first_step": 13783,
+        "last_step": 13901,
+        "records": 119,
+        "non_wait": 43,
+        "by_action": {
+          "start": 1,
+          "down": 20,
+          "a": 20,
+          "wait": 76,
+          "b": 2
+        },
+        "uncached_local_laya": 4,
+        "cache_hits": 39,
+        "passive_waits": 76,
+        "raw_model_ms_sum": 943.6370999901555,
+        "parent_counter_before": {
+          "actions": 13782,
+          "uncached": 131,
+          "cache": 13492,
+          "passive": 159
+        },
+        "parent_counter_after": {
+          "actions": 13901,
+          "uncached": 135,
+          "cache": 13531,
+          "passive": 235
+        }
+      },
+      "review_boundary_timing_delta": {
+        "wall_seconds": 1433.422,
+        "model_wait_seconds": 1.031,
+        "review_pause_seconds": 1428.533,
+        "non_review_session_seconds": 4.889,
+        "emulated_seconds": 79.333
+      },
+      "emulated_frames": 4760,
+      "during_transaction_review_count": 5,
+      "pause_before_first_logged_action_seconds": 270.562,
+      "pause_after_first_action_seconds": 1157.971
+    },
+    {
+      "kind": "teach_strength_snorlax",
+      "target_species": 132,
+      "target_name": "SNORLAX",
+      "target_party_index_zero_based": 0,
+      "move_slot_zero_based": 0,
+      "move_slot_one_based": 1,
+      "replaced_move": 29,
+      "new_move": 70,
+      "new_move_pp": 15,
+      "before_moves": [
+        29,
+        133,
+        156,
+        34
+      ],
+      "before_pp": [
+        15,
+        20,
+        10,
+        15
+      ],
+      "after_moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "after_pp": [
+        15,
+        20,
+        10,
+        15
+      ],
+      "hm_item": 199,
+      "hm_quantity_before": 1,
+      "hm_quantity_after": 1,
+      "hm_quantity_used": 0,
+      "forget_confirmation_count": 1,
+      "forget_confirmation_step": 13933,
+      "first_after_moves_log": {
+        "step": 13941,
+        "at_utc": "2026-10-23T22:55:55.971288+00:00",
+        "frame": 842545
+      },
+      "native_learned_receipts": [
+        {
+          "at_utc": "2026-10-23T22:55:55.986194+00:00",
+          "at_taipei": "2026-10-24T06:55:55.986194+08:00",
+          "text": [
+            " SNORLAX learned",
+            " STRENGTH!"
+          ],
+          "keyframe": {
+            "path": "outputs/league-campaign-20261024-23/game/keyframes/00105-move-learned.png",
+            "sha256": "0fd8c78421ce072e00277d2f4751711a451382f3dbf9cf8c38d52813c37a0cb9"
+          }
+        },
+        {
+          "at_utc": "2026-10-23T22:55:56.041854+00:00",
+          "at_taipei": "2026-10-24T06:55:56.041854+08:00",
+          "text": [
+            " SNORLAX learned",
+            " STRENGTH!        ▼"
+          ],
+          "keyframe": {
+            "path": "outputs/league-campaign-20261024-23/game/keyframes/00106-move-learned.png",
+            "sha256": "a865afb6a3946d2503313b00f9216295610bfb1990c69ca9f52292c10e6dad4d"
+          }
+        }
+      ],
+      "first_closed_step": 13948,
+      "complete_context": {
+        "step": 13949,
+        "at_utc": "2026-10-23T22:55:56.169688+00:00",
+        "at_taipei": "2026-10-24T06:55:56.169688+08:00",
+        "frame": 842865,
+        "hm_teaching_complete": true,
+        "available_actions": [
+          "wait"
+        ]
+      },
+      "independent_closed_proof": {
+        "evidence": {
+          "path": "outputs/research/strength-teaching-closed-proof-20261024.json",
+          "sha256": "14c4697dfac8fa47aab550ce497d798f6d78beea080220e1f1a4b914afe9153e"
+        },
+        "local_frame": 1,
+        "frame_scope": "independent proof observation, not campaign frame",
+        "location": {
+          "map_id": 155,
+          "x": 4,
+          "y": 6
+        },
+        "overworld_ready": true,
+        "decoder_read_valid": true,
+        "alignment_verified": true,
+        "window_visible": false,
+        "visible_text_blank": true
+      },
+      "review_start": {
+        "evidence": {
+          "path": ".local/gym-reviewed-history/teach-strength-snorlax-20261024-review.json",
+          "sha256": "239149129f7c3dda8bd6f637137e1b5f30be0e0a649326bb3b05f35c28d01ec6"
+        },
+        "at_utc": "2026-10-23T22:54:14.286156+00:00",
+        "at_taipei": "2026-10-24T06:54:14.286156+08:00",
+        "frame": 840985
+      },
+      "review_end": {
+        "evidence": {
+          "path": ".local/hm-teaching-final-review-20261024.json",
+          "sha256": "daf58eb861722957e7c9fc8c63f58e7b30945132af614e8aef1c83a474a2d312"
+        },
+        "at_utc": "2026-10-23T22:55:56.227746+00:00",
+        "at_taipei": "2026-10-24T06:55:56.227746+08:00",
+        "frame": 842945
+      },
+      "action_counts": {
+        "first_step": 13902,
+        "last_step": 13950,
+        "records": 49,
+        "non_wait": 25,
+        "by_action": {
+          "up": 2,
+          "wait": 24,
+          "start": 1,
+          "a": 18,
+          "down": 2,
+          "b": 2
+        },
+        "uncached_local_laya": 1,
+        "cache_hits": 24,
+        "passive_waits": 24,
+        "raw_model_ms_sum": 243.538599985186,
+        "parent_counter_before": {
+          "actions": 13901,
+          "uncached": 135,
+          "cache": 13531,
+          "passive": 235
+        },
+        "parent_counter_after": {
+          "actions": 13950,
+          "uncached": 136,
+          "cache": 13555,
+          "passive": 259
+        }
+      },
+      "review_boundary_timing_delta": {
+        "wall_seconds": 101.953,
+        "model_wait_seconds": 0.265,
+        "review_pause_seconds": 100.312,
+        "non_review_session_seconds": 1.641,
+        "emulated_seconds": 32.667
+      },
+      "emulated_frames": 1960,
+      "during_transaction_review_count": 0,
+      "pause_before_first_logged_action_seconds": 100.312,
+      "pause_after_first_action_seconds": 0.0
+    }
+  ],
+  "surf_calibration_reviews": [
+    {
+      "at_utc": "2026-10-23T22:34:52.483296+00:00",
+      "at_taipei": "2026-10-24T06:34:52.483296+08:00",
+      "reason": "hm_teaching_unknown_or_polluted_source_page",
+      "calibration_zh_tw": "bag下捲▼與實際可見頁校準",
+      "resolution_zh_tw": "保留已綁定交易，依真實袋頁標籤與下捲標記校準；沒有重新選錯物品。",
+      "keyframe": {
+        "path": "outputs/league-campaign-20261024-23/game/keyframes/00097-review-hm_teaching_unknown_or_polluted_source_page.png",
+        "sha256": "60fa96694296594eb3a923ac32fd6a5e00be2daa5bcc4d1ffe95a4f9a56842a3"
+      },
+      "next_resumed_step": 13788,
+      "additional_review_pause_seconds": 225.422,
+      "same_transaction_retained": true
+    },
+    {
+      "at_utc": "2026-10-23T22:38:39.206396+00:00",
+      "at_taipei": "2026-10-24T06:38:39.206396+08:00",
+      "reason": "hm_teaching_wait_budget_exhausted",
+      "calibration_zh_tw": "Booted up an HM原生prompt等待",
+      "resolution_zh_tw": "依固定來源與真實prompt單次推進，避免永遠等待。",
+      "keyframe": {
+        "path": "outputs/league-campaign-20261024-23/game/keyframes/00098-review-hm_teaching_wait_budget_exhausted.png",
+        "sha256": "292c0ef4c0b19b694ab7c752cf71c8962e0fa0cc505ae58c07793e8264616937"
+      },
+      "next_resumed_step": 13835,
+      "additional_review_pause_seconds": 351.313,
+      "same_transaction_retained": true
+    },
+    {
+      "at_utc": "2026-10-23T22:44:31.209495+00:00",
+      "at_taipei": "2026-10-24T06:44:31.209495+08:00",
+      "reason": "hm_teaching_unknown_or_polluted_source_page",
+      "calibration_zh_tw": "Which頁保留隊伍背景的合法局部重繪",
+      "resolution_zh_tw": "驗證來源背景及確切四招游標，只確認Tackle槽位。",
+      "keyframe": {
+        "path": "outputs/league-campaign-20261024-23/game/keyframes/00099-review-hm_teaching_unknown_or_polluted_source_page.png",
+        "sha256": "a24429bff1dd8d620666198241ef967b091cd09666995f10c7956b814b730e4e"
+      },
+      "next_resumed_step": 13857,
+      "additional_review_pause_seconds": 158.704,
+      "same_transaction_retained": true
+    },
+    {
+      "at_utc": "2026-10-23T22:47:11.007498+00:00",
+      "at_taipei": "2026-10-24T06:47:11.007498+08:00",
+      "reason": "hm_teaching_wait_budget_exhausted",
+      "calibration_zh_tw": "learned完整字句先於▼，早A未關頁而停檢",
+      "resolution_zh_tw": "保留已學會指紋，等待真正▼後再確認，沒有重刪招式。",
+      "keyframe": {
+        "path": "outputs/league-campaign-20261024-23/game/keyframes/00102-review-hm_teaching_wait_budget_exhausted.png",
+        "sha256": "93f9d3114be2b6fbbf4ae4d19c96cc318fd5d7d1822e13aa7bde4193e1f2c414"
+      },
+      "next_resumed_step": 13893,
+      "additional_review_pause_seconds": 330.407,
+      "same_transaction_retained": true
+    },
+    {
+      "at_utc": "2026-10-23T22:52:41.634403+00:00",
+      "at_taipei": "2026-10-24T06:52:41.634403+08:00",
+      "reason": "hm_teaching_unknown_or_polluted_source_page",
+      "calibration_zh_tw": "關閉教學後START的inactive游標",
+      "resolution_zh_tw": "辨識正確inactive START頁，正常B關閉至兩幀野外。",
+      "keyframe": {
+        "path": "outputs/league-campaign-20261024-23/game/keyframes/00103-review-hm_teaching_unknown_or_polluted_source_page.png",
+        "sha256": "99d2c7200c42fac21047a5ca828855e2df8d0f713e538fb70dc87d86b5ff881e"
+      },
+      "next_resumed_step": 13896,
+      "additional_review_pause_seconds": 92.125,
+      "same_transaction_retained": true
+    }
+  ],
+  "party_ledger": {
+    "before_ordered": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 56987,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "after_ordered": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 56987,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "only_expected_two_slots_changed": true,
+    "party_count": 5,
+    "same_order": true,
+    "same_species_level_hp_max_hp_status_exp": true,
+    "all_unchanged_move_slots_and_raw_pp_verified": true,
+    "other_three_members_entirely_unchanged": true,
+    "checked_action_progress_count": 168,
+    "checked_review_progress_count": 3,
+    "checked_closed_proof_progress_count": 2
+  },
+  "inventory_ledger": {
+    "before_ordered": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      }
+    ],
+    "after_identical": true,
+    "money_before": 40566,
+    "money_after": 40566,
+    "hm03_item198_quantity": 1,
+    "hm04_item199_quantity": 1,
+    "hm_consumption": 0
+  },
+  "classification": {
+    "backend": "local_offline_laya",
+    "raw_model_label": "laya-rl-agent",
+    "uncached_calls": 5,
+    "cache_hits": 63,
+    "passive_waits": 100,
+    "new_strata_api_calls": 0,
+    "strata_configuration_changed": false,
+    "gpt_gameplay_classification": false,
+    "cloud_fallback": false,
+    "evidence_note_zh_tw": "5筆新分類均標記laya-rl-agent，其餘快取／被動等待；零新增Strata及無雲端fallback沿用父層執行契約，非獨立網路封包稽核。"
+  },
+  "evidence": {
+    "selected_step_logs": [
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-028.jsonl",
+        "selected_records": 1,
+        "selected_jsonl_bytes_sha256": "af0e480c12eba40851db699633ebe96af53dff98d1e7c1eddaa82bdb09cf6c03",
+        "hash_scope": "only selected original lines",
+        "frame_filter": [
+          836225,
+          842945
+        ]
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-029.jsonl",
+        "selected_records": 5,
+        "selected_jsonl_bytes_sha256": "61096fda56b00a98718a71a8208e17465b849a73556c5f2f91842c578e0ddcec",
+        "hash_scope": "only selected original lines",
+        "frame_filter": [
+          836225,
+          842945
+        ]
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-030.jsonl",
+        "selected_records": 47,
+        "selected_jsonl_bytes_sha256": "9b53375012d65a80cda6a841ac3d9b3c98617acae06aeacfbb58586f48a2a120",
+        "hash_scope": "only selected original lines",
+        "frame_filter": [
+          836225,
+          842945
+        ]
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-031.jsonl",
+        "selected_records": 22,
+        "selected_jsonl_bytes_sha256": "449535d8c473cb4f57f065114db210b2099e421cbfa5d08b69d21529f1de854e",
+        "hash_scope": "only selected original lines",
+        "frame_filter": [
+          836225,
+          842945
+        ]
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-032.jsonl",
+        "selected_records": 36,
+        "selected_jsonl_bytes_sha256": "9ef2d626bb69f12d43db829335c97fdddff3e56b21719a958ae130424ad50a5b",
+        "hash_scope": "only selected original lines",
+        "frame_filter": [
+          836225,
+          842945
+        ]
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-033.jsonl",
+        "selected_records": 3,
+        "selected_jsonl_bytes_sha256": "2d4a7bace57d26724db39a5cc3a1f7c4b4def279b46d199e8a65989db6772b9f",
+        "hash_scope": "only selected original lines",
+        "frame_filter": [
+          836225,
+          842945
+        ]
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-034.jsonl",
+        "selected_records": 6,
+        "selected_jsonl_bytes_sha256": "e484f1cb4d0d0f3edf45885e96e441072ab4fa013d5dbfb0473886d8dcd4c638",
+        "hash_scope": "only selected original lines",
+        "frame_filter": [
+          836225,
+          842945
+        ]
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-035.jsonl",
+        "selected_records": 48,
+        "selected_jsonl_bytes_sha256": "c17a877928577075a4d1a475eec2bbed809e02aa259ffa360feff6a2a284f799",
+        "hash_scope": "only selected original lines",
+        "frame_filter": [
+          836225,
+          842945
+        ]
+      }
+    ],
+    "captures": {
+      "path": "outputs/league-campaign-20261024-23/game/captures.jsonl",
+      "selected_records": 11,
+      "selected_jsonl_bytes_sha256": "ebebe1ae9bab9ab580a1a332af43b15eaafb299f8fcc78933c5105c054f78e5f",
+      "hash_scope": "only selected original lines",
+      "at_filter": [
+        "2026-10-23T22:30:20.859460+00:00",
+        "2026-10-23T22:55:56.227746+00:00"
+      ]
+    }
+  },
+  "validation": {
+    "json_parse": true,
+    "continuous_168_action_records": true,
+    "exact_surf_slot_and_pp": true,
+    "exact_strength_slot_and_pp": true,
+    "single_forget_confirmation_each": true,
+    "both_complete_contexts_verified": true,
+    "two_new_closed_observations_each": true,
+    "independent_closed_proofs_verified": true,
+    "native_learned_receipt_png_hashes_verified": true,
+    "unchanged_bag_money_and_other_party_fields": true,
+    "parent_reported_full_regression": {
+      "passed": 4545,
+      "warnings": 1,
+      "seconds": 17.9,
+      "source": "trusted parent report; not executed by this receipt-only audit"
+    }
+  },
+  "new_capture": false,
+  "new_field_move_use_completed": false,
+  "league_completed": false,
+  "website_published": false,
+  "limits_zh_tw": [
+    "Surf的首次learned印字與最終交易閉合相隔工程校準；不得把首次印字當作完整選單已關閉。",
+    "Strength中途無review，兩review端點101.953秒牆鐘仍含開始前100.312秒準備暫停；主要非review指標為固定review差1.641秒。",
+    "父層較早summary曾報Strength1.626秒，與最終review差15ms；以最終review1.641秒為準，不將兩者當同口徑主指標。",
+    "所有action計數含邊界正常移動與被動等待，非作業系統按鍵事件或單一模型純推論時間。",
+    "沒有讀影片、ROM、存檔、即時遊戲、plan、私人vault或呼叫模型API；未宣稱新capture、野外使用、聯盟或網站成果。",
+    "公開內容僅本專案相對證據檔案及SHA256，不含私人完整路徑、主機、ROM/state內容或憑證。"
+  ]
+}

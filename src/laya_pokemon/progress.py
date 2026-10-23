@@ -1,6 +1,7 @@
 """唯讀的 Gen I 進度訊號；數值一致性不等同已完成畫面校準。"""
 from __future__ import annotations
 
+from collections.abc import Mapping
 from numbers import Integral
 
 
@@ -18,6 +19,9 @@ STORY_EVENT_NAMES = (
     "followed_oak_into_lab", "oak_asked_to_choose_mon", "battled_rival_in_oaks_lab",
     "got_starter", "got_pokedex", "got_oaks_parcel", "oak_got_parcel", "got_hm01", "got_hm03", "got_hm04", "got_poke_flute",
     "beat_silph_co_giovanni", "beat_brock", "beat_misty", "beat_lt_surge", "beat_erika", "beat_koga",
+    "got_tm06", "beat_fuchsia_gym_trainer_0", "beat_fuchsia_gym_trainer_1",
+    "beat_fuchsia_gym_trainer_2", "beat_fuchsia_gym_trainer_3",
+    "beat_fuchsia_gym_trainer_4", "beat_fuchsia_gym_trainer_5",
     "beat_sabrina", "beat_blaine", "beat_viridian_gym_giovanni", "beat_loreleis_room_trainer_0",
     "beat_brunos_room_trainer_0", "beat_agathas_room_trainer_0", "beat_lance", "beat_champion_rival",
     "hall_of_fame_dex_rating", "beat_cerulean_rival", "beat_cerulean_rocket_thief", "got_nugget", "beat_route24_rocket", "got_hm02", "got_hm05",
@@ -27,9 +31,29 @@ STORY_EVENT_NAMES = (
 )
 EVENT_FLAG_ALIASES={'first_lock_opened':'1st_lock_opened','second_lock_opened':'2nd_lock_opened'}
 
+# 固定 pret/pokered a53671100ec22e5394ff26ec028d0812a238dae2：
+# constants/event_constants.asm:154-161；ram/wram.asm wEventFlags 基址 D747。
+# https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/event_constants.asm#L154
+# 同一 D792 byte 的 bit0=TM06、bit1=Koga、bit2..7=館員0..5。
+_FUCHSIA_EVENT_IDS = {
+    "got_tm06": 0x258, "beat_koga": 0x259,
+    "beat_fuchsia_gym_trainer_0": 0x25A, "beat_fuchsia_gym_trainer_1": 0x25B,
+    "beat_fuchsia_gym_trainer_2": 0x25C, "beat_fuchsia_gym_trainer_3": 0x25D,
+    "beat_fuchsia_gym_trainer_4": 0x25E, "beat_fuchsia_gym_trainer_5": 0x25F,
+}
+
 
 def _integer(value) -> bool:
     return isinstance(value, Integral) and not isinstance(value, bool)
+
+
+def _fuchsia_events_supported(constants) -> bool:
+    """新欄位須吻合固定紅版與官方SDK；不改既有Koga讀法或推論本輪勝利。"""
+    base = getattr(constants, "EVENT_FLAGS_ADDRESS", None)
+    events = getattr(constants, "EVENT_FLAGS", None)
+    return (_integer(base) and base == 0xD747 and isinstance(events, Mapping)
+            and all(_integer(events.get(name)) and events[name] == event_id
+                    for name, event_id in _FUCHSIA_EVENT_IDS.items()))
 
 
 def read_progress(pyboy, constants=None) -> dict:
@@ -126,7 +150,11 @@ def read_progress(pyboy, constants=None) -> dict:
             result['money'] = sum(((b >> 4)*10+(b & 15))*100**(2-i) for i,b in enumerate(digits))
     badges = read_byte(constants.OBTAINED_BADGES_ADDRESS)
     result["badges_raw"] = badges
+    fuchsia_supported = _fuchsia_events_supported(constants)
     for name in STORY_EVENT_NAMES:
+        if name in _FUCHSIA_EVENT_IDS and name != "beat_koga" and not fuchsia_supported:
+            result["story_event_bits"][name] = None
+            continue
         event_id = constants.EVENT_FLAGS.get(EVENT_FLAG_ALIASES.get(name,name))
         if event_id is None:
             result["story_event_bits"][name] = None

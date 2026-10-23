@@ -4,7 +4,11 @@ from collections import deque
 
 CAVERN_TILESET_ID = 17
 CAVERN_LAND_TILE_PAIRS = ((0x20, 0x05), (0x41, 0x05), (0x2A, 0x05), (0x05, 0x21))
+FOREST_TILESET_ID = 3
+FOREST_LAND_TILE_PAIRS = ((0x30, 0x2E), (0x52, 0x2E), (0x55, 0x2E), (0x56, 0x2E),
+                          (0x20, 0x2E), (0x5E, 0x2E), (0x5F, 0x2E))
 PAIR_COLLISION_SOURCE = "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/pair_collision_tile_ids.asm"
+# 固定原文git blob 848695568f30ebe56c88528ae6f5062247f8d37d；只納入Land表。
 TOWER_TOGGLE_OBJECTS = {
     23: (10, ((1,29,(10,62)), (9,30,(14,35)), (10,31,(5,89)))),
     147: (5, ((4,62,(6,8)), (5,63,(14,14)))),
@@ -12,17 +16,11 @@ TOWER_TOGGLE_OBJECTS = {
 }
 
 
-def cavern_pair_blocked_edges(grid):
-    """將固定紅版洞穴陸地雙格碰撞轉成相鄰雙向禁邊，不把整格當牆。
-
-    上游 ``read_world_grid`` 已將每個移動格的左下背景圖塊與畫面核對。
-    其他 tileset／一般網格不加規則；聲明為 CAVERN 卻缺少完整圖塊矩陣
-    時回傳 ``None``，避免用不完整資料規劃可能穿過高低差的路線。
-    """
-    if grid.get('tileset_id') != CAVERN_TILESET_ID:
-        return set()
+def _land_pair_blocked_edges(grid, tile_pairs):
+    """將已選定陸地表套到相鄰格；矩陣不完整時不產生路線。"""
     cells, tiles = grid.get('walkable'), grid.get('tiles')
-    if (not isinstance(cells, (list, tuple)) or not cells or not cells[0]
+    if (not isinstance(cells, (list, tuple)) or not cells
+            or not isinstance(cells[0], (list, tuple)) or not cells[0]
             or not isinstance(tiles, (list, tuple)) or len(tiles) != len(cells)):
         return None
     width = len(cells[0])
@@ -31,7 +29,7 @@ def cavern_pair_blocked_edges(grid):
     if any(not isinstance(row, (list, tuple)) or len(row) != width
            or any(type(tile) is not int or not 0 <= tile <= 255 for tile in row) for row in tiles):
         return None
-    pairs = {frozenset(pair) for pair in CAVERN_LAND_TILE_PAIRS}
+    pairs = {frozenset(pair) for pair in tile_pairs}
     edges = set()
     for y, row in enumerate(tiles):
         for x, tile in enumerate(row):
@@ -42,6 +40,25 @@ def cavern_pair_blocked_edges(grid):
                     edges.add(((x, y), (nx, ny)))
                     edges.add(((nx, ny), (x, y)))
     return edges
+
+
+def cavern_pair_blocked_edges(grid):
+    """保留既有公共語意：只回洞窟17的陸地禁邊，其他tileset回空集合。"""
+    if grid.get('tileset_id') != CAVERN_TILESET_ID:
+        return set()
+    return _land_pair_blocked_edges(grid, CAVERN_LAND_TILE_PAIRS)
+
+
+def tileset_pair_blocked_edges(grid):
+    """固定紅版森林3／洞窟17的相鄰雙向陸地禁邊，不把整格變牆。
+
+    上游 ``read_world_grid`` 已核對移動格左下背景圖塊。已支援tileset
+    若缺少完整byte矩陣則回None；一般網格／其他tileset不增加限制。
+    Water表不適用此陸地控制器。
+    """
+    if grid.get('tileset_id') == FOREST_TILESET_ID:
+        return _land_pair_blocked_edges(grid, FOREST_LAND_TILE_PAIRS)
+    return cavern_pair_blocked_edges(grid)
 
 
 def read_npc_obstacles(pyboy,grid,expected,*,overworld_ready=False):
@@ -136,11 +153,11 @@ def read_world_grid(pyboy, location):
 
 def world_direction(grid, location, target, blocked=(), blocked_edges=()):
     """BFS找完整路線；圖外出口先走到邊界，下一步才踏出。"""
-    cells = grid['walkable'];height=len(cells);width=len(cells[0])
-    start = location['x'],location['y'];raw = target['x'],target['y']
-    pair_edges = cavern_pair_blocked_edges(grid)
+    pair_edges = tileset_pair_blocked_edges(grid)
     if pair_edges is None:
         return None
+    cells = grid['walkable'];height=len(cells);width=len(cells[0])
+    start = location['x'],location['y'];raw = target['x'],target['y']
     forbidden=set(blocked_edges) | pair_edges
     end = max(0,min(width-1,raw[0])),max(0,min(height-1,raw[1]))
     if raw != end and not cells[end[1]][end[0]]:

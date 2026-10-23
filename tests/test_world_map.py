@@ -89,10 +89,23 @@ def test_equal_tile_ids_at_nonadjacent_cells_are_not_a_global_wall_or_teleport_e
     assert result['direction'] == 'right' and result['path_length'] == 2
 
 
-def test_land_controller_does_not_add_water_or_forest_table_pairs():
+def test_cavern_public_helper_does_not_add_water_or_forest_table_pairs():
+    # 舊洞窟API仍不負責Forest；world_direction的Forest功能另行核對。
     for tileset, pair in [(17, (0x14, 0x05)), (17, (0x30, 0x2E)), (3, (0x30, 0x2E))]:
+        assert cavern_pair_blocked_edges(grid([list(pair)], tileset)) == set()
+
+
+def test_world_land_controller_does_not_add_water_or_wrong_tileset_pairs():
+    for tileset, pair in [(17, (0x14, 0x05)), (17, (0x30, 0x2E)),
+                          (3, (0x14, 0x2E)), (3, (0x48, 0x2E)), (3, (0x20, 0x05))]:
         result = world_direction(grid([list(pair)], tileset), loc(0, 0), loc(1, 0))
         assert result['direction'] == 'right' and result['path_length'] == 1
+
+
+def test_world_direction_now_applies_forest_land_table_without_changing_cavern_api():
+    current = grid([[0x30, 0x2E]], 3)
+    assert cavern_pair_blocked_edges(current) == set()
+    assert world_direction(current, loc(0, 0), loc(1, 0)) is None
 
 
 @pytest.mark.parametrize('tiles', [None, [[0x20]], [[0x20, 'unknown']]])

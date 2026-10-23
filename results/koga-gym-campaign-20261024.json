@@ -1,0 +1,1138 @@
+{
+  "schema": "laya-gym-campaign-receipt-v1",
+  "date": "2026-10-24",
+  "timezone": "Asia/Taipei",
+  "language": "zh-Hant",
+  "gym": "koga",
+  "completed": true,
+  "closed_review_at": "2026-10-23T21:35:47.375785+00:00",
+  "closed_review_at_taipei": "2026-10-24T05:35:47.375785+08:00",
+  "before": {
+    "at": "2026-10-23T21:34:58.266625+00:00",
+    "badges_raw": 15,
+    "beat_koga": false,
+    "party": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 35,
+        "hp": 118,
+        "max_hp": 118,
+        "exp": 36902,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 56987,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ]
+  },
+  "after": {
+    "badges_raw": 31,
+    "badge_count": 5,
+    "beat_koga": true,
+    "got_tm06": true,
+    "tm06_in_inventory": true,
+    "location": {
+      "map_id": 157,
+      "x": 4,
+      "y": 11
+    },
+    "party": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 0,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          0,
+          35,
+          13,
+          35
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 56987,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "money": 41066,
+    "battle_active": false,
+    "visible_text_candidates": []
+  },
+  "normal_game_outcome": {
+    "player_victory": true,
+    "party_fainted_species": [
+      7
+    ],
+    "cause": "WEEZING43 SELFDESTRUCT / Critical hit；NIDOKING與最後對手同回合倒下，原生KEVIN defeated KOGA。",
+    "blackout": false,
+    "save_rewind": false,
+    "all_six_trainers_individually_defeated": false
+  },
+  "individual_trainers": [
+    {
+      "trainer_event_index": 0,
+      "closed_review_at": "2026-10-23T21:32:26.974341+00:00",
+      "closed_review_at_taipei": "2026-10-24T05:32:26.974341+08:00",
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 35,
+          "hp": 168,
+          "max_hp": 168,
+          "exp": 55044,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            12
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 35,
+          "hp": 118,
+          "max_hp": 118,
+          "exp": 36902,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            35,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 35,
+          "hp": 108,
+          "max_hp": 108,
+          "exp": 43414,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            20,
+            30,
+            20
+          ]
+        }
+      ],
+      "money": 34534
+    },
+    {
+      "trainer_event_index": 1,
+      "closed_review_at": "2026-10-23T21:33:37.448887+00:00",
+      "closed_review_at_taipei": "2026-10-24T05:33:37.448887+08:00",
+      "party": [
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 35,
+          "hp": 108,
+          "max_hp": 108,
+          "exp": 46405,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            16,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 35,
+          "hp": 118,
+          "max_hp": 118,
+          "exp": 36902,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            35,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 35,
+          "hp": 168,
+          "max_hp": 168,
+          "exp": 55044,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            15
+          ]
+        }
+      ],
+      "money": 35619
+    },
+    {
+      "trainer_event_index": 5,
+      "closed_review_at": "2026-10-23T21:34:07.802628+00:00",
+      "closed_review_at_taipei": "2026-10-24T05:34:07.802628+08:00",
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 35,
+          "hp": 82,
+          "max_hp": 168,
+          "exp": 56987,
+          "status": 8,
+          "moves": [
+            29,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            11
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 35,
+          "hp": 118,
+          "max_hp": 118,
+          "exp": 36902,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            35,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 35,
+          "hp": 108,
+          "max_hp": 108,
+          "exp": 46405,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            16,
+            30,
+            20
+          ]
+        }
+      ],
+      "money": 36809
+    }
+  ],
+  "all_five_level35_checkpoint": {
+    "at": "2026-10-23T21:25:08.228801+00:00",
+    "at_taipei": "2026-10-24T05:25:08.228801+08:00",
+    "party": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 35,
+        "hp": 118,
+        "max_hp": 118,
+        "exp": 36902,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 53702,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 43414,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "hp_status_pp_full": true
+  },
+  "timing_delta": {
+    "scope": "挑戰前閉合觀測至戰後gym_review計數器差；包含戰鬥與獎勵，非全程破關時間。",
+    "actions": 285,
+    "uncached_choices": 5,
+    "cache_hits": 280,
+    "cache_hit_percent": 98.25,
+    "model_wait_seconds": 3.422,
+    "non_review_session_seconds": 16.281,
+    "emulated_frames": 30232,
+    "global_clear_elapsed_seconds": null
+  },
+  "normal_center_recovery": {
+    "at": "2026-10-23T21:38:17.016200+00:00",
+    "at_taipei": "2026-10-24T05:38:17.016200+08:00",
+    "location": {
+      "map_id": 154,
+      "x": 3,
+      "y": 3
+    },
+    "party": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 56987,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "hp_status_pp_full": true,
+    "without_state_reload": true
+  },
+  "validation": {
+    "full_tests_passed": 3737,
+    "warnings": 1,
+    "duration_seconds": 12.69,
+    "progress_profile": "gen1-wrapper-ram-progress-v1-unvalidated",
+    "independent_closed_overworld_check": true
+  },
+  "classification": {
+    "backend": "local_offline_laya",
+    "new_strata_api_calls": 0,
+    "strata_configuration_changed": false,
+    "gpt_gameplay_classification": false,
+    "cloud_fallback": false
+  },
+  "captures": [
+    {
+      "at": "2026-10-23T21:35:33.286555+00:00",
+      "kind": "battle-KOFFING",
+      "file": "keyframes/00062-battle-KOFFING.png",
+      "sha256": "81e1b0fb08a60d613e2504c5c785e0ef08b865416161825671ff31f4201b6636",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        " KOFFING",
+        "     37",
+        "          NIDOKING",
+        "               35",
+        "           118/118",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "timing": {
+        "wall_seconds": 2204.781,
+        "model_wait_seconds": 71.699,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 472.795,
+        "emulated_seconds": 12692.133
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:35.757587+00:00",
+      "kind": "battle-MUK",
+      "file": "keyframes/00063-battle-MUK.png",
+      "sha256": "9f6a1a4d8fe088fb5331601d265a44ad8cb6b652ae6105de546891413d6a3402",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        "  MUK",
+        "     39",
+        "          NIDOKING",
+        "               35",
+        "           102/118",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "timing": {
+        "wall_seconds": 2207.25,
+        "model_wait_seconds": 72.262,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 475.264,
+        "emulated_seconds": 12775.467
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:44.215353+00:00",
+      "kind": "level-up",
+      "file": "keyframes/00064-level-up.png",
+      "sha256": "22c45c63fbe61da8272b24ec1420c83642991ac80a1d922781d15ddbf2db1002",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        "          NIDOKING",
+        "               36",
+        "            51/121",
+        " NIDOKING grew",
+        " to level 36!"
+      ],
+      "timing": {
+        "wall_seconds": 2215.703,
+        "model_wait_seconds": 73.091,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 483.717,
+        "emulated_seconds": 13083.867
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:44.282471+00:00",
+      "kind": "level-up",
+      "file": "keyframes/00065-level-up.png",
+      "sha256": "7ff471cc75e6c7f40fc0b64011e49f4fde351065fd3174c1c9e591cd1b460e80",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        "           ATTACK",
+        "                90",
+        "           DEFENSE",
+        "                79",
+        "           SPEED",
+        "                78",
+        "           SPECIAL",
+        "                73",
+        " NIDOKING grew",
+        " to level 36!"
+      ],
+      "timing": {
+        "wall_seconds": 2215.781,
+        "model_wait_seconds": 73.091,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 483.795,
+        "emulated_seconds": 13086.0
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:45.501913+00:00",
+      "kind": "battle-WEEZING",
+      "file": "keyframes/00066-battle-WEEZING.png",
+      "sha256": "b9ca255a36409d289879e17847aee33a35b0fe7e8ea48bc8b2eda842a0afb754",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        " WEEZING",
+        "     43",
+        "          NIDOKING",
+        "               36",
+        "            51/121",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "timing": {
+        "wall_seconds": 2217.0,
+        "model_wait_seconds": 73.934,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 485.014,
+        "emulated_seconds": 13097.333
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:46.135851+00:00",
+      "kind": "trainer-defeated",
+      "file": "keyframes/00067-trainer-defeated.png",
+      "sha256": "7a201c424be1773557ed05fa43bc14717a148647f8c23a310c614cea0c1ab4f0",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        " KEVIN defeated",
+        " KOGA!"
+      ],
+      "timing": {
+        "wall_seconds": 2217.641,
+        "model_wait_seconds": 73.934,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 485.655,
+        "emulated_seconds": 13117.867
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:46.369968+00:00",
+      "kind": "badge-dialogue",
+      "file": "keyframes/00068-badge-dialogue.png",
+      "sha256": "65ab010854886f359a6f90027bdc2d519b377ee0efdf8f2d89ec4444b729377c",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        " Here! Take the",
+        " SOULBADGE!       ▼"
+      ],
+      "timing": {
+        "wall_seconds": 2217.859,
+        "model_wait_seconds": 73.934,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 485.873,
+        "emulated_seconds": 13126.4
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:46.539973+00:00",
+      "kind": "badge-dialogue",
+      "file": "keyframes/00069-badge-dialogue.png",
+      "sha256": "915debdd2138e32567400537fdbd215b840dc3d883da09ff5af6b8d1f66b7ee7",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        " Now that you have",
+        " the SOULBADGE,   ▼"
+      ],
+      "timing": {
+        "wall_seconds": 2218.031,
+        "model_wait_seconds": 73.934,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 486.045,
+        "emulated_seconds": 13132.8
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:46.603795+00:00",
+      "kind": "badge-dialogue",
+      "file": "keyframes/00070-badge-dialogue.png",
+      "sha256": "ef993480de79a01626df40349c98f5d6956bf7f1188d50f15f68b028ddf797a4",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [
+        " the SOULBADGE,",
+        " the DEFENSE of"
+      ],
+      "timing": {
+        "wall_seconds": 2218.109,
+        "model_wait_seconds": 73.934,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 486.123,
+        "emulated_seconds": 13134.933
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:47.282055+00:00",
+      "kind": "milestone-koga",
+      "file": "keyframes/00071-milestone-koga.png",
+      "sha256": "ff16c14b969db9c511920ed6b26ea9f5247c47b9cd3ea20ecf328d4a885a101e",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [],
+      "timing": {
+        "wall_seconds": 2218.781,
+        "model_wait_seconds": 73.934,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 486.795,
+        "emulated_seconds": 13158.4
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:47.322381+00:00",
+      "kind": "milestone-got_tm06",
+      "file": "keyframes/00072-milestone-got_tm06.png",
+      "sha256": "ff16c14b969db9c511920ed6b26ea9f5247c47b9cd3ea20ecf328d4a885a101e",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [],
+      "timing": {
+        "wall_seconds": 2218.781,
+        "model_wait_seconds": 73.934,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 486.795,
+        "emulated_seconds": 13158.4
+      }
+    },
+    {
+      "at": "2026-10-23T21:35:47.375785+00:00",
+      "kind": "review-gym_review",
+      "file": "keyframes/00073-review-gym_review.png",
+      "sha256": "ff16c14b969db9c511920ed6b26ea9f5247c47b9cd3ea20ecf328d4a885a101e",
+      "location": {
+        "map_id": 157,
+        "x": 4,
+        "y": 11
+      },
+      "text": [],
+      "timing": {
+        "wall_seconds": 2218.875,
+        "model_wait_seconds": 73.934,
+        "review_pause_seconds": 1731.986,
+        "non_review_session_seconds": 486.889,
+        "emulated_seconds": 13158.4
+      }
+    }
+  ],
+  "lessons_document": "docs/koga-gym-review.md",
+  "league_completed": false,
+  "website_published": false,
+  "publication_scope": "ROM/state/weights/videos/private raw output remain local; only allowlisted public project material is backed up.",
+  "media_results": "koga-victory-clips-20261024.json"
+}

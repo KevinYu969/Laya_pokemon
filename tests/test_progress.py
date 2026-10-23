@@ -1,4 +1,4 @@
-"""完全使用合成位址與虛構種族；不讀取遊戲 ROM 或真實 RAM。"""
+"""使用純fake記憶體；第五館另交叉官方SDK公開常數，不讀ROM或真實RAM。"""
 from collections import defaultdict
 from types import SimpleNamespace
 
@@ -135,3 +135,115 @@ def test_money_decodes_big_endian_bcd_without_sdk_byte_reversal_or_ram_writes():
     assert all(game.memory[k]==v for k,v in before.items())
     game.memory[0x401]=0xFA
     assert read_progress(game,constants)['money'] is None
+
+
+# 固定來源 a53671100ec22e5394ff26ec028d0812a238dae2：
+# constants/event_constants.asm:154-161 的獨立預期，不依 ignored outputs 研究檔。
+FUCHSIA_EXPECTED = {
+    "got_tm06": 0x258, "beat_koga": 0x259,
+    "beat_fuchsia_gym_trainer_0": 0x25A, "beat_fuchsia_gym_trainer_1": 0x25B,
+    "beat_fuchsia_gym_trainer_2": 0x25C, "beat_fuchsia_gym_trainer_3": 0x25D,
+    "beat_fuchsia_gym_trainer_4": 0x25E, "beat_fuchsia_gym_trainer_5": 0x25F,
+}
+FUCHSIA_ADDED = set(FUCHSIA_EXPECTED) - {"beat_koga"}
+
+
+class GetterOnlyMemory:
+    def __init__(self, data):
+        self.data, self.reads = dict(data), defaultdict(int)
+
+    def __getitem__(self, address):
+        self.reads[address] += 1
+        value = self.data.get(address, 0)
+        if isinstance(value, Exception):
+            raise value
+        return value
+
+    def __setitem__(self, address, value):
+        raise AssertionError("progress must never write fake memory")
+
+
+def fuchsia_constants():
+    # 只import已安裝官方常數，沒有建立PyBoy或載入遊戲。
+    from pyboy.plugins import game_wrapper_pokemon_gen1_constants as sdk
+    return SimpleNamespace(**{name: getattr(sdk, name) for name in (
+        "PARTY_COUNT_ADDRESS", "PARTY_LENGTH", "OBTAINED_BADGES_ADDRESS",
+        "EVENT_FLAGS_ADDRESS", "EVENT_FLAGS", "POKEMON_SPECIES_NAMES", "BADGES")})
+
+
+def fuchsia_game(constants, event_byte, *, party=True):
+    wrapper = Wrapper([valid_mon(species=7, level=35, hp=108, max_hp=108)] if party else [])
+    wrapper.inventory, wrapper.money = [], 0
+    return SimpleNamespace(memory=GetterOnlyMemory({constants.PARTY_COUNT_ADDRESS: int(party),
+                           constants.OBTAINED_BADGES_ADDRESS: 15, 0xD792: event_byte}),
+                           game_wrapper=wrapper)
+
+
+def test_fuchsia_fixed_source_ids_and_byte_match_installed_official_sdk():
+    constants = fuchsia_constants()
+    assert constants.EVENT_FLAGS_ADDRESS == 0xD747
+    assert {name: constants.EVENT_FLAGS[name] for name in FUCHSIA_EXPECTED} == FUCHSIA_EXPECTED
+    assert {0xD747 + event_id // 8 for event_id in FUCHSIA_EXPECTED.values()} == {0xD792}
+    assert {event_id % 8 for event_id in FUCHSIA_EXPECTED.values()} == set(range(8))
+    assert all(name in STORY_EVENT_NAMES for name in FUCHSIA_EXPECTED)
+
+
+@pytest.mark.parametrize("bit", range(8))
+def test_fuchsia_each_real_bit_is_independent_and_cached_once_without_writes(bit):
+    constants = fuchsia_constants()
+    game = fuchsia_game(constants, 1 << bit)
+    before = dict(game.memory.data)
+    result = read_progress(game, constants)
+    assert {name: result["story_event_bits"][name] for name in FUCHSIA_EXPECTED} == {
+        name: (event_id % 8 == bit) for name, event_id in FUCHSIA_EXPECTED.items()}
+    assert game.memory.reads[0xD792] == 1
+    assert game.memory.data == before and game.game_wrapper.reads == 1
+    # 原始館員/阿桔位元不會自動授予第五徽章或宣告冠軍／名人堂。
+    assert result["badges_raw"] == 15 and result["badge_count"] == 4
+    assert result["champion_observed"] is False and result["hall_of_fame_confirmed"] is None
+    assert result["profile"] == "gen1-wrapper-ram-progress-v1-unvalidated"
+
+
+@pytest.mark.parametrize("value", [None, True, False, -1, 256, 1.0, "255",
+                                 ValueError("unknown byte"), KeyError(0xD792)])
+def test_fuchsia_unknown_byte_keeps_all_eight_bits_unknown(value):
+    constants = fuchsia_constants()
+    result = read_progress(fuchsia_game(constants, value), constants)
+    assert all(result["story_event_bits"][name] is None for name in FUCHSIA_EXPECTED)
+    assert result["hall_of_fame_confirmed"] is None
+
+
+@pytest.mark.parametrize("name", FUCHSIA_EXPECTED)
+def test_fuchsia_missing_sdk_anchor_keeps_added_fields_unknown(name):
+    constants = fuchsia_constants()
+    constants.EVENT_FLAGS = dict(constants.EVENT_FLAGS)
+    constants.EVENT_FLAGS.pop(name)
+    result = read_progress(fuchsia_game(constants, 255), constants)
+    assert all(result["story_event_bits"][event] is None for event in FUCHSIA_ADDED)
+    assert result["story_event_bits"]["beat_koga"] is (None if name == "beat_koga" else True)
+
+
+@pytest.mark.parametrize("change", ["shifted_id", "boolean_id", "other_event_base", "synthetic_profile"])
+def test_fuchsia_unrecognized_source_contract_cannot_reinterpret_new_events(change):
+    constants = fuchsia_constants()
+    constants.EVENT_FLAGS = dict(constants.EVENT_FLAGS)
+    if change == "shifted_id":
+        constants.EVENT_FLAGS["beat_fuchsia_gym_trainer_0"] = 0x25B
+    elif change == "boolean_id":
+        constants.EVENT_FLAGS["got_tm06"] = True
+    elif change == "other_event_base":
+        constants.EVENT_FLAGS_ADDRESS = 0xD746
+    else:
+        constants = synthetic_constants()
+    result = read_progress(fuchsia_game(constants, 255), constants)
+    assert all(result["story_event_bits"][event] is None for event in FUCHSIA_ADDED)
+    assert result["hall_of_fame_confirmed"] is None
+
+
+def test_fuchsia_empty_party_preserves_only_raw_bits_without_confirming_mission():
+    constants = fuchsia_constants()
+    result = read_progress(fuchsia_game(constants, 255, party=False), constants)
+    assert all(result["story_event_bits"][name] is True for name in FUCHSIA_EXPECTED)
+    assert result["party_read_valid"] is True and result["initialization_candidate"] is False
+    assert result["badge_count"] is None and result["champion_observed"] is None
+    assert result["hall_of_fame_confirmed"] is None
