@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-23",
+  "kind": "strata_laya_real_pyboy_clip",
+  "filename": "strata-laya-live-20261023.mp4",
+  "sha256": "004b24d8fc28c66e5a7cac6445606b9dcb6171f4804053556f079b6d03158e60",
+  "fps": 30,
+  "frames": 1780,
+  "seconds": 59.333333333333336,
+  "shape": [
+    432,
+    480,
+    3
+  ],
+  "first_and_last_decoded": true,
+  "sources": [
+    {
+      "session": "strata-live-20261023-01",
+      "game": "game-00",
+      "sha256": "a10f8c1e6ea21e1bb587ff7b6cce6852b804687b4d1446a7e2cbd83c0a0eb4d3"
+    },
+    {
+      "session": "strata-live-20261023-02",
+      "game": "game-00",
+      "sha256": "5bbf8670d5b1ad12f6dd971560dca16b9d9a1bcf145ab052baf1cf691a638e1f"
+    }
+  ],
+  "description": "Strata選階段、離線Laya按鍵的真實紅版實測；包含烈雀捕捉、登錄收尾與後續野生對戰。兩段剪接。",
+  "timing": "emulated_time_omits_model_wait",
+  "computer_use_calls": 0,
+  "public_video_uploaded": false,
+  "audio": false
+}

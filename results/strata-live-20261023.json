@@ -1,0 +1,249 @@
+{
+  "recorded_at": "2026-10-23T05:33:12.532143+00:00",
+  "status": "single_and_multi_episode_verified",
+  "private_device_confirmed_by_user": true,
+  "hub_to_api_binding_verified": true,
+  "planner_model_id": "qwen3.8-flash-next-iq3_s",
+  "button_model": "convaiinnovations/laya",
+  "button_model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "planner_calls": [
+    {
+      "session": "strata-live-20261023-01",
+      "episode": 0,
+      "stage": "team_training",
+      "reason": "The lead Pokemon (Bulbasaur) is at level 7, which is below the target level of 13. The current state is valid for training, and no unsupported menus or uncertainties are present.",
+      "usage": {
+        "prompt_tokens": 558,
+        "completion_tokens": 56,
+        "total_tokens": 614,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "model": "qwen3.8-flash-next-iq3_s"
+    },
+    {
+      "session": "strata-live-20261023-02",
+      "episode": 0,
+      "stage": "team_training",
+      "reason": "The game is in a wild battle with valid party members. The allowed stage 'team_training' is applicable for training the lead Pokemon, Bulbasaur, to level 13. No unsupported menus or uncertain states are present.",
+      "usage": {
+        "prompt_tokens": 589,
+        "completion_tokens": 59,
+        "total_tokens": 648,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "model": "qwen3.8-flash-next-iq3_s"
+    },
+    {
+      "session": "strata-live-20261023-02",
+      "episode": 1,
+      "stage": "team_training",
+      "reason": "The party is valid and the lead Bulbasaur is at level 7, which is below the target level 13 for team_training. The location and story flags indicate a stable state suitable for training.",
+      "usage": {
+        "prompt_tokens": 663,
+        "completion_tokens": 55,
+        "total_tokens": 718,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "model": "qwen3.8-flash-next-iq3_s"
+    }
+  ],
+  "runtime_planner_usage": {
+    "prompt_tokens": 1810,
+    "completion_tokens": 170,
+    "total_tokens": 1980
+  },
+  "initial_diagnostic_probe": {
+    "usage": {
+      "prompt_tokens": 485,
+      "completion_tokens": 60,
+      "total_tokens": 545,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "elapsed_seconds": 1.908866100013256,
+    "limitation": "原始理由誤提第二位隊員練等；已加入只練首位的階段能力說明，再驗證並執行。"
+  },
+  "runs": [
+    {
+      "session": "strata-live-20261023-01",
+      "game": "game-00",
+      "steps": 45,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.40951950001181,
+      "video": {
+        "filename": "gameplay.mp4",
+        "fps": 30,
+        "frames": 900,
+        "playback_seconds": 30.0,
+        "timing": "emulated_time",
+        "audio": false
+      },
+      "final_state_sha256": "bd57d9ec81ed23c2c1525e20ea670c35fa2ead74d32a684094a5e07d62840500"
+    },
+    {
+      "session": "strata-live-20261023-02",
+      "game": "game-00",
+      "steps": 44,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.63021460000891,
+      "video": {
+        "filename": "gameplay.mp4",
+        "fps": 30,
+        "frames": 880,
+        "playback_seconds": 29.333333333333332,
+        "timing": "emulated_time",
+        "audio": false
+      },
+      "final_state_sha256": "94f1b7f70c0ddbc6008c7cf7afabfbd3474040ab589190591bcd102d99ac08a1"
+    },
+    {
+      "session": "strata-live-20261023-02",
+      "game": "game-01",
+      "steps": 44,
+      "stop_reason": "wall_clock_limit",
+      "wall_seconds_including_cleanup": 60.77001779997954,
+      "video": {
+        "filename": "gameplay.mp4",
+        "fps": 30,
+        "frames": 880,
+        "playback_seconds": 29.333333333333332,
+        "timing": "emulated_time",
+        "audio": false
+      },
+      "final_state_sha256": "e6003e7fdfa23347e1d5817b2436bee4dbefdb54af5e11d202106d95049e8126"
+    }
+  ],
+  "state_chain_verified": true,
+  "state_chain_checks": [
+    true,
+    true,
+    true
+  ],
+  "latest_state_relative": "outputs/strata-live-20261023-02/game-01/final.state",
+  "final_party_read_valid": true,
+  "party": [
+    {
+      "species": 153,
+      "species_name": "BULBASAUR",
+      "level": 7,
+      "hp": 23,
+      "max_hp": 23,
+      "exp": 288,
+      "moves": [
+        33,
+        45,
+        73,
+        0
+      ],
+      "pp": [
+        30,
+        40,
+        10,
+        0
+      ]
+    },
+    {
+      "species": 3,
+      "species_name": "NIDORAN M",
+      "level": 3,
+      "hp": 16,
+      "max_hp": 16,
+      "exp": 57,
+      "moves": [
+        43,
+        33,
+        0,
+        0
+      ],
+      "pp": [
+        30,
+        35,
+        0,
+        0
+      ]
+    },
+    {
+      "species": 5,
+      "species_name": "SPEAROW",
+      "level": 3,
+      "hp": 16,
+      "max_hp": 16,
+      "exp": 27,
+      "moves": [
+        64,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        35,
+        40,
+        0,
+        0
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "item": 4,
+      "quantity": 6
+    }
+  ],
+  "money": 1400,
+  "location": {
+    "map_id": 33,
+    "x": 30,
+    "y": 8
+  },
+  "dialogue_evidence": [
+    {
+      "session": "strata-live-20261023-01",
+      "game": "game-00",
+      "step": 36,
+      "text": " SPEAROW           BULBASAUR             23/ 23  SPEAROW was  caught!"
+    },
+    {
+      "session": "strata-live-20261023-01",
+      "game": "game-00",
+      "step": 37,
+      "text": " SPEAROW           BULBASAUR             23/ 23  SPEAROW was  caught!"
+    },
+    {
+      "session": "strata-live-20261023-01",
+      "game": "game-00",
+      "step": 38,
+      "text": " SPEAROW           BULBASAUR             23/ 23  SPEAROW was  caught!"
+    },
+    {
+      "session": "strata-live-20261023-01",
+      "game": "game-00",
+      "step": 39,
+      "text": " SPEAROW           BULBASAUR             23/ 23  SPEAROW was  caught!"
+    },
+    {
+      "session": "strata-live-20261023-01",
+      "game": "game-00",
+      "step": 40,
+      "text": " SPEAROW           BULBASAUR             23/ 23  SPEAROW was  caught!          ▼"
+    }
+  ],
+  "tests_passed": 214,
+  "computer_use_calls_in_this_session": 0,
+  "native_window_enabled": true,
+  "desktop_foreground_verified_this_session": false,
+  "cloud_model_fallback": false,
+  "new_gameplay_this_session": true,
+  "limitations": [
+    "控制器限定已實作階段並提供子目標，地端模型選階段、Laya選按鍵，非已驗證的全程自主通關。",
+    "目前訓練只影響首位隊員；自動換人、PC與四招遺忘尚待校準。",
+    "遊戲每輪60秒；達輪數預算保存停止，沒有建立無上限背景遊玩排程。",
+    "ROM、存檔、影片、API設定與憑證不公開。"
+  ]
+}

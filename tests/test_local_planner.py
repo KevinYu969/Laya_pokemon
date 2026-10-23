@@ -71,6 +71,9 @@ def test_catalog_and_typed_stage_preserve_reported_token_usage(tmp_path):
     request = json.loads(transport.calls[-1].data)
     assert request['reasoning_effort'] == 'none' and request['response_format']['type'] == 'json_schema'
     assert 'tools' not in request and 'image_url' not in json.dumps(request)
+    context = json.loads(request['messages'][1]['content'])
+    assert 'current lead only' in context['stage_capabilities']['team_training']
+    assert 'Other party members do not automatically gain EXP' in context['stage_capabilities']['team_training']
 
 
 @pytest.mark.parametrize('decision,finish', [

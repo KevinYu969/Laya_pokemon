@@ -2,7 +2,9 @@
 
 更新：2026-10-23。目標是讓地端服務選擇已實作的遊戲階段，減少Codex逐輪續接與Computer Use畫面核對。Strata是推論服務，實際決策模型以該API目前載入、且通過目錄核對的模型ID為準。
 
-**目前完成程式與合成測試，尚未完成實際Strata API推論／雙模型遊戲驗收。** 私人服務端點仍待設備用途與模型／認證確認；本次沒有將遊戲觀測送到待確認端點，也沒有因此啟動新的遊戲輪次。
+**已完成私人Strata API與真實雙模型遊戲驗收。** Kevin確認私人設備後，核對模型總覽Hub、本機provider設定與認證，實際接到`qwen3.8-flash-next-iq3_s`；完成一輪測試及另外兩輪自動續接，共133次Laya按鍵決策。全程無Computer Use呼叫。見[實測收據](../results/strata-live-20261023.json)與[橋接就緒度](../results/strata-bridge-readiness-20261023.json)。
+
+實際新增3級烈雀，妙蛙種子7級EXP254→288；最新存檔位於`outputs/strata-live-20261023-02/game-01/final.state`。三次正式Strata決策合計1810輸入／170輸出／1980總tokens；初始診斷另計545總tokens，不混入正式遊戲請求。59.33秒本機[實測影片收據](../results/strata-live-clip-20261023.json)記錄烈雀捕捉與後續對戰，MP4不上傳。
 
 ```mermaid
 flowchart LR
@@ -24,7 +26,7 @@ flowchart LR
 
 ## 已實作範圍
 
-監督器會檢查開局、研究所對戰、包裹往返、圖鑑與首隻尼多朗♂等前置進度。已捕獲尼多朗家族後，新增team_training階段：在已知22號道路東側培養目前首位寶可夢，至13級停在里程碑。這個新訓練階段尚未實機驗收，不代表自動換人或平均培養所有隊員。
+監督器會檢查開局、研究所對戰、包裹往返、圖鑑與首隻尼多朗♂等前置進度。已捕獲尼多朗家族後，team_training階段會在已知22號道路東側培養目前首位寶可夢，至13級停在里程碑。本次已實測此階段及跨輪續接，首位仍7級、未完成13級目標；不代表自動換人或平均培養所有隊員。訓練期間仍可按既有捕捉規則補入未持有的過渡成員，本輪烈雀即由此加入。
 
 每個遊戲子程序仍上限60秒；監督器預設最多3輪、可指定1至20輪，達上限保存停止。只有正常時間／步數結束或里程碑才可考慮下一輪。使用者關窗、Ctrl+C、未知選單、模型錯誤、非法JSON、模型目錄不符及非正常遊戲退出，都不自動重啟或改接雲端。
 
@@ -55,7 +57,7 @@ flowchart LR
 完成連線與模型核對後，從已捕獲尼多朗的真實存檔啟動有限輪次：
 
 ```powershell
-.\.venv\Scripts\python.exe -X utf8 scripts/strata_supervisor.py --config .local/strata-planner.json --state outputs/runs/pyboy-live-20261023-32/final.state --output outputs/strata-session-01 --episodes 3
+.\.venv\Scripts\python.exe -X utf8 scripts/strata_supervisor.py --config .local/strata-planner.json --state outputs/strata-live-20261023-02/game-01/final.state --output outputs/strata-session-next --episodes 3
 ```
 
 輸出包含監督器summary.json、每次決策及API回報的token usage、逐輪策略、遊戲日誌、MP4與final.state。這些全部留本機；沒有回報usage時記為未知，不估算。Strata無法連線就保存錯誤停止，不借用GPT分類額度。
@@ -64,6 +66,8 @@ flowchart LR
 
 合成測試涵蓋私人端點限制、環境變數認證、拒絕重新導向、JSON／階段限制、保留API實際usage，以及關窗後不重啟。這些測試不證明實際地端模型會選對策略。
 
-後續驗收順序：確認私人設備 → 核對實際模型與認證 → 一次有來源的階段JSON → 一輪真實Laya按鍵／錄影 → 多輪自動續接。視覺能力是否可用需另測，目前只送結構化遊戲狀態，未傳送影像。
+已完成驗收：確認私人設備 → 核對模型與認證 → 階段JSON → 一輪Laya按鍵／錄影 → 另外兩輪自動續接，三輪存檔雜湊鏈均相符。初始地端理由曾誤提第二位隊員也會被培養，補上明確的stage_capabilities後，後續三次都正確描述首位訓練；仍由本機檢查候選、前置條件與輸出格式，不以模型自述作成果。
+
+尚未驗證：13級訓練完成、全隊換人培養、四招忘招、PC管理、道館及全程通關。視覺能力也需另測，目前只送有限結構化遊戲狀態與字碼文字，未傳送影像或私人筆記。使用者提供的Hub根目錄不是推論API；連線應使用已核對的Strata項目，不能把404誤認成模型離線。
 
 介面依據：[Strata官方API說明](https://github.com/Niko1221/Strata/blob/main/docs/DETAILS.md)。使用GET /v1/models與POST /v1/chat/completions、JSON schema回覆；客戶端仍自行驗證，不假設伺服器一定遵循schema。

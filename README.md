@@ -8,7 +8,7 @@
 
 ## 目前進度
 
-更新：**2026-10-23**。本機離線 Laya 已在真正的 PyBoy 桌面紅版中完成 **KEVIN／BLUE 命名、取得妙蛙種子、研究所首戰、野生對戰、治療及博士包裹往返，並取得圖鑑**。最新妙蛙種子 **等級7、EXP254、已學寄生種子**，並以一顆精靈球捕獲 **3級尼多朗♂** 加入隊伍；剩7球、1400元，見[組隊實測摘要](results/team-building-20261023.json)。研究所首戰是**敗北**，之後野生對戰獲勝；保留失敗並從戰後進度續接，沒有回讀存檔改寫成績。前期歷史見[開場摘要](results/live-run-20261023.json)與[對戰及路線摘要](results/battle-and-route-20261023.json)。**尚未挑戰道館或通關；這是單次分段實測，尚無成功率數據。**
+更新：**2026-10-23**。本機離線 Laya 已在真正的 PyBoy 桌面紅版中完成 **KEVIN／BLUE 命名、取得妙蛙種子、研究所首戰、野生對戰、治療及博士包裹往返，並取得圖鑑**。最新妙蛙種子 **等級7、EXP288、已學寄生種子**，隊伍另有 **3級尼多朗♂、3級烈雀**；剩6球、1400元。Strata地端模型已實際接通，完成3輪遊戲及自動續接、無Computer Use呼叫，見[雙模型實測摘要](results/strata-live-20261023.json)；先前尼多朗捕捉見[組隊摘要](results/team-building-20261023.json)。研究所首戰是**敗北**，後續從自然戰後存檔續接，沒有回讀戰前改寫成績。前期歷史見[開場摘要](results/live-run-20261023.json)與[對戰及路線摘要](results/battle-and-route-20261023.json)。**尚未挑戰道館或通關；這是分段實測，尚無成功率數據。**
 
 本機已有 **21 秒命名短片**與 **90 秒離家到取得妙蛙種子的實測影片**，公開檔案驗證摘要見[命名紀錄](results/kevin-naming-clip-20261023.json)與[開場流程紀錄](results/opening-to-bulbasaur-clip-20261023.json)。影片留在本機，尚未對外發布。
 
@@ -45,7 +45,7 @@
 
 ## 如何運作
 
-新增[Strata地端階段監督器](docs/local-planner.md)，由私人設備上的模型選高階階段、離線Laya選按鍵，程式不依賴Computer Use。**目前程式／合成測試完成，端點設備用途、模型認證及真實雙模型遊戲驗收仍待確認**，詳見[橋接就緒度](results/strata-bridge-readiness-20261023.json)。
+已實測[Strata地端階段監督器](docs/local-planner.md)：`qwen3.8-flash-next-iq3_s`選高階階段，離線Laya選按鍵，迴圈不依賴Computer Use。完成一輪測試及另外兩輪自動續接，三輪保存狀態雜湊鏈相符；214測試通過。仍只支援已實作階段，詳見[橋接就緒度](results/strata-bridge-readiness-20261023.json)。
 
 `PyBoy 狀態 → 精簡 JSON 與候選按鍵 → Laya 選擇 → 按鍵及等待幀數 → 新狀態與紀錄`
 
@@ -101,6 +101,8 @@ cd Laya_pokemon
 另有 Showdown 固定入門對戰的獨立測試，僅驗證選招與對戰引擎串接；它不是 Game Boy 紅／藍版，回放不作為本專案即時遊玩的驗收。
 
 ## 影片成果
+
+新增 **59.33秒 Strata＋Laya真實紅版影片**，包含烈雀捕捉、登錄收尾與後續野生對戰；公開[驗證收據](results/strata-live-clip-20261023.json)，MP4留在本機`outputs/videos/strata-laya-live-20261023.mp4`。此輪控制與續接無Computer Use呼叫。
 
 新增 **30秒升等／學寄生種子／捕捉尼多朗♂** 剪輯，公開[影片驗證收據](results/team-building-clip-20261023.json)，MP4位於本機`outputs/videos/team-building-20261023.mp4`。它由兩段真實PyBoy錄影剪接，省略模型等待；不是牆鐘速度或全程自主通關證據。
 

@@ -1,17 +1,36 @@
 {
   "date": "2026-10-23",
-  "status": "implemented_pending_private_endpoint_confirmation",
-  "implemented": ["separate_local_supervisor", "validated_stage_json", "offline_laya_game_process", "bounded_episode_resume", "stop_on_window_close_or_unknown_menu"],
+  "status": "single_and_multi_episode_verified",
+  "implemented": [
+    "separate_local_supervisor",
+    "validated_stage_json",
+    "offline_laya_game_process",
+    "bounded_episode_resume",
+    "stop_on_window_close_or_unknown_menu"
+  ],
   "computer_use_dependency_in_supervisor": false,
   "game_max_wall_seconds": 60,
   "default_episode_limit": 3,
   "tests_passed": 214,
-  "actual_strata_inference_verified": false,
-  "actual_strata_laya_gameplay_verified": false,
-  "requested_endpoint_game_data_sent": false,
-  "planner_model_id": null,
-  "planner_token_usage": null,
-  "new_gameplay_this_session": false,
+  "actual_strata_inference_verified": true,
+  "actual_strata_laya_gameplay_verified": true,
+  "planner_model_id": "qwen3.8-flash-next-iq3_s",
+  "planner_token_usage": {
+    "prompt_tokens": 1810,
+    "completion_tokens": 170,
+    "total_tokens": 1980
+  },
+  "new_gameplay_this_session": true,
   "cloud_model_fallback": false,
-  "notes": ["端點需先確認私人設備用途，再核對模型與認證。", "本次僅有程式及合成驗證，不能寫成已完成雙模型遊戲實測。", "team_training為新增階段，僅培養首位寶可夢至13級，尚未實機驗收。"]
+  "notes": [
+    "使用者確認私人設備；模型總覽Hub與實際Strata API已核對，重用其既有認證，不公開端點或金鑰。",
+    "真實完成一輪測試與另外兩輪自動續接，共133次Laya按鍵決策；每個遊戲子程序上限60秒。",
+    "烈雀3級已加入，妙蛙種子仍7級、EXP254→288；僅培養首位，未達13級，也未完成道館。",
+    "原始診斷請求另有485輸入／60輸出／545總tokens，不包含在此正式三次決策用量中。"
+  ],
+  "private_device_confirmed_by_user": true,
+  "verified_private_strata_api_game_data_sent": true,
+  "verified_game_episodes": 3,
+  "state_chain_verified": true,
+  "computer_use_calls": 0
 }
