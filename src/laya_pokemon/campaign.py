@@ -100,6 +100,10 @@ def main():
             if any(m['id']=='beat_champion_rival' for m in milestones):
                 stats['champion_event_seen']=True
             if state['phase']=='strategy_review':pause(state.get('review_reason','strategy_review'),state,plan_sha);continue
+            if plan.get('mode')=='balanced_training':
+                from .balanced_training import context as training_context
+                training=training_context(emulator,state,plan,previous)
+                if training:state.update(training)
             if state['phase']=='unclassified':
                 context,step_id=campaign_route.waypoint(emulator,state,plan,step_id,previous)
                 state.update(context)

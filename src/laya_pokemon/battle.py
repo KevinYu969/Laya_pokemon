@@ -107,7 +107,7 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
                 current=next((index for index,mon,y in party_names if y<=party_cursors[0][1]<=y+1),None)
                 if current is None:return {'phase':'strategy_review','review_reason':'party_cursor_not_at_verified_member'}
                 objective='Confirm the current selection.' if current==target else 'Move DOWN.' if current<target else 'Move UP.'
-                return {'phase':'battle_menu','objective':objective,'available_actions':['a','b'] if current==target else ['up','down','wait'],'battle_tactic':'select_healthy_party','party_target_index':target,'enemy_species':enemy}
+                return {'phase':'battle_menu','objective':objective,'available_actions':['a','b'] if current==target else ['up','down','wait'],'battle_tactic':'select_healthy_party','party_target_index':target,'enemy_species':enemy,'controller_menu_verified':True}
         owned = [mon["species"] for mon in party]
         balls = sum(item["quantity"] for item in inventory or [] if item["item"] == 4)
         capture = capture_plan(enemy, owned, balls, wild=battle_state.get("kind") == "wild", party_count=len(party))

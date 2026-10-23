@@ -112,6 +112,8 @@ cd Laya_pokemon
 
 ## 影片成果
 
+新增[加速操作與全隊訓練素材](docs/accelerated-clips.md)：移動12.67秒、戰鬥20秒、正常換首位9.33秒，以及換人分經驗訓練片段。所有影片留本機、逐幀解碼核對；4倍後製與依日誌重建牆鐘節奏均分別標示。新雙語網誌與5段影片頁已完成建置，Cloudflare登入待恢復，尚未發布。
+
 新增 **59.33秒 Strata＋Laya真實紅版影片**，包含烈雀捕捉、登錄收尾與後續野生對戰；公開[驗證收據](results/strata-live-clip-20261023.json)，MP4留在本機`outputs/videos/strata-laya-live-20261023.mp4`。此輪控制與續接無Computer Use呼叫。
 
 新增 **30秒升等／學寄生種子／捕捉尼多朗♂** 剪輯，公開[影片驗證收據](results/team-building-clip-20261023.json)，MP4位於本機`outputs/videos/team-building-20261023.mp4`。它由兩段真實PyBoy錄影剪接，省略模型等待；不是牆鐘速度或全程自主通關證據。

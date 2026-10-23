@@ -69,6 +69,7 @@ class LayaPolicy:
         # 戰術與完整觀測仍留在steps；不把相異的原始觀測宣稱為相同輸入。
         if getattr(self, 'cache_enabled', False) and (
                 state.get('world_path_hint') or state.get('collision_path_hint')
+                or state.get('controller_menu_verified') is True
                 or state.get('battle_target_tile') or state.get('phase') == 'battle_bag'
                 or (state.get('phase') == 'dialogue' and state.get('objective') == 'Advance the visible dialogue with the confirm button.')
                 or (state.get('phase') in {'battle_animation', 'battle_dialogue'}

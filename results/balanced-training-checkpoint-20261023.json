@@ -1,0 +1,90 @@
+{
+  "at_utc": "2026-10-23T09:32:29.257161+00:00",
+  "checkpoint": "all_current_members_at_least_level_12",
+  "party": [
+    {
+      "species": 5,
+      "species_name": "SPEAROW",
+      "level": 12,
+      "hp": 35,
+      "max_hp": 35,
+      "exp": 1743,
+      "status": 0,
+      "moves": [
+        64,
+        45,
+        43,
+        0
+      ],
+      "pp": [
+        35,
+        40,
+        30,
+        0
+      ]
+    },
+    {
+      "species": 3,
+      "species_name": "NIDORAN M",
+      "level": 12,
+      "hp": 37,
+      "max_hp": 37,
+      "exp": 979,
+      "status": 0,
+      "moves": [
+        43,
+        33,
+        30,
+        0
+      ],
+      "pp": [
+        30,
+        35,
+        25,
+        0
+      ]
+    },
+    {
+      "species": 9,
+      "species_name": "IVYSAUR",
+      "level": 21,
+      "hp": 61,
+      "max_hp": 61,
+      "exp": 7059,
+      "status": 0,
+      "moves": [
+        33,
+        45,
+        73,
+        22
+      ],
+      "pp": [
+        35,
+        40,
+        10,
+        9
+      ]
+    }
+  ],
+  "location": {
+    "map_id": 14,
+    "x": 61,
+    "y": 8
+  },
+  "badges_raw": 1,
+  "timing": {
+    "wall_seconds": 1650.641,
+    "model_wait_seconds": 558.566,
+    "review_pause_seconds": 180.453,
+    "non_review_session_seconds": 1470.188,
+    "emulated_seconds": 12964.667
+  },
+  "model_load_count": 1,
+  "cloud_fallback": false,
+  "source_run": "league-campaign-20261023-06",
+  "checkpoint_sha256": "0031c6de0a90744c3d4d7add313f8fc590f807cbabfff36dd56622c46c24178f",
+  "training_goal_complete": true,
+  "full_level_balance_complete": false,
+  "next_minimum_level": 18,
+  "game_tests_passed": 246
+}

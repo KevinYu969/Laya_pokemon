@@ -15,6 +15,7 @@ class PlannerError(RuntimeError):
 
 
 STAGE_CAPABILITIES = {
+    "balanced_training": "Train every current party member to the local plan's minimum level. Reorder the weakest healthy member to lead through visible Pokemon/Switch menus, then switch to a stronger healthy member in battle for shared experience. No automatic party-wide EXP. Heal at the known nearby Center. Pause on battle loss, unsupported menu or training checkpoint; never rewind.",
     "starter": "Obtain Bulbasaur through the implemented opening route.",
     "lab_rival": "Trigger and complete the laboratory rival battle; winning is not guaranteed.",
     "to_parcel": "Travel to Viridian Mart, heal if injured, receive Oak's parcel.",

@@ -1,0 +1,129 @@
+{
+  "at": "2026-10-23T09:35:50.154830+00:00",
+  "successful_decisions": [
+    {
+      "run": "league-campaign-20261023-02",
+      "at": "2026-10-23T08:33:15.405842+00:00",
+      "stage": "league_campaign",
+      "reason": "Continue route to Cerulean Gym; badge pause occurs after victory.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 1611,
+        "completion_tokens": 27,
+        "total_tokens": 1638,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 1.937999999994645,
+      "guide_sha256": "9155e2881f17f26a41ac08bb0a2d98d5c8fa5f64ed263427843b500d18d36222",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": "league-campaign-20261023-03",
+      "at": "2026-10-23T08:40:42.246545+00:00",
+      "stage": "review",
+      "reason": "Lead Pokemon fainted; requires healing before continuing to Cerulean Gym.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 1701,
+        "completion_tokens": 27,
+        "total_tokens": 1728,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 1.827999999979511,
+      "guide_sha256": "9155e2881f17f26a41ac08bb0a2d98d5c8fa5f64ed263427843b500d18d36222",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": "league-campaign-20261023-04",
+      "at": "2026-10-23T08:42:10.905318+00:00",
+      "stage": "battle_recovery",
+      "reason": "Active trainer battle with fainted lead requires mandatory healthy party selection.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 846,
+        "completion_tokens": 26,
+        "total_tokens": 872,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 1.5310000000172295,
+      "guide_sha256": "9155e2881f17f26a41ac08bb0a2d98d5c8fa5f64ed263427843b500d18d36222",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": "league-campaign-20261023-05",
+      "at": "2026-10-23T08:53:58.609331+00:00",
+      "stage": "league_campaign",
+      "reason": "Ivysaur is healthy; proceed to Cerulean Gym as per current goal.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 2519,
+        "completion_tokens": 31,
+        "total_tokens": 2550,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 2.25,
+      "guide_sha256": "078021c7d8f1d4a408fc57fab120c1adaec35f81b9787cbeaddd8b82870d0982",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": "league-campaign-20261023-06",
+      "at": "2026-10-23T09:04:57.998375+00:00",
+      "stage": "balanced_training",
+      "reason": "Weakest members need leveling; heal at nearby Center before training.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 1674,
+        "completion_tokens": 26,
+        "total_tokens": 1700,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 1.7969999999913853,
+      "guide_sha256": "078021c7d8f1d4a408fc57fab120c1adaec35f81b9787cbeaddd8b82870d0982",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    },
+    {
+      "run": "league-campaign-20261023-07",
+      "at": "2026-10-23T09:33:54.625951+00:00",
+      "stage": "balanced_training",
+      "reason": "Party members are below minimum level 18; training required per mission goal.",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "usage": {
+        "prompt_tokens": 1727,
+        "completion_tokens": 29,
+        "total_tokens": 1756,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "cloud_fallback": false,
+      "latency_seconds": 1.797000000020489,
+      "guide_sha256": "078021c7d8f1d4a408fc57fab120c1adaec35f81b9787cbeaddd8b82870d0982",
+      "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2"
+    }
+  ],
+  "known_usage": {
+    "prompt_tokens": 10078,
+    "completion_tokens": 166,
+    "total_tokens": 10244
+  },
+  "additional_timeout_usage": null,
+  "timeout_count": 1,
+  "timeout_note": "First overlong guide request timed out without usage; not estimated.",
+  "configuration_changed": false,
+  "cloud_fallback": false
+}

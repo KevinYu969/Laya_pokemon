@@ -21,7 +21,7 @@ class Journal:
             'cause':'','evidence':'','adjustments':'','validation':''})
         return item
     def capture(self,pyboy,kind,state,timing):
-        key=(kind,state.get('location',{}).get('map_id'),state.get('enemy_species'),tuple(state.get('visible_text_candidates',[])))
+        key=(kind,tuple(sorted(state.get('location',{}).items())),state.get('enemy_species'),tuple(state.get('visible_text_candidates',[])))
         if key in self.captures:return None
         self.captures.add(key);self.serial+=1
         filename=f'{self.serial:05d}-{kind}.png';path=self.output/'keyframes'/filename;path.parent.mkdir(exist_ok=True)

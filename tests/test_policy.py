@@ -86,3 +86,18 @@ def test_fast_button_translation_keeps_full_observation_out_of_cache_input():
     second=policy.choose({'objective':'Move UP.','phase':'overworld','world_path_hint':{'direction':'up'},'visible_text_candidates':[], 'party_summary':[{'hp':19}], 'available_actions':['up','wait']})
     assert first['model_state']=={'objective':'Move UP.','phase':'overworld'}
     assert second['prediction_cache_hit'] and len(calls)==1
+
+
+def test_verified_party_menu_can_reuse_button_classification_without_merging_candidate_sets():
+    from collections import OrderedDict
+    calls=[]
+    class Agent:
+        def predict(self,state,questions):
+            calls.append(state)
+            return {'answers':{'action':{'choice':'a'}},'usage':{'truncated':False}}
+    policy=object.__new__(LayaPolicy);policy.agent=Agent();policy.cache_enabled=True;policy.prediction_cache=OrderedDict()
+    first={'objective':'Confirm the current selection.','phase':'party_menu','controller_menu_verified':True,'available_actions':['a','wait'],'party_summary':[{'hp':18}]}
+    policy.choose(first)
+    assert policy.choose({**first,'party_summary':[{'hp':32}]})['prediction_cache_hit']
+    assert not policy.choose({**first,'available_actions':['a','b']})['prediction_cache_hit']
+    assert len(calls)==2

@@ -1,0 +1,480 @@
+{
+  "version": 1,
+  "stage": "league_campaign",
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "steps": [
+    {
+      "id": "exit-pewter-gym",
+      "map_id": 54,
+      "target": [
+        4,
+        14
+      ],
+      "next_map": 2,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "enter-pewter-center",
+      "map_id": 2,
+      "target": [
+        13,
+        25
+      ],
+      "next_map": 58,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "heal-pewter",
+      "map_id": 58,
+      "target": [
+        3,
+        3
+      ],
+      "kind": "heal"
+    },
+    {
+      "id": "exit-pewter-center",
+      "map_id": 58,
+      "target": [
+        3,
+        8
+      ],
+      "next_map": 2,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "pewter-east-route3",
+      "map_id": 2,
+      "target": [
+        40,
+        17
+      ],
+      "next_map": 14,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "route3-north-route4",
+      "map_id": 14,
+      "target": [
+        60,
+        -1
+      ],
+      "next_map": 15,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "enter-moon-center",
+      "map_id": 15,
+      "target": [
+        11,
+        5
+      ],
+      "next_map": 68,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "heal-moon",
+      "map_id": 68,
+      "target": [
+        3,
+        3
+      ],
+      "kind": "heal"
+    },
+    {
+      "id": "exit-moon-center",
+      "map_id": 68,
+      "target": [
+        3,
+        8
+      ],
+      "next_map": 15,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "enter-mt-moon",
+      "map_id": 15,
+      "target": [
+        18,
+        5
+      ],
+      "next_map": 59,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "moon-west-ladder",
+      "map_id": 59,
+      "target": [
+        5,
+        5
+      ],
+      "next_map": 60,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "moon-main-basement",
+      "map_id": 60,
+      "target": [
+        17,
+        11
+      ],
+      "next_map": 61,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "moon-fossil-trainer",
+      "map_id": 61,
+      "target": [
+        13,
+        8
+      ],
+      "kind": "move"
+    },
+    {
+      "id": "moon-take-helix",
+      "map_id": 61,
+      "target": [
+        13,
+        7
+      ],
+      "kind": "interact",
+      "face": "up",
+      "event": "got_helix_fossil"
+    },
+    {
+      "id": "moon-exit-ladder",
+      "map_id": 61,
+      "target": [
+        5,
+        7
+      ],
+      "next_map": 60,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "moon-exit-to-route4",
+      "map_id": 60,
+      "target": [
+        27,
+        3
+      ],
+      "next_map": 15,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "route4-east-cerulean",
+      "map_id": 15,
+      "target": [
+        90,
+        7
+      ],
+      "next_map": 3,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "enter-cerulean-center",
+      "map_id": 3,
+      "target": [
+        19,
+        17
+      ],
+      "next_map": 64,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "heal-cerulean",
+      "map_id": 64,
+      "target": [
+        3,
+        3
+      ],
+      "kind": "heal"
+    },
+    {
+      "id": "exit-cerulean-center",
+      "map_id": 64,
+      "target": [
+        3,
+        8
+      ],
+      "next_map": 3,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "enter-cerulean-gym",
+      "map_id": 3,
+      "target": [
+        30,
+        19
+      ],
+      "next_map": 65,
+      "kind": "move",
+      "terminal": true
+    },
+    {
+      "id": "challenge-misty",
+      "map_id": 65,
+      "target": [
+        4,
+        3
+      ],
+      "kind": "interact",
+      "face": "up",
+      "badge": 2
+    }
+  ],
+  "blocked": {
+    "2": [
+      [
+        8,
+        15
+      ],
+      [
+        17,
+        25
+      ],
+      [
+        27,
+        17
+      ],
+      [
+        26,
+        25
+      ],
+      [
+        35,
+        16
+      ]
+    ],
+    "14": [
+      [
+        57,
+        11
+      ],
+      [
+        10,
+        6
+      ],
+      [
+        14,
+        4
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        19,
+        5
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        22,
+        9
+      ],
+      [
+        24,
+        6
+      ],
+      [
+        33,
+        10
+      ],
+      [
+        20,
+        4
+      ]
+    ],
+    "15": [
+      [
+        9,
+        8
+      ],
+      [
+        63,
+        3
+      ],
+      [
+        57,
+        3
+      ]
+    ],
+    "59": [
+      [
+        5,
+        6
+      ],
+      [
+        12,
+        16
+      ],
+      [
+        30,
+        4
+      ],
+      [
+        24,
+        31
+      ],
+      [
+        16,
+        23
+      ],
+      [
+        7,
+        22
+      ],
+      [
+        30,
+        27
+      ],
+      [
+        2,
+        20
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        35,
+        31
+      ],
+      [
+        36,
+        23
+      ],
+      [
+        20,
+        33
+      ],
+      [
+        5,
+        32
+      ]
+    ],
+    "61": [
+      [
+        12,
+        8
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        15,
+        22
+      ],
+      [
+        29,
+        11
+      ],
+      [
+        29,
+        17
+      ],
+      [
+        12,
+        6
+      ],
+      [
+        13,
+        6
+      ],
+      [
+        25,
+        21
+      ],
+      [
+        29,
+        5
+      ]
+    ],
+    "3": [
+      [
+        20,
+        2
+      ],
+      [
+        30,
+        8
+      ],
+      [
+        31,
+        20
+      ],
+      [
+        15,
+        18
+      ],
+      [
+        9,
+        21
+      ],
+      [
+        28,
+        12
+      ],
+      [
+        29,
+        26
+      ],
+      [
+        28,
+        26
+      ],
+      [
+        9,
+        27
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        27,
+        12
+      ]
+    ],
+    "65": [
+      [
+        4,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        7,
+        10
+      ]
+    ]
+  },
+  "resume_step": "exit-pewter-gym",
+  "resume_revision": 0,
+  "mode": "league_campaign"
+}

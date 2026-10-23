@@ -89,3 +89,12 @@ flowchart LR
 本輪33個保存分段的狀態鏈相符，4,111次按鍵包含570次未快取分類與3,541次快取重用，也包含卡在門口／出口與Wait對話的重複動作，不能當作有效進展或成功率。Strata已知成功決策用量23,448 prompt／1,191 completion／24,639 total tokens；另一次失敗回覆697／70／767 tokens，首次失敗未保留usage，不能估計。遊戲未使用GPT fallback；Codex負責工程修復、研究與結果核對。
 
 Laya曾把小剛台詞Wait!當成等待指令，導致領獎收尾停住；已將普通文字對話限制為A/B，確認為對話推進時只把objective與phase交分類，完整台詞保留稽核。這個案例也顯示分類器不應把遊戲台詞當作操作指令。
+
+
+## 常駐續玩與全隊訓練（2026-10-23）
+
+新增 `scripts/run_campaign.py` 與 `laya_pokemon.campaign`。從已核對的第一館存檔續接，路線範例見 `docs/league-plan.example.json`；複製到私人 `.local/league-plan.json` 後依當前地圖設定，不可將範例當成全八館已驗證。公開範例只涵蓋第一館到華藍道館，之後的主線仍須逐段實作與驗證。
+
+PyBoy與Laya常駐，60秒切錄影／存檔、每10秒checkpoint，單次模型操作逾時60秒。Strata配置不變，只有監督器連API；遊戲子程序去除金鑰並封鎖網路。`mode=balanced_training`及`training_min_level=12`會先練所有現有隊員，最低等級先發、正常換人分經驗，達標停下檢討後才提高門檻。完整操作證據與影片速度說明見[加速素材](accelerated-clips.md)。
+
+真正戰敗會保存並暫停；`RESUME`必須是含非空 `cause`、`evidence`、`adjustments`、`validation`的JSON，不能只改路線解除。每枚新徽章也強制檢討。控制檔只是本機控制入口，不會執行其中的shell或任意程式碼。

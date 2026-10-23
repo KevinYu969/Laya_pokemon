@@ -1,0 +1,146 @@
+{
+  "at": "2026-10-23T09:30:57.552469+00:00",
+  "receipts": [
+    {
+      "at": "2026-10-23T09:08:52.513399+00:00",
+      "kind": "movement",
+      "source_run": "league-campaign-20261023-05",
+      "source_video": "video-001.mp4",
+      "source_steps": [
+        351,
+        426
+      ],
+      "source_start_emulated_seconds": 284.0,
+      "source_duration_emulated_seconds": 50.666666666666664,
+      "editing": "Original PyBoy pixels; post-production 4x; inference waits omitted; not wall-clock speed.",
+      "published": false,
+      "clips": [
+        {
+          "file": "movement-4x.mp4",
+          "sha256": "90982810851a1ccce2239ab848749f7d4988f7176e26edb47854eeae5fff2188",
+          "frames_decoded": 380,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 12.666666666666666
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T09:10:30.007401+00:00",
+      "kind": "battle",
+      "source_run": "league-campaign-20261023-05",
+      "source_video": "video-001.mp4",
+      "source_steps": [
+        156,
+        271
+      ],
+      "source_start_emulated_seconds": 10.266666666666667,
+      "source_duration_emulated_seconds": 80,
+      "editing": "Original PyBoy pixels; post-production 4x; inference waits omitted; not wall-clock speed.",
+      "published": false,
+      "clips": [
+        {
+          "file": "battle-4x.mp4",
+          "sha256": "c841389bbfd9c93dd81965553c8d52c62aab668fa9bee1373e8a1da3568d96d5",
+          "frames_decoded": 600,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 20.0
+        },
+        {
+          "file": "battle-wall-clock-reconstructed.mp4",
+          "sha256": "37cffc4b8d58a13425cd5668a8ecfcb4a9034b9991783b78df9f7dbf47fb64fd",
+          "frames_decoded": 191,
+          "fps": 15.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 12.733333333333333,
+          "editing": "Reconstructed from per-action wall times; review pauses omitted. Original frames resampled; waiting position within each action is approximate.",
+          "logged_active_wall_seconds": 12.75
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T09:12:40.569686+00:00",
+      "file": "party-switch-complete.mp4",
+      "sha256": "119f3a88a77bd0214d1fc09410a9d3970edb05412b6bf7682933de99f11526ac",
+      "frames_decoded": 280,
+      "fps": 30.0,
+      "playback_seconds": 9.333333333333334,
+      "source_run": "league-campaign-20261023-06",
+      "source_steps": [
+        1,
+        14
+      ],
+      "timing": "1x emulated time; inference and engineering-review waits omitted",
+      "party_order_before": [
+        "IVYSAUR",
+        "NIDORAN M",
+        "SPEAROW"
+      ],
+      "party_order_after": [
+        "SPEAROW",
+        "NIDORAN M",
+        "IVYSAUR"
+      ],
+      "state_evidence_step": 12,
+      "published": false
+    },
+    {
+      "at": "2026-10-23T09:21:37.961107+00:00",
+      "kind": "battle",
+      "source_run": "league-campaign-20261023-06",
+      "source_video": "video-011.mp4",
+      "source_steps": [
+        4328,
+        4382
+      ],
+      "source_start_emulated_seconds": 224.66666666666666,
+      "source_duration_emulated_seconds": 80,
+      "editing": "Original PyBoy pixels; post-production 4x; inference waits omitted; not wall-clock speed.",
+      "published": false,
+      "clips": [
+        {
+          "file": "battle-4x.mp4",
+          "sha256": "daf5aca79d86d2a61342591937517525d7e8347a66da88f7c590c6133f1069e7",
+          "frames_decoded": 600,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 20.0
+        },
+        {
+          "file": "battle-wall-clock-reconstructed.mp4",
+          "sha256": "2a8a534c40180a3f188a9287cf1e50d18c14d067ebfce4c858c1eeaa7fd5211d",
+          "frames_decoded": 90,
+          "fps": 15.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 6.0,
+          "editing": "Reconstructed from per-action wall times; review pauses omitted. Original frames resampled; waiting position within each action is approximate.",
+          "logged_active_wall_seconds": 5.969000000000051
+        }
+      ]
+    }
+  ],
+  "public_video_upload": false,
+  "website_article_ready": true,
+  "website_published": false,
+  "browser_playback_verified": false,
+  "website_local_commit": "42c8a718d8a0ad1539ece60656426640b071e947",
+  "release_zip_sha256": "abe862ce9ff281a19baceba770e3dd9db8082aa9205ca3ecc14ad31221b649a5",
+  "game_tests_passed": 246,
+  "website_tests_passed": 53
+}

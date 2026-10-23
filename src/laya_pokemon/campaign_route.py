@@ -1,5 +1,9 @@
 """可核對的正常遊戲行程；路線資料可熱更新，不寫遊戲記憶體。"""
 import importlib
+from . import party_control,balanced_training
+if 'waypoint' in globals():
+    importlib.reload(party_control)
+    importlib.reload(balanced_training)
 from . import world_map
 importlib.reload(world_map)
 read_world_grid,world_direction=world_map.read_world_grid,world_map.world_direction
