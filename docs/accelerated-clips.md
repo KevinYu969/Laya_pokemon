@@ -9,6 +9,9 @@ updated: 2026-10-23
 
 | 片段 | 本機檔案（專案相對路徑） | 時長與速度 |
 |---|---|---|
+| 全員18級後正常換首位 | `outputs/videos/party-level18-20261023/party-1x.mp4` | 9.33秒；1倍模擬時間 |
+| 月見山化石訓練家戰鬥節錄 | `outputs/videos/mt-moon-battle-20261023/battle-4x.mp4` | 20秒；後製4倍模擬時間 |
+| 月見山戰鬥節奏重建 | `outputs/videos/mt-moon-battle-20261023/battle-wall-clock-reconstructed.mp4` | 7.27秒；依日誌重採樣 |
 | 移動與接近訓練家 | `outputs/videos/accelerated-movement-v2-20261023/movement-4x.mp4` | 12.67秒；後製4倍模擬時間 |
 | 快速戰鬥選單 | `outputs/videos/accelerated-battle-v3-20261023/battle-4x.mp4` | 20秒；後製4倍模擬時間 |
 | 操作牆鐘節奏重建 | `outputs/videos/accelerated-battle-v3-20261023/battle-wall-clock-reconstructed.mp4` | 12.73秒；依每步耗時重採樣 |
@@ -29,6 +32,8 @@ updated: 2026-10-23
 實測問題：換位目標頁同時有靜態▷與活動▶，已優先活動游標；原草地巡邏座標不是草地，改讀真實grass tile=82；戰鬥PKMN為合成字形，改用已核對FIGHT/ITEM/RUN二乘二選單右上格；護理師HEAL/CANCEL不能當隊伍取消。首隻烈雀曾倒下且沒有EXP，保留失敗；修正後已確認烈雀、尼多朗都獨立升級。
 
 全員12級檢查點於2026-10-23台北17:32:29實際達成（烈雀12、尼多朗12、妙蛙草21），之後續練全員18級。另發生學招誤刪撞擊的控制錯誤，已留在[教訓](battle-lessons.md)及整理收據，沒有回讀洗結果；改由10級以上隊員直接野戰，不再每場把經驗分給主力。
+
+全員18級檢查點於台北17:47:46完成：烈雀18、尼多力諾18、妙蛙草22。已正常保存後回主線並進入月見山；第二枚徽章與聯盟尚未完成。完整檢查點收據見`results/balanced-training-18-checkpoint-20261023.json`。
 
 ## 網站
 

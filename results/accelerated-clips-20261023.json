@@ -133,6 +133,73 @@
           "logged_active_wall_seconds": 5.969000000000051
         }
       ]
+    },
+    {
+      "at": "2026-10-23T10:13:20.421530+00:00",
+      "kind": "party",
+      "source_run": "league-campaign-20261023-08",
+      "source_video": "video-000.mp4",
+      "source_steps": [
+        1,
+        14
+      ],
+      "source_start_emulated_seconds": 0.0,
+      "source_duration_emulated_seconds": 9.333333333333334,
+      "editing": "Original PyBoy pixels; post-production 1x; inference waits omitted; not wall-clock speed.",
+      "published": false,
+      "clips": [
+        {
+          "file": "party-1x.mp4",
+          "sha256": "1c4d861ef354ffdf15985c5fc49c1c93e392940f995f04cace2409a7b1261169",
+          "frames_decoded": 280,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 9.333333333333334
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T10:13:20.609330+00:00",
+      "kind": "battle",
+      "source_run": "league-campaign-20261023-08",
+      "source_video": "video-007.mp4",
+      "source_steps": [
+        3634,
+        3709
+      ],
+      "source_start_emulated_seconds": 445.73333333333335,
+      "source_duration_emulated_seconds": 80,
+      "editing": "Original PyBoy pixels; post-production 4x; inference waits omitted; not wall-clock speed.",
+      "published": false,
+      "clips": [
+        {
+          "file": "battle-4x.mp4",
+          "sha256": "6a610fe1f5b1d8543ca7eaa197d8eb8586aa13d453f07bc9820f0bcfb9ee5d16",
+          "frames_decoded": 600,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 20.0
+        },
+        {
+          "file": "battle-wall-clock-reconstructed.mp4",
+          "sha256": "edb8d07c596c8bdc310362ad9b22bdde375b701b27c8e08f4fd1ee12b06f2931",
+          "frames_decoded": 109,
+          "fps": 15.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 7.266666666666667,
+          "editing": "Reconstructed from per-action wall times; review pauses omitted. Original frames resampled; waiting position within each action is approximate.",
+          "logged_active_wall_seconds": 7.2970000000000255
+        }
+      ]
     }
   ],
   "public_video_upload": false,
@@ -141,6 +208,6 @@
   "browser_playback_verified": false,
   "website_local_commit": "5c3cedc80c193fd0cc63776d67d0e56ce12b9212",
   "release_zip_sha256": "c436e92cd3229c39506ca6ad0f1e0ebda7cb29304ca665b04f17b558a3d4b3ee",
-  "game_tests_passed": 253,
+  "game_tests_passed": 258,
   "website_tests_passed": 53
 }

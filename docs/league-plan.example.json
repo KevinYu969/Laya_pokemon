@@ -124,8 +124,8 @@
       "id": "moon-main-basement",
       "map_id": 60,
       "target": [
-        17,
-        11
+        21,
+        17
       ],
       "next_map": 61,
       "kind": "move",
@@ -178,7 +178,7 @@
       "map_id": 15,
       "target": [
         90,
-        7
+        10
       ],
       "next_map": 3,
       "kind": "move",

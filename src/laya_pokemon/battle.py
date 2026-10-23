@@ -9,6 +9,7 @@ import re
 BATTLE_STATE_ADDRESS = 0xD057
 SOURCE = "https://github.com/pret/pokered/blob/master/ram/wram.asm"
 MENU_SOURCE = "https://github.com/pret/pokered/blob/master/engine/battle/core.asm"
+_no_pp_switch = globals().get('_no_pp_switch')
 
 
 def read_battle_state(pyboy) -> dict:
@@ -62,9 +63,11 @@ def _selection_hint(rows, target, menu):
 
 def battle_context(text, battle_state, party=(), inventory=None, *, capture_focus=False) -> dict | None:
     """僅對已核對 ROM 的實驗性路線提供局部提示；不執行按鍵。"""
+    global _no_pp_switch
     if battle_state.get("kind")=="lost_transition":
         return {"phase":"strategy_review","objective":"Wait.","available_actions":["wait","b"],"review_reason":"battle_loss_requires_review","battle_loss_confirmed":True,"phase_source":"read-only wIsInBattle LOST_BATTLE=255; save and review before continuing"}
     if battle_state["active"] is not True:
+        _no_pp_switch=None
         return None
     cells = text.get("cells", [])
     if len(cells) == 18 and all(len(row) == 20 for row in cells):
@@ -94,6 +97,21 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
             return {"phase": "strategy_review", "review_reason": "visible_enemy_and_wild_opponent_signal_disagree"}
         if enemy is None:
             enemy = ram_enemy  # 背包可能蓋住 HUD；只在野生旗標下讀已核對的wEnemyMonSpecies。
+        visible_names={normalize(row.strip()) for row in rows[6:10]}
+        matches=[mon for mon in party if normalize(species_key(mon['species'])) in visible_names]
+        active=matches[0] if len(matches)==1 else party[0] if len(party)==1 else None
+        if _no_pp_switch and active and active['species']==_no_pp_switch['species']:_no_pp_switch=None
+        if _no_pp_switch:
+            from .party_control import party_choice,selection
+            compact=normalize(' '.join(rows))
+            if 'ALREADYOUT' in compact or 'CANTSWITCH' in compact:
+                return {'phase':'strategy_review','review_reason':'no_pp_switch_rejected'}
+            if 'SWITCH' in compact and 'STATS' in compact:
+                return selection(rows,'SWITCH','battle_menu') or {'phase':'strategy_review','review_reason':'switch_submenu_unreadable'}
+            target=next((i for i,m in enumerate(party) if m['species']==_no_pp_switch['species'] and m['hp']>0),None)
+            if target is not None:
+                hint=party_choice(rows,party,target)
+                if hint:return {**hint,'phase':'battle_menu','battle_tactic':'switch_no_attack_pp'}
         # 強制換人／戰鬥隊伍頁：名字每三列、游標在HP列，不把FNT主力反覆選入。
         if "NOWILLTOFIGHT" in normalize(" ".join(rows)):
             return {"phase":"battle_menu","objective":"Confirm the current selection.","available_actions":["a","b"],"battle_tactic":"dismiss_fainted_message"}
@@ -116,6 +134,13 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
         retreat = retreat or skip_non_target
         fight, item, run = (_label(rows, word) for word in ("FIGHT", "ITEM", "RUN"))
         if fight and item and run:
+            if active and 'moves' in active and 'pp' in active and choose_damage_move(active['species'],active['moves'],active['pp'],enemy) is None:
+                from .team_strategy import effective_power
+                candidates=[m for m in party if m['species']!=active['species'] and m['hp']>0 and choose_damage_move(m['species'],m.get('moves',[]),m.get('pp',[]),enemy)]
+                if not candidates:return {'phase':'strategy_review','review_reason':'no_healthy_attacking_support'}
+                target=max(candidates,key=lambda m:max((effective_power(move,m['species'],enemy) for move,pp in zip(m['moves'],m['pp']) if pp&63),default=0)*m.get('level',1))
+                _no_pp_switch={'species':target['species']}
+                result=_selection_hint(rows,(run[0],fight[1]),'command');result['battle_tactic']='switch_no_attack_pp';return result
             if capture["tactic"] == "review":
                 return {"phase": "strategy_review", "objective": "Wait.", "available_actions": ["wait", "b"],
                         "capture_plan": capture, "review_reason": capture["reason"]}
@@ -158,8 +183,9 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
                     result.update(chosen_move=selected, enemy_species=enemy,
                                   battle_strategy="Gen I power/accuracy/STAB/type heuristic; not full damage simulation")
                     return result
-                return {"phase": "strategy_review", "objective": "Wait.", "available_actions": ["wait", "b"],
-                        "review_reason": "no_verified_damaging_move_with_pp"}
+                if any(m['species']!=active['species'] and m['hp']>0 and choose_damage_move(m['species'],m.get('moves',[]),m.get('pp',[]),enemy) for m in party):
+                    return {'phase':'battle_menu','objective':'Cancel and return to the battle command menu.','available_actions':['b','wait'],'battle_tactic':'return_for_no_pp_switch'}
+                return {"phase": "strategy_review", "objective": "Wait.", "available_actions": ["wait", "b"],"review_reason": "no_verified_damaging_move_with_pp"}
         tackle, growl = (_label(rows, word) for word in ("TACKLE", "GROWL"))
         if tackle and growl and tackle[0] == growl[0] and tackle[1] != growl[1]:
             if retreat:

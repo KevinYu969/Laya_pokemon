@@ -1,0 +1,79 @@
+{
+  "at_first_observed_utc": "2026-10-23T10:08:37.796602+00:00",
+  "source_run": "league-campaign-20261023-08",
+  "location": {
+    "map_id": 61,
+    "x": 13,
+    "y": 7
+  },
+  "beat_mt_moon_exit_super_nerd": true,
+  "got_helix_fossil": true,
+  "party": [
+    {
+      "species": 9,
+      "species_name": "IVYSAUR",
+      "level": 22,
+      "hp": 61,
+      "max_hp": 63,
+      "exp": 8492,
+      "status": 0,
+      "moves": [
+        77,
+        45,
+        73,
+        22
+      ],
+      "pp": [
+        35,
+        40,
+        10,
+        0
+      ]
+    },
+    {
+      "species": 167,
+      "species_name": "NIDORINO",
+      "level": 19,
+      "hp": 27,
+      "max_hp": 59,
+      "exp": 5203,
+      "status": 0,
+      "moves": [
+        43,
+        33,
+        30,
+        40
+      ],
+      "pp": [
+        30,
+        35,
+        5,
+        35
+      ]
+    },
+    {
+      "species": 5,
+      "species_name": "SPEAROW",
+      "level": 18,
+      "hp": 48,
+      "max_hp": 50,
+      "exp": 6172,
+      "status": 0,
+      "moves": [
+        64,
+        45,
+        43,
+        31
+      ],
+      "pp": [
+        33,
+        40,
+        30,
+        20
+      ]
+    }
+  ],
+  "still_one_badge": true,
+  "cloud_fallback": false,
+  "tests_passed": 257
+}
