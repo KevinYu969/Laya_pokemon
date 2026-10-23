@@ -97,3 +97,21 @@ def test_per_frame_loss_monitor_checks_entire_party_and_never_writes_memory():
     assert frame_loss_signal(memory) is False
     memory[0xD057]=255
     assert frame_loss_signal(memory) is True
+
+
+def test_expected_center_entry_advances_before_healing_detours(monkeypatch):
+    import laya_pokemon.campaign_route as route
+    monkeypatch.setattr(route,'read_world_grid',lambda *args:{'walkable':[[1]*30 for _ in range(20)],'screen_cells_verified':90})
+    steps=[{'id':'enter','map_id':15,'target':[11,5],'next_map':68,'kind':'move'},
+           {'id':'heal','map_id':68,'target':[3,3],'kind':'heal'},
+           {'id':'exit','map_id':68,'target':[3,8],'next_map':15,'kind':'move'},
+           {'id':'cave','map_id':15,'target':[18,5],'next_map':59,'kind':'move'}]
+    state={'location':{'map_id':68,'x':3,'y':7},'progress':{'story_event_bits':{},'party':[{'hp':5,'max_hp':10,'moves':[22],'pp':[10]}]}}
+    result,step=route.waypoint(None,state,{'steps':steps},'enter',[])
+    assert step=='heal'
+    state['progress']['party'][0]['hp']=10
+    result,step=route.waypoint(None,state,{'steps':steps},'heal',[])
+    assert step=='exit'
+    state['location']={'map_id':15,'x':11,'y':5}
+    result,step=route.waypoint(None,state,{'steps':steps},'exit',[])
+    assert step=='cave'

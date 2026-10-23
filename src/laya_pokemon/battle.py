@@ -174,9 +174,52 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
             "phase_source": "battle flag; no readable lower dialogue"}
 
 
+_skip_poison_session = globals().get('_skip_poison_session')
+
+
+def poisonpowder_skip_context(text,party):
+    """妙蛙草22級毒粉略過的實驗流程；分頁狀態鎖與異常刪招停機。"""
+    global _skip_poison_session
+    from .team_strategy import normalize,learn_move_plan
+    from .party_control import command,selection
+    upper=' '.join(text.get('lines',[])).upper();compact=normalize(upper)
+    learner=next((m for m in party if m['species']==9 and m['level']==22 and m.get('moves')==[33,45,73,22]),None)
+    if _skip_poison_session is None:
+        if not learner or 'IVYSAUR' not in compact or 'TRYINGTOLEARN' not in compact:return None
+        plan=learn_move_plan(9,learner['moves'],'POISONPOWDER',level=22)
+        if plan['decision']!='skip':return None
+        _skip_poison_session={'confirmed_move':False,'plan':plan,'phase':'intro'}
+    if learner is None:
+        _skip_poison_session=None
+        return {'phase':'strategy_review','review_reason':'learning_party_changed_unexpectedly'}
+    if 'DIDNOTLEARN' in compact:
+        _skip_poison_session=None
+        return command('a','learning_menu',{'learning_tactic':'skip_confirmed'})
+    if 'POISONPOWDER' in compact:_skip_poison_session['confirmed_move']=True
+    if any(phrase in compact for phrase in ['WHICHMOVESHOULD','BEFORGOTTEN','FORGOT','12AND']):
+        return {'phase':'strategy_review','review_reason':'unexpected_forget_menu_during_skip'}
+    if 'DELETE' in compact:_skip_poison_session['phase']='delete_decision'
+    if 'STOPLEARNING' in compact:_skip_poison_session['phase']='stop_decision'
+    question=_skip_poison_session.get('phase') in {'delete_decision','stop_decision'}
+    if question:
+        if not _skip_poison_session['confirmed_move']:
+            return {'phase':'strategy_review','review_reason':'learning_move_not_visually_confirmed'}
+        cells=text.get('cells',[]);rows=[''.join(row).upper() for row in cells]
+        target='YES' if _skip_poison_session['phase']=='stop_decision' else 'NO'
+        result=selection(rows,target,'learning_menu') if 'YES' in compact and 'NO' in compact else None
+        if result:return {**result,'learning_tactic':'skip_poisonpowder','learn_move_plan':_skip_poison_session['plan']}
+        if '▼' in upper:return command('a','learning_menu',{'learning_tactic':'advance_wrapped_learning_question'})
+        return {'phase':'learning_menu','objective':'Wait.','available_actions':['wait','b'],'learning_tactic':'await_learning_choices'}
+    if 'YES' in compact and 'NO' in compact:
+        return {'phase':'strategy_review','review_reason':'learning_question_not_confirmed'}
+    return command('a','learning_menu',{'learning_tactic':'advance_poisonpowder_intro'})
+
+
 def learning_context(text, party):
     """有四招的學招流程暫停並留下計畫；待真實忘招畫面校準後才能執行。"""
     from .team_strategy import normalize, reference, learn_move_plan
+    skip=poisonpowder_skip_context(text,party)
+    if skip:return skip
     upper = " ".join(text.get("lines", [])).upper()
     compact = normalize(upper)
     if not any(normalize(phrase) in compact for phrase in

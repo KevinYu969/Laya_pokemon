@@ -2,6 +2,22 @@
 from collections import deque
 
 
+def read_npc_obstacles(pyboy,grid,expected):
+    """固定紅版SpriteStateData2：NPC格座標含4格邊界；須有來源座標錨點才使用。"""
+    try:
+        positions=[];height=len(grid['walkable']);width=len(grid['walkable'][0])
+        for slot in range(1,16):
+            if not pyboy.memory[0xC100+16*slot]:continue
+            x=int(pyboy.memory[0xC200+16*slot+5])-4
+            y=int(pyboy.memory[0xC200+16*slot+4])-4
+            if 0<=x<width and 0<=y<height:positions.append((x,y))
+        anchors=len(set(positions)&set(expected))
+        if not anchors:return None
+        return {'positions':positions,'source_anchor_matches':anchors,
+                'source':'fixed Red C100/C200 sprite slots; wram.asm StateData2 mapY+4/mapX+5 minus4'}
+    except (AttributeError,IndexError,KeyError,TypeError,ValueError):return None
+
+
 def read_world_grid(pyboy, location):
     width, height = int(pyboy.memory[0xD369]), int(pyboy.memory[0xD368])
     if not 1 <= width <= 100 or not 1 <= height <= 72 or (width+6)*(height+6) > 1300:

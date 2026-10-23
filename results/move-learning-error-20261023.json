@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-23T09:48:04.014668+00:00",
+  "source_run": "league-campaign-20261023-07",
+  "intended": "skip PoisonPowder, preserve current moves",
+  "actual": "Tackle replaced by PoisonPowder",
+  "moves_before": [
+    33,
+    45,
+    73,
+    22
+  ],
+  "moves_after": [
+    77,
+    45,
+    73,
+    22
+  ],
+  "evidence": [
+    {
+      "at": "2026-10-23T09:39:16.430345+00:00",
+      "step": 1832,
+      "text": [
+        "     ▶TACKLE",
+        "      GROWL",
+        "      LEECH SEED",
+        "      VINE WHIP",
+        " Which move should",
+        " be forgotten?"
+      ],
+      "action": "a"
+    },
+    {
+      "at": "2026-10-23T09:39:16.677967+00:00",
+      "step": 1837,
+      "text": [
+        "          IVYSAUR",
+        "               22",
+        "            46/ 63",
+        " IVYSAUR forgot",
+        " TACKLE!          ▼"
+      ],
+      "action": "a"
+    },
+    {
+      "at": "2026-10-23T09:39:16.726570+00:00",
+      "step": 1838,
+      "text": [
+        "          IVYSAUR",
+        "               22",
+        "            46/ 63",
+        " And..."
+      ],
+      "action": "a"
+    }
+  ],
+  "rewound": false,
+  "ram_moves_modified_by_sdk": false,
+  "cause": "Deletion question stage was not retained across text pages; generic A confirmed the wrong option.",
+  "fix": "Persist intro/delete_decision/stop_decision; stop on unexpected forget menu; do not infer the decision from the current text page alone.",
+  "fix_tests_passed": 250,
+  "skip_live_success_verified": false,
+  "recovery": "Preserve outcome. Low-level members now fight Route3 wild encounters directly from level10; heal when needed. Keep Vine Whip for Misty; restore coverage only with normal legal moves/items when available."
+}

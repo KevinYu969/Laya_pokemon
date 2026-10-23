@@ -55,3 +55,11 @@ def test_training_support_uses_highest_level_even_if_lower_member_has_stronger_m
     state={'battle_state':{'active':True},'progress':{'party':[{'species':5,'level':10,'hp':31},{'species':3,'level':11,'hp':29},{'species':9,'level':20,'hp':56}]}}
     result=training.context(None,state,{},[])
     assert result['party_target_index']==2 and result['objective']=='Move DOWN.'
+
+
+def test_level12_member_can_fight_route3_wilds_without_giving_every_exp_to_support(monkeypatch):
+    import laya_pokemon.balanced_training as training
+    text=text_at((1,0,'PIDGEY'),(10,7,'SPEAROW'),(9,14,'▶FIGHT'),(10,16,'ITEM'),(16,16,'RUN'))
+    monkeypatch.setattr(training,'read_visible_text',lambda _:text)
+    state={'battle_state':{'active':True},'progress':{'party':[{'species':5,'level':12,'hp':35},{'species':9,'level':22,'hp':63}]}}
+    assert training.context(None,state,{'training_direct_from_level':10},[]) is None

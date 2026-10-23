@@ -104,6 +104,11 @@ def main():
                 from .balanced_training import context as training_context
                 training=training_context(emulator,state,plan,previous)
                 if training:state.update(training)
+            if plan.get('mode')=='league_campaign' and plan.get('lead_species') and state.get('battle_state',{}).get('kind')=='none':
+                from .party_control import lead_context
+                from .observation import read_visible_text
+                reorder=lead_context(read_visible_text(emulator),state['progress']['party'],plan['lead_species'],open_menu=state['phase'] in {'unclassified','overworld'})
+                if reorder:state.update(reorder)
             if state['phase']=='unclassified':
                 context,step_id=campaign_route.waypoint(emulator,state,plan,step_id,previous)
                 state.update(context)

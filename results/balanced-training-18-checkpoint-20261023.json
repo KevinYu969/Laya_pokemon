@@ -1,0 +1,84 @@
+{
+  "at_utc": "2026-10-23T09:47:46.788483+00:00",
+  "checkpoint": "all_current_members_at_least_level_18",
+  "party": [
+    {
+      "species": 5,
+      "species_name": "SPEAROW",
+      "level": 18,
+      "hp": 45,
+      "max_hp": 50,
+      "exp": 5883,
+      "status": 0,
+      "moves": [
+        64,
+        45,
+        43,
+        31
+      ],
+      "pp": [
+        22,
+        40,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 167,
+      "species_name": "NIDORINO",
+      "level": 18,
+      "hp": 57,
+      "max_hp": 57,
+      "exp": 3834,
+      "status": 0,
+      "moves": [
+        43,
+        33,
+        30,
+        40
+      ],
+      "pp": [
+        30,
+        35,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 9,
+      "species_name": "IVYSAUR",
+      "level": 22,
+      "hp": 63,
+      "max_hp": 63,
+      "exp": 7589,
+      "status": 0,
+      "moves": [
+        77,
+        45,
+        73,
+        22
+      ],
+      "pp": [
+        35,
+        40,
+        10,
+        10
+      ]
+    }
+  ],
+  "badges_raw": 1,
+  "timing": {
+    "wall_seconds": 831.64,
+    "model_wait_seconds": 34.809,
+    "review_pause_seconds": 396.984,
+    "non_review_session_seconds": 434.656,
+    "emulated_seconds": 6732.0
+  },
+  "source_run": "league-campaign-20261023-07",
+  "checkpoint_sha256": "64e2bbbd87e0ac82ca43e0d34ee78f2adddbfcc6abfd6813a6a64f6184c1e8da",
+  "model_load_count": 1,
+  "cloud_fallback": false,
+  "game_tests_passed": 250,
+  "move_error_preserved": true,
+  "next_goal": "Resume the validated route to Mt Moon and Cerulean gym; heal and reorder Ivysaur normally."
+}

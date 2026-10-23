@@ -26,6 +26,8 @@ def waypoint(pyboy,state,plan,step_id,previous):
     if len(ids)!=len(set(ids)):raise ValueError('路線ID重複')
     index=ids.index(step_id) if step_id in ids else 0
     loc=state['location'];progress=state['progress'];mid=loc['map_id'];x,y=loc['x'],loc['y']
+    # 先承認已完成的轉場，再判斷補血繞路，避免「進中心→繞路出門→再進中心」循環。
+    while index<len(steps) and (satisfied(steps[index],progress) or steps[index].get('next_map')==mid):index+=1
     current=steps[index] if index<len(steps) else {}
     lead=progress['party'][0] if progress.get('party') else None
     needs_heal=lead is not None and (lead['hp']*3<=lead['max_hp']*2 or lead.get('status',0) or sum(pp&63 for move,pp in zip(lead.get('moves',[]),lead.get('pp',[])) if move in {22,33})<3)
@@ -37,7 +39,7 @@ def waypoint(pyboy,state,plan,step_id,previous):
         elif mid==2 and current.get('map_id')==14:detour={'id':'detour-city','map_id':2,'target':[13,25] if not healthy(progress) else [40,17],'kind':'move','terminal':True}
     if detour:
         context,_=waypoint(pyboy,state,{'steps':[detour],'blocked':plan.get('blocked',{}),'_detour':True},detour['id'],previous)
-        return context,step_id
+        return context,current.get('id',step_id)
     while index<len(steps):
         step=steps[index]
         if satisfied(step,progress) or ('next_map' in step and mid==step['next_map']):index+=1;continue
@@ -53,11 +55,14 @@ def waypoint(pyboy,state,plan,step_id,previous):
                     'goal':step['id'],'route_step':step['id'],'controller_interaction':True},step['id']
         grid=read_world_grid(pyboy,loc)
         blocked=[tuple(p) for p in plan.get('blocked',{}).get(str(mid),[])]
+        npcs=world_map.read_npc_obstacles(pyboy,grid,blocked) if grid else None
+        if npcs:blocked=list(set(blocked)|set(npcs['positions']))
         hint=world_direction(grid,loc,target,blocked) if grid else None
         if not hint and abs(target['x']-x)+abs(target['y']-y)==1 and step.get('terminal'):
             direction='up' if target['y']<y else 'down' if target['y']>y else 'left' if target['x']<x else 'right'
             hint={'direction':direction,'kind':'source_verified_terminal_step','path_length':1}
         if hint:
+            if npcs:hint['npc_obstacles']=npcs
             return {'phase':'overworld','objective':f"Move {hint['direction'].upper()}.",'available_actions':['up','down','left','right','wait'],
                     'goal':step['id'],'route_step':step['id'],'world_path_hint':hint},step['id']
         return {'phase':'overworld','objective':'Wait.','available_actions':['wait','b'],'navigation_warning':'no_verified_path',

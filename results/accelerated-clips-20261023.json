@@ -139,8 +139,8 @@
   "website_article_ready": true,
   "website_published": false,
   "browser_playback_verified": false,
-  "website_local_commit": "42c8a718d8a0ad1539ece60656426640b071e947",
-  "release_zip_sha256": "abe862ce9ff281a19baceba770e3dd9db8082aa9205ca3ecc14ad31221b649a5",
-  "game_tests_passed": 246,
+  "website_local_commit": "5c3cedc80c193fd0cc63776d67d0e56ce12b9212",
+  "release_zip_sha256": "c436e92cd3229c39506ca6ad0f1e0ebda7cb29304ca665b04f17b558a3d4b3ee",
+  "game_tests_passed": 253,
   "website_tests_passed": 53
 }

@@ -28,7 +28,7 @@ def context(pyboy,state,plan,previous):
         visible={normalize(row.strip()) for row in rows[6:10]}
         active=next((m for m in party if normalize(species_key(m['species'])) in visible),None)
         strong=max((m for m in party if m['hp']>0),key=lambda m:m['level'],default=None)
-        if active and strong and active['level']+2<strong['level']:
+        if active and strong and active['level']<plan.get('training_direct_from_level',10) and active['level']+2<strong['level']:
             fight,item,run=(_label(rows,label) for label in ['FIGHT','ITEM','RUN'])
             # PKMN使用合成字形，字碼讀取不會還原成POKEMON。以已核對2x2選單的右上格定位。
             if fight and item and run and fight[0]==item[0] and item[1]==run[1]:
