@@ -565,6 +565,14 @@ class CutController:
         active = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == "▶"]
         inactive = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == "▷"]
         positions = {(12, y) for y in labels.values()}
+        # 四人隊野外子選單會保留已選隊員HP列的靜態▷；不是第二個活動游標。
+        # 只接受已在真隊伍頁確認過的使用者與全部四個來源名字，其他位置仍拒絕。
+        party_background = (self.field_user_confirmed and self.baseline is not None
+            and len(self.baseline)==4 and inactive==[(0,2*self.target_index+1)]
+            and all(normalize(rows[2*i][3:13])==normalize(species_key(mon[0]))
+                    for i,mon in enumerate(self.baseline)))
+        if party_background and len(active)==1 and active[0] in positions:
+            inactive=[]
         if not active and len(inactive) == 1 and inactive[0] in positions:
             return self._bounded_wait("await_active_cut_submenu_cursor")
         if len(active) != 1 or active[0] not in positions or inactive:

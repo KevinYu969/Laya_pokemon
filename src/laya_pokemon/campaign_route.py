@@ -1,5 +1,6 @@
 """可核對的正常遊戲行程；路線資料可熱更新，不寫遊戲記憶體。"""
 import importlib
+import time
 from . import party_control,balanced_training
 if 'waypoint' in globals():
     importlib.reload(party_control)
@@ -11,12 +12,18 @@ _LEARNED_EDGES=globals().get('_LEARNED_EDGES',{})
 _LAST_ATTEMPT=globals().get('_LAST_ATTEMPT')
 _FIELD_CONTROLLERS=globals().get('_FIELD_CONTROLLERS',{})
 _GYM_CONTROLLERS=globals().get('_GYM_CONTROLLERS',{})
+_SCRIPT_WAITS=globals().get('_SCRIPT_WAITS',{})
 from . import field_moves as field_moves_module
 importlib.reload(field_moves_module)
 from . import gym_switches as gym_switches_module
 importlib.reload(gym_switches_module)
 from . import campaign_transactions
 importlib.reload(campaign_transactions)
+from . import capture_transaction
+importlib.reload(capture_transaction)
+from . import campaign_safety,capture_closing_gate
+importlib.reload(campaign_safety)
+importlib.reload(capture_closing_gate)
 for controller in _GYM_CONTROLLERS.values():controller._last_now=None
 
 
@@ -46,6 +53,11 @@ def switch_context(pyboy,state,plan,step_id,previous):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if capture_transaction.applies(step_id,step):
+        from .observation import read_visible_text
+        closing=capture_closing_gate.eligible(state,plan,step_id)
+        result=capture_transaction.context(pyboy,state,plan,step_id,read_visible_text(pyboy),read_world_grid(pyboy,state['location']))
+        return capture_closing_gate.restrict(result) if closing else result
     if campaign_transactions.applies(step_id,step):
         from .observation import read_visible_text
         return campaign_transactions.context(pyboy,state,plan,step_id,read_visible_text(pyboy),read_world_grid(pyboy,state['location']))
@@ -69,7 +81,13 @@ def field_context(pyboy,state,plan,step_id):
         if step['kind']=='use_cut' and loc['facing']!=step.get('face'):
             direction=step['face']
             return ({'phase':'field_move_menu','objective':f'Move {direction.upper()}.','available_actions':[direction,'wait'],'controller_menu_verified':True},step_id)
-        intent={'kind':step['kind'],'species':9,'replace_move':45}
+        candidates=[m['species'] for m in state['progress'].get('party',[])
+                    if type(m.get('species')) is int and m['species'] in {9,154}
+                    and (step['kind']=='teach_cut' or 15 in m.get('moves',[]))]
+        if state['progress'].get('party_read_valid') is not True or len(candidates)!=1:
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'unique_current_cut_user_unverified'},step_id)
+        intent={'kind':step['kind'],'species':candidates[0],'replace_move':45}
         if step['kind']=='use_cut':intent.update(map_id=step['map_id'],tree_x=step['tree'][0],tree_y=step['tree'][1],tileset_id=step.get('tileset_id',0))
         controller=CutController(intent);_FIELD_CONTROLLERS[step_id]=controller
     context=controller.context(read_visible_text(pyboy),state['progress'],location=loc,grid=grid,overworld_ready=grid is not None,battle_active=False)
@@ -95,6 +113,32 @@ def attack_pp(mon):
 def healthy(progress):
     party=progress['party']
     return bool(party) and all(m['hp']==m['max_hp'] and not m.get('status',0) for m in party) and attack_pp(party[0])>=3
+
+
+def coordinate_script_wait(state, step):
+    """只在固定紅版嘎啦嘎啦座標等遊戲自己的腳本；絕不輸出按鍵。"""
+    def review(reason):
+        return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                'review_reason':reason,'route_step':step['id']}
+    if (step.get('await_script_event') is not True or step.get('kind')!='move'
+            or step.get('map_id')!=147 or step.get('target')!=[10,16]
+            or step.get('event')!='beat_ghost_marowak'):
+        return review('coordinate_script_intent_unverified')
+    battle=state.get('battle_state',{});progress=state.get('progress',{})
+    if (battle.get('kind')!='none' or battle.get('active') is not False
+            or progress.get('party_read_valid') is not True
+            or progress.get('story_event_bits',{}).get('beat_ghost_marowak') is not False
+            or not any(i.get('item')==72 and type(i.get('quantity')) is int and i['quantity']>0
+                       for i in progress.get('inventory') or [])):
+        return review('coordinate_script_prerequisites_unverified')
+    now=time.monotonic();record=_SCRIPT_WAITS.setdefault(step['id'],{'started':now,'calls':0})
+    record['calls']+=1
+    if record['calls']>25 or now-record['started']>60:
+        return review('coordinate_script_wait_exhausted')
+    return {'phase':'overworld','objective':'Wait.','available_actions':['wait'],
+            'goal':step['id'],'route_step':step['id'],'source_coordinate_script_wait':True,
+            'source_commit':'a53671100ec22e5394ff26ec028d0812a238dae2',
+            'phase_source':'PokemonTower6F.asm:25-47；保留10,16，讓原生座標腳本啟動，不把到站當成戰勝。'}
 
 
 def waypoint(pyboy,state,plan,step_id,previous):
@@ -144,6 +188,8 @@ def waypoint(pyboy,state,plan,step_id,previous):
             following=via.index(position)+1 if position in via else 0
             if following<len(via):target=via[following]
         target={'x':target[0],'y':target[1]}
+        if 'await_script_event' in step and [x,y]==list(target.values()):
+            return coordinate_script_wait(state,step),step['id']
         if step['kind']=='heal' and healthy(progress):index+=1;continue
         if step['kind']=='move' and [x,y]==list(target.values()) and 'next_map' not in step:index+=1;continue
         if (step['kind'] in {'teach_cut','use_cut','gym_switches'} or 'mechanic' in step) and [x,y]==list(target.values()):
@@ -155,8 +201,13 @@ def waypoint(pyboy,state,plan,step_id,previous):
                     'goal':step['id'],'route_step':step['id'],'controller_interaction':True},step['id']
         grid=read_world_grid(pyboy,loc)
         blocked=[tuple(p) for p in plan.get('blocked',{}).get(str(mid),[])]
-        npcs=world_map.read_npc_obstacles(pyboy,grid,blocked) if grid else None
-        if npcs:blocked=list(set(blocked)|set(npcs['positions']))
+        from .observation import read_visible_text
+        ready=campaign_transactions.ui_overworld_ready(read_visible_text(pyboy),grid) if pyboy is not None and grid else False
+        npcs=(world_map.read_npc_obstacles(pyboy,grid,blocked,overworld_ready=True) if ready
+              else world_map.read_npc_obstacles(pyboy,grid,blocked)) if grid else None
+        if npcs:
+            hidden=npcs.get('hidden_source_positions',[]) if npcs.get('toggle_source_calibrated') is True else []
+            blocked=list((set(blocked)-set(map(tuple,hidden)))|set(npcs['positions']))
         cleared=[]
         if mid==3:
             if progress['story_event_bits'].get('got_ss_ticket'):cleared.append((27,12))

@@ -1,0 +1,350 @@
+{
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "kind": "public-source-only-no-live-calibration",
+  "intent": {
+    "map_id": 23,
+    "x": 10,
+    "y": 61,
+    "wild_species": 132,
+    "wild_level": 30,
+    "allowed_rosters": [
+      [
+        7,
+        9,
+        35,
+        102
+      ],
+      [
+        7,
+        154,
+        35,
+        102
+      ]
+    ],
+    "target_min_hp": 60,
+    "target_fraction_strictly_greater_than": [
+      2,
+      3
+    ]
+  },
+  "geometry": {
+    "command_cursor": [
+      [
+        9,
+        14
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        15,
+        16
+      ]
+    ],
+    "pkmn_cursor": [
+      15,
+      14
+    ],
+    "party_name_x": 3,
+    "party_name_y": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "party_hp_x": 13,
+    "party_hp_y": [
+      1,
+      3,
+      5,
+      7
+    ],
+    "party_cursor_x": 0,
+    "party_cursor_y": [
+      1,
+      3,
+      5,
+      7
+    ],
+    "submenu_box": [
+      11,
+      11,
+      19,
+      17
+    ],
+    "submenu_labels": [
+      [
+        13,
+        12,
+        "SWITCH"
+      ],
+      [
+        13,
+        14,
+        "STATS"
+      ],
+      [
+        13,
+        16,
+        "CANCEL"
+      ]
+    ],
+    "submenu_cursor_x": 12
+  },
+  "live_ui_calibrated": false,
+  "limitations": [
+    "No runtime integration; only hints.",
+    "REST or enemy HP changes review; no enemy damage/heal plan.",
+    "Single-cell SDK contraction tokens such as 's/'m may be multi-character and must review, never synthesized into ASCII observations.",
+    "A complete new command requires observed known sendout and enemy turn; skipped automatic text reviews.",
+    "HP/PP party commit timing and image glyph projection require caller calibration."
+  ],
+  "sources": [
+    {
+      "path": "engine/battle/core.asm",
+      "git_blob_sha": "7a5d617dc5ed080623bfb189f81d254c83ef4cc3",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/core.asm",
+      "line_count": 6913,
+      "excerpts": [
+        {
+          "start_line": 280,
+          "end_line": 339,
+          "text": "MainInBattleLoop:\n\tcall ReadPlayerMonCurHPAndStatus\n\tld hl, wBattleMonHP\n\tld a, [hli]\n\tor [hl] ; is battle mon HP 0?\n\tjp z, HandlePlayerMonFainted  ; if battle mon HP is 0, jump\n\tld hl, wEnemyMonHP\n\tld a, [hli]\n\tor [hl] ; is enemy mon HP 0?\n\tjp z, HandleEnemyMonFainted ; if enemy mon HP is 0, jump\n\tcall SaveScreenTilesToBuffer1\n\txor a\n\tld [wFirstMonsNotOutYet], a\n\tld a, [wPlayerBattleStatus2]\n\tand (1 << NEEDS_TO_RECHARGE) | (1 << USING_RAGE) ; check if the player is using Rage or needs to recharge\n\tjr nz, .selectEnemyMove\n; the player is not using Rage and doesn't need to recharge\n\tld hl, wEnemyBattleStatus1\n\tres FLINCHED, [hl] ; reset flinch bit\n\tld hl, wPlayerBattleStatus1\n\tres FLINCHED, [hl] ; reset flinch bit\n\tld a, [hl]\n\tand (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) ; check if the player is thrashing about or charging for an attack\n\tjr nz, .selectEnemyMove ; if so, jump\n; the player is neither thrashing about nor charging for an attack\n\tcall DisplayBattleMenu ; show battle menu\n\tret c ; return if player ran from battle\n\tld a, [wEscapedFromBattle]\n\tand a\n\tret nz ; return if pokedoll was used to escape from battle\n\tld a, [wBattleMonStatus]\n\tand (1 << FRZ) | SLP_MASK\n\tjr nz, .selectEnemyMove ; if so, jump\n\tld a, [wPlayerBattleStatus1]\n\tand (1 << STORING_ENERGY) | (1 << USING_TRAPPING_MOVE) ; check player is using Bide or using a multi-turn attack like wrap\n\tjr nz, .selectEnemyMove ; if so, jump\n\tld a, [wEnemyBattleStatus1]\n\tbit USING_TRAPPING_MOVE, a ; check if enemy is using a multi-turn attack like wrap\n\tjr z, .selectPlayerMove ; if not, jump\n; enemy is using a multi-turn attack like wrap, so player is trapped and cannot execute a move\n\tld a, CANNOT_MOVE\n\tld [wPlayerSelectedMove], a\n\tjr .selectEnemyMove\n.selectPlayerMove\n\tld a, [wActionResultOrTookBattleTurn]\n\tand a ; has the player already used the turn (e.g. by using an item, trying to run or switching pokemon)\n\tjr nz, .selectEnemyMove\n\tld [wMoveMenuType], a\n\tinc a\n\tld [wAnimationID], a\n\txor a\n\tld [wMenuItemToSwap], a\n\tcall MoveSelectionMenu\n\tpush af\n\tcall LoadScreenTilesFromBuffer1\n\tcall DrawHUDsAndHPBars\n\tpop af\n\tjr nz, MainInBattleLoop ; if the player didn't select a move, jump\n.selectEnemyMove\n\tcall SelectEnemyMove"
+        },
+        {
+          "start_line": 413,
+          "end_line": 468,
+          "text": ".enemyMovesFirst\n\tld a, $1\n\tldh [hWhoseTurn], a\n\tcallfar TrainerAI\n\tjr c, .AIActionUsedEnemyFirst\n\tcall ExecuteEnemyMove\n\tld a, [wEscapedFromBattle]\n\tand a ; was Teleport, Roar, or Whirlwind used to escape from battle?\n\tret nz ; if so, return\n\tld a, b\n\tand a\n\tjp z, HandlePlayerMonFainted\n.AIActionUsedEnemyFirst\n\tcall HandlePoisonBurnLeechSeed\n\tjp z, HandleEnemyMonFainted\n\tcall DrawHUDsAndHPBars\n\tcall ExecutePlayerMove\n\tld a, [wEscapedFromBattle]\n\tand a ; was Teleport, Roar, or Whirlwind used to escape from battle?\n\tret nz ; if so, return\n\tld a, b\n\tand a\n\tjp z, HandleEnemyMonFainted\n\tcall HandlePoisonBurnLeechSeed\n\tjp z, HandlePlayerMonFainted\n\tcall DrawHUDsAndHPBars\n\tcall CheckNumAttacksLeft\n\tjp MainInBattleLoop\n.playerMovesFirst\n\tcall ExecutePlayerMove\n\tld a, [wEscapedFromBattle]\n\tand a ; was Teleport, Roar, or Whirlwind used to escape from battle?\n\tret nz ; if so, return\n\tld a, b\n\tand a\n\tjp z, HandleEnemyMonFainted\n\tcall HandlePoisonBurnLeechSeed\n\tjp z, HandlePlayerMonFainted\n\tcall DrawHUDsAndHPBars\n\tld a, $1\n\tldh [hWhoseTurn], a\n\tcallfar TrainerAI\n\tjr c, .AIActionUsedPlayerFirst\n\tcall ExecuteEnemyMove\n\tld a, [wEscapedFromBattle]\n\tand a ; was Teleport, Roar, or Whirlwind used to escape from battle?\n\tret nz ; if so, return\n\tld a, b\n\tand a\n\tjp z, HandlePlayerMonFainted\n.AIActionUsedPlayerFirst\n\tcall HandlePoisonBurnLeechSeed\n\tjp z, HandleEnemyMonFainted\n\tcall DrawHUDsAndHPBars\n\tcall CheckNumAttacksLeft\n\tjp MainInBattleLoop"
+        },
+        {
+          "start_line": 1723,
+          "end_line": 1766,
+          "text": "SendOutMon:\n\tcallfar PrintSendOutMonMessage\n\tld hl, wEnemyMonHP\n\tld a, [hli]\n\tor [hl] ; is enemy mon HP zero?\n\tjp z, .skipDrawingEnemyHUDAndHPBar ; if HP is zero, skip drawing the HUD and HP bar\n\tcall DrawEnemyHUDAndHPBar\n.skipDrawingEnemyHUDAndHPBar\n\tcall DrawPlayerHUDAndHPBar\n\tpredef LoadMonBackPic\n\txor a\n\tldh [hStartTileID], a\n\tld hl, wBattleAndStartSavedMenuItem\n\tld [hli], a\n\tld [hl], a\n\tld [wBoostExpByExpAll], a\n\tld [wDamageMultipliers], a\n\tld [wPlayerMoveNum], a\n\tld hl, wPlayerUsedMove\n\tld [hli], a\n\tld [hl], a\n\tld hl, wPlayerStatsToDouble\n\tld [hli], a\n\tld [hli], a\n\tld [hli], a\n\tld [hli], a\n\tld [hl], a\n\tld [wPlayerDisabledMove], a\n\tld [wPlayerDisabledMoveNumber], a\n\tld [wPlayerMonMinimized], a\n\tld b, SET_PAL_BATTLE\n\tcall RunPaletteCommand\n\tld hl, wEnemyBattleStatus1\n\tres USING_TRAPPING_MOVE, [hl]\n\tld a, $1\n\tldh [hWhoseTurn], a\n\tld a, POOF_ANIM\n\tcall PlayMoveAnimation\n\thlcoord 4, 11\n\tpredef AnimateSendingOutMon\n\tld a, [wCurPartySpecies]\n\tcall PlayCry\n\tcall PrintEmptyString\n\tjp SaveScreenTilesToBuffer1"
+        },
+        {
+          "start_line": 1798,
+          "end_line": 1809,
+          "text": "; Copies player's current pokemon's current HP, party pos, and status into the party\n; struct data so it stays after battle or switching\nReadPlayerMonCurHPAndStatus:\n\tld a, [wPlayerMonNumber]\n\tld hl, wPartyMon1HP\n\tld bc, PARTYMON_STRUCT_LENGTH\n\tcall AddNTimes\n\tld d, h\n\tld e, l\n\tld hl, wBattleMonHP\n\tld bc, MON_STATUS + 1 - MON_HP ; also copies party pos in-between HP and status\n\tjp CopyData"
+        },
+        {
+          "start_line": 1815,
+          "end_line": 1897,
+          "text": "DrawPlayerHUDAndHPBar:\n\txor a\n\tldh [hAutoBGTransferEnabled], a\n\thlcoord 9, 7\n\tlb bc, 5, 11\n\tcall ClearScreenArea\n\tcallfar PlacePlayerHUDTiles\n\thlcoord 18, 9\n\tld [hl], $73\n\tld de, wBattleMonNick\n\thlcoord 10, 7\n\tcall CenterMonName\n\tcall PlaceString\n\tld hl, wBattleMonSpecies\n\tld de, wLoadedMon\n\tld bc, wBattleMonDVs - wBattleMonSpecies\n\tcall CopyData\n\tld hl, wBattleMonLevel\n\tld de, wLoadedMonLevel\n\tld bc, wBattleMonPP - wBattleMonLevel\n\tcall CopyData\n\thlcoord 14, 8\n\tpush hl\n\tinc hl\n\tld de, wLoadedMonStatus\n\tcall PrintStatusConditionNotFainted\n\tpop hl\n\tjr nz, .doNotPrintLevel\n\tcall PrintLevel\n.doNotPrintLevel\n\tld a, [wLoadedMonSpecies]\n\tld [wCurPartySpecies], a\n\thlcoord 10, 9\n\tpredef DrawHP\n\tld a, $1\n\tldh [hAutoBGTransferEnabled], a\n\tld hl, wPlayerHPBarColor\n\tcall GetBattleHealthBarColor\n\tld hl, wBattleMonHP\n\tld a, [hli]\n\tor [hl]\n\tjr z, .fainted\n\tld a, [wLowHealthAlarmDisabled]\n\tand a ; has the alarm been disabled because the player has already won?\n\tret nz ; if so, return\n\tld a, [wPlayerHPBarColor]\n\tcp HP_BAR_RED\n\tjr z, .setLowHealthAlarm\n.fainted\n\tld hl, wLowHealthAlarm\n\tbit BIT_LOW_HEALTH_ALARM, [hl]\n\tld [hl], 0\n\tret z\n\txor a\n\tld [wChannelSoundIDs + CHAN5], a\n\tret\n.setLowHealthAlarm\n\tld hl, wLowHealthAlarm\n\tset BIT_LOW_HEALTH_ALARM, [hl]\n\tret\n\nDrawEnemyHUDAndHPBar:\n\txor a\n\tldh [hAutoBGTransferEnabled], a\n\thlcoord 0, 0\n\tlb bc, 4, 12\n\tcall ClearScreenArea\n\tcallfar PlaceEnemyHUDTiles\n\tld de, wEnemyMonNick\n\thlcoord 1, 0\n\tcall CenterMonName\n\tcall PlaceString\n\thlcoord 4, 1\n\tpush hl\n\tinc hl\n\tld de, wEnemyMonStatus\n\tcall PrintStatusConditionNotFainted\n\tpop hl\n\tjr nz, .skipPrintLevel ; if the mon has a status condition, skip printing the level\n\tld a, [wEnemyMonLevel]\n\tld [wLoadedMonLevel], a\n\tcall PrintLevel\n.skipPrintLevel"
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2055,
+          "text": "DisplayBattleMenu::\n\tcall LoadScreenTilesFromBuffer1 ; restore saved screen\n\tld a, [wBattleType]\n\tand a\n\tjr nz, .nonstandardbattle\n\tcall DrawHUDsAndHPBars\n\tcall PrintEmptyString\n\tcall SaveScreenTilesToBuffer1\n.nonstandardbattle\n\tld a, [wBattleType]\n\tcp BATTLE_TYPE_SAFARI\n\tld a, BATTLE_MENU_TEMPLATE\n\tjr nz, .menuselected\n\tld a, SAFARI_BATTLE_MENU_TEMPLATE\n.menuselected\n\tld [wTextBoxID], a\n\tcall DisplayTextBoxID\n ; handle menu input if it's not the old man tutorial\n\tld a, [wBattleType]\n\tASSERT BATTLE_TYPE_OLD_MAN == 1\n\tdec a\n\tjp nz, .handleBattleMenuInput\n; the following happens for the old man tutorial\n\t; Temporarily save the player name in wLinkEnemyTrainerName.\n\t; Since wLinkEnemyTrainerName == wGrassRate, this affects wild encounters.\n\t; The wGrassRate byte and following wGrassMons buffer are supposed\n\t; to get overwritten when entering a map with wild Pokémon,\n\t; but an oversight prevents this in Cinnabar and Route 21,\n\t; so the infamous MissingNo. glitch can show up.\n\tld hl, wPlayerName\n\tld de, wLinkEnemyTrainerName\n\tld bc, NAME_LENGTH\n\tcall CopyData\n\tld hl, .oldManName\n\tld de, wPlayerName\n\tld bc, NAME_LENGTH\n\tcall CopyData\n; the following simulates the keystrokes by drawing menus on screen\n\thlcoord 9, 14\n\tld [hl], '▶'\n\tld c, 80\n\tcall DelayFrames\n\tld [hl], ' '\n\thlcoord 9, 16\n\tld [hl], '▶'\n\tld c, 50\n\tcall DelayFrames\n\tld [hl], '▷'\n\tld a, $2 ; select the \"ITEM\" menu\n\tjp .upperLeftMenuItemWasNotSelected\n.oldManName\n\tdb \"OLD MAN@\"\n.handleBattleMenuInput\n\tld a, [wBattleAndStartSavedMenuItem]\n\tld [wCurrentMenuItem], a"
+        },
+        {
+          "start_line": 2301,
+          "end_line": 2440,
+          "text": "PartyMenuOrRockOrRun:\n\tdec a ; was Run selected?\n\tjp nz, BattleMenu_RunWasSelected\n; party menu or rock was selected\n\tcall SaveScreenTilesToBuffer2\n\tld a, [wBattleType]\n\tcp BATTLE_TYPE_SAFARI\n\tjr nz, .partyMenuWasSelected\n; safari battle\n\tld a, SAFARI_ROCK\n\tld [wCurItem], a\n\tjp UseBagItem\n.partyMenuWasSelected\n\tcall LoadScreenTilesFromBuffer1\n\txor a ; NORMAL_PARTY_MENU\n\tld [wPartyMenuTypeOrMessageID], a\n\tld [wMenuItemToSwap], a\n\tcall DisplayPartyMenu\n.checkIfPartyMonWasSelected\n\tjp nc, .partyMonWasSelected ; if a party mon was selected, jump, else we quit the party menu\n.quitPartyMenu\n\tcall ClearSprites\n\tcall GBPalWhiteOut\n\tcall LoadHudTilePatterns\n\tcall LoadScreenTilesFromBuffer2\n\tcall RunDefaultPaletteCommand\n\tcall GBPalNormal\n\tjp DisplayBattleMenu\n.partyMonDeselected\n\thlcoord 11, 11\n\tld bc, 6 * SCREEN_WIDTH + 9\n\tld a, ' '\n\tcall FillMemory\n\txor a ; NORMAL_PARTY_MENU\n\tld [wPartyMenuTypeOrMessageID], a\n\tcall GoBackToPartyMenu\n\tjr .checkIfPartyMonWasSelected\n.partyMonWasSelected\n\tld a, SWITCH_STATS_CANCEL_MENU_TEMPLATE\n\tld [wTextBoxID], a\n\tcall DisplayTextBoxID\n\tld hl, wTopMenuItemY\n\tld a, $c\n\tld [hli], a ; wTopMenuItemY\n\tld [hli], a ; wTopMenuItemX\n\txor a\n\tld [hli], a ; wCurrentMenuItem\n\tinc hl\n\tld a, $2\n\tld [hli], a ; wMaxMenuItem\n\tld a, PAD_B | PAD_A\n\tld [hli], a ; wMenuWatchedKeys\n\txor a\n\tld [hl], a ; wLastMenuItem\n\tcall HandleMenuInput\n\tbit B_PAD_B, a\n\tjr nz, .partyMonDeselected ; if B was pressed, jump\n; A was pressed\n\tcall PlaceUnfilledArrowMenuCursor\n\tld a, [wCurrentMenuItem]\n\tcp $2 ; was Cancel selected?\n\tjr z, .quitPartyMenu ; if so, quit the party menu entirely\n\tand a ; was Switch selected?\n\tjr z, .switchMon ; if so, jump\n; Stats was selected\n\txor a ; PLAYER_PARTY_DATA\n\tld [wMonDataLocation], a\n\tld hl, wPartyMon1\n\tcall ClearSprites\n; display the two status screens\n\tpredef StatusScreen\n\tpredef StatusScreen2\n; now we need to reload the enemy mon pic\n\tld a, [wEnemyBattleStatus2]\n\tbit HAS_SUBSTITUTE_UP, a ; does the enemy mon have a substitute?\n\tld hl, AnimationSubstitute\n\tjr nz, .doEnemyMonAnimation\n; enemy mon doesn't have substitute\n\tld a, [wEnemyMonMinimized]\n\tand a ; has the enemy mon used Minimize?\n\tld hl, AnimationMinimizeMon\n\tjr nz, .doEnemyMonAnimation\n; enemy mon is not minimized\n\tld a, [wEnemyMonSpecies]\n\tld [wCurPartySpecies], a\n\tld [wCurSpecies], a\n\tcall GetMonHeader\n\tld de, vFrontPic\n\tcall LoadMonFrontSprite\n\tjr .enemyMonPicReloaded\n.doEnemyMonAnimation\n\tld b, BANK(AnimationSubstitute) ; BANK(AnimationMinimizeMon)\n\tcall Bankswitch\n.enemyMonPicReloaded ; enemy mon pic has been reloaded, so return to the party menu\n\tjp .partyMenuWasSelected\n.switchMon\n\tld a, [wPlayerMonNumber]\n\tld d, a\n\tld a, [wWhichPokemon]\n\tcp d ; check if the mon to switch to is already out\n\tjr nz, .notAlreadyOut\n; mon is already out\n\tld hl, AlreadyOutText\n\tcall PrintText\n\tjp .partyMonDeselected\n.notAlreadyOut\n\tcall HasMonFainted\n\tjp z, .partyMonDeselected ; can't switch to fainted mon\n\tld a, $1\n\tld [wActionResultOrTookBattleTurn], a\n\tcall GBPalWhiteOut\n\tcall ClearSprites\n\tcall LoadHudTilePatterns\n\tcall LoadScreenTilesFromBuffer1\n\tcall RunDefaultPaletteCommand\n\tcall GBPalNormal\n; fall through to SwitchPlayerMon\n\nSwitchPlayerMon:\n\tcallfar RetreatMon\n\tld c, 50\n\tcall DelayFrames\n\tcall AnimateRetreatingPlayerMon\n\tld a, [wWhichPokemon]\n\tld [wPlayerMonNumber], a\n\tld c, a\n\tld b, FLAG_SET\n\tpush bc\n\tld hl, wPartyGainExpFlags\n\tpredef FlagActionPredef\n\tpop bc\n\tld hl, wPartyFoughtCurrentEnemyFlags\n\tpredef FlagActionPredef\n\tcall LoadBattleMonFromParty\n\tcall SendOutMon\n\tcall SaveScreenTilesToBuffer1\n\tld a, $2\n\tld [wCurrentMenuItem], a\n\tand a\n\tret"
+        },
+        {
+          "start_line": 1980,
+          "end_line": 1999,
+          "text": "CenterMonName:\n\tpush de\n\tinc hl\n\tinc hl\n\tld b, $2\n.loop\n\tinc de\n\tld a, [de]\n\tcp '@'\n\tjr z, .done\n\tinc de\n\tld a, [de]\n\tcp '@'\n\tjr z, .done\n\tdec hl\n\tdec b\n\tjr nz, .loop\n.done\n\tpop de\n\tret"
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/party_menu.asm",
+      "git_blob_sha": "2a3086424d217093bcd8aa7100d4326f99894d2f",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/party_menu.asm",
+      "line_count": 307,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 109,
+          "text": "DrawPartyMenu_::\n\txor a\n\tldh [hAutoBGTransferEnabled], a\n\tcall ClearScreen\n\tcall UpdateSprites\n\tfarcall LoadMonPartySpriteGfxWithLCDDisabled ; load pokemon icon graphics\n\nRedrawPartyMenu_::\n\tld a, [wPartyMenuTypeOrMessageID]\n\tcp SWAP_MONS_PARTY_MENU\n\tjp z, .printMessage\n\tcall ErasePartyMenuCursors\n\tfarcall InitPartyMenuBlkPacket\n\thlcoord 3, 0\n\tld de, wPartySpecies\n\txor a\n\tld c, a\n\tldh [hPartyMonIndex], a\n\tld [wWhichPartyMenuHPBar], a\n.loop\n\tld a, [de]\n\tcp $FF ; reached the terminator?\n\tjp z, .afterDrawingMonEntries\n\tpush bc\n\tpush de\n\tpush hl\n\tld a, c\n\tpush hl\n\tld hl, wPartyMonNicks\n\tcall GetPartyMonName\n\tpop hl\n\tcall PlaceString ; print the pokemon's name\n\tfarcall WriteMonPartySpriteOAMByPartyIndex ; place the appropriate pokemon icon\n\tldh a, [hPartyMonIndex]\n\tld [wWhichPokemon], a\n\tinc a\n\tldh [hPartyMonIndex], a\n\tcall LoadMonData\n\tpop hl\n\tpush hl\n\tld a, [wMenuItemToSwap]\n\tand a ; is the player swapping pokemon positions?\n\tjr z, .skipUnfilledRightArrow\n; if the player is swapping pokemon positions\n\tdec a\n\tld b, a\n\tld a, [wWhichPokemon]\n\tcp b ; is the player swapping the current pokemon in the list?\n\tjr nz, .skipUnfilledRightArrow\n; the player is swapping the current pokemon in the list\n\tdec hl\n\tdec hl\n\tdec hl\n\tld a, '▷' ; unfilled right arrow menu cursor\n\tld [hli], a ; place the cursor\n\tinc hl\n\tinc hl\n.skipUnfilledRightArrow\n\tld a, [wPartyMenuTypeOrMessageID] ; menu type\n\tcp TMHM_PARTY_MENU\n\tjr z, .teachMoveMenu\n\tcp EVO_STONE_PARTY_MENU\n\tjr z, .evolutionStoneMenu\n\tpush hl\n\tld bc, 14 ; 14 columns to the right\n\tadd hl, bc\n\tld de, wLoadedMonStatus\n\tcall PrintStatusCondition\n\tpop hl\n\tpush hl\n\tld bc, SCREEN_WIDTH + 1 ; down 1 row and right 1 column\n\tldh a, [hUILayoutFlags]\n\tset BIT_PARTY_MENU_HP_BAR, a\n\tldh [hUILayoutFlags], a\n\tadd hl, bc\n\tpredef DrawHP2 ; draw HP bar and prints current / max HP\n\tldh a, [hUILayoutFlags]\n\tres BIT_PARTY_MENU_HP_BAR, a\n\tldh [hUILayoutFlags], a\n\tcall SetPartyMenuHPBarColor ; color the HP bar (on SGB)\n\tpop hl\n\tjr .printLevel\n.teachMoveMenu\n\tpush hl\n\tpredef CanLearnTM ; check if the pokemon can learn the move\n\tpop hl\n\tld de, .ableToLearnMoveText\n\tld a, c\n\tand a\n\tjr nz, .placeMoveLearnabilityString\n\tld de, .notAbleToLearnMoveText\n.placeMoveLearnabilityString\n\tld bc, SCREEN_WIDTH + 9 ; 1 row down and 9 columns right\n\tpush hl\n\tadd hl, bc\n\tcall PlaceString\n\tpop hl\n.printLevel\n\tld bc, 10 ; move 10 columns to the right\n\tadd hl, bc\n\tcall PrintLevel\n\tpop hl\n\tpop de\n\tinc de\n\tld bc, 2 * SCREEN_WIDTH\n\tadd hl, bc\n\tpop bc\n\tinc c\n\tjp .loop"
+        },
+        {
+          "start_line": 229,
+          "end_line": 255,
+          "text": "PartyMenuMessagePointers:\n\tdw PartyMenuNormalText\n\tdw PartyMenuItemUseText\n\tdw PartyMenuBattleText\n\tdw PartyMenuUseTMText\n\tdw PartyMenuSwapMonText\n\tdw PartyMenuItemUseText\n\nPartyMenuNormalText:\n\ttext_far _PartyMenuNormalText\n\ttext_end\n\nPartyMenuItemUseText:\n\ttext_far _PartyMenuItemUseText\n\ttext_end\n\nPartyMenuBattleText:\n\ttext_far _PartyMenuBattleText\n\ttext_end\n\nPartyMenuUseTMText:\n\ttext_far _PartyMenuUseTMText\n\ttext_end\n\nPartyMenuSwapMonText:\n\ttext_far _PartyMenuSwapMonText\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "home/pokemon.asm",
+      "git_blob_sha": "fa4054d94327f3872e323fc72d23cb049fdd6a52",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/pokemon.asm",
+      "line_count": 456,
+      "excerpts": [
+        {
+          "start_line": 181,
+          "end_line": 275,
+          "text": "DisplayPartyMenu::\n\tldh a, [hTileAnimations]\n\tpush af\n\txor a\n\tldh [hTileAnimations], a\n\tcall GBPalWhiteOutWithDelay3\n\tcall ClearSprites\n\tcall PartyMenuInit\n\tcall DrawPartyMenu\n\tjp HandlePartyMenuInput\n\nGoBackToPartyMenu::\n\tldh a, [hTileAnimations]\n\tpush af\n\txor a\n\tldh [hTileAnimations], a\n\tcall PartyMenuInit\n\tcall RedrawPartyMenu\n\tjp HandlePartyMenuInput\n\nPartyMenuInit::\n\tld a, 1 ; hardcoded bank\n\tcall BankswitchHome\n\tcall LoadHpBarAndStatusTilePatterns\n\tld hl, wStatusFlags5\n\tset BIT_NO_TEXT_DELAY, [hl]\n\txor a ; PLAYER_PARTY_DATA\n\tld [wMonDataLocation], a\n\tld [wMenuWatchMovingOutOfBounds], a\n\tld hl, wTopMenuItemY\n\tinc a\n\tld [hli], a ; top menu item Y\n\txor a\n\tld [hli], a ; top menu item X\n\tld a, [wPartyAndBillsPCSavedMenuItem]\n\tpush af\n\tld [hli], a ; current menu item ID\n\tinc hl\n\tld a, [wPartyCount]\n\tand a ; are there more than 0 pokemon in the party?\n\tjr z, .storeMaxMenuItemID\n\tdec a\n; if party is not empty, the max menu item ID is ([wPartyCount] - 1)\n; otherwise, it is 0\n.storeMaxMenuItemID\n\tld [hli], a ; max menu item ID\n\tld a, [wForcePlayerToChooseMon]\n\tand a\n\tld a, PAD_A | PAD_B\n\tjr z, .next\n\txor a\n\tld [wForcePlayerToChooseMon], a\n\tinc a ; a = PAD_A\n.next\n\tld [hli], a ; menu watched keys\n\tpop af\n\tld [hl], a ; old menu item ID\n\tret\n\nHandlePartyMenuInput::\n\tld a, 1\n\tld [wMenuWrappingEnabled], a\n\tld a, $40\n\tld [wPartyMenuAnimMonEnabled], a\n\tcall HandleMenuInput_\n\tcall PlaceUnfilledArrowMenuCursor\n\tld b, a\n\txor a\n\tld [wPartyMenuAnimMonEnabled], a\n\tld a, [wCurrentMenuItem]\n\tld [wPartyAndBillsPCSavedMenuItem], a\n\tld hl, wStatusFlags5\n\tres BIT_NO_TEXT_DELAY, [hl]\n\tld a, [wMenuItemToSwap]\n\tand a\n\tjp nz, .swappingPokemon\n\tpop af\n\tldh [hTileAnimations], a\n\tbit B_PAD_B, b\n\tjr nz, .noPokemonChosen\n\tld a, [wPartyCount]\n\tand a\n\tjr z, .noPokemonChosen\n\tld a, [wCurrentMenuItem]\n\tld [wWhichPokemon], a\n\tld hl, wPartySpecies\n\tld b, 0\n\tld c, a\n\tadd hl, bc\n\tld a, [hl]\n\tld [wCurPartySpecies], a\n\tld [wBattleMonSpecies2], a\n\tcall BankswitchBack\n\tand a\n\tret"
+        },
+        {
+          "start_line": 335,
+          "end_line": 361,
+          "text": "PrintLevel::\n\tld a, '<LV>' ; \":L\" tile ID\n\tld [hli], a\n\tld c, 2 ; number of digits\n\tld a, [wLoadedMonLevel] ; level\n\tcp 100\n\tjr c, PrintLevelCommon\n; if level at least 100, write over the \":L\" tile\n\tdec hl\n\tinc c ; increment number of digits to 3\n\tjr PrintLevelCommon\n\n; prints the level without leaving off \":L\" regardless of level\n; INPUT:\n; hl = destination address\n; [wLoadedMonLevel] = level\nPrintLevelFull::\n\tld a, '<LV>' ; \":L\" tile ID\n\tld [hli], a\n\tld c, 3 ; number of digits\n\tld a, [wLoadedMonLevel] ; level\n\nPrintLevelCommon::\n\tld [wTempByteValue], a\n\tld de, wTempByteValue\n\tld b, LEFT_ALIGN | 1 ; 1 byte\n\tjp PrintNumber"
+        },
+        {
+          "start_line": 311,
+          "end_line": 329,
+          "text": "PrintStatusCondition::\n\tpush de\n\tdec de\n\tdec de ; de = address of current HP\n\tld a, [de]\n\tld b, a\n\tdec de\n\tld a, [de]\n\tor b ; is the pokemon's HP zero?\n\tpop de\n\tjr nz, PrintStatusConditionNotFainted\n; if the pokemon's HP is 0, print \"FNT\"\n\tld_hli_a_string \"FNT\"\n\tand a\n\tret\n\nPrintStatusConditionNotFainted::\n\thomecall_sf PrintStatusAilment\n\tret"
+        }
+      ]
+    },
+    {
+      "path": "data/text_boxes.asm",
+      "git_blob_sha": "f96f2d687be49d471fc7bd4ccb7a4371d4aaa7c0",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text_boxes.asm",
+      "line_count": 89,
+      "excerpts": [
+        {
+          "start_line": 25,
+          "end_line": 34,
+          "text": "TextBoxTextAndCoordTable:\n\t; text box ID, upper-left X, upper-left Y, lower-right X, lower-right Y, text pointer, text X, text Y\n\ttext_box_text JP_MOCHIMONO_MENU_TEMPLATE,         0,  0, 14, 17, JapaneseMochimonoText,    3,  0\n\ttext_box_text USE_TOSS_MENU_TEMPLATE,            13, 10, 19, 14, UseTossText,             15, 11\n\ttext_box_text JP_SAVE_MESSAGE_MENU_TEMPLATE,      0,  0,  7,  5, JapaneseSaveMessageText,  2,  2\n\ttext_box_text JP_SPEED_OPTIONS_MENU_TEMPLATE,     0,  6,  5, 10, JapaneseSpeedOptionsText, 2,  7\n\ttext_box_text BATTLE_MENU_TEMPLATE,               8, 12, 19, 17, BattleMenuText,          10, 14\n\ttext_box_text SAFARI_BATTLE_MENU_TEMPLATE,        0, 12, 19, 17, SafariZoneBattleMenuText, 2, 14\n\ttext_box_text SWITCH_STATS_CANCEL_MENU_TEMPLATE, 11, 11, 19, 17, SwitchStatsCancelText,   13, 12\n\ttext_box_text BUY_SELL_QUIT_MENU_TEMPLATE,        0,  0, 10,  6, BuySellQuitText,          2,  1"
+        },
+        {
+          "start_line": 68,
+          "end_line": 79,
+          "text": "BattleMenuText:\n\tdb   \"FIGHT <PK><MN>\"\n\tnext \"ITEM  RUN@\"\n\nSafariZoneBattleMenuText:\n\tdb   \"BALL×       BAIT\"\n\tnext \"THROW ROCK  RUN@\"\n\nSwitchStatsCancelText:\n\tdb   \"SWITCH\"\n\tnext \"STATS\"\n\tnext \"CANCEL@\""
+        }
+      ]
+    },
+    {
+      "path": "engine/pokemon/status_screen.asm",
+      "git_blob_sha": "84a56d5a7e9b3b11aba9fdf24aa456113c71cfcb",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/status_screen.asm",
+      "line_count": 477,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 62,
+          "text": "DrawHP:\n; Draws the HP bar in the stats screen\n\tcall GetPredefRegisters\n\tld a, $1\n\tjr DrawHP_\n\nDrawHP2:\n; Draws the HP bar in the party screen\n\tcall GetPredefRegisters\n\tld a, $2\n\nDrawHP_:\n\tld [wHPBarType], a\n\tpush hl\n\tld a, [wLoadedMonHP]\n\tld b, a\n\tld a, [wLoadedMonHP + 1]\n\tld c, a\n\tor b\n\tjr nz, .nonzeroHP\n\txor a\n\tld c, a\n\tld e, a\n\tld a, $6\n\tld d, a\n\tjp .drawHPBarAndPrintFraction\n.nonzeroHP\n\tld a, [wLoadedMonMaxHP]\n\tld d, a\n\tld a, [wLoadedMonMaxHP + 1]\n\tld e, a\n\tpredef HPBarLength\n\tld a, $6\n\tld d, a\n\tld c, a\n.drawHPBarAndPrintFraction\n\tpop hl\n\tpush de\n\tpush hl\n\tpush hl\n\tcall DrawHPBar\n\tpop hl\n\tldh a, [hUILayoutFlags]\n\tbit BIT_PARTY_MENU_HP_BAR, a\n\tjr z, .printFractionBelowBar\n\tld bc, $9 ; right of bar\n\tjr .printFraction\n.printFractionBelowBar\n\tld bc, SCREEN_WIDTH + 1 ; below bar\n.printFraction\n\tadd hl, bc\n\tld de, wLoadedMonHP\n\tlb bc, 2, 3\n\tcall PrintNumber\n\tld a, '/'\n\tld [hli], a\n\tld de, wLoadedMonMaxHP\n\tlb bc, 2, 3\n\tcall PrintNumber\n\tpop hl\n\tpop de\n\tret"
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/common_text.asm",
+      "git_blob_sha": "9e954877618f50b0bb61d6c97879fe935aefb513",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/common_text.asm",
+      "line_count": 244,
+      "excerpts": [
+        {
+          "start_line": 97,
+          "end_line": 243,
+          "text": "PrintSendOutMonMessage:\n\tld hl, wEnemyMonHP\n\tld a, [hli]\n\tor [hl]\n\tld hl, GoText\n\tjr z, .printText\n\txor a\n\tldh [hMultiplicand], a\n\tld hl, wEnemyMonHP\n\tld a, [hli]\n\tld [wLastSwitchInEnemyMonHP], a\n\tldh [hMultiplicand + 1], a\n\tld a, [hl]\n\tld [wLastSwitchInEnemyMonHP + 1], a\n\tldh [hMultiplicand + 2], a\n\tld a, 25\n\tldh [hMultiplier], a\n\tcall Multiply\n\tld hl, wEnemyMonMaxHP\n\tld a, [hli]\n\tld b, [hl]\n\tsrl a\n\trr b\n\tsrl a\n\trr b\n\tld a, b\n\tld b, 4\n\tldh [hDivisor], a ; enemy mon max HP divided by 4\n\tcall Divide\n\tldh a, [hQuotient + 3] ; a = (enemy mon current HP * 25) / (enemy max HP / 4); this approximates the current percentage of max HP\n\tld hl, GoText ; 70% or greater\n\tcp 70\n\tjr nc, .printText\n\tld hl, DoItText ; 40% - 69%\n\tcp 40\n\tjr nc, .printText\n\tld hl, GetmText ; 10% - 39%\n\tcp 10\n\tjr nc, .printText\n\tld hl, EnemysWeakText ; 0% - 9%\n.printText\n\tjp PrintText\n\nGoText:\n\ttext_far _GoText\n\ttext_asm\n\tjr PrintPlayerMon1Text\n\nDoItText:\n\ttext_far _DoItText\n\ttext_asm\n\tjr PrintPlayerMon1Text\n\nGetmText:\n\ttext_far _GetmText\n\ttext_asm\n\tjr PrintPlayerMon1Text\n\nEnemysWeakText:\n\ttext_far _EnemysWeakText\n\ttext_asm\n\nPrintPlayerMon1Text:\n\tld hl, PlayerMon1Text\n\tret\n\nPlayerMon1Text:\n\ttext_far _PlayerMon1Text\n\ttext_end\n\nRetreatMon:\n\tld hl, PlayerMon2Text\n\tjp PrintText\n\nPlayerMon2Text:\n\ttext_far _PlayerMon2Text\n\ttext_asm\n\tpush de\n\tpush bc\n\tld hl, wEnemyMonHP + 1\n\tld de, wLastSwitchInEnemyMonHP + 1\n\tld b, [hl]\n\tdec hl\n\tld a, [de]\n\tsub b\n\tldh [hMultiplicand + 2], a\n\tdec de\n\tld b, [hl]\n\tld a, [de]\n\tsbc b\n\tldh [hMultiplicand + 1], a\n\tld a, 25\n\tldh [hMultiplier], a\n\tcall Multiply\n\tld hl, wEnemyMonMaxHP\n\tld a, [hli]\n\tld b, [hl]\n\tsrl a\n\trr b\n\tsrl a\n\trr b\n\tld a, b\n\tld b, 4\n\tldh [hDivisor], a\n\tcall Divide\n\tpop bc\n\tpop de\n\tldh a, [hQuotient + 3] ; a = ((LastSwitchInEnemyMonHP - CurrentEnemyMonHP) / 25) / (EnemyMonMaxHP / 4)\n; Assuming that the enemy mon hasn't gained HP since the last switch in,\n; a approximates the percentage that the enemy mon's total HP has decreased\n; since the last switch in.\n; If the enemy mon has gained HP, then a is garbage due to wrap-around and\n; can fall in any of the ranges below.\n\tld hl, EnoughText ; HP stayed the same\n\tand a\n\tret z\n\tld hl, ComeBackText ; HP went down 1% - 29%\n\tcp 30\n\tret c\n\tld hl, OKExclamationText ; HP went down 30% - 69%\n\tcp 70\n\tret c\n\tld hl, GoodText ; HP went down 70% or more\n\tret\n\nEnoughText:\n\ttext_far _EnoughText\n\ttext_asm\n\tjr PrintComeBackText\n\nOKExclamationText:\n\ttext_far _OKExclamationText\n\ttext_asm\n\tjr PrintComeBackText\n\nGoodText:\n\ttext_far _GoodText\n\ttext_asm\n\tjr PrintComeBackText\n\nPrintComeBackText:\n\tld hl, ComeBackText\n\tret\n\nComeBackText:\n\ttext_far _ComeBackText\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_2.asm",
+      "git_blob_sha": "917feb8953c9c2b688395dfb54459b1d04bf7a71",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_2.asm",
+      "line_count": 1792,
+      "excerpts": [
+        {
+          "start_line": 996,
+          "end_line": 1004,
+          "text": "_FastAsleepText::\n\ttext \"<USER>\"\n\tline \"is fast asleep!\"\n\tprompt\n\n_WokeUpText::\n\ttext \"<USER>\"\n\tline \"woke up!\"\n\tprompt"
+        },
+        {
+          "start_line": 1079,
+          "end_line": 1150,
+          "text": "_ActorNameText::\n\ttext \"<USER>@\"\n\ttext_end\n\n_UsedMove1Text::\n\ttext_start\n\tline \"used @\"\n\ttext_end\n\n_UsedMove2Text::\n\ttext_start\n\tline \"used @\"\n\ttext_end\n\n_UsedInsteadText::\n\ttext \"instead,\"\n\tcont \"@\"\n\ttext_end\n\n_MoveNameText::\n\ttext_ram wStringBuffer\n\ttext \"@\"\n\n_EndUsedMove1Text::\n\ttext \"!\"\n\tdone\n\n_EndUsedMove2Text::\n\ttext \"!\"\n\tdone\n\n_EndUsedMove3Text::\n\ttext \"!\"\n\tdone\n\n_EndUsedMove4Text::\n\ttext \"!\"\n\tdone\n\n_EndUsedMove5Text::\n\ttext \"!\"\n\tdone\n\n_AttackMissedText::\n\ttext \"<USER>'s\"\n\tline \"attack missed!\"\n\tprompt\n\n_KeptGoingAndCrashedText::\n\ttext \"<USER>\"\n\tline \"kept going and\"\n\tcont \"crashed!\"\n\tprompt\n\n_UnaffectedText::\n\ttext \"<TARGET>'s\"\n\tline \"unaffected!\"\n\tprompt\n\n_DoesntAffectMonText::\n\ttext \"It doesn't affect\"\n\tline \"<TARGET>!\"\n\tprompt\n\n_CriticalHitText::\n\ttext \"Critical hit!\"\n\tprompt\n\n_OHKOText::\n\ttext \"One-hit KO!\"\n\tprompt\n"
+        },
+        {
+          "start_line": 1275,
+          "end_line": 1317,
+          "text": "_GoText::\n\ttext \"Go! @\"\n\ttext_end\n\n_DoItText::\n\ttext \"Do it! @\"\n\ttext_end\n\n_GetmText::\n\ttext \"Get'm! @\"\n\ttext_end\n\n_EnemysWeakText::\n\ttext \"The enemy's weak!\"\n\tline \"Get'm! @\"\n\ttext_end\n\n_PlayerMon1Text::\n\ttext_ram wBattleMonNick\n\ttext \"!\"\n\tdone\n\n_PlayerMon2Text::\n\ttext_ram wBattleMonNick\n\ttext \" @\"\n\ttext_end\n\n_EnoughText::\n\ttext \"enough!@\"\n\ttext_end\n\n_OKExclamationText::\n\ttext \"OK!@\"\n\ttext_end\n\n_GoodText::\n\ttext \"good!@\"\n\ttext_end\n\n_ComeBackText::\n\ttext_start\n\tline \"Come back!\"\n\tdone"
+        },
+        {
+          "start_line": 1361,
+          "end_line": 1364,
+          "text": "_PartyMenuNormalText::\n\ttext \"Choose a #MON.\"\n\tdone\n"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_3.asm",
+      "git_blob_sha": "ba09a0f688cec05c03a3f7952c34a0f122694cc7",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_3.asm",
+      "line_count": 331,
+      "excerpts": [
+        {
+          "start_line": 89,
+          "end_line": 110,
+          "text": "\tprompt\n\n_FireDefrostedText::\n\ttext \"Fire defrosted\"\n\tline \"<TARGET>!\"\n\tprompt\n\n_MonsStatsRoseText::\n\ttext \"<USER>'s\"\n\tline \"@\"\n\ttext_ram wStringBuffer\n\ttext \"@\"\n\ttext_end\n\n_GreatlyRoseText::\n\ttext \"<SCROLL>greatly@\"\n\ttext_end\n\n_RoseText::\n\ttext \" rose!\"\n\tprompt\n"
+        },
+        {
+          "start_line": 190,
+          "end_line": 212,
+          "text": "\tline \"@\"\n\ttext_ram wNameBuffer\n\ttext \" was\"\n\tcont \"disabled!\"\n\tprompt\n\n_NothingHappenedText::\n\ttext \"Nothing happened!\"\n\tprompt\n\n_NoEffectText::\n\ttext \"No effect!\"\n\tprompt\n\n_ButItFailedText::\n\ttext \"But, it failed! \"\n\tprompt\n\n_DidntAffectText::\n\ttext \"It didn't affect\"\n\tline \"<TARGET>!\"\n\tprompt\n"
+        },
+        {
+          "start_line": 274,
+          "end_line": 288,
+          "text": "_StartedSleepingEffect::\n\ttext \"<USER>\"\n\tline \"started sleeping!\"\n\tdone\n\n_FellAsleepBecameHealthyText::\n\ttext \"<USER>\"\n\tline \"fell asleep and\"\n\tcont \"became healthy!\"\n\tdone\n\n_RegainedHealthText::\n\ttext \"<USER>\"\n\tline \"regained health!\"\n\tprompt"
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/used_move_text.asm",
+      "git_blob_sha": "abb35e67bf2a6adccb6a39d314fa04d8f67e9e2b",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/used_move_text.asm",
+      "line_count": 140,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 140,
+          "text": "DisplayUsedMoveText:\n\tld hl, UsedMoveText\n\tjp PrintText\n\nUsedMoveText:\n\ttext_far _ActorNameText\n\ttext_asm\n\n\tldh a, [hWhoseTurn]\n\tand a\n\tld a, [wPlayerMoveNum]\n\tld hl, wPlayerUsedMove\n\tjr z, .playerTurn\n\n\tld a, [wEnemyMoveNum]\n\tld hl, wEnemyUsedMove\n\n.playerTurn\n\tld [hl], a\n\tld [wMoveGrammar], a\n\tcall GetMoveGrammar\n\tld a, [wMonIsDisobedient]\n\tand a\n\tld hl, UsedMove2Text\n\tret nz\n\n\t; check move grammar\n\tld a, [wMoveGrammar]\n\tcp $3\n\tld hl, UsedMove2Text\n\tret c\n\tld hl, UsedMove1Text\n\tret\n\nUsedMove1Text:\n\ttext_far _UsedMove1Text\n\ttext_asm\n\tjr UsedMoveText_CheckObedience\n\nUsedMove2Text:\n\ttext_far _UsedMove2Text\n\ttext_asm\n\t; fall through\n\nUsedMoveText_CheckObedience:\n; check obedience\n\tld a, [wMonIsDisobedient]\n\tand a\n\tjr z, .GetMoveNameText\n; print \"instead,\"\n\tld hl, .UsedInsteadText\n\tret\n\n.UsedInsteadText:\n\ttext_far _UsedInsteadText\n\ttext_asm\n\t; fall through\n\n.GetMoveNameText:\n\tld hl, MoveNameText\n\tret\n\nMoveNameText:\n\ttext_far _MoveNameText\n\ttext_asm\n\tld hl, .endusedmovetexts\n\tld a, [wMoveGrammar]\n\tadd a\n\tpush bc\n\tld b, $0\n\tld c, a\n\tadd hl, bc\n\tpop bc\n\tld a, [hli]\n\tld h, [hl]\n\tld l, a\n\tret\n\n.endusedmovetexts:\n; entries correspond to MoveGrammar sets\n\tdw EndUsedMove1Text\n\tdw EndUsedMove2Text\n\tdw EndUsedMove3Text\n\tdw EndUsedMove4Text\n\tdw EndUsedMove5Text\n\nEndUsedMove1Text:\n\ttext_far _EndUsedMove1Text\n\ttext_end\n\nEndUsedMove2Text:\n\ttext_far _EndUsedMove2Text\n\ttext_end\n\nEndUsedMove3Text:\n\ttext_far _EndUsedMove3Text\n\ttext_end\n\nEndUsedMove4Text:\n\ttext_far _EndUsedMove4Text\n\ttext_end\n\nEndUsedMove5Text:\n\ttext_far _EndUsedMove5Text\n\ttext_end\n\n; This function is redundant in the English localization.\n; In Japanese, it selects one of 5 distinct sentence structures.\n; In English, all of these sentences have the exact same structure,\n; so this serves no purpose.\nGetMoveGrammar:\n\tpush bc\n\tld a, [wMoveGrammar] ; move ID\n\tld c, a\n\tld b, $0\n\tld hl, MoveGrammar\n.loop\n\tld a, [hli]\n; end of table?\n\tcp -1\n\tjr z, .end\n; match?\n\tcp c\n\tjr z, .end\n; advance grammar type at 0\n\tand a\n\tjr nz, .loop\n; next grammar type\n\tinc b\n\tjr .loop\n\n.end\n; wMoveGrammar now contains move grammar\n\tld a, b\n\tld [wMoveGrammar], a\n\tpop bc\n\tret\n\nINCLUDE \"data/moves/grammar.asm\"\n"
+        }
+      ]
+    },
+    {
+      "path": "home/text.asm",
+      "git_blob_sha": "8ec872e0f2a2fefdac146f72cb91258678140373",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/text.asm",
+      "line_count": 641,
+      "excerpts": [
+        {
+          "start_line": 209,
+          "end_line": 240,
+          "text": "PromptText::\n\tld a, [wLinkState]\n\tcp LINK_STATE_BATTLING\n\tjp z, .ok\n\tld a, '▼'\n\tldcoord_a 18, 16\n.ok\n\tcall ProtectedDelay3\n\tcall ManualTextScroll\n\tld a, ' '\n\tldcoord_a 18, 16\n\nDoneText::\n\tpop hl\n\tld de, .stop\n\tdec de\n\tret\n\n.stop:\n\ttext_end\n\nParagraph::\n\tpush de\n\tld a, '▼'\n\tldcoord_a 18, 16\n\tcall ProtectedDelay3\n\tcall ManualTextScroll\n\thlcoord 1, 13\n\tlb bc, 4, 18\n\tcall ClearScreenArea\n\tld c, 20\n\tcall DelayFrames"
+        },
+        {
+          "start_line": 262,
+          "end_line": 277,
+          "text": "_ContText::\n\tld a, '▼'\n\tldcoord_a 18, 16\n\tcall ProtectedDelay3\n\tpush de\n\tcall ManualTextScroll\n\tpop de\n\tld a, ' '\n\tldcoord_a 18, 16\n_ContTextNoPause::\n\tpush de\n\tcall ScrollTextUpOneLine\n\tcall ScrollTextUpOneLine\n\thlcoord 1, 16\n\tpop de\n\tjp NextChar"
+        }
+      ]
+    },
+    {
+      "path": "constants/charmap.asm",
+      "git_blob_sha": "f096797827b30e28201826a1b61656c5adeaa41e",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/charmap.asm",
+      "line_count": 387,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 387,
+          "text": "; $00-$17 are TX_* constants (see macros/scripts/text.asm)\n\n; Control characters (see home/text.asm)\n\n\tcharmap \"<NULL>\",    $00\n\tcharmap \"<PAGE>\",    $49\n\tcharmap \"<PKMN>\",    $4a ; \"<PK><MN>\"\n\tcharmap \"<_CONT>\",   $4b ; implements \"<CONT>\"\n\tcharmap \"<SCROLL>\",  $4c\n\tcharmap \"<NEXT>\",    $4e\n\tcharmap \"<LINE>\",    $4f\n\tcharmap \"@\",         $50 ; string terminator\n\tcharmap \"<PARA>\",    $51\n\tcharmap \"<PLAYER>\",  $52 ; wPlayerName\n\tcharmap \"<RIVAL>\",   $53 ; wRivalName\n\tcharmap \"#\",         $54 ; \"POKé\"\n\tcharmap \"<CONT>\",    $55\n\tcharmap \"<……>\",      $56 ; \"……\"\n\tcharmap \"<DONE>\",    $57\n\tcharmap \"<PROMPT>\",  $58\n\tcharmap \"<TARGET>\",  $59\n\tcharmap \"<USER>\",    $5a\n\tcharmap \"<PC>\",      $5b ; \"PC\"\n\tcharmap \"<TM>\",      $5c ; \"TM\"\n\tcharmap \"<TRAINER>\", $5d ; \"TRAINER\"\n\tcharmap \"<ROCKET>\",  $5e ; \"ROCKET\"\n\tcharmap \"<DEXEND>\",  $5f\n\n; Actual characters (from gfx/font/font_extra.png)\n\n\tcharmap \"<BOLD_A>\",  $60 ; unused\n\tcharmap \"<BOLD_B>\",  $61 ; unused\n\tcharmap \"<BOLD_C>\",  $62 ; unused\n\tcharmap \"<BOLD_D>\",  $63 ; unused\n\tcharmap \"<BOLD_E>\",  $64 ; unused\n\tcharmap \"<BOLD_F>\",  $65 ; unused\n\tcharmap \"<BOLD_G>\",  $66 ; unused\n\tcharmap \"<BOLD_H>\",  $67 ; unused\n\tcharmap \"<BOLD_I>\",  $68 ; unused\n\tcharmap \"<BOLD_V>\",  $69\n\tcharmap \"<BOLD_S>\",  $6a\n\tcharmap \"<BOLD_L>\",  $6b ; unused\n\tcharmap \"<BOLD_M>\",  $6c ; unused\n\tcharmap \"<COLON>\",   $6d ; colon with tinier dots than \":\"\n\tcharmap \"ぃ\",         $6e ; hiragana small i, unused\n\tcharmap \"ぅ\",         $6f ; hiragana small u, unused\n\tcharmap \"‘\",         $70 ; opening single quote\n\tcharmap \"’\",         $71 ; closing single quote\n\tcharmap \"“\",         $72 ; opening quote\n\tcharmap \"”\",         $73 ; closing quote\n\tcharmap \"·\",         $74 ; middle dot, unused\n\tcharmap \"…\",         $75 ; ellipsis\n\tcharmap \"ぁ\",         $76 ; hiragana small a, unused\n\tcharmap \"ぇ\",         $77 ; hiragana small e, unused\n\tcharmap \"ぉ\",         $78 ; hiragana small o, unused\n\n\tcharmap \"┌\",         $79\n\tcharmap \"─\",         $7a\n\tcharmap \"┐\",         $7b\n\tcharmap \"│\",         $7c\n\tcharmap \"└\",         $7d\n\tcharmap \"┘\",         $7e\n\tcharmap \" \",         $7f\n\n; Actual characters (from gfx/font/font_battle_extra.png)\n\n\tcharmap \"<LV>\",      $6e\n\n\tcharmap \"<to>\",      $70 ; narrow \"to\"\n\n\tcharmap \"『\",         $72 ; Japanese opening quote, unused\n\tcharmap \"<ID>\",      $73\n\tcharmap \"№\",         $74\n\n; Actual characters (from other graphics files)\n\n\t; needed for ShowPokedexDataInternal (see engine/menus/pokedex.asm)\n\tcharmap \"′\",         $60 ; gfx/pokedex/pokedex.png\n\tcharmap \"″\",         $61 ; gfx/pokedex/pokedex.png\n\n\t; needed for StatusScreen (see engine/pokemon/status_screen.asm)\n\tcharmap \"<BOLD_P>\",  $72 ; gfx/font/P.1bpp\n\n\t; needed for LoadTownMap_Fly (see engine/items/town_map.asm)\n\tcharmap \"▲\",         $ed ; gfx/town_map/up_arrow.1bpp\n\n\t; needed for PrintAlphabet (see engine/menus/naming_screen.asm)\n\tcharmap \"<ED>\",      $f0 ; gfx/font/ED.1bpp\n\n; Actual characters (from gfx/font/font.png)\n\n\tcharmap \"A\",         $80\n\tcharmap \"B\",         $81\n\tcharmap \"C\",         $82\n\tcharmap \"D\",         $83\n\tcharmap \"E\",         $84\n\tcharmap \"F\",         $85\n\tcharmap \"G\",         $86\n\tcharmap \"H\",         $87\n\tcharmap \"I\",         $88\n\tcharmap \"J\",         $89\n\tcharmap \"K\",         $8a\n\tcharmap \"L\",         $8b\n\tcharmap \"M\",         $8c\n\tcharmap \"N\",         $8d\n\tcharmap \"O\",         $8e\n\tcharmap \"P\",         $8f\n\tcharmap \"Q\",         $90\n\tcharmap \"R\",         $91\n\tcharmap \"S\",         $92\n\tcharmap \"T\",         $93\n\tcharmap \"U\",         $94\n\tcharmap \"V\",         $95\n\tcharmap \"W\",         $96\n\tcharmap \"X\",         $97\n\tcharmap \"Y\",         $98\n\tcharmap \"Z\",         $99\n\n\tcharmap \"(\",         $9a\n\tcharmap \")\",         $9b\n\tcharmap \":\",         $9c\n\tcharmap \";\",         $9d\n\tcharmap \"[\",         $9e\n\tcharmap \"]\",         $9f\n\n\tcharmap \"a\",         $a0\n\tcharmap \"b\",         $a1\n\tcharmap \"c\",         $a2\n\tcharmap \"d\",         $a3\n\tcharmap \"e\",         $a4\n\tcharmap \"f\",         $a5\n\tcharmap \"g\",         $a6\n\tcharmap \"h\",         $a7\n\tcharmap \"i\",         $a8\n\tcharmap \"j\",         $a9\n\tcharmap \"k\",         $aa\n\tcharmap \"l\",         $ab\n\tcharmap \"m\",         $ac\n\tcharmap \"n\",         $ad\n\tcharmap \"o\",         $ae\n\tcharmap \"p\",         $af\n\tcharmap \"q\",         $b0\n\tcharmap \"r\",         $b1\n\tcharmap \"s\",         $b2\n\tcharmap \"t\",         $b3\n\tcharmap \"u\",         $b4\n\tcharmap \"v\",         $b5\n\tcharmap \"w\",         $b6\n\tcharmap \"x\",         $b7\n\tcharmap \"y\",         $b8\n\tcharmap \"z\",         $b9\n\n\tcharmap \"é\",         $ba\n\tcharmap \"'d\",        $bb\n\tcharmap \"'l\",        $bc\n\tcharmap \"'s\",        $bd\n\tcharmap \"'t\",        $be\n\tcharmap \"'v\",        $bf\n\n\tcharmap \"'\",         $e0\n\tcharmap \"<PK>\",      $e1\n\tcharmap \"<MN>\",      $e2\n\tcharmap \"-\",         $e3\n\n\tcharmap \"'r\",        $e4\n\tcharmap \"'m\",        $e5\n\n\tcharmap \"?\",         $e6\n\tcharmap \"!\",         $e7\n\tcharmap \".\",         $e8\n\n\tcharmap \"ァ\",         $e9 ; katakana small a, unused\n\tcharmap \"ゥ\",         $ea ; katakana small u, unused\n\tcharmap \"ェ\",         $eb ; katakana small e, unused\n\n\tcharmap \"▷\",         $ec\n\tcharmap \"▶\",         $ed\n\tcharmap \"▼\",         $ee\n\tcharmap \"♂\",         $ef\n\tcharmap \"¥\",         $f0\n\tcharmap \"×\",         $f1\n\tcharmap \"<DOT>\",     $f2 ; decimal point; same as \".\" in English\n\tcharmap \"/\",         $f3\n\tcharmap \",\",         $f4\n\tcharmap \"♀\",         $f5\n\n\tcharmap \"0\",         $f6\n\tcharmap \"1\",         $f7\n\tcharmap \"2\",         $f8\n\tcharmap \"3\",         $f9\n\tcharmap \"4\",         $fa\n\tcharmap \"5\",         $fb\n\tcharmap \"6\",         $fc\n\tcharmap \"7\",         $fd\n\tcharmap \"8\",         $fe\n\tcharmap \"9\",         $ff\n\n\n; Japanese kana, for those bits of text that were not translated to English\n\n\tcharmap \"ガ\", $05\n\tcharmap \"ギ\", $06\n\tcharmap \"グ\", $07\n\tcharmap \"ゲ\", $08\n\tcharmap \"ゴ\", $09\n\tcharmap \"ザ\", $0a\n\tcharmap \"ジ\", $0b\n\tcharmap \"ズ\", $0c\n\tcharmap \"ゼ\", $0d\n\tcharmap \"ゾ\", $0e\n\tcharmap \"ダ\", $0f\n\tcharmap \"ヂ\", $10\n\tcharmap \"ヅ\", $11\n\tcharmap \"デ\", $12\n\tcharmap \"ド\", $13\n\n\tcharmap \"バ\", $19\n\tcharmap \"ビ\", $1a\n\tcharmap \"ブ\", $1b\n\tcharmap \"ボ\", $1c\n\n\tcharmap \"が\", $26\n\tcharmap \"ぎ\", $27\n\tcharmap \"ぐ\", $28\n\tcharmap \"げ\", $29\n\tcharmap \"ご\", $2a\n\tcharmap \"ざ\", $2b\n\tcharmap \"じ\", $2c\n\tcharmap \"ず\", $2d\n\tcharmap \"ぜ\", $2e\n\tcharmap \"ぞ\", $2f\n\tcharmap \"だ\", $30\n\tcharmap \"ぢ\", $31\n\tcharmap \"づ\", $32\n\tcharmap \"で\", $33\n\tcharmap \"ど\", $34\n\n\tcharmap \"ば\", $3a\n\tcharmap \"び\", $3b\n\tcharmap \"ぶ\", $3c\n\tcharmap \"べ\", $3d\n\tcharmap \"ぼ\", $3e\n\n\tcharmap \"パ\", $40\n\tcharmap \"ピ\", $41\n\tcharmap \"プ\", $42\n\tcharmap \"ポ\", $43\n\tcharmap \"ぱ\", $44\n\tcharmap \"ぴ\", $45\n\tcharmap \"ぷ\", $46\n\tcharmap \"ぺ\", $47\n\tcharmap \"ぽ\", $48\n\n\tcharmap \"「\", $70\n\tcharmap \"」\", $71\n\tcharmap \"』\", $73\n\tcharmap \"⋯\", $75\n\n\tcharmap \"　\", $7f\n\n\tcharmap \"ア\", $80\n\tcharmap \"イ\", $81\n\tcharmap \"ウ\", $82\n\tcharmap \"エ\", $83\n\tcharmap \"オ\", $84\n\tcharmap \"カ\", $85\n\tcharmap \"キ\", $86\n\tcharmap \"ク\", $87\n\tcharmap \"ケ\", $88\n\tcharmap \"コ\", $89\n\tcharmap \"サ\", $8a\n\tcharmap \"シ\", $8b\n\tcharmap \"ス\", $8c\n\tcharmap \"セ\", $8d\n\tcharmap \"ソ\", $8e\n\tcharmap \"タ\", $8f\n\tcharmap \"チ\", $90\n\tcharmap \"ツ\", $91\n\tcharmap \"テ\", $92\n\tcharmap \"ト\", $93\n\tcharmap \"ナ\", $94\n\tcharmap \"ニ\", $95\n\tcharmap \"ヌ\", $96\n\tcharmap \"ネ\", $97\n\tcharmap \"ノ\", $98\n\tcharmap \"ハ\", $99\n\tcharmap \"ヒ\", $9a\n\tcharmap \"フ\", $9b\n\tcharmap \"ホ\", $9c\n\tcharmap \"マ\", $9d\n\tcharmap \"ミ\", $9e\n\tcharmap \"ム\", $9f\n\tcharmap \"メ\", $a0\n\tcharmap \"モ\", $a1\n\tcharmap \"ヤ\", $a2\n\tcharmap \"ユ\", $a3\n\tcharmap \"ヨ\", $a4\n\tcharmap \"ラ\", $a5\n\tcharmap \"ル\", $a6\n\tcharmap \"レ\", $a7\n\tcharmap \"ロ\", $a8\n\tcharmap \"ワ\", $a9\n\tcharmap \"ヲ\", $aa\n\tcharmap \"ン\", $ab\n\tcharmap \"ッ\", $ac\n\tcharmap \"ャ\", $ad\n\tcharmap \"ュ\", $ae\n\tcharmap \"ョ\", $af\n\tcharmap \"ィ\", $b0\n\n\tcharmap \"あ\", $b1\n\tcharmap \"い\", $b2\n\tcharmap \"う\", $b3\n\tcharmap \"え\", $b4\n\tcharmap \"お\", $b5\n\tcharmap \"か\", $b6\n\tcharmap \"き\", $b7\n\tcharmap \"く\", $b8\n\tcharmap \"け\", $b9\n\tcharmap \"こ\", $ba\n\tcharmap \"さ\", $bb\n\tcharmap \"し\", $bc\n\tcharmap \"す\", $bd\n\tcharmap \"せ\", $be\n\tcharmap \"そ\", $bf\n\tcharmap \"た\", $c0\n\tcharmap \"ち\", $c1\n\tcharmap \"つ\", $c2\n\tcharmap \"て\", $c3\n\tcharmap \"と\", $c4\n\tcharmap \"な\", $c5\n\tcharmap \"に\", $c6\n\tcharmap \"ぬ\", $c7\n\tcharmap \"ね\", $c8\n\tcharmap \"の\", $c9\n\tcharmap \"は\", $ca\n\tcharmap \"ひ\", $cb\n\tcharmap \"ふ\", $cc\n\tcharmap \"へ\", $cd\n\tcharmap \"ほ\", $ce\n\tcharmap \"ま\", $cf\n\tcharmap \"み\", $d0\n\tcharmap \"む\", $d1\n\tcharmap \"め\", $d2\n\tcharmap \"も\", $d3\n\tcharmap \"や\", $d4\n\tcharmap \"ゆ\", $d5\n\tcharmap \"よ\", $d6\n\tcharmap \"ら\", $d7\n\tcharmap \"り\", $d8\n\tcharmap \"る\", $d9\n\tcharmap \"れ\", $da\n\tcharmap \"ろ\", $db\n\tcharmap \"わ\", $dc\n\tcharmap \"を\", $dd\n\tcharmap \"ん\", $de\n\tcharmap \"っ\", $df\n\tcharmap \"ゃ\", $e0\n\tcharmap \"ゅ\", $e1\n\tcharmap \"ょ\", $e2\n\n\tcharmap \"ー\", $e3\n\tcharmap \"ﾟ\", $e4\n\tcharmap \"ﾞ\", $e5\n\n\tcharmap \"？\", $e6\n\tcharmap \"！\", $e7\n\tcharmap \"。\", $e8\n\n\tcharmap \"円\", $f0\n\n\tcharmap \"．\", $f2\n\tcharmap \"／\", $f3\n\n\tcharmap \"ォ\", $f4\n\n\tcharmap \"０\", $f6\n\tcharmap \"１\", $f7\n\tcharmap \"２\", $f8\n\tcharmap \"３\", $f9\n\tcharmap \"４\", $fa\n\tcharmap \"５\", $fb\n\tcharmap \"６\", $fc\n\tcharmap \"７\", $fd\n\tcharmap \"８\", $fe\n\tcharmap \"９\", $ff\n"
+        }
+      ]
+    },
+    {
+      "path": "engine/pokemon/status_ailments.asm",
+      "git_blob_sha": "3cc2d4903f63cc895f9207a6f6c652612b8ddfa5",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/status_ailments.asm",
+      "line_count": 27,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 27,
+          "text": "PrintStatusAilment::\n\tld a, [de]\n\tbit PSN, a\n\tjr nz, .psn\n\tbit BRN, a\n\tjr nz, .brn\n\tbit FRZ, a\n\tjr nz, .frz\n\tbit PAR, a\n\tjr nz, .par\n\tand SLP_MASK\n\tret z\n\tld_hli_a_string \"SLP\"\n\tret\n.psn\n\tld_hli_a_string \"PSN\"\n\tret\n.brn\n\tld_hli_a_string \"BRN\"\n\tret\n.frz\n\tld_hli_a_string \"FRZ\"\n\tret\n.par\n\tld_hli_a_string \"PAR\"\n\tret\n"
+        }
+      ]
+    }
+  ]
+}

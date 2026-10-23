@@ -1,0 +1,793 @@
+{
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "kind": "public-source-only-pure-candidate-no-live-evidence",
+  "initial_go_wait": {
+    "xy": [
+      1,
+      14
+    ],
+    "text": "GO! <active species_name>!",
+    "active_hud_required": true,
+    "prompt_or_cursor_allowed": false,
+    "action": "bounded wait only",
+    "source_text": "data/text/text_2.asm:1275-1295 plus engine/battle/common_text.asm:140-165",
+    "parent_reported_current_layout": "Go! VENUSAUR! at1,14; row16 empty; full SNORLAX30/VENUSAUR33 HP105/105 HUD; no independent game operation by this agent"
+  },
+  "live_ui_calibrated": false,
+  "intent": {
+    "kind": "capture_route12_snorlax_with_great_balls",
+    "map_id": 23,
+    "x": 10,
+    "y": 61,
+    "species": 132,
+    "level": 30,
+    "ball_item": 3,
+    "initial_great_balls": 20,
+    "starter_species": "one_of_9_154",
+    "no_attack": true,
+    "no_run": true
+  },
+  "party": {
+    "required_species": [
+      7,
+      35,
+      102
+    ],
+    "exactly_one_starter": [
+      9,
+      154
+    ],
+    "count": 4,
+    "preserve_order": true
+  },
+  "ball": 3,
+  "initial_quantity": 20,
+  "max_throw_requests": 20,
+  "max_calls": 240,
+  "max_seconds": 60,
+  "safety": {
+    "hp_at_least": 60,
+    "strict_hp_fraction_greater_than": [
+      2,
+      3
+    ],
+    "any_fainted": "review",
+    "switch_implemented": false,
+    "weak_active": "review with healthy candidate indices; no RUN"
+  },
+  "bag": {
+    "box": [
+      4,
+      2,
+      19,
+      12
+    ],
+    "labels_x": 6,
+    "label_rows": [
+      4,
+      6,
+      8,
+      10
+    ],
+    "selectable_cursor_rows": [
+      4,
+      6,
+      8
+    ],
+    "cursor_x": 5,
+    "quantity_xy_offset": [
+      8,
+      1
+    ],
+    "preview_row": 10,
+    "full_viewport_arrow_xy": [
+      18,
+      11
+    ],
+    "cancel": "CANCEL",
+    "background": "pre-command battle HUD with blank message box; no EXIT or USE/TOSS"
+  },
+  "item_labels": {
+    "1": "MASTER BALL",
+    "2": "ULTRA BALL",
+    "3": "GREAT BALL",
+    "4": "POKÉ BALL",
+    "5": "TOWN MAP",
+    "6": "BICYCLE",
+    "8": "SAFARI BALL",
+    "9": "POKÉDEX",
+    "10": "MOON STONE",
+    "11": "ANTIDOTE",
+    "12": "BURN HEAL",
+    "13": "ICE HEAL",
+    "14": "AWAKENING",
+    "15": "PARLYZ HEAL",
+    "16": "FULL RESTORE",
+    "17": "MAX POTION",
+    "18": "HYPER POTION",
+    "19": "SUPER POTION",
+    "20": "POTION",
+    "21": "BOULDERBADGE",
+    "22": "CASCADEBADGE",
+    "23": "THUNDERBADGE",
+    "24": "RAINBOWBADGE",
+    "25": "SOULBADGE",
+    "26": "MARSHBADGE",
+    "27": "VOLCANOBADGE",
+    "28": "EARTHBADGE",
+    "29": "ESCAPE ROPE",
+    "30": "REPEL",
+    "31": "OLD AMBER",
+    "32": "FIRE STONE",
+    "33": "THUNDERSTONE",
+    "34": "WATER STONE",
+    "35": "HP UP",
+    "36": "PROTEIN",
+    "37": "IRON",
+    "38": "CARBOS",
+    "39": "CALCIUM",
+    "40": "RARE CANDY",
+    "41": "DOME FOSSIL",
+    "42": "HELIX FOSSIL",
+    "43": "SECRET KEY",
+    "45": "BIKE VOUCHER",
+    "46": "X ACCURACY",
+    "47": "LEAF STONE",
+    "48": "CARD KEY",
+    "49": "NUGGET",
+    "50": "PP UP",
+    "51": "POKÉ DOLL",
+    "52": "FULL HEAL",
+    "53": "REVIVE",
+    "54": "MAX REVIVE",
+    "55": "GUARD SPEC.",
+    "56": "SUPER REPEL",
+    "57": "MAX REPEL",
+    "58": "DIRE HIT",
+    "59": "COIN",
+    "60": "FRESH WATER",
+    "61": "SODA POP",
+    "62": "LEMONADE",
+    "63": "S.S.TICKET",
+    "64": "GOLD TEETH",
+    "65": "X ATTACK",
+    "66": "X DEFEND",
+    "67": "X SPEED",
+    "68": "X SPECIAL",
+    "69": "COIN CASE",
+    "70": "OAK'S PARCEL",
+    "71": "ITEMFINDER",
+    "72": "SILPH SCOPE",
+    "73": "POKÉ FLUTE",
+    "74": "LIFT KEY",
+    "75": "EXP.ALL",
+    "76": "OLD ROD",
+    "77": "GOOD ROD",
+    "78": "SUPER ROD",
+    "79": "PP UP",
+    "80": "ETHER",
+    "81": "MAX ETHER",
+    "82": "ELIXER",
+    "83": "MAX ELIXER"
+  },
+  "key_items": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    31,
+    41,
+    42,
+    43,
+    44,
+    45,
+    48,
+    63,
+    64,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    76,
+    77,
+    78
+  ],
+  "failure_pages": {
+    "missed": [
+      [
+        1,
+        14,
+        "YOU MISSED THE"
+      ],
+      [
+        1,
+        16,
+        "POKÉMON!"
+      ]
+    ],
+    "broke_free": [
+      [
+        1,
+        14,
+        "DARN! THE POKÉMON"
+      ],
+      [
+        1,
+        16,
+        "BROKE FREE!"
+      ]
+    ],
+    "appeared_caught": [
+      [
+        1,
+        14,
+        "AWW! IT APPEARED"
+      ],
+      [
+        1,
+        16,
+        "TO BE CAUGHT!"
+      ]
+    ],
+    "close": [
+      [
+        1,
+        14,
+        "SHOOT! IT WAS SO"
+      ],
+      [
+        1,
+        16,
+        "CLOSE TOO!"
+      ]
+    ]
+  },
+  "caught_first_page": [
+    [
+      1,
+      14,
+      "ALL RIGHT!"
+    ],
+    [
+      1,
+      16,
+      "SNORLAX WAS"
+    ]
+  ],
+  "prompt_xy": [
+    18,
+    16
+  ],
+  "enemy_prompts": {
+    "asleep": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX"
+      ],
+      [
+        1,
+        16,
+        "IS FAST ASLEEP!"
+      ]
+    ],
+    "woke": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX"
+      ],
+      [
+        1,
+        16,
+        "WOKE UP!"
+      ]
+    ],
+    "health": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX"
+      ],
+      [
+        1,
+        16,
+        "REGAINED HEALTH!"
+      ]
+    ],
+    "rest_cont": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX"
+      ],
+      [
+        1,
+        16,
+        "FELL ASLEEP AND"
+      ]
+    ],
+    "missed": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX'S"
+      ],
+      [
+        1,
+        16,
+        "ATTACK MISSED!"
+      ]
+    ],
+    "critical": [
+      [
+        1,
+        14,
+        "CRITICAL HIT!"
+      ]
+    ],
+    "special": [
+      [
+        1,
+        14,
+        "SPECIAL"
+      ],
+      [
+        1,
+        16,
+        "GREATLY ROSE!"
+      ]
+    ],
+    "failed": [
+      [
+        1,
+        14,
+        "BUT, IT FAILED!"
+      ]
+    ],
+    "nothing": [
+      [
+        1,
+        14,
+        "NOTHING HAPPENED!"
+      ]
+    ]
+  },
+  "passive_enemy_pages": {
+    "headbutt": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX"
+      ],
+      [
+        1,
+        16,
+        "USED HEADBUTT!"
+      ]
+    ],
+    "amnesia": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX"
+      ],
+      [
+        1,
+        16,
+        "USED AMNESIA!"
+      ]
+    ],
+    "rest": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX"
+      ],
+      [
+        1,
+        16,
+        "USED REST!"
+      ]
+    ],
+    "rest_sleep": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX"
+      ],
+      [
+        1,
+        16,
+        "STARTED SLEEPING!"
+      ]
+    ],
+    "rest_healthy": [
+      [
+        1,
+        14,
+        "FELL ASLEEP AND"
+      ],
+      [
+        1,
+        16,
+        "BECAME HEALTHY!"
+      ]
+    ],
+    "stat_intro": [
+      [
+        1,
+        14,
+        "ENEMY SNORLAX'S"
+      ],
+      [
+        1,
+        16,
+        "SPECIAL"
+      ]
+    ]
+  },
+  "reader_contract": {
+    "profile": "red-en-sdk-2.8.1-enemy-source-v1-unvalidated",
+    "freeze_sha256": "5e2145a5cbb110810f0aa4de118e06fc810b93e479cf060f98d65901dbf48e60",
+    "live_calibrated": false,
+    "source": "parent-designated reader; read source/API, not approved or invoked on game",
+    "handoff_fingerprint_fields": [
+      "species",
+      "level",
+      "hp",
+      "max_hp",
+      "status"
+    ]
+  },
+  "sources": [
+    {
+      "path": "engine/battle/core.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "7a5d617dc5ed080623bfb189f81d254c83ef4cc3",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/core.asm",
+      "line_count": 6913,
+      "excerpts": [
+        {
+          "start_line": 2001,
+          "end_line": 2017,
+          "text": "DisplayBattleMenu::\n\tcall LoadScreenTilesFromBuffer1 ; restore saved screen\n\tld a, [wBattleType]\n\tand a\n\tjr nz, .nonstandardbattle\n\tcall DrawHUDsAndHPBars\n\tcall PrintEmptyString\n\tcall SaveScreenTilesToBuffer1\n.nonstandardbattle\n\tld a, [wBattleType]\n\tcp BATTLE_TYPE_SAFARI\n\tld a, BATTLE_MENU_TEMPLATE\n\tjr nz, .menuselected\n\tld a, SAFARI_BATTLE_MENU_TEMPLATE\n.menuselected\n\tld [wTextBoxID], a\n\tcall DisplayTextBoxID"
+        },
+        {
+          "start_line": 2132,
+          "end_line": 2162,
+          "text": ".AButtonPressed\n\tcall PlaceUnfilledArrowMenuCursor\n\tld a, [wBattleType]\n\tcp BATTLE_TYPE_SAFARI\n\tld a, [wCurrentMenuItem]\n\tld [wBattleAndStartSavedMenuItem], a\n\tjr z, .handleMenuSelection\n; not Safari battle\n; swap the IDs of the item menu and party menu (this is probably because they swapped the positions\n; of these menu items in first generation English versions)\n\tcp $1 ; was the item menu selected?\n\tjr nz, .notItemMenu\n; item menu was selected\n\tinc a ; increment a to 2\n\tjr .handleMenuSelection\n.notItemMenu\n\tcp $2 ; was the party menu selected?\n\tjr nz, .handleMenuSelection\n; party menu selected\n\tdec a ; decrement a to 1\n.handleMenuSelection\n\tand a\n\tjr nz, .upperLeftMenuItemWasNotSelected\n; the upper left menu item was selected\n\tld a, [wBattleType]\n\tcp BATTLE_TYPE_SAFARI\n\tjr z, .throwSafariBallWasSelected\n; the \"FIGHT\" menu was selected\n\txor a\n\tld [wNumRunAttempts], a\n\tjp LoadScreenTilesFromBuffer1 ; restore saved screen and return"
+        },
+        {
+          "start_line": 2193,
+          "end_line": 2259,
+          "text": "BagWasSelected:\n\tcall LoadScreenTilesFromBuffer1\n\tld a, [wBattleType]\n\tand a ; is it a normal battle?\n\tjr nz, .next\n\n; normal battle\n\tcall DrawHUDsAndHPBars\n.next\n\tld a, [wBattleType]\n\tdec a ; is it the old man tutorial?\n\tjr nz, DisplayPlayerBag ; no, it is a normal battle\n\tld hl, OldManItemList\n\tld a, l\n\tld [wListPointer], a\n\tld a, h\n\tld [wListPointer + 1], a\n\tjr DisplayBagMenu\n\nOldManItemList:\n\tdb 1 ; # items\n\tdb POKE_BALL, 50\n\tdb -1 ; end\n\nDisplayPlayerBag:\n\t; get the pointer to player's bag when in a normal battle\n\tld hl, wNumBagItems\n\tld a, l\n\tld [wListPointer], a\n\tld a, h\n\tld [wListPointer + 1], a\n\nDisplayBagMenu:\n\txor a\n\tld [wPrintItemPrices], a\n\tld a, ITEMLISTMENU\n\tld [wListMenuID], a\n\tld a, [wBagSavedMenuItem]\n\tld [wCurrentMenuItem], a\n\tcall DisplayListMenuID\n\tld a, [wCurrentMenuItem]\n\tld [wBagSavedMenuItem], a\n\tld a, $0\n\tld [wMenuWatchMovingOutOfBounds], a\n\tld [wMenuItemToSwap], a\n\tjp c, DisplayBattleMenu ; go back to battle menu if an item was not selected\n\nUseBagItem:\n\t; either use an item from the bag or use a safari zone item\n\tld a, [wCurItem]\n\tld [wNamedObjectIndex], a\n\tcall GetItemName\n\tcall CopyToStringBuffer\n\txor a\n\tld [wPseudoItemID], a\n\tcall UseItem\n\tcall LoadHudTilePatterns\n\tcall ClearSprites\n\txor a\n\tld [wCurrentMenuItem], a\n\tld a, [wBattleType]\n\tcp BATTLE_TYPE_SAFARI\n\tjr z, .checkIfMonCaptured\n\n\tld a, [wActionResultOrTookBattleTurn]\n\tand a ; was the item used successfully?\n\tjp z, BagWasSelected ; if not, go back to the bag menu"
+        },
+        {
+          "start_line": 2270,
+          "end_line": 2295,
+          "text": ".checkIfMonCaptured\n\tld a, [wCapturedMonSpecies]\n\tand a ; was the enemy mon captured with a ball?\n\tjr nz, .returnAfterCapturingMon\n\n\tld a, [wBattleType]\n\tcp BATTLE_TYPE_SAFARI\n\tjr z, .returnAfterUsingItem_NoCapture\n; not a safari battle\n\tcall LoadScreenTilesFromBuffer1\n\tcall DrawHUDsAndHPBars\n\tcall Delay3\n.returnAfterUsingItem_NoCapture\n\n\tcall GBPalNormal\n\tand a ; reset carry\n\tret\n\n.returnAfterCapturingMon\n\tcall GBPalNormal\n\txor a\n\tld [wCapturedMonSpecies], a\n\tld a, $2\n\tld [wBattleResult], a\n\tscf ; set carry\n\tret"
+        },
+        {
+          "start_line": 1815,
+          "end_line": 1848,
+          "text": "DrawPlayerHUDAndHPBar:\n\txor a\n\tldh [hAutoBGTransferEnabled], a\n\thlcoord 9, 7\n\tlb bc, 5, 11\n\tcall ClearScreenArea\n\tcallfar PlacePlayerHUDTiles\n\thlcoord 18, 9\n\tld [hl], $73\n\tld de, wBattleMonNick\n\thlcoord 10, 7\n\tcall CenterMonName\n\tcall PlaceString\n\tld hl, wBattleMonSpecies\n\tld de, wLoadedMon\n\tld bc, wBattleMonDVs - wBattleMonSpecies\n\tcall CopyData\n\tld hl, wBattleMonLevel\n\tld de, wLoadedMonLevel\n\tld bc, wBattleMonPP - wBattleMonLevel\n\tcall CopyData\n\thlcoord 14, 8\n\tpush hl\n\tinc hl\n\tld de, wLoadedMonStatus\n\tcall PrintStatusConditionNotFainted\n\tpop hl\n\tjr nz, .doNotPrintLevel\n\tcall PrintLevel\n.doNotPrintLevel\n\tld a, [wLoadedMonSpecies]\n\tld [wCurPartySpecies], a\n\thlcoord 10, 9\n\tpredef DrawHP"
+        },
+        {
+          "start_line": 1876,
+          "end_line": 1897,
+          "text": "DrawEnemyHUDAndHPBar:\n\txor a\n\tldh [hAutoBGTransferEnabled], a\n\thlcoord 0, 0\n\tlb bc, 4, 12\n\tcall ClearScreenArea\n\tcallfar PlaceEnemyHUDTiles\n\tld de, wEnemyMonNick\n\thlcoord 1, 0\n\tcall CenterMonName\n\tcall PlaceString\n\thlcoord 4, 1\n\tpush hl\n\tinc hl\n\tld de, wEnemyMonStatus\n\tcall PrintStatusConditionNotFainted\n\tpop hl\n\tjr nz, .skipPrintLevel ; if the mon has a status condition, skip printing the level\n\tld a, [wEnemyMonLevel]\n\tld [wLoadedMonLevel], a\n\tcall PrintLevel\n.skipPrintLevel"
+        }
+      ]
+    },
+    {
+      "path": "engine/items/item_effects.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "c4ce13de6fb6c7036e94e20b845dd6c5ade8951e",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+      "line_count": 2956,
+      "excerpts": [
+        {
+          "start_line": 439,
+          "end_line": 455,
+          "text": "; Determine the message to display from the animation.\n\tld a, [wPokeBallAnimData]\n\tcp $10\n\tld hl, ItemUseBallText00\n\tjp z, .printMessage\n\tcp $20\n\tld hl, ItemUseBallText01\n\tjp z, .printMessage\n\tcp $61\n\tld hl, ItemUseBallText02\n\tjp z, .printMessage\n\tcp $62\n\tld hl, ItemUseBallText03\n\tjp z, .printMessage\n\tcp $63\n\tld hl, ItemUseBallText04\n\tjp z, .printMessage"
+        },
+        {
+          "start_line": 510,
+          "end_line": 585,
+          "text": "\tld a, [wEnemyMonSpecies]\n\tld [wCapturedMonSpecies], a\n\tld [wCurPartySpecies], a\n\tld [wPokedexNum], a\n\tld a, [wBattleType]\n\tdec a ; is this the old man battle?\n\tjr z, .oldManCaughtMon ; if so, don't give the player the caught Pokémon\n\n\tld hl, ItemUseBallText05\n\tcall PrintText\n\n; Add the caught Pokémon to the Pokédex.\n\tpredef IndexToPokedex\n\tld a, [wPokedexNum]\n\tdec a\n\tld c, a\n\tld b, FLAG_TEST\n\tld hl, wPokedexOwned\n\tpredef FlagActionPredef\n\tld a, c\n\tpush af\n\tld a, [wPokedexNum]\n\tdec a\n\tld c, a\n\tld b, FLAG_SET\n\tpredef FlagActionPredef\n\tpop af\n\n\tand a ; was the Pokémon already in the Pokédex?\n\tjr nz, .skipShowingPokedexData ; if so, don't show the Pokédex data\n\n\tld hl, ItemUseBallText06\n\tcall PrintText\n\tcall ClearSprites\n\tld a, [wEnemyMonSpecies]\n\tld [wPokedexNum], a\n\tpredef ShowPokedexData\n\n.skipShowingPokedexData\n\tld a, [wPartyCount]\n\tcp PARTY_LENGTH ; is party full?\n\tjr z, .sendToBox\n\txor a ; PLAYER_PARTY_DATA\n\tld [wMonDataLocation], a\n\tcall ClearSprites\n\tcall AddPartyMon\n\tjr .done\n\n.sendToBox\n\tcall ClearSprites\n\tcall SendNewMonToBox\n\tld hl, ItemUseBallText07\n\tCheckEvent EVENT_MET_BILL\n\tjr nz, .printTransferredToPCText\n\tld hl, ItemUseBallText08\n.printTransferredToPCText\n\tcall PrintText\n\tjr .done\n\n.oldManCaughtMon\n\tld hl, ItemUseBallText05\n\n.printMessage\n\tcall PrintText\n\tcall ClearSprites\n\n.done\n\tld a, [wBattleType]\n\tand a ; is this the old man battle?\n\tret nz ; if so, don't remove a ball from the bag\n\n; Remove a ball from the bag.\n\tld hl, wNumBagItems\n\tinc a\n\tld [wItemQuantity], a\n\tjp RemoveItemFromInventory"
+        },
+        {
+          "start_line": 587,
+          "end_line": 630,
+          "text": "ItemUseBallText00:\n;\"It dodged the thrown ball!\"\n;\"This pokemon can't be caught\"\n\ttext_far _ItemUseBallText00\n\ttext_end\nItemUseBallText01:\n;\"You missed the pokemon!\"\n\ttext_far _ItemUseBallText01\n\ttext_end\nItemUseBallText02:\n;\"Darn! The pokemon broke free!\"\n\ttext_far _ItemUseBallText02\n\ttext_end\nItemUseBallText03:\n;\"Aww! It appeared to be caught!\"\n\ttext_far _ItemUseBallText03\n\ttext_end\nItemUseBallText04:\n;\"Shoot! It was so close too!\"\n\ttext_far _ItemUseBallText04\n\ttext_end\nItemUseBallText05:\n;\"All right! {MonName} was caught!\"\n;play sound\n\ttext_far _ItemUseBallText05\n\tsound_caught_mon\n\ttext_promptbutton\n\ttext_end\nItemUseBallText07:\n;\"X was transferred to Bill's PC\"\n\ttext_far _ItemUseBallText07\n\ttext_end\nItemUseBallText08:\n;\"X was transferred to someone's PC\"\n\ttext_far _ItemUseBallText08\n\ttext_end\n\nItemUseBallText06:\n;\"New DEX data will be added...\"\n;play sound\n\ttext_far _ItemUseBallText06\n\tsound_dex_page_added\n\ttext_promptbutton\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_6.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "8109b6593229767d9942d5863682a63f3dd0bf47",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+      "line_count": 232,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 57,
+          "text": "_ItemUseBallText00::\n\ttext \"It dodged the\"\n\tline \"thrown BALL!\"\n\n\tpara \"This #MON\"\n\tline \"can't be caught!\"\n\tprompt\n\n_ItemUseBallText01::\n\ttext \"You missed the\"\n\tline \"#MON!\"\n\tprompt\n\n_ItemUseBallText02::\n\ttext \"Darn! The #MON\"\n\tline \"broke free!\"\n\tprompt\n\n_ItemUseBallText03::\n\ttext \"Aww! It appeared\"\n\tline \"to be caught! \"\n\tprompt\n\n_ItemUseBallText04::\n\ttext \"Shoot! It was so\"\n\tline \"close too!\"\n\tprompt\n\n_ItemUseBallText05::\n\ttext \"All right!\"\n\tline \"@\"\n\ttext_ram wEnemyMonNick\n\ttext \" was\"\n\tcont \"caught!@\"\n\ttext_end\n\n_ItemUseBallText07::\n\ttext_ram wBoxMonNicks\n\ttext \" was\"\n\tline \"transferred to\"\n\tcont \"BILL's PC!\"\n\tprompt\n\n_ItemUseBallText08::\n\ttext_ram wBoxMonNicks\n\ttext \" was\"\n\tline \"transferred to\"\n\tcont \"someone's PC!\"\n\tprompt\n\n_ItemUseBallText06::\n\ttext \"New #DEX data\"\n\tline \"will be added for\"\n\tcont \"@\"\n\ttext_ram wEnemyMonNick\n\ttext \"!@\"\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "home/list_menu.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "bd1197bb282d116eb403b40bd05f27871bf21361",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/list_menu.asm",
+      "line_count": 529,
+      "excerpts": [
+        {
+          "start_line": 29,
+          "end_line": 54,
+          "text": "\tld a, LIST_MENU_BOX\n\tld [wTextBoxID], a\n\tcall DisplayTextBoxID ; draw the menu text box\n\tcall UpdateSprites ; disable sprites behind the text box\n; the code up to .skipMovingSprites appears to be useless\n\thlcoord 4, 2 ; coordinates of upper left corner of menu text box\n\tlb de, 9, 14 ; height and width of menu text box\n\tld a, [wListMenuID]\n\tand a ; PCPOKEMONLISTMENU?\n\tjr nz, .skipMovingSprites\n\tcall UpdateSprites\n.skipMovingSprites\n\tld a, 1 ; max menu item ID is 1 if the list has less than 2 entries\n\tld [wMenuWatchMovingOutOfBounds], a\n\tld a, [wListCount]\n\tcp 2 ; does the list have less than 2 entries?\n\tjr c, .setMenuVariables\n\tld a, 2 ; max menu item ID is 2 if the list has at least 2 entries\n.setMenuVariables\n\tld [wMaxMenuItem], a\n\tld a, 4\n\tld [wTopMenuItemY], a\n\tld a, 5\n\tld [wTopMenuItemX], a\n\tld a, PAD_A | PAD_B | PAD_SELECT\n\tld [wMenuWatchedKeys], a"
+        },
+        {
+          "start_line": 89,
+          "end_line": 110,
+          "text": ".buttonAPressed\n\tld a, [wCurrentMenuItem]\n\tcall PlaceUnfilledArrowMenuCursor\n\n; pointless because both values are overwritten before they are read\n\tld a, $01\n\tld [wMenuExitMethod], a\n\tld [wChosenMenuItem], a\n\n\txor a\n\tld [wMenuWatchMovingOutOfBounds], a\n\tld a, [wCurrentMenuItem]\n\tld c, a\n\tld a, [wListScrollOffset]\n\tadd c\n\tld c, a\n\tld a, [wListCount]\n\tand a ; is the list empty?\n\tjp z, ExitListMenu ; if so, exit the menu\n\tdec a\n\tcp c ; did the player select Cancel?\n\tjp c, ExitListMenu ; if so, exit the menu"
+        },
+        {
+          "start_line": 338,
+          "end_line": 385,
+          "text": "PrintListMenuEntries::\n\thlcoord 5, 3\n\tld b, 9\n\tld c, 14\n\tcall ClearScreenArea\n\tld a, [wListPointer]\n\tld e, a\n\tld a, [wListPointer + 1]\n\tld d, a\n\tinc de ; de = beginning of list entries\n\tld a, [wListScrollOffset]\n\tld c, a\n\tld a, [wListMenuID]\n\tcp ITEMLISTMENU\n\tld a, c\n\tjr nz, .skipMultiplying\n; if it's an item menu\n; item entries are 2 bytes long, so multiply by 2\n\tsla a\n\tsla c\n.skipMultiplying\n\tadd e\n\tld e, a\n\tjr nc, .noCarry\n\tinc d\n.noCarry\n\thlcoord 6, 4 ; coordinates of first list entry name\n\tld b, 4 ; print 4 names\n.loop\n\tld a, b\n\tld [wWhichPokemon], a\n\tld a, [de]\n\tld [wNamedObjectIndex], a\n\tcp $ff\n\tjp z, .printCancelMenuItem\n\tpush bc\n\tpush de\n\tpush hl\n\tpush hl\n\tpush de\n\tld a, [wListMenuID]\n\tand a ; PCPOKEMONLISTMENU?\n\tjr z, .pokemonPCMenu\n\tcp MOVESLISTMENU\n\tjr z, .movesMenu\n; item menu\n\tcall GetItemName\n\tjr .placeNameString"
+        },
+        {
+          "start_line": 471,
+          "end_line": 528,
+          "text": "; print item quantity\n\tld a, [wNamedObjectIndex]\n\tld [wCurItem], a\n\tcall IsKeyItem ; check if item is unsellable\n\tld a, [wIsKeyItem]\n\tand a ; is the item unsellable?\n\tjr nz, .skipPrintingItemQuantity ; if so, don't print the quantity\n\tpush hl\n\tld bc, SCREEN_WIDTH + 8 ; 1 row down and 8 columns right\n\tadd hl, bc\n\tld a, '×'\n\tld [hli], a\n\tld a, [wNamedObjectIndex]\n\tpush af\n\tld a, [de]\n\tld [wMaxItemQuantity], a\n\tpush de\n\tld de, wTempByteValue\n\tld [de], a\n\tlb bc, 1, 2\n\tcall PrintNumber\n\tpop de\n\tpop af\n\tld [wNamedObjectIndex], a\n\tpop hl\n.skipPrintingItemQuantity\n\tinc de\n\tpop bc\n\tinc c\n\tpush bc\n\tinc c\n\tld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)\n\tand a ; is an item being swapped?\n\tjr z, .nextListEntry\n\tsla a\n\tcp c ; is it this item?\n\tjr nz, .nextListEntry\n\tdec hl\n\tld a, '▷'\n\tld [hli], a\n.nextListEntry\n\tld bc, 2 * SCREEN_WIDTH ; 2 rows\n\tadd hl, bc\n\tpop bc\n\tinc c\n\tdec b\n\tjp nz, .loop\n\tld bc, -8\n\tadd hl, bc\n\tld a, '▼'\n\tld [hl], a\n\tret\n.printCancelMenuItem\n\tld de, ListMenuCancelText\n\tjp PlaceString\n\nListMenuCancelText::\n\tdb \"CANCEL@\""
+        }
+      ]
+    },
+    {
+      "path": "data/text_boxes.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "f96f2d687be49d471fc7bd4ccb7a4371d4aaa7c0",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text_boxes.asm",
+      "line_count": 89,
+      "excerpts": [
+        {
+          "start_line": 8,
+          "end_line": 15,
+          "text": "TextBoxCoordTable:\n\t; text box ID, upper-left X, upper-left Y, lower-right X, lower-right Y\n\tdb MESSAGE_BOX,       0, 12, 19, 17\n\tdb MENU_TEMPLATE_03,  0,  0, 19, 14\n\tdb MENU_TEMPLATE_07,  0,  0, 11,  6\n\tdb LIST_MENU_BOX,     4,  2, 19, 12\n\tdb MENU_TEMPLATE_10,  7,  0, 19, 17\n\tdb MON_SPRITE_POPUP,  6,  4, 14, 13"
+        },
+        {
+          "start_line": 28,
+          "end_line": 34,
+          "text": "\ttext_box_text USE_TOSS_MENU_TEMPLATE,            13, 10, 19, 14, UseTossText,             15, 11\n\ttext_box_text JP_SAVE_MESSAGE_MENU_TEMPLATE,      0,  0,  7,  5, JapaneseSaveMessageText,  2,  2\n\ttext_box_text JP_SPEED_OPTIONS_MENU_TEMPLATE,     0,  6,  5, 10, JapaneseSpeedOptionsText, 2,  7\n\ttext_box_text BATTLE_MENU_TEMPLATE,               8, 12, 19, 17, BattleMenuText,          10, 14\n\ttext_box_text SAFARI_BATTLE_MENU_TEMPLATE,        0, 12, 19, 17, SafariZoneBattleMenuText, 2, 14\n\ttext_box_text SWITCH_STATS_CANCEL_MENU_TEMPLATE, 11, 11, 19, 17, SwitchStatsCancelText,   13, 12\n\ttext_box_text BUY_SELL_QUIT_MENU_TEMPLATE,        0,  0, 10,  6, BuySellQuitText,          2,  1"
+        },
+        {
+          "start_line": 68,
+          "end_line": 70,
+          "text": "BattleMenuText:\n\tdb   \"FIGHT <PK><MN>\"\n\tnext \"ITEM  RUN@\""
+        }
+      ]
+    },
+    {
+      "path": "data/items/names.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "f5c0f27ea3b6d3600f9a17c98525486ebad41cf4",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/names.asm",
+      "line_count": 102,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 88,
+          "text": "ItemNames::\n\tlist_start ITEM_NAME_LENGTH - 1\n\tli \"MASTER BALL\"\n\tli \"ULTRA BALL\"\n\tli \"GREAT BALL\"\n\tli \"POKé BALL\"\n\tli \"TOWN MAP\"\n\tli \"BICYCLE\"\n\tli \"?????\" ; SURFBOARD\n\tli \"SAFARI BALL\"\n\tli \"POKéDEX\"\n\tli \"MOON STONE\"\n\tli \"ANTIDOTE\"\n\tli \"BURN HEAL\"\n\tli \"ICE HEAL\"\n\tli \"AWAKENING\"\n\tli \"PARLYZ HEAL\"\n\tli \"FULL RESTORE\"\n\tli \"MAX POTION\"\n\tli \"HYPER POTION\"\n\tli \"SUPER POTION\"\n\tli \"POTION\"\n\tli \"BOULDERBADGE\"\n\tli \"CASCADEBADGE\"\n\tli \"THUNDERBADGE\"\n\tli \"RAINBOWBADGE\"\n\tli \"SOULBADGE\"\n\tli \"MARSHBADGE\"\n\tli \"VOLCANOBADGE\"\n\tli \"EARTHBADGE\"\n\tli \"ESCAPE ROPE\"\n\tli \"REPEL\"\n\tli \"OLD AMBER\"\n\tli \"FIRE STONE\"\n\tli \"THUNDERSTONE\"\n\tli \"WATER STONE\"\n\tli \"HP UP\"\n\tli \"PROTEIN\"\n\tli \"IRON\"\n\tli \"CARBOS\"\n\tli \"CALCIUM\"\n\tli \"RARE CANDY\"\n\tli \"DOME FOSSIL\"\n\tli \"HELIX FOSSIL\"\n\tli \"SECRET KEY\"\n\tli \"?????\" ; ITEM_2C\n\tli \"BIKE VOUCHER\"\n\tli \"X ACCURACY\"\n\tli \"LEAF STONE\"\n\tli \"CARD KEY\"\n\tli \"NUGGET\"\n\tli \"PP UP\" ; ITEM_32\n\tli \"POKé DOLL\"\n\tli \"FULL HEAL\"\n\tli \"REVIVE\"\n\tli \"MAX REVIVE\"\n\tli \"GUARD SPEC.\"\n\tli \"SUPER REPEL\"\n\tli \"MAX REPEL\"\n\tli \"DIRE HIT\"\n\tli \"COIN\"\n\tli \"FRESH WATER\"\n\tli \"SODA POP\"\n\tli \"LEMONADE\"\n\tli \"S.S.TICKET\"\n\tli \"GOLD TEETH\"\n\tli \"X ATTACK\"\n\tli \"X DEFEND\"\n\tli \"X SPEED\"\n\tli \"X SPECIAL\"\n\tli \"COIN CASE\"\n\tli \"OAK's PARCEL\"\n\tli \"ITEMFINDER\"\n\tli \"SILPH SCOPE\"\n\tli \"POKé FLUTE\"\n\tli \"LIFT KEY\"\n\tli \"EXP.ALL\"\n\tli \"OLD ROD\"\n\tli \"GOOD ROD\"\n\tli \"SUPER ROD\"\n\tli \"PP UP\"\n\tli \"ETHER\"\n\tli \"MAX ETHER\"\n\tli \"ELIXER\"\n\tli \"MAX ELIXER\"\n\tassert_list_length NUM_ITEMS\n\tli \"B2F\"\n\tli \"B1F\""
+        }
+      ]
+    },
+    {
+      "path": "data/items/key_items.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "1750811faefcbbff9c346fb43c9e7238211f1aaf",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/key_items.asm",
+      "line_count": 87,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 87,
+          "text": "KeyItemFlags:\n\tbit_array\n\tdbit FALSE ; MASTER_BALL\n\tdbit FALSE ; ULTRA_BALL\n\tdbit FALSE ; GREAT_BALL\n\tdbit FALSE ; POKE_BALL\n\tdbit TRUE  ; TOWN_MAP\n\tdbit TRUE  ; BICYCLE\n\tdbit TRUE  ; SURFBOARD\n\tdbit TRUE  ; SAFARI_BALL\n\tdbit TRUE  ; POKEDEX\n\tdbit FALSE ; MOON_STONE\n\tdbit FALSE ; ANTIDOTE\n\tdbit FALSE ; BURN_HEAL\n\tdbit FALSE ; ICE_HEAL\n\tdbit FALSE ; AWAKENING\n\tdbit FALSE ; PARLYZ_HEAL\n\tdbit FALSE ; FULL_RESTORE\n\tdbit FALSE ; MAX_POTION\n\tdbit FALSE ; HYPER_POTION\n\tdbit FALSE ; SUPER_POTION\n\tdbit FALSE ; POTION\n\tdbit TRUE  ; BOULDERBADGE\n\tdbit TRUE  ; CASCADEBADGE\n\tdbit TRUE  ; THUNDERBADGE\n\tdbit TRUE  ; RAINBOWBADGE\n\tdbit TRUE  ; SOULBADGE\n\tdbit TRUE  ; MARSHBADGE\n\tdbit TRUE  ; VOLCANOBADGE\n\tdbit TRUE  ; EARTHBADGE\n\tdbit FALSE ; ESCAPE_ROPE\n\tdbit FALSE ; REPEL\n\tdbit TRUE  ; OLD_AMBER\n\tdbit FALSE ; FIRE_STONE\n\tdbit FALSE ; THUNDER_STONE\n\tdbit FALSE ; WATER_STONE\n\tdbit FALSE ; HP_UP\n\tdbit FALSE ; PROTEIN\n\tdbit FALSE ; IRON\n\tdbit FALSE ; CARBOS\n\tdbit FALSE ; CALCIUM\n\tdbit FALSE ; RARE_CANDY\n\tdbit TRUE  ; DOME_FOSSIL\n\tdbit TRUE  ; HELIX_FOSSIL\n\tdbit TRUE  ; SECRET_KEY\n\tdbit TRUE  ; ITEM_2C\n\tdbit TRUE  ; BIKE_VOUCHER\n\tdbit FALSE ; X_ACCURACY\n\tdbit FALSE ; LEAF_STONE\n\tdbit TRUE  ; CARD_KEY\n\tdbit FALSE ; NUGGET\n\tdbit FALSE ; ITEM_32\n\tdbit FALSE ; POKE_DOLL\n\tdbit FALSE ; FULL_HEAL\n\tdbit FALSE ; REVIVE\n\tdbit FALSE ; MAX_REVIVE\n\tdbit FALSE ; GUARD_SPEC\n\tdbit FALSE ; SUPER_REPEL\n\tdbit FALSE ; MAX_REPEL\n\tdbit FALSE ; DIRE_HIT\n\tdbit FALSE ; COIN\n\tdbit FALSE ; FRESH_WATER\n\tdbit FALSE ; SODA_POP\n\tdbit FALSE ; LEMONADE\n\tdbit TRUE  ; S_S_TICKET\n\tdbit TRUE  ; GOLD_TEETH\n\tdbit FALSE ; X_ATTACK\n\tdbit FALSE ; X_DEFEND\n\tdbit FALSE ; X_SPEED\n\tdbit FALSE ; X_SPECIAL\n\tdbit TRUE  ; COIN_CASE\n\tdbit TRUE  ; OAKS_PARCEL\n\tdbit TRUE  ; ITEMFINDER\n\tdbit TRUE  ; SILPH_SCOPE\n\tdbit TRUE  ; POKE_FLUTE\n\tdbit TRUE  ; LIFT_KEY\n\tdbit FALSE ; EXP_ALL\n\tdbit TRUE  ; OLD_ROD\n\tdbit TRUE  ; GOOD_ROD\n\tdbit TRUE  ; SUPER_ROD\n\tdbit FALSE ; PP_UP\n\tdbit FALSE ; ETHER\n\tdbit FALSE ; MAX_ETHER\n\tdbit FALSE ; ELIXER\n\tdbit FALSE ; MAX_ELIXER\n\tend_bit_array NUM_ITEMS\n"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_2.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "917feb8953c9c2b688395dfb54459b1d04bf7a71",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_2.asm",
+      "line_count": 1792,
+      "excerpts": [
+        {
+          "start_line": 996,
+          "end_line": 1004,
+          "text": "_FastAsleepText::\n\ttext \"<USER>\"\n\tline \"is fast asleep!\"\n\tprompt\n\n_WokeUpText::\n\ttext \"<USER>\"\n\tline \"woke up!\"\n\tprompt"
+        },
+        {
+          "start_line": 1079,
+          "end_line": 1125,
+          "text": "_ActorNameText::\n\ttext \"<USER>@\"\n\ttext_end\n\n_UsedMove1Text::\n\ttext_start\n\tline \"used @\"\n\ttext_end\n\n_UsedMove2Text::\n\ttext_start\n\tline \"used @\"\n\ttext_end\n\n_UsedInsteadText::\n\ttext \"instead,\"\n\tcont \"@\"\n\ttext_end\n\n_MoveNameText::\n\ttext_ram wStringBuffer\n\ttext \"@\"\n\n_EndUsedMove1Text::\n\ttext \"!\"\n\tdone\n\n_EndUsedMove2Text::\n\ttext \"!\"\n\tdone\n\n_EndUsedMove3Text::\n\ttext \"!\"\n\tdone\n\n_EndUsedMove4Text::\n\ttext \"!\"\n\tdone\n\n_EndUsedMove5Text::\n\ttext \"!\"\n\tdone\n\n_AttackMissedText::\n\ttext \"<USER>'s\"\n\tline \"attack missed!\"\n\tprompt"
+        },
+        {
+          "start_line": 1143,
+          "end_line": 1145,
+          "text": "_CriticalHitText::\n\ttext \"Critical hit!\"\n\tprompt"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_3.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "ba09a0f688cec05c03a3f7952c34a0f122694cc7",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_3.asm",
+      "line_count": 331,
+      "excerpts": [
+        {
+          "start_line": 96,
+          "end_line": 109,
+          "text": "_MonsStatsRoseText::\n\ttext \"<USER>'s\"\n\tline \"@\"\n\ttext_ram wStringBuffer\n\ttext \"@\"\n\ttext_end\n\n_GreatlyRoseText::\n\ttext \"<SCROLL>greatly@\"\n\ttext_end\n\n_RoseText::\n\ttext \" rose!\"\n\tprompt"
+        },
+        {
+          "start_line": 196,
+          "end_line": 206,
+          "text": "_NothingHappenedText::\n\ttext \"Nothing happened!\"\n\tprompt\n\n_NoEffectText::\n\ttext \"No effect!\"\n\tprompt\n\n_ButItFailedText::\n\ttext \"But, it failed! \"\n\tprompt"
+        },
+        {
+          "start_line": 274,
+          "end_line": 288,
+          "text": "_StartedSleepingEffect::\n\ttext \"<USER>\"\n\tline \"started sleeping!\"\n\tdone\n\n_FellAsleepBecameHealthyText::\n\ttext \"<USER>\"\n\tline \"fell asleep and\"\n\tcont \"became healthy!\"\n\tdone\n\n_RegainedHealthText::\n\ttext \"<USER>\"\n\tline \"regained health!\"\n\tprompt"
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/used_move_text.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "abb35e67bf2a6adccb6a39d314fa04d8f67e9e2b",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/used_move_text.asm",
+      "line_count": 140,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 20,
+          "text": "DisplayUsedMoveText:\n\tld hl, UsedMoveText\n\tjp PrintText\n\nUsedMoveText:\n\ttext_far _ActorNameText\n\ttext_asm\n\n\tldh a, [hWhoseTurn]\n\tand a\n\tld a, [wPlayerMoveNum]\n\tld hl, wPlayerUsedMove\n\tjr z, .playerTurn\n\n\tld a, [wEnemyMoveNum]\n\tld hl, wEnemyUsedMove\n\n.playerTurn\n\tld [hl], a\n\tld [wMoveGrammar], a"
+        },
+        {
+          "start_line": 85,
+          "end_line": 110,
+          "text": "\tdw EndUsedMove5Text\n\nEndUsedMove1Text:\n\ttext_far _EndUsedMove1Text\n\ttext_end\n\nEndUsedMove2Text:\n\ttext_far _EndUsedMove2Text\n\ttext_end\n\nEndUsedMove3Text:\n\ttext_far _EndUsedMove3Text\n\ttext_end\n\nEndUsedMove4Text:\n\ttext_far _EndUsedMove4Text\n\ttext_end\n\nEndUsedMove5Text:\n\ttext_far _EndUsedMove5Text\n\ttext_end\n\n; This function is redundant in the English localization.\n; In Japanese, it selects one of 5 distinct sentence structures.\n; In English, all of these sentences have the exact same structure,\n; so this serves no purpose."
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/move_effects/heal.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "c3ffda6573831e0f99655ca635c5234f6531cca5",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/move_effects/heal.asm",
+      "line_count": 121,
+      "excerpts": [
+        {
+          "start_line": 22,
+          "end_line": 54,
+          "text": "\tcp REST\n\tjr nz, .healHP\n\tpush hl\n\tpush de\n\tpush af\n\tld c, 50\n\tcall DelayFrames\n\tld hl, wBattleMonStatus\n\tldh a, [hWhoseTurn]\n\tand a\n\tjr z, .restEffect\n\tld hl, wEnemyMonStatus\n.restEffect\n\tld a, [hl]\n\tand a\n\tld [hl], 2 ; clear status and set number of turns asleep to 2\n\tld hl, StartedSleepingEffect ; if mon didn't have an status\n\tjr z, .printRestText\n\tld hl, FellAsleepBecameHealthyText ; if mon had an status\n.printRestText\n\tcall PrintText\n\tpop af\n\tpop de\n\tpop hl\n.healHP\n\tld a, [hld]\n\tld [wHPBarMaxHP], a\n\tld c, a\n\tld a, [hl]\n\tld [wHPBarMaxHP+1], a\n\tld b, a\n\tjr z, .gotHPAmountToHeal\n; Recover and Softboiled only heal for half the mon's max HP"
+        },
+        {
+          "start_line": 92,
+          "end_line": 128,
+          "text": "\thlcoord 10, 9\n\tld a, $1\n\tjr z, .updateHPBar\n\thlcoord 2, 2\n\txor a\n.updateHPBar\n\tld [wHPBarType], a\n\tpredef UpdateHPBar2\n\tld hl, DrawHUDsAndHPBars\n\tcall EffectCallBattleCore\n\tld hl, RegainedHealthText\n\tjp PrintText\n.failed\n\tld c, 50\n\tcall DelayFrames\n\tld hl, PrintButItFailedText_\n\tjp EffectCallBattleCore\n\nStartedSleepingEffect:\n\ttext_far _StartedSleepingEffect\n\ttext_end\n\nFellAsleepBecameHealthyText:\n\ttext_far _FellAsleepBecameHealthyText\n\ttext_end\n\nRegainedHealthText:\n\ttext_far _RegainedHealthText\n\ttext_end\n"
+        }
+      ]
+    },
+    {
+      "path": "home/move_mon.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "def60bc1026efcd5dbc62db9222791773312b596",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/move_mon.asm",
+      "line_count": 240,
+      "excerpts": [
+        {
+          "start_line": 34,
+          "end_line": 71,
+          "text": "CalcStats::\n\tld c, $0\n.statsLoop\n\tinc c\n\tcall CalcStat\n\tldh a, [hMultiplicand+1]\n\tld [de], a\n\tinc de\n\tldh a, [hMultiplicand+2]\n\tld [de], a\n\tinc de\n\tld a, c\n\tcp NUM_STATS\n\tjr nz, .statsLoop\n\tret\n\n; calculates stat c of current mon\n; c: stat to calc (HP=1,Atk=2,Def=3,Spd=4,Spc=5)\n; b: consider stat exp?\n; hl: base ptr to stat exp values ([hl + 2*c - 1] and [hl + 2*c])\nCalcStat::\n\tpush hl\n\tpush de\n\tpush bc\n\tld a, b\n\tld d, a\n\tpush hl\n\tld hl, wMonHeader\n\tld b, $0\n\tadd hl, bc\n\tld a, [hl]          ; read base value of stat\n\tld e, a\n\tpop hl\n\tpush hl\n\tsla c\n\tld a, d\n\tand a\n\tjr z, .statExpDone  ; consider stat exp?"
+        },
+        {
+          "start_line": 109,
+          "end_line": 134,
+          "text": "; get HP IV\n\tpush bc\n\tld a, [hl]  ; Atk IV\n\tswap a\n\tand $1\n\tsla a\n\tsla a\n\tsla a\n\tld b, a\n\tld a, [hli] ; Def IV\n\tand $1\n\tsla a\n\tsla a\n\tadd b\n\tld b, a\n\tld a, [hl] ; Spd IV\n\tswap a\n\tand $1\n\tsla a\n\tadd b\n\tld b, a\n\tld a, [hl] ; Spc IV\n\tand $1\n\tadd b      ; HP IV: LSB of the other 4 IVs\n\tpop bc\n\tjr .calcStatFromIV"
+        },
+        {
+          "start_line": 154,
+          "end_line": 207,
+          "text": ".calcStatFromIV\n\tld d, $0\n\tadd e\n\tld e, a\n\tjr nc, .noCarry\n\tinc d                     ; de = Base + IV\n.noCarry\n\tsla e\n\trl d                      ; de = (Base + IV) * 2\n\tsrl b\n\tsrl b                     ; b = ceil(Sqrt(stat exp)) / 4\n\tld a, b\n\tadd e\n\tjr nc, .noCarry2\n\tinc d                     ; de = (Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4\n.noCarry2\n\tldh [hMultiplicand+2], a\n\tld a, d\n\tldh [hMultiplicand+1], a\n\txor a\n\tldh [hMultiplicand], a\n\tld a, [wCurEnemyLevel]\n\tldh [hMultiplier], a\n\tcall Multiply            ; ((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level\n\tldh a, [hMultiplicand]\n\tldh [hDividend], a\n\tldh a, [hMultiplicand+1]\n\tldh [hDividend+1], a\n\tldh a, [hMultiplicand+2]\n\tldh [hDividend+2], a\n\tld a, $64\n\tldh [hDivisor], a\n\tld a, $3\n\tld b, a\n\tcall Divide             ; (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100\n\tld a, c\n\tcp $1\n\tld a, 5 ; + 5 for non-HP stat\n\tjr nz, .notHPStat\n\tld a, [wCurEnemyLevel]\n\tld b, a\n\tldh a, [hMultiplicand+2]\n\tadd b\n\tldh [hMultiplicand+2], a\n\tjr nc, .noCarry3\n\tldh a, [hMultiplicand+1]\n\tinc a\n\tldh [hMultiplicand+1], a ; HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + Level\n.noCarry3\n\tld a, 10 ; +10 for HP stat\n.notHPStat\n\tld b, a\n\tldh a, [hMultiplicand+2]\n\tadd b"
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/common_text.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "9e954877618f50b0bb61d6c97879fe935aefb513",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/common_text.asm",
+      "line_count": 244,
+      "excerpts": [
+        {
+          "start_line": 140,
+          "end_line": 165,
+          "text": "GoText:\n\ttext_far _GoText\n\ttext_asm\n\tjr PrintPlayerMon1Text\n\nDoItText:\n\ttext_far _DoItText\n\ttext_asm\n\tjr PrintPlayerMon1Text\n\nGetmText:\n\ttext_far _GetmText\n\ttext_asm\n\tjr PrintPlayerMon1Text\n\nEnemysWeakText:\n\ttext_far _EnemysWeakText\n\ttext_asm\n\nPrintPlayerMon1Text:\n\tld hl, PlayerMon1Text\n\tret\n\nPlayerMon1Text:\n\ttext_far _PlayerMon1Text\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "constants/pokemon_constants.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "ea206bb83a48a11b247741a6be17200002979025",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/pokemon_constants.asm",
+      "line_count": 210,
+      "excerpts": []
+    },
+    {
+      "path": "data/pokemon/base_stats/snorlax.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "9b6ccd3e0c53316140a45e543e9669ba1bcf02a8",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/snorlax.asm",
+      "line_count": 28,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 14,
+          "text": "\tdb DEX_SNORLAX ; pokedex id\n\n\tdb 160, 110,  65,  30,  65\n\t;   hp  atk  def  spd  spc\n\n\tdb NORMAL, NORMAL ; type\n\tdb 25 ; catch rate\n\tdb 154 ; base exp\n\n\tINCBIN \"gfx/pokemon/front/snorlax.pic\", 0, 1 ; sprite dimensions\n\tdw SnorlaxPicFront, SnorlaxPicBack\n\n\tdb HEADBUTT, AMNESIA, REST, NO_MOVE ; level 1 learnset\n\tdb GROWTH_SLOW ; growth rate"
+        }
+      ]
+    },
+    {
+      "path": "data/pokemon/evos_moves.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "6a6704f98b8b075f2fd81c91d41a1dda0f2a047d",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/evos_moves.asm",
+      "line_count": 2144,
+      "excerpts": [
+        {
+          "start_line": 1566,
+          "end_line": 1574,
+          "text": "SnorlaxEvosMoves:\n; Evolutions\n\tdb 0\n; Learnset\n\tdb 35, BODY_SLAM\n\tdb 41, HARDEN\n\tdb 48, DOUBLE_EDGE\n\tdb 56, HYPER_BEAM\n\tdb 0"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_7.asm",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "git_blob_sha": "54629faff62595668fb1298f1f5ce13a60a8b4ec",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_7.asm",
+      "line_count": 200,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 8,
+          "text": "_ItemUseText001::\n\ttext \"<PLAYER> used@\"\n\ttext_end\n\n_ItemUseText002::\n\ttext_ram wStringBuffer\n\ttext \"!\"\n\tdone"
+        }
+      ]
+    }
+  ],
+  "parent_live_calibration": {
+    "bag_scroll_decoration": "only18,11 optional; exact other cells retained",
+    "item_use": "known PLAYER used / GREAT BALL! source done, passive WAIT",
+    "possessive_tile": "SDK0xBD original token apostrophe-s only14,14 after ENEMY SNORLAX; internal tile sentinel; original packet unchanged"
+  }
+}

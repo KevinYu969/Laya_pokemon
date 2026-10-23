@@ -1,0 +1,1136 @@
+{
+  "schema": "laya-closed-source-clips-v1",
+  "date": "2026-10-24",
+  "title": "伊布30級、超級球購買與Route12妙蛙花33級實錄",
+  "run": "league-campaign-20261024-18",
+  "status": "frozen_for_parent_review_not_published",
+  "source_closure": {
+    "manifest_relative_path": "outputs/league-campaign-20261024-18/game/segments.jsonl",
+    "manifest_snapshot_sha256": "975562f454f6f9f6e826315a2d65bc7be2b7c0ffa287cbbd262aec4872dbf84b",
+    "fixed_closed_segments": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "used_segments": [
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "current_at_selection_excluded": "video-011.mp4",
+    "current_video_opened": false,
+    "save_state_opened": false,
+    "proof": "Each used video has completed segment receipt; highest used8 < last closed10 < excluded current11."
+  },
+  "timing": {
+    "source_fps": 15,
+    "output_fps": 30,
+    "one_x": "source emulated-time frames at15fps, duplicated to30fps",
+    "four_x": "postproduction4x, every second source frame at30fps",
+    "wall_clock_or_clear_time": false,
+    "omitted": "Recorder does not encode wall-clock model inference and engineering review pauses; clip length is not elapsed experiment time."
+  },
+  "sources": {
+    "3": {
+      "video_relative_path": "outputs/league-campaign-20261024-18/game/video-003.mp4",
+      "segment": 3,
+      "closed_at": "2026-10-23T18:01:44.720223+00:00",
+      "global_start_frame": 20268,
+      "global_end_frame_exclusive": 23616,
+      "source_fps": 15,
+      "size": [
+        480,
+        432
+      ],
+      "steps_relative_path": "outputs/league-campaign-20261024-18/game/steps-003.jsonl",
+      "steps_sha256": "b31aaf271dae0422fc141eb1e698a60137f278895f02e72f3448d29c6eb5efd0",
+      "frames": 3348,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 141 kb/s, 15 fps, 15 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:03:43.20, start: 0.000000, bitrate: 142 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "f954340fa25ecd843ba30dba45858a7c419513b442418ce6e16222923df447e9",
+      "bytes": 3985742
+    },
+    "4": {
+      "video_relative_path": "outputs/league-campaign-20261024-18/game/video-004.mp4",
+      "segment": 4,
+      "closed_at": "2026-10-23T18:04:33.554556+00:00",
+      "global_start_frame": 23616,
+      "global_end_frame_exclusive": 23976,
+      "source_fps": 15,
+      "size": [
+        480,
+        432
+      ],
+      "steps_relative_path": "outputs/league-campaign-20261024-18/game/steps-004.jsonl",
+      "steps_sha256": "df5e55192340eb4fde3bb56320d09e354c7db12235893678e24d79b34006208e",
+      "frames": 360,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 191 kb/s, 15 fps, 15 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:00:24.00, start: 0.000000, bitrate: 193 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "8b5dc8ffcb1b80824ef140efd3170a36acaf18e33e9292aa4fd9868867a9f19b",
+      "bytes": 580405
+    },
+    "5": {
+      "video_relative_path": "outputs/league-campaign-20261024-18/game/video-005.mp4",
+      "segment": 5,
+      "closed_at": "2026-10-23T18:05:48.813123+00:00",
+      "global_start_frame": 23976,
+      "global_end_frame_exclusive": 24276,
+      "source_fps": 15,
+      "size": [
+        480,
+        432
+      ],
+      "steps_relative_path": "outputs/league-campaign-20261024-18/game/steps-005.jsonl",
+      "steps_sha256": "cdd89ca1e81fe6a52daca7f13035480a4c96039a15ba897c34bfb30e288d404c",
+      "frames": 300,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 38 kb/s, 15 fps, 15 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:00:20.00, start: 0.000000, bitrate: 40 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "5b5ab7a81b282526464b7961ed2e410f8a6eb1df9b877917251821e1c57926d7",
+      "bytes": 101531
+    },
+    "6": {
+      "video_relative_path": "outputs/league-campaign-20261024-18/game/video-006.mp4",
+      "segment": 6,
+      "closed_at": "2026-10-23T18:07:36.320879+00:00",
+      "global_start_frame": 24276,
+      "global_end_frame_exclusive": 24326,
+      "source_fps": 15,
+      "size": [
+        480,
+        432
+      ],
+      "steps_relative_path": "outputs/league-campaign-20261024-18/game/steps-006.jsonl",
+      "steps_sha256": "930d6ed3d3c8345c1a58efd6f6d7746930c0f51fbd696c7de92f57bbf22babcb",
+      "frames": 50,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 135 kb/s, 15 fps, 15 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:00:03.33, start: 0.000000, bitrate: 138 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "5638544f024e3c1bb60e4b7c4cd8498a5ec2b6250529b47862cd248e97cf6241",
+      "bytes": 57732
+    },
+    "8": {
+      "video_relative_path": "outputs/league-campaign-20261024-18/game/video-008.mp4",
+      "segment": 8,
+      "closed_at": "2026-10-23T18:14:58.624620+00:00",
+      "global_start_frame": 25026,
+      "global_end_frame_exclusive": 30810,
+      "source_fps": 15,
+      "size": [
+        480,
+        432
+      ],
+      "steps_relative_path": "outputs/league-campaign-20261024-18/game/steps-008.jsonl",
+      "steps_sha256": "a0e5d70bc3679b3f0682b7f46db28c3d19d9d665dbc93723f2cc27a419961129",
+      "frames": 5784,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 59 kb/s, 15 fps, 15 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:06:25.60, start: 0.000000, bitrate: 60 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "3e0e7b42cc897db888725ba608ab2844fd9155f9a7c7bc2427234eefce7d7f3b",
+      "bytes": 2912059
+    }
+  },
+  "topics": [
+    {
+      "id": "eevee-level30",
+      "title": "伊布正常升30級、隊伍換位與回中心",
+      "global_start_frame_inclusive": 21200,
+      "global_end_frame_exclusive": 23616,
+      "source_parts": [
+        {
+          "segment": 3,
+          "start_frame_inclusive": 932,
+          "end_frame_exclusive": 3348,
+          "frames": 2416
+        }
+      ],
+      "steps": [
+        1362,
+        1497
+      ],
+      "first_step_at": "2026-10-23T17:58:41.670196+00:00",
+      "last_step_at": "2026-10-23T18:01:44.654156+00:00",
+      "first_step_taipei": "2026-10-24T01:58:41.670196+08:00",
+      "last_step_taipei": "2026-10-24T02:01:44.654156+08:00",
+      "source_emulated_seconds": 161.06666666666666,
+      "screenshot_count": 8
+    },
+    {
+      "id": "great-ball20",
+      "title": "正常購買20顆超級球、價格確認、扣款及退出",
+      "global_start_frame_inclusive": 23876,
+      "global_end_frame_exclusive": 24316,
+      "source_parts": [
+        {
+          "segment": 4,
+          "start_frame_inclusive": 260,
+          "end_frame_exclusive": 360,
+          "frames": 100
+        },
+        {
+          "segment": 5,
+          "start_frame_inclusive": 0,
+          "end_frame_exclusive": 300,
+          "frames": 300
+        },
+        {
+          "segment": 6,
+          "start_frame_inclusive": 0,
+          "end_frame_exclusive": 40,
+          "frames": 40
+        }
+      ],
+      "steps": [
+        1524,
+        1567
+      ],
+      "first_step_at": "2026-10-23T18:01:46.510825+00:00",
+      "last_step_at": "2026-10-23T18:05:49.013212+00:00",
+      "first_step_taipei": "2026-10-24T02:01:46.510825+08:00",
+      "last_step_taipei": "2026-10-24T02:05:49.013212+08:00",
+      "source_emulated_seconds": 29.333333333333332,
+      "screenshot_count": 8
+    },
+    {
+      "id": "route12-venusaur33",
+      "title": "Route12水系戰、自然進化妙蛙花與升33級",
+      "global_start_frame_inclusive": 25266,
+      "global_end_frame_exclusive": 30510,
+      "source_parts": [
+        {
+          "segment": 8,
+          "start_frame_inclusive": 240,
+          "end_frame_exclusive": 5484,
+          "frames": 5244
+        }
+      ],
+      "steps": [
+        1663,
+        1885
+      ],
+      "first_step_at": "2026-10-23T18:10:08.338065+00:00",
+      "last_step_at": "2026-10-23T18:10:32.322658+00:00",
+      "first_step_taipei": "2026-10-24T02:10:08.338065+08:00",
+      "last_step_taipei": "2026-10-24T02:10:32.322658+08:00",
+      "source_emulated_seconds": 349.6,
+      "screenshot_count": 10
+    }
+  ],
+  "clips": [
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30-1x.mp4",
+      "speed": 1,
+      "fps": 30,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 161.06666666666666,
+      "source_frames": 2416,
+      "source_parts": [
+        {
+          "segment": 3,
+          "start_frame_inclusive": 932,
+          "end_frame_exclusive": 3348,
+          "frames": 2416
+        }
+      ],
+      "lossless_reencode": true,
+      "frames": 4832,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 572 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:02:41.07, start: 0.000000, bitrate: 573 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "25386e13ba40e61e9ed710a97f04700f845344fda4e718b596fa0d5d1363a305",
+      "bytes": 11537109
+    },
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30-4x.mp4",
+      "speed": 4,
+      "fps": 30,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 40.266666666666666,
+      "source_frames": 2416,
+      "source_parts": [
+        {
+          "segment": 3,
+          "start_frame_inclusive": 932,
+          "end_frame_exclusive": 3348,
+          "frames": 2416
+        }
+      ],
+      "lossless_reencode": true,
+      "frames": 1208,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 1436 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:00:40.27, start: 0.000000, bitrate: 1437 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "4b1056e94b3e81212429305e7f1d1ef232566785b3e88f8e90caa20163535129",
+      "bytes": 7237265
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20-1x.mp4",
+      "speed": 1,
+      "fps": 30,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 29.333333333333332,
+      "source_frames": 440,
+      "source_parts": [
+        {
+          "segment": 4,
+          "start_frame_inclusive": 260,
+          "end_frame_exclusive": 360,
+          "frames": 100
+        },
+        {
+          "segment": 5,
+          "start_frame_inclusive": 0,
+          "end_frame_exclusive": 300,
+          "frames": 300
+        },
+        {
+          "segment": 6,
+          "start_frame_inclusive": 0,
+          "end_frame_exclusive": 40,
+          "frames": 40
+        }
+      ],
+      "lossless_reencode": true,
+      "frames": 880,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 183 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:00:29.33, start: 0.000000, bitrate: 185 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "69b4d71a3a83d0455951248afbbb8754ab6c80a5deb84b1a31f8e9bb681c40e8",
+      "bytes": 678644
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20-4x.mp4",
+      "speed": 4,
+      "fps": 30,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 7.333333333333333,
+      "source_frames": 440,
+      "source_parts": [
+        {
+          "segment": 4,
+          "start_frame_inclusive": 260,
+          "end_frame_exclusive": 360,
+          "frames": 100
+        },
+        {
+          "segment": 5,
+          "start_frame_inclusive": 0,
+          "end_frame_exclusive": 300,
+          "frames": 300
+        },
+        {
+          "segment": 6,
+          "start_frame_inclusive": 0,
+          "end_frame_exclusive": 40,
+          "frames": 40
+        }
+      ],
+      "lossless_reencode": true,
+      "frames": 220,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 502 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:00:07.33, start: 0.000000, bitrate: 504 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "a486658fbefe67fc5793c57071a4c709e79ead796388d0443934aac5f4859562",
+      "bytes": 462161
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33-1x.mp4",
+      "speed": 1,
+      "fps": 30,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 349.6,
+      "source_frames": 5244,
+      "source_parts": [
+        {
+          "segment": 8,
+          "start_frame_inclusive": 240,
+          "end_frame_exclusive": 5484,
+          "frames": 5244
+        }
+      ],
+      "lossless_reencode": true,
+      "frames": 10488,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 225 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:05:49.60, start: 0.000000, bitrate: 226 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "f8b738c2608383f5c751c7c41bf28f00c2ebd82297ff1f0c502626ec0c327137",
+      "bytes": 9895346
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33-4x.mp4",
+      "speed": 4,
+      "fps": 30,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 87.4,
+      "source_frames": 5244,
+      "source_parts": [
+        {
+          "segment": 8,
+          "start_frame_inclusive": 240,
+          "end_frame_exclusive": 5484,
+          "frames": 5244
+        }
+      ],
+      "lossless_reencode": true,
+      "frames": 2622,
+      "metadata_video": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv420p(progressive), 480x432, 562 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+      "metadata_duration": "Duration: 00:01:27.40, start: 0.000000, bitrate: 563 kb/s",
+      "full_decode_xerror_exit": 0,
+      "decode_stderr_empty": true,
+      "sha256": "e6a17e69cfbcc8433382ffa8ba6051e63bde7555b67bde4a7c986740d8fee516",
+      "bytes": 6153875
+    }
+  ],
+  "screenshots": [
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30/1367-wild-pidgey.png",
+      "caption": "完整野生波波出現",
+      "step": 1367,
+      "at": "2026-10-23T17:58:42.190954+00:00",
+      "observation_frame": 85265,
+      "source_segment": 3,
+      "source_frame_zero_based": 1047,
+      "global_video_frame": 21315,
+      "nominal_recorded_emulator_frame": 85264,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "5e2c4f272739f42b8170335e29af47b2a6f31cfc32e8e762ff58710d52ba1c08",
+      "source_rgb24_sha256": "d2da6148031397713021a1c47a9a8bf7b58f23759dbb03368cfcc7e4a7d5b4f9",
+      "png_decoded_rgb24_sha256": "d2da6148031397713021a1c47a9a8bf7b58f23759dbb03368cfcc7e4a7d5b4f9",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30/1374-quick-attack.png",
+      "caption": "伊布使用電光一閃",
+      "step": 1374,
+      "at": "2026-10-23T17:58:42.743579+00:00",
+      "observation_frame": 85809,
+      "source_segment": 3,
+      "source_frame_zero_based": 1183,
+      "global_video_frame": 21451,
+      "nominal_recorded_emulator_frame": 85808,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "f61cee946a58bc1c5ca6912e1fb2076a443c29ec6e621ded3c7cfcaf7032496b",
+      "source_rgb24_sha256": "7bce887c995e327b0cdca5863815ce11356b0a1a86b65ff44d7054ebf10f77dc",
+      "png_decoded_rgb24_sha256": "7bce887c995e327b0cdca5863815ce11356b0a1a86b65ff44d7054ebf10f77dc",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30/1377-pidgey-fainted.png",
+      "caption": "波波倒下",
+      "step": 1377,
+      "at": "2026-10-23T17:58:43.144497+00:00",
+      "observation_frame": 86193,
+      "source_segment": 3,
+      "source_frame_zero_based": 1279,
+      "global_video_frame": 21547,
+      "nominal_recorded_emulator_frame": 86192,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "e6d89431dca3d7cac5b0c43941c974548c1f2f1842190770ad917052d3638820",
+      "source_rgb24_sha256": "55d44fa0af396fc28b850b4c9214bbd793e0d690d4a35d5d2881ca6b8d25cb1c",
+      "png_decoded_rgb24_sha256": "55d44fa0af396fc28b850b4c9214bbd793e0d690d4a35d5d2881ca6b8d25cb1c",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30/1379-eevee-level30.png",
+      "caption": "伊布完整升30級訊息",
+      "step": 1379,
+      "at": "2026-10-23T17:58:43.413317+00:00",
+      "observation_frame": 86449,
+      "source_segment": 3,
+      "source_frame_zero_based": 1343,
+      "global_video_frame": 21611,
+      "nominal_recorded_emulator_frame": 86448,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "d3441be5e17efbb2421f912152f8517831820313e7971657b4ed384ed4a1e413",
+      "source_rgb24_sha256": "b275b7d7d5298f23c4169e9479c145bdfb8da50ba9ad1b2cd54fbb9d368d325e",
+      "png_decoded_rgb24_sha256": "b275b7d7d5298f23c4169e9479c145bdfb8da50ba9ad1b2cd54fbb9d368d325e",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30/1427-switch-command.png",
+      "caption": "正常SWITCH隊伍選單",
+      "step": 1427,
+      "at": "2026-10-23T17:58:48.035706+00:00",
+      "observation_frame": 90657,
+      "source_segment": 3,
+      "source_frame_zero_based": 2395,
+      "global_video_frame": 22663,
+      "nominal_recorded_emulator_frame": 90656,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "d9265f8fdf6e3533c11b2245573691d8aa27b11eac779eac01c8805c71e65102",
+      "source_rgb24_sha256": "8ad7477cf91e513d5233ad14ff07026c37151146b9f612b47e22b8d2e8ebc03f",
+      "png_decoded_rgb24_sha256": "8ad7477cf91e513d5233ad14ff07026c37151146b9f612b47e22b8d2e8ebc03f",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30/1430-fearow-lead.png",
+      "caption": "烈雀進化型大嘴雀正常換至首位",
+      "step": 1430,
+      "at": "2026-10-23T17:58:48.166124+00:00",
+      "observation_frame": 90777,
+      "source_segment": 3,
+      "source_frame_zero_based": 2425,
+      "global_video_frame": 22693,
+      "nominal_recorded_emulator_frame": 90776,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "0c9e7d63180a266ddb019549d1d940974fe06fae7c446206de6b12f6dce8c3a6",
+      "source_rgb24_sha256": "f8f21291b8f806f33996bf14d28d5e67732d2b980d099c25a821d66b2cb5694d",
+      "png_decoded_rgb24_sha256": "f8f21291b8f806f33996bf14d28d5e67732d2b980d099c25a821d66b2cb5694d",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30/1474-lavender-return.png",
+      "caption": "正常走回紫苑市",
+      "step": 1474,
+      "at": "2026-10-23T17:58:50.939880+00:00",
+      "observation_frame": 92537,
+      "source_segment": 3,
+      "source_frame_zero_based": 2865,
+      "global_video_frame": 23133,
+      "nominal_recorded_emulator_frame": 92536,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "57814b4c297d0493a4b6b94a64b1df7416d854c4c6572f14a3e117188f0eb38c",
+      "source_rgb24_sha256": "452583961d92e05172c4474ffdaaae88f7a5622ca2749568291593f90416ffcd",
+      "png_decoded_rgb24_sha256": "452583961d92e05172c4474ffdaaae88f7a5622ca2749568291593f90416ffcd",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "eevee-level30",
+      "file": "outputs/videos/training-route12-20261024/eevee-level30/1495-center-healed.png",
+      "caption": "中心完整fighting fit治療收據",
+      "step": 1495,
+      "at": "2026-10-23T17:58:54.089991+00:00",
+      "observation_frame": 94169,
+      "source_segment": 3,
+      "source_frame_zero_based": 3273,
+      "global_video_frame": 23541,
+      "nominal_recorded_emulator_frame": 94168,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "778e3c5dea5ca52cea3eca849a8445417f302ae8e8e76589243a89e91460879b",
+      "source_rgb24_sha256": "233fed4315046639ad6f33af917b6f8d3e88c3d81c4893021011443e1c622967",
+      "png_decoded_rgb24_sha256": "233fed4315046639ad6f33af917b6f8d3e88c3d81c4893021011443e1c622967",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20/1531-money-before.png",
+      "caption": "購買前35159與BUY選單",
+      "step": 1531,
+      "at": "2026-10-23T18:02:40.134560+00:00",
+      "observation_frame": 95785,
+      "source_segment": 4,
+      "source_frame_zero_based": 329,
+      "global_video_frame": 23945,
+      "nominal_recorded_emulator_frame": 95784,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "949c55a870b8a5491133a639a7136dac01070dbfcefbba5b9a27ccc663f22789",
+      "source_rgb24_sha256": "165a5535f391b09d3b2bfce77c09274031b52b3f9e02a4f1a3296ceb6dc4e33c",
+      "png_decoded_rgb24_sha256": "165a5535f391b09d3b2bfce77c09274031b52b3f9e02a4f1a3296ceb6dc4e33c",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20/1534-great-ball600.png",
+      "caption": "GREAT BALL單價600",
+      "step": 1534,
+      "at": "2026-10-23T18:04:33.629664+00:00",
+      "observation_frame": 95905,
+      "source_segment": 4,
+      "source_frame_zero_based": 359,
+      "global_video_frame": 23975,
+      "nominal_recorded_emulator_frame": 95904,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "704dfc548fa6aa68a76d3fdc8c1abb46111b6766b7646a9f09ef1fc0cbacb2af",
+      "source_rgb24_sha256": "89f55e9b8291c32289812847867acb1251da8b1cdfa21b91715a1f1dee108dad",
+      "png_decoded_rgb24_sha256": "89f55e9b8291c32289812847867acb1251da8b1cdfa21b91715a1f1dee108dad",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20/1554-quantity20-price12000.png",
+      "caption": "數量20及總價12000",
+      "step": 1554,
+      "at": "2026-10-23T18:04:34.856049+00:00",
+      "observation_frame": 96705,
+      "source_segment": 5,
+      "source_frame_zero_based": 199,
+      "global_video_frame": 24175,
+      "nominal_recorded_emulator_frame": 96704,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "feafa4716e2488a998654dd9dcf753c277480fb269903fe8aae9fa3cbc8641ae",
+      "source_rgb24_sha256": "208ee869a41fb5147644494bd082b130c1b4be09d8aabe6a772f5fa9104c200e",
+      "png_decoded_rgb24_sha256": "208ee869a41fb5147644494bd082b130c1b4be09d8aabe6a772f5fa9104c200e",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20/1558-confirm12000-yes.png",
+      "caption": "完整12000確認問題與YES",
+      "step": 1558,
+      "at": "2026-10-23T18:04:35.052302+00:00",
+      "observation_frame": 96865,
+      "source_segment": 5,
+      "source_frame_zero_based": 239,
+      "global_video_frame": 24215,
+      "nominal_recorded_emulator_frame": 96864,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "8ff83e3a3ae3b8de3aa254fa6729d6efa2f0bf8323b5e85b832f95825d56024a",
+      "source_rgb24_sha256": "6ed24e4b1ac2a8c2db021d86fbbb7d874b7279d681380473d1cf2223320fb47b",
+      "png_decoded_rgb24_sha256": "6ed24e4b1ac2a8c2db021d86fbbb7d874b7279d681380473d1cf2223320fb47b",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20/1561-purchase-receipt.png",
+      "caption": "完整Here you are與Thank you收據",
+      "step": 1561,
+      "at": "2026-10-23T18:04:35.198127+00:00",
+      "observation_frame": 96985,
+      "source_segment": 5,
+      "source_frame_zero_based": 269,
+      "global_video_frame": 24245,
+      "nominal_recorded_emulator_frame": 96984,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "eaca144e412289bbee818c66ce253225c8b251f1f161324b272c50cd2eea200e",
+      "source_rgb24_sha256": "73c237d369fb9a5fc3e19426e95d2339469e271befcbec1cd6e5d530dfa6e301",
+      "png_decoded_rgb24_sha256": "73c237d369fb9a5fc3e19426e95d2339469e271befcbec1cd6e5d530dfa6e301",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20/1565-money-after.png",
+      "caption": "扣款後23159與退出選單",
+      "step": 1565,
+      "at": "2026-10-23T18:05:48.929381+00:00",
+      "observation_frame": 97145,
+      "source_segment": 6,
+      "source_frame_zero_based": 9,
+      "global_video_frame": 24285,
+      "nominal_recorded_emulator_frame": 97144,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "2ff636a0919610f782f0f0c4f6bfb2a0e8a932647abf660332c85545d9da9e9f",
+      "source_rgb24_sha256": "c025255a0aee4a13a9bcbc0949ab34124b5bd4dbe657ee2e5f300301a89848c9",
+      "png_decoded_rgb24_sha256": "c025255a0aee4a13a9bcbc0949ab34124b5bd4dbe657ee2e5f300301a89848c9",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20/1566-thank-you-exit.png",
+      "caption": "正常退出Thank you",
+      "step": 1566,
+      "at": "2026-10-23T18:05:48.971724+00:00",
+      "observation_frame": 97185,
+      "source_segment": 6,
+      "source_frame_zero_based": 19,
+      "global_video_frame": 24295,
+      "nominal_recorded_emulator_frame": 97184,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "11a683b0ede5b9853c3613e29936089c04af4a761a679a836400f9c0dc4008f3",
+      "source_rgb24_sha256": "ef1c710b5459fb9e04fe0b79f322818f50b5aaef5f7aedb4931903d5d0b67900",
+      "png_decoded_rgb24_sha256": "ef1c710b5459fb9e04fe0b79f322818f50b5aaef5f7aedb4931903d5d0b67900",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "great-ball20",
+      "file": "outputs/videos/training-route12-20261024/great-ball20/1567-mart-overworld.png",
+      "caption": "關閉商店選單回野外",
+      "step": 1567,
+      "at": "2026-10-23T18:05:49.013212+00:00",
+      "observation_frame": 97225,
+      "source_segment": 6,
+      "source_frame_zero_based": 29,
+      "global_video_frame": 24305,
+      "nominal_recorded_emulator_frame": 97224,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "0956982fe0b658c9999c80c22e81ffcd48d6ed912e156b1de0c371701d5a1aae",
+      "source_rgb24_sha256": "2189b2849fee4f4316c275c0e19534abd2ffae155f6e15c7b8f256e662f48fd7",
+      "png_decoded_rgb24_sha256": "2189b2849fee4f4316c275c0e19534abd2ffae155f6e15c7b8f256e662f48fd7",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1685-ivysaur-razor-leaf.png",
+      "caption": "妙蛙草對角金魚使用飛葉快刀",
+      "step": 1685,
+      "at": "2026-10-23T18:10:10.267611+00:00",
+      "observation_frame": 102825,
+      "source_segment": 8,
+      "source_frame_zero_based": 679,
+      "global_video_frame": 25705,
+      "nominal_recorded_emulator_frame": 102824,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "9ec868f149b2825aee29f539b22f58335e033abf0069ef862c2a8e41f5798f1f",
+      "source_rgb24_sha256": "e74c6943cda5d2996a643c411c106119475d307ff9067cd38a07313d117d6fdd",
+      "png_decoded_rgb24_sha256": "e74c6943cda5d2996a643c411c106119475d307ff9067cd38a07313d117d6fdd",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1690-super-effective.png",
+      "caption": "完整屬性克制效果",
+      "step": 1690,
+      "at": "2026-10-23T18:10:11.013503+00:00",
+      "observation_frame": 103465,
+      "source_segment": 8,
+      "source_frame_zero_based": 839,
+      "global_video_frame": 25865,
+      "nominal_recorded_emulator_frame": 103464,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "aa53e050c6f062e8f8b211b8beaf2e10f9fdae8fedf986c113af8abe31032bd4",
+      "source_rgb24_sha256": "3c2a649b0dd2d065201fc3bd7da9c512621fac912231041a7b5a19abe36153b5",
+      "png_decoded_rgb24_sha256": "3c2a649b0dd2d065201fc3bd7da9c512621fac912231041a7b5a19abe36153b5",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1708-ivysaur-level32.png",
+      "caption": "妙蛙草自然升32級",
+      "step": 1708,
+      "at": "2026-10-23T18:10:13.751091+00:00",
+      "observation_frame": 105505,
+      "source_segment": 8,
+      "source_frame_zero_based": 1349,
+      "global_video_frame": 26375,
+      "nominal_recorded_emulator_frame": 105504,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "3bde57183122daae91cbb1b86e0a356124d8459a005e2ada70e7cb6c94aef471",
+      "source_rgb24_sha256": "fea5e6e8beee5cef1f4d6523f2ff21eb8f89e7f8cc45868ca28dc15a3d26658d",
+      "png_decoded_rgb24_sha256": "fea5e6e8beee5cef1f4d6523f2ff21eb8f89e7f8cc45868ca28dc15a3d26658d",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1725-fisherman-win.png",
+      "caption": "完整漁夫勝利收據",
+      "step": 1725,
+      "at": "2026-10-23T18:10:16.387698+00:00",
+      "observation_frame": 107417,
+      "source_segment": 8,
+      "source_frame_zero_based": 1827,
+      "global_video_frame": 26853,
+      "nominal_recorded_emulator_frame": 107416,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "22102bb908b5ededf44d81a88147917f478d3ee121b3facaa751314cd29a09dc",
+      "source_rgb24_sha256": "27403d0462fa9ea50619e78e620d0e087685e1c1a364119b37b430a4278f16fc",
+      "png_decoded_rgb24_sha256": "27403d0462fa9ea50619e78e620d0e087685e1c1a364119b37b430a4278f16fc",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1729-evolution-start.png",
+      "caption": "完整自然進化開始訊息",
+      "step": 1729,
+      "at": "2026-10-23T18:10:16.861415+00:00",
+      "observation_frame": 107929,
+      "source_segment": 8,
+      "source_frame_zero_based": 1955,
+      "global_video_frame": 26981,
+      "nominal_recorded_emulator_frame": 107928,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "b27cd7332bfe415c101720e2b3d9ff28b84fbb000c9712421ea677ff9c4c77a8",
+      "source_rgb24_sha256": "dfc9777e8404087715c8db92e0b95cee50ad75a5b6ce51f564d3585968b15b6b",
+      "png_decoded_rgb24_sha256": "dfc9777e8404087715c8db92e0b95cee50ad75a5b6ce51f564d3585968b15b6b",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1735-venusaur-evolved.png",
+      "caption": "完整IVYSAUR evolved into VENUSAUR訊息",
+      "step": 1735,
+      "at": "2026-10-23T18:10:17.616827+00:00",
+      "observation_frame": 108697,
+      "source_segment": 8,
+      "source_frame_zero_based": 2147,
+      "global_video_frame": 27173,
+      "nominal_recorded_emulator_frame": 108696,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "19a1355e648cd2258f4344904295a174a6806dae8207bd7de252eaf662114716",
+      "source_rgb24_sha256": "e5e960afc468bb173fb3d7fbdc7a9f45ceb88a2b1e67eebe83c76156ff1eb4e5",
+      "png_decoded_rgb24_sha256": "e5e960afc468bb173fb3d7fbdc7a9f45ceb88a2b1e67eebe83c76156ff1eb4e5",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1773-venusaur-battle-hud.png",
+      "caption": "進化後妙蛙花32級真實戰鬥HUD",
+      "step": 1773,
+      "at": "2026-10-23T18:10:20.579579+00:00",
+      "observation_frame": 111009,
+      "source_segment": 8,
+      "source_frame_zero_based": 2725,
+      "global_video_frame": 27751,
+      "nominal_recorded_emulator_frame": 111008,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "73c45591cd0b7c05b93f1c23e49b0838c95f123752e327af2e98bd86fd7047fe",
+      "source_rgb24_sha256": "5350e3931b5b05c26955358f2fa9f75c743b28336218a1b8f7e74b3629dd7815",
+      "png_decoded_rgb24_sha256": "5350e3931b5b05c26955358f2fa9f75c743b28336218a1b8f7e74b3629dd7815",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1870-venusaur-razor-leaf.png",
+      "caption": "妙蛙花對墨海馬使用飛葉快刀",
+      "step": 1870,
+      "at": "2026-10-23T18:10:30.637359+00:00",
+      "observation_frame": 120169,
+      "source_segment": 8,
+      "source_frame_zero_based": 5015,
+      "global_video_frame": 30041,
+      "nominal_recorded_emulator_frame": 120168,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "9b8494e7f7b2627a0b62dcadc233c76c48579e7ae01b3fe6b0de4231f2232590",
+      "source_rgb24_sha256": "77b6ad7e49c62125747a088ff64eabe9c0e1aa1f60ed554287f96c67089a4a82",
+      "png_decoded_rgb24_sha256": "77b6ad7e49c62125747a088ff64eabe9c0e1aa1f60ed554287f96c67089a4a82",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1878-venusaur-level33.png",
+      "caption": "完整妙蛙花升33級訊息",
+      "step": 1878,
+      "at": "2026-10-23T18:10:31.616635+00:00",
+      "observation_frame": 121193,
+      "source_segment": 8,
+      "source_frame_zero_based": 5271,
+      "global_video_frame": 30297,
+      "nominal_recorded_emulator_frame": 121192,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "50350879b27b382eaf332693ed11d3238625c35ce132bf3076048fc95de8e152",
+      "source_rgb24_sha256": "b16265b6424fbac295ce11aea53f6f7a3e5e7820df462c47ac814d492861d146",
+      "png_decoded_rgb24_sha256": "b16265b6424fbac295ce11aea53f6f7a3e5e7820df462c47ac814d492861d146",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    },
+    {
+      "topic": "route12-venusaur33",
+      "file": "outputs/videos/training-route12-20261024/route12-venusaur33/1880-fisherman-win33.png",
+      "caption": "33級後完整漁夫勝利收據",
+      "step": 1880,
+      "at": "2026-10-23T18:10:31.868476+00:00",
+      "observation_frame": 121449,
+      "source_segment": 8,
+      "source_frame_zero_based": 5335,
+      "global_video_frame": 30361,
+      "nominal_recorded_emulator_frame": 121448,
+      "recorded_frame_minus_state": -1,
+      "png_sha256": "6f2709c9bb52d938c4fc71855466fcb86a34485efbadb5e2de6f8ccc12ec8adc",
+      "source_rgb24_sha256": "75dde1a3c725efcf0b9bd1cc5b8e47b32d242475b4865de29e15b8bedd854e99",
+      "png_decoded_rgb24_sha256": "75dde1a3c725efcf0b9bd1cc5b8e47b32d242475b4865de29e15b8bedd854e99",
+      "size": [
+        480,
+        432
+      ],
+      "unmodified_source_pixels": true
+    }
+  ],
+  "pixel_verification": [
+    {
+      "topic": "eevee-level30",
+      "source_frames": 2416,
+      "one_x_frames": 4832,
+      "four_x_frames": 1208,
+      "one_x_exact_source_yuv420p_duplicate": true,
+      "four_x_exact_source_yuv420p_every_second_frame_phases": [
+        0
+      ],
+      "source_frame_hash_sequence_sha256": "d80d7ce774a06ec679e5a64c89973baa205feca16f25cf343885ccd0a6bba33c",
+      "one_x_frame_hash_sequence_sha256": "c62f86ff45fd464034618d1f48a74977176ab736f7c2ae93cea0a9601b49487a",
+      "four_x_frame_hash_sequence_sha256": "3bc33f3e09c86436194a78a20d62a9b998a414f49995c38f08d3da40b63aa85b",
+      "pixel_hash_method": "ffmpeg framemd5 over full decoded yuv420p; sequence SHA256",
+      "full_decode_xerror_exit": 0
+    },
+    {
+      "topic": "great-ball20",
+      "source_frames": 440,
+      "one_x_frames": 880,
+      "four_x_frames": 220,
+      "one_x_exact_source_yuv420p_duplicate": true,
+      "four_x_exact_source_yuv420p_every_second_frame_phases": [
+        0
+      ],
+      "source_frame_hash_sequence_sha256": "94cd84e7a45a0fdbebb32671e621e4a6a6575dc8e0bb36a1ede65a23a18a8aeb",
+      "one_x_frame_hash_sequence_sha256": "e17fd2c609baaf6bfa3292b4ff551e487bd0f5bfc9a88cd3a653e9e6a3eddf52",
+      "four_x_frame_hash_sequence_sha256": "ad8bed95388c069d3eb0da49a53d2b200fe6ed98880092e36b82adf14ed52d4e",
+      "pixel_hash_method": "ffmpeg framemd5 over full decoded yuv420p; sequence SHA256",
+      "full_decode_xerror_exit": 0
+    },
+    {
+      "topic": "route12-venusaur33",
+      "source_frames": 5244,
+      "one_x_frames": 10488,
+      "four_x_frames": 2622,
+      "one_x_exact_source_yuv420p_duplicate": true,
+      "four_x_exact_source_yuv420p_every_second_frame_phases": [
+        0
+      ],
+      "source_frame_hash_sequence_sha256": "da67f1bbebbc15e1d683f21f623f814ca505c29512afeb905a9d4017c3ccd3a6",
+      "one_x_frame_hash_sequence_sha256": "004b20f246d57d671a3e9c4b59cee5174a38ea95b3838cad5712b7e2f6d5adde",
+      "four_x_frame_hash_sequence_sha256": "aace4e973926a2cbfc70f6302969a7d70675dbbc4139e5acaa63b1c78276a16f",
+      "pixel_hash_method": "ffmpeg framemd5 over full decoded yuv420p; sequence SHA256",
+      "full_decode_xerror_exit": 0
+    }
+  ],
+  "validation": {
+    "source_full_decode_frames": 9842,
+    "output_full_decode_frames": 20250,
+    "source_and_output_decode_xerror_exit": 0,
+    "source_video_count": 5,
+    "clip_count": 6,
+    "screenshot_count": 26,
+    "screenshots_visually_inspected": 26,
+    "all_png_rgb_matches_selected_source_frame": true,
+    "all_one_x_decoded_yuv420p_frames_equal_source_with_duplication": true,
+    "all_four_x_decoded_yuv420p_frames_equal_even_source_frames": true,
+    "encoder": "libx264 -qp0 lossless, yuv420p,480x432,30fps,no audio",
+    "recorded_action_model_names": [
+      "laya-rl-agent"
+    ],
+    "recorded_model_step_counts": {
+      "laya-rl-agent": 391
+    },
+    "recorded_no_model_backend_step_counts": {
+      "controller_passive_wait": 12
+    },
+    "model_calls_during_editing": 0,
+    "external_api_calls_during_editing": 0,
+    "game_controlled": false,
+    "website_modified": false,
+    "uploaded": false
+  },
+  "not_claimed": [
+    "Snorlax captured",
+    "fifth gym cleared",
+    "complete game cleared",
+    "clip duration equals wall-clock clear time"
+  ],
+  "pending_optional_flute": {
+    "included": false,
+    "reason": "Fixed closed010 ends on full Wild SNORLAX appeared receipt; a complete Lv30 HUD/handoff is outside selected closed set. Open011 was not read.",
+    "last_closed_trace_step": 2058
+  },
+  "evidence_events": [
+    {
+      "step": 1379,
+      "label": "伊布升30級",
+      "utc": "2026-10-23T17:58:43.413317+00:00",
+      "taipei": "2026-10-24T01:58:43.413317+08:00"
+    },
+    {
+      "step": 1430,
+      "label": "大嘴雀換至首位、伊布保留30級",
+      "utc": "2026-10-23T17:58:48.166124+00:00",
+      "taipei": "2026-10-24T01:58:48.166124+08:00"
+    },
+    {
+      "step": 1495,
+      "label": "中心完成治療",
+      "utc": "2026-10-23T17:58:54.089991+00:00",
+      "taipei": "2026-10-24T01:58:54.089991+08:00"
+    },
+    {
+      "step": 1558,
+      "label": "20顆超級球、12000確認YES",
+      "utc": "2026-10-23T18:04:35.052302+00:00",
+      "taipei": "2026-10-24T02:04:35.052302+08:00"
+    },
+    {
+      "step": 1559,
+      "label": "遊戲錢扣12000、超級球增20",
+      "utc": "2026-10-23T18:04:35.104141+00:00",
+      "taipei": "2026-10-24T02:04:35.104141+08:00"
+    },
+    {
+      "step": 1567,
+      "label": "商店選單正常關閉",
+      "utc": "2026-10-23T18:05:49.013212+00:00",
+      "taipei": "2026-10-24T02:05:49.013212+08:00"
+    },
+    {
+      "step": 1708,
+      "label": "妙蛙草升32級",
+      "utc": "2026-10-23T18:10:13.751091+00:00",
+      "taipei": "2026-10-24T02:10:13.751091+08:00"
+    },
+    {
+      "step": 1735,
+      "label": "完整進化妙蛙花收據",
+      "utc": "2026-10-23T18:10:17.616827+00:00",
+      "taipei": "2026-10-24T02:10:17.616827+08:00"
+    },
+    {
+      "step": 1878,
+      "label": "妙蛙花升33級",
+      "utc": "2026-10-23T18:10:31.616635+00:00",
+      "taipei": "2026-10-24T02:10:31.616635+08:00"
+    },
+    {
+      "step": 1880,
+      "label": "漁夫戰勝利",
+      "utc": "2026-10-23T18:10:31.868476+00:00",
+      "taipei": "2026-10-24T02:10:31.868476+08:00"
+    }
+  ],
+  "verified_purchase": {
+    "item": 3,
+    "quantity_before": 0,
+    "quantity_after": 20,
+    "quantity_delta": 20,
+    "money_before": 35159,
+    "money_after": 23159,
+    "money_delta": -12000,
+    "old_party_exact_unchanged": true,
+    "other_inventory_order_and_quantities_unchanged": true
+  }
+}

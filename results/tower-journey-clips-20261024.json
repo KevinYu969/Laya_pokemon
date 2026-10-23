@@ -1,0 +1,2514 @@
+{
+  "schema": "tower-journey-clips-v1",
+  "created_at_utc": "2026-10-23T17:18:46.588385+00:00",
+  "run": "league-campaign-20261023-16",
+  "language": "zh-TW",
+  "scope_zh_tw": "只從已封裝segments白名單34/35/37/39/40/41取材；沒有讀取開放錄影、ROM或存檔。",
+  "time_basis_zh_tw": "錄影為emulated_time；每4個60Hz模擬影格取1張，來源15fps。1x依模擬器時間；4x是後製加速，成片30fps。模型推論與工程等待沒有影格，因此未重建；影片長度不能當作通關牆鐘耗時。",
+  "editing_zh_tw": "每主題選一個連續steps區間；區間內全部動作影格保留，無裁圖、無重建、無音訊、無補字或插入假操作。不同主題間及區間外旅程未收入。",
+  "source_validation": [
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-034.mp4",
+      "sha256": "9205443928b2040463f1d2b08224922f1f92f3761ea05663c613b40f908cb19e",
+      "bytes": 68139,
+      "frames_decoded": 80,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 5.333333333333333,
+      "stream": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 432,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "15/1",
+        "avg_frame_rate": "15/1",
+        "nb_frames": "80",
+        "duration": "5.333333"
+      },
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-034.jsonl",
+      "source_log_sha256": "667b6061e9a90721188d80fba64a9ecdc0f0a3fe4c5db6680be5cf7c1c52cc75",
+      "source_first_step": 1533,
+      "source_last_step": 1540,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:37:47.829745+00:00",
+        "segment": 34,
+        "timing": {
+          "wall_seconds": 5341.75,
+          "model_wait_seconds": 43.934,
+          "review_pause_seconds": 5196.766,
+          "non_review_session_seconds": 144.984,
+          "emulated_seconds": 1579.6
+        },
+        "video": {
+          "filename": "video-034.mp4",
+          "fps": 15,
+          "frames": 80,
+          "playback_seconds": 5.333333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "3573e8adfcf3fb75c82bdb95895fcb422912599308876afa4c2f7085069266be"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+      "sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d",
+      "bytes": 1519395,
+      "frames_decoded": 4486,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 299.06666666666666,
+      "stream": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 432,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "15/1",
+        "avg_frame_rate": "15/1",
+        "nb_frames": "4486",
+        "duration": "299.066667"
+      },
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-035.jsonl",
+      "source_log_sha256": "a791dc204fb4982513f8a9f4b94cdeca1301b367e5875b207acf7e9d7d053b29",
+      "source_first_step": 1541,
+      "source_last_step": 1707,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:39:23.544444+00:00",
+        "segment": 35,
+        "timing": {
+          "wall_seconds": 5437.469,
+          "model_wait_seconds": 48.091,
+          "review_pause_seconds": 5271.313,
+          "non_review_session_seconds": 166.156,
+          "emulated_seconds": 1878.667
+        },
+        "video": {
+          "filename": "video-035.mp4",
+          "fps": 15,
+          "frames": 4486,
+          "playback_seconds": 299.06666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "92373cc3f26fe07034c9120c483796543ab5ab162c480dc40764fc5ddeb5c84e"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+      "sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c",
+      "bytes": 2593052,
+      "frames_decoded": 5014,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 334.26666666666665,
+      "stream": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 432,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "15/1",
+        "avg_frame_rate": "15/1",
+        "nb_frames": "5014",
+        "duration": "334.266667"
+      },
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-037.jsonl",
+      "source_log_sha256": "673f6eb3894917820842edc18bc9fbc7818b143b94aa0f4fa038fb745d88ae47",
+      "source_first_step": 1779,
+      "source_last_step": 2055,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:52:32.124267+00:00",
+        "segment": 37,
+        "timing": {
+          "wall_seconds": 6226.047,
+          "model_wait_seconds": 51.372,
+          "review_pause_seconds": 6032.345,
+          "non_review_session_seconds": 193.702,
+          "emulated_seconds": 2276.4
+        },
+        "video": {
+          "filename": "video-037.mp4",
+          "fps": 15,
+          "frames": 5014,
+          "playback_seconds": 334.26666666666665,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "1f6399d6a778e8ea6ea64dc89c0c71e0a7548f957a6f631129ae7e7ae334ed09"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-039.mp4",
+      "sha256": "1307710509dfd31b5ae261e6136567d5619a96f35f1eea9c2a0badb11ff957c5",
+      "bytes": 866259,
+      "frames_decoded": 1736,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 115.73333333333333,
+      "stream": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 432,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "15/1",
+        "avg_frame_rate": "15/1",
+        "nb_frames": "1736",
+        "duration": "115.733333"
+      },
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-039.jsonl",
+      "source_log_sha256": "cfdea40ab257ea8b980df083c3544d7da8c7afc1f7149aa92d3a0c116d64f528",
+      "source_first_step": 2261,
+      "source_last_step": 2350,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:56:21.485282+00:00",
+        "segment": 39,
+        "timing": {
+          "wall_seconds": 6455.406,
+          "model_wait_seconds": 54.512,
+          "review_pause_seconds": 6233.58,
+          "non_review_session_seconds": 221.826,
+          "emulated_seconds": 2672.533
+        },
+        "video": {
+          "filename": "video-039.mp4",
+          "fps": 15,
+          "frames": 1736,
+          "playback_seconds": 115.73333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "d0d1a892e27774c9698e78c63a6c29973ab672c602cff22f7dc14c9980708e61"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-040.mp4",
+      "sha256": "798490e5de2f15cede744ec6952527686206d4a0a472b046871f281850baf6af",
+      "bytes": 535127,
+      "frames_decoded": 958,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 63.86666666666667,
+      "stream": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 432,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "15/1",
+        "avg_frame_rate": "15/1",
+        "nb_frames": "958",
+        "duration": "63.866667"
+      },
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-040.jsonl",
+      "source_log_sha256": "c960e44c72d12387c636d04a6cf9b4124218876024ae7e823c07c2b666674846",
+      "source_first_step": 2351,
+      "source_last_step": 2393,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T17:00:37.975556+00:00",
+        "segment": 40,
+        "timing": {
+          "wall_seconds": 6711.891,
+          "model_wait_seconds": 54.558,
+          "review_pause_seconds": 6486.315,
+          "non_review_session_seconds": 225.576,
+          "emulated_seconds": 2736.4
+        },
+        "video": {
+          "filename": "video-040.mp4",
+          "fps": 15,
+          "frames": 958,
+          "playback_seconds": 63.86666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "4b787d4b23bbb1219e2a8de843ca26b432bc4698ed5a5126a36bee6a4d727eb2"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+      "sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152",
+      "bytes": 525619,
+      "frames_decoded": 1612,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 107.46666666666667,
+      "stream": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 480,
+        "height": 432,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "15/1",
+        "avg_frame_rate": "15/1",
+        "nb_frames": "1612",
+        "duration": "107.466667"
+      },
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-041.jsonl",
+      "source_log_sha256": "1ca23b4b19cd59d204eecafbabd7b97c20b5ffdb6467cdef8fcab4eddbffdd87",
+      "source_first_step": 2394,
+      "source_last_step": 2453,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T17:02:46.338789+00:00",
+        "segment": 41,
+        "timing": {
+          "wall_seconds": 6840.266,
+          "model_wait_seconds": 54.637,
+          "review_pause_seconds": 6608.143,
+          "non_review_session_seconds": 232.123,
+          "emulated_seconds": 2843.867
+        },
+        "video": {
+          "filename": "video-041.mp4",
+          "fps": 15,
+          "frames": 1612,
+          "playback_seconds": 107.46666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "662e654a5426de8a0254b03ed27a51432d7667e55a2f538b82bc1a6fa9181e77"
+    }
+  ],
+  "source_capture_png_receipts": [
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00109-battle-PIDGEOTTO.png",
+      "source_png_sha256": "16e53d451ad83b906ee00f11e0ca181575552496d6187b5165b2f06757a7f28c",
+      "source_png_decoded_rgb24_sha256": "130ca0876dd63d28c5a7fde56374c668f5975f3bf143b37e56175570faee5bbe",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 35,
+      "capture_record": {
+        "at": "2026-10-23T16:37:49.418943+00:00",
+        "kind": "battle-PIDGEOTTO",
+        "file": "keyframes/00109-battle-PIDGEOTTO.png",
+        "sha256": "16e53d451ad83b906ee00f11e0ca181575552496d6187b5165b2f06757a7f28c",
+        "location": {
+          "map_id": 143,
+          "x": 14,
+          "y": 6
+        },
+        "text": [
+          " PIDGEOTTO",
+          "     25",
+          "          FEAROW",
+          "               29",
+          "            90/ 90",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "timing": {
+          "wall_seconds": 5343.344,
+          "model_wait_seconds": 43.934,
+          "review_pause_seconds": 5196.766,
+          "non_review_session_seconds": 146.578,
+          "emulated_seconds": 1608.0
+        }
+      },
+      "capture_record_sha256_without_newline": "c887bea1909e26b693d9ecc4fb95d89c20a2fc836feded42a9f53cfeee9f5173"
+    },
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00115-trainer-defeated.png",
+      "source_png_sha256": "2f5a58a633b103d750ff3a711687e9e3dcdfbb5f535710276686ac7d6ebbbfbf",
+      "source_png_decoded_rgb24_sha256": "f4e6dd41322ead61655e338eb6ba187195e58d5ebd295af1857da38909fbc86a",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 35,
+      "capture_record": {
+        "at": "2026-10-23T16:38:06.892508+00:00",
+        "kind": "trainer-defeated",
+        "file": "keyframes/00115-trainer-defeated.png",
+        "sha256": "2f5a58a633b103d750ff3a711687e9e3dcdfbb5f535710276686ac7d6ebbbfbf",
+        "location": {
+          "map_id": 143,
+          "x": 14,
+          "y": 6
+        },
+        "text": [
+          "          NIDOKING",
+          "               29",
+          "            96/ 99",
+          " KEVIN defeated",
+          " BLUE!"
+        ],
+        "timing": {
+          "wall_seconds": 5360.813,
+          "model_wait_seconds": 48.059,
+          "review_pause_seconds": 5196.766,
+          "non_review_session_seconds": 164.047,
+          "emulated_seconds": 1843.867
+        }
+      },
+      "capture_record_sha256_without_newline": "645be1717d2f18b0cfde642afb52f96834890c2fdd4c860cf1ccac8dbfedaec0"
+    },
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00118-map-144.png",
+      "source_png_sha256": "a5bbfc6d28fffe1e281df836822aeef22bb81d77e91dc3689c424266f5eca09a",
+      "source_png_decoded_rgb24_sha256": "648042683962a56d9508d86cd520a60793b989aed3208345a64d7c3279aeb718",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 37,
+      "capture_record": {
+        "at": "2026-10-23T16:51:23.945924+00:00",
+        "kind": "map-144",
+        "file": "keyframes/00118-map-144.png",
+        "sha256": "a5bbfc6d28fffe1e281df836822aeef22bb81d77e91dc3689c424266f5eca09a",
+        "location": {
+          "map_id": 144,
+          "x": 3,
+          "y": 9
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 6157.859,
+          "model_wait_seconds": 49.464,
+          "review_pause_seconds": 5983.517,
+          "non_review_session_seconds": 174.342,
+          "emulated_seconds": 1989.467
+        }
+      },
+      "capture_record_sha256_without_newline": "b5189ba8dfab07d0ec7a9b37bfbf557ec4ee99842301174eac48241477abbf2c"
+    },
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00124-map-145.png",
+      "source_png_sha256": "d3939d5162f249192e6c56383ab7b2e4adb714bd5d8b582924dfde17006342bc",
+      "source_png_decoded_rgb24_sha256": "46e7eef39f27adf7871e117cb2f9011006e835e5f6344fe091794ecb36c2cb2b",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 37,
+      "capture_record": {
+        "at": "2026-10-23T16:51:30.819944+00:00",
+        "kind": "map-145",
+        "file": "keyframes/00124-map-145.png",
+        "sha256": "d3939d5162f249192e6c56383ab7b2e4adb714bd5d8b582924dfde17006342bc",
+        "location": {
+          "map_id": 145,
+          "x": 18,
+          "y": 9
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 6164.734,
+          "model_wait_seconds": 49.588,
+          "review_pause_seconds": 5983.517,
+          "non_review_session_seconds": 181.217,
+          "emulated_seconds": 2103.6
+        }
+      },
+      "capture_record_sha256_without_newline": "e5e9ef62a4e38fa14340f84d1ebcf20831af85fa687936a47138d54792efce41"
+    },
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00129-map-146.png",
+      "source_png_sha256": "c7a2c5951ee30d4b848d8131e57f8019d545282db0b006dcbcb6e85a4a8c7d54",
+      "source_png_decoded_rgb24_sha256": "457e695aaba5c73a1c5b1b8edd48a87fcaf3befbcda98259ff91d49ed8dbf711",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 37,
+      "capture_record": {
+        "at": "2026-10-23T16:51:41.594176+00:00",
+        "kind": "map-146",
+        "file": "keyframes/00129-map-146.png",
+        "sha256": "c7a2c5951ee30d4b848d8131e57f8019d545282db0b006dcbcb6e85a4a8c7d54",
+        "location": {
+          "map_id": 146,
+          "x": 3,
+          "y": 9
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 6175.516,
+          "model_wait_seconds": 51.278,
+          "review_pause_seconds": 5983.517,
+          "non_review_session_seconds": 191.999,
+          "emulated_seconds": 2254.667
+        }
+      },
+      "capture_record_sha256_without_newline": "2a3cb1ca8aa5edad0c539469c28e195049ce69fb2c57bbb7b47fe8beb7292672"
+    },
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00130-milestone-in_purified_zone.png",
+      "source_png_sha256": "99d2c7200c42fac21047a5ca828855e2df8d0f713e538fb70dc87d86b5ff881e",
+      "source_png_decoded_rgb24_sha256": "847f0ab88419bfae5e28ae56d3406b1a9b749eb77e198dede3fb20b8decc0d81",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 37,
+      "capture_record": {
+        "at": "2026-10-23T16:51:42.565577+00:00",
+        "kind": "milestone-in_purified_zone",
+        "file": "keyframes/00130-milestone-in_purified_zone.png",
+        "sha256": "99d2c7200c42fac21047a5ca828855e2df8d0f713e538fb70dc87d86b5ff881e",
+        "location": {
+          "map_id": 146,
+          "x": 11,
+          "y": 9
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 6176.484,
+          "model_wait_seconds": 51.356,
+          "review_pause_seconds": 5983.517,
+          "non_review_session_seconds": 192.967,
+          "emulated_seconds": 2267.333
+        }
+      },
+      "capture_record_sha256_without_newline": "a9f9518481e585c8668dd90e84e2603a0bcf276f1742aa643391d04b047798a7"
+    },
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00144-review-route_extension_required.png",
+      "source_png_sha256": "170995d416660fe7085d8e05c0d7533f85eafcd0c80670fe237bb09b565e5edf",
+      "source_png_decoded_rgb24_sha256": "f3cc575b7a7215738926a03b93e453ad9efec8ca78a4eddda125a1af42460aa7",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 39,
+      "capture_record": {
+        "at": "2026-10-23T16:53:55.991747+00:00",
+        "kind": "review-route_extension_required",
+        "file": "keyframes/00144-review-route_extension_required.png",
+        "sha256": "170995d416660fe7085d8e05c0d7533f85eafcd0c80670fe237bb09b565e5edf",
+        "location": {
+          "map_id": 147,
+          "x": 6,
+          "y": 7
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 6309.906,
+          "model_wait_seconds": 54.512,
+          "review_pause_seconds": 6088.205,
+          "non_review_session_seconds": 221.701,
+          "emulated_seconds": 2671.867
+        }
+      },
+      "capture_record_sha256_without_newline": "8515289583985cfa9ae175b38560b8cc8141f5982a5fa5bad9ab7cb592cfe079"
+    },
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00146-battle-MAROWAK.png",
+      "source_png_sha256": "e3e7e2f472038d8eaea7a39995e218166554d55facbbac820b56e37de66be1c4",
+      "source_png_decoded_rgb24_sha256": "807a31dc8afba34af1102b35d7353604e0f268122faac86e8bbeae2352177983",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 41,
+      "capture_record": {
+        "at": "2026-10-23T17:00:39.366383+00:00",
+        "kind": "battle-MAROWAK",
+        "file": "keyframes/00146-battle-MAROWAK.png",
+        "sha256": "e3e7e2f472038d8eaea7a39995e218166554d55facbbac820b56e37de66be1c4",
+        "location": {
+          "map_id": 147,
+          "x": 10,
+          "y": 16
+        },
+        "text": [
+          " MAROWAK",
+          "     30",
+          "          FEAROW",
+          "               31",
+          "            96/ 96",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "timing": {
+          "wall_seconds": 6713.281,
+          "model_wait_seconds": 54.558,
+          "review_pause_seconds": 6486.315,
+          "non_review_session_seconds": 226.966,
+          "emulated_seconds": 2762.0
+        }
+      },
+      "capture_record_sha256_without_newline": "bf5bcfa1cacad9e46bc5cc40c9388b491a204685c121578a008c026d1ca1eda8"
+    },
+    {
+      "source_png": "outputs/league-campaign-20261023-16/game/keyframes/00147-review-route_extension_required.png",
+      "source_png_sha256": "7d9dece88d9929cf139055e8dd88218d6cbea766e12ec2418c2d7cd3f179aba6",
+      "source_png_decoded_rgb24_sha256": "7984cd391d3ac6b8350e389facdab6162110f6f0527e1f34f4915cb318a01920",
+      "size": [
+        160,
+        144
+      ],
+      "source_closed_segment": 41,
+      "capture_record": {
+        "at": "2026-10-23T17:00:44.402863+00:00",
+        "kind": "review-route_extension_required",
+        "file": "keyframes/00147-review-route_extension_required.png",
+        "sha256": "7d9dece88d9929cf139055e8dd88218d6cbea766e12ec2418c2d7cd3f179aba6",
+        "location": {
+          "map_id": 148,
+          "x": 9,
+          "y": 16
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 6718.328,
+          "model_wait_seconds": 54.637,
+          "review_pause_seconds": 6486.315,
+          "non_review_session_seconds": 232.013,
+          "emulated_seconds": 2843.2
+        }
+      },
+      "capture_record_sha256_without_newline": "b46392d695e45e92597a2394c898cfe7e7f71a6f03ea884b71b77961dd2741ff"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "tower-blue-full-battle",
+      "caption_zh_tw": "寶可夢塔 BLUE 完整戰：大嘴雀1HP、正常換人、獲勝與戰後對話",
+      "source_intervals_steps_inclusive": [
+        [
+          1540,
+          1706
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_segment": 34,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-034.mp4",
+          "source_video_sha256": "9205443928b2040463f1d2b08224922f1f92f3761ea05663c613b40f908cb19e",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-034.jsonl",
+          "source_log_sha256": "667b6061e9a90721188d80fba64a9ecdc0f0a3fe4c5db6680be5cf7c1c52cc75",
+          "source_steps_inclusive": [
+            1540,
+            1540
+          ],
+          "source_start_frame_inclusive": 70,
+          "source_end_frame_exclusive": 80,
+          "source_frames": 10,
+          "source_duration_emulated_seconds": 0.6666666666666666,
+          "first_action_at_utc": "2026-10-23T16:37:47.715631+00:00",
+          "last_action_at_utc": "2026-10-23T16:37:47.715631+00:00"
+        },
+        {
+          "source_segment": 35,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-035.jsonl",
+          "source_log_sha256": "a791dc204fb4982513f8a9f4b94cdeca1301b367e5875b207acf7e9d7d053b29",
+          "source_steps_inclusive": [
+            1541,
+            1706
+          ],
+          "source_start_frame_inclusive": 0,
+          "source_end_frame_exclusive": 4476,
+          "source_frames": 4476,
+          "source_duration_emulated_seconds": 298.4,
+          "first_action_at_utc": "2026-10-23T16:37:48.009244+00:00",
+          "last_action_at_utc": "2026-10-23T16:38:08.857722+00:00"
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-blue-full-battle-post1x.mp4",
+          "sha256": "0d8edad4e8fb183bc3df9a4197fd77a7b4eca31807fa0816e9b5d4c870e227c3",
+          "bytes": 2450910,
+          "frames_decoded": 8972,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 299.06666666666666,
+          "stream": {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "8972",
+            "duration": "299.066667"
+          },
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 299.06666666666666,
+          "time_basis_zh_tw": "1x依模擬器影格；4x為後製4倍速，非模型決策速度。原片15fps，成片30fps；無音訊。"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-blue-full-battle-post4x.mp4",
+          "sha256": "bd0bf66bbe07e2516f1bd7bc8600f57b2535d510a05c04935ee6f058e8a4f9c0",
+          "bytes": 1217523,
+          "frames_decoded": 2243,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 74.76666666666667,
+          "stream": {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "2243",
+            "duration": "74.766667"
+          },
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 74.76666666666667,
+          "time_basis_zh_tw": "1x依模擬器影格；4x為後製4倍速，非模型決策速度。原片15fps，成片30fps；無音訊。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-challenge.png",
+          "source_step": 1551,
+          "source_segment": 35,
+          "source_frame_index": 297,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:37:49.056000+00:00",
+          "source_observed_text_zh_en": [
+            " BLUE wants",
+            " to fight!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "f1cf20f2f81b2f11911155b74e0bfc3699f9279ab4e6d159a83b8aa6ea802b58",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "223cf0850559fc80804c49d5eef39df53811d8f7dc45434319fa9fc0d7509d4c",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-pidgeotto.png",
+          "source_step": 1555,
+          "source_segment": 35,
+          "source_frame_index": 425,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:37:49.462209+00:00",
+          "source_observed_text_zh_en": [
+            " PIDGEOTTO",
+            "     25",
+            "          FEAROW",
+            "               29",
+            "            90/ 90",
+            "         ▶FIGHT",
+            "          ITEM  RUN"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "131366f394c5e2519d35c44209c39e6050f3cb9d8177e380f8f4dab7c50acc83",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "7b315a0ba18493ef74622807fc327bbbb02e6a9c73fa569e6765bb11e2ee16b9",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-enemy-dragon-rage.png",
+          "source_step": 1599,
+          "source_segment": 35,
+          "source_frame_index": 1569,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:37:54.723988+00:00",
+          "source_observed_text_zh_en": [
+            " GYARADOS",
+            "     22",
+            "          FEAROW",
+            "               29",
+            "            81/ 90",
+            " Enemy GYARADOS",
+            " used DRAGON RAGE!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "7a87ed519a844d293fc97822f3147b308929ff71fdbfa9af6fc49ac32bea4f35",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "56ab7550aca22ee4daa50ffc849b29faaaa10bb9d64659f6a5b696f4d3856240",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-fearow41hp.png",
+          "source_step": 1601,
+          "source_segment": 35,
+          "source_frame_index": 1633,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:37:54.888363+00:00",
+          "source_observed_text_zh_en": [
+            " GYARADOS",
+            "     22",
+            "          FEAROW",
+            "               29",
+            "            41/ 90",
+            "         ▶FIGHT",
+            "          ITEM  RUN"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "5feb908855eb74fb985924ea6746b8ec28f3b32ccb43766d7fb15aca4f0664cb",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "0cefef67d79b1fc935eb2c713246c468252e0916445f3a9b41653dea5faad849",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-fearow1hp-still-alive.png",
+          "source_step": 1609,
+          "source_segment": 35,
+          "source_frame_index": 1845,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:37:56.187216+00:00",
+          "source_observed_text_zh_en": [
+            " GYARADOS",
+            "     22",
+            "          FEAROW",
+            "               29",
+            "             1/ 90",
+            "         ▶FIGHT",
+            "          ITEM  RUN"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "4a12cedff491bf80a3e0964527fa4f4cf44ef75af92e1beec43e34406971b92d",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "87797753cf641eda85d78569042ce3181ffeeba72546d48da43f1c05dbf5c5cd",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-normal-switch-menu.png",
+          "source_step": 1614,
+          "source_segment": 35,
+          "source_frame_index": 1895,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:37:57.110448+00:00",
+          "source_observed_text_zh_en": [
+            "   FEAROW     29",
+            "               1/ 90",
+            "   NIDOKING   29",
+            "              99/ 99",
+            "   IVYSAUR    31",
+            "▷             86/ 86",
+            "   EEVEE      25",
+            "              63/ 63",
+            "            ▶SWITCH",
+            " Choose a P  STATS",
+            "             CANCEL"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "e174c46a12340970db37611ebaffdc831539238291b2236b70ea920bc9e82ba3",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "1fa1346fc98e0e93577b2537e9cc1082ca6c931fca846073bc5344944b72f858",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-ivysaur-entered.png",
+          "source_step": 1616,
+          "source_segment": 35,
+          "source_frame_index": 1937,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:37:57.355488+00:00",
+          "source_observed_text_zh_en": [
+            " GYARADOS",
+            "     22",
+            "          IVYSAUR",
+            "               31",
+            "            86/ 86",
+            " Get'm! IVYSAUR!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "9e9914625fe17258223a190f7d6995e1e337993d0e8840293a35be57f16b2124",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "8a68f5a2d4c2caa6e9fac71246fc23ff2297622b672a327727381f8a91432af2",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-nidoking-entered.png",
+          "source_step": 1669,
+          "source_segment": 35,
+          "source_frame_index": 3347,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:38:04.696230+00:00",
+          "source_observed_text_zh_en": [
+            " CHARMELEON",
+            "     25",
+            "          NIDOKING",
+            "               29",
+            "            99/ 99",
+            " Go! NIDOKING!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "d4374ae0564dd554965b8fdb080715a90805bf39121db3663ca3b060019832ce",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "fc1a818cae76ad17e4b7550b03be549c0d8e65b6b195d8e604127f0ce2089ced",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-victory.png",
+          "source_step": 1691,
+          "source_segment": 35,
+          "source_frame_index": 3963,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:38:07.009584+00:00",
+          "source_observed_text_zh_en": [
+            "          NIDOKING",
+            "               29",
+            "            96/ 99",
+            " KEVIN defeated",
+            " BLUE!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "8c0d68b96e385340a4b245cb50c2048d5836bc395dbdaf3a0b510fbeba5acc93",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "8e90144cc1957b70c36e8b588781952d4a7b18992b73ff8d7dfe57703f9f5517",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/blue-reward.png",
+          "source_step": 1695,
+          "source_segment": 35,
+          "source_frame_index": 4091,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:38:07.480425+00:00",
+          "source_observed_text_zh_en": [
+            "          NIDOKING",
+            "               29",
+            "            96/ 99",
+            " KEVIN got ¥1625",
+            " for winning!     ▼"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "78d131f7351597c755673b578cd994f6ac81fee5a171f54f4409e963a3d15ee3",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "f336a4e17f6041e7cb69f40c2653681274f15de1ad06de8f8c01ccd8e0b86409",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-035.mp4",
+          "source_video_sha256": "1031a6023c6df796e8c88555a811991f112ba1d99f7b0893f4e0e2e75055bd0d"
+        }
+      ],
+      "verified_result": {
+        "victory_text_pre_action_step": 1691,
+        "victory_text_at_utc": "2026-10-23T16:38:07.009584+00:00",
+        "first_positive_rival_event_step": 1696,
+        "first_positive_rival_event_at_utc": "2026-10-23T16:38:07.606485+00:00",
+        "opponents_visible_in_order": [
+          "PIDGEOTTO",
+          "EXEGGCUTE",
+          "GYARADOS",
+          "KADABRA",
+          "CHARMELEON"
+        ],
+        "fearow_minimum_hp": 1,
+        "fearow_max_hp": 90,
+        "any_party_fainted": false,
+        "normal_switch_menu_step": 1614,
+        "ivysaur_entered_step": 1616,
+        "nidoking_entered_step": 1669,
+        "final_party": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 29,
+            "hp": 1,
+            "max_hp": 90,
+            "exp": 26793,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              29,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 29,
+            "hp": 96,
+            "max_hp": 99,
+            "exp": 21241,
+            "status": 0,
+            "moves": [
+              61,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              18,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 31,
+            "hp": 56,
+            "max_hp": 86,
+            "exp": 26348,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              22,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 25,
+            "hp": 63,
+            "max_hp": 63,
+            "exp": 15625,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              0,
+              0
+            ],
+            "pp": [
+              35,
+              15,
+              0,
+              0
+            ]
+          }
+        ],
+        "reward": 1625
+      },
+      "notes_zh_tw": "1540正常UP觸發對話，完整保留五隻對手及兩次正常PKMN/SWITCH換人，至1706戰後對話關閉。大嘴雀1/90仍存活，沒有將其寫成全隊敗北。未收1707恢復後的START選單及返中心。",
+      "within_scene_action_frames_omitted": 0
+    },
+    {
+      "id": "tower-3f-5f-purified-healing",
+      "caption_zh_tw": "塔3至5樓正常移動、沿途戰鬥與淨化區實際恢復",
+      "source_intervals_steps_inclusive": [
+        [
+          1850,
+          2054
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_segment": 37,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-037.jsonl",
+          "source_log_sha256": "673f6eb3894917820842edc18bc9fbc7818b143b94aa0f4fa038fb745d88ae47",
+          "source_steps_inclusive": [
+            1850,
+            2054
+          ],
+          "source_start_frame_inclusive": 710,
+          "source_end_frame_exclusive": 5004,
+          "source_frames": 4294,
+          "source_duration_emulated_seconds": 286.26666666666665,
+          "first_action_at_utc": "2026-10-23T16:51:23.986857+00:00",
+          "last_action_at_utc": "2026-10-23T16:51:43.118305+00:00"
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-3f-5f-purified-healing-post1x.mp4",
+          "sha256": "de3c8660b42fa23992da48f46d661c4eb669d1a3a854846c71638f06071a8bdb",
+          "bytes": 2854868,
+          "frames_decoded": 8588,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 286.26666666666665,
+          "stream": {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "8588",
+            "duration": "286.266667"
+          },
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 286.26666666666665,
+          "time_basis_zh_tw": "1x依模擬器影格；4x為後製4倍速，非模型決策速度。原片15fps，成片30fps；無音訊。"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-3f-5f-purified-healing-post4x.mp4",
+          "sha256": "669e7de3d95d054f5c17a131f86d7262f0708f23f96295fdda7cff22bc55c52e",
+          "bytes": 1900881,
+          "frames_decoded": 2147,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 71.56666666666666,
+          "stream": {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "2147",
+            "duration": "71.566667"
+          },
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 71.56666666666666,
+          "time_basis_zh_tw": "1x依模擬器影格；4x為後製4倍速，非模型決策速度。原片15fps，成片30fps；無音訊。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower3f-normal-navigation.png",
+          "source_step": 1850,
+          "source_segment": 37,
+          "source_frame_index": 719,
+          "source_frame_basis": "after",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:51:23.986857+00:00",
+          "source_observed_text_zh_en": [],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "a166d49cde6509bdb1cc4ea869c10ccb9516e63b24731b24b7f4744f81391de7",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "76e8ebff7d2db52a6924cc58f20e2cc659e063d39e02003b354dd590b44211e1",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-fearow-level30.png",
+          "source_step": 1888,
+          "source_segment": 37,
+          "source_frame_index": 1485,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:51:27.175804+00:00",
+          "source_observed_text_zh_en": [
+            "          FEAROW",
+            "               30",
+            "            93/ 93",
+            " FEAROW grew",
+            " to level 30!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "3cd43d263746023908af0f9cc8d5f87b7455a8631aa2cca480122dd86ad9480d",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "456ffbd58fb9b4da54d06b9cc548898f103cf6f38891b2da05dccc305d293081",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower4f-normal-navigation.png",
+          "source_step": 1931,
+          "source_segment": 37,
+          "source_frame_index": 2431,
+          "source_frame_basis": "after",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:51:30.862967+00:00",
+          "source_observed_text_zh_en": [],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "0fc97642c38563534f0dcd831eec930a527a0dfff4086ba6b55ae95dfc186410",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "d99a6cb4bbc6d29e2270d1f7aaea49c1a3d2a0a9ecf8bfcd447c27cba8d369b9",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-before-purification78hp.png",
+          "source_step": 1986,
+          "source_segment": 37,
+          "source_frame_index": 3807,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:51:38.018478+00:00",
+          "source_observed_text_zh_en": [
+            " GASTLY",
+            "     23",
+            "          FEAROW",
+            "               30",
+            "            78/ 93",
+            "         ▶FIGHT",
+            "          ITEM  RUN"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "5e163afc877ef91322c2cc66d40b02deb920498e08d778edea79cf2eb6356b14",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "aeadf84d4f21cf6601373ae18bf4dc697c967bb72d8cdb3a5c5b180f65421c5b",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower5f-normal-navigation.png",
+          "source_step": 2030,
+          "source_segment": 37,
+          "source_frame_index": 4697,
+          "source_frame_basis": "after",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:51:41.638320+00:00",
+          "source_observed_text_zh_en": [],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "f98aed72e760ce9182081d69a89f48c95a35f189a3454892ae5404d4e97ca15b",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "d5e9717d5c600954573f5fdec15f12e7115e388fbd8d81e886347968b84a2d43",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-purified-zone-text.png",
+          "source_step": 2052,
+          "source_segment": 37,
+          "source_frame_index": 4929,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:51:42.952570+00:00",
+          "source_observed_text_zh_en": [
+            " Entered purified,",
+            " protected zone!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "a7401a8ae57cfc674e9a0698ba27402f5df2f67611b2fd10db5503865cc3ada5",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "4e9aaf6b8279a41c1126584ac91cd1aa2a95534cc773f53e465739a35460c123",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-fully-healed-text.png",
+          "source_step": 2053,
+          "source_segment": 37,
+          "source_frame_index": 4961,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:51:43.072448+00:00",
+          "source_observed_text_zh_en": [
+            " KEVIN's POKéMON",
+            " are fully healed!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "03a41ac169e4cc9561820c06293edb875a36709bb4deb3ff9c42898f76419d73",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "0fbcd6109e7c707623d22894f8f29a020981d100408c9f5b5d950d8c182744fb",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-healing-message-closed.png",
+          "source_step": 2054,
+          "source_segment": 37,
+          "source_frame_index": 5003,
+          "source_frame_basis": "after",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:51:43.118305+00:00",
+          "source_observed_text_zh_en": [],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "6e3f02f098fa7c8c69bf5ec4f06ab4473aee29ca1d5460c65d156f5b57dc5ccc",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "a2b535a5b9ab94c746d3b2da1c00f5f71c26af8a133ac7620995793fbf963cca",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-037.mp4",
+          "source_video_sha256": "26247c7294ef1534b425947726169ac42fe31b37019cef81636c6776690cc29c"
+        }
+      ],
+      "verified_result": {
+        "floor_entry_steps": {
+          "3F_map144": 1850,
+          "4F_map145": 1931,
+          "5F_map146": 2030
+        },
+        "before_heal_step": 2048,
+        "after_heal_step": 2049,
+        "healed_text_step": 2053,
+        "after_heal_observed_at_utc": "2026-10-23T16:51:42.633719+00:00",
+        "heal_location": {
+          "map_id": 146,
+          "x": 11,
+          "y": 9
+        },
+        "fearow_hp_before_after": [
+          78,
+          93
+        ],
+        "fearow_max_hp": 93,
+        "peck_pp_before_after": [
+          25,
+          35
+        ],
+        "party_before_healing": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 30,
+            "hp": 78,
+            "max_hp": 93,
+            "exp": 28709,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              25,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 29,
+            "hp": 99,
+            "max_hp": 99,
+            "exp": 21241,
+            "status": 0,
+            "moves": [
+              61,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 31,
+            "hp": 86,
+            "max_hp": 86,
+            "exp": 26348,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 25,
+            "hp": 63,
+            "max_hp": 63,
+            "exp": 15625,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              0,
+              0
+            ],
+            "pp": [
+              35,
+              15,
+              0,
+              0
+            ]
+          }
+        ],
+        "party_after_healing": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 30,
+            "hp": 93,
+            "max_hp": 93,
+            "exp": 28709,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 29,
+            "hp": 99,
+            "max_hp": 99,
+            "exp": 21241,
+            "status": 0,
+            "moves": [
+              61,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 31,
+            "hp": 86,
+            "max_hp": 86,
+            "exp": 26348,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 25,
+            "hp": 63,
+            "max_hp": 63,
+            "exp": 15625,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              0,
+              0
+            ],
+            "pp": [
+              35,
+              15,
+              0,
+              0
+            ]
+          }
+        ],
+        "other_party_unchanged": true
+      },
+      "notes_zh_tw": "從3F已進圖開始，保留3F/4F的訓練家與野生戰、樓梯及到5F淨化區的全部動作。2048至2049大嘴雀HP78→93/93且PECK PP25→35，配合完整治療訊息，屬真實恢復。這段未收戰前後返寶可夢中心，也未剪去沿途傷害。",
+      "within_scene_action_frames_omitted": 0
+    },
+    {
+      "id": "tower6f-rare-candy-pickup",
+      "caption_zh_tw": "6樓正常A拾取神奇糖果，關閉訊息後走過原本精靈球所在格",
+      "source_intervals_steps_inclusive": [
+        [
+          2344,
+          2350
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_segment": 39,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-039.mp4",
+          "source_video_sha256": "1307710509dfd31b5ae261e6136567d5619a96f35f1eea9c2a0badb11ff957c5",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-039.jsonl",
+          "source_log_sha256": "cfdea40ab257ea8b980df083c3544d7da8c7afc1f7149aa92d3a0c116d64f528",
+          "source_steps_inclusive": [
+            2344,
+            2350
+          ],
+          "source_start_frame_inclusive": 1644,
+          "source_end_frame_exclusive": 1736,
+          "source_frames": 92,
+          "source_duration_emulated_seconds": 6.133333333333334,
+          "first_action_at_utc": "2026-10-23T16:53:54.894254+00:00",
+          "last_action_at_utc": "2026-10-23T16:56:21.418403+00:00"
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower6f-rare-candy-pickup-post1x.mp4",
+          "sha256": "9e8f765bf85961b5a9a34003c9f720ad0c1d17b69e2a9b4ca3788ebf88c5b10c",
+          "bytes": 155270,
+          "frames_decoded": 184,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 6.133333333333334,
+          "stream": {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "184",
+            "duration": "6.133333"
+          },
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 6.133333333333334,
+          "time_basis_zh_tw": "1x依模擬器影格；4x為後製4倍速，非模型決策速度。原片15fps，成片30fps；無音訊。"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower6f-rare-candy-pickup-post4x.mp4",
+          "sha256": "a0d82ebb574a852ba7ee1e745082ae9f6d888cefe2647b835ca72d4ef7c67395",
+          "bytes": 130030,
+          "frames_decoded": 46,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 1.5333333333333334,
+          "stream": {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "46",
+            "duration": "1.533333"
+          },
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 1.5333333333333334,
+          "time_basis_zh_tw": "1x依模擬器影格；4x為後製4倍速，非模型決策速度。原片15fps，成片30fps；無音訊。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/tower-journey-20261024/candy-approach.png",
+          "source_step": 2344,
+          "source_segment": 39,
+          "source_frame_index": 1643,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:53:54.894254+00:00",
+          "source_observed_text_zh_en": [],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "76ecb774b5aa5d05b52459ac1cece3612bd874394a68f4492e06e8ec05863da9",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "1c208559a751eeaafeab675fe3b3163df632ea93b7aac998c081200304c719ca",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-039.mp4",
+          "source_video_sha256": "1307710509dfd31b5ae261e6136567d5619a96f35f1eea9c2a0badb11ff957c5"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/candy-before-pickup.png",
+          "source_step": 2348,
+          "source_segment": 39,
+          "source_frame_index": 1683,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:53:55.822130+00:00",
+          "source_observed_text_zh_en": [],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "bae35f3bcbf51b047b8f4fdc5327450937da1c7d8e6f4ce01004c316f3d33ae7",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "b79fa19d6c061659b875a57e6233d652959d9725889b927fc0981cf9238b8b99",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-039.mp4",
+          "source_video_sha256": "1307710509dfd31b5ae261e6136567d5619a96f35f1eea9c2a0badb11ff957c5"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/candy-full-found-message.png",
+          "source_step": 2349,
+          "source_segment": 39,
+          "source_frame_index": 1706,
+          "source_frame_basis": "inside",
+          "inside_action_frame_offset": 12,
+          "source_step_at_utc": "2026-10-23T16:53:55.958012+00:00",
+          "source_observed_text_zh_en": [
+            " KEVIN"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "49812c08bdcda3ab46df30132578f7e002551abf643c3093a2e9a54eea83b71a",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "58d543b84f985ff92e5f5342ea81099b650580705c17a3f0e5940e1f0545bf5e",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-039.mp4",
+          "source_video_sha256": "1307710509dfd31b5ae261e6136567d5619a96f35f1eea9c2a0badb11ff957c5"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/candy-message-closed-before-walk.png",
+          "source_step": 2350,
+          "source_segment": 39,
+          "source_frame_index": 1725,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:56:21.418403+00:00",
+          "source_observed_text_zh_en": [],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "c238838d71c58f2e4f0021acd0a190b0ca2c311e54f8bce03a56e848fca0a47f",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "dab419d9c6bb8e0003b7336a7074e2e61f274ee36ab95c5955d0a2b2e2d88d6a",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-039.mp4",
+          "source_video_sha256": "1307710509dfd31b5ae261e6136567d5619a96f35f1eea9c2a0badb11ff957c5"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/candy-former-ball-tile-crossed.png",
+          "source_step": 2350,
+          "source_segment": 39,
+          "source_frame_index": 1735,
+          "source_frame_basis": "after",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T16:56:21.418403+00:00",
+          "source_observed_text_zh_en": [],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "5783120abc3f6d98c3d3ad55295e63f91455a803157a433b437b03589c6c2533",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "6e5aef80fc38ccbec864faf65ee4db9384d303bca945a1bbd46827a903e6b7ea",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-039.mp4",
+          "source_video_sha256": "1307710509dfd31b5ae261e6136567d5619a96f35f1eea9c2a0badb11ff957c5"
+        }
+      ],
+      "verified_result": {
+        "item_id": 40,
+        "item_name": "RARE CANDY",
+        "quantity_before_after": [
+          0,
+          1
+        ],
+        "normal_pickup_action_step": 2348,
+        "first_inventory_observation_step": 2349,
+        "first_inventory_observation_at_utc": "2026-10-23T16:53:55.958012+00:00",
+        "full_message_source_segment": 39,
+        "full_message_source_frame": 1706,
+        "normal_walk_step": 2350,
+        "post_walk_observed_step": 2351,
+        "post_walk_location": {
+          "map_id": 147,
+          "x": 6,
+          "y": 8
+        },
+        "other_inventory_unchanged": true,
+        "party_unchanged": true,
+        "consumed_or_used": false
+      },
+      "notes_zh_tw": "保留2344至2350連續動作。2348在147(6,7)面向原球格(6,8)按A，2349完整文字的來源影格1706可見RARE CANDY!；item40由0變1。2350正常DOWN後踏上(6,8)，以已關閉下一段2351的觀測交叉核對；不靠球消失一項判定取得。4x僅1.5秒左右，閱讀文字請看1x或PNG。",
+      "within_scene_action_frames_omitted": 0
+    },
+    {
+      "id": "tower-marowak-reveal-battle-rest",
+      "caption_zh_tw": "透視鏡顯形嘎啦嘎啦、完整戰鬥與母親靈魂安息",
+      "source_intervals_steps_inclusive": [
+        [
+          2394,
+          2452
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_segment": 41,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-041.jsonl",
+          "source_log_sha256": "1ca23b4b19cd59d204eecafbabd7b97c20b5ffdb6467cdef8fcab4eddbffdd87",
+          "source_steps_inclusive": [
+            2394,
+            2452
+          ],
+          "source_start_frame_inclusive": 0,
+          "source_end_frame_exclusive": 1602,
+          "source_frames": 1602,
+          "source_duration_emulated_seconds": 106.8,
+          "first_action_at_utc": "2026-10-23T17:00:38.112739+00:00",
+          "last_action_at_utc": "2026-10-23T17:00:44.372754+00:00"
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-marowak-reveal-battle-rest-post1x.mp4",
+          "sha256": "a66c20828603ccd8108c9ee3c690cfad53bb56a58585a5bfab3251da3ae8185a",
+          "bytes": 801606,
+          "frames_decoded": 3204,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 106.8,
+          "stream": {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "3204",
+            "duration": "106.800000"
+          },
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 106.8,
+          "time_basis_zh_tw": "1x依模擬器影格；4x為後製4倍速，非模型決策速度。原片15fps，成片30fps；無音訊。"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/tower-marowak-reveal-battle-rest-post4x.mp4",
+          "sha256": "3a6dafb99f2786fd7b47919069a83e7be837b6f5f0ee2696d091bc94a9bae9df",
+          "bytes": 427527,
+          "frames_decoded": 801,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 26.7,
+          "stream": {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "801",
+            "duration": "26.700000"
+          },
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 26.7,
+          "time_basis_zh_tw": "1x依模擬器影格；4x為後製4倍速，非模型決策速度。原片15fps，成片30fps；無音訊。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-be-gone.png",
+          "source_step": 2395,
+          "source_segment": 41,
+          "source_frame_index": 31,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:38.210614+00:00",
+          "source_observed_text_zh_en": [
+            " Be gone...",
+            " Intruders..."
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "f47ed140e96cabcf3d0a736a9dce4c4c4b7bfebbcd9c0d9f685305d8bc749c0c",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "31dbab0e33bc07599a74fbac5ae4a030e673d0b43c3c06bff6543f28bfd9754e",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-ghost-appeared.png",
+          "source_step": 2398,
+          "source_segment": 41,
+          "source_frame_index": 127,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:38.522231+00:00",
+          "source_observed_text_zh_en": [
+            " GHOST",
+            " appeared!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "cb2fae52eaba3d5774468e315301e598c3ebc3ab2ad1c7d9d05cdc8db12263b3",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "270f38b4ebad4aee5f81d752fb7601d14cda7f332614152b09f6c1f1f9c2ffd4",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-silph-scope-name.png",
+          "source_step": 2399,
+          "source_segment": 41,
+          "source_frame_index": 159,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:38.646928+00:00",
+          "source_observed_text_zh_en": [
+            " SILPH SCOPE",
+            " unveiled the"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "158ea6a6a04f341c8e0f69c10e81b5029c587234652ec1ab0567ef91b73e7426",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "95944a2ea480e7b34d3318327ea1b463da9b5e0dc5ab55d1338a202e6ea45e66",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-identity-revealed.png",
+          "source_step": 2400,
+          "source_segment": 41,
+          "source_frame_index": 191,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:38.763120+00:00",
+          "source_observed_text_zh_en": [
+            " unveiled the",
+            " GHOST's identity!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "f9a4971995d7bdb2fd797bb375c39c8c31f219ea8c84823d3e263ba787c257aa",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "c5f6d0645320c7310295f9f6ec68ded1ebf8d77c152a121370b1542c33f9fe10",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-appeared.png",
+          "source_step": 2403,
+          "source_segment": 41,
+          "source_frame_index": 287,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:39.117866+00:00",
+          "source_observed_text_zh_en": [
+            " Wild MAROWAK",
+            " appeared!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "9d37dc38a895c4033900c4e17511922f3518aa17bb5db6381aa03e09fc8d9191",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "bcafa1f1526c6594f5ae0135bce0527fcc01beed5d85f644b413c212ebc9e36b",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-level30-matchup.png",
+          "source_step": 2406,
+          "source_segment": 41,
+          "source_frame_index": 383,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:39.407475+00:00",
+          "source_observed_text_zh_en": [
+            " MAROWAK",
+            "     30",
+            "          FEAROW",
+            "               31",
+            "            96/ 96",
+            "         ▶FIGHT",
+            "          ITEM  RUN"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "afb71825292c6783fb34946f7209a92ef53b7f27e768f3824adc969ed24595a0",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "c69ab8f380fb7d18198bec97974bab7e9e67361a3172e3777d899454bb7945ea",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-bone-club-no-effect.png",
+          "source_step": 2427,
+          "source_segment": 41,
+          "source_frame_index": 923,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:41.557441+00:00",
+          "source_observed_text_zh_en": [
+            " MAROWAK",
+            "     30",
+            "          FEAROW",
+            "               31",
+            "            96/ 96",
+            " It doesn't affect",
+            " FEAROW!          ▼"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "9ca6274024029f400d13d6140e9f2e3bc17814a2104c8b254410fc56fee5dc13",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "49892d37bb51e391cc7b839979d4cbd2a8d9a7618d90b6187213e54b848ab5ba",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-fainted.png",
+          "source_step": 2445,
+          "source_segment": 41,
+          "source_frame_index": 1367,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:43.526372+00:00",
+          "source_observed_text_zh_en": [
+            "          FEAROW",
+            "               31",
+            "            96/ 96",
+            " Enemy MAROWAK",
+            " fainted!         ▼"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "590f1efefa03a6901a64dbc656cd69c6918dd35e244a663c74a8336a18958772",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "686fd2d79df8ab316fb6a2a7e4804319e284c6ebd8df8dcd8c62525a6e9a2ecf",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-cubones-mother.png",
+          "source_step": 2449,
+          "source_segment": 41,
+          "source_frame_index": 1495,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:44.058889+00:00",
+          "source_observed_text_zh_en": [
+            " restless soul of",
+            " CUBONE's mother!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "4c69625b24ffe282c20c35dae41ad2dcc1316ab69faaf9326cd0fcc81baa99fb",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "f7bcdbb0e9a141368605465b4adb747581b9143a831f1bcaeadeba0cb4599466",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-soul-calmed.png",
+          "source_step": 2450,
+          "source_segment": 41,
+          "source_frame_index": 1527,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:44.197056+00:00",
+          "source_observed_text_zh_en": [
+            " The mother's soul",
+            " was calmed."
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "1e6ea23edcf6970a5c61b7cbc5c33717b603d6de3a1114b0bd8fd34215981259",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "c4850e49dc88b20c15fcff3348bbbc7c0b32fe9409d0937269eab62da7f60006",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        },
+        {
+          "file": "outputs/videos/tower-journey-20261024/marowak-afterlife.png",
+          "source_step": 2451,
+          "source_segment": 41,
+          "source_frame_index": 1559,
+          "source_frame_basis": "before",
+          "inside_action_frame_offset": null,
+          "source_step_at_utc": "2026-10-23T17:00:44.322851+00:00",
+          "source_observed_text_zh_en": [
+            " It departed to",
+            " the afterlife!"
+          ],
+          "kind": "unmodified_decoded_source_video_frame",
+          "sha256": "cf088841f21c0b9fd8fb5abd8f5040f546a5c625ff099292ef0106f7255e42ba",
+          "size": [
+            480,
+            432
+          ],
+          "decoded_source_frame_rgb24_sha256": "b6a7373573f667cea6086fe48809fe284423431f24546827c56ce3b581648243",
+          "saved_png_pixels_equal_source_frame": true,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-041.mp4",
+          "source_video_sha256": "67f757750d40395cb7b05ae1733f44b11e992a5e9ba9f426b09cbc907b762152"
+        }
+      ],
+      "verified_result": {
+        "ghost_appeared_step": 2398,
+        "scope_text_step": 2399,
+        "identity_text_step": 2400,
+        "marowak_appeared_step": 2403,
+        "marowak_fainted_step": 2445,
+        "cubones_mother_step": 2449,
+        "soul_calmed_step": 2450,
+        "afterlife_step": 2451,
+        "first_positive_ghost_event_step": 2452,
+        "first_positive_ghost_event_at_utc": "2026-10-23T17:00:44.372754+00:00",
+        "normal_7f_entry_observed_step": 2453,
+        "normal_7f_entry_location": {
+          "map_id": 148,
+          "x": 9,
+          "y": 16
+        },
+        "fearow_hp_before_after": [
+          96,
+          96
+        ],
+        "captured": false
+      },
+      "notes_zh_tw": "完整連續保留2394警告、GHOST→SILPH SCOPE顯形、30級MAROWAK、全場PECK與敵方LEER/GROWL/BONE CLUB、擊敗及安息三頁。這是劇情嘎啦嘎啦，沒有捕捉成功聲明。2452普通LEFT後已到7F；未收入2453起的隊伍選單或後續火箭隊戰。",
+      "within_scene_action_frames_omitted": 0
+    }
+  ],
+  "qa_contact_sheets": [
+    {
+      "file": "outputs/videos/tower-journey-20261024/tower-blue-full-battle-contact-sheet.jpg",
+      "sha256": "d33f713b772d9d56e80c57fbe31c9b31780ff6ff6cb17afb847bd17150a31ea0",
+      "kind": "qa_only_scaled_contact_sheet"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/tower-3f-5f-purified-healing-contact-sheet.jpg",
+      "sha256": "51b20bd329b7e0ac58653cd0303e98fccf777130ff4b1224e098ee011b7a39f6",
+      "kind": "qa_only_scaled_contact_sheet"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/tower6f-rare-candy-pickup-contact-sheet.jpg",
+      "sha256": "485f853450de778363bb3588615bd938e673d7c07b2612b612a3489bf30ffb9f",
+      "kind": "qa_only_scaled_contact_sheet"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/tower-marowak-reveal-battle-rest-contact-sheet.jpg",
+      "sha256": "1ed40de78a7c0762beb676b85aa8a56f745f6a93bab4050c00295906895a0220",
+      "kind": "qa_only_scaled_contact_sheet"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/qa-output-source-comparison-contact-sheet.jpg",
+      "sha256": "f0613fbab0e8a1fe45e110cd64cef155dac1af26ce8d6a0ea87e3738073383dc",
+      "kind": "qa_only_output_sample_contact_sheet"
+    }
+  ],
+  "omitted_review_wall_pauses": [
+    {
+      "previous_action_step": 1706,
+      "next_action_step": 1707,
+      "previous_action_at_utc": "2026-10-23T16:38:08.857722+00:00",
+      "next_action_at_utc": "2026-10-23T16:39:23.473385+00:00",
+      "logged_review_pause_delta_seconds": 74.547,
+      "time_basis_zh_tw": "這是工程／review牆鐘差額，不在模擬器影片影格內。"
+    },
+    {
+      "previous_action_step": 2054,
+      "next_action_step": 2055,
+      "previous_action_at_utc": "2026-10-23T16:51:43.118305+00:00",
+      "next_action_at_utc": "2026-10-23T16:52:32.031443+00:00",
+      "logged_review_pause_delta_seconds": 48.828,
+      "time_basis_zh_tw": "這是工程／review牆鐘差額，不在模擬器影片影格內。"
+    },
+    {
+      "previous_action_step": 2349,
+      "next_action_step": 2350,
+      "previous_action_at_utc": "2026-10-23T16:53:55.958012+00:00",
+      "next_action_at_utc": "2026-10-23T16:56:21.418403+00:00",
+      "logged_review_pause_delta_seconds": 145.375,
+      "time_basis_zh_tw": "這是工程／review牆鐘差額，不在模擬器影片影格內。"
+    },
+    {
+      "previous_action_step": 2393,
+      "next_action_step": 2394,
+      "previous_action_at_utc": "2026-10-23T17:00:37.900515+00:00",
+      "next_action_at_utc": "2026-10-23T17:00:38.112739+00:00",
+      "logged_review_pause_delta_seconds": 0.0,
+      "time_basis_zh_tw": "這是工程／review牆鐘差額，不在模擬器影片影格內。"
+    }
+  ],
+  "summary": {
+    "themes": 4,
+    "clips": 8,
+    "key_pngs": 34,
+    "source_frames_fully_decoded": 13886,
+    "output_frames_fully_decoded": 26185,
+    "all_source_and_output_decode_passed": true,
+    "manual_visual_review": "agent_source_and_output_contact_sheets_visually_verified; parent_independent_review_pending",
+    "output_source_sample_checks_passed": 8
+  },
+  "publication_zh_tw": "未發布網站或影片，未操作Git。影片與PNG只在私人outputs；此results JSON可作公開整理收據。",
+  "limitations_zh_tw": [
+    "不以影片片長換算通關牆鐘時間。",
+    "BLUE戰大嘴雀1HP仍存活，整場勝利；未聲稱龍怒新防護已有實戰成功。",
+    "嘎啦嘎啦為劇情戰，沒有捕獲。",
+    "文字候選有逐字與跨頁，重要敘述另以來源影格和觀測交叉核對。"
+  ],
+  "output_source_sample_checks": [
+    {
+      "scene": "tower-blue-full-battle",
+      "postproduction_speed": 1,
+      "output_video": "outputs/videos/tower-journey-20261024/tower-blue-full-battle-post1x.mp4",
+      "output_video_sha256": "0d8edad4e8fb183bc3df9a4197fd77a7b4eca31807fa0816e9b5d4c870e227c3",
+      "output_sample_png": "outputs/videos/tower-journey-20261024/qa-output-tower-blue-full-battle-1x-frame-7946.png",
+      "output_sample_png_sha256": "ed5878d89945b95f94b8d06b5db0dffed443e6c016893606d90607cde997265d",
+      "output_frame_index": 7946,
+      "reference_source_png": "outputs/videos/tower-journey-20261024/blue-victory.png",
+      "reference_source_png_sha256": "8c0d68b96e385340a4b245cb50c2048d5836bc395dbdaf3a0b510fbeba5acc93",
+      "source_video_frame": 3963,
+      "mean_absolute_rgb24_difference": 0.130367,
+      "maximum_allowed_mae": 5,
+      "comparison_zh_tw": "來源PNG與有損H.264成片抽樣畫面對照；不是逐幀無損相等宣稱。"
+    },
+    {
+      "scene": "tower-blue-full-battle",
+      "postproduction_speed": 4,
+      "output_video": "outputs/videos/tower-journey-20261024/tower-blue-full-battle-post4x.mp4",
+      "output_video_sha256": "bd0bf66bbe07e2516f1bd7bc8600f57b2535d510a05c04935ee6f058e8a4f9c0",
+      "output_sample_png": "outputs/videos/tower-journey-20261024/qa-output-tower-blue-full-battle-4x-frame-1986.png",
+      "output_sample_png_sha256": "d2b2045c49f02367e92a9a80d038d8adc9376319f34dae67e3e8840d6d32d34c",
+      "output_frame_index": 1986,
+      "reference_source_png": "outputs/videos/tower-journey-20261024/blue-victory.png",
+      "reference_source_png_sha256": "8c0d68b96e385340a4b245cb50c2048d5836bc395dbdaf3a0b510fbeba5acc93",
+      "source_video_frame": 3963,
+      "mean_absolute_rgb24_difference": 0.157861,
+      "maximum_allowed_mae": 5,
+      "comparison_zh_tw": "來源PNG與有損H.264成片抽樣畫面對照；不是逐幀無損相等宣稱。"
+    },
+    {
+      "scene": "tower-3f-5f-purified-healing",
+      "postproduction_speed": 1,
+      "output_video": "outputs/videos/tower-journey-20261024/tower-3f-5f-purified-healing-post1x.mp4",
+      "output_video_sha256": "de3c8660b42fa23992da48f46d661c4eb669d1a3a854846c71638f06071a8bdb",
+      "output_sample_png": "outputs/videos/tower-journey-20261024/qa-output-tower-3f-5f-purified-healing-1x-frame-8502.png",
+      "output_sample_png_sha256": "2acf2ae1461874521018dcb060470c4837b295f696424eeb9ef8ac1b1b1c6dde",
+      "output_frame_index": 8502,
+      "reference_source_png": "outputs/videos/tower-journey-20261024/tower-fully-healed-text.png",
+      "reference_source_png_sha256": "03a41ac169e4cc9561820c06293edb875a36709bb4deb3ff9c42898f76419d73",
+      "source_video_frame": 4961,
+      "mean_absolute_rgb24_difference": 0.647391,
+      "maximum_allowed_mae": 5,
+      "comparison_zh_tw": "來源PNG與有損H.264成片抽樣畫面對照；不是逐幀無損相等宣稱。"
+    },
+    {
+      "scene": "tower-3f-5f-purified-healing",
+      "postproduction_speed": 4,
+      "output_video": "outputs/videos/tower-journey-20261024/tower-3f-5f-purified-healing-post4x.mp4",
+      "output_video_sha256": "669e7de3d95d054f5c17a131f86d7262f0708f23f96295fdda7cff22bc55c52e",
+      "output_sample_png": "outputs/videos/tower-journey-20261024/qa-output-tower-3f-5f-purified-healing-4x-frame-2125.png",
+      "output_sample_png_sha256": "488ae33ec8384755e157c6feaa883aebf564252b60da930a942df0e43d981fbd",
+      "output_frame_index": 2125,
+      "reference_source_png": "outputs/videos/tower-journey-20261024/tower-fully-healed-text.png",
+      "reference_source_png_sha256": "03a41ac169e4cc9561820c06293edb875a36709bb4deb3ff9c42898f76419d73",
+      "source_video_frame": 4961,
+      "mean_absolute_rgb24_difference": 0.642197,
+      "maximum_allowed_mae": 5,
+      "comparison_zh_tw": "來源PNG與有損H.264成片抽樣畫面對照；不是逐幀無損相等宣稱。"
+    },
+    {
+      "scene": "tower6f-rare-candy-pickup",
+      "postproduction_speed": 1,
+      "output_video": "outputs/videos/tower-journey-20261024/tower6f-rare-candy-pickup-post1x.mp4",
+      "output_video_sha256": "9e8f765bf85961b5a9a34003c9f720ad0c1d17b69e2a9b4ca3788ebf88c5b10c",
+      "output_sample_png": "outputs/videos/tower-journey-20261024/qa-output-tower6f-rare-candy-pickup-1x-frame-124.png",
+      "output_sample_png_sha256": "eceecff4ad64bc73cfe84b9a8f139122185ab0c943f6619e9b97a885dac0827b",
+      "output_frame_index": 124,
+      "reference_source_png": "outputs/videos/tower-journey-20261024/candy-full-found-message.png",
+      "reference_source_png_sha256": "49812c08bdcda3ab46df30132578f7e002551abf643c3093a2e9a54eea83b71a",
+      "source_video_frame": 1706,
+      "mean_absolute_rgb24_difference": 0.611034,
+      "maximum_allowed_mae": 5,
+      "comparison_zh_tw": "來源PNG與有損H.264成片抽樣畫面對照；不是逐幀無損相等宣稱。"
+    },
+    {
+      "scene": "tower6f-rare-candy-pickup",
+      "postproduction_speed": 4,
+      "output_video": "outputs/videos/tower-journey-20261024/tower6f-rare-candy-pickup-post4x.mp4",
+      "output_video_sha256": "a0d82ebb574a852ba7ee1e745082ae9f6d888cefe2647b835ca72d4ef7c67395",
+      "output_sample_png": "outputs/videos/tower-journey-20261024/qa-output-tower6f-rare-candy-pickup-4x-frame-31.png",
+      "output_sample_png_sha256": "6d2293960175f5f68b57e9d1da1d4820490b3ad077475ef9e31fb84026635683",
+      "output_frame_index": 31,
+      "reference_source_png": "outputs/videos/tower-journey-20261024/candy-full-found-message.png",
+      "reference_source_png_sha256": "49812c08bdcda3ab46df30132578f7e002551abf643c3093a2e9a54eea83b71a",
+      "source_video_frame": 1706,
+      "mean_absolute_rgb24_difference": 0.626543,
+      "maximum_allowed_mae": 5,
+      "comparison_zh_tw": "來源PNG與有損H.264成片抽樣畫面對照；不是逐幀無損相等宣稱。"
+    },
+    {
+      "scene": "tower-marowak-reveal-battle-rest",
+      "postproduction_speed": 1,
+      "output_video": "outputs/videos/tower-journey-20261024/tower-marowak-reveal-battle-rest-post1x.mp4",
+      "output_video_sha256": "a66c20828603ccd8108c9ee3c690cfad53bb56a58585a5bfab3251da3ae8185a",
+      "output_sample_png": "outputs/videos/tower-journey-20261024/qa-output-tower-marowak-reveal-battle-rest-1x-frame-3118.png",
+      "output_sample_png_sha256": "3a819196c2ea74db974cbd15160b883ee5cdd09eeaa937babf385e235f0acd79",
+      "output_frame_index": 3118,
+      "reference_source_png": "outputs/videos/tower-journey-20261024/marowak-afterlife.png",
+      "reference_source_png_sha256": "cf088841f21c0b9fd8fb5abd8f5040f546a5c625ff099292ef0106f7255e42ba",
+      "source_video_frame": 1559,
+      "mean_absolute_rgb24_difference": 0.433671,
+      "maximum_allowed_mae": 5,
+      "comparison_zh_tw": "來源PNG與有損H.264成片抽樣畫面對照；不是逐幀無損相等宣稱。"
+    },
+    {
+      "scene": "tower-marowak-reveal-battle-rest",
+      "postproduction_speed": 4,
+      "output_video": "outputs/videos/tower-journey-20261024/tower-marowak-reveal-battle-rest-post4x.mp4",
+      "output_video_sha256": "3a6dafb99f2786fd7b47919069a83e7be837b6f5f0ee2696d091bc94a9bae9df",
+      "output_sample_png": "outputs/videos/tower-journey-20261024/qa-output-tower-marowak-reveal-battle-rest-4x-frame-779.png",
+      "output_sample_png_sha256": "538eafc2da1688105996ced85f4c5a0e7f98b8162101f589a74e6759130110ae",
+      "output_frame_index": 779,
+      "reference_source_png": "outputs/videos/tower-journey-20261024/marowak-afterlife.png",
+      "reference_source_png_sha256": "cf088841f21c0b9fd8fb5abd8f5040f546a5c625ff099292ef0106f7255e42ba",
+      "source_video_frame": 1559,
+      "mean_absolute_rgb24_difference": 0.567486,
+      "maximum_allowed_mae": 5,
+      "comparison_zh_tw": "來源PNG與有損H.264成片抽樣畫面對照；不是逐幀無損相等宣稱。"
+    }
+  ],
+  "qa_unselected_pngs": [
+    {
+      "file": "outputs/videos/tower-journey-20261024/marowak-normal-upstairs.png",
+      "sha256": "c1417db9d58ac7e5a3466168bcbb365de07f514d495441a45bca4baa91368dc3",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/marowak-silph-scope.png",
+      "sha256": "a0a1a36abc1da4fa33150022275aa02562b64dc692e5b5247ee90ad6ff349de6",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01694.png",
+      "sha256": "d326f37395b4f9f9ed487cadd847ba75d174388f5c104128599191d0cd0ea71a",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01696.png",
+      "sha256": "bd513e8efee7533b0548d4342b0ee3ed99ce48ecdb0814dccb15a5d7a98efc3f",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01698.png",
+      "sha256": "47600d86b7b4abd03fed3e7db87acdc28280e3f8284b2fa92997e89678d4ac69",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01700.png",
+      "sha256": "54839e159cb0faf502ced9a35ed86b4d6c3b777be712d31c98b4f1888f00056e",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01702.png",
+      "sha256": "8bdb9d37c32cd10d1db27406f49c13d28ac0418444e2c3141797326cad3f5723",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01704.png",
+      "sha256": "05b3daa79a5f5e2d3601166ec08a835c14c02e4399e9cac2639b76cefda10df2",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01706.png",
+      "sha256": "6f3803a2d3aa0eb5ee3a04b218a5278815a77a91b467ff5c11683763aa31870a",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01708.png",
+      "sha256": "37ceb3f0dea13f70e7a797c37663838a74afd546210b9342713e9fde393ea4d6",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01710.png",
+      "sha256": "6737d82308a18004f0f4193a0357b90e5ed22a61eb1810a78d43bc28988b58d5",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01712.png",
+      "sha256": "fc65ad4ac4e22fad9e6632e7c8464b608f31a0c32eb2914ae37bc703ab2a3e60",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01714.png",
+      "sha256": "77bc5fc5a4419e8fc71ba0a8476b306712a3a20da15d339ddb92d651910d10ae",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01716.png",
+      "sha256": "3f90c555e23561f41dc7be9210d32f7304e466a9291b7971d7374c2f490fc7b2",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01718.png",
+      "sha256": "50519234699a3251bdc2cdb16829c05e5157f4147469d033b583e7645973bb33",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01720.png",
+      "sha256": "bac479c4b87551aaf6902750a5e9ff660603c0df84a329fe53c0c73a0794c355",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01722.png",
+      "sha256": "8817f709840dcc30246b0882182e2c88587bb9aa27825c58c4155b47c8a7b198",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-candy-frame-01724.png",
+      "sha256": "c61c1cb991713e5901fd9b55dbac2191688a061ff2c9ab01ae399844f28a1d6a",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-scope-name-159.png",
+      "sha256": "95e15866dd886cd0f62b70707502db6dc80ffd4060db046443c0b535bac87940",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-tower3f-719.png",
+      "sha256": "7e64d10af65bbfa8f8347b228b9cc3864ec8858b8efeef8ebd078eafb975e887",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-tower4f-2431.png",
+      "sha256": "ed5d9d002b5c59081e71839d7dc3009bed6ac476ab00a8d1decefd1d04ad28df",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/probe-tower5f-4697.png",
+      "sha256": "4a5f0dbc8c8337932165faf27bc059b287cc216f646856164bb920b3ca5a1949",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/tower-purified-tile-restored.png",
+      "sha256": "99b489f67bfddebffc962c32653fcfbd7eea042263cfdc197cbed49687d12241",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/tower3f-entry.png",
+      "sha256": "2e49f3d7f84286d425f182941a6ee3d381cd39f39bbc583a448730812110e9cd",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/tower4f-entry.png",
+      "sha256": "e74ba5d322f11cfbdf4516eb5a5f9c9540a5b569dc979b0dfdd50b18bc7a7626",
+      "kind": "qa_probe_or_unselected_source_frame"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/tower5f-entry.png",
+      "sha256": "908e15d507d4887e69f16d04059d47d6779e785c12b0de658630ba50534b8f0d",
+      "kind": "qa_probe_or_unselected_source_frame"
+    }
+  ],
+  "tools": [
+    {
+      "file": "outputs/videos/tower-journey-20261024/build_clips.py",
+      "sha256": "34f98e5b67e457a870029c0bcc26502de86371a76891907f12d672a8ceeef445"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/finalize_review.py",
+      "sha256": "3312e8907da13a60d08ee66b9a47bc694ba3b4cc7986e84da3f4403df9dd5245"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/inspect_frames.py",
+      "sha256": "00bc7257e9cc27823cfb6003dc5375d07597c541d0edd7965a4422a4cba2426c"
+    },
+    {
+      "file": "outputs/videos/tower-journey-20261024/write_report.py",
+      "sha256": "cb5643285d8d41d5a03c65372037e3063d29b48bc658bc2bf7f6af594eca59d0"
+    }
+  ],
+  "parent_independent_review": "pending",
+  "finalized_at_utc": "2026-10-23T17:19:16.318359+00:00",
+  "manual_visual_review_zh_tw": "已在工具逐張顯示四個來源contact sheet、穩定替換影格與8項成片sample contact sheet；核對BLUE勝利、大嘴雀1HP仍存活、正常SWITCH、淨化文字、完整糖果訊息與通過原球格、透視鏡顯形與安息文字。未人工逐秒看完全部影片，父層獨立抽查仍待完成。",
+  "manual_visual_review_at_utc": "2026-10-23T17:19:17.221890+00:00",
+  "freeze_status": "frozen_for_parent_independent_rehash_and_sample_review"
+}

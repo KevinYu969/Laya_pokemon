@@ -5,6 +5,11 @@ from collections import deque
 CAVERN_TILESET_ID = 17
 CAVERN_LAND_TILE_PAIRS = ((0x20, 0x05), (0x41, 0x05), (0x2A, 0x05), (0x05, 0x21))
 PAIR_COLLISION_SOURCE = "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/pair_collision_tile_ids.asm"
+TOWER_TOGGLE_OBJECTS = {
+    23: (10, ((1,29,(10,62)), (9,30,(14,35)), (10,31,(5,89)))),
+    147: (5, ((4,62,(6,8)), (5,63,(14,14)))),
+    148: (4, ((1,64,(9,11)), (2,65,(12,9)), (3,66,(9,7)), (4,67,(10,3)))),
+}
 
 
 def cavern_pair_blocked_edges(grid):
@@ -39,18 +44,35 @@ def cavern_pair_blocked_edges(grid):
     return edges
 
 
-def read_npc_obstacles(pyboy,grid,expected):
+def read_npc_obstacles(pyboy,grid,expected,*,overworld_ready=False):
     """固定紅版SpriteStateData2：NPC格座標含4格邊界；須有來源座標錨點才使用。"""
     try:
-        positions=[];height=len(grid['walkable']);width=len(grid['walkable'][0])
+        records=[];height=len(grid['walkable']);width=len(grid['walkable'][0])
         for slot in range(1,16):
             if not pyboy.memory[0xC100+16*slot]:continue
             x=int(pyboy.memory[0xC200+16*slot+5])-4
             y=int(pyboy.memory[0xC200+16*slot+4])-4
-            if 0<=x<width and 0<=y<height:positions.append((x,y))
+            if 0<=x<width and 0<=y<height:records.append((slot,(x,y)))
+        positions=[position for _,position in records]
         anchors=len(set(positions)&set(expected))
         if not anchors:return None
+        cleared=[];toggle=None;calibrated=False
+        location=grid.get('verified_location')
+        mid=location[0] if isinstance(location,list) and len(location)==3 else None
+        if overworld_ready is True and mid in TOWER_TOGGLE_OBJECTS:
+            from .toggleable_objects import read_toggleable_objects
+            toggle=read_toggleable_objects(pyboy,map_id=mid,observation_frame=grid.get('observation_frame'))
+            count,source_objects=TOWER_TOGGLE_OBJECTS[mid]
+            expected_pairs=[(slot,index) for slot,index,_ in source_objects]
+            actual_pairs=[(o['slot'],o['index']) for o in toggle['objects']] if toggle['read_valid'] else None
+            if toggle['read_valid'] and toggle['sprite_count']==count and actual_pairs==expected_pairs:
+                calibrated=True
+                hidden={o['slot'] for o in toggle['objects'] if o['hidden'] is True}
+                positions=[position for slot,position in records if slot not in hidden]
+                cleared=[position for slot,_,position in source_objects if slot in hidden]
         return {'positions':positions,'source_anchor_matches':anchors,
+                'hidden_source_positions':cleared,'toggle_source_calibrated':calibrated,
+                'toggle_snapshot':toggle,
                 'source':'fixed Red C100/C200 sprite slots; wram.asm StateData2 mapY+4/mapX+5 minus4'}
     except (AttributeError,IndexError,KeyError,TypeError,ValueError):return None
 

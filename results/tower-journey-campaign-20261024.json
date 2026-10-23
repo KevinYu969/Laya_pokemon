@@ -1,0 +1,196 @@
+{
+  "type": "verified_campaign_receipt",
+  "updated": "2026-10-24",
+  "run": "league-campaign-20261023-16",
+  "scope": "正常完成寶可夢塔與Flute並返中心；仍四徽章，未喚醒或收服卡比獸，未第五館。",
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "events": [
+    {
+      "event": "beat_ghost_marowak",
+      "observed_true_by_taipei": "2026-10-24T01:00:43.793304+08:00",
+      "step": 2447,
+      "timestamp_semantics": "狀態取樣在動作前、日誌在動作後；此為已觀測時間上限，不冒稱精確切換瞬間。"
+    },
+    {
+      "event": "beat_pokemontower_7_trainer_0",
+      "observed_true_by_taipei": "2026-10-24T01:03:02.654697+08:00",
+      "step": 2604,
+      "timestamp_semantics": "狀態取樣在動作前、日誌在動作後；此為已觀測時間上限，不冒稱精確切換瞬間。"
+    },
+    {
+      "event": "beat_pokemontower_7_trainer_1",
+      "observed_true_by_taipei": "2026-10-24T01:15:06.971606+08:00",
+      "step": 4099,
+      "timestamp_semantics": "狀態取樣在動作前、日誌在動作後；此為已觀測時間上限，不冒稱精確切換瞬間。"
+    },
+    {
+      "event": "beat_pokemontower_7_trainer_2",
+      "observed_true_by_taipei": "2026-10-24T01:16:17.557615+08:00",
+      "step": 4210,
+      "timestamp_semantics": "狀態取樣在動作前、日誌在動作後；此為已觀測時間上限，不冒稱精確切換瞬間。"
+    },
+    {
+      "event": "rescued_mr_fuji",
+      "observed_true_by_taipei": "2026-10-24T01:17:21.470092+08:00",
+      "step": 4237,
+      "timestamp_semantics": "狀態取樣在動作前、日誌在動作後；此為已觀測時間上限，不冒稱精確切換瞬間。"
+    },
+    {
+      "event": "rescued_mr_fuji_2",
+      "observed_true_by_taipei": "2026-10-24T01:17:21.470092+08:00",
+      "step": 4237,
+      "timestamp_semantics": "狀態取樣在動作前、日誌在動作後；此為已觀測時間上限，不冒稱精確切換瞬間。"
+    },
+    {
+      "event": "got_poke_flute",
+      "observed_true_by_taipei": "2026-10-24T01:17:23.132237+08:00",
+      "step": 4258,
+      "timestamp_semantics": "狀態取樣在動作前、日誌在動作後；此為已觀測時間上限，不冒稱精確切換瞬間。"
+    }
+  ],
+  "items": [
+    {
+      "item": 40,
+      "name": "RARE_CANDY",
+      "observed_held_by_taipei": "2026-10-24T00:53:55.958012+08:00",
+      "step": 2349,
+      "quantity": 1
+    },
+    {
+      "item": 73,
+      "name": "POKE_FLUTE",
+      "observed_held_by_taipei": "2026-10-24T01:17:22.575257+08:00",
+      "step": 4253,
+      "quantity": 1
+    }
+  ],
+  "marowak": {
+    "normal_ko_then_soul_calmed_text_at_taipei": "2026-10-24T01:00:44.197056+08:00",
+    "visible_text": [
+      " The mother's soul",
+      " was calmed."
+    ],
+    "never_captured": true,
+    "normal_peck_attacks": true,
+    "no_poke_doll_or_state_rewind": true
+  },
+  "healed_after_flute": {
+    "full_party_observed_by_taipei": "2026-10-24T01:17:25.282304+08:00",
+    "step": 4287,
+    "timestamp_semantics": "動作前已滿HP與PP的時間上限；原生野外關頁另由保存checkpoint唯讀核對，不杜撰重複capture。",
+    "checkpoint_sha256": "411bf8dd54034c8135ea80b9b09b712b06e5044c5e7c3b1a09d584b2481660d4",
+    "readonly_clone_verified": true,
+    "party": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 31,
+        "hp": 105,
+        "max_hp": 105,
+        "exp": 24713,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 32,
+        "hp": 99,
+        "max_hp": 99,
+        "exp": 33314,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 9,
+        "species_name": "IVYSAUR",
+        "level": 31,
+        "hp": 86,
+        "max_hp": 86,
+        "exp": 26348,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 25,
+        "hp": 63,
+        "max_hp": 63,
+        "exp": 16315,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          0,
+          0
+        ],
+        "pp": [
+          35,
+          15,
+          0,
+          0
+        ]
+      }
+    ],
+    "badges_raw": 15
+  },
+  "training_lesson": {
+    "tower_100_cycles_eevee_exp_before": 15769,
+    "tower_100_cycles_eevee_exp_after": 16042,
+    "actual_exp_gain": 273,
+    "level_before_and_after": 25,
+    "cause": "既有野生抗性撤退規則讓只有Normal招的伊布避開Ghost；不能把參戰分EXP來源可行性當現有控制器已實作。",
+    "adjustment": "轉8號道路已驗證grass82，正常Cut進入，加入有界本機正常返回中心監督；仍待最終訓練收據。"
+  },
+  "material": {
+    "receipt": "results/tower-journey-clips-20261024.json",
+    "receipt_sha256": "1a72dc41634313f26f5346b09b3a3a376dd969db96201d8de3d026f5e549633b",
+    "clips": 8,
+    "selected_png": 34,
+    "parent_independently_rehashed_files": 89,
+    "parent_visually_checked": [
+      "BLUE完整勝利",
+      "淨化區fully healed",
+      "完整RARE CANDY拾取",
+      "mother soul was calmed"
+    ],
+    "time_basis": "1x模擬器影格、4x後製；未重建推論或工程等待，片長不是通關牆鐘。"
+  },
+  "full_game_elapsed_seconds": null,
+  "cloud_gameplay_classifier": false,
+  "strata_configuration_changed": false
+}

@@ -1,0 +1,160 @@
+{
+  "schema": "laya-route12-live-progress-v1",
+  "record_date": "2026-10-24",
+  "status": "capture_in_progress_not_completed",
+  "run": "league-campaign-20261024-18",
+  "milestones": [
+    {
+      "label": "妙蛙花自然進化完整訊息",
+      "at": "2026-10-24T02:10:17.514715+08:00"
+    },
+    {
+      "label": "隊伍首次讀到妙蛙花154",
+      "at": "2026-10-24T02:10:18.232545+08:00"
+    },
+    {
+      "label": "妙蛙花完整升33級訊息",
+      "at": "2026-10-24T02:10:31.628335+08:00"
+    },
+    {
+      "label": "正常笛子喚醒卡比獸30並交接戰鬥",
+      "at": "2026-10-24T02:20:24.361935+08:00"
+    }
+  ],
+  "latest_review": {
+    "at": "2026-10-23T19:02:33.093105+00:00",
+    "reason": "snorlax_capture_safe_switch_requires_review",
+    "frame": 132521,
+    "ball_throw_requests": 4,
+    "great_balls_remaining": 16,
+    "visible_text_candidates": [
+      " SNORLAX",
+      "     30",
+      "          VENUSAUR",
+      "               33",
+      "            56/105",
+      "          FIGHT",
+      "         ▶ITEM  RUN"
+    ],
+    "party_ram": [
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 33,
+        "hp": 56,
+        "max_hp": 105,
+        "exp": 30051,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          17,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 30,
+        "hp": 77,
+        "max_hp": 77,
+        "exp": 27350,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          0
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          0
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 32,
+        "hp": 99,
+        "max_hp": 99,
+        "exp": 33482,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 31,
+        "hp": 105,
+        "max_hp": 105,
+        "exp": 24713,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      }
+    ],
+    "party_hp_may_lag_during_enemy_animation": true,
+    "money": 25609,
+    "checkpoint_sha256": "7ef23ae6283af43d0bc2ac7c42110ee6745710d4ab0ac77fbc00e5bbe575ee11"
+  },
+  "gameplay": {
+    "button_model": "offline_laya",
+    "strata_configuration_changed": false,
+    "gpt_button_classification": false,
+    "rom_or_ram_written": false,
+    "loss_rewind": false,
+    "snorlax_captured": false,
+    "badge_count": 4,
+    "champion_confirmed": false,
+    "whole_game_clear_wall_seconds": null
+  },
+  "media": {
+    "receipt": "results/training-route12-clips-20261024.json",
+    "clips": 6,
+    "screenshots": 26,
+    "parent_rehashed_files": 32,
+    "hash_mismatches": 0,
+    "parent_viewed_contact_sheets": 3,
+    "website_published": false,
+    "videos_uploaded_to_github": false,
+    "timing_note": "1x為錄得模擬時間，4x為後製；不含推論與工程停等，不是通關牆鐘。"
+  },
+  "lessons": [
+    "完整商品清單的固定捲動裝飾可短暫缺席；仍逐格核商品、數量、游標與背景。",
+    "已知KEVIN used/GREAT BALL!逐字訊息依來源自動結束，只WAIT，不重新投球。",
+    "SDK單格's須保留原tile座標；正常row14和捲動中row13分開核對，原packet不變。",
+    "頭錘動畫可能短暫使字型對齊驗證失效；精確已知動畫僅有界WAIT，read_valid不改True。",
+    "敵方回合血量倒數可先於Party RAM同步；完整command前原生mainloop先複製BattleMon血量。",
+    "低血量須換人；完整critical提示只能確認到回合結束，下一次投球仍要求HUD與Party同步。",
+    "隱藏卡比獸物件或戰鬥結果2不證明收服；須完整Caught、圖鑑、NO、閉合與新隊員收據。"
+  ]
+}

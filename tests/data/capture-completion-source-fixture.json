@@ -1,0 +1,569 @@
+{
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "kind": "public-source-contract-only-no-ROM-state-game-data",
+  "live_ui_calibrated": false,
+  "intent": {
+    "kind": "complete_route12_snorlax_capture",
+    "map_id": 23,
+    "x": 10,
+    "y": 61,
+    "species": 132,
+    "level": 30,
+    "party_count_before": 4,
+    "nickname": "NO",
+    "dex_branch": "new_entry_required"
+  },
+  "old_party_species": {
+    "NIDOKING": 7,
+    "IVYSAUR": 9,
+    "FEAROW": 35,
+    "EEVEE": 102
+  },
+  "ball_items": {
+    "ULTRA_BALL": 2,
+    "GREAT_BALL": 3,
+    "POKE_BALL": 4
+  },
+  "snorlax": {
+    "species": 132,
+    "level": 30,
+    "base_hp": 160,
+    "fresh_wild_max_hp_range": [
+      136,
+      145
+    ],
+    "growth": "SLOW 5*n^3/4",
+    "experience": 33750,
+    "moves": [
+      29,
+      133,
+      156,
+      0
+    ],
+    "pp": [
+      15,
+      20,
+      10,
+      0
+    ],
+    "caught_hp_status": "copied from captured opponent, not healed"
+  },
+  "messages": {
+    "caught_start": [
+      [
+        1,
+        14,
+        "ALL RIGHT!"
+      ],
+      [
+        1,
+        16,
+        "SNORLAX WAS"
+      ]
+    ],
+    "caught_receipt": [
+      [
+        1,
+        14,
+        "SNORLAX WAS"
+      ],
+      [
+        1,
+        16,
+        "CAUGHT!"
+      ]
+    ],
+    "new_dex_start": [
+      [
+        1,
+        14,
+        "NEW POKÉDEX DATA"
+      ],
+      [
+        1,
+        16,
+        "WILL BE ADDED FOR"
+      ]
+    ],
+    "new_dex_receipt": [
+      [
+        1,
+        14,
+        "WILL BE ADDED FOR"
+      ],
+      [
+        1,
+        16,
+        "SNORLAX!"
+      ]
+    ],
+    "dex_first": [
+      [
+        1,
+        11,
+        "VERY LAZY. JUST"
+      ],
+      [
+        1,
+        13,
+        "EATS AND SLEEPS."
+      ],
+      [
+        1,
+        15,
+        "AS ITS ROTUND"
+      ]
+    ],
+    "dex_second": [
+      [
+        1,
+        11,
+        "BULK BUILDS, IT"
+      ],
+      [
+        1,
+        13,
+        "BECOMES STEADILY"
+      ],
+      [
+        1,
+        15,
+        "MORE SLOTHFUL."
+      ]
+    ],
+    "nickname_intro": [
+      [
+        1,
+        14,
+        "DO YOU WANT TO"
+      ],
+      [
+        1,
+        16,
+        "GIVE A NICKNAME"
+      ]
+    ],
+    "nickname_menu": [
+      [
+        1,
+        14,
+        "GIVE A NICKNAME"
+      ],
+      [
+        1,
+        16,
+        "TO SNORLAX?"
+      ]
+    ]
+  },
+  "dex_header_projection": [
+    [
+      9,
+      2,
+      "SNORLAX"
+    ],
+    [
+      9,
+      4,
+      "SLEEPING"
+    ],
+    [
+      9,
+      6,
+      "HT"
+    ],
+    [
+      13,
+      6,
+      "6"
+    ],
+    [
+      15,
+      6,
+      "11"
+    ],
+    [
+      4,
+      8,
+      "143"
+    ],
+    [
+      9,
+      8,
+      "WT"
+    ],
+    [
+      11,
+      8,
+      "1014"
+    ],
+    [
+      16,
+      8,
+      "0"
+    ],
+    [
+      17,
+      8,
+      "LB"
+    ]
+  ],
+  "decoder_blank_glyphs": {
+    "№": 116,
+    "′": 96,
+    "″": 97,
+    "<DOT>": 242
+  },
+  "prompt_pages": [
+    "caught_start",
+    "caught_receipt",
+    "new_dex_start",
+    "new_dex_receipt",
+    "dex_first",
+    "nickname_intro"
+  ],
+  "prompt_xy": [
+    18,
+    16
+  ],
+  "nickname_menu": {
+    "yes_xy": [
+      16,
+      8
+    ],
+    "no_xy": [
+      16,
+      10
+    ],
+    "cursor_yes_xy": [
+      15,
+      8
+    ],
+    "cursor_no_xy": [
+      15,
+      10
+    ],
+    "intent": "DOWN then A on verified NO; never A on YES"
+  },
+  "source_boundary": [
+    "last successful throw only, not whole battle ball count",
+    "new Dex branch only; owned Dex skip must review",
+    "Count/species list grows before AskName; full struct and ball deduction happen after NO",
+    "species_name is species label, not raw nickname RAM",
+    "Caller must independently supply coherent enemy HP/status and HUD snapshot; no getter added here"
+  ],
+  "sources": [
+    {
+      "path": "engine/items/item_effects.asm",
+      "git_blob_sha": "c4ce13de6fb6c7036e94e20b845dd6c5ade8951e",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+      "line_count": 2956,
+      "excerpts": [
+        {
+          "start_line": 510,
+          "end_line": 585,
+          "text": "\tld a, [wEnemyMonSpecies]\n\tld [wCapturedMonSpecies], a\n\tld [wCurPartySpecies], a\n\tld [wPokedexNum], a\n\tld a, [wBattleType]\n\tdec a ; is this the old man battle?\n\tjr z, .oldManCaughtMon ; if so, don't give the player the caught Pokémon\n\n\tld hl, ItemUseBallText05\n\tcall PrintText\n\n; Add the caught Pokémon to the Pokédex.\n\tpredef IndexToPokedex\n\tld a, [wPokedexNum]\n\tdec a\n\tld c, a\n\tld b, FLAG_TEST\n\tld hl, wPokedexOwned\n\tpredef FlagActionPredef\n\tld a, c\n\tpush af\n\tld a, [wPokedexNum]\n\tdec a\n\tld c, a\n\tld b, FLAG_SET\n\tpredef FlagActionPredef\n\tpop af\n\n\tand a ; was the Pokémon already in the Pokédex?\n\tjr nz, .skipShowingPokedexData ; if so, don't show the Pokédex data\n\n\tld hl, ItemUseBallText06\n\tcall PrintText\n\tcall ClearSprites\n\tld a, [wEnemyMonSpecies]\n\tld [wPokedexNum], a\n\tpredef ShowPokedexData\n\n.skipShowingPokedexData\n\tld a, [wPartyCount]\n\tcp PARTY_LENGTH ; is party full?\n\tjr z, .sendToBox\n\txor a ; PLAYER_PARTY_DATA\n\tld [wMonDataLocation], a\n\tcall ClearSprites\n\tcall AddPartyMon\n\tjr .done\n\n.sendToBox\n\tcall ClearSprites\n\tcall SendNewMonToBox\n\tld hl, ItemUseBallText07\n\tCheckEvent EVENT_MET_BILL\n\tjr nz, .printTransferredToPCText\n\tld hl, ItemUseBallText08\n.printTransferredToPCText\n\tcall PrintText\n\tjr .done\n\n.oldManCaughtMon\n\tld hl, ItemUseBallText05\n\n.printMessage\n\tcall PrintText\n\tcall ClearSprites\n\n.done\n\tld a, [wBattleType]\n\tand a ; is this the old man battle?\n\tret nz ; if so, don't remove a ball from the bag\n\n; Remove a ball from the bag.\n\tld hl, wNumBagItems\n\tinc a\n\tld [wItemQuantity], a\n\tjp RemoveItemFromInventory"
+        },
+        {
+          "start_line": 608,
+          "end_line": 630,
+          "text": "ItemUseBallText05:\n;\"All right! {MonName} was caught!\"\n;play sound\n\ttext_far _ItemUseBallText05\n\tsound_caught_mon\n\ttext_promptbutton\n\ttext_end\nItemUseBallText07:\n;\"X was transferred to Bill's PC\"\n\ttext_far _ItemUseBallText07\n\ttext_end\nItemUseBallText08:\n;\"X was transferred to someone's PC\"\n\ttext_far _ItemUseBallText08\n\ttext_end\n\nItemUseBallText06:\n;\"New DEX data will be added...\"\n;play sound\n\ttext_far _ItemUseBallText06\n\tsound_dex_page_added\n\ttext_promptbutton\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_6.asm",
+      "git_blob_sha": "8109b6593229767d9942d5863682a63f3dd0bf47",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+      "line_count": 232,
+      "excerpts": [
+        {
+          "start_line": 29,
+          "end_line": 57,
+          "text": "_ItemUseBallText05::\n\ttext \"All right!\"\n\tline \"@\"\n\ttext_ram wEnemyMonNick\n\ttext \" was\"\n\tcont \"caught!@\"\n\ttext_end\n\n_ItemUseBallText07::\n\ttext_ram wBoxMonNicks\n\ttext \" was\"\n\tline \"transferred to\"\n\tcont \"BILL's PC!\"\n\tprompt\n\n_ItemUseBallText08::\n\ttext_ram wBoxMonNicks\n\ttext \" was\"\n\tline \"transferred to\"\n\tcont \"someone's PC!\"\n\tprompt\n\n_ItemUseBallText06::\n\ttext \"New #DEX data\"\n\tline \"will be added for\"\n\tcont \"@\"\n\ttext_ram wEnemyMonNick\n\ttext \"!@\"\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "engine/pokemon/add_mon.asm",
+      "git_blob_sha": "c92acfcb3035ebb8d85a7c4f1b44cafe859e34cf",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/add_mon.asm",
+      "line_count": 518,
+      "excerpts": [
+        {
+          "start_line": 12,
+          "end_line": 65,
+          "text": "\tld a, [de]\n\tinc a\n\tcp PARTY_LENGTH + 1\n\tret nc ; return if the party is already full\n\tld [de], a\n\tld a, [de]\n\tldh [hNewPartyLength], a\n\tadd e\n\tld e, a\n\tjr nc, .noCarry\n\tinc d\n.noCarry\n\tld a, [wCurPartySpecies]\n\tld [de], a ; write species of new mon in party list\n\tinc de\n\tld a, $ff ; terminator\n\tld [de], a\n\tld hl, wPartyMonOT\n\tld a, [wMonDataLocation]\n\tand $f\n\tjr z, .next2\n\tld hl, wEnemyMonOT\n.next2\n\tldh a, [hNewPartyLength]\n\tdec a\n\tcall SkipFixedLengthTextEntries\n\tld d, h\n\tld e, l\n\tld hl, wPlayerName\n\tld bc, NAME_LENGTH\n\tcall CopyData\n\tld a, [wMonDataLocation]\n\tand a\n\tjr nz, .skipNaming\n\tld hl, wPartyMonNicks\n\tldh a, [hNewPartyLength]\n\tdec a\n\tcall SkipFixedLengthTextEntries\n\tld a, NAME_MON_SCREEN\n\tld [wNamingScreenType], a\n\tpredef AskName\n.skipNaming\n\tld hl, wPartyMons\n\tld a, [wMonDataLocation]\n\tand $f\n\tjr z, .next3\n\tld hl, wEnemyMons\n.next3\n\tldh a, [hNewPartyLength]\n\tdec a\n\tld bc, PARTYMON_STRUCT_LENGTH\n\tcall AddNTimes\n\tld e, l\n\tld d, h"
+        },
+        {
+          "start_line": 151,
+          "end_line": 161,
+          "text": "\tld a, [wEnemyMonHP]    ; copy HP from cur enemy mon\n\tld [de], a\n\tinc de\n\tld a, [wEnemyMonHP+1]\n\tld [de], a\n\tinc de\n\txor a\n\tld [de], a                ; box level\n\tinc de\n\tld a, [wEnemyMonStatus]   ; copy status ailments from cur enemy mon\n\tld [de], a"
+        },
+        {
+          "start_line": 191,
+          "end_line": 245,
+          "text": "\txor a\n\tld [wLearningMovesFromDayCare], a\n\tpredef WriteMonMoves\n\tpop de\n\tld a, [wPlayerID]  ; set trainer ID to player ID\n\tinc de\n\tld [de], a\n\tld a, [wPlayerID + 1]\n\tinc de\n\tld [de], a\n\tpush de\n\tld a, [wCurEnemyLevel]\n\tld d, a\n\tcallfar CalcExperience\n\tpop de\n\tinc de\n\tldh a, [hExperience] ; write experience\n\tld [de], a\n\tinc de\n\tldh a, [hExperience + 1]\n\tld [de], a\n\tinc de\n\tldh a, [hExperience + 2]\n\tld [de], a\n\txor a\n\tld b, NUM_STATS * 2\n.writeEVsLoop              ; set all EVs to 0\n\tinc de\n\tld [de], a\n\tdec b\n\tjr nz, .writeEVsLoop\n\tinc de\n\tinc de\n\tpop hl\n\tcall AddPartyMon_WriteMovePP\n\tinc de\n\tld a, [wCurEnemyLevel]\n\tld [de], a\n\tinc de\n\tld a, [wIsInBattle]\n\tdec a\n\tjr nz, .calcFreshStats\n\tld hl, wEnemyMonMaxHP\n\tld bc, NUM_STATS * 2\n\tcall CopyData          ; copy stats of cur enemy mon\n\tpop hl\n\tjr .done\n.calcFreshStats\n\tpop hl\n\tld bc, MON_HP_EXP - 1\n\tadd hl, bc\n\tld b, $0\n\tcall CalcStats         ; calculate fresh set of stats\n.done\n\tscf"
+        },
+        {
+          "start_line": 251,
+          "end_line": 280,
+          "text": "AddPartyMon_WriteMovePP:\n\tld b, NUM_MOVES\n.pploop\n\tld a, [hli]     ; read move ID\n\tand a\n\tjr z, .empty\n\tdec a\n\tpush hl\n\tpush de\n\tpush bc\n\tld hl, Moves\n\tld bc, MOVE_LENGTH\n\tcall AddNTimes\n\tld de, wMoveData\n\tld a, BANK(Moves)\n\tcall FarCopyData\n\tpop bc\n\tpop de\n\tpop hl\n\tld a, [wMoveData + MOVE_PP]\n.empty\n\tinc de\n\tld [de], a\n\tdec b\n\tjr nz, .pploop ; there are still moves to read\n\tret\n\n; adds enemy mon [wCurPartySpecies] (at position [wWhichPokemon] in enemy list) to own party\n; used in the cable club trade center\n_AddEnemyMonToPlayerParty::"
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/naming_screen.asm",
+      "git_blob_sha": "9356cc662d4a00dadb2ec2a5f4f0f5a239ce698d",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/naming_screen.asm",
+      "line_count": 496,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 54,
+          "text": "AskName:\n\tcall SaveScreenTilesToBuffer1\n\tcall GetPredefRegisters\n\tpush hl\n\tld a, [wIsInBattle]\n\tdec a\n\thlcoord 0, 0\n\tld b, 4\n\tld c, 11\n\tcall z, ClearScreenArea ; only if in wild battle\n\tld a, [wCurPartySpecies]\n\tld [wNamedObjectIndex], a\n\tcall GetMonName\n\tld hl, DoYouWantToNicknameText\n\tcall PrintText\n\thlcoord 14, 7\n\tlb bc, 8, 15\n\tld a, TWO_OPTION_MENU\n\tld [wTextBoxID], a\n\tcall DisplayTextBoxID\n\tpop hl\n\tld a, [wCurrentMenuItem]\n\tand a\n\tjr nz, .declinedNickname\n\tld a, [wUpdateSpritesEnabled]\n\tpush af\n\txor a\n\tld [wUpdateSpritesEnabled], a\n\tpush hl\n\tld a, NAME_MON_SCREEN\n\tld [wNamingScreenType], a\n\tcall DisplayNamingScreen\n\tld a, [wIsInBattle]\n\tand a\n\tjr nz, .inBattle\n\tcall ReloadMapSpriteTilePatterns\n.inBattle\n\tcall LoadScreenTilesFromBuffer1\n\tpop hl\n\tpop af\n\tld [wUpdateSpritesEnabled], a\n\tld a, [wStringBuffer]\n\tcp '@'\n\tret nz\n.declinedNickname\n\tld d, h\n\tld e, l\n\tld hl, wNameBuffer\n\tld bc, NAME_LENGTH\n\tjp CopyData\n\nDoYouWantToNicknameText:\n\ttext_far _DoYouWantToNicknameText\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/text_box.asm",
+      "git_blob_sha": "b8add148dc8cb44d4cedea42361f6a229796fed0",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/text_box.asm",
+      "line_count": 562,
+      "excerpts": [
+        {
+          "start_line": 206,
+          "end_line": 235,
+          "text": "DisplayTwoOptionMenu:\n\tpush hl\n\tld a, [wStatusFlags5]\n\tset BIT_NO_TEXT_DELAY, a\n\tld [wStatusFlags5], a\n\n; pointless because both values are overwritten before they are read\n\txor a\n\tld [wChosenMenuItem], a\n\tld [wMenuExitMethod], a\n\n\tld a, PAD_A | PAD_B\n\tld [wMenuWatchedKeys], a\n\tld a, $1\n\tld [wMaxMenuItem], a\n\tld a, b\n\tld [wTopMenuItemY], a\n\tld a, c\n\tld [wTopMenuItemX], a\n\txor a\n\tld [wLastMenuItem], a\n\tld [wMenuWatchMovingOutOfBounds], a\n\tpush hl\n\tld hl, wTwoOptionMenuID\n\tbit BIT_SECOND_MENU_OPTION_DEFAULT, [hl]\n\tres BIT_SECOND_MENU_OPTION_DEFAULT, [hl]\n\tjr z, .storeCurrentMenuItem\n\tinc a\n.storeCurrentMenuItem\n\tld [wCurrentMenuItem], a"
+        },
+        {
+          "start_line": 307,
+          "end_line": 337,
+          "text": ".notNoYesMenu\n\txor a\n\tld [wTwoOptionMenuID], a\n\tcall HandleMenuInput\n\tpop hl\n\tbit B_PAD_B, a\n\tjr nz, .choseSecondMenuItem ; automatically choose the second option if B is pressed\n.pressedAButton\n\tld a, [wCurrentMenuItem]\n\tld [wChosenMenuItem], a\n\tand a\n\tjr nz, .choseSecondMenuItem\n; chose first menu item\n\tld a, CHOSE_FIRST_ITEM\n\tld [wMenuExitMethod], a\n\tld c, 15\n\tcall DelayFrames\n\tcall TwoOptionMenu_RestoreScreenTiles\n\tand a\n\tret\n.choseSecondMenuItem\n\tld a, 1\n\tld [wCurrentMenuItem], a\n\tld [wChosenMenuItem], a\n\tld a, CHOSE_SECOND_ITEM\n\tld [wMenuExitMethod], a\n\tld c, 15\n\tcall DelayFrames\n\tcall TwoOptionMenu_RestoreScreenTiles\n\tscf\n\tret"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_2.asm",
+      "git_blob_sha": "917feb8953c9c2b688395dfb54459b1d04bf7a71",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_2.asm",
+      "line_count": 1792,
+      "excerpts": [
+        {
+          "start_line": 1756,
+          "end_line": 1762,
+          "text": "_DoYouWantToNicknameText::\n\ttext \"Do you want to\"\n\tline \"give a nickname\"\n\tcont \"to @\"\n\ttext_ram wNameBuffer\n\ttext \"?\"\n\tdone"
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/pokedex.asm",
+      "git_blob_sha": "3d2fcbca7bbe7804f467a9510ce4ae94627d022e",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/pokedex.asm",
+      "line_count": 664,
+      "excerpts": [
+        {
+          "start_line": 449,
+          "end_line": 485,
+          "text": "\thlcoord 9, 6\n\tld de, HeightWeightText\n\tcall PlaceString\n\n\tcall GetMonName\n\thlcoord 9, 2\n\tcall PlaceString\n\n\tld hl, PokedexEntryPointers\n\tld a, [wPokedexNum]\n\tdec a\n\tld e, a\n\tld d, 0\n\tadd hl, de\n\tadd hl, de\n\tld a, [hli]\n\tld e, a\n\tld d, [hl] ; de = address of pokedex entry\n\n\thlcoord 9, 4\n\tcall PlaceString ; print species name\n\n\tld h, b\n\tld l, c\n\tpush de\n\tld a, [wPokedexNum]\n\tpush af\n\tcall IndexToPokedex\n\n\thlcoord 2, 8\n\tld a, '№'\n\tld [hli], a\n\tld a, '<DOT>'\n\tld [hli], a\n\tld de, wPokedexNum\n\tlb bc, LEADING_ZEROES | 1, 3\n\tcall PrintNumber ; print pokedex number"
+        },
+        {
+          "start_line": 516,
+          "end_line": 590,
+          "text": "\tinc de ; de = address of feet (height)\n\tld a, [de] ; reads feet, but a is overwritten without being used\n\thlcoord 12, 6\n\tlb bc, 1, 2\n\tcall PrintNumber ; print feet (height)\n\tld a, '′'\n\tld [hl], a\n\tinc de\n\tinc de ; de = address of inches (height)\n\thlcoord 15, 6\n\tlb bc, LEADING_ZEROES | 1, 2\n\tcall PrintNumber ; print inches (height)\n\tld a, '″'\n\tld [hl], a\n; now print the weight (note that weight is stored in tenths of pounds internally)\n\tinc de\n\tinc de\n\tinc de ; de = address of upper byte of weight\n\tpush de\n; put weight in big-endian order at hDexWeight\n\tld hl, hDexWeight\n\tld a, [hl] ; save existing value of [hDexWeight]\n\tpush af\n\tld a, [de] ; a = upper byte of weight\n\tld [hli], a ; store upper byte of weight in [hDexWeight]\n\tld a, [hl] ; save existing value of [hDexWeight + 1]\n\tpush af\n\tdec de\n\tld a, [de] ; a = lower byte of weight\n\tld [hl], a ; store lower byte of weight in [hDexWeight + 1]\n\tld de, hDexWeight\n\thlcoord 11, 8\n\tlb bc, 2, 5 ; 2 bytes, 5 digits\n\tcall PrintNumber ; print weight\n\thlcoord 14, 8\n\tldh a, [hDexWeight + 1]\n\tsub 10\n\tldh a, [hDexWeight]\n\tsbc 0\n\tjr nc, .next\n\tld [hl], '0' ; if the weight is less than 10, put a 0 before the decimal point\n.next\n\tinc hl\n\tld a, [hli]\n\tld [hld], a ; make space for the decimal point by moving the last digit forward one tile\n\tld [hl], '<DOT>' ; decimal point tile\n\tpop af\n\tldh [hDexWeight + 1], a ; restore original value of [hDexWeight + 1]\n\tpop af\n\tldh [hDexWeight], a ; restore original value of [hDexWeight]\n\tpop hl\n\tinc hl ; hl = address of pokedex description text\n\tbccoord 1, 11\n\tld a, %10\n\tldh [hClearLetterPrintingDelayFlags], a\n\tcall TextCommandProcessor ; print pokedex description text\n\txor a\n\tldh [hClearLetterPrintingDelayFlags], a\n.waitForButtonPress\n\tcall JoypadLowSensitivity\n\tldh a, [hJoy5]\n\tand PAD_A | PAD_B\n\tjr z, .waitForButtonPress\n\tpop af\n\tldh [hTileAnimations], a\n\tcall GBPalWhiteOut\n\tcall ClearScreen\n\tcall RunDefaultPaletteCommand\n\tcall LoadTextBoxTilePatterns\n\tcall GBPalNormal\n\tld hl, wStatusFlags2\n\tres BIT_NO_AUDIO_FADE_OUT, [hl]\n\tld a, $77 ; max volume\n\tldh [rAUDVOL], a\n\tret"
+        }
+      ]
+    },
+    {
+      "path": "data/pokemon/dex_entries.asm",
+      "git_blob_sha": "58e815ac7bd0e0ee765a963a8d815f4f9a0c7778",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/dex_entries.asm",
+      "line_count": 1262,
+      "excerpts": [
+        {
+          "start_line": 963,
+          "end_line": 968,
+          "text": "SnorlaxDexEntry:\n\tdb \"SLEEPING@\"\n\tdb 6,11\n\tdw 10140\n\ttext_far _SnorlaxDexEntry\n\ttext_end"
+        }
+      ]
+    },
+    {
+      "path": "data/pokemon/dex_text.asm",
+      "git_blob_sha": "cdb7e179d5c08cd9ea195c73111592f595df12d8",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/dex_text.asm",
+      "line_count": 1510,
+      "excerpts": [
+        {
+          "start_line": 1091,
+          "end_line": 1099,
+          "text": "_SnorlaxDexEntry::\n\ttext \"Very lazy. Just\"\n\tnext \"eats and sleeps.\"\n\tnext \"As its rotund\"\n\n\tpage \"bulk builds, it\"\n\tnext \"becomes steadily\"\n\tnext \"more slothful\"\n\tdex"
+        }
+      ]
+    },
+    {
+      "path": "home/text.asm",
+      "git_blob_sha": "8ec872e0f2a2fefdac146f72cb91258678140373",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/text.asm",
+      "line_count": 641,
+      "excerpts": [
+        {
+          "start_line": 62,
+          "end_line": 81,
+          "text": "\tcp '<NEXT>'\n\tjr nz, .NotNext\n\tld bc, 2 * SCREEN_WIDTH\n\tldh a, [hUILayoutFlags]\n\tbit BIT_SINGLE_SPACED_LINES, a\n\tjr z, .ok\n\tld bc, SCREEN_WIDTH\n.ok\n\tpop hl\n\tadd hl, bc\n\tpush hl\n\tjp NextChar\n\n.NotNext\n\tcp '<LINE>'\n\tjr nz, .NotLine\n\tpop hl\n\thlcoord 1, 16\n\tpush hl\n\tjp NextChar"
+        },
+        {
+          "start_line": 204,
+          "end_line": 219,
+          "text": "PlaceDexEnd::\n\tld [hl], '.'\n\tpop hl\n\tret\n\nPromptText::\n\tld a, [wLinkState]\n\tcp LINK_STATE_BATTLING\n\tjp z, .ok\n\tld a, '▼'\n\tldcoord_a 18, 16\n.ok\n\tcall ProtectedDelay3\n\tcall ManualTextScroll\n\tld a, ' '\n\tldcoord_a 18, 16"
+        },
+        {
+          "start_line": 245,
+          "end_line": 260,
+          "text": "PageChar::\n\tpush de\n\tld a, '▼'\n\tldcoord_a 18, 16\n\tcall ProtectedDelay3\n\tcall ManualTextScroll\n\thlcoord 1, 10\n\tlb bc, 7, 18\n\tcall ClearScreenArea\n\tld c, 20\n\tcall DelayFrames\n\tpop de\n\tpop hl\n\thlcoord 1, 11\n\tpush hl\n\tjp NextChar"
+        },
+        {
+          "start_line": 262,
+          "end_line": 277,
+          "text": "_ContText::\n\tld a, '▼'\n\tldcoord_a 18, 16\n\tcall ProtectedDelay3\n\tpush de\n\tcall ManualTextScroll\n\tpop de\n\tld a, ' '\n\tldcoord_a 18, 16\n_ContTextNoPause::\n\tpush de\n\tcall ScrollTextUpOneLine\n\tcall ScrollTextUpOneLine\n\thlcoord 1, 16\n\tpop de\n\tjp NextChar"
+        }
+      ]
+    },
+    {
+      "path": "constants/charmap.asm",
+      "git_blob_sha": "f096797827b30e28201826a1b61656c5adeaa41e",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/charmap.asm",
+      "line_count": 387,
+      "excerpts": []
+    },
+    {
+      "path": "data/growth_rates.asm",
+      "git_blob_sha": "a4f7b5d11c4bc9345b1d73c874babeec114e6bf4",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/growth_rates.asm",
+      "line_count": 22,
+      "excerpts": []
+    },
+    {
+      "path": "data/pokemon/base_stats/snorlax.asm",
+      "git_blob_sha": "9b6ccd3e0c53316140a45e543e9669ba1bcf02a8",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/snorlax.asm",
+      "line_count": 28,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 14,
+          "text": "\tdb DEX_SNORLAX ; pokedex id\n\n\tdb 160, 110,  65,  30,  65\n\t;   hp  atk  def  spd  spc\n\n\tdb NORMAL, NORMAL ; type\n\tdb 25 ; catch rate\n\tdb 154 ; base exp\n\n\tINCBIN \"gfx/pokemon/front/snorlax.pic\", 0, 1 ; sprite dimensions\n\tdw SnorlaxPicFront, SnorlaxPicBack\n\n\tdb HEADBUTT, AMNESIA, REST, NO_MOVE ; level 1 learnset\n\tdb GROWTH_SLOW ; growth rate"
+        }
+      ]
+    },
+    {
+      "path": "data/pokemon/evos_moves.asm",
+      "git_blob_sha": "6a6704f98b8b075f2fd81c91d41a1dda0f2a047d",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/evos_moves.asm",
+      "line_count": 2144,
+      "excerpts": [
+        {
+          "start_line": 1566,
+          "end_line": 1574,
+          "text": "SnorlaxEvosMoves:\n; Evolutions\n\tdb 0\n; Learnset\n\tdb 35, BODY_SLAM\n\tdb 41, HARDEN\n\tdb 48, DOUBLE_EDGE\n\tdb 56, HYPER_BEAM\n\tdb 0"
+        }
+      ]
+    },
+    {
+      "path": "data/moves/moves.asm",
+      "git_blob_sha": "ac638721ac1d3e49f522602f4d343493bbccc624",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/moves/moves.asm",
+      "line_count": 180,
+      "excerpts": [
+        {
+          "start_line": 42,
+          "end_line": 42,
+          "text": "\tmove HEADBUTT,     FLINCH_SIDE_EFFECT2,         70, NORMAL,       100, 15"
+        },
+        {
+          "start_line": 146,
+          "end_line": 146,
+          "text": "\tmove AMNESIA,      SPECIAL_UP2_EFFECT,           0, PSYCHIC_TYPE, 100, 20"
+        },
+        {
+          "start_line": 169,
+          "end_line": 169,
+          "text": "\tmove REST,         HEAL_EFFECT,                  0, PSYCHIC_TYPE, 100, 10"
+        }
+      ]
+    },
+    {
+      "path": "constants/pokemon_constants.asm",
+      "git_blob_sha": "ea206bb83a48a11b247741a6be17200002979025",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/pokemon_constants.asm",
+      "line_count": 210,
+      "excerpts": []
+    },
+    {
+      "path": "constants/item_constants.asm",
+      "git_blob_sha": "8f623d557b19cf4d9ef0d8de645bec3e5620c728",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm",
+      "line_count": 222,
+      "excerpts": []
+    },
+    {
+      "path": "home/move_mon.asm",
+      "git_blob_sha": "def60bc1026efcd5dbc62db9222791773312b596",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/move_mon.asm",
+      "line_count": 240,
+      "excerpts": [
+        {
+          "start_line": 34,
+          "end_line": 71,
+          "text": "CalcStats::\n\tld c, $0\n.statsLoop\n\tinc c\n\tcall CalcStat\n\tldh a, [hMultiplicand+1]\n\tld [de], a\n\tinc de\n\tldh a, [hMultiplicand+2]\n\tld [de], a\n\tinc de\n\tld a, c\n\tcp NUM_STATS\n\tjr nz, .statsLoop\n\tret\n\n; calculates stat c of current mon\n; c: stat to calc (HP=1,Atk=2,Def=3,Spd=4,Spc=5)\n; b: consider stat exp?\n; hl: base ptr to stat exp values ([hl + 2*c - 1] and [hl + 2*c])\nCalcStat::\n\tpush hl\n\tpush de\n\tpush bc\n\tld a, b\n\tld d, a\n\tpush hl\n\tld hl, wMonHeader\n\tld b, $0\n\tadd hl, bc\n\tld a, [hl]          ; read base value of stat\n\tld e, a\n\tpop hl\n\tpush hl\n\tsla c\n\tld a, d\n\tand a\n\tjr z, .statExpDone  ; consider stat exp?"
+        },
+        {
+          "start_line": 109,
+          "end_line": 134,
+          "text": "; get HP IV\n\tpush bc\n\tld a, [hl]  ; Atk IV\n\tswap a\n\tand $1\n\tsla a\n\tsla a\n\tsla a\n\tld b, a\n\tld a, [hli] ; Def IV\n\tand $1\n\tsla a\n\tsla a\n\tadd b\n\tld b, a\n\tld a, [hl] ; Spd IV\n\tswap a\n\tand $1\n\tsla a\n\tadd b\n\tld b, a\n\tld a, [hl] ; Spc IV\n\tand $1\n\tadd b      ; HP IV: LSB of the other 4 IVs\n\tpop bc\n\tjr .calcStatFromIV"
+        },
+        {
+          "start_line": 154,
+          "end_line": 207,
+          "text": ".calcStatFromIV\n\tld d, $0\n\tadd e\n\tld e, a\n\tjr nc, .noCarry\n\tinc d                     ; de = Base + IV\n.noCarry\n\tsla e\n\trl d                      ; de = (Base + IV) * 2\n\tsrl b\n\tsrl b                     ; b = ceil(Sqrt(stat exp)) / 4\n\tld a, b\n\tadd e\n\tjr nc, .noCarry2\n\tinc d                     ; de = (Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4\n.noCarry2\n\tldh [hMultiplicand+2], a\n\tld a, d\n\tldh [hMultiplicand+1], a\n\txor a\n\tldh [hMultiplicand], a\n\tld a, [wCurEnemyLevel]\n\tldh [hMultiplier], a\n\tcall Multiply            ; ((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level\n\tldh a, [hMultiplicand]\n\tldh [hDividend], a\n\tldh a, [hMultiplicand+1]\n\tldh [hDividend+1], a\n\tldh a, [hMultiplicand+2]\n\tldh [hDividend+2], a\n\tld a, $64\n\tldh [hDivisor], a\n\tld a, $3\n\tld b, a\n\tcall Divide             ; (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100\n\tld a, c\n\tcp $1\n\tld a, 5 ; + 5 for non-HP stat\n\tjr nz, .notHPStat\n\tld a, [wCurEnemyLevel]\n\tld b, a\n\tldh a, [hMultiplicand+2]\n\tadd b\n\tldh [hMultiplicand+2], a\n\tjr nc, .noCarry3\n\tldh a, [hMultiplicand+1]\n\tinc a\n\tldh [hMultiplicand+1], a ; HP: (((Base + IV) * 2 + ceil(Sqrt(stat exp)) / 4) * Level) / 100 + Level\n.noCarry3\n\tld a, 10 ; +10 for HP stat\n.notHPStat\n\tld b, a\n\tldh a, [hMultiplicand+2]\n\tadd b"
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/core.asm",
+      "git_blob_sha": "7a5d617dc5ed080623bfb189f81d254c83ef4cc3",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/core.asm",
+      "line_count": 6913,
+      "excerpts": [
+        {
+          "start_line": 1815,
+          "end_line": 1848,
+          "text": "DrawPlayerHUDAndHPBar:\n\txor a\n\tldh [hAutoBGTransferEnabled], a\n\thlcoord 9, 7\n\tlb bc, 5, 11\n\tcall ClearScreenArea\n\tcallfar PlacePlayerHUDTiles\n\thlcoord 18, 9\n\tld [hl], $73\n\tld de, wBattleMonNick\n\thlcoord 10, 7\n\tcall CenterMonName\n\tcall PlaceString\n\tld hl, wBattleMonSpecies\n\tld de, wLoadedMon\n\tld bc, wBattleMonDVs - wBattleMonSpecies\n\tcall CopyData\n\tld hl, wBattleMonLevel\n\tld de, wLoadedMonLevel\n\tld bc, wBattleMonPP - wBattleMonLevel\n\tcall CopyData\n\thlcoord 14, 8\n\tpush hl\n\tinc hl\n\tld de, wLoadedMonStatus\n\tcall PrintStatusConditionNotFainted\n\tpop hl\n\tjr nz, .doNotPrintLevel\n\tcall PrintLevel\n.doNotPrintLevel\n\tld a, [wLoadedMonSpecies]\n\tld [wCurPartySpecies], a\n\thlcoord 10, 9\n\tpredef DrawHP"
+        },
+        {
+          "start_line": 1876,
+          "end_line": 1897,
+          "text": "DrawEnemyHUDAndHPBar:\n\txor a\n\tldh [hAutoBGTransferEnabled], a\n\thlcoord 0, 0\n\tlb bc, 4, 12\n\tcall ClearScreenArea\n\tcallfar PlaceEnemyHUDTiles\n\tld de, wEnemyMonNick\n\thlcoord 1, 0\n\tcall CenterMonName\n\tcall PlaceString\n\thlcoord 4, 1\n\tpush hl\n\tinc hl\n\tld de, wEnemyMonStatus\n\tcall PrintStatusConditionNotFainted\n\tpop hl\n\tjr nz, .skipPrintLevel ; if the mon has a status condition, skip printing the level\n\tld a, [wEnemyMonLevel]\n\tld [wLoadedMonLevel], a\n\tcall PrintLevel\n.skipPrintLevel"
+        }
+      ]
+    }
+  ]
+}

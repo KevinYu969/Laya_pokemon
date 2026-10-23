@@ -62,6 +62,10 @@ def attrition_context(state, plan, step_id):
     low_lead = lead_hp * 3 <= lead_max * 2
     if not fainted and not low_lead:
         return None
+    if not fainted:
+        from .capture_closing_gate import eligible
+        if eligible(state,plan,step_id):
+            return None  # 同owner只作閉合WAIT驗收；下一步仍回本損耗閘門。
     if _recovery_step(plan, step_id):
         return None
     return _review('party_attrition_requires_center', step_id,

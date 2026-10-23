@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-24",
+  "kind": "observed_normal_training_and_resupply",
+  "badges": 4,
+  "champion": false,
+  "training": {
+    "documented_baseline_at": "2026-10-24T01:34:23+0800",
+    "baseline": {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 25,
+      "hp": 33,
+      "max_hp": 63,
+      "exp": 16526,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        0,
+        0
+      ],
+      "pp": [
+        32,
+        15,
+        0,
+        0
+      ]
+    },
+    "target_reached_at": "2026-10-24T01:58:54+0800",
+    "target": {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 30,
+      "hp": 77,
+      "max_hp": 77,
+      "exp": 27350,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        0
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        0
+      ]
+    },
+    "party_at_center": [
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 32,
+        "hp": 99,
+        "max_hp": 99,
+        "exp": 33482,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 30,
+        "hp": 77,
+        "max_hp": 77,
+        "exp": 27350,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          0
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          0
+        ]
+      },
+      {
+        "species": 9,
+        "species_name": "IVYSAUR",
+        "level": 31,
+        "hp": 86,
+        "max_hp": 86,
+        "exp": 26348,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 31,
+        "hp": 105,
+        "max_hp": 105,
+        "exp": 24713,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      }
+    ],
+    "documented_window_seconds": 1471.0,
+    "timing_scope": "Includes engineering pauses, desktop-event stalls and normal travel; not pure gameplay speed or whole-game completion time.",
+    "method": "Normal visible party SWITCH, Route8 grass battles, healthy escort, Cut and normal Center return; no RAM/EXP/HP writes or rewind.",
+    "whole_party_loss_observed": false,
+    "party_faint_observed": false,
+    "checkpoint_sha256": "3841dc579980dbb50895a171b192c758f52110a7f0d186e004bbe764506f0a77"
+  },
+  "resupply": {
+    "observed_complete_at_utc": "2026-10-23T18:05:49.041358+00:00",
+    "map_id": 150,
+    "location": [
+      2,
+      5
+    ],
+    "item": 3,
+    "quantity_purchased": 20,
+    "money_before": 35159,
+    "money_after": 23159,
+    "money_spent": 12000,
+    "other_party_and_inventory_unchanged": true,
+    "normal_exit_closed": true,
+    "checkpoint_sha256": "0b818bf1a400c86da9cdc4ee9a1c73e6267fb069cad8b21cfef301ae0f3e914c",
+    "calibrations": [
+      "Full first goods page observed without scroll decoration; only that exact optional marker accepted.",
+      "Complete inactive main menu while known return text types waits; only active complete cursor permits B."
+    ],
+    "controller_baseline_retained_during_reviews": true
+  },
+  "runtime": {
+    "game_buttons": "local_laya_cpu_offline",
+    "cloud_fallback": false,
+    "strata_configuration_changed": false,
+    "strata_configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2",
+    "resume_planner_latency_seconds": 2.6719999999622814,
+    "resume_planner_usage": {
+      "prompt_tokens": 3568,
+      "completion_tokens": 29,
+      "total_tokens": 3597,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "render_backend": "SDL2",
+    "desktop_stall": "Read-only stack caught SDL_PumpEvents; operation later resumed. Root cause and permanent remedy not confirmed.",
+    "optional_glfw_dependencies_installed": {
+      "glfw": "2.10.0",
+      "PyOpenGL": "3.1.10"
+    },
+    "glfw_enabled": false
+  },
+  "snorlax_captured": false,
+  "fifth_gym_cleared": false,
+  "whole_game_elapsed_seconds": null
+}

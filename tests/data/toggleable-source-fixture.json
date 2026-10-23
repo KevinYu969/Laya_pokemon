@@ -1,0 +1,477 @@
+{
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "kind": "public_source_only_not_live_snapshot",
+  "num_toggleable_objects": 228,
+  "last_defined_toggle": {
+    "name": "TOGGLE_ARTICUNO",
+    "index": 227
+  },
+  "addresses": {
+    "wCurMap": 54110,
+    "wNumSprites": 54497,
+    "wToggleableObjectFlags": 54694,
+    "wToggleableObjectFlagsEnd": 54726,
+    "wSavedSpriteImageIndex": 54733,
+    "wToggleableObjectList": 54734
+  },
+  "main_data_base": 54007,
+  "cross_sdk_anchors": [
+    {
+      "symbol": "wNumBagItems",
+      "source_offset": 38,
+      "sdk_name": "BAG_ITEM_COUNT_ADDRESS",
+      "sdk_address": 54045,
+      "derived_address": 54045,
+      "equal": true
+    },
+    {
+      "symbol": "wBagItems",
+      "source_offset": 39,
+      "sdk_name": "BAG_ITEMS_ADDRESS",
+      "sdk_address": 54046,
+      "derived_address": 54046,
+      "equal": true
+    },
+    {
+      "symbol": "wPlayerMoney",
+      "source_offset": 80,
+      "sdk_name": "PLAYER_MONEY_ADDRESS",
+      "sdk_address": 54087,
+      "derived_address": 54087,
+      "equal": true
+    },
+    {
+      "symbol": "wObtainedBadges",
+      "source_offset": 95,
+      "sdk_name": "OBTAINED_BADGES_ADDRESS",
+      "sdk_address": 54102,
+      "derived_address": 54102,
+      "equal": true
+    }
+  ],
+  "party_data_crosscheck": {
+    "party_count_address": 53603,
+    "size_bytes": 404,
+    "derived_main_data_start": 54007
+  },
+  "maps": {
+    "147": {
+      "map_name": "PokemonTower6F",
+      "source_object_count": 5,
+      "objects": [
+        {
+          "slot": 4,
+          "index": 62,
+          "source_object": "POKEMONTOWER6F_RARE_CANDY",
+          "source_toggle": "TOGGLE_POKEMON_TOWER_6F_ITEM_1",
+          "source_initial_state": "ON",
+          "source_position": [
+            6,
+            8
+          ],
+          "flag_address": 54701,
+          "flag_bit": 6,
+          "flag_mask": 64
+        },
+        {
+          "slot": 5,
+          "index": 63,
+          "source_object": "POKEMONTOWER6F_X_ACCURACY",
+          "source_toggle": "TOGGLE_POKEMON_TOWER_6F_ITEM_2",
+          "source_initial_state": "ON",
+          "source_position": [
+            14,
+            14
+          ],
+          "flag_address": 54701,
+          "flag_bit": 7,
+          "flag_mask": 128
+        }
+      ],
+      "expected_list_prefix": [
+        4,
+        62,
+        5,
+        63,
+        255
+      ],
+      "source_only_not_snapshot": true
+    },
+    "148": {
+      "map_name": "PokemonTower7F",
+      "source_object_count": 4,
+      "objects": [
+        {
+          "slot": 1,
+          "index": 64,
+          "source_object": "POKEMONTOWER7F_ROCKET1",
+          "source_toggle": "TOGGLE_POKEMON_TOWER_7F_ROCKET_1",
+          "source_initial_state": "ON",
+          "source_position": [
+            9,
+            11
+          ],
+          "flag_address": 54702,
+          "flag_bit": 0,
+          "flag_mask": 1
+        },
+        {
+          "slot": 2,
+          "index": 65,
+          "source_object": "POKEMONTOWER7F_ROCKET2",
+          "source_toggle": "TOGGLE_POKEMON_TOWER_7F_ROCKET_2",
+          "source_initial_state": "ON",
+          "source_position": [
+            12,
+            9
+          ],
+          "flag_address": 54702,
+          "flag_bit": 1,
+          "flag_mask": 2
+        },
+        {
+          "slot": 3,
+          "index": 66,
+          "source_object": "POKEMONTOWER7F_ROCKET3",
+          "source_toggle": "TOGGLE_POKEMON_TOWER_7F_ROCKET_3",
+          "source_initial_state": "ON",
+          "source_position": [
+            9,
+            7
+          ],
+          "flag_address": 54702,
+          "flag_bit": 2,
+          "flag_mask": 4
+        },
+        {
+          "slot": 4,
+          "index": 67,
+          "source_object": "POKEMONTOWER7F_MR_FUJI",
+          "source_toggle": "TOGGLE_POKEMON_TOWER_7F_MR_FUJI",
+          "source_initial_state": "ON",
+          "source_position": [
+            10,
+            3
+          ],
+          "flag_address": 54702,
+          "flag_bit": 3,
+          "flag_mask": 8
+        }
+      ],
+      "expected_list_prefix": [
+        1,
+        64,
+        2,
+        65,
+        3,
+        66,
+        4,
+        67,
+        255
+      ],
+      "source_only_not_snapshot": true
+    },
+    "23": {
+      "map_name": "Route12",
+      "source_object_count": 10,
+      "objects": [
+        {
+          "slot": 1,
+          "index": 29,
+          "source_object": "ROUTE12_SNORLAX",
+          "source_toggle": "TOGGLE_ROUTE_12_SNORLAX",
+          "source_initial_state": "ON",
+          "source_position": [
+            10,
+            62
+          ],
+          "flag_address": 54697,
+          "flag_bit": 5,
+          "flag_mask": 32
+        },
+        {
+          "slot": 9,
+          "index": 30,
+          "source_object": "ROUTE12_TM_PAY_DAY",
+          "source_toggle": "TOGGLE_ROUTE_12_ITEM_1",
+          "source_initial_state": "ON",
+          "source_position": [
+            14,
+            35
+          ],
+          "flag_address": 54697,
+          "flag_bit": 6,
+          "flag_mask": 64
+        },
+        {
+          "slot": 10,
+          "index": 31,
+          "source_object": "ROUTE12_IRON",
+          "source_toggle": "TOGGLE_ROUTE_12_ITEM_2",
+          "source_initial_state": "ON",
+          "source_position": [
+            5,
+            89
+          ],
+          "flag_address": 54697,
+          "flag_bit": 7,
+          "flag_mask": 128
+        }
+      ],
+      "all_source_objects": [
+        {
+          "slot": 1,
+          "source_object": "ROUTE12_SNORLAX",
+          "source_position": [
+            10,
+            62
+          ],
+          "sprite": "SPRITE_SNORLAX",
+          "source_line": 27
+        },
+        {
+          "slot": 2,
+          "source_object": "ROUTE12_FISHER1",
+          "source_position": [
+            14,
+            31
+          ],
+          "sprite": "SPRITE_FISHER",
+          "source_line": 28
+        },
+        {
+          "slot": 3,
+          "source_object": "ROUTE12_FISHER2",
+          "source_position": [
+            5,
+            39
+          ],
+          "sprite": "SPRITE_FISHER",
+          "source_line": 29
+        },
+        {
+          "slot": 4,
+          "source_object": "ROUTE12_COOLTRAINER_M",
+          "source_position": [
+            11,
+            92
+          ],
+          "sprite": "SPRITE_COOLTRAINER_M",
+          "source_line": 30
+        },
+        {
+          "slot": 5,
+          "source_object": "ROUTE12_SUPER_NERD",
+          "source_position": [
+            14,
+            76
+          ],
+          "sprite": "SPRITE_SUPER_NERD",
+          "source_line": 31
+        },
+        {
+          "slot": 6,
+          "source_object": "ROUTE12_FISHER3",
+          "source_position": [
+            12,
+            40
+          ],
+          "sprite": "SPRITE_FISHER",
+          "source_line": 32
+        },
+        {
+          "slot": 7,
+          "source_object": "ROUTE12_FISHER4",
+          "source_position": [
+            9,
+            52
+          ],
+          "sprite": "SPRITE_FISHER",
+          "source_line": 33
+        },
+        {
+          "slot": 8,
+          "source_object": "ROUTE12_FISHER5",
+          "source_position": [
+            6,
+            87
+          ],
+          "sprite": "SPRITE_FISHER",
+          "source_line": 34
+        },
+        {
+          "slot": 9,
+          "source_object": "ROUTE12_TM_PAY_DAY",
+          "source_position": [
+            14,
+            35
+          ],
+          "sprite": "SPRITE_POKE_BALL",
+          "source_line": 35
+        },
+        {
+          "slot": 10,
+          "source_object": "ROUTE12_IRON",
+          "source_position": [
+            5,
+            89
+          ],
+          "sprite": "SPRITE_POKE_BALL",
+          "source_line": 36
+        }
+      ],
+      "expected_list_prefix": [
+        1,
+        29,
+        9,
+        30,
+        10,
+        31,
+        255
+      ],
+      "source_only_not_snapshot": true
+    }
+  },
+  "source_files": [
+    {
+      "path": "constants/map_constants.asm",
+      "sha256": "4129ef4e6908267e554c0308254f2269f1fb8f75b5c529faad6fd14c92119271",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/map_constants.asm"
+    },
+    {
+      "path": "constants/map_data_constants.asm",
+      "sha256": "46aba6a9bab346ee114beed23304d0350cf8e7a3d9482a6775f6fdf37102ea08",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/map_data_constants.asm"
+    },
+    {
+      "path": "constants/menu_constants.asm",
+      "sha256": "fbd0e91bd6ac5f8a491a4d5df3ccbc4438f34c234ce9be684f82b2537c6022ac",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/menu_constants.asm"
+    },
+    {
+      "path": "constants/ram_constants.asm",
+      "sha256": "b4fbed09d7b966481e43a9690f3bc8cb27a700ddf7c60d61d8f0f3d40f8eb5cf",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/ram_constants.asm"
+    },
+    {
+      "path": "constants/sprite_set_constants.asm",
+      "sha256": "60e2036186d505b78796a4f520e1bb91efa8d7013b9d56f4a02ee25af6fcbe41",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/sprite_set_constants.asm"
+    },
+    {
+      "path": "constants/toggle_constants.asm",
+      "sha256": "b028dd3cbcc2e6ef0135ab282d7fbf5ed41213f83555466d5d96b4c9d5e3812b",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm"
+    },
+    {
+      "path": "data/maps/headers/PokemonTower6F.asm",
+      "sha256": "ef798c83d9ff19fa5fd4e555a5390b85b56e272795983debee912f5a7ee0e92b",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/PokemonTower6F.asm"
+    },
+    {
+      "path": "data/maps/headers/PokemonTower7F.asm",
+      "sha256": "6dcd95fd36fd26f086d333defe7ff28ca1fd0feaf30a6f74a23f1ff5f43189a1",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/PokemonTower7F.asm"
+    },
+    {
+      "path": "data/maps/objects/PokemonTower6F.asm",
+      "sha256": "4667d347a7c933b34edc0f795d1cab805f99c35008dae0170b5ecf4a3a247e58",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/PokemonTower6F.asm"
+    },
+    {
+      "path": "data/maps/objects/PokemonTower7F.asm",
+      "sha256": "7b79a1dd938f866b933878da85f0ba9f89997429dd545dd159c9cc0445203dcf",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/PokemonTower7F.asm"
+    },
+    {
+      "path": "data/maps/toggleable_objects.asm",
+      "sha256": "8dc2fafaebe2ee98c83eca34d486d861117ce95b6c6f94da7760b7b1c88f8cf4",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm"
+    },
+    {
+      "path": "data/tilesets/collision_tile_ids.asm",
+      "sha256": "15df9f5ad78dd176e91b78a85ef6ff9cf471d51a6222689d3d4902e58af4fc0a",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/collision_tile_ids.asm"
+    },
+    {
+      "path": "engine/events/pick_up_item.asm",
+      "sha256": "8fc66f26679af548c850da55e71eb2c66cb2b985d49b3bebff4b6807d6bb8f7a",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/events/pick_up_item.asm"
+    },
+    {
+      "path": "engine/overworld/movement.asm",
+      "sha256": "c9ba372d07bab6dda1eb614a051005b6cb5fb7982b9d596829bb5b7e4e3b471d",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/movement.asm"
+    },
+    {
+      "path": "engine/overworld/sprite_collisions.asm",
+      "sha256": "e4561b83abb9fec85ebd2a04f4031602fbd06ef6ec6c62dc2300f04765d61477",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/sprite_collisions.asm"
+    },
+    {
+      "path": "engine/overworld/toggleable_objects.asm",
+      "sha256": "8d53800e0e970f8f2b886821cf884f2116ff09a6450c00f2d3178e09cfc4da92",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/toggleable_objects.asm"
+    },
+    {
+      "path": "gfx/blocksets/cemetery.bst",
+      "sha256": "2a6e1ad19e4230d4c4021ee4d09e94910c8d956740e9f57a3223dd68c669bace",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/cemetery.bst"
+    },
+    {
+      "path": "home/overworld.asm",
+      "sha256": "04683d520f775876f8ec050cbc20e145ef4e596293393d0cb2e7ccd0657cc11a",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/overworld.asm"
+    },
+    {
+      "path": "home/trainers.asm",
+      "sha256": "12357588c651ca94b54375f0adb436806a8e83beb277cccbc5e3700060d7785b",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/trainers.asm"
+    },
+    {
+      "path": "layout.link",
+      "sha256": "70c20fcaa2fb04b007589c8fc512fdf3e9141d90b05bab955f39582f12ac9bf9",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/layout.link"
+    },
+    {
+      "path": "macros/ram.asm",
+      "sha256": "cfb685afd3d00f3f4ee083014424e185f40250bf508579e007e686117a6b2a30",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/macros/ram.asm"
+    },
+    {
+      "path": "macros/scripts/maps.asm",
+      "sha256": "9e072d8990debe2e919ef22b161636cbd12c8b061671c7f58f08fcc4668cdb21",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/macros/scripts/maps.asm"
+    },
+    {
+      "path": "maps/PokemonTower6F.blk",
+      "sha256": "9366cfe502cd39c09bff9c664e637d419760c635fe7e411d7b43b0b5e1d20d40",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/maps/PokemonTower6F.blk"
+    },
+    {
+      "path": "maps/PokemonTower7F.blk",
+      "sha256": "124e2f5c6749a8c34ebd955695e676c071c9a607765ea5d37eaf037bab11fcdf",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/maps/PokemonTower7F.blk"
+    },
+    {
+      "path": "ram/wram.asm",
+      "sha256": "00683cd430a9ef30794d2aeaee51f3a5440e4bb14dca13e9f9cb5fa88f130e34",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/ram/wram.asm"
+    },
+    {
+      "path": "scripts/PokemonTower7F.asm",
+      "sha256": "7ff31c55ad8c3b487f59d7a2674f9a3d59569c6c69e8f0634d62d8088ec5e1d9",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/PokemonTower7F.asm"
+    },
+    {
+      "path": "data/maps/objects/Route12.asm",
+      "sha256": "c888273202b9d3079fb022a1172e927d71fe7550e61a04ab3635db18ca394856",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/Route12.asm"
+    },
+    {
+      "path": "data/maps/headers/Route12.asm",
+      "sha256": "f46853f8bd264cfde6367df51b613eedaf1017920557de2af51dc4cddbc8f466",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/Route12.asm"
+    }
+  ]
+}

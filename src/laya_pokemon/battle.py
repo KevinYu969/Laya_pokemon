@@ -26,6 +26,166 @@ DISABLE_SOURCE_SHA256 = {
 SOURCE = "https://github.com/pret/pokered/blob/master/ram/wram.asm"
 MENU_SOURCE = "https://github.com/pret/pokered/blob/master/engine/battle/core.asm"
 _no_pp_switch = globals().get('_no_pp_switch')
+_fixed_damage_risk = globals().get('_fixed_damage_risk')
+FIXED_DAMAGE_SOURCE_COMMIT = 'a53671100ec22e5394ff26ec028d0812a238dae2'
+FIXED_DAMAGE_SOURCES = {
+    'constants/battle_constants.asm#L58': 'db511a861aa64c631e43810315c2ce684cc107dfc94a958d1a34d51e99eafeeb',
+    'engine/battle/core.asm#L4773': '36d8ff785fe642d61f6917156e70b78c36fd7cde6c0b8fb582e02f6552e786d0',
+    'constants/move_constants.asm#L90': 'e8ac9263abd68b85c1292893b7a55d0664005e52ffc832fe8f6abe2c9d48c74d',
+}
+_VISIBLE_PROFILE = 'gen1-visible-tile-text-candidates-v1-unvalidated'
+
+
+def _clear_fixed_damage_risk():
+    global _fixed_damage_risk, _no_pp_switch
+    _fixed_damage_risk = None
+    if _no_pp_switch and _no_pp_switch.get('reason') == 'observed_dragon_rage_risk':
+        _no_pp_switch = None
+
+
+def _fixed_damage_rows(text):
+    """一般warning不是失敗；必須有本次decoder完整讀取／對齊的明確證據。"""
+    if (not isinstance(text, dict) or text.get('profile') != _VISIBLE_PROFILE
+            or text.get('read_valid') is not True or text.get('alignment_verified') is not True
+            or type(text.get('window_visible')) is not bool or text.get('read_error') is not None):
+        return None
+    cells = text.get('cells')
+    if (not isinstance(cells, (list, tuple)) or len(cells) != 18
+            or any(not isinstance(row, (str, list, tuple)) or len(row) != 20
+                   or any(not isinstance(c, str) or len(c) != 1 for c in row) for row in cells)):
+        return None
+    return [''.join(row).upper() for row in cells]
+
+
+def _observe_fixed_damage(text, battle_state):
+    """只記本場完整可見敵方龍怒；不讀敵招RAM、不由HP差值推測招式。"""
+    global _fixed_damage_risk
+    from .team_strategy import species_key, reference, normalize
+    enemy = species_key(battle_state.get('opponent_species'))
+    if battle_state.get('active') is not True or battle_state.get('kind') != 'trainer' or enemy is None:
+        _clear_fixed_damage_risk()
+        return False
+    if _fixed_damage_risk and _fixed_damage_risk['enemy_species'] != enemy:
+        _clear_fixed_damage_risk()
+    rows = _fixed_damage_rows(text)
+    if rows is None:
+        return False
+    lower = ' '.join(row.strip() for row in rows[12:]).strip()
+    fainted = re.fullmatch(r'ENEMY\s+(.+?)\s+FAINTED!\s*(?:▼\s*)?', lower)
+    replacement = re.fullmatch(r'WILL\s+KEVIN\s+CHANGE\s+POK[ÉE]MON\?\s*(?:▼\s*)?', lower)
+    if replacement or fainted and normalize(fainted[1]) == normalize(enemy):
+        _clear_fixed_damage_risk()
+        return False
+    visible = [key for key in reference()['species']
+               if normalize(key) in {normalize(row.strip()) for row in rows[:4]}]
+    match = re.fullmatch(r'ENEMY\s+(.+?)\s+USED\s+DRAGON\s+RAGE!\s*(?:▼\s*)?', lower)
+    if (visible != [enemy] or match is None or normalize(match[1]) != normalize(enemy)
+            or any(c in ''.join(rows) for c in ('▶', '▷'))):
+        return False
+    _fixed_damage_risk = {'enemy_species': enemy, 'move': 'DRAGON_RAGE', 'move_id': 82,
+                          'damage': 40, 'source_commit': FIXED_DAMAGE_SOURCE_COMMIT, 'unreadable_waits': 0}
+    return True
+
+
+def _fixed_damage_review(reason):
+    return {'phase': 'strategy_review', 'objective': 'Wait.', 'available_actions': ['wait'],
+            'review_reason': reason, 'observed_fixed_damage': dict(_fixed_damage_risk or {})}
+
+
+def _fixed_damage_mon_valid(mon):
+    from .team_strategy import species_key, move_key
+    return (isinstance(mon, dict) and species_key(mon.get('species')) is not None
+            and type(mon.get('level')) is int and 1 <= mon['level'] <= 100
+            and type(mon.get('hp')) is int and type(mon.get('max_hp')) is int
+            and 0 <= mon['hp'] <= mon['max_hp'] <= 999 and mon['max_hp'] > 0
+            and isinstance(mon.get('moves'), (list, tuple)) and len(mon['moves']) == 4
+            and isinstance(mon.get('pp'), (list, tuple)) and len(mon['pp']) == 4
+            and all(type(move) is int and (move == 0 or move_key(move) is not None)
+                    and type(pp) is int and 0 <= pp <= 255 and (move != 0 or pp == 0)
+                    for move, pp in zip(mon['moves'], mon['pp'])))
+
+
+def _fixed_damage_support(mon, enemy):
+    from .team_strategy import effective_power
+    return (_fixed_damage_mon_valid(mon) and mon['hp'] > 40 + (mon['max_hp'] + 9) // 10
+            and mon['hp'] * 2 > mon['max_hp']
+            and any(pp & 63 and effective_power(move, mon['species'], enemy) > 0
+                    for move, pp in zip(mon['moves'], mon['pp'])))
+
+
+def _fixed_damage_command(text, rows, party, matches, enemy, health, fight, item, run):
+    """只在完整command頁提出既有PKMN換人，不在招式／文字動畫頁猜按鍵。"""
+    global _no_pp_switch
+    from .team_strategy import effective_power, species_key, normalize, reference
+    if not _fixed_damage_risk:
+        return None
+    if (_fixed_damage_rows(text) is None or enemy != _fixed_damage_risk['enemy_species']
+            or len(matches) != 1 or len(health) != 1 or not isinstance(party, (list, tuple))
+            or not 1 <= len(party) <= 6 or not all(_fixed_damage_mon_valid(m) for m in party)):
+        return _fixed_damage_review('fixed_damage_active_hp_or_party_not_verified')
+    active = matches[0]
+    visible_enemies = [key for key in reference()['species']
+                       if normalize(key) in {normalize(row.strip()) for row in rows[:4]}]
+    cursors = [(x, y) for y, row in enumerate(rows) for x, c in enumerate(row) if c == '▶']
+    if (visible_enemies != [enemy] or fight != (10, 14) or item != (10, 16) or run != (16, 16)
+            or len(cursors) != 1 or cursors[0] not in {(9,14), (15,14), (9,16), (15,16)}
+            or any('▷' in row for row in rows)
+            or health[0] != {'hp': active['hp'], 'max_hp': active['max_hp']} or active['hp'] <= 0):
+        return _fixed_damage_review('fixed_damage_command_or_hud_not_verified')
+    threshold = 40 + (active['max_hp'] + 9) // 10
+    if active['hp'] > threshold:
+        return None
+    supports = [m for m in party if species_key(m['species']) != species_key(active['species'])
+                and _fixed_damage_support(m, enemy)]
+    if not supports:
+        return _fixed_damage_review('fixed_damage_no_safe_attacking_support')
+    def score(mon):
+        return max((effective_power(move, mon['species'], enemy) for move, pp in zip(mon['moves'], mon['pp'])
+                    if pp & 63), default=0) * mon['level']
+    target = max(supports, key=score)
+    if sum(m['species'] == target['species'] for m in party) != 1:
+        return _fixed_damage_review('fixed_damage_support_species_ambiguous')
+    _no_pp_switch = {'species': target['species'], 'reason': 'observed_dragon_rage_risk',
+                     'enemy_species': enemy}
+    result = _selection_hint(rows, (16, 14), 'command')
+    result.update(battle_tactic='switch_observed_fixed_damage', party_target_species=target['species'],
+                  enemy_species=enemy, fixed_damage_hp_threshold=threshold,
+                  observed_fixed_damage=dict(_fixed_damage_risk))
+    return result
+
+
+def _fixed_damage_moves(text, rows, party, matches, enemy, health):
+    """漏看command而已在招式頁：低血只B返回，不在此頁直接換人或攻擊。"""
+    if not _fixed_damage_risk:
+        return None
+    from .team_strategy import normalize, move_key, reference
+    # 對話的「 used PECK!」也可能從第6欄開始招名，必須保留左側空白版面，
+    # 不能只去標點後把完整攻擊文字當作招式選單。
+    lower = {normalize(row[6:].strip()) for row in rows[13:17]
+             if not row[:5].strip() and row[5] in {' ', '▶', '▷'}}
+    known_moves = {normalize(key.removesuffix('_M')) for key in reference()['moves']}
+    if not (lower & known_moves or any('▶' in row for row in rows[13:17])):
+        return None
+    if (_fixed_damage_rows(text) is None or len(matches) != 1 or len(health) != 1
+            or enemy != _fixed_damage_risk['enemy_species']
+            or not isinstance(party, (list, tuple)) or not all(_fixed_damage_mon_valid(m) for m in party)):
+        return _fixed_damage_review('fixed_damage_moves_hp_or_party_not_verified')
+    active = matches[0]
+    cursors = [(x, y) for y, row in enumerate(rows) for x, c in enumerate(row) if c == '▶']
+    visible_enemies = [key for key in reference()['species']
+                       if normalize(key) in {normalize(row.strip()) for row in rows[:4]}]
+    if (visible_enemies != [enemy] or health[0] != {'hp':active['hp'], 'max_hp':active['max_hp']}
+            or active['hp'] <= 0 or len(cursors) != 1 or cursors[0] not in {(5,y) for y in range(13,17)}
+            or any('▷' in row for row in rows)
+            or any(not move or normalize(rows[13+i][6:].strip()) != normalize(move_key(move).removesuffix('_M'))
+                   for i,move in enumerate(active['moves']))):
+        return _fixed_damage_review('fixed_damage_moves_layout_or_hud_not_verified')
+    threshold = 40 + (active['max_hp'] + 9) // 10
+    if active['hp'] > threshold:
+        return None
+    return {'phase':'battle_menu','objective':'Cancel and return to the battle command menu.',
+            'available_actions':['b','wait'],'battle_tactic':'return_for_fixed_damage_switch',
+            'fixed_damage_hp_threshold':threshold,'observed_fixed_damage':dict(_fixed_damage_risk)}
 
 
 def _read_player_disabled_move(pyboy):
@@ -174,6 +334,7 @@ def _selection_hint(rows, target, menu):
 def battle_context(text, battle_state, party=(), inventory=None, *, capture_focus=False) -> dict | None:
     """僅對已核對 ROM 的實驗性路線提供局部提示；不執行按鍵。"""
     global _no_pp_switch
+    observed_fixed_move = _observe_fixed_damage(text, battle_state)
     if battle_state.get("kind")=="lost_transition":
         return {"phase":"strategy_review","objective":"Wait.","available_actions":["wait","b"],"review_reason":"battle_loss_requires_review","battle_loss_confirmed":True,"phase_source":"read-only wIsInBattle LOST_BATTLE=255; save and review before continuing"}
     if battle_state["active"] is not True:
@@ -184,6 +345,19 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
     if disabled_error:
         return {'phase': 'strategy_review', 'objective': 'Wait.', 'available_actions': ['wait'],
                 'review_reason': disabled_error, 'player_disabled_move': signal}
+    if _fixed_damage_risk:
+        if _fixed_damage_rows(text) is None:
+            _fixed_damage_risk['unreadable_waits'] += 1
+            if _fixed_damage_risk['unreadable_waits'] > 30:
+                return _fixed_damage_review('fixed_damage_visible_wait_exhausted')
+            return {'phase': 'battle_animation', 'objective': 'Wait.', 'available_actions': ['wait'],
+                    'battle_tactic': 'wait_verified_fixed_damage_ui',
+                    'observed_fixed_damage': dict(_fixed_damage_risk)}
+        _fixed_damage_risk['unreadable_waits'] = 0
+    if observed_fixed_move:
+        return {'phase': 'battle_dialogue', 'objective': 'Confirm the current selection.',
+                'available_actions': ['a', 'wait'], 'battle_tactic': 'observe_enemy_dragon_rage',
+                'observed_fixed_damage': dict(_fixed_damage_risk)}
     cells = text.get("cells", [])
     if len(cells) == 18 and all(len(row) == 20 for row in cells):
         rows = ["".join(row).upper() for row in cells]
@@ -228,7 +402,14 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
             from .party_control import party_choice,selection
             compact=normalize(' '.join(rows))
             if 'ALREADYOUT' in compact or 'CANTSWITCH' in compact:
+                if _no_pp_switch.get('reason') == 'observed_dragon_rage_risk':
+                    return _fixed_damage_review('fixed_damage_switch_rejected')
                 return {'phase':'strategy_review','review_reason':'no_pp_switch_rejected'}
+            if _no_pp_switch.get('reason') == 'observed_dragon_rage_risk':
+                candidates = [m for m in party if m.get('species') == _no_pp_switch['species']]
+                if (not _fixed_damage_risk or _no_pp_switch.get('enemy_species') != enemy
+                        or len(candidates) != 1 or not _fixed_damage_support(candidates[0], enemy)):
+                    return _fixed_damage_review('fixed_damage_pending_support_not_verified')
             if 'SWITCH' in compact and 'STATS' in compact:
                 return selection(rows,'SWITCH','battle_menu') or {'phase':'strategy_review','review_reason':'switch_submenu_unreadable'}
             target=next((i for i,m in enumerate(party) if m['species']==_no_pp_switch['species'] and m['hp']>0),None)
@@ -264,11 +445,16 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
                 resisted_retreat = {'retreat_reason': 'all_available_damage_moves_resisted',
                                     'resisted_attacks': resisted, 'enemy_species': enemy}
         fight, item, run = (_label(rows, word) for word in ("FIGHT", "ITEM", "RUN"))
+        if _fixed_damage_risk and any((fight, item, run)) and not all((fight, item, run)):
+            return _fixed_damage_review('fixed_damage_command_not_complete')
         if fight and item and run:
             if resisted_retreat:
                 result = _selection_hint(rows, run, 'command')
                 result.update(battle_tactic='retreat', **resisted_retreat)
                 return result
+            risk_context = _fixed_damage_command(text, rows, party, matches, enemy, health, fight, item, run)
+            if risk_context:
+                return risk_context
             if _no_pp_switch:
                 result=_selection_hint(rows,(run[0],fight[1]),'command')
                 result.update(battle_tactic='switch_pending_party',party_target_species=_no_pp_switch['species'],enemy_species=enemy)
@@ -313,6 +499,9 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
                         return {"phase": "battle_bag", "objective": "Confirm the current selection." if cursors[0][1] == y else f"Move {direction}.",
                                 "available_actions": ["a", "b"] if cursors[0][1] == y else ["up", "down", "wait"],
                                 "capture_plan": capture, "phase_source": "visible POKE BALL bag cursor; controller capture subgoal"}
+        risk_moves = _fixed_damage_moves(text, rows, party, matches, enemy, health)
+        if risk_moves:
+            return risk_moves
         # 讀目前在場寶可夢：目前一隻時唯一；多隻必須有唯一可見名稱配對。
         active = party[0] if len(party) == 1 else None
         if len(party) > 1:
@@ -350,6 +539,13 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
     if any(y >= 12 for y in text.get("line_rows", [])):
         return {"phase": "battle_dialogue", "objective": "Advance the visible dialogue with the confirm button.",
                 "available_actions": ["a", "wait"], "phase_source": "battle flag and visible lower dialogue"}
+    if _fixed_damage_risk:
+        _fixed_damage_risk['unknown_ui_waits'] = _fixed_damage_risk.get('unknown_ui_waits', 0) + 1
+        if _fixed_damage_risk['unknown_ui_waits'] > 30:
+            return _fixed_damage_review('fixed_damage_unrecognized_ui_wait_exhausted')
+        return {'phase': 'battle_animation', 'objective': 'Wait.', 'available_actions': ['wait'],
+                'battle_tactic': 'wait_recognized_fixed_damage_ui',
+                'observed_fixed_damage': dict(_fixed_damage_risk)}
     return {"phase": "battle_animation", "objective": "Wait.", "available_actions": ["wait", "a"],
             "phase_source": "battle flag; no readable lower dialogue"}
 
