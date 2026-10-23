@@ -1,0 +1,533 @@
+{
+  "recorded_at": "2026-10-23T08:02:07.008910+00:00",
+  "status": "first_gym_complete",
+  "goal": "擊敗小剛並取得灰色徽章",
+  "cloud_gameplay_fallback": false,
+  "computer_use_gameplay_input_calls": 0,
+  "computer_use_window_verification_calls": 3,
+  "desktop_foreground_verified_once": true,
+  "foreground_verification_session": "d/game-08",
+  "button_backend": "local_laya_cpu",
+  "planner_backend": "private_strata",
+  "runs": [
+    {
+      "id": "b/game-00",
+      "source_state_sha256": "e6003e7fdfa23347e1d5817b2436bee4dbefdb54af5e11d202106d95049e8126",
+      "final_state_sha256": "2d214570667071d66ce20a4ca262e7f20073d9f7ef8c5f591608b3a57cbd71b2",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 48,
+      "cache_hits": 0,
+      "wall_seconds": 60.635291400016285,
+      "fast_forward": false
+    },
+    {
+      "id": "b/game-01",
+      "source_state_sha256": "2d214570667071d66ce20a4ca262e7f20073d9f7ef8c5f591608b3a57cbd71b2",
+      "final_state_sha256": "23977cf18b997de5c0f935bef20034acc53861998186ab7a77e19caa8962fa70",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 48,
+      "cache_hits": 0,
+      "wall_seconds": 60.6356334000011,
+      "fast_forward": false
+    },
+    {
+      "id": "b/game-02",
+      "source_state_sha256": "23977cf18b997de5c0f935bef20034acc53861998186ab7a77e19caa8962fa70",
+      "final_state_sha256": "bf83db56d03b7717d44d01af4cc87454380e70559c1b80e4f70e79b14a836b39",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 48,
+      "cache_hits": 0,
+      "wall_seconds": 60.443575499986764,
+      "fast_forward": false
+    },
+    {
+      "id": "b/game-03",
+      "source_state_sha256": "bf83db56d03b7717d44d01af4cc87454380e70559c1b80e4f70e79b14a836b39",
+      "final_state_sha256": "004b8add95b5f12dcf49e99e62d8fcfb6508372c9b01c0706266588b66adb177",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 47,
+      "cache_hits": 0,
+      "wall_seconds": 60.926980999996886,
+      "fast_forward": false
+    },
+    {
+      "id": "b/game-04",
+      "source_state_sha256": "004b8add95b5f12dcf49e99e62d8fcfb6508372c9b01c0706266588b66adb177",
+      "final_state_sha256": "5be594510cd3ff0bf40e78e5f51f58d28a6560273087aa7385b83c5275507856",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 46,
+      "cache_hits": 0,
+      "wall_seconds": 60.4081369000196,
+      "fast_forward": false
+    },
+    {
+      "id": "b/game-05",
+      "source_state_sha256": "5be594510cd3ff0bf40e78e5f51f58d28a6560273087aa7385b83c5275507856",
+      "final_state_sha256": "914b35647efcebcdcd14f5ae5e10380cbc0229b172603d0b02b5f6b4c468873b",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 41,
+      "cache_hits": 0,
+      "wall_seconds": 60.39801969999098,
+      "fast_forward": false
+    },
+    {
+      "id": "b/game-06",
+      "source_state_sha256": "914b35647efcebcdcd14f5ae5e10380cbc0229b172603d0b02b5f6b4c468873b",
+      "final_state_sha256": "fc3a7eda6f6b6d3b8b5f1bd53fad12738e70ee0e778007b2f88448b5ac1a66c6",
+      "chain_verified": true,
+      "stop_reason": "operator_stop",
+      "completed_steps": 0,
+      "cache_hits": 0,
+      "wall_seconds": 5.559352900017984,
+      "fast_forward": false
+    },
+    {
+      "id": "c/game-00",
+      "source_state_sha256": "fc3a7eda6f6b6d3b8b5f1bd53fad12738e70ee0e778007b2f88448b5ac1a66c6",
+      "final_state_sha256": "8a3cd7c782fe6398ef5d79895ff8fe0b8a251b36c36d1872a98917f08e4bcb23",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 24,
+      "cache_hits": 0,
+      "wall_seconds": 60.55860049999319,
+      "fast_forward": true
+    },
+    {
+      "id": "c/game-01",
+      "source_state_sha256": "8a3cd7c782fe6398ef5d79895ff8fe0b8a251b36c36d1872a98917f08e4bcb23",
+      "final_state_sha256": "12a898f31ecf4bb173743a98dccdf6a4ce713c50c306f33583b6c514941ce7d5",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 25,
+      "cache_hits": 0,
+      "wall_seconds": 60.63061419999576,
+      "fast_forward": true
+    },
+    {
+      "id": "c/game-02",
+      "source_state_sha256": "12a898f31ecf4bb173743a98dccdf6a4ce713c50c306f33583b6c514941ce7d5",
+      "final_state_sha256": "0e119865069db81552a2bfa1c6a90a16b2b638c0896b8dde44975ded3535aa9e",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 21,
+      "cache_hits": 0,
+      "wall_seconds": 60.5964718000032,
+      "fast_forward": true
+    },
+    {
+      "id": "c/game-03",
+      "source_state_sha256": "0e119865069db81552a2bfa1c6a90a16b2b638c0896b8dde44975ded3535aa9e",
+      "final_state_sha256": "ef8605fbd05b695127ed228d45bedb1015daa0ab07d44238f47ce2e263eb184b",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 37,
+      "cache_hits": 16,
+      "wall_seconds": 60.520126000017626,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-00",
+      "source_state_sha256": "ef8605fbd05b695127ed228d45bedb1015daa0ab07d44238f47ce2e263eb184b",
+      "final_state_sha256": "adb0fb102e5d67d4afcc07f4e7ba28481c9977091fb0d87072bbcaa464af1e67",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 163,
+      "cache_hits": 158,
+      "wall_seconds": 60.495910499972524,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-01",
+      "source_state_sha256": "adb0fb102e5d67d4afcc07f4e7ba28481c9977091fb0d87072bbcaa464af1e67",
+      "final_state_sha256": "ffb0b3cebf2f3212585a93469b986486a7175f33173c9e02689df7cf84e22745",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 82,
+      "cache_hits": 64,
+      "wall_seconds": 60.50381330001983,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-02",
+      "source_state_sha256": "ffb0b3cebf2f3212585a93469b986486a7175f33173c9e02689df7cf84e22745",
+      "final_state_sha256": "b0caf0295adb16a858016145342440fe2c8df67bc060c97bb1efccfd6d3059ed",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 177,
+      "cache_hits": 169,
+      "wall_seconds": 60.54606199997943,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-03",
+      "source_state_sha256": "b0caf0295adb16a858016145342440fe2c8df67bc060c97bb1efccfd6d3059ed",
+      "final_state_sha256": "f35b27ea6cdb8d922be27cbeda5f84cf38db44824abe81c655ff60cae713cf9d",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 125,
+      "cache_hits": 110,
+      "wall_seconds": 60.53368480000063,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-04",
+      "source_state_sha256": "f35b27ea6cdb8d922be27cbeda5f84cf38db44824abe81c655ff60cae713cf9d",
+      "final_state_sha256": "494b9939648d93579d9dce21eccff4fbd37f77bf8e96b59ca8576d8553ac1b42",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 164,
+      "cache_hits": 153,
+      "wall_seconds": 60.559044099994935,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-05",
+      "source_state_sha256": "494b9939648d93579d9dce21eccff4fbd37f77bf8e96b59ca8576d8553ac1b42",
+      "final_state_sha256": "245c10bac4f355d9b280c4695189e7f364273997fa4963354fdc90d49773cf73",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 153,
+      "cache_hits": 141,
+      "wall_seconds": 60.51895599998534,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-06",
+      "source_state_sha256": "245c10bac4f355d9b280c4695189e7f364273997fa4963354fdc90d49773cf73",
+      "final_state_sha256": "fd6f7f9ea924b0954c7d526f2838546ad8bde6da94b25425dfe691a6c53a2412",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 132,
+      "cache_hits": 118,
+      "wall_seconds": 60.73777160001919,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-07",
+      "source_state_sha256": "fd6f7f9ea924b0954c7d526f2838546ad8bde6da94b25425dfe691a6c53a2412",
+      "final_state_sha256": "449a57dc56d9032236019bfd6e6f22281248829cc4c219da52796c9a86e29392",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 185,
+      "cache_hits": 179,
+      "wall_seconds": 60.576648600021144,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-08",
+      "source_state_sha256": "449a57dc56d9032236019bfd6e6f22281248829cc4c219da52796c9a86e29392",
+      "final_state_sha256": "c647158065b5dd8d0bbb50ee43c3e8ec4c483108e437f616598bd874a133dd28",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 162,
+      "cache_hits": 143,
+      "wall_seconds": 60.499335600005,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-09",
+      "source_state_sha256": "c647158065b5dd8d0bbb50ee43c3e8ec4c483108e437f616598bd874a133dd28",
+      "final_state_sha256": "0ee66ec56b4d24ef16ba8e43e5f392f93e395dc48eab5e925783070ed56d0438",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 152,
+      "cache_hits": 141,
+      "wall_seconds": 60.490101599978516,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-10",
+      "source_state_sha256": "0ee66ec56b4d24ef16ba8e43e5f392f93e395dc48eab5e925783070ed56d0438",
+      "final_state_sha256": "c7049084db998e3732116ec866a67c1058ff5d7a6f1e558a407dfd2ae966312d",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 185,
+      "cache_hits": 174,
+      "wall_seconds": 60.53636729999562,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-11",
+      "source_state_sha256": "c7049084db998e3732116ec866a67c1058ff5d7a6f1e558a407dfd2ae966312d",
+      "final_state_sha256": "c1d5eaca82ca31ede57dcb5c78b05364415ebbfb7bb80997cbe46fdd8e5a890d",
+      "chain_verified": true,
+      "stop_reason": "action_budget",
+      "completed_steps": 300,
+      "cache_hits": 299,
+      "wall_seconds": 56.90618849999737,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-12",
+      "source_state_sha256": "c1d5eaca82ca31ede57dcb5c78b05364415ebbfb7bb80997cbe46fdd8e5a890d",
+      "final_state_sha256": "e5f0b470bbb181a9ce19b6c5a212256aa0f92db103d6bc5ee961635c956be12a",
+      "chain_verified": true,
+      "stop_reason": "action_budget",
+      "completed_steps": 300,
+      "cache_hits": 299,
+      "wall_seconds": 58.28495830000611,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-13",
+      "source_state_sha256": "e5f0b470bbb181a9ce19b6c5a212256aa0f92db103d6bc5ee961635c956be12a",
+      "final_state_sha256": "48ec2f47a854979b984d180c8b78e016a4c1be36a59d9589e3f13e4da03fc613",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 177,
+      "cache_hits": 167,
+      "wall_seconds": 60.5094059999974,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-14",
+      "source_state_sha256": "48ec2f47a854979b984d180c8b78e016a4c1be36a59d9589e3f13e4da03fc613",
+      "final_state_sha256": "cc960de5a0f1a7e29209c89dae53b178e18747f771eaa65e9d15b388ddc1eb54",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 276,
+      "cache_hits": 272,
+      "wall_seconds": 60.54499229998328,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-15",
+      "source_state_sha256": "cc960de5a0f1a7e29209c89dae53b178e18747f771eaa65e9d15b388ddc1eb54",
+      "final_state_sha256": "8d6dd5f3df3eb70bd78858fbd0bd5a26eb30e5c36954df6fda063ac6e681a3ae",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 285,
+      "cache_hits": 281,
+      "wall_seconds": 60.46461450000061,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-16",
+      "source_state_sha256": "8d6dd5f3df3eb70bd78858fbd0bd5a26eb30e5c36954df6fda063ac6e681a3ae",
+      "final_state_sha256": "1f36e64477013d3d4715e743c0fcc44518303184144596ad76680d4b0da05241",
+      "chain_verified": true,
+      "stop_reason": "action_budget",
+      "completed_steps": 300,
+      "cache_hits": 299,
+      "wall_seconds": 59.3872009999759,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-17",
+      "source_state_sha256": "1f36e64477013d3d4715e743c0fcc44518303184144596ad76680d4b0da05241",
+      "final_state_sha256": "9fdbbf6be3b96f670ec14d0d056da830d0fca665206a6cf8ff89b1248d54518c",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 97,
+      "cache_hits": 80,
+      "wall_seconds": 60.65106679999735,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-18",
+      "source_state_sha256": "9fdbbf6be3b96f670ec14d0d056da830d0fca665206a6cf8ff89b1248d54518c",
+      "final_state_sha256": "81ae001f5537909e547752058abee4482ca9de69180ef3ec5e18237097e83a25",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 61,
+      "cache_hits": 42,
+      "wall_seconds": 60.65749380001216,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-19",
+      "source_state_sha256": "81ae001f5537909e547752058abee4482ca9de69180ef3ec5e18237097e83a25",
+      "final_state_sha256": "6ff6018e6edd2f111c97cd50e14e74fd072a65c045615fa7835e43337a9613fd",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 95,
+      "cache_hits": 83,
+      "wall_seconds": 60.44561510000494,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-20",
+      "source_state_sha256": "6ff6018e6edd2f111c97cd50e14e74fd072a65c045615fa7835e43337a9613fd",
+      "final_state_sha256": "03961c5ef25e2433ab612d23ba87408d51949fdb8538fbd953eb82d48ee14d64",
+      "chain_verified": true,
+      "stop_reason": "wall_clock_limit",
+      "completed_steps": 140,
+      "cache_hits": 139,
+      "wall_seconds": 60.65239120001206,
+      "fast_forward": true
+    },
+    {
+      "id": "d/game-21",
+      "source_state_sha256": "03961c5ef25e2433ab612d23ba87408d51949fdb8538fbd953eb82d48ee14d64",
+      "final_state_sha256": "6d74812ce8c8bb2ba2e8d8b347f2014908c94b878e4d29311ab974fa0f0ecd02",
+      "chain_verified": true,
+      "stop_reason": "first_gym_complete",
+      "completed_steps": 15,
+      "cache_hits": 14,
+      "wall_seconds": 17.527323300018907,
+      "fast_forward": true
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 23448,
+    "completion_tokens": 1191,
+    "total_tokens": 24639
+  },
+  "failed_response_usage": [
+    {
+      "prompt_tokens": 697,
+      "completion_tokens": 70,
+      "total_tokens": 767,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  ],
+  "milestone_run": "d/game-21",
+  "state_chain_verified": true,
+  "completed_button_actions": 4111,
+  "cache_hits": 3541,
+  "completed_uncached_laya_choices": 570,
+  "observed_maps": [
+    1,
+    2,
+    13,
+    33,
+    41,
+    47,
+    50,
+    51,
+    54,
+    58
+  ],
+  "trainer_move_choices": [
+    [
+      "DIGLETT",
+      "VINE_WHIP"
+    ],
+    [
+      "GEODUDE",
+      "VINE_WHIP"
+    ],
+    [
+      "ONIX",
+      "VINE_WHIP"
+    ],
+    [
+      "SANDSHREW",
+      "VINE_WHIP"
+    ],
+    [
+      "WEEDLE",
+      "TACKLE"
+    ]
+  ],
+  "verified_world_path_steps": 1088,
+  "proof": {
+    "beat_brock": true,
+    "badges_raw": 1,
+    "badges_observed": [
+      "boulder"
+    ],
+    "battle_kind": "none",
+    "phase": "overworld",
+    "location": {
+      "map_id": 54,
+      "x": 4,
+      "y": 2
+    }
+  },
+  "final_party": [
+    {
+      "species": 153,
+      "species_name": "BULBASAUR",
+      "level": 15,
+      "hp": 33,
+      "max_hp": 41,
+      "exp": 2395,
+      "status": 0,
+      "moves": [
+        33,
+        45,
+        73,
+        22
+      ],
+      "pp": [
+        35,
+        40,
+        10,
+        6
+      ]
+    },
+    {
+      "species": 3,
+      "species_name": "NIDORAN M",
+      "level": 3,
+      "hp": 16,
+      "max_hp": 16,
+      "exp": 57,
+      "status": 0,
+      "moves": [
+        43,
+        33,
+        0,
+        0
+      ],
+      "pp": [
+        30,
+        35,
+        0,
+        0
+      ]
+    },
+    {
+      "species": 5,
+      "species_name": "SPEAROW",
+      "level": 3,
+      "hp": 16,
+      "max_hp": 16,
+      "exp": 27,
+      "status": 0,
+      "moves": [
+        64,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        35,
+        40,
+        0,
+        0
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "item": 4,
+      "quantity": 6
+    },
+    {
+      "item": 234,
+      "quantity": 1
+    }
+  ],
+  "money": 3096,
+  "final_state_readback_verified": true,
+  "money_at_milestone_sdk_observed": 963000,
+  "money_correction": "唯讀解碼大端BCD 00 30 96為3096；原SDK多byte順序讀成963000，原始日誌保留",
+  "limitations": [
+    "控制器提供地圖、選單及招式子目標；不是模型自主理解遊戲",
+    "招式評分是威力／命中／本系／屬性近似，尚非完整傷害模擬",
+    "原始ROM、存檔、影片、端點與憑證不公開",
+    "模型格式錯誤與修復保留紀錄；未回讀戰前改寫勝負"
+  ],
+  "failed_response_usage_unavailable_count": 1,
+  "validation_tests_passed": 227
+}

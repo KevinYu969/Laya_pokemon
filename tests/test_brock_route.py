@@ -38,3 +38,18 @@ def test_mission_can_continue_through_forest_without_expanding_to_unknown_maps()
     assert allowed_stages(snap)==['first_gym','review','stop']
     snap['location']['map_id']=255
     assert allowed_stages(snap)==['review','stop']
+
+
+def test_gate_uses_walkable_right_hand_warp_column():
+    waypoint=brock_waypoint({'map_id':50,'x':4,'y':1},progress())
+    assert waypoint['controller_waypoint']=={'map_id':50,'x':5,'y':0}
+
+
+def test_forest_exit_steps_beyond_border_after_reaching_warp():
+    result=brock_waypoint({'map_id':51,'x':1,'y':0},progress())
+    assert result['goal']=='step_out_forest' and result['controller_waypoint']['y']==-1
+
+
+def test_route2_north_uses_open_border_instead_of_tree_column():
+    waypoint=brock_waypoint({'map_id':13,'x':3,'y':2},progress())
+    assert waypoint['controller_waypoint']=={'map_id':13,'x':8,'y':-1}

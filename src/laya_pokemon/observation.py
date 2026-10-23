@@ -118,7 +118,8 @@ def opening_context(text: dict, fallback_objective: str, player_name: str = "KEV
     elif "NEW GAME" in upper or "CONTINUE" in upper:
         phase, objective = "title", "Begin or continue the current adventure from the title menu."
     elif any(row >= 12 for row in text.get("line_rows", [])):
-        phase, objective = "dialogue", "Advance the visible dialogue with the confirm button."
+        return {"phase": "dialogue", "objective": "Advance the visible dialogue with the confirm button.",
+                "available_actions": ["a", "b"], "phase_source": "visible lower dialogue; A/B advance text"}
     else:
         phase, objective = "unclassified", fallback_objective
     return {"phase": phase, "objective": objective, "phase_source": "visible_text_layout_heuristic"}

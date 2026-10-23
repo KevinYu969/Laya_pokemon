@@ -38,11 +38,14 @@ def brock_waypoint(location,progress,previous_actions=(),grass_world=()):
         if y>11:
             if (x,y)==(3,44):return goal('enter_forest_south_gate',(3,43))
             return goal('reach_forest_south_gate',(3,44))
-        return goal('route2_north_to_pewter',(3,-1))
+        return goal('route2_north_to_pewter',(8,-1))
     if mid in {50,47}:
-        if y>0:return goal('forest_gate_north',(4,0))
-        return goal('step_out_forest_gate',(4,-1))
+        # 兩格warp定義中x4上方仍是牆，實際門圖塊位於x5。
+        if y>0:return goal('forest_gate_north',(5,0))
+        return goal('step_out_forest_gate',(5,-1))
     if mid==51:
+        if y==0 and x in {1,2}:
+            return goal('step_out_forest',(x,-1))
         return goal('forest_north_exit',(1,0))
     if mid==2:
         if injured or low_pp:

@@ -130,3 +130,10 @@ def test_missing_scanline_positions_produces_warning():
     game.screen.tilemap_position_list = []
     result = read_visible_text(game, DECODING)
     assert result["lines"] == [] and len(result["warnings"]) == 2
+
+
+def test_npc_wait_dialogue_is_data_and_only_dialogue_buttons_are_candidates():
+    from laya_pokemon.observation import opening_context
+    result=opening_context({'lines':[' Wait! Take this',' with you!'],'line_rows':[14,16]},'Play','KEVIN')
+    assert result['phase']=='dialogue' and result['available_actions']==['a','b']
+    assert result['objective']=='Advance the visible dialogue with the confirm button.'

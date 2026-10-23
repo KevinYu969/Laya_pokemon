@@ -70,6 +70,7 @@ class LayaPolicy:
         if getattr(self, 'cache_enabled', False) and (
                 state.get('world_path_hint') or state.get('collision_path_hint')
                 or state.get('battle_target_tile') or state.get('phase') == 'battle_bag'
+                or (state.get('phase') == 'dialogue' and state.get('objective') == 'Advance the visible dialogue with the confirm button.')
                 or (state.get('phase') in {'battle_animation', 'battle_dialogue'}
                     and state.get('battle_state', {}).get('active') is True)):
             model_state = {key: state[key] for key in ('objective', 'phase')}

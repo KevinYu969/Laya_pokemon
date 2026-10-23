@@ -113,6 +113,13 @@ def read_progress(pyboy, constants=None) -> dict:
             result["money"] = int(money)
     except (AttributeError, KeyError, IndexError, TypeError, ValueError):
         pass  # 較舊 wrapper 或合成測試沒有此 property；保持未知，不視為空背包。
+    money_address = getattr(constants, 'PLAYER_MONEY_ADDRESS', None)
+    if money_address is not None:
+        # PyBoy 2.8.1 BCD helper會反轉多byte順序；自行唯讀解碼大端BCD。
+        digits = [read_byte(money_address + i) for i in range(3)]
+        result['money'] = None
+        if all(b is not None and b >> 4 <= 9 and b & 15 <= 9 for b in digits):
+            result['money'] = sum(((b >> 4)*10+(b & 15))*100**(2-i) for i,b in enumerate(digits))
     badges = read_byte(constants.OBTAINED_BADGES_ADDRESS)
     result["badges_raw"] = badges
     for name in STORY_EVENT_NAMES:

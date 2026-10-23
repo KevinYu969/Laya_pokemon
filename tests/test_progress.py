@@ -124,3 +124,14 @@ def test_mission_metadata_is_traditional_chinese_and_all_pending():
     assert [item["id"] for item in FULL_MISSION_MILESTONES] == [
         "train_party", "required_story", "eight_badges", "elite_four", "champion", "hall_of_fame"]
     assert all(item["status"] == "pending" for item in FULL_MISSION_MILESTONES)
+
+
+def test_money_decodes_big_endian_bcd_without_sdk_byte_reversal_or_ram_writes():
+    constants=synthetic_constants();constants.PLAYER_MONEY_ADDRESS=0x400
+    game=emulator([valid_mon()]);game.game_wrapper.inventory=[];game.game_wrapper.money=963000
+    for offset,value in enumerate([0x00,0x30,0x96]):game.memory[0x400+offset]=value
+    before=dict(game.memory)
+    assert read_progress(game,constants)['money']==3096
+    assert all(game.memory[k]==v for k,v in before.items())
+    game.memory[0x401]=0xFA
+    assert read_progress(game,constants)['money'] is None

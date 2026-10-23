@@ -1,0 +1,39 @@
+{
+  "recorded_at": "2026-10-23T08:00:33.919672+00:00",
+  "file": "first-gym-cleared-20261023.mp4",
+  "sha256": "706e082a5671551d868084dbca77cc5fd3512aa645133ac3c1759fc46ed1a278",
+  "bytes": 1942244,
+  "frames_decoded": 7456,
+  "fps": 30.0,
+  "size": [
+    480,
+    432
+  ],
+  "playback_seconds": 248.53333333333333,
+  "timing": "emulated_time; inference waits omitted",
+  "sources": [
+    {
+      "run": "d/game-17",
+      "start_emulated_seconds": 73.48333333333333,
+      "trim_duration_seconds": null
+    },
+    {
+      "run": "d/game-18",
+      "start_emulated_seconds": 0.016666666666666666,
+      "trim_duration_seconds": null
+    },
+    {
+      "run": "d/game-19",
+      "start_emulated_seconds": 0.016666666666666666,
+      "trim_duration_seconds": 101.2
+    },
+    {
+      "run": "d/game-21",
+      "start_emulated_seconds": 0.016666666666666666,
+      "trim_duration_seconds": null
+    }
+  ],
+  "first_and_last_frame_decoded": true,
+  "published": false,
+  "editing": "按原時間順序串接道館片段；移除重複Wait對話卡住畫面，原始影片仍留本機"
+}

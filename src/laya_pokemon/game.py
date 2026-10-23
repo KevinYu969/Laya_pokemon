@@ -155,7 +155,7 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
                             if ledge:
                                 state["objective"] = "Move DOWN."
                                 state["ledge_jump_hint"] = ledge
-                            elif distance != 1 or waypoint["goal"] not in {"enter_1f_exit", "step_out_house", "reach_2f_stairs_y", "step_out_lab", "leave_pallet_north", "route1_north", "enter_viridian_mart", "enter_viridian_center", "step_out_center", "step_out_mart", "leave_viridian_south", "route1_south", "enter_oaks_lab", "leave_viridian_west", "return_route22_east"}:
+                            elif distance != 1 or waypoint["goal"] not in {"enter_1f_exit", "step_out_house", "reach_2f_stairs_y", "step_out_lab", "leave_pallet_north", "route1_north", "enter_viridian_mart", "enter_viridian_center", "step_out_center", "step_out_mart", "leave_viridian_south", "route1_south", "enter_oaks_lab", "leave_viridian_west", "return_route22_east", "forest_gate_north", "step_out_forest_gate", "forest_north_exit", "enter_forest_south_gate", "enter_pewter_center", "enter_pewter_gym"}:
                                 state["objective"] = "Wait for a verified traversable path."
                                 state["available_actions"] = ["wait", "b"]
                                 state["navigation_warning"] = "No closer reachable collision-grid waypoint."
@@ -297,6 +297,9 @@ def play_game(args) -> None:
             route_stage = strategy.get("stage", "starter")
             if route_stage not in {"starter", "lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture", "team_training", "first_gym"}:
                 raise ValueError("策略檔的 stage 不在允許集合")
+            if route_stage == 'first_gym':
+                metadata.update(kind='pokemon_first_gym_campaign', stage='持續訓練、前往尼比市與挑戰第一道館',
+                                success_scope='first_gym', limitation='Controller-assisted local gameplay; full-game completion not verified.')
             state = observe(emulator, args.objective, args.player_name, previous_actions, args.opening_route, starter, route_stage)
             state["strategy_starter"] = starter
             state["strategy_stage"] = route_stage
@@ -308,6 +311,7 @@ def play_game(args) -> None:
                 raise StrategyReviewRequired(state.get("review_reason", "unknown_strategy_context"))
             if state.get('goal')=='first_gym_complete':
                 write_json(output/'first-gym-milestone.json',state)
+                metadata.update(task_success=True, stage='已擊敗小剛並取得灰色徽章')
                 raise MilestoneReached('first_gym_complete')
             if state.get("goal") in {"first_team_capture_complete", "lead_training_complete"}:
                 write_json(output / ("training-milestone.json" if state["goal"] == "lead_training_complete" else "capture-milestone.json"), state)
