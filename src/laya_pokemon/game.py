@@ -30,6 +30,10 @@ class MilestoneReached(RuntimeError):
     pass
 
 
+class OperatorStop(RuntimeError):
+    pass
+
+
 def run_with_window_events(pyboy, operation, deadline: float, pause_event, unpause_event):
     """模型不碰模擬器；主執行緒在暫停遊戲時持續處理 SDL 事件。"""
     if time.perf_counter() >= deadline:
@@ -55,6 +59,7 @@ def run_with_window_events(pyboy, operation, deadline: float, pause_event, unpau
                 raise TimeBudgetReached("已達執行時間上限")
             if not pyboy.tick(1, True, False):
                 raise WindowClosed("使用者關閉 PyBoy 視窗")
+            time.sleep(0.005)
         if time.perf_counter() >= deadline:
             raise TimeBudgetReached("已達執行時間上限")
         return result.result()
@@ -78,7 +83,7 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
     if opening_route:
         from .navigation import read_location, opening_waypoint, collision_direction, verified_down_ledge
         state["location"] = read_location(pyboy)
-        if route_stage in {"lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture", "team_training"}:
+        if route_stage in {"lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture", "team_training", "first_gym"}:
             from .battle import read_battle_state, battle_context, learning_context
             state["battle_state"] = read_battle_state(pyboy)
             context = learning_context(text, progress["party"])
@@ -106,12 +111,28 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
                                          ball_count(progress["inventory"]), previous_actions,
                                          visible_grass_world(pyboy, state["location"]) if state["location"]["map_id"] == 33 else (),
                                          training=route_stage == "team_training")
+            if route_stage == 'first_gym':
+                from .brock_route import brock_waypoint
+                from .capture_route import visible_grass_world
+                waypoint=brock_waypoint(state['location'],progress,previous_actions,
+                                        visible_grass_world(pyboy,state['location']) if state['location']['map_id']==33 else ())
             if waypoint:
                 state.update(waypoint)
                 state["phase"] = "overworld"
                 state["phase_source"] = "local opening waypoint planner; not model-discovered navigation"
                 if (waypoint["objective"].startswith("Move ") and waypoint["controller_waypoint"]
                         and not waypoint["goal"].startswith("face_")):
+                    if route_stage == 'first_gym':
+                        from .world_map import read_world_grid,world_direction
+                        from .brock_route import BLOCKED
+                        grid=read_world_grid(pyboy,state['location'])
+                        world_hint=world_direction(grid,state['location'],waypoint['controller_waypoint'],
+                                                   BLOCKED.get(state['location']['map_id'],())) if grid else None
+                        if world_hint:
+                            state['objective']=f"Move {world_hint['direction'].upper()}."
+                            state['world_path_hint']=world_hint
+                            state['screen_sha256']=hashlib.sha256(pyboy.screen.ndarray.tobytes()).hexdigest()
+                            return state
                     sprites = [pyboy.get_sprite(index) for index in range(4)]
                     sx, sy = min(s.x for s in sprites), min(s.y for s in sprites)
                     # 本次ROM已以實際(5,6)／四個sprite及碰撞圖校準；人物圖像比站立格高4px。
@@ -204,6 +225,7 @@ def play_game(args) -> None:
         "state_sha256": sha256_file(saved_state) if saved_state else None,
         "max_steps": args.steps, "hold_frames": args.hold_frames, "settle_frames": args.settle_frames,
         "max_wall_seconds": RUN_TIME_LIMIT_SECONDS,
+        "fast_forward": getattr(args, "fast_forward", False),
         "window": args.window, "scale": args.scale, "boot_frames": args.boot_frames,
         "offline": args.offline, "threads": args.threads,
         "waiting_behavior": "pause emulation and pump SDL events during model loading/inference",
@@ -243,7 +265,7 @@ def play_game(args) -> None:
         # 使用者的 ROM 不變更；結束時不自動寫入 cartridge RAM。
         emulator = PyBoy(str(rom), window="SDL2" if args.window else "null", scale=args.scale,
                          sound_emulated=False, title_status=True)
-        emulator.set_emulation_speed(1 if args.window else 0)
+        emulator.set_emulation_speed(0 if getattr(args, "fast_forward", False) or not args.window else 1)
         stage("視窗已建立；尚未驗證桌面前景")
         if saved_state:
             with saved_state.open("rb") as stream:
@@ -253,7 +275,7 @@ def play_game(args) -> None:
         # 初次觀測前先完成開機幀；有存檔則只渲染一幀。
         advance_action(emulator, "wait", 1 if saved_state else max(1, args.boot_frames), 0, frame_ready)
         stage("載入模型；視窗標示 PAUSED 時為等待推論")
-        policy = model_task(lambda: LayaPolicy(revision=args.revision, threads=args.threads, offline=args.offline)) \
+        policy = model_task(lambda: LayaPolicy(revision=args.revision, threads=args.threads, offline=args.offline, cache=getattr(args, 'fast_forward', False))) \
             if args.policy == "laya" else {"random": lambda: RandomPolicy(args.seed), "rule": SimpleRulePolicy}[args.policy]()
         if args.policy == "laya":
             metadata.update(model=policy.model_id, model_revision=policy.revision, device="cpu")
@@ -262,6 +284,8 @@ def play_game(args) -> None:
         screenshot_dir = output / "frames"
         screenshot_dir.mkdir()
         for index in range(args.steps):
+            if (output.parent / "STOP").exists():
+                raise OperatorStop("於安全檢查點保存停止")
             if time.perf_counter() >= deadline:
                 raise TimeBudgetReached("已達執行時間上限")
             step_start = time.perf_counter()
@@ -271,7 +295,7 @@ def play_game(args) -> None:
             if starter not in {"BULBASAUR", "SQUIRTLE", "CHARMANDER"}:
                 raise ValueError("策略檔的 starter 不在允許集合")
             route_stage = strategy.get("stage", "starter")
-            if route_stage not in {"starter", "lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture", "team_training"}:
+            if route_stage not in {"starter", "lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture", "team_training", "first_gym"}:
                 raise ValueError("策略檔的 stage 不在允許集合")
             state = observe(emulator, args.objective, args.player_name, previous_actions, args.opening_route, starter, route_stage)
             state["strategy_starter"] = starter
@@ -282,11 +306,17 @@ def play_game(args) -> None:
             if state["phase"] == "strategy_review":
                 write_json(output / "strategy-review.json", state)
                 raise StrategyReviewRequired(state.get("review_reason", "unknown_strategy_context"))
+            if state.get('goal')=='first_gym_complete':
+                write_json(output/'first-gym-milestone.json',state)
+                raise MilestoneReached('first_gym_complete')
             if state.get("goal") in {"first_team_capture_complete", "lead_training_complete"}:
                 write_json(output / ("training-milestone.json" if state["goal"] == "lead_training_complete" else "capture-milestone.json"), state)
                 raise MilestoneReached(state["goal"])
             decision = model_task(lambda: policy.choose(state))
-            frames = advance_action(emulator, decision["action"], args.hold_frames, args.settle_frames, frame_ready)
+            settle = args.settle_frames
+            if getattr(args, "fast_forward", False) and state["phase"] in {"battle_animation", "battle_dialogue", "dialogue"}:
+                settle = max(settle, 120)
+            frames = advance_action(emulator, decision["action"], args.hold_frames, settle, frame_ready)
             emulator.screen.image.save(screenshot_dir / f"{index:04d}-after.png")
             previous_actions.append(decision["action"])
             append_jsonl(output / "steps.jsonl", {"step": index, "state": state, **decision,
@@ -307,12 +337,14 @@ def play_game(args) -> None:
             metadata["stop_reason"] = "action_budget"
         emulator.screen.image.save(output / "last-frame.png")
         metadata["status"] = "completed_demo"
-    except (WindowClosed, TimeBudgetReached, StrategyReviewRequired, MilestoneReached, KeyboardInterrupt) as error:
+    except (WindowClosed, TimeBudgetReached, StrategyReviewRequired, MilestoneReached, OperatorStop, KeyboardInterrupt) as error:
         metadata.update(status="stopped", stop_reason="window_closed" if isinstance(error, WindowClosed)
                         else "wall_clock_limit" if isinstance(error, TimeBudgetReached)
                         else "strategy_review_required" if isinstance(error, StrategyReviewRequired)
+                        else "first_gym_complete" if isinstance(error, MilestoneReached) and str(error)=='first_gym_complete'
                         else "training_milestone" if isinstance(error, MilestoneReached) and str(error) == "lead_training_complete"
-                        else "capture_milestone" if isinstance(error, MilestoneReached) else "keyboard_interrupt")
+                        else "capture_milestone" if isinstance(error, MilestoneReached)
+                        else "operator_stop" if isinstance(error, OperatorStop) else "keyboard_interrupt")
     except Exception as error:
         metadata.update(status="failed", error_type=type(error).__name__, error=str(error))
         raise

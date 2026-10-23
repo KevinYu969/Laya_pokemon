@@ -88,6 +88,8 @@ def read_progress(pyboy, constants=None) -> dict:
                    "level": int(level), "hp": int(hp), "max_hp": int(max_hp)}
             if "exp" in mon and _integer(mon["exp"]) and mon["exp"] >= 0:
                 row["exp"] = int(mon["exp"])
+            if "status" in mon and _integer(mon['status']) and 0<=mon['status']<=255:
+                row['status']=int(mon['status'])
             for key, maximum in (("moves", 165), ("pp", 255)):
                 values = mon.get(key)
                 if (isinstance(values, (tuple, list)) and len(values) == 4

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import itertools
 
 from laya_pokemon.core import append_jsonl, parse_rom_header, sha256_file, write_json, utc_now
 from laya_pokemon.local_planner import PlannerConfig, StrataPlanner, PlannerError, planner_snapshot, allowed_stages
@@ -37,12 +38,12 @@ def snapshot_from_state(rom, state):
         emulator.stop(save=False)
 
 
-def game_command(rom, state, strategy, output):
+def game_command(rom, state, strategy, output, *, fast_forward=False):
     # 不使用模型文字組 shell；固定可執行檔與允許的CLI參數，按鍵仍由本機Laya選擇。
     return [sys.executable, "-X", "utf8", "-m", "laya_pokemon.cli", "play", "--rom", str(rom),
             "--state", str(state), "--player-name", "KEVIN", "--objective", "Train the team and advance the current verified goal.",
             "--opening-route", "--strategy-file", str(strategy), "--policy", "laya", "--steps", "300",
-            "--hold-frames", "8", "--settle-frames", "32", "--window", "--scale", "4", "--offline", "--video", "--output", str(output)]
+            "--hold-frames", "8", "--settle-frames", "32", "--window", "--scale", "4", "--offline", "--video", "--output", str(output)] + (["--fast-forward"] if fast_forward else [])
 
 
 def main():
@@ -53,6 +54,8 @@ def main():
     parser.add_argument("--output", required=True, help="全新的outputs子目錄")
     parser.add_argument("--episodes", type=int, default=3)
     parser.add_argument("--probe-only", action="store_true", help="只核對模型目錄，不讀ROM／存檔、不傳遊戲資料")
+    parser.add_argument("--until-first-gym", action="store_true")
+    parser.add_argument("--fast-forward", action="store_true")
     args = parser.parse_args()
     if not args.probe_only and not args.state:
         parser.error("啟動遊戲須指定--state；--probe-only不需要存檔")
@@ -68,7 +71,7 @@ def main():
     output.mkdir(parents=True)
     report = {"recorded_at": utc_now(), "status": "running", "planner_backend": "configured_private_strata",
               "button_backend": "local_laya_cpu_offline", "computer_use_required": False, "cloud_fallback": False,
-              "max_episodes": args.episodes, "game_max_wall_seconds": 60, "episodes": []}
+              "max_episodes": None if args.until_first_gym else args.episodes, "mission": "first_gym" if args.until_first_gym else None, "game_max_wall_seconds": 60, "episodes": []}
     try:
         report.update(planner.verify_model())
         if args.probe_only:
@@ -78,8 +81,10 @@ def main():
         if parse_rom_header(rom)["sha256"] != "5ca7ba01642a3b27b0cc0b5349b52792795b62d3ed977e98a09390659af96b7b":
             raise PlannerError("只接受已核對的紅版ROM")
         previous_stop = None
-        for episode in range(args.episodes):
+        for episode in (itertools.count() if args.until_first_gym else range(args.episodes)):
             snapshot = snapshot_from_state(rom, state)
+            if args.until_first_gym:
+                snapshot["mission"] = "first_gym"
             choices = allowed_stages(snapshot)
             snapshot["previous_stop_reason"] = previous_stop
             decision = planner.decide(snapshot, choices)
@@ -92,7 +97,7 @@ def main():
             write_json(strategy, {"stage": decision["stage"], "starter": "BULBASAUR"})
             run = output / f"game-{episode:02}"
             with (output / f"game-{episode:02}.log").open("w", encoding="utf-8") as log:
-                process = subprocess.run(game_command(rom, state, strategy, run), cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
+                process = subprocess.run(game_command(rom, state, strategy, run, fast_forward=args.fast_forward), cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
                                          encoding="utf-8")
             if not (run / "summary.json").is_file() or not (run / "final.state").is_file():
                 raise PlannerError("遊戲未留下完整摘要／存檔，不自動重跑")
@@ -103,6 +108,9 @@ def main():
             state = run / "final.state"
             report["latest_state"] = str(state.relative_to(output))
             write_json(output / "summary.json", report)
+            if previous_stop == "first_gym_complete":
+                report.update(status="completed", stop_reason=previous_stop)
+                break
             # 關窗、未知選單、模型／遊戲錯誤都交回人工，不把停止意圖變成自動重啟。
             if process.returncode or previous_stop not in {"wall_clock_limit", "action_budget", "capture_milestone", "training_milestone"}:
                 report.update(status="stopped", stop_reason=previous_stop or "game_failed")
@@ -111,6 +119,8 @@ def main():
             report.update(status="stopped", stop_reason="episode_budget")
     except PlannerError as error:
         report.update(status="stopped", stop_reason="planner_error", error=str(error))
+        if getattr(planner, "last_response", None) is not None:
+            write_json(output / "planner-error-response.json", planner.last_response)
         raise
     except KeyboardInterrupt:
         report.update(status="stopped", stop_reason="keyboard_interrupt")

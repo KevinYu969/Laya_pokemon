@@ -4,6 +4,8 @@ from __future__ import annotations
 import json
 import random
 import time
+from collections import OrderedDict
+from copy import deepcopy
 from typing import Any
 
 from .core import ACTIONS, validate_action
@@ -12,7 +14,7 @@ PINNED_REVISION = "7b928d828b7b0e022f929d9bd2e44165aa270148"
 
 
 class LayaPolicy:
-    def __init__(self, model: str = "convaiinnovations/laya", revision: str = "main", threads: int = 4, offline: bool = False):
+    def __init__(self, model: str = "convaiinnovations/laya", revision: str = "main", threads: int = 4, offline: bool = False, cache=False):
         import laya
         import torch
         from huggingface_hub import HfApi, snapshot_download
@@ -29,6 +31,8 @@ class LayaPolicy:
         self.agent = laya.load(local_model, device="cpu")
         self.load_seconds = time.perf_counter() - started
         self.threads = threads
+        self.cache_enabled = cache
+        self.prediction_cache = OrderedDict()
 
     def choose_options(self, state: dict[str, Any], instructions: str, criteria: dict[str, str]) -> dict[str, Any]:
         if not criteria:
@@ -36,6 +40,12 @@ class LayaPolicy:
         questions = {"action": {"type": "choice",
             "instructions": instructions, "criteria": criteria}}
         text = json.dumps(state, ensure_ascii=True, separators=(",", ":"))
+        cache_key = (text, instructions, tuple(criteria.items()))
+        if getattr(self, 'cache_enabled', False) and cache_key in self.prediction_cache:
+            self.prediction_cache.move_to_end(cache_key)
+            result = deepcopy(self.prediction_cache[cache_key])
+            result.update(model_ms=0.0, prediction_cache_hit=True)
+            return result
         started = time.perf_counter()
         result = self.agent.predict(text, questions)
         elapsed_ms = (time.perf_counter() - started) * 1000
@@ -44,12 +54,25 @@ class LayaPolicy:
         key = result["answers"]["action"]["choice"]
         if key not in criteria:
             raise ValueError("模型回傳不在候選集合內的動作")
-        return {"action": key, "model_ms": elapsed_ms, "raw": result}
+        decision = {"action": key, "model_ms": elapsed_ms, "raw": result, "prediction_cache_hit": False}
+        if getattr(self, 'cache_enabled', False):
+            self.prediction_cache[cache_key] = deepcopy(decision)
+            if len(self.prediction_cache) > 256:
+                self.prediction_cache.popitem(last=False)
+        return decision
 
     def choose(self, state: dict[str, Any]) -> dict[str, Any]:
         # 雜湊、中文診斷與 profile 是稽核資料；不要消耗小模型的遊戲上下文。
         model_state = {key: state[key] for key in ("objective", "phase", "visible_text_candidates", "party_summary")
                        if key in state}
+        # 加速模式中，已由控制器核對的移動／選單子目標只分類按鍵語意。
+        # 戰術與完整觀測仍留在steps；不把相異的原始觀測宣稱為相同輸入。
+        if getattr(self, 'cache_enabled', False) and (
+                state.get('world_path_hint') or state.get('collision_path_hint')
+                or state.get('battle_target_tile') or state.get('phase') == 'battle_bag'
+                or (state.get('phase') in {'battle_animation', 'battle_dialogue'}
+                    and state.get('battle_state', {}).get('active') is True)):
+            model_state = {key: state[key] for key in ('objective', 'phase')}
         available = state.get("available_actions", [action.key for action in ACTIONS])
         if len(available) < 2 or len(set(available)) != len(available):
             raise ValueError("分類須有至少兩個不重複的候選動作")

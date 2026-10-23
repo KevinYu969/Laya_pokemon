@@ -106,6 +106,7 @@ def main() -> None:
     play.add_argument("--output", required=True)
     play.add_argument("--video", action="store_true")
     play.add_argument("--window", action="store_true")
+    play.add_argument("--fast-forward", action="store_true", help="模擬器快轉及較長的戰鬥等待幀；不修改遊戲記憶體")
     play.add_argument("--scale", type=int, default=4)
     play.add_argument("--boot-frames", type=int, default=120)
     play.add_argument("--threads", type=int, default=4)

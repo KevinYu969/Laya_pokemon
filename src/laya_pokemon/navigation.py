@@ -133,7 +133,7 @@ def _center_waypoint(map_id, x, y, injured, previous_actions, sources):
         if (x, y) == (23, 26):
             return _goal("enter_viridian_center", "Move UP.", map_id, (23, 25), sources)
         return _goal("reach_viridian_center", "Move UP.", map_id, (23, 26), sources)
-    if map_id != 0x29:
+    if map_id not in {0x29,0x3A}:
         return None
     if x != 3:
         return _move_toward("reach_center_column", x, 3, "x", map_id, (3, y), sources)

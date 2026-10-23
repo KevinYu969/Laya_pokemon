@@ -8,7 +8,10 @@ SOURCES = ["data/maps/objects/Route22.asm", "scripts/Route22.asm", "data/wild/ma
 
 def team_waypoint(location, flags, party, balls, previous_actions=(), grass_world=(), *, training=False):
     mid, x, y = (location[key] for key in ("map_id", "x", "y"))
-    injured = any(mon["hp"] < mon["max_hp"] for mon in party)
+    from .team_strategy import effective_power
+    low_pp=any(sum((pp&63) for move,pp in zip(mon.get('moves',[]),mon.get('pp',[]))
+                   if effective_power(move,mon['species'])>0)<=3 for mon in party[:1] if 'moves' in mon and 'pp' in mon)
+    injured = any(mon["hp"] < mon["max_hp"] or mon.get('status',0) for mon in party) or low_pp
     owned = {family(mon["species"]) for mon in party}
     if training and party and party[0]["level"] >= 13:
         return _goal("lead_training_complete", "Wait.", mid, None, SOURCES, waiting=True)
@@ -20,8 +23,8 @@ def team_waypoint(location, flags, party, balls, previous_actions=(), grass_worl
         return _goal("capture_requires_pc_review", "Wait.", mid, None, SOURCES, waiting=True)
     # 缺球或受傷則原路回城；不往西踩勁敵觸發格(29,4)/(29,5)。
     if mid == 33:
-        if any(mon["hp"] * 3 <= mon["max_hp"] * 2 for mon in party) or balls == 0:
-            return _goal("return_route22_east", "Move RIGHT.", mid, (40, 10), SOURCES)
+        if any(mon["hp"] * 3 <= mon["max_hp"] * 2 or mon.get('status',0) for mon in party) or balls == 0 or low_pp:
+            return _goal("return_route22_east", "Move RIGHT.", mid, (40, 9), SOURCES)
         candidates = [(gx, gy) for gx, gy in grass_world if 30 <= gx <= 39 and 6 <= gy <= 17 and (gx, gy) != (x, y)]
         target = min(candidates, key=lambda p: (abs(p[0]-x)+abs(p[1]-y), p)) if candidates else (33, 12)
         return _goal("patrol_route22_east_grass", "Move LEFT.", mid, target, SOURCES)

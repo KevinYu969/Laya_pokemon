@@ -67,6 +67,11 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
     cells = text.get("cells", [])
     if len(cells) == 18 and all(len(row) == 20 for row in cells):
         rows = ["".join(row).upper() for row in cells]
+        dialogue = " ".join(rows[12:])
+        if "CHANGE" in dialogue and ("POKÉMON" in dialogue or "POKEMON" in dialogue):
+            return {"phase": "battle_menu", "objective": "Cancel to keep the current active Pokemon.",
+                    "available_actions": ["b", "wait"], "battle_tactic": "keep_active",
+                    "phase_source": "visible trainer replacement prompt; retain trained lead"}
         # 玩家 HP 顯示在右側 HUD；排除左下的招式 PP，亦避免使用可能落後的 party HP。
         health = []
         for row in rows[8:12]:

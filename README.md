@@ -10,6 +10,8 @@
 
 更新：**2026-10-23**。本機離線 Laya 已在真正的 PyBoy 桌面紅版中完成 **KEVIN／BLUE 命名、取得妙蛙種子、研究所首戰、野生對戰、治療及博士包裹往返，並取得圖鑑**。最新妙蛙種子 **等級7、EXP288、已學寄生種子**，隊伍另有 **3級尼多朗♂、3級烈雀**；剩6球、1400元。Strata地端模型已實際接通，完成3輪遊戲及自動續接、無Computer Use呼叫，見[雙模型實測摘要](results/strata-live-20261023.json)；先前尼多朗捕捉見[組隊摘要](results/team-building-20261023.json)。研究所首戰是**敗北**，後續從自然戰後存檔續接，沒有回讀戰前改寫成績。前期歷史見[開場摘要](results/live-run-20261023.json)與[對戰及路線摘要](results/battle-and-route-20261023.json)。**尚未挑戰道館或通關；這是分段實測，尚無成功率數據。**
 
+**第一道館連續任務執行中**：妙蛙種子已從7級升至9級；新任務持續保存續接，直到擊敗小剛並取得灰色徽章。加入唯讀全圖尋路、加速與明示分類快取；目前尚無徽章成果，進度見[實驗日誌第21節](docs/experiment-plan-and-log.md)。
+
 本機已有 **21 秒命名短片**與 **90 秒離家到取得妙蛙種子的實測影片**，公開檔案驗證摘要見[命名紀錄](results/kevin-naming-clip-20261023.json)與[開場流程紀錄](results/opening-to-bulbasaur-clip-20261023.json)。影片留在本機，尚未對外發布。
 
 另有 [110 秒首戰敗北紀錄](results/first-rival-battle-clip-20261023.json)、[90 秒升等／取得包裹紀錄](results/level6-and-parcel-clip-20261023.json)與[25 秒取得圖鑑紀錄](results/pokedex-clip-20261023.json)，保留成功與失敗樣本。

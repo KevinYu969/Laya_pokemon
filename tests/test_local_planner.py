@@ -154,3 +154,37 @@ def test_supervisor_never_restarts_a_window_closed_game(tmp_path, monkeypatch):
     result = json.loads((output/'summary.json').read_text())
     assert len(calls) == 1 and result['stop_reason'] == 'window_closed'
     assert (tmp_path/'source.state').read_bytes() == b'synthetic-state'
+
+
+def test_until_gym_continues_after_three_checkpoints_and_stops_on_verified_milestone(tmp_path,monkeypatch):
+    import importlib.util
+    from pathlib import Path
+    spec=importlib.util.spec_from_file_location('gym_supervisor',Path(__file__).resolve().parents[1]/'scripts/strata_supervisor.py')
+    supervisor=importlib.util.module_from_spec(spec);spec.loader.exec_module(supervisor)
+    monkeypatch.setattr(supervisor,'ROOT',tmp_path)
+    (tmp_path/'.local').mkdir();cfg=tmp_path/'.local/config.json';cfg.write_text(config_file(tmp_path).read_text())
+    (tmp_path/'rom.gb').write_bytes(b'synthetic');(tmp_path/'source.state').write_bytes(b'initial')
+    monkeypatch.setattr(supervisor,'parse_rom_header',lambda _: {'sha256':'5ca7ba01642a3b27b0cc0b5349b52792795b62d3ed977e98a09390659af96b7b'})
+    monkeypatch.setattr(supervisor,'snapshot_from_state',lambda *args:snapshot())
+    class Planner:
+        def __init__(self,config):pass
+        def verify_model(self):return {'catalog_verified':True}
+        def decide(self,state,choices):
+            assert choices[0]=='first_gym'
+            return {'stage':'first_gym','reason':'Continue.'}
+    monkeypatch.setattr(supervisor,'StrataPlanner',Planner)
+    calls=[]
+    def run(command,**kwargs):
+        calls.append(command)
+        assert '--fast-forward' in command and '--offline' in command
+        if len(calls)>1:assert Path(command[command.index('--state')+1]).read_bytes()==str(len(calls)-1).encode()
+        target=Path(command[command.index('--output')+1]);target.mkdir()
+        (target/'summary.json').write_text(json.dumps({'stop_reason':'first_gym_complete' if len(calls)==4 else 'wall_clock_limit'}))
+        (target/'final.state').write_bytes(str(len(calls)).encode())
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr(supervisor.subprocess,'run',run)
+    output=tmp_path/'outputs/session'
+    monkeypatch.setattr(supervisor.sys,'argv',['supervisor','--config',str(cfg),'--rom',str(tmp_path/'rom.gb'),'--state',str(tmp_path/'source.state'),'--output',str(output),'--until-first-gym','--fast-forward'])
+    supervisor.main()
+    report=json.loads((output/'summary.json').read_text())
+    assert len(calls)==4 and report['status']=='completed' and report['stop_reason']=='first_gym_complete'
