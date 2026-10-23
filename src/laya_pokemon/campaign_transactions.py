@@ -1,16 +1,19 @@
 """已明確指定的正常禮物／TM選單橋接；只讀取觀測並提供Laya子目標。"""
 import importlib
+import time
 
-from . import gift_eevee, teach_bubblebeam
+from . import gift_eevee, teach_bubblebeam,arrow_floor,rocket_movement
 
 importlib.reload(gift_eevee)
 importlib.reload(teach_bubblebeam)
+importlib.reload(arrow_floor)
+importlib.reload(rocket_movement)
 _CONTROLLERS = globals().get('_CONTROLLERS', {})
 _BINDINGS = globals().get('_BINDINGS', {})
 _TURNS = globals().get('_TURNS', {})
 _COMPLETED = globals().get('_COMPLETED', set())
 _COMPLETED.update(k for k,c in _CONTROLLERS.items() if getattr(c,'stage',None)=='complete')
-SUPPORTED = {'gift_eevee', 'teach_bubblebeam'}
+SUPPORTED = {'gift_eevee', 'teach_bubblebeam','arrow_floor'}
 
 
 def _review(reason):
@@ -47,25 +50,35 @@ def context(pyboy, state, plan, step_id, text, grid):
     if step['kind'] != 'interact' or mechanic not in SUPPORTED:
         return _review('unsupported_explicit_transaction'), step_id
     binding = (mechanic, step['map_id'], tuple(step['target']))
+    if mechanic=='arrow_floor':
+        trigger=step.get('trigger')
+        if not isinstance(trigger,list) or len(trigger)!=2 or any(type(x) is not int for x in trigger):
+            return _review('arrow_explicit_trigger_unverified'),step_id
+        try:hop=arrow_floor.source_hop(step['map_id'],trigger)
+        except ValueError:return _review('arrow_explicit_trigger_unverified'),step_id
+        if tuple(step['target'])!=hop['from']:
+            return _review('arrow_explicit_stance_unverified'),step_id
+        binding+=(tuple(trigger),)
     if step_id in _BINDINGS and _BINDINGS[step_id] != binding:
         return _review('transaction_intent_changed'), step_id
     loc = dict(state['location'])
+    controller = _CONTROLLERS.get(step_id)
     if loc['map_id'] != step['map_id'] or [loc['x'], loc['y']] != step['target']:
-        if step_id in _BINDINGS:
+        if step_id in _BINDINGS and mechanic!='arrow_floor':
             return _review('transaction_location_changed'), step_id
-        return None
+        if not (mechanic=='arrow_floor' and controller is not None):return None
     battle = state.get('battle_state', {})
     if battle.get('kind') != 'none' or battle.get('active') is not False:
         return _review('transaction_nonbattle_signal_conflict'), step_id
     loc['facing'] = {0: 'down', 4: 'up', 8: 'left', 12: 'right'}.get(int(pyboy.memory[0xC109]))
     ready=ui_overworld_ready(text,grid)
-    controller = _CONTROLLERS.get(step_id)
     if controller is not None:
         revision=step.get('reviewed_controller_revision',0)
         if (type(revision) is int and revision>getattr(controller,'_reviewed_revision',0)
                 and controller.error is not None and controller.error==step.get('reviewed_controller_error')):
             controller.error=None
             controller._reviewed_revision=revision
+            if mechanic=='arrow_floor':controller.started_at=time.monotonic()
     delegated_review = None
     if state.get('phase') in {'strategy_review', 'campaign_review', 'review'}:
         # 泛用自然學招分類器不認得TM教學；只有已開始、已綁定的專用TM
@@ -102,7 +115,7 @@ def context(pyboy, state, plan, step_id, text, grid):
                                     overworld_ready=ready,
                                     gift_object_hidden=hidden, battle_active=False)
         done = result.get('gift_eevee_complete') is True
-    else:
+    elif mechanic=='teach_bubblebeam':
         if controller is None:
             controller = teach_bubblebeam.BubbleBeamController(teach_bubblebeam.INTENT)
             _CONTROLLERS[step_id] = controller
@@ -111,12 +124,24 @@ def context(pyboy, state, plan, step_id, text, grid):
         result = controller.context(text, state['progress'], overworld_ready=ready,
                                     battle_active=False)
         done = result.get('tm_teaching_complete') is True
+    else:
+        if controller is None:
+            controller=arrow_floor.ArrowFloorController(step['map_id'],step['trigger'])
+            _CONTROLLERS[step_id]=controller
+            _BINDINGS[step_id]=binding
+        controller.__class__=arrow_floor.ArrowFloorController
+        movement=rocket_movement.read_rocket_movement(pyboy,observation_frame=state.get('frame'))
+        result=controller.context(loc,grid,movement,frame=state.get('frame'),now=time.monotonic(),
+                                  overworld_ready=ready,battle_active=False)
+        result={**result,'arrow_observed_movement':movement}
+        done=result.get('arrow_floor_complete') is True
     next_id = step_id
     if delegated_review:
         result = {**result, 'delegated_generic_learning_guard': delegated_review}
     if done:
         _COMPLETED.add(step_id)
-        result = {**result, 'field_move_complete': True, 'field_move_kind': mechanic}
+        verified_kind=mechanic if mechanic!='arrow_floor' else f"arrow-{step['map_id']}-{step['trigger'][0]}-{step['trigger'][1]}"
+        result = {**result, 'field_move_complete': True, 'field_move_kind': verified_kind}
         index = plan['steps'].index(step) + 1
         next_id = plan['steps'][index]['id'] if index < len(plan['steps']) else 'complete'
     return result, next_id

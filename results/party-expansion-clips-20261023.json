@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-23T15:28:28.223557+00:00",
+  "at": "2026-10-23T15:29:22.389080+00:00",
   "source_run": "league-campaign-20261023-14+16",
   "status": "verified_local_unpublished",
   "published": false,
@@ -597,10 +597,10 @@
         },
         {
           "file": "outputs/videos/party-expansion-20261023/nidorino-forgot-leer.png",
-          "sha256": "7bb3a4ebca1bfb5851b2104ade0a9127995347adf7ef4ae7fa65bc2b4395d5e5",
+          "sha256": "d07471813894059f762383203599b5378d13ba5d8d18cac4fc9147d6f5b11eb6",
           "source_step_observation": 50,
           "source_video": "outputs/league-campaign-20261023-16/game/video-005.mp4",
-          "source_emulated_seconds": 4.6000000000000005,
+          "source_emulated_seconds": 4.666666666666667,
           "visible_text_candidates": [
             "   NIDORINO   26",
             "▷           ABLE",
@@ -771,6 +771,20 @@
           "reason_caution_zh_tw": "此處證據為逐步timing的review_pause_seconds增量；未以不存在的review事件捏造精確錯誤原因。"
         }
       ],
+      "visual_review": {
+        "screenshots_checked": 7,
+        "passed": true,
+        "confirmed_zh_tw": [
+          "TM11被選取",
+          "Teach BUBBLEBEAM YES",
+          "NIDORINO ABLE及四人隊伍",
+          "四招游標只選LEER",
+          "NIDORINO forgot LEER!完整文字",
+          "NIDORINO learned BUBBLEBEAM!完整文字",
+          "選單關閉回野外"
+        ],
+        "alignment_note_zh_tw": "LEER遺忘截圖取step50的起始來源影格，讓驚嘆號完整；其他截圖仍取前一個15fps來源影格。"
+      },
       "verified_completion": {
         "at_utc": "2026-10-23T15:19:36.625273+00:00",
         "at_taipei": "2026-10-23T23:19:36.625273+08:00",
@@ -1431,7 +1445,7 @@
   "source_frame_alignment_note_zh_tw": "step觀測在動作前，at在動作後；截圖取累積emulated_frames之前一個15fps來源影格，邊界有一幀量化限制。",
   "pending": [],
   "visual_review": {
-    "screenshots_checked": 8,
+    "screenshots_checked": 15,
     "passed": true,
     "confirmed_zh_tw": [
       "領取前桌上有球",
@@ -1440,7 +1454,10 @@
       "完成後球已移除",
       "四人隊伍含25級伊布63/63",
       "正常SWITCH選單",
-      "尼多力諾換首位後其餘三人仍在隊伍"
+      "尼多力諾換首位後其餘三人仍在隊伍",
+      "TM11專用選單與四人隊ABLE",
+      "明確只遺忘LEER",
+      "LEARNED BUBBLEBEAM與關閉回野外"
     ]
   },
   "game_or_state_operations": false,
@@ -1448,5 +1465,9 @@
   "source_runs": [
     "league-campaign-20261023-14",
     "league-campaign-20261023-16"
-  ]
+  ],
+  "parent_hash_validation": {
+    "unique_files_rehashed": 41,
+    "all_matched": true
+  }
 }

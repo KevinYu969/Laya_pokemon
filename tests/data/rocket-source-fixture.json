@@ -1,0 +1,2800 @@
+{
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "source_movement_routes": {
+    "b2f_arrival_to_b3f": {
+      "map_id": 200,
+      "from": [
+        27,
+        8
+      ],
+      "to": [
+        21,
+        8
+      ],
+      "source_physical_steps": 18,
+      "manual_step_entries": 18,
+      "spin_entries": 0,
+      "operations": [
+        {
+          "kind": "walk",
+          "from": [
+            27,
+            8
+          ],
+          "to": [
+            21,
+            8
+          ],
+          "path": [
+            [
+              27,
+              8
+            ],
+            [
+              26,
+              8
+            ],
+            [
+              25,
+              8
+            ],
+            [
+              25,
+              9
+            ],
+            [
+              25,
+              10
+            ],
+            [
+              25,
+              11
+            ],
+            [
+              25,
+              12
+            ],
+            [
+              25,
+              13
+            ],
+            [
+              25,
+              14
+            ],
+            [
+              24,
+              14
+            ],
+            [
+              23,
+              14
+            ],
+            [
+              22,
+              14
+            ],
+            [
+              21,
+              14
+            ],
+            [
+              21,
+              13
+            ],
+            [
+              21,
+              12
+            ],
+            [
+              21,
+              11
+            ],
+            [
+              21,
+              10
+            ],
+            [
+              21,
+              9
+            ],
+            [
+              21,
+              8
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        }
+      ],
+      "source_limits": "Fixed arrow RLE and static NPC map only, no live controls/positions or safe battle guarantee",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "map": "RocketHideoutB2F",
+      "status": "source_planning_only_not_live_validated"
+    },
+    "b3f_outbound_to_key_floor": {
+      "map_id": 201,
+      "from": [
+        25,
+        6
+      ],
+      "to": [
+        19,
+        18
+      ],
+      "source_physical_steps": 64,
+      "manual_step_entries": 50,
+      "spin_entries": 3,
+      "operations": [
+        {
+          "kind": "walk",
+          "from": [
+            25,
+            6
+          ],
+          "to": [
+            13,
+            11
+          ],
+          "path": [
+            [
+              25,
+              6
+            ],
+            [
+              24,
+              6
+            ],
+            [
+              23,
+              6
+            ],
+            [
+              22,
+              6
+            ],
+            [
+              21,
+              6
+            ],
+            [
+              20,
+              6
+            ],
+            [
+              20,
+              7
+            ],
+            [
+              20,
+              8
+            ],
+            [
+              20,
+              9
+            ],
+            [
+              19,
+              9
+            ],
+            [
+              18,
+              9
+            ],
+            [
+              17,
+              9
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              9
+            ],
+            [
+              14,
+              9
+            ],
+            [
+              13,
+              9
+            ],
+            [
+              13,
+              10
+            ],
+            [
+              13,
+              11
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            13,
+            11
+          ],
+          "trigger": [
+            12,
+            11
+          ],
+          "entry_action": "left",
+          "expected_landing": [
+            10,
+            11
+          ],
+          "chains": [
+            {
+              "trigger": [
+                12,
+                11
+              ],
+              "source_label": "RocketHideout3ArrowMovement3",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "left",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                10,
+                11
+              ],
+              "forced_positions": [
+                [
+                  11,
+                  11
+                ],
+                [
+                  10,
+                  11
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            10,
+            11
+          ],
+          "to": [
+            10,
+            12
+          ],
+          "path": [
+            [
+              10,
+              11
+            ],
+            [
+              10,
+              12
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            10,
+            12
+          ],
+          "trigger": [
+            10,
+            13
+          ],
+          "entry_action": "down",
+          "expected_landing": [
+            14,
+            13
+          ],
+          "chains": [
+            {
+              "trigger": [
+                10,
+                13
+              ],
+              "source_label": "RocketHideout3ArrowMovement6",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "right",
+                  "count": 4
+                }
+              ],
+              "expected_landing": [
+                14,
+                13
+              ],
+              "forced_positions": [
+                [
+                  11,
+                  13
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  13,
+                  13
+                ],
+                [
+                  14,
+                  13
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            14,
+            13
+          ],
+          "to": [
+            10,
+            18
+          ],
+          "path": [
+            [
+              14,
+              13
+            ],
+            [
+              13,
+              13
+            ],
+            [
+              12,
+              13
+            ],
+            [
+              12,
+              14
+            ],
+            [
+              12,
+              15
+            ],
+            [
+              12,
+              16
+            ],
+            [
+              11,
+              16
+            ],
+            [
+              10,
+              16
+            ],
+            [
+              9,
+              16
+            ],
+            [
+              9,
+              17
+            ],
+            [
+              9,
+              18
+            ],
+            [
+              10,
+              18
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            10,
+            18
+          ],
+          "trigger": [
+            11,
+            18
+          ],
+          "entry_action": "right",
+          "expected_landing": [
+            15,
+            22
+          ],
+          "chains": [
+            {
+              "trigger": [
+                11,
+                18
+              ],
+              "source_label": "RocketHideout3ArrowMovement2",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "right",
+                  "count": 4
+                },
+                {
+                  "direction": "down",
+                  "count": 4
+                }
+              ],
+              "expected_landing": [
+                15,
+                22
+              ],
+              "forced_positions": [
+                [
+                  12,
+                  18
+                ],
+                [
+                  13,
+                  18
+                ],
+                [
+                  14,
+                  18
+                ],
+                [
+                  15,
+                  18
+                ],
+                [
+                  15,
+                  19
+                ],
+                [
+                  15,
+                  20
+                ],
+                [
+                  15,
+                  21
+                ],
+                [
+                  15,
+                  22
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            15,
+            22
+          ],
+          "to": [
+            19,
+            18
+          ],
+          "path": [
+            [
+              15,
+              22
+            ],
+            [
+              14,
+              22
+            ],
+            [
+              13,
+              22
+            ],
+            [
+              13,
+              23
+            ],
+            [
+              13,
+              24
+            ],
+            [
+              13,
+              25
+            ],
+            [
+              14,
+              25
+            ],
+            [
+              15,
+              25
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              17,
+              25
+            ],
+            [
+              17,
+              24
+            ],
+            [
+              18,
+              24
+            ],
+            [
+              18,
+              23
+            ],
+            [
+              18,
+              22
+            ],
+            [
+              18,
+              21
+            ],
+            [
+              19,
+              21
+            ],
+            [
+              19,
+              20
+            ],
+            [
+              19,
+              19
+            ],
+            [
+              19,
+              18
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        }
+      ],
+      "source_limits": "Fixed arrow RLE and static NPC map only, no live controls/positions or safe battle guarantee",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "map": "RocketHideoutB3F",
+      "status": "source_planning_only_not_live_validated"
+    },
+    "b3f_return_from_key_floor": {
+      "map_id": 201,
+      "from": [
+        19,
+        18
+      ],
+      "to": [
+        25,
+        6
+      ],
+      "source_physical_steps": 24,
+      "manual_step_entries": 21,
+      "spin_entries": 2,
+      "operations": [
+        {
+          "kind": "walk",
+          "from": [
+            19,
+            18
+          ],
+          "to": [
+            18,
+            17
+          ],
+          "path": [
+            [
+              19,
+              18
+            ],
+            [
+              18,
+              18
+            ],
+            [
+              18,
+              17
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            18,
+            17
+          ],
+          "trigger": [
+            18,
+            16
+          ],
+          "entry_action": "up",
+          "expected_landing": [
+            18,
+            15
+          ],
+          "chains": [
+            {
+              "trigger": [
+                18,
+                16
+              ],
+              "source_label": "RocketHideout3ArrowMovement12",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "up",
+                  "count": 1
+                }
+              ],
+              "expected_landing": [
+                18,
+                15
+              ],
+              "forced_positions": [
+                [
+                  18,
+                  15
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            18,
+            15
+          ],
+          "to": [
+            16,
+            14
+          ],
+          "path": [
+            [
+              18,
+              15
+            ],
+            [
+              17,
+              15
+            ],
+            [
+              16,
+              15
+            ],
+            [
+              16,
+              14
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            16,
+            14
+          ],
+          "trigger": [
+            16,
+            13
+          ],
+          "entry_action": "up",
+          "expected_landing": [
+            16,
+            11
+          ],
+          "chains": [
+            {
+              "trigger": [
+                16,
+                13
+              ],
+              "source_label": "RocketHideout3ArrowMovement11",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "up",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                16,
+                11
+              ],
+              "forced_positions": [
+                [
+                  16,
+                  12
+                ],
+                [
+                  16,
+                  11
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            16,
+            11
+          ],
+          "to": [
+            25,
+            6
+          ],
+          "path": [
+            [
+              16,
+              11
+            ],
+            [
+              17,
+              11
+            ],
+            [
+              18,
+              11
+            ],
+            [
+              19,
+              11
+            ],
+            [
+              20,
+              11
+            ],
+            [
+              20,
+              10
+            ],
+            [
+              20,
+              9
+            ],
+            [
+              20,
+              8
+            ],
+            [
+              20,
+              7
+            ],
+            [
+              20,
+              6
+            ],
+            [
+              21,
+              6
+            ],
+            [
+              22,
+              6
+            ],
+            [
+              23,
+              6
+            ],
+            [
+              24,
+              6
+            ],
+            [
+              25,
+              6
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        }
+      ],
+      "source_limits": "Fixed arrow RLE and static NPC map only, no live controls/positions or safe battle guarantee",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "map": "RocketHideoutB3F",
+      "status": "source_planning_only_not_live_validated"
+    },
+    "b2f_direct_to_elevator": {
+      "map_id": 200,
+      "from": [
+        21,
+        8
+      ],
+      "to": [
+        24,
+        19
+      ],
+      "source_physical_steps": 88,
+      "manual_step_entries": 45,
+      "spin_entries": 6,
+      "operations": [
+        {
+          "kind": "walk",
+          "from": [
+            21,
+            8
+          ],
+          "to": [
+            18,
+            11
+          ],
+          "path": [
+            [
+              21,
+              8
+            ],
+            [
+              20,
+              8
+            ],
+            [
+              19,
+              8
+            ],
+            [
+              19,
+              9
+            ],
+            [
+              19,
+              10
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              11
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            18,
+            11
+          ],
+          "trigger": [
+            17,
+            11
+          ],
+          "entry_action": "left",
+          "expected_landing": [
+            2,
+            9
+          ],
+          "chains": [
+            {
+              "trigger": [
+                17,
+                11
+              ],
+              "source_label": "RocketHideout2ArrowMovement36",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "left",
+                  "count": 5
+                },
+                {
+                  "direction": "up",
+                  "count": 2
+                },
+                {
+                  "direction": "left",
+                  "count": 10
+                }
+              ],
+              "expected_landing": [
+                2,
+                9
+              ],
+              "forced_positions": [
+                [
+                  16,
+                  11
+                ],
+                [
+                  15,
+                  11
+                ],
+                [
+                  14,
+                  11
+                ],
+                [
+                  13,
+                  11
+                ],
+                [
+                  12,
+                  11
+                ],
+                [
+                  12,
+                  10
+                ],
+                [
+                  12,
+                  9
+                ],
+                [
+                  11,
+                  9
+                ],
+                [
+                  10,
+                  9
+                ],
+                [
+                  9,
+                  9
+                ],
+                [
+                  8,
+                  9
+                ],
+                [
+                  7,
+                  9
+                ],
+                [
+                  6,
+                  9
+                ],
+                [
+                  5,
+                  9
+                ],
+                [
+                  4,
+                  9
+                ],
+                [
+                  3,
+                  9
+                ],
+                [
+                  2,
+                  9
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            2,
+            9
+          ],
+          "to": [
+            3,
+            11
+          ],
+          "path": [
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              11
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            3,
+            11
+          ],
+          "trigger": [
+            4,
+            11
+          ],
+          "entry_action": "right",
+          "expected_landing": [
+            8,
+            11
+          ],
+          "chains": [
+            {
+              "trigger": [
+                4,
+                11
+              ],
+              "source_label": "RocketHideout2ArrowMovement2",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "right",
+                  "count": 4
+                }
+              ],
+              "expected_landing": [
+                8,
+                11
+              ],
+              "forced_positions": [
+                [
+                  5,
+                  11
+                ],
+                [
+                  6,
+                  11
+                ],
+                [
+                  7,
+                  11
+                ],
+                [
+                  8,
+                  11
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            8,
+            11
+          ],
+          "to": [
+            10,
+            14
+          ],
+          "path": [
+            [
+              8,
+              11
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              10,
+              11
+            ],
+            [
+              10,
+              12
+            ],
+            [
+              10,
+              13
+            ],
+            [
+              10,
+              14
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            10,
+            14
+          ],
+          "trigger": [
+            11,
+            14
+          ],
+          "entry_action": "right",
+          "expected_landing": [
+            15,
+            18
+          ],
+          "chains": [
+            {
+              "trigger": [
+                11,
+                14
+              ],
+              "source_label": "RocketHideout2ArrowMovement18",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "down",
+                  "count": 2
+                },
+                {
+                  "direction": "right",
+                  "count": 4
+                },
+                {
+                  "direction": "down",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                15,
+                18
+              ],
+              "forced_positions": [
+                [
+                  11,
+                  15
+                ],
+                [
+                  11,
+                  16
+                ],
+                [
+                  12,
+                  16
+                ],
+                [
+                  13,
+                  16
+                ],
+                [
+                  14,
+                  16
+                ],
+                [
+                  15,
+                  16
+                ],
+                [
+                  15,
+                  17
+                ],
+                [
+                  15,
+                  18
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            15,
+            18
+          ],
+          "to": [
+            14,
+            18
+          ],
+          "path": [
+            [
+              15,
+              18
+            ],
+            [
+              14,
+              18
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            14,
+            18
+          ],
+          "trigger": [
+            13,
+            18
+          ],
+          "entry_action": "left",
+          "expected_landing": [
+            11,
+            20
+          ],
+          "chains": [
+            {
+              "trigger": [
+                13,
+                18
+              ],
+              "source_label": "RocketHideout2ArrowMovement27",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "left",
+                  "count": 2
+                },
+                {
+                  "direction": "down",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                11,
+                20
+              ],
+              "forced_positions": [
+                [
+                  12,
+                  18
+                ],
+                [
+                  11,
+                  18
+                ],
+                [
+                  11,
+                  19
+                ],
+                [
+                  11,
+                  20
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            11,
+            20
+          ],
+          "to": [
+            14,
+            22
+          ],
+          "path": [
+            [
+              11,
+              20
+            ],
+            [
+              12,
+              20
+            ],
+            [
+              13,
+              20
+            ],
+            [
+              14,
+              20
+            ],
+            [
+              14,
+              21
+            ],
+            [
+              14,
+              22
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            14,
+            22
+          ],
+          "trigger": [
+            13,
+            22
+          ],
+          "entry_action": "left",
+          "expected_landing": [
+            9,
+            24
+          ],
+          "chains": [
+            {
+              "trigger": [
+                13,
+                22
+              ],
+              "source_label": "RocketHideout2ArrowMovement29",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "left",
+                  "count": 4
+                },
+                {
+                  "direction": "down",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                9,
+                24
+              ],
+              "forced_positions": [
+                [
+                  12,
+                  22
+                ],
+                [
+                  11,
+                  22
+                ],
+                [
+                  10,
+                  22
+                ],
+                [
+                  9,
+                  22
+                ],
+                [
+                  9,
+                  23
+                ],
+                [
+                  9,
+                  24
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            9,
+            24
+          ],
+          "to": [
+            10,
+            24
+          ],
+          "path": [
+            [
+              9,
+              24
+            ],
+            [
+              10,
+              24
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            10,
+            24
+          ],
+          "trigger": [
+            10,
+            25
+          ],
+          "entry_action": "down",
+          "expected_landing": [
+            14,
+            25
+          ],
+          "chains": [
+            {
+              "trigger": [
+                10,
+                25
+              ],
+              "source_label": "RocketHideout2ArrowMovement2",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "right",
+                  "count": 4
+                }
+              ],
+              "expected_landing": [
+                14,
+                25
+              ],
+              "forced_positions": [
+                [
+                  11,
+                  25
+                ],
+                [
+                  12,
+                  25
+                ],
+                [
+                  13,
+                  25
+                ],
+                [
+                  14,
+                  25
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            14,
+            25
+          ],
+          "to": [
+            24,
+            19
+          ],
+          "path": [
+            [
+              14,
+              25
+            ],
+            [
+              15,
+              25
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              16,
+              23
+            ],
+            [
+              16,
+              22
+            ],
+            [
+              16,
+              21
+            ],
+            [
+              16,
+              20
+            ],
+            [
+              17,
+              20
+            ],
+            [
+              18,
+              20
+            ],
+            [
+              19,
+              20
+            ],
+            [
+              19,
+              19
+            ],
+            [
+              19,
+              18
+            ],
+            [
+              20,
+              18
+            ],
+            [
+              21,
+              18
+            ],
+            [
+              22,
+              18
+            ],
+            [
+              23,
+              18
+            ],
+            [
+              24,
+              18
+            ],
+            [
+              24,
+              19
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        }
+      ],
+      "source_limits": "Fixed arrow RLE and static NPC map only, no live controls/positions or safe battle guarantee",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "map": "RocketHideoutB2F",
+      "status": "source_planning_only_not_live_validated"
+    },
+    "b2f_optional_moon_stone": {
+      "map_id": 200,
+      "from": [
+        21,
+        8
+      ],
+      "to": [
+        1,
+        12
+      ],
+      "source_physical_steps": 32,
+      "manual_step_entries": 15,
+      "spin_entries": 1,
+      "operations": [
+        {
+          "kind": "walk",
+          "from": [
+            21,
+            8
+          ],
+          "to": [
+            18,
+            11
+          ],
+          "path": [
+            [
+              21,
+              8
+            ],
+            [
+              20,
+              8
+            ],
+            [
+              19,
+              8
+            ],
+            [
+              19,
+              9
+            ],
+            [
+              19,
+              10
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              11
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            18,
+            11
+          ],
+          "trigger": [
+            17,
+            11
+          ],
+          "entry_action": "left",
+          "expected_landing": [
+            2,
+            9
+          ],
+          "chains": [
+            {
+              "trigger": [
+                17,
+                11
+              ],
+              "source_label": "RocketHideout2ArrowMovement36",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "left",
+                  "count": 5
+                },
+                {
+                  "direction": "up",
+                  "count": 2
+                },
+                {
+                  "direction": "left",
+                  "count": 10
+                }
+              ],
+              "expected_landing": [
+                2,
+                9
+              ],
+              "forced_positions": [
+                [
+                  16,
+                  11
+                ],
+                [
+                  15,
+                  11
+                ],
+                [
+                  14,
+                  11
+                ],
+                [
+                  13,
+                  11
+                ],
+                [
+                  12,
+                  11
+                ],
+                [
+                  12,
+                  10
+                ],
+                [
+                  12,
+                  9
+                ],
+                [
+                  11,
+                  9
+                ],
+                [
+                  10,
+                  9
+                ],
+                [
+                  9,
+                  9
+                ],
+                [
+                  8,
+                  9
+                ],
+                [
+                  7,
+                  9
+                ],
+                [
+                  6,
+                  9
+                ],
+                [
+                  5,
+                  9
+                ],
+                [
+                  4,
+                  9
+                ],
+                [
+                  3,
+                  9
+                ],
+                [
+                  2,
+                  9
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            2,
+            9
+          ],
+          "to": [
+            1,
+            12
+          ],
+          "path": [
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              3,
+              12
+            ],
+            [
+              3,
+              13
+            ],
+            [
+              2,
+              13
+            ],
+            [
+              1,
+              13
+            ],
+            [
+              1,
+              12
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        }
+      ],
+      "source_limits": "Fixed arrow RLE and static NPC map only, no live controls/positions or safe battle guarantee",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "map": "RocketHideoutB2F",
+      "status": "source_planning_only_not_live_validated"
+    },
+    "b2f_moon_stone_to_elevator": {
+      "map_id": 200,
+      "from": [
+        1,
+        12
+      ],
+      "to": [
+        24,
+        19
+      ],
+      "source_physical_steps": 62,
+      "manual_step_entries": 36,
+      "spin_entries": 5,
+      "operations": [
+        {
+          "kind": "walk",
+          "from": [
+            1,
+            12
+          ],
+          "to": [
+            4,
+            14
+          ],
+          "path": [
+            [
+              1,
+              12
+            ],
+            [
+              1,
+              13
+            ],
+            [
+              2,
+              13
+            ],
+            [
+              3,
+              13
+            ],
+            [
+              4,
+              13
+            ],
+            [
+              4,
+              14
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            4,
+            14
+          ],
+          "trigger": [
+            5,
+            14
+          ],
+          "entry_action": "right",
+          "expected_landing": [
+            9,
+            16
+          ],
+          "chains": [
+            {
+              "trigger": [
+                5,
+                14
+              ],
+              "source_label": "RocketHideout2ArrowMovement6",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "right",
+                  "count": 4
+                },
+                {
+                  "direction": "down",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                9,
+                16
+              ],
+              "forced_positions": [
+                [
+                  6,
+                  14
+                ],
+                [
+                  7,
+                  14
+                ],
+                [
+                  8,
+                  14
+                ],
+                [
+                  9,
+                  14
+                ],
+                [
+                  9,
+                  15
+                ],
+                [
+                  9,
+                  16
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            9,
+            16
+          ],
+          "to": [
+            10,
+            16
+          ],
+          "path": [
+            [
+              9,
+              16
+            ],
+            [
+              10,
+              16
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            10,
+            16
+          ],
+          "trigger": [
+            11,
+            16
+          ],
+          "entry_action": "right",
+          "expected_landing": [
+            15,
+            18
+          ],
+          "chains": [
+            {
+              "trigger": [
+                11,
+                16
+              ],
+              "source_label": "RocketHideout2ArrowMovement19",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "right",
+                  "count": 4
+                },
+                {
+                  "direction": "down",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                15,
+                18
+              ],
+              "forced_positions": [
+                [
+                  12,
+                  16
+                ],
+                [
+                  13,
+                  16
+                ],
+                [
+                  14,
+                  16
+                ],
+                [
+                  15,
+                  16
+                ],
+                [
+                  15,
+                  17
+                ],
+                [
+                  15,
+                  18
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            15,
+            18
+          ],
+          "to": [
+            14,
+            18
+          ],
+          "path": [
+            [
+              15,
+              18
+            ],
+            [
+              14,
+              18
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            14,
+            18
+          ],
+          "trigger": [
+            13,
+            18
+          ],
+          "entry_action": "left",
+          "expected_landing": [
+            11,
+            20
+          ],
+          "chains": [
+            {
+              "trigger": [
+                13,
+                18
+              ],
+              "source_label": "RocketHideout2ArrowMovement27",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "left",
+                  "count": 2
+                },
+                {
+                  "direction": "down",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                11,
+                20
+              ],
+              "forced_positions": [
+                [
+                  12,
+                  18
+                ],
+                [
+                  11,
+                  18
+                ],
+                [
+                  11,
+                  19
+                ],
+                [
+                  11,
+                  20
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            11,
+            20
+          ],
+          "to": [
+            14,
+            22
+          ],
+          "path": [
+            [
+              11,
+              20
+            ],
+            [
+              12,
+              20
+            ],
+            [
+              13,
+              20
+            ],
+            [
+              14,
+              20
+            ],
+            [
+              14,
+              21
+            ],
+            [
+              14,
+              22
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            14,
+            22
+          ],
+          "trigger": [
+            13,
+            22
+          ],
+          "entry_action": "left",
+          "expected_landing": [
+            9,
+            24
+          ],
+          "chains": [
+            {
+              "trigger": [
+                13,
+                22
+              ],
+              "source_label": "RocketHideout2ArrowMovement29",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "left",
+                  "count": 4
+                },
+                {
+                  "direction": "down",
+                  "count": 2
+                }
+              ],
+              "expected_landing": [
+                9,
+                24
+              ],
+              "forced_positions": [
+                [
+                  12,
+                  22
+                ],
+                [
+                  11,
+                  22
+                ],
+                [
+                  10,
+                  22
+                ],
+                [
+                  9,
+                  22
+                ],
+                [
+                  9,
+                  23
+                ],
+                [
+                  9,
+                  24
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            9,
+            24
+          ],
+          "to": [
+            10,
+            24
+          ],
+          "path": [
+            [
+              9,
+              24
+            ],
+            [
+              10,
+              24
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        },
+        {
+          "kind": "spin_entry_and_wait",
+          "from": [
+            10,
+            24
+          ],
+          "trigger": [
+            10,
+            25
+          ],
+          "entry_action": "down",
+          "expected_landing": [
+            14,
+            25
+          ],
+          "chains": [
+            {
+              "trigger": [
+                10,
+                25
+              ],
+              "source_label": "RocketHideout2ArrowMovement2",
+              "moves_in_actual_execution_order": [
+                {
+                  "direction": "right",
+                  "count": 4
+                }
+              ],
+              "expected_landing": [
+                14,
+                25
+              ],
+              "forced_positions": [
+                [
+                  11,
+                  25
+                ],
+                [
+                  12,
+                  25
+                ],
+                [
+                  13,
+                  25
+                ],
+                [
+                  14,
+                  25
+                ]
+              ]
+            }
+          ],
+          "requires_forced_movement_controller": true
+        },
+        {
+          "kind": "walk",
+          "from": [
+            14,
+            25
+          ],
+          "to": [
+            24,
+            19
+          ],
+          "path": [
+            [
+              14,
+              25
+            ],
+            [
+              15,
+              25
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              16,
+              23
+            ],
+            [
+              16,
+              22
+            ],
+            [
+              16,
+              21
+            ],
+            [
+              16,
+              20
+            ],
+            [
+              17,
+              20
+            ],
+            [
+              18,
+              20
+            ],
+            [
+              19,
+              20
+            ],
+            [
+              19,
+              19
+            ],
+            [
+              19,
+              18
+            ],
+            [
+              20,
+              18
+            ],
+            [
+              21,
+              18
+            ],
+            [
+              22,
+              18
+            ],
+            [
+              23,
+              18
+            ],
+            [
+              24,
+              18
+            ],
+            [
+              24,
+              19
+            ]
+          ],
+          "runtime_requirement": "避開所有未指定箭頭觸發格，或逐格沿此path執行；一般BFS只到to可能抄近路踩入別的箭頭。"
+        }
+      ],
+      "source_limits": "Fixed arrow RLE and static NPC map only, no live controls/positions or safe battle guarantee",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "map": "RocketHideoutB2F",
+      "status": "source_planning_only_not_live_validated"
+    }
+  },
+  "event_constants": {
+    "EVENT_FOUND_ROCKET_HIDEOUT": 441,
+    "EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_0": 1649,
+    "EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_1": 1650,
+    "EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_2": 1651,
+    "EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_3": 1652,
+    "EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_4": 1653,
+    "EVENT_BEAT_ROCKET_HIDEOUT_2_TRAINER_0": 1665,
+    "EVENT_BEAT_ROCKET_HIDEOUT_3_TRAINER_0": 1681,
+    "EVENT_BEAT_ROCKET_HIDEOUT_3_TRAINER_1": 1682,
+    "EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0": 1698,
+    "EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1": 1699,
+    "EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_2": 1700,
+    "EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED": 1701,
+    "EVENT_ROCKET_DROPPED_LIFT_KEY": 1702,
+    "EVENT_BEAT_ROCKET_HIDEOUT_GIOVANNI": 1703
+  },
+  "item_constants": {
+    "MOON_STONE": 10,
+    "SILPH_SCOPE": 72,
+    "LIFT_KEY": 74
+  },
+  "source_files": [
+    {
+      "path": "constants/event_constants.asm",
+      "sha256": "691a373649740af5ea340d09e816b0966e9164d5f78ded57b1759e76ada57455",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/constants/event_constants.asm"
+    },
+    {
+      "path": "constants/item_constants.asm",
+      "sha256": "b5a1db015fbf0de637381eb39350f21f35a436a8088e2f6657f65c79f118f97f",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm"
+    },
+    {
+      "path": "constants/map_constants.asm",
+      "sha256": "4129ef4e6908267e554c0308254f2269f1fb8f75b5c529faad6fd14c92119271",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/constants/map_constants.asm"
+    },
+    {
+      "path": "constants/pokemon_constants.asm",
+      "sha256": "0914f9edb2bb72788d0e7b1e4ae7dedef2bb2f29533363375f8d874fec41e604",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/constants/pokemon_constants.asm"
+    },
+    {
+      "path": "constants/toggle_constants.asm",
+      "sha256": "b028dd3cbcc2e6ef0135ab282d7fbf5ed41213f83555466d5d96b4c9d5e3812b",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm"
+    },
+    {
+      "path": "data/maps/headers/CeladonCity.asm",
+      "sha256": "ca78a438281c4cc9556ef448bf1ca8e3d6c5a7e59a90c9de13b73e094b0ece6d",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/CeladonCity.asm"
+    },
+    {
+      "path": "data/maps/headers/CeladonMansion1F.asm",
+      "sha256": "aeecf5026b225ba8dd3da1ac664acf9eda3b4af4d5640be18d417f288f0d0b46",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/CeladonMansion1F.asm"
+    },
+    {
+      "path": "data/maps/headers/CeladonMansion2F.asm",
+      "sha256": "a8b7c50fdc3f5a749c7258e7def2b0b8d4b103c5a9307d073f7e3cd08c0c5cfd",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/CeladonMansion2F.asm"
+    },
+    {
+      "path": "data/maps/headers/CeladonMansion3F.asm",
+      "sha256": "02a17ca6855be8aaa73a006f709148660372cac4dc27efaa08cd411be2356318",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/CeladonMansion3F.asm"
+    },
+    {
+      "path": "data/maps/headers/CeladonMansionRoof.asm",
+      "sha256": "61a2b6c1a2d55cbee4cc3b7dc2ebaf8e1b3fc910f7f562e1a689905915dadfcb",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/CeladonMansionRoof.asm"
+    },
+    {
+      "path": "data/maps/headers/CeladonMansionRoofHouse.asm",
+      "sha256": "d7ddd35f67a342e31146377397bb5191283575d002c0f52cd8250935d99c916e",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/CeladonMansionRoofHouse.asm"
+    },
+    {
+      "path": "data/maps/headers/CeladonPokecenter.asm",
+      "sha256": "bcad9da96f8b376cd67fe33ff18e9725f2b5b502be31488987cb75688ff741db",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/CeladonPokecenter.asm"
+    },
+    {
+      "path": "data/maps/headers/GameCorner.asm",
+      "sha256": "d32f24f98811a217a85529093bf2f7e3ad14c9190d5b10778a6b1c7f443c5a68",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/GameCorner.asm"
+    },
+    {
+      "path": "data/maps/headers/RockTunnel1F.asm",
+      "sha256": "7dab72e8da18c3e44bf470fdef7d1f92c228e7e16fa117cf54183b92bc62e04b",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/RockTunnel1F.asm"
+    },
+    {
+      "path": "data/maps/headers/RockTunnelB1F.asm",
+      "sha256": "5da0d9d5d3def8e2fe78e169c95c1c214e136280a3e3130a0f464d0014616621",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/RockTunnelB1F.asm"
+    },
+    {
+      "path": "data/maps/headers/RockTunnelPokecenter.asm",
+      "sha256": "a2997e5e4004390d6f53c22a719bb00f8b25d1f0f2fc12ba76750ef88c091e03",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/RockTunnelPokecenter.asm"
+    },
+    {
+      "path": "data/maps/headers/RocketHideoutB1F.asm",
+      "sha256": "2c11acecdd30f6dbcb2acbfb0d44e1458a2093553345f403551dd3bf96279ec4",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/RocketHideoutB1F.asm"
+    },
+    {
+      "path": "data/maps/headers/RocketHideoutB2F.asm",
+      "sha256": "2e74ef57213193de3287d2e42f5db98590e118aceefd6d6392bdf2093e334d74",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/RocketHideoutB2F.asm"
+    },
+    {
+      "path": "data/maps/headers/RocketHideoutB3F.asm",
+      "sha256": "93f2ab3335ab83db5a21c651e06024f5070dfee8f8fc46f5b7a29eaebe309b1e",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/RocketHideoutB3F.asm"
+    },
+    {
+      "path": "data/maps/headers/RocketHideoutB4F.asm",
+      "sha256": "8a079d05034ae130ffa7c4d492c79f9531137e307290153e2adb6733784e4572",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/RocketHideoutB4F.asm"
+    },
+    {
+      "path": "data/maps/headers/RocketHideoutElevator.asm",
+      "sha256": "50064176c3ba2ea0bc001d3b16d2c7d721b7e0eeaf988790e78485c73f9b6b51",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/RocketHideoutElevator.asm"
+    },
+    {
+      "path": "data/maps/headers/Route10.asm",
+      "sha256": "3809acfdc85abd996cdd56f835108fa73db8a50d9e31f7ce9a2c44b556fee064",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/Route10.asm"
+    },
+    {
+      "path": "data/maps/objects/CeladonCity.asm",
+      "sha256": "1fae0f7b93794b311adb640c1d0d45d6984065899beb73c857ea9322674fc070",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/CeladonCity.asm"
+    },
+    {
+      "path": "data/maps/objects/CeladonMansion1F.asm",
+      "sha256": "c895ed57d4a8d885a4a6044ff19fdfb389ba4d8eb9d9396381cd184d8d10035d",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/CeladonMansion1F.asm"
+    },
+    {
+      "path": "data/maps/objects/CeladonMansion2F.asm",
+      "sha256": "558f91614a42e8e1f0c5bc3041d17b97c3c495bc79eb61d73dfe084c20990802",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/CeladonMansion2F.asm"
+    },
+    {
+      "path": "data/maps/objects/CeladonMansion3F.asm",
+      "sha256": "378c674de299685f2a6b3e7278abf170289d234fec7531e73bf279b6be2b1796",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/CeladonMansion3F.asm"
+    },
+    {
+      "path": "data/maps/objects/CeladonMansionRoof.asm",
+      "sha256": "ad97d6bf0b58d58adbc624895bbf4e72c6faeed90783cb2aed37eede240472ef",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/CeladonMansionRoof.asm"
+    },
+    {
+      "path": "data/maps/objects/CeladonMansionRoofHouse.asm",
+      "sha256": "0578fe2474220cfa7c457d4eac1b65413c40ec71e27ed416c02383a2cf23f748",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/CeladonMansionRoofHouse.asm"
+    },
+    {
+      "path": "data/maps/objects/CeladonPokecenter.asm",
+      "sha256": "970c745607e7deee9d3e1bab2e20786b7f4106e376545b91135d5ea7c58b58ed",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/CeladonPokecenter.asm"
+    },
+    {
+      "path": "data/maps/objects/GameCorner.asm",
+      "sha256": "77126bc5ea775dcbfe856b3d0d92977715db197e30699781d29f8d43a6f16d8b",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/GameCorner.asm"
+    },
+    {
+      "path": "data/maps/objects/RockTunnel1F.asm",
+      "sha256": "7df3572fb14bd692dd6c1c9b0723515156f806bed434570e1b2431e7bbcd2ce2",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/RockTunnel1F.asm"
+    },
+    {
+      "path": "data/maps/objects/RockTunnelB1F.asm",
+      "sha256": "4cda025b1301a7a6e400d025c5476538d77ba5363f7cc1725f7a9f14ff0cfc39",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/RockTunnelB1F.asm"
+    },
+    {
+      "path": "data/maps/objects/RockTunnelPokecenter.asm",
+      "sha256": "856eda140bf1cc6e9e2feab733e0db4427673d25602368f7231721c391ced97b",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/RockTunnelPokecenter.asm"
+    },
+    {
+      "path": "data/maps/objects/RocketHideoutB1F.asm",
+      "sha256": "c64e6cebf7a00f896713c4e344058bf15f661f5a09db392545be87ef9e3dc67a",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/RocketHideoutB1F.asm"
+    },
+    {
+      "path": "data/maps/objects/RocketHideoutB2F.asm",
+      "sha256": "ce33bb367b2a0be107e316b998241845f99c732b60ae9adbb3110e481eef59c2",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/RocketHideoutB2F.asm"
+    },
+    {
+      "path": "data/maps/objects/RocketHideoutB3F.asm",
+      "sha256": "0cc39b6752e150dd38e57c245ce43ce8bf43f0eb1325441ae3a3fb4ec45bc26b",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/RocketHideoutB3F.asm"
+    },
+    {
+      "path": "data/maps/objects/RocketHideoutB4F.asm",
+      "sha256": "34686b605baadcce32230e920e4054656b41d129c4fe3ac2836cdb4b413a96b3",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/RocketHideoutB4F.asm"
+    },
+    {
+      "path": "data/maps/objects/RocketHideoutElevator.asm",
+      "sha256": "5572b308ca6352381f5b28d3766ba16f878bbf0aa484926d92a149ab10e807e1",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/RocketHideoutElevator.asm"
+    },
+    {
+      "path": "data/maps/objects/Route10.asm",
+      "sha256": "0a59825f046f91b8308b8954e57d07b3d898265a394ef7abb7be32b074076e68",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/Route10.asm"
+    },
+    {
+      "path": "data/maps/toggleable_objects.asm",
+      "sha256": "8dc2fafaebe2ee98c83eca34d486d861117ce95b6c6f94da7760b7b1c88f8cf4",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm"
+    },
+    {
+      "path": "data/pokemon/base_stats/nidoking.asm",
+      "sha256": "5cea8829963b75e53f3abfa128a3a7e16d9cc77dd1d060bbea4f460db7fd1feb",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/nidoking.asm"
+    },
+    {
+      "path": "data/pokemon/base_stats/nidorino.asm",
+      "sha256": "099f31db74e8f77c8ac12895eb8d0ac0d829f594d97f7d74c283a0c8ea678127",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/nidorino.asm"
+    },
+    {
+      "path": "data/pokemon/evos_moves.asm",
+      "sha256": "1a4c475c47134440a4a4e54265314638d8c6953da558d7d6a7b7f7bc206c2f30",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/evos_moves.asm"
+    },
+    {
+      "path": "data/tilesets/collision_tile_ids.asm",
+      "sha256": "15df9f5ad78dd176e91b78a85ef6ff9cf471d51a6222689d3d4902e58af4fc0a",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/collision_tile_ids.asm"
+    },
+    {
+      "path": "data/tilesets/door_tile_ids.asm",
+      "sha256": "abfaf317853996ea9dbf2e2ae176bf75fadcb1503c0664d438c70ef9157546d1",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/door_tile_ids.asm"
+    },
+    {
+      "path": "data/tilesets/pair_collision_tile_ids.asm",
+      "sha256": "d7ed744bfa0fcaf8e7f69a23f9e3d44cdcf9f3c3f9931d93926f5084f1c4466b",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/pair_collision_tile_ids.asm"
+    },
+    {
+      "path": "data/tilesets/warp_carpet_tile_ids.asm",
+      "sha256": "9014bd1479dfd18a1ca5042d58056e7afeec06c3a99559eb0b1d86ca262f029f",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/warp_carpet_tile_ids.asm"
+    },
+    {
+      "path": "data/tilesets/warp_tile_ids.asm",
+      "sha256": "9784114c698ef80c12b3b21aa15ff65a917640a7a1f0d0cc07806afeb058cad5",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/tilesets/warp_tile_ids.asm"
+    },
+    {
+      "path": "data/trainers/parties.asm",
+      "sha256": "61eac58fe43a181fcd936d5366457a940cf805ee15c787ff5957e175f83b217d",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/trainers/parties.asm"
+    },
+    {
+      "path": "data/wild/maps/Route8.asm",
+      "sha256": "950d2116c1b594a0478a4303ad703172f461463938b2d9a0f3de9c2aed83c5e6",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/data/wild/maps/Route8.asm"
+    },
+    {
+      "path": "engine/events/elevator.asm",
+      "sha256": "7665819f6a4f7667d4cf268a45e28a2142d83b70ff14ddbdb52fe99e8b04af6f",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/engine/events/elevator.asm"
+    },
+    {
+      "path": "engine/events/give_pokemon.asm",
+      "sha256": "99789f756812f8db1c99f3142126bc2f27cae3f8ee9144d8c5cd3326f6a3e50b",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/engine/events/give_pokemon.asm"
+    },
+    {
+      "path": "engine/menus/naming_screen.asm",
+      "sha256": "e235a1c56a5d7c73f110c79ebd8cc794b04f41dd6389bb2e24aa297443a29bca",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/naming_screen.asm"
+    },
+    {
+      "path": "engine/overworld/elevator.asm",
+      "sha256": "349abfc08a678c266c34d69b3fe3c3eea2610cd8904a285c458461104c942a51",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/elevator.asm"
+    },
+    {
+      "path": "engine/overworld/player_state.asm",
+      "sha256": "55cd81415319a4c87fcd7d05eab816124a2d9e79229a27645309a2af80861fcf",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/player_state.asm"
+    },
+    {
+      "path": "engine/overworld/update_map.asm",
+      "sha256": "316486cdb3010178bba7cb526a1c9f11ff6c09462117a51ab4feb75fdab5c1cf",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/update_map.asm"
+    },
+    {
+      "path": "engine/pokemon/add_mon.asm",
+      "sha256": "4a0c02fbbfdd6dc1e9357069be2b4b94342777de94efb2a67bd4e25ca62bddfe",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/add_mon.asm"
+    },
+    {
+      "path": "gfx/blocksets/cavern.bst",
+      "sha256": "a097f4128798fa5a35c58a42b699a776b7c27ae284e2a0d0a68dc446145a0f7a",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/cavern.bst"
+    },
+    {
+      "path": "gfx/blocksets/facility.bst",
+      "sha256": "fe0f7cfa2a00ca75fff6bb38f83c229eb9c6d079ef2d45252955290a72baaa08",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/facility.bst"
+    },
+    {
+      "path": "gfx/blocksets/house.bst",
+      "sha256": "1659fc6dce07f6f5e119386e7ec9a0dd7cf62db57de87067f3ded456067839c4",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/house.bst"
+    },
+    {
+      "path": "gfx/blocksets/lobby.bst",
+      "sha256": "9b87dd981f486f7a2685e6c90ad87e5c920affea9d03daefdeef0c7298a56849",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/lobby.bst"
+    },
+    {
+      "path": "gfx/blocksets/mansion.bst",
+      "sha256": "d710c04d3d485cb9fa014c0623793eb7a2958b3e754e2746ec77f2307497a790",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/mansion.bst"
+    },
+    {
+      "path": "gfx/blocksets/overworld.bst",
+      "sha256": "c4f6d88cc7dea8196aa51d3aa059c6d1da0ea45718dd12870fcddee9f9304d50",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/overworld.bst"
+    },
+    {
+      "path": "gfx/blocksets/pokecenter.bst",
+      "sha256": "0dd8c8f693882a208b39487ba2b97505910f9e22b8f7108e11f0efe7405f61c9",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/pokecenter.bst"
+    },
+    {
+      "path": "home/give.asm",
+      "sha256": "8cfb75843694f5f32294534b766ce3c0dec1272c8cc00755050348ad38604b07",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/home/give.asm"
+    },
+    {
+      "path": "home/map_objects.asm",
+      "sha256": "d16b4724ff9cceaa1c41cd9131d0578e4e2c3e4309d44dbbf395a88e28313307",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/home/map_objects.asm"
+    },
+    {
+      "path": "home/overworld.asm",
+      "sha256": "04683d520f775876f8ec050cbc20e145ef4e596293393d0cb2e7ccd0657cc11a",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/home/overworld.asm"
+    },
+    {
+      "path": "maps/CeladonCity.blk",
+      "sha256": "ab2e5139c31c1962e8e391ccd11843d0fb9008c6d39c7398ba79044e5b6403c6",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/CeladonCity.blk"
+    },
+    {
+      "path": "maps/CeladonMansion1F.blk",
+      "sha256": "e1e8b9ad438ad0bd57d9083ccecf5fb2c6922251420c2f26f25ee3048c3f9127",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/CeladonMansion1F.blk"
+    },
+    {
+      "path": "maps/CeladonMansion2F.blk",
+      "sha256": "8ae7438e3d26c0a1c09afde29e391d942f14460cf3083e937311c04b78f34d40",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/CeladonMansion2F.blk"
+    },
+    {
+      "path": "maps/CeladonMansion3F.blk",
+      "sha256": "4956d32da00d7ee3ca88dbb028e925f2a540feed00fc59302d5352a640844a1e",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/CeladonMansion3F.blk"
+    },
+    {
+      "path": "maps/CeladonMansionRoof.blk",
+      "sha256": "c602c833b14a17496f829e24c0c9441a85a5b07252c0785e737ec9f877ea1c94",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/CeladonMansionRoof.blk"
+    },
+    {
+      "path": "maps/CeladonMansionRoofHouse.blk",
+      "sha256": "d223429e0a42143c07f38731fbff0f127d4c2c187602310336699bd5d131f690",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/CeladonMansionRoofHouse.blk"
+    },
+    {
+      "path": "maps/CeladonPokecenter.blk",
+      "sha256": "bb3eb97825513f690d99282255b3413b9169a3a124b1d6a73d2bc0972a793fed",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/CeladonPokecenter.blk"
+    },
+    {
+      "path": "maps/GameCorner.blk",
+      "sha256": "2899737bb4af07201574fa1026361ca1c1c8d72e542c6998c9a18c320310c031",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/GameCorner.blk"
+    },
+    {
+      "path": "maps/RockTunnel1F.blk",
+      "sha256": "781dbba783ef6a1d089f796432c22ba92d50b82918656c8cf568c66fe661cf37",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/RockTunnel1F.blk"
+    },
+    {
+      "path": "maps/RockTunnelB1F.blk",
+      "sha256": "eaf4f10583d651d3161f25fa879af17e01504648ed8bc8c260e67e00eb24369f",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/RockTunnelB1F.blk"
+    },
+    {
+      "path": "maps/RockTunnelPokecenter.blk",
+      "sha256": "bb3eb97825513f690d99282255b3413b9169a3a124b1d6a73d2bc0972a793fed",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/RockTunnelPokecenter.blk"
+    },
+    {
+      "path": "maps/RocketHideoutB1F.blk",
+      "sha256": "1262073853fc01aa16c71fdc9338b3eb3023cf4556c491f1e4bf5122687cd0d9",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/RocketHideoutB1F.blk"
+    },
+    {
+      "path": "maps/RocketHideoutB2F.blk",
+      "sha256": "c87e98b652554f882a7423293afae50f56ad9bd37cf7d1982d161760bed24c93",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/RocketHideoutB2F.blk"
+    },
+    {
+      "path": "maps/RocketHideoutB3F.blk",
+      "sha256": "f08cdc56e8bbadf46941ffcefe164aeac466477153101fe524cb7e51a3ad9f5b",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/RocketHideoutB3F.blk"
+    },
+    {
+      "path": "maps/RocketHideoutB4F.blk",
+      "sha256": "3bccce60d718cc2a688bb96c6571b7a577ef9ba3f1c5690b2883143873b2a73d",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/RocketHideoutB4F.blk"
+    },
+    {
+      "path": "maps/RocketHideoutElevator.blk",
+      "sha256": "9788b9d5d4c4f30d04402a517d77aa76a1967c01c82eb716802181558cdcbd02",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/RocketHideoutElevator.blk"
+    },
+    {
+      "path": "maps/Route10.blk",
+      "sha256": "b100290fa5973a42964d36f3231c2f3551aaad242c958662bb8c153c3831a87d",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/Route10.blk"
+    },
+    {
+      "path": "scripts/CeladonMansionRoofHouse.asm",
+      "sha256": "fb56a9f64ad2db6087c35cf6153f08fb7cdd1f0feea301459fb9edb7b14ec03c",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/CeladonMansionRoofHouse.asm"
+    },
+    {
+      "path": "scripts/GameCorner.asm",
+      "sha256": "d9dd65dcffb975a3ebb0cd8f79f7cb231bb9ac3fa962c3b4c93ca8ba3c86ee10",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/GameCorner.asm"
+    },
+    {
+      "path": "scripts/RocketHideoutB1F.asm",
+      "sha256": "314645db4cbaf099d8701065a50130db84ada9d52e80134519855a1b28a4abeb",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/RocketHideoutB1F.asm"
+    },
+    {
+      "path": "scripts/RocketHideoutB2F.asm",
+      "sha256": "0179ffcd40ca63d7eb3bfe0147e8c325e4cce1e04a997d975d91bdb30265b6ba",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/RocketHideoutB2F.asm"
+    },
+    {
+      "path": "scripts/RocketHideoutB3F.asm",
+      "sha256": "7687da2bd2f93e215a7d56cd7fec85d2a60a5b5ed57f4d41cd6787484c43b4ad",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/RocketHideoutB3F.asm"
+    },
+    {
+      "path": "scripts/RocketHideoutB4F.asm",
+      "sha256": "a4e6e0e97c6c6b52ebadf42ad5df53b823bd7d8d5ca98257f45daca79d063a71",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/RocketHideoutB4F.asm"
+    },
+    {
+      "path": "scripts/RocketHideoutElevator.asm",
+      "sha256": "2c8bb7f33df5faf6693524a36b7616b1dbd1c705605a07cd0f65bf962b219412",
+      "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/RocketHideoutElevator.asm"
+    }
+  ]
+}

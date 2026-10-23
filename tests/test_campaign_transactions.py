@@ -216,3 +216,49 @@ def test_waypoint_arrival_never_sends_generic_a_before_transaction_adapter():
 def test_valid_background_grid_is_not_overworld_while_window_ui_visible(text):
     assert not tx.ui_overworld_ready(text,{})
     assert tx.ui_overworld_ready(text_at(),{})
+
+
+def arrow_setup():
+    from laya_pokemon.arrow_floor import ArrowFloorController
+    from tests.test_arrow_floor import observation
+    args=setup('arrow_floor')
+    args[1]['location']={'map_id':201,'x':13,'y':11}
+    args[1]['frame']=100
+    args[0].frame_count=100
+    args[0].memory.data.update({0xCD38:0,0xCD6B:0,0xCFC5:0,0xD736:0})
+    args[2]['steps'][0].update(map_id=201,target=[13,11],trigger=[12,11])
+    model=ArrowFloorController(201,(12,11))
+    return args,model,observation
+
+
+def test_arrow_adapter_reads_real_getters_and_allows_only_verified_moving_location():
+    args,model,observation=arrow_setup()
+    _,grid=observation(model,frame=100)
+    result,next_id=call(args,grid=grid)
+    assert result['available_actions']==['left','wait'] and next_id=='gift'
+    assert result['arrow_observed_movement']['read_valid'] is True
+    for frame in (132,164):
+        location,grid=observation(model,model.hop['expected_landing'],frame)
+        args[1].update(location=location,frame=frame);args[0].frame_count=frame
+        result,next_id=call(args,grid=grid)
+        assert result['available_actions']==['wait']
+        assert bool(result.get('field_move_complete'))==(frame==164)
+    assert next_id=='after' and 'gift' in tx._COMPLETED
+
+
+def test_arrow_adapter_cannot_promote_stale_frame_to_verified_movement():
+    args,model,observation=arrow_setup()
+    args[0].frame_count=101
+    _,grid=observation(model,frame=100)
+    result,_=call(args,grid=grid)
+    assert result['review_reason']=='arrow_movement_read_not_verified'
+    assert result['available_actions']==['wait']
+
+
+def test_arrow_adapter_rejects_unreviewed_trigger_or_wrong_explicit_stance():
+    args,model,observation=arrow_setup()
+    args[2]['steps'][0]['trigger']=[0,0]
+    assert call(args)[0]['review_reason']=='arrow_explicit_trigger_unverified'
+    args[2]['steps'][0]['trigger']=[12,11]
+    args[2]['steps'][0]['target']=[12,11]
+    assert call(args)[0]['review_reason']=='arrow_explicit_stance_unverified'

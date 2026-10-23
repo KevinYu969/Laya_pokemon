@@ -4,7 +4,17 @@ from copy import deepcopy
 import pytest
 
 from laya_pokemon.world_map import (CAVERN_LAND_TILE_PAIRS, CAVERN_TILESET_ID,
-                                    cavern_pair_blocked_edges, world_direction)
+                                    cavern_pair_blocked_edges, world_direction,visible_map_proof)
+
+
+def test_visible_proof_is_only_actual_matching_in_bounds_cells():
+    tiles=[[y*8+x for x in range(8)] for y in range(6)]
+    screen=[r[2:6] for r in tiles[1:4]]
+    assert visible_map_proof(tiles,screen,2,1)==[[x,y] for y in range(1,4) for x in range(2,6)]
+    assert visible_map_proof(tiles,screen[:2],2,1) is None
+    wrong=deepcopy(screen);wrong[-1][-1]=255
+    assert visible_map_proof(tiles,wrong,2,1) is None
+    assert tiles[3][5]==29
 
 
 def grid(tiles, tileset=CAVERN_TILESET_ID):

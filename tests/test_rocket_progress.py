@@ -38,7 +38,7 @@ def progress():
 
 
 def test_all_event_ids_match_independent_pinned_research_and_no_invented_events():
-    path = Path(__file__).parents[1] / 'outputs/research/rocket-hideout-20261023.json'
+    path = Path(__file__).parent / 'data/rocket-source-fixture.json'
     reference = json.loads(path.read_text(encoding='utf-8'))
     assert reference['source_commit'] == SOURCE_COMMIT
     assert dict(ROCKET_EVENT_IDS) == {key.removeprefix('EVENT_').lower(): value

@@ -51,7 +51,7 @@ def call(controller, point=None, *, frame=100, now=1.0, grid_override='default',
 
 
 def test_all_thirteen_cases_match_separately_recorded_fixed_source_rle_and_route_definitions():
-    path = Path(__file__).parents[1] / 'outputs/research/rocket-hideout-20261023.json'
+    path = Path(__file__).parent / 'data/rocket-source-fixture.json'
     research = json.loads(path.read_text(encoding='utf-8'))
     assert research['source_commit'] == SOURCE_COMMIT
     found = set()
@@ -139,6 +139,24 @@ def test_changed_landing_neighborhood_restarts_stability_proof():
     grid['tiles'][stop[1]][stop[0] - 1] = 2
     assert not call(controller, stop, frame=164, grid_override=grid).get('arrow_floor_complete')
     assert controller.stable_samples == 1
+
+
+def test_leaving_stop_for_trigger_resets_consecutive_stability():
+    c=ArrowFloorController(201,(12,11));call(c)
+    stop=c.hop['expected_landing']
+    call(c,stop,frame=132,now=1.2)
+    call(c,c.hop['trigger'],frame=164,now=1.4)
+    assert c.stable_samples==0
+    assert not call(c,stop,frame=196,now=1.6).get('arrow_floor_complete')
+    assert call(c,stop,frame=228,now=1.8)['arrow_floor_complete']
+
+
+def test_same_frame_cannot_change_position_or_movement_after_entry():
+    c=ArrowFloorController(201,(12,11));call(c)
+    assert call(c,c.hop['expected_landing'],frame=100,now=1.1)['review_reason']=='arrow_same_frame_observation_conflict'
+    c=ArrowFloorController(201,(12,11));call(c)
+    changed=movement(100,spinning=True,simulated_remaining=2,joy_ignore=255)
+    assert call(c,frame=100,now=1.1,movement_override=changed)['review_reason']=='arrow_same_frame_observation_conflict'
 
 
 @pytest.mark.parametrize('change,reason', [

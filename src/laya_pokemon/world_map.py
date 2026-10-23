@@ -55,6 +55,15 @@ def read_npc_obstacles(pyboy,grid,expected):
     except (AttributeError,IndexError,KeyError,TypeError,ValueError):return None
 
 
+def visible_map_proof(tiles, screen, ox, oy):
+    """回傳實際逐格相等的背景座標；不足12格或任一不符即無證據。"""
+    compared=[(x+ox,y+oy,int(tile)) for y,row in enumerate(screen) for x,tile in enumerate(row)
+              if 0<=y+oy<len(tiles) and 0<=x+ox<len(tiles[y+oy])]
+    if len(compared)<12 or any(tiles[y][x]!=tile for x,y,tile in compared):
+        return None
+    return [[x,y] for x,y,_ in compared]
+
+
 def read_world_grid(pyboy, location):
     width, height = int(pyboy.memory[0xD369]), int(pyboy.memory[0xD368])
     if not 1 <= width <= 100 or not 1 <= height <= 72 or (width+6)*(height+6) > 1300:
@@ -93,12 +102,13 @@ def read_world_grid(pyboy, location):
         return None
     ox, oy = location['x']-sx//16, location['y']-(sy+4)//16
     screen = pyboy.game_wrapper._get_screen_background_tilemap()[1::2,::2] % 256
-    compared = [(tiles[y+oy][x+ox], int(tile)) for y,row in enumerate(screen) for x,tile in enumerate(row)
-                if 0 <= y+oy < height*2 and 0 <= x+ox < width*2]
-    if len(compared) < 12 or any(a != b for a,b in compared):
+    verified = visible_map_proof(tiles,screen,ox,oy)
+    if verified is None:
         return None  # 轉場／捲動／選單不一致，不把錯誤地圖當成路徑。
     return {'walkable': [[int(tile in collision) for tile in row] for row in tiles], 'tileset_id':int(pyboy.memory[0xD367]),
-            'tiles': tiles, 'grass': grass, 'screen_cells_verified': len(compared),
+            'tiles': tiles, 'grass': grass, 'screen_cells_verified': len(verified),
+            'visible_verified_cells':verified,'observation_frame':getattr(pyboy,'frame_count',None),
+            'verified_location':[location['map_id'],location['x'],location['y']],
             'source': 'wOverworldMap C6E8 / map header D368-D369 / tileset D52B-D535; fixed Red ROM'}
 
 

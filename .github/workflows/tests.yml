@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install pytest numpy Pillow imageio imageio-ffmpeg
+      - run: python -m pip install pytest numpy Pillow imageio imageio-ffmpeg psutil pyboy==2.8.1
       - run: python -m pip install --no-deps -e .
       - run: python -m pytest -q
       - run: python scripts/backup_project.py --validate-only

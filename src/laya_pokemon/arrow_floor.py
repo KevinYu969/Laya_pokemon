@@ -98,6 +98,7 @@ class ArrowFloorController:
         self.stage, self.error = 'ready', None
         self.started_at = self.last_time = self.last_frame = self.last_stable_frame = None
         self.stable_signature = None
+        self._last_position_movement = None
         point = self.hop['trigger']
         self._allowed = {self.hop['from'], point}
         for direction, count in self.hop['rle']:
@@ -146,6 +147,7 @@ class ArrowFloorController:
             self.started_at = now
         if self.calls > self.max_calls or now - self.started_at > self.max_seconds:
             return self._review('arrow_operation_budget_exhausted')
+        prior_frame = self.last_frame
         self.last_time, self.last_frame = now, frame
         if battle_active is not False or type(overworld_ready) is not bool:
             return self._review('arrow_requires_verified_nonbattle')
@@ -164,6 +166,10 @@ class ArrowFloorController:
             return self._review('arrow_movement_read_not_verified')
         if movement['joy_ignore'] not in (0, 255):
             return self._review('arrow_input_ignore_mask_unknown')
+        sample=(position,movement['spinning'],movement['simulated_remaining'],movement['joy_ignore'],movement['walk_counter'])
+        if prior_frame==frame and self._last_position_movement is not None and self._last_position_movement!=sample:
+            return self._review('arrow_same_frame_observation_conflict')
+        self._last_position_movement=sample
         idle = not movement['spinning'] and all(movement[key] == 0 for key in
                                                ('simulated_remaining', 'joy_ignore', 'walk_counter'))
         if position not in self._allowed:
@@ -192,6 +198,7 @@ class ArrowFloorController:
             self.stable_samples, self.stable_signature, self.last_stable_frame = 0, None, None
             return self._wait('wait_game_owned_forced_movement')
         if position != self.hop['expected_landing']:
+            self.stable_samples, self.stable_signature, self.last_stable_frame = 0, None, None
             if position in (self.hop['from'], self.hop['trigger']):
                 return self._wait('await_entry_or_script_start_without_resending')
             return self._review('arrow_stopped_before_expected_stop')
