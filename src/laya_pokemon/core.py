@@ -72,9 +72,24 @@ def percentile(values: list[float], q: float) -> float | None:
 
 
 def parse_rom_header(path: Path) -> dict[str, Any]:
+    """驗證卡匣檔案結構；不以標頭或校驗碼證明遊戲真偽與授權來源。"""
     data = path.read_bytes()
     if len(data) < 0x150:
         raise ValueError("ROM 檔案太短，無法讀取 Game Boy 標頭")
+    # Pan Docs: https://gbdev.io/pandocs/The_Cartridge_Header.html
+    logo = bytes.fromhex(
+        "CE ED 66 66 CC 0D 00 0B 03 73 00 83 00 0C 00 0D "
+        "00 08 11 1F 88 89 00 0E DC CC 6E E6 DD DD D9 99 "
+        "BB BB 67 63 6E 0E EC CC DD DC 99 9F BB B9 33 3E"
+    )
+    if data[0x104:0x134] != logo:
+        raise ValueError("ROM Nintendo logo 校驗失敗")
+    size_code = data[0x148]
+    if size_code > 8:
+        raise ValueError(f"ROM 宣告了不支援的容量代碼：0x{size_code:02X}")
+    declared_bytes = 0x8000 << size_code
+    if len(data) != declared_bytes:
+        raise ValueError(f"ROM 長度不符：標頭宣告 {declared_bytes} bytes，實際 {len(data)} bytes")
     title = data[0x134:0x144].split(b"\0", 1)[0].decode("ascii", errors="replace")
     if title not in {"POKEMON RED", "POKEMON BLUE"}:
         raise ValueError(f"目前只接受標頭為 POKEMON RED／BLUE 的 ROM，收到：{title!r}")
@@ -83,8 +98,14 @@ def parse_rom_header(path: Path) -> dict[str, Any]:
         checksum = (checksum - byte - 1) & 0xFF
     if checksum != data[0x14D]:
         raise ValueError("ROM 標頭校驗失敗")
+    global_checksum = (sum(data[:0x14E]) + sum(data[0x150:])) & 0xFFFF
+    if global_checksum != int.from_bytes(data[0x14E:0x150], "big"):
+        raise ValueError("ROM 全檔校驗失敗（global checksum）")
     if data[0x14A] != 1:
         raise ValueError("此初版介面只接受非日本區 ROM；語言仍須人工確認為英文")
     return {"title": title, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
-            "header_checksum_valid": True, "revision": data[0x14C], "language_verified": False}
+            "declared_bytes": declared_bytes, "nintendo_logo_valid": True,
+            "header_checksum_valid": True, "global_checksum_valid": True,
+            "validation_scope": "cartridge_structure_only", "revision": data[0x14C],
+            "language_verified": False, "authenticity_verified": False, "source_verified": False}
 

@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-23",
+  "kind": "pyboy_live_readiness_not_gameplay",
+  "status": "waiting_for_user_rom_or_authorized_source",
+  "rom_acquired": false,
+  "red_blue_game_started": false,
+  "desktop_foreground_verified": false,
+  "gameplay_video_created": false,
+  "task_success": null,
+  "tests": {"passed": 38, "failed": 0, "seconds": 2.81},
+  "checks": [
+    "ROM logo, declared size, header and global checksum validation",
+    "Short header-only fixture rejected",
+    "Model operation runs separately while main thread pumps window events",
+    "Expired decisions are not applied",
+    "Window close is a normal stop and pressed buttons are released",
+    "PowerShell launcher parses and stops when no ROM is available"
+  ],
+  "limitations": [
+    "Unit tests do not validate actual SDL2 desktop behavior or Pokemon gameplay",
+    "The observation profile remains unclassified and unvalidated against a real ROM",
+    "ROM structural checks do not prove language, authenticity or authorization",
+    "Showdown is a separate battle experiment and does not satisfy the live Game Boy requirement"
+  ]
+}

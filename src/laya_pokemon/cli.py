@@ -73,17 +73,26 @@ def model_smoke(args) -> None:
 
 
 def main() -> None:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="backslashreplace")
     os.environ.setdefault("HF_HOME", str(Path.cwd() / ".cache" / "huggingface"))
     parser = argparse.ArgumentParser(description="Laya × 寶可夢實驗工具")
     commands = parser.add_subparsers(dest="command", required=True)
     doctor = commands.add_parser("doctor", help="列出專案環境，不下載權重")
     doctor.add_argument("--output")
+    check_rom = commands.add_parser("check-rom", help="檢查使用者提供的紅／藍版 ROM 完整性，不啟動遊戲")
+    check_rom.add_argument("--rom", required=True)
     smoke = commands.add_parser("model-smoke", help="以真實 Laya 權重測試合成控制情境")
     smoke.add_argument("--output", required=True)
     smoke.add_argument("--revision", default="main")
     smoke.add_argument("--threads", type=int, default=4)
     record = commands.add_parser("recording-smoke", help="產生清楚標示為非遊戲畫面的錄影管線測試")
     record.add_argument("--output", required=True)
+    showdown = commands.add_parser("showdown", help="以真實 Laya 選招完成固定入門對戰，產生官方引擎回放")
+    showdown.add_argument("--output", required=True)
+    showdown.add_argument("--seed", type=int, default=42)
+    showdown.add_argument("--max-turns", type=int, default=30)
     play = commands.add_parser("play", help="執行使用者自行提供 ROM 的限步控制展示")
     play.add_argument("--rom", required=True)
     play.add_argument("--state")
@@ -96,6 +105,12 @@ def main() -> None:
     play.add_argument("--output", required=True)
     play.add_argument("--video", action="store_true")
     play.add_argument("--window", action="store_true")
+    play.add_argument("--scale", type=int, default=4)
+    play.add_argument("--boot-frames", type=int, default=120)
+    play.add_argument("--threads", type=int, default=4)
+    play.add_argument("--revision", default="7b928d828b7b0e022f929d9bd2e44165aa270148")
+    play.add_argument("--offline", action=argparse.BooleanOptionalAction, default=True,
+                      help="預設使用已快取的固定版本；首次下載可明確指定 --no-offline")
     args = parser.parse_args()
     if args.command == "doctor":
         result = environment()
@@ -105,6 +120,9 @@ def main() -> None:
         print(json.dumps(result, ensure_ascii=False, indent=2))
     elif args.command == "model-smoke":
         model_smoke(args)
+    elif args.command == "check-rom":
+        from .core import parse_rom_header
+        print(json.dumps(parse_rom_header(Path(args.rom).resolve(strict=True)), ensure_ascii=False, indent=2))
     elif args.command == "recording-smoke":
         from .video import recording_smoke
         path = Path(args.output)
@@ -116,6 +134,9 @@ def main() -> None:
     elif args.command == "play":
         from .game import play_game
         play_game(args)
+    elif args.command == "showdown":
+        from .showdown import run_showdown
+        run_showdown(args)
 
 
 if __name__ == "__main__":

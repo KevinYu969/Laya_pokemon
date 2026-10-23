@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REMOTE = "https://github.com/KevinYu969/Laya_pokemon"
 TOP_FILES = {"README.md", "pyproject.toml", "requirements-lock.txt", ".gitignore", ".gitattributes"}
 TOP_DIRS = {"src", "scripts", "tests", "docs", "results", ".github"}
-EXTENSIONS = {".md", ".py", ".ps1", ".toml", ".json", ".jsonl", ".csv", ".txt", ".yml", ".yaml", ".svg"}
+EXTENSIONS = {".md", ".py", ".ps1", ".toml", ".json", ".jsonl", ".csv", ".txt", ".yml", ".yaml", ".svg", ".cjs"}
 SECRET = re.compile(r"(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|hf_[A-Za-z0-9]{25,}|sk-[A-Za-z0-9_-]{25,}|-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----)")
 USER_PATH = re.compile(r"[A-Za-z]:(?:\\{1,2}|/)Users(?:\\{1,2}|/)[^\\/\s`\"'<>]+", re.IGNORECASE)
 

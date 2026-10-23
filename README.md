@@ -8,14 +8,14 @@
 
 ## 目前進度
 
-更新：**2026-10-22**。
+更新：**2026-10-23**。目前缺少使用者有權使用的紅／藍版 ROM，**尚未啟動真正的紅／藍版遊戲，也沒有即時遊玩驗收或破關成果**。
 
 | 項目 | 狀態 |
 |---|---|
 | Windows／Python 3.11 獨立環境 | 已部署；CPU PyTorch、Laya、PyBoy 相依檢查通過 |
 | 真實 Laya 權重 | 已下載並固定 revision，CPU 推論成功 |
 | 合成按鍵決策測試 | 7 個情境皆符合預期；只是介面與控制語意檢查 |
-| PyBoy 限步控制與 JSONL 日誌 | 已實作；真實 ROM 整合尚待驗證 |
+| PyBoy 桌面限步控制與 JSONL 日誌 | 已實作；已補 ROM 完整性檢查與模型等待時的視窗事件處理；真實 ROM 整合尚待驗證 |
 | MP4 錄影管線 | 已產生並解碼驗證 2 秒／60 幀／30fps 測試片 |
 | 寶可夢遊戲結果與影片 | 待提供英文紅／藍版 ROM 及測試存檔後實測 |
 | 短路線／對話／戰鬥對照 | 已規劃，尚無完成率數據 |
@@ -71,11 +71,17 @@ cd Laya_pokemon
 
 自行準備有權使用的英文版 Pokemon Red／Blue ROM，放在 `roms/`；PyBoy 存檔放在 `saves/`。這些檔案不會提交 Git。
 
+已查閱 Nintendo 官方產品頁，目前未找到可供 PyBoy 使用的官方 `.gb` 下載。若已有實體卡匣，可用具遊戲資料匯出功能的卡匣讀取器取得檔案；目前沒有替使用者購買硬體或取得遊戲。參考：[Nintendo 紅版產品頁](https://www.nintendo.com/en-gb/Games/Game-Boy/Pokemon-Red-Version-266109.html)、[GB Operator 官方功能](https://www.epilogue.co/product/gb-operator)。
+
 ```powershell
-.\.venv\Scripts\python.exe -m laya_pokemon.cli play --rom roms/pokemon_red.gb --state saves/start.state --objective 'Walk toward the exit.' --policy laya --steps 100 --video --output outputs/runs/gameplay-001
+.\scripts\start-live.ps1 -Rom .\roms\pokemon_red.gb
 ```
 
-加上 `--window` 可顯示遊戲視窗。沒有 `--state` 時會從開機開始，按鍵控制與開場流程仍待實機校準。這個命令示範介面，尚未驗證可完成指定任務。
+啟動器會先執行 `check-rom`，再以 SDL2 四倍視窗、已快取的固定模型版本、最多 300 次決策與 MP4 紀錄啟動；也可加 `-State .\saves\start.state`。只有一個 `.gb` 時可省略 `-Rom`。ROM 結構檢查包含 logo、容量、標頭及全檔 checksum，通過不代表已證明來源、語言或遊戲真偽。
+
+首次下載模型需先完成上面的 `model-smoke`；`play` 預設離線讀取固定 revision。即時視窗使用 1 倍遊戲速度；模型載入與思考期間遊戲暫停、SDL 事件持續更新，標題會顯示 `PAUSED`，因此不會將模型等待誤算成遊戲時間。關閉視窗可正常停止，執行上限為 600 秒。沒有 `--state` 時先推進 120 個開機幀；開場／命名／導航仍待真正 ROM 校準，不能保證完成任務。
+
+另有 Showdown 固定入門對戰的獨立測試，僅驗證選招與對戰引擎串接；它不是 Game Boy 紅／藍版，回放不作為本專案即時遊玩的驗收。
 
 ## 影片成果
 

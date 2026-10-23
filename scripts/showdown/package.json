@@ -1,0 +1,7 @@
+{
+  "name": "laya-pokemon-showdown-engine",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Laya 實際對戰所使用的固定版本模擬引擎",
+  "dependencies": {"pokemon-showdown": "0.11.11"}
+}

@@ -8,9 +8,11 @@ from typing import Any
 
 from .core import ACTIONS, validate_action
 
+PINNED_REVISION = "7b928d828b7b0e022f929d9bd2e44165aa270148"
+
 
 class LayaPolicy:
-    def __init__(self, model: str = "convaiinnovations/laya", revision: str = "main", threads: int = 4):
+    def __init__(self, model: str = "convaiinnovations/laya", revision: str = "main", threads: int = 4, offline: bool = False):
         import laya
         import torch
         from huggingface_hub import HfApi, snapshot_download
@@ -18,19 +20,21 @@ class LayaPolicy:
         torch.set_num_threads(threads)
         started = time.perf_counter()
         # 公開模型無須登入，先將可移動的 main 解析成固定 commit。
-        info = HfApi().model_info(model, revision=revision, token=False)
-        self.revision = info.sha
+        if offline and revision == "main":
+            raise ValueError("離線模式須指定固定的模型 revision")
+        self.revision = revision if offline else HfApi().model_info(model, revision=revision, token=False).sha
         self.model_id = model
         local_model = snapshot_download(model, revision=self.revision, token=False,
-            allow_patterns=["*.json", "*.safetensors", "tokenizer/*"], ignore_patterns=["*/*/*"])
+            allow_patterns=["*.json", "*.safetensors", "tokenizer/*"], ignore_patterns=["*/*/*"], local_files_only=offline)
         self.agent = laya.load(local_model, device="cpu")
         self.load_seconds = time.perf_counter() - started
         self.threads = threads
 
-    def choose(self, state: dict[str, Any]) -> dict[str, Any]:
+    def choose_options(self, state: dict[str, Any], instructions: str, criteria: dict[str, str]) -> dict[str, Any]:
+        if not criteria:
+            raise ValueError("候選動作不能為空")
         questions = {"action": {"type": "choice",
-            "instructions": "Choose the next button action that best advances the stated objective. Use the supplied state only.",
-            "criteria": {action.key: action.description for action in ACTIONS}}}
+            "instructions": instructions, "criteria": criteria}}
         text = json.dumps(state, ensure_ascii=True, separators=(",", ":"))
         started = time.perf_counter()
         result = self.agent.predict(text, questions)
@@ -38,8 +42,16 @@ class LayaPolicy:
         if result.get("usage", {}).get("truncated"):
             raise ValueError("模型輸入遭截斷，停止執行動作；請縮短觀測或調整上下文預算")
         key = result["answers"]["action"]["choice"]
-        validate_action(key)
+        if key not in criteria:
+            raise ValueError("模型回傳不在候選集合內的動作")
         return {"action": key, "model_ms": elapsed_ms, "raw": result}
+
+    def choose(self, state: dict[str, Any]) -> dict[str, Any]:
+        decision = self.choose_options(state,
+            "Choose the next button action that best advances the stated objective. Use the supplied state only.",
+            {action.key: action.description for action in ACTIONS})
+        validate_action(decision["action"])
+        return decision
 
 
 class RandomPolicy:
