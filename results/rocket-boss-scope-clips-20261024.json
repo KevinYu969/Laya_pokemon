@@ -1,0 +1,816 @@
+{
+  "at": "2026-10-23T16:30:27.095923+00:00",
+  "source_run": "league-campaign-20261023-16",
+  "status": "verified_local_unpublished",
+  "published": false,
+  "clip_count": 4,
+  "theme_count": 2,
+  "closed_source_videos_only": true,
+  "source_segments": [
+    26,
+    27
+  ],
+  "scenes": [
+    {
+      "id": "giovanni-full-normal-victory",
+      "caption_zh_tw": "正常對話進戰，完整擊敗坂木三隻寶可夢、升級、獎金及離場",
+      "source_intervals": [
+        [
+          967,
+          1049
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_video_sha256": "ca69e229d24e33ae371a8e26ec86a7b6fd86c898c3d37be998b7bef9081fe6e5",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-026.jsonl",
+          "source_log_sha256": "1fd8b78a7d546c54f44ffae390b0e4d902acf23fdcfc8fc99c06cc4d5b2a9ee7",
+          "source_steps": [
+            967,
+            1049
+          ],
+          "source_start_frame_inclusive": 190,
+          "source_end_frame_exclusive": 2538,
+          "source_start_emulated_seconds": 12.666666666666666,
+          "source_duration_emulated_seconds": 156.53333333333333,
+          "first_action_recorded_at_utc": "2026-10-23T16:15:40.828936+00:00",
+          "last_action_recorded_at_utc": "2026-10-23T16:15:53.180008+00:00"
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/giovanni-full-normal-victory-post1x.mp4",
+          "sha256": "b61ac9cf3ac6951865bc384397f227ca0cb38fd178a8fe3fec470ce51940c70e",
+          "frames_decoded": 4696,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 156.53333333333333,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 156.53333333333333,
+          "editing_zh_tw": "真實來源影格，模擬遊戲原速1x或後製1x，成片30fps。沒有重建工程／模型等待，片長不是牆鐘耗時。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/giovanni-full-normal-victory-post4x.mp4",
+          "sha256": "0a2c3be09a74d2562b1da602fa227b8bdc8383b5e78a6da7b930c353bb42d187",
+          "frames_decoded": 1174,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 39.13333333333333,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 39.13333333333333,
+          "editing_zh_tw": "真實來源影格，模擬遊戲原速1x或後製4x，成片30fps。沒有重建工程／模型等待，片長不是牆鐘耗時。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/giovanni-full-challenge.png",
+          "sha256": "5513b4747bb05d6de796cb022a0f8c905855f958f04abe788c6689a551345197",
+          "source_step": 976,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 389,
+          "source_emulated_seconds": 25.933333333333334,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "坂木與Kevin精靈圖，完整GIOVANNI wants / to fight!可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/giovanni-onix-matchup.png",
+          "sha256": "df920eae8d784bff14db7bb6fbc4f238ab470abc54a5daea998278a16f14aa27",
+          "source_step": 980,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 517,
+          "source_emulated_seconds": 34.46666666666667,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "ONIX Lv25，IVYSAUR Lv30 HP84/84，正常FIGHT選單。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/razor-leaf-super-effective.png",
+          "sha256": "e9c4dd51e5272c65093a85cff693d348f52e6d9e1f131354bdee92b7f0e03edf",
+          "source_step": 988,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 729,
+          "source_emulated_seconds": 48.6,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "ONIX與IVYSAUR，完整It’s super / effective!可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/giovanni-rhyhorn-matchup.png",
+          "sha256": "80301dcb0eb5e2ad8fa4f9254bdb4edd8f1013e61c3830ef5c832c34d1493e9d",
+          "source_step": 996,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 963,
+          "source_emulated_seconds": 64.2,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "RHYHORN Lv24，IVYSAUR Lv30 HP84/84，正常FIGHT選單。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/giovanni-kangaskhan-matchup.png",
+          "sha256": "31b667fe9f655138fc16147b43abb116022cc8b3067a6a1b98efb3bb42c9412c",
+          "source_step": 1012,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 1409,
+          "source_emulated_seconds": 93.93333333333334,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "KANGASKHAN Lv29，IVYSAUR Lv30 HP84/84，正常FIGHT選單。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/ivysaur-damage-after-comet-punch.png",
+          "sha256": "3c4a4377dc281db23f4086629c37680328a9e9823a05e3787124ff5c9f09ccb9",
+          "source_step": 1018,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 1557,
+          "source_emulated_seconds": 103.8,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "保留不利戰況：Hit 2 times!與IVYSAUR HP50/84可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/ivysaur-level31.png",
+          "sha256": "315816705d7277b12333c64aa66d7c1a12aa112a581f26f1c02aa376c22eed57",
+          "source_step": 1036,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 2089,
+          "source_emulated_seconds": 139.26666666666668,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "完整IVYSAUR grew / to level 31!，HP52/86，屬正常升級後增加最大HP。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/kevin-defeated-giovanni.png",
+          "sha256": "238bc04144b617db08d537070fc4fa5aefbdaf5439828ba8186acf1c02643e1a",
+          "source_step": 1038,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 2153,
+          "source_emulated_seconds": 143.53333333333333,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "完整KEVIN defeated / GIOVANNI!可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/giovanni-reward-2871.png",
+          "sha256": "f37eaeaabba3e238e805f663c5a2e9900f0728374e5b51a760ba16cf3932a5c2",
+          "source_step": 1041,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 2249,
+          "source_emulated_seconds": 149.93333333333334,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "完整KEVIN got ¥2871 / for winning!可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/giovanni-left-room.png",
+          "sha256": "b281275406b57c4cfbec5cda2ea106cd867bc89da79002b43631d9e3bcfa7733",
+          "source_step": 1049,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_frame_index": 2537,
+          "source_emulated_seconds": 169.13333333333333,
+          "frame_basis": "after",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "戰後回野外，坂木已離開，物品球仍在；沒有捏造已撿取。"
+        }
+      ],
+      "notes_zh_tw": "保留967–1049全部動作影格，含正常A對話、戰鬥轉場、ONIX／RHYHORN／KANGASKHAN、己方受傷、升級與戰後對話。沒有省略不利戰況。戰後1049結束觸發party attrition檢討；檢討的牆鐘暫停不在此片中。",
+      "verified_result": {
+        "trainer": "GIOVANNI",
+        "opponents_visible_in_order": [
+          "ONIX",
+          "RHYHORN",
+          "KANGASKHAN"
+        ],
+        "victory_text_pre_action_step": 1038,
+        "first_positive_boss_flag_step": 1042,
+        "money_before": 24363,
+        "money_after": 27234,
+        "reward": 2871,
+        "ivysaur_before": {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 30,
+          "hp": 84,
+          "max_hp": 84,
+          "exp": 22487,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        "ivysaur_after": {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 31,
+          "hp": 52,
+          "max_hp": 86,
+          "exp": 24844,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            21,
+            30,
+            10,
+            10
+          ]
+        },
+        "other_party_unchanged": true
+      },
+      "victory_capture_observed_at_utc": "2026-10-23T16:15:51.458203+00:00",
+      "victory_capture_observed_at_taipei": "2026-10-24T00:15:51.458203+08:00"
+    },
+    {
+      "id": "healthy-lead-switch-silph-scope",
+      "caption_zh_tw": "正常SWITCH可出戰的尼多王為隊首，步行拾取透視鏡並關閉訊息",
+      "source_intervals": [
+        [
+          1050,
+          1067
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+          "source_video_sha256": "ca69e229d24e33ae371a8e26ec86a7b6fd86c898c3d37be998b7bef9081fe6e5",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-026.jsonl",
+          "source_log_sha256": "1fd8b78a7d546c54f44ffae390b0e4d902acf23fdcfc8fc99c06cc4d5b2a9ee7",
+          "source_steps": [
+            1050,
+            1050
+          ],
+          "source_start_frame_inclusive": 2538,
+          "source_end_frame_exclusive": 2548,
+          "source_start_emulated_seconds": 169.2,
+          "source_duration_emulated_seconds": 0.6666666666666666,
+          "first_action_recorded_at_utc": "2026-10-23T16:17:21.347121+00:00",
+          "last_action_recorded_at_utc": "2026-10-23T16:17:21.347121+00:00"
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+          "source_video_sha256": "6bb9ba1e391d1263d50c34439036d1ceef093a69c442bada37ee61f1d7f1800f",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-027.jsonl",
+          "source_log_sha256": "0ba9245a01fc9e6b9061b119ce920dde72793e67bcee23ff9f57b4e8515be7b8",
+          "source_steps": [
+            1051,
+            1067
+          ],
+          "source_start_frame_inclusive": 0,
+          "source_end_frame_exclusive": 192,
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 12.8,
+          "first_action_recorded_at_utc": "2026-10-23T16:17:21.505590+00:00",
+          "last_action_recorded_at_utc": "2026-10-23T16:17:23.674048+00:00"
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/healthy-lead-switch-silph-scope-post1x.mp4",
+          "sha256": "06c651030e630f1a4b45cbeee0f8d68bdb4ddc05cf5f9b990428ca1cffc2bfa3",
+          "frames_decoded": 404,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 13.466666666666667,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 13.466666666666667,
+          "editing_zh_tw": "真實來源影格，模擬遊戲原速1x或後製1x，成片30fps。沒有重建工程／模型等待，片長不是牆鐘耗時。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/healthy-lead-switch-silph-scope-post4x.mp4",
+          "sha256": "dda51de1c1b3eaff462bf57e2f8b942d5078e471b2eebb9be2998faebe56635c",
+          "frames_decoded": 101,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 3.3666666666666667,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 3.3666666666666667,
+          "editing_zh_tw": "真實來源影格，模擬遊戲原速1x或後製4x，成片30fps。沒有重建工程／模型等待，片長不是牆鐘耗時。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/nidoking-selected-before-switch.png",
+          "sha256": "dcc6b77690e59d539b51a110a6a0a6a93ecdf644b99ad31b30990d132a171a19",
+          "source_step": 1055,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+          "source_frame_index": 39,
+          "source_emulated_seconds": 2.6,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "正常隊伍畫面游標選第三位NIDOKING Lv28 HP79/95，IVYSAUR仍52/86。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/normal-switch-menu.png",
+          "sha256": "3ac33d9b231e346c8089edffc63d1dcaa92bf364116cfbc2a4d59c99fa533b3e",
+          "source_step": 1057,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+          "source_frame_index": 59,
+          "source_emulated_seconds": 3.933333333333333,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "選中NIDOKING背景空心游標，子選單實心游標在SWITCH，沒有按STATS或CANCEL。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/nidoking-new-lead-no-healing.png",
+          "sha256": "08516104560fd7eb1358dfc9472dccba1dd5f987ddd40bcc305a21937d44a426",
+          "source_step": 1061,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+          "source_frame_index": 99,
+          "source_emulated_seconds": 6.6,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "NIDOKING已列第一HP79/95，IVYSAUR移第三仍52/86，沒有補血。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/silph-scope-before-pickup.png",
+          "sha256": "820efe7ffb13601ad39245d5d65b854572c0e0ef8dc9d7ff519652b6b92f1cb4",
+          "source_step": 1066,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+          "source_frame_index": 149,
+          "source_emulated_seconds": 9.933333333333334,
+          "frame_basis": "before",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "正常關選單後人物面向物品球，球仍可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/kevin-found-silph-scope-full.png",
+          "sha256": "2ca96cc30167ca3560701e7055a0a0fe8dfc04a8d0ba9e07b99c5ecddf67d861",
+          "source_step": 1067,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+          "source_frame_index": 172,
+          "source_emulated_seconds": 11.466666666666667,
+          "frame_basis": "inside",
+          "inside_action_frame_offset": 12,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "完整KEVIN found / SILPH SCOPE!可見，沒有把不完整KEVIN字樣當成果。"
+        },
+        {
+          "file": "outputs/videos/rocket-boss-scope-20261024/silph-scope-message-closed.png",
+          "sha256": "9e7d7a0af57507ca12b0c36b6b23ebca2e730d471a56b04e6b40c06e21866797",
+          "source_step": 1067,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+          "source_frame_index": 191,
+          "source_emulated_seconds": 12.733333333333333,
+          "frame_basis": "after",
+          "inside_action_frame_offset": 0,
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "正常關閉拾取訊息，物品球消失，人物留在同一格野外。"
+        }
+      ],
+      "notes_zh_tw": "從戰後檢討恢復的1050 START開始，保留正常開隊伍／SWITCH／指定首位／B關選單／RIGHT與UP面向物品／A拾取與完整文字。尼多王HP79/95；這是換隊首，不是補血。1067後route-extension工程暫停另列，後續撤離未收入片中。",
+      "verified_result": {
+        "switch_menu_confirm_action_step": 1057,
+        "switch_target_confirm_action_step": 1060,
+        "new_order_first_observed_step": 1061,
+        "old_species_order": [
+          9,
+          35,
+          7,
+          102
+        ],
+        "new_species_order": [
+          7,
+          35,
+          9,
+          102
+        ],
+        "party_permutation_only": true,
+        "healing_observed": false,
+        "new_lead_hp": [
+          79,
+          95
+        ],
+        "item": 72,
+        "quantity_before": 0,
+        "quantity_after": 1,
+        "other_inventory_unchanged": true,
+        "pickup_action_step": 1066,
+        "first_inventory_observation_step": 1067,
+        "first_inventory_observation_at_utc": "2026-10-23T16:17:23.674048+00:00",
+        "first_inventory_observation_at_taipei": "2026-10-24T00:17:23.674048+08:00",
+        "time_caution_zh_tw": "這是首次持有的觀測時間，物品由前一步1066正常A取得；不冒稱精確到物品加入RAM的瞬間。",
+        "pickup_receipt_source_video": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+        "pickup_receipt_source_frame": 172,
+        "message_closed_source_frame": 191
+      },
+      "preceding_review_pause": {
+        "resume_action_step": 1050,
+        "previous_action_step": 1049,
+        "previous_action_at_utc": "2026-10-23T16:15:53.180008+00:00",
+        "resume_action_at_utc": "2026-10-23T16:17:21.347121+00:00",
+        "logged_review_pause_seconds": 88.094
+      },
+      "following_review_pause_not_in_clip": {
+        "resume_action_step": 1068,
+        "previous_action_step": 1067,
+        "previous_action_at_utc": "2026-10-23T16:17:23.674048+00:00",
+        "resume_action_at_utc": "2026-10-23T16:19:23.945529+00:00",
+        "logged_review_pause_seconds": 120.188
+      }
+    }
+  ],
+  "source_video_validation": [
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-026.mp4",
+      "sha256": "ca69e229d24e33ae371a8e26ec86a7b6fd86c898c3d37be998b7bef9081fe6e5",
+      "frames_decoded": 2548,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 169.86666666666667,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-026.jsonl",
+      "source_log_sha256": "1fd8b78a7d546c54f44ffae390b0e4d902acf23fdcfc8fc99c06cc4d5b2a9ee7",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:17:21.432361+00:00",
+        "segment": 26,
+        "timing": {
+          "wall_seconds": 4115.359,
+          "model_wait_seconds": 36.467,
+          "review_pause_seconds": 4006.891,
+          "non_review_session_seconds": 108.468,
+          "emulated_seconds": 1123.867
+        },
+        "video": {
+          "filename": "video-026.mp4",
+          "fps": 15,
+          "frames": 2548,
+          "playback_seconds": 169.86666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "3281326d9b441fcd5c18f57c56240262085f50be87a91de94039de5dc3377a4e"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-027.mp4",
+      "sha256": "6bb9ba1e391d1263d50c34439036d1ceef093a69c442bada37ee61f1d7f1800f",
+      "frames_decoded": 202,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 13.466666666666667,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-027.jsonl",
+      "source_log_sha256": "0ba9245a01fc9e6b9061b119ce920dde72793e67bcee23ff9f57b4e8515be7b8",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:19:24.012363+00:00",
+        "segment": 27,
+        "timing": {
+          "wall_seconds": 4237.938,
+          "model_wait_seconds": 37.905,
+          "review_pause_seconds": 4127.079,
+          "non_review_session_seconds": 110.859,
+          "emulated_seconds": 1137.333
+        },
+        "video": {
+          "filename": "video-027.mp4",
+          "fps": 15,
+          "frames": 202,
+          "playback_seconds": 13.466666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "13158e996a36a6f46abde3be9107836e70484abb14153c738c4e6b4eabcda5b6"
+    }
+  ],
+  "supporting_capture_snapshots": [
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "record": {
+        "at": "2026-10-23T16:15:44.209262+00:00",
+        "kind": "battle-ONIX",
+        "file": "keyframes/00075-battle-ONIX.png",
+        "sha256": "3920a9bb6cd53468106ce18fad6db7dd341399ebc597a6e536852a45e03b0453",
+        "location": {
+          "map_id": 202,
+          "x": 24,
+          "y": 3
+        },
+        "text": [
+          "  ONIX",
+          "     25",
+          "          IVYSAUR",
+          "               30",
+          "            84/ 84",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "timing": {
+          "wall_seconds": 4018.141,
+          "model_wait_seconds": 35.622,
+          "review_pause_seconds": 3918.797,
+          "non_review_session_seconds": 99.344,
+          "emulated_seconds": 988.533
+        }
+      },
+      "source_record_sha256_without_newline": "db83fe93817e310735917f745aeba96a545f429627c4f5e9f5cc5377f06d5f0e",
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "record": {
+        "at": "2026-10-23T16:15:46.842139+00:00",
+        "kind": "battle-RHYHORN",
+        "file": "keyframes/00076-battle-RHYHORN.png",
+        "sha256": "60b4b9a160d2e44f9acd9bf309d0b5961d191855042195de7b863d4d5c891969",
+        "location": {
+          "map_id": 202,
+          "x": 24,
+          "y": 3
+        },
+        "text": [
+          " RHYHORN",
+          "     24",
+          "          IVYSAUR",
+          "               30",
+          "            84/ 84",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "timing": {
+          "wall_seconds": 4020.766,
+          "model_wait_seconds": 36.435,
+          "review_pause_seconds": 3918.797,
+          "non_review_session_seconds": 101.969,
+          "emulated_seconds": 1018.267
+        }
+      },
+      "source_record_sha256_without_newline": "82cec0a1f1156f4425428f2157a1e8924cce8d1793c7a64ca2f4c47f3326099a",
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "record": {
+        "at": "2026-10-23T16:15:48.652786+00:00",
+        "kind": "battle-KANGASKHAN",
+        "file": "keyframes/00077-battle-KANGASKHAN.png",
+        "sha256": "e61c05b798e089078eb2b1f2469d60f4b6bcb54e147683381b4a645081b2e71c",
+        "location": {
+          "map_id": 202,
+          "x": 24,
+          "y": 3
+        },
+        "text": [
+          " KANGASKHAN",
+          "     29",
+          "          IVYSAUR",
+          "               30",
+          "            84/ 84",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "timing": {
+          "wall_seconds": 4022.578,
+          "model_wait_seconds": 36.435,
+          "review_pause_seconds": 3918.797,
+          "non_review_session_seconds": 103.781,
+          "emulated_seconds": 1048.0
+        }
+      },
+      "source_record_sha256_without_newline": "57de8c0966f621c11f3f82fbd6eff13bf5932e5ac0631f1ca7580c67b5664cbd",
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "record": {
+        "at": "2026-10-23T16:15:51.199316+00:00",
+        "kind": "level-up",
+        "file": "keyframes/00078-level-up.png",
+        "sha256": "3707d308fff46b6d155ae44bab2cdef866633416bf707dfe60749cd2b4767f4e",
+        "location": {
+          "map_id": 202,
+          "x": 24,
+          "y": 3
+        },
+        "text": [
+          "          IVYSAUR",
+          "               31",
+          "            52/ 86",
+          " IVYSAUR grew",
+          " to level 31!"
+        ],
+        "timing": {
+          "wall_seconds": 4025.125,
+          "model_wait_seconds": 36.435,
+          "review_pause_seconds": 3918.797,
+          "non_review_session_seconds": 106.328,
+          "emulated_seconds": 1093.333
+        }
+      },
+      "source_record_sha256_without_newline": "d4414f81a3ca59f0b5e5b080261c085baa0cc41b16d82b11bd4dbe530a1931b9",
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "record": {
+        "at": "2026-10-23T16:15:51.329308+00:00",
+        "kind": "level-up",
+        "file": "keyframes/00079-level-up.png",
+        "sha256": "71425381d1dfedf3e4e5ff045dcdafa03675ffedc3ea5b69c744669a97b3c344",
+        "location": {
+          "map_id": 202,
+          "x": 24,
+          "y": 3
+        },
+        "text": [
+          "           ATTACK",
+          "                55",
+          "           DEFENSE",
+          "                57",
+          "           SPEED",
+          "                50",
+          "           SPECIAL",
+          "                67",
+          " IVYSAUR grew",
+          " to level 31!"
+        ],
+        "timing": {
+          "wall_seconds": 4025.25,
+          "model_wait_seconds": 36.451,
+          "review_pause_seconds": 3918.797,
+          "non_review_session_seconds": 106.453,
+          "emulated_seconds": 1095.467
+        }
+      },
+      "source_record_sha256_without_newline": "440534ed4c29e396e6024ba7861ebedfeca0cc6b0892bcf3d72058513627398a",
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "record": {
+        "at": "2026-10-23T16:15:51.458203+00:00",
+        "kind": "trainer-defeated",
+        "file": "keyframes/00080-trainer-defeated.png",
+        "sha256": "d7348fc0f8622b55ee5ed0559144f05f3894c95188e021a786dccec884f6a4af",
+        "location": {
+          "map_id": 202,
+          "x": 24,
+          "y": 3
+        },
+        "text": [
+          "          IVYSAUR",
+          "               31",
+          "            52/ 86",
+          " KEVIN defeated",
+          " GIOVANNI!"
+        ],
+        "timing": {
+          "wall_seconds": 4025.391,
+          "model_wait_seconds": 36.451,
+          "review_pause_seconds": 3918.797,
+          "non_review_session_seconds": 106.594,
+          "emulated_seconds": 1097.6
+        }
+      },
+      "source_record_sha256_without_newline": "06603b9c9e4b85a5951f0424030177e3e7947f893e3760413c45471deeaab8c6",
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "record": {
+        "at": "2026-10-23T16:15:53.209420+00:00",
+        "kind": "review-party_attrition_requires_center",
+        "file": "keyframes/00081-review-party_attrition_requires_center.png",
+        "sha256": "934c23aaebfab8a955d7b199c20498677cb73f2af6eab53b08663a0ea0ef7c4a",
+        "location": {
+          "map_id": 202,
+          "x": 24,
+          "y": 3
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 4027.141,
+          "model_wait_seconds": 36.467,
+          "review_pause_seconds": 3918.797,
+          "non_review_session_seconds": 108.344,
+          "emulated_seconds": 1123.2
+        }
+      },
+      "source_record_sha256_without_newline": "d5d24dcdb9f3588cf7e3952dcc444d7ca513af787b90e1b7385b7bfa125e13c8",
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "record": {
+        "at": "2026-10-23T16:17:23.702601+00:00",
+        "kind": "review-route_extension_required",
+        "file": "keyframes/00082-review-route_extension_required.png",
+        "sha256": "079af744504e7189316364b64a56026bc12784900af9c9567075ec1e557a5775",
+        "location": {
+          "map_id": 202,
+          "x": 25,
+          "y": 3
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 4117.625,
+          "model_wait_seconds": 37.905,
+          "review_pause_seconds": 4006.891,
+          "non_review_session_seconds": 110.734,
+          "emulated_seconds": 1136.667
+        }
+      },
+      "source_record_sha256_without_newline": "7a1344c6c78807fd62152abd67031afb0bccb88758a1711ec206c943210d5347",
+      "referenced_png_not_read_or_copied": true
+    }
+  ],
+  "logged_review_pauses_in_source_order": [
+    {
+      "resume_action_step": 1050,
+      "previous_action_step": 1049,
+      "previous_action_at_utc": "2026-10-23T16:15:53.180008+00:00",
+      "resume_action_at_utc": "2026-10-23T16:17:21.347121+00:00",
+      "logged_review_pause_seconds": 88.094
+    },
+    {
+      "resume_action_step": 1068,
+      "previous_action_step": 1067,
+      "previous_action_at_utc": "2026-10-23T16:17:23.674048+00:00",
+      "resume_action_at_utc": "2026-10-23T16:19:23.945529+00:00",
+      "logged_review_pause_seconds": 120.188
+    }
+  ],
+  "frame_mapping_zh_tw": "Recorder每4模擬幀取樣一次，15fps、scale3=480x432；來源各action皆4幀整數倍，逐檔影格總數吻合sum(emulated_frames)/4與closure。整數trim影格邊界，成片30fps。",
+  "timing_caution_zh_tw": "1x是模擬遊戲影格原速，4x是後製；工程／模型等待未重建為錄影，片長不是模型速度、牆鐘或通關耗時。1049後停檢討再正常換首位，沒有補血。",
+  "result_scope_zh_tw": "火箭隊基地坂木正常勝利、換隊首與取得透視鏡；沒有追加後續撤離、寶可夢中心或其他關卡成果。",
+  "visual_review": {
+    "formal_screenshots_reviewed": 16,
+    "method_zh_tw": "正式PNG逐張目視，皆直接解自閉合原始MP4。probe與contact sheet只供本機診斷，不列正式素材。"
+  },
+  "game_or_state_operations": false,
+  "source_footage_modified": false
+}

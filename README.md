@@ -8,7 +8,9 @@
 
 ## 目前進度
 
-更新：**2026-10-23：第四館莉佳已破關，台北22:44:13取得彩虹徽章。** 已核對`beat_erika=true`、`badges_raw=15`與TM21實際入袋，完成逐館速度與邏輯檢討，再正常出館補滿全隊HP／PP。隊伍為大嘴雀29／尼多力諾26／妙蛙草30；妙蛙草已將毒粉換成飛葉快刀。見[第四館收據](results/fourth-gym-campaign-20261023.json)、[第四館4段影片驗證](results/fourth-gym-clips-20261023.json)與[里程碑時間表](docs/campaign-timeline.md)。仍在擴充隊伍與主線，尚未完成聯盟。
+更新：**2026-10-24：已打贏火箭隊基地坂木並取得透視鏡，四枚徽章。** 月之石正常將尼多力諾進化為尼多王；11段箭頭、選B4F與返B1F電梯均有實戰收據。坂木勝利文字於台北00:15:51觀測，00:17:23核對透視鏡入袋，接續正常返中心補給及寶可夢塔。坂木戰後隊伍為尼多王28／大嘴雀29／妙蛙草31／伊布25，仍須輪換訓練與擴編。見[火箭隊基地收據](results/rocket-hideout-campaign-20261024.json)、[16段新影片索引](docs/accelerated-clips.md)及[控制與修復紀錄](docs/rocket-hideout-control.md)。影片保留本機，尚未完成聯盟。
+
+第四館莉佳於**2026-10-23台北22:44:13**取得彩虹徽章，已核對`beat_erika=true`、`badges_raw=15`與TM21實際入袋，完成逐館速度與邏輯檢討，再正常出館補滿全隊HP／PP。第四館完成時隊伍為大嘴雀29／尼多力諾26／妙蛙草30；妙蛙草已將毒粉換成飛葉快刀。見[第四館收據](results/fourth-gym-campaign-20261023.json)、[第四館4段影片驗證](results/fourth-gym-clips-20261023.json)與[里程碑時間表](docs/campaign-timeline.md)。
 
 岩山隧道的**台北21:55:00全隊敗北**保留；逐幀保護保存並停住，檢討缺少補給路線仍深入、低血支援與藤鞭耗盡。正常回城保留經驗與金錢損失後續走，新損耗閘門已在22:06低血時實際攔下，經正常補給通過岩隧，再完成第四館。見[敗北與修復收據](results/rock-tunnel-loss-20261023.json)。第三館與更早歷史見[馬志士收據](results/third-gym-campaign-20261023.json)、[第三館5段影片](results/third-gym-clips-20261023.json)及[小霞收據](results/second-gym-campaign-20261023.json)。
 

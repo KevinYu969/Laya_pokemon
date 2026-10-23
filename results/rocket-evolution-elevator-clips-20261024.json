@@ -1,0 +1,691 @@
+{
+  "at": "2026-10-23T16:22:54.622235+00:00",
+  "source_run": "league-campaign-20261023-16",
+  "status": "verified_local_unpublished",
+  "published": false,
+  "clip_count": 4,
+  "theme_count": 2,
+  "closed_source_videos_only": true,
+  "source_segments": [
+    20,
+    21,
+    23
+  ],
+  "scenes": [
+    {
+      "id": "moon-stone-nidorino-to-nidoking",
+      "caption_zh_tw": "正常用月之石進化尼多王，完整開場／成功與選單關閉",
+      "source_intervals": [
+        [
+          652,
+          697
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-020.mp4",
+          "source_video_sha256": "6359d698ff7120eae4550aafbfda2542edd42cdcb149d1cf4dc9735603cd5ab2",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-020.jsonl",
+          "source_log_sha256": "3ae818f92bc8526aedee892109d009fbbcf4bfc636591c2dadd81849bee0460e",
+          "source_steps": [
+            652,
+            695
+          ],
+          "source_start_frame_inclusive": 0,
+          "source_end_frame_exclusive": 440,
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 29.333333333333332,
+          "source_first_action_recorded_at": "2026-10-23T16:05:08.080823+00:00",
+          "source_last_action_recorded_at": "2026-10-23T16:06:55.192084+00:00"
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-021.mp4",
+          "source_video_sha256": "6f1675c225fa542d473ebf9e50c1a1e1bd41540ecef57e69c73f82cd36428071",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-021.jsonl",
+          "source_log_sha256": "0c179e687015fbe2e5eec2cfbbd7b8300741b3b39c71597196184689dc247087",
+          "source_steps": [
+            696,
+            697
+          ],
+          "source_start_frame_inclusive": 0,
+          "source_end_frame_exclusive": 20,
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 1.3333333333333333,
+          "source_first_action_recorded_at": "2026-10-23T16:06:55.614649+00:00",
+          "source_last_action_recorded_at": "2026-10-23T16:06:55.657732+00:00"
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/moon-stone-nidorino-to-nidoking-post1x.mp4",
+          "sha256": "e0eb4474616f3403ba8dbc717156860dcc99a935103ed9026dbce07eb181bfd4",
+          "frames_decoded": 920,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 30.666666666666668,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 30.666666666666664,
+          "editing_zh_tw": "原始PyBoy來源影格，後製1x／30fps。推論與工程等待未重建；影片時長不是牆鐘執行時間或模型速度。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/moon-stone-nidorino-to-nidoking-post4x.mp4",
+          "sha256": "117276669fc28edbfd511b33102cbfe7efbfbc5d3fecd5be98c637bfb685a777",
+          "frames_decoded": 230,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 7.666666666666667,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 7.666666666666666,
+          "editing_zh_tw": "原始PyBoy來源影格，後製4x／30fps。推論與工程等待未重建；影片時長不是牆鐘執行時間或模型速度。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/moon-stone-selected.png",
+          "sha256": "f67ae134c8ea386e60b2220f5ed04ba3ab5ad46249178a17ade53226c77bc472",
+          "source_step": 665,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-020.mp4",
+          "source_frame_index": 129,
+          "source_emulated_seconds": 8.6,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "MOON STONE游標與數量1可見，沒有改畫面。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/nidorino27-stone-able.png",
+          "sha256": "36d99e5818569e143caba4c2d91d39dbe2f9abb9fc0bd7de7632403605c92479",
+          "source_step": 667,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-020.mp4",
+          "source_frame_index": 149,
+          "source_emulated_seconds": 9.933333333333334,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "四人隊中只有Lv27 NIDORINO標示ABLE，其餘三人NOT ABLE。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/nidorino-full-evolving-intro.png",
+          "sha256": "11b372821849b4fdc75a712e435156ca7db7cefd5f23315a0cd5c26e13d71bdb",
+          "source_step": 672,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-020.mp4",
+          "source_frame_index": 199,
+          "source_emulated_seconds": 13.266666666666667,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "完整What? NIDORINO / is evolving!可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/nidorino-evolution-animation.png",
+          "sha256": "899a85cf6b8202d5cc7626453fcd841b2a8315c4b14080912c89ae8a9b87109e",
+          "source_step": 679,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-020.mp4",
+          "source_frame_index": 269,
+          "source_emulated_seconds": 17.933333333333334,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "NIDORINO精靈圖與進化文字可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/nidoking-full-evolution-success.png",
+          "sha256": "31145f4d2dc3997bca44c073b35ef4c18146245aa1a9fcec3f29103a0fc1f1f5",
+          "source_step": 690,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-020.mp4",
+          "source_frame_index": 379,
+          "source_emulated_seconds": 25.266666666666666,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "NIDOKING精靈圖與完整NIDORINO evolved / into NIDOKING!可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/evolution-screen-redraw-calibration.png",
+          "sha256": "53e0dd30dfcc07971ae772c4cfdaf3026a6f8d78ca92b9e5d95906ea37d13542",
+          "source_step": 695,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-020.mp4",
+          "source_frame_index": 429,
+          "source_emulated_seconds": 28.6,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "此錄製影格實際全白，屬進化後清屏重繪；暫停時部分START文字是步驟cells的證據，不能聲稱此PNG已看見START文字。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/evolution-returned-bag.png",
+          "sha256": "2f47626239b4a316e83c31b850e603748407725cdd95f3a35762121c624ce378",
+          "source_step": 696,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-021.mp4",
+          "source_frame_index": 0,
+          "source_emulated_seconds": 0.0,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "返回背包，POKé BALL／TM34／HELIX FOSSIL／NUGGET與EXIT可見。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/evolution-menus-closed.png",
+          "sha256": "4c51e5f8ade96838d74f93129c0389d1779e8a915b79b5067308d37291e2848b",
+          "source_step": 697,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-021.mp4",
+          "source_frame_index": 19,
+          "source_emulated_seconds": 1.2666666666666666,
+          "frame_basis": "last_sample_of_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "背包與START皆關閉，人物回到箭頭地板區域。"
+        }
+      ],
+      "notes_zh_tw": "從已開START選ITEM開始，保留選石、USE、唯一NIDORINO、完整命名intro／success、動畫、START部分重繪暫停校準、返回bag與正常B關選單。連續保留652–697所有動作影格；動畫只wait，未以A/B假裝進化。",
+      "logged_review_pauses_in_source_order": [
+        {
+          "resume_action_step": 695,
+          "previous_action_step": 694,
+          "previous_action_at_utc": "2026-10-23T16:05:10.158873+00:00",
+          "resume_action_at_utc": "2026-10-23T16:06:55.192084+00:00",
+          "logged_review_pause_seconds": 104.953,
+          "cumulative_review_pause_seconds": 3425.452
+        }
+      ],
+      "reported_completion": {
+        "at_utc": "2026-10-23T16:06:55.689197+00:00",
+        "at_taipei": "2026-10-24T00:06:55.689197+08:00",
+        "timestamp_provenance_zh_tw": "父層已確認的field-move完成時間；本輪未另讀field-moves檔，獨立以閉合步驟與capture核對結果。"
+      },
+      "verified_result": {
+        "species_before": 167,
+        "species_after": 7,
+        "level_unchanged": 27,
+        "hp_before": [
+          73,
+          82
+        ],
+        "hp_after": [
+          83,
+          92
+        ],
+        "hp_and_max_hp_delta": 10,
+        "moves_before_and_after": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp_before_and_after": [
+          15,
+          35,
+          25,
+          35
+        ],
+        "other_party_unchanged": true,
+        "exp_status_unchanged": true,
+        "stone_item": 10,
+        "quantity_consumed": 1,
+        "other_inventory_unchanged": true,
+        "menus_closed_source_frame": 19,
+        "menus_closed_source_video": "outputs/league-campaign-20261023-16/game/video-021.mp4"
+      }
+    },
+    {
+      "id": "rocket-elevator-b4f-arrival",
+      "caption_zh_tw": "正常電梯選B4F，等待動畫後出門實際抵達B4F",
+      "source_intervals": [
+        [
+          779,
+          795
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+          "source_video_sha256": "cfb888f01146809bd10c70bd9135946dedd64d58741170053cae9f3f47dad8f2",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-023.jsonl",
+          "source_log_sha256": "67bbad6a6153c508a72826448256e9bfd83f79332e377b17340c659835055d56",
+          "source_steps": [
+            779,
+            795
+          ],
+          "source_start_frame_inclusive": 0,
+          "source_end_frame_exclusive": 170,
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 11.333333333333334,
+          "source_first_action_recorded_at": "2026-10-23T16:12:14.626099+00:00",
+          "source_last_action_recorded_at": "2026-10-23T16:13:38.833068+00:00"
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/rocket-elevator-b4f-arrival-post1x.mp4",
+          "sha256": "2416a658d284893752b87a22d94a5d2b724b3e733ca2c4b794f24c5ad0c8a3db",
+          "frames_decoded": 340,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 11.333333333333334,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 11.333333333333334,
+          "editing_zh_tw": "原始PyBoy來源影格，後製1x／30fps。推論與工程等待未重建；影片時長不是牆鐘執行時間或模型速度。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/rocket-elevator-b4f-arrival-post4x.mp4",
+          "sha256": "23002c72b91995ff365f2b79a33870029fb111abdeef5be2b514f024efad5a2f",
+          "frames_decoded": 85,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 2.8333333333333335,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 2.8333333333333335,
+          "editing_zh_tw": "原始PyBoy來源影格，後製4x／30fps。推論與工程等待未重建；影片時長不是牆鐘執行時間或模型速度。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/elevator-panel-before-interaction.png",
+          "sha256": "40ed778b9d10dbb459efd1168d91c909af886ada7559cc595abc8e25ffdafa5f",
+          "source_step": 779,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+          "source_frame_index": 0,
+          "source_emulated_seconds": 0.0,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "人物站在電梯面板前，尚未開樓層選單。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/elevator-floor-menu-b1f.png",
+          "sha256": "9b4a7ccfc1c6e373989a9b4828e5e2bdb3779aee67e535c0ca3e723894d526c5",
+          "source_step": 782,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+          "source_frame_index": 29,
+          "source_emulated_seconds": 1.9333333333333333,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "完整樓層清單B1F／B2F／B4F／CANCEL，實心游標在B1F。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/elevator-b4f-cursor-confirmation.png",
+          "sha256": "3223abe8502299b727a335d43ed1377bc22dc61199c0474dbbcf575062c54450",
+          "source_step": 784,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+          "source_frame_index": 49,
+          "source_emulated_seconds": 3.2666666666666666,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "完整樓層清單，實心游標在B4F；對應下一動作正常A。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/elevator-game-owned-animation.png",
+          "sha256": "169d4a4bf28214f186f1c03b34ddd9edf45dd829721e4ac68fef04046c29814f",
+          "source_step": 787,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+          "source_frame_index": 79,
+          "source_emulated_seconds": 5.266666666666667,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "選單已關閉，人物仍在電梯內；動畫只wait由步驟動作序列核對，單張PNG不能獨立證明等待時長。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/elevator-normal-exit-before-warp.png",
+          "sha256": "57a36cca8b3426850b841dca52a482396237eebceb2843de7810cdb432c07401",
+          "source_step": 794,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+          "source_frame_index": 149,
+          "source_emulated_seconds": 9.933333333333334,
+          "frame_basis": "sample_before_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "人物轉向電梯出口，仍在轎廂內。"
+        },
+        {
+          "file": "outputs/videos/rocket-evolution-elevator-20261024/elevator-arrived-b4f.png",
+          "sha256": "d67180b1eb4db4e9f82b86b0014a05531ad300fdfba954a484f79e483374ce37",
+          "source_step": 795,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+          "source_frame_index": 169,
+          "source_emulated_seconds": 11.266666666666667,
+          "frame_basis": "last_sample_of_action",
+          "kind": "unmodified_source_video_frame",
+          "visual_review_passed": true,
+          "visual_content_zh_tw": "人物已出電梯至B4F走廊，兩名守衛在前方；精確座標202(25,15)另由同模擬時間verified capture核對。"
+        }
+      ],
+      "notes_zh_tw": "從已站好面板前正常A開始，保留逐列DOWN、實際B4F游標才A、動畫只wait、RIGHT／UP正常出門，以及map已先變更但座標未更新的保守暫停校準與後續wait。最後來源影格與同模擬幀capture核對202(25,15)。不延伸到後續守衛戰。",
+      "logged_review_pauses_in_source_order": [
+        {
+          "resume_action_step": 795,
+          "previous_action_step": 794,
+          "previous_action_at_utc": "2026-10-23T16:12:16.139592+00:00",
+          "resume_action_at_utc": "2026-10-23T16:13:38.833068+00:00",
+          "logged_review_pause_seconds": 82.61,
+          "cumulative_review_pause_seconds": 3822.14
+        }
+      ],
+      "reported_completion": {
+        "at_utc": "2026-10-23T16:13:38.933745+00:00",
+        "at_taipei": "2026-10-24T00:13:38.933745+08:00",
+        "timestamp_provenance_zh_tw": "父層已確認的field-move完成時間；本輪未另讀field-moves檔，獨立以閉合步驟與capture核對結果。"
+      },
+      "verified_result": {
+        "confirmed_b4f_action_step": 784,
+        "animation_wait_steps": [
+          785,
+          792
+        ],
+        "normal_exit_direction_steps": [
+          793,
+          794
+        ],
+        "pre_action_step795_transitional_location": [
+          202,
+          2,
+          1
+        ],
+        "destination_location": [
+          202,
+          25,
+          15
+        ],
+        "destination_proof": "post-action verified capture and last source-video frame",
+        "arrival_source_video": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+        "arrival_source_frame": 169
+      }
+    }
+  ],
+  "source_video_validation": [
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-020.mp4",
+      "sha256": "6359d698ff7120eae4550aafbfda2542edd42cdcb149d1cf4dc9735603cd5ab2",
+      "frames_decoded": 440,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 29.333333333333332,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-020.jsonl",
+      "source_log_sha256": "3ae818f92bc8526aedee892109d009fbbcf4bfc636591c2dadd81849bee0460e",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:06:55.257251+00:00",
+        "segment": 20,
+        "timing": {
+          "wall_seconds": 3489.188,
+          "model_wait_seconds": 21.806,
+          "review_pause_seconds": 3425.452,
+          "non_review_session_seconds": 63.736,
+          "emulated_seconds": 637.867
+        },
+        "video": {
+          "filename": "video-020.mp4",
+          "fps": 15,
+          "frames": 440,
+          "playback_seconds": 29.333333333333332,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "94605c1a71e2444438996eba63ce7fc81b32db516f50b226b129527a3f784c89"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-021.mp4",
+      "sha256": "6f1675c225fa542d473ebf9e50c1a1e1bd41540ecef57e69c73f82cd36428071",
+      "frames_decoded": 810,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 54.0,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-021.jsonl",
+      "source_log_sha256": "0c179e687015fbe2e5eec2cfbbd7b8300741b3b39c71597196184689dc247087",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:08:16.499127+00:00",
+        "segment": 21,
+        "timing": {
+          "wall_seconds": 3570.422,
+          "model_wait_seconds": 22.182,
+          "review_pause_seconds": 3502.436,
+          "non_review_session_seconds": 67.986,
+          "emulated_seconds": 691.867
+        },
+        "video": {
+          "filename": "video-021.mp4",
+          "fps": 15,
+          "frames": 810,
+          "playback_seconds": 54.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "cd111a72f2b52dfe9ef0376269344ab31749646a9fb855ae4aeffbdd4148c7e7"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-023.mp4",
+      "sha256": "cfb888f01146809bd10c70bd9135946dedd64d58741170053cae9f3f47dad8f2",
+      "frames_decoded": 170,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 11.333333333333334,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-023.jsonl",
+      "source_log_sha256": "67bbad6a6153c508a72826448256e9bfd83f79332e377b17340c659835055d56",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:13:38.901191+00:00",
+        "segment": 23,
+        "timing": {
+          "wall_seconds": 3892.828,
+          "model_wait_seconds": 23.62,
+          "review_pause_seconds": 3822.14,
+          "non_review_session_seconds": 70.688,
+          "emulated_seconds": 704.533
+        },
+        "video": {
+          "filename": "video-023.mp4",
+          "fps": 15,
+          "frames": 170,
+          "playback_seconds": 11.333333333333334,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "10475f0288a0d0df5d946822b85eca1a7f77c264d420ed9273177140ecd6465b"
+    }
+  ],
+  "supporting_capture_snapshots": [
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "2d19d67a52552ef93111fce9e10209e2809e36d2fdd5f243e5f4ac358ddc6ad3",
+      "record": {
+        "at": "2026-10-23T16:05:09.848084+00:00",
+        "kind": "evolution",
+        "file": "keyframes/00050-evolution.png",
+        "sha256": "2810d0c037b66b3474b5f6a6ca09c00a6f17bd329592c4ad0378446a6eed39fb",
+        "location": {
+          "map_id": 200,
+          "x": 1,
+          "y": 12
+        },
+        "text": [
+          " NIDORINO evolved",
+          " into NIDOKIN"
+        ],
+        "timing": {
+          "wall_seconds": 3383.781,
+          "model_wait_seconds": 21.774,
+          "review_pause_seconds": 3320.499,
+          "non_review_session_seconds": 63.282,
+          "emulated_seconds": 632.533
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "04fe33c89a8ddb368f00b29575a77b0b30cf3136f31f693dbe5455d29581b158",
+      "record": {
+        "at": "2026-10-23T16:05:09.899972+00:00",
+        "kind": "evolution",
+        "file": "keyframes/00051-evolution.png",
+        "sha256": "a79aab08605b4597c2cc390563d5fcc066d22166c0dd2f1d5b3b8099c58fa0e8",
+        "location": {
+          "map_id": 200,
+          "x": 1,
+          "y": 12
+        },
+        "text": [
+          " NIDORINO evolved",
+          " into NIDOKING!"
+        ],
+        "timing": {
+          "wall_seconds": 3383.828,
+          "model_wait_seconds": 21.774,
+          "review_pause_seconds": 3320.499,
+          "non_review_session_seconds": 63.329,
+          "emulated_seconds": 633.2
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "e887a188138f33518a747025f66e43cb87e5a7ac0523d8b1672c3f1bff1250c4",
+      "record": {
+        "at": "2026-10-23T16:05:10.186040+00:00",
+        "kind": "review-moon_stone_return_screen_unrecognized",
+        "file": "keyframes/00052-review-moon_stone_return_screen_unrecognized.png",
+        "sha256": "99d2c7200c42fac21047a5ca828855e2df8d0f713e538fb70dc87d86b5ff881e",
+        "location": {
+          "map_id": 200,
+          "x": 1,
+          "y": 12
+        },
+        "text": [
+          "            POKéDEX",
+          "            POKéMON"
+        ],
+        "timing": {
+          "wall_seconds": 3384.109,
+          "model_wait_seconds": 21.806,
+          "review_pause_seconds": 3320.499,
+          "non_review_session_seconds": 63.61,
+          "emulated_seconds": 637.2
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "84d1127fd2164f0593768b4787924634814c071f82c12158b5581f300f66a980",
+      "record": {
+        "at": "2026-10-23T16:06:55.666804+00:00",
+        "kind": "moon_stone-verified",
+        "file": "keyframes/00053-moon_stone-verified.png",
+        "sha256": "7742f5c9b5fbe198c6268c4743d82fa7b1698121d194874cbfde5cc8f18be02b",
+        "location": {
+          "map_id": 200,
+          "x": 1,
+          "y": 12
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 3489.594,
+          "model_wait_seconds": 22.072,
+          "review_pause_seconds": 3425.452,
+          "non_review_session_seconds": 64.142,
+          "emulated_seconds": 639.2
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "8fbca7fb5b3733ed1b25b5b22cb3b3cef6fc5e131a56aa117eb13bf38e59bfea",
+      "record": {
+        "at": "2026-10-23T16:12:16.189656+00:00",
+        "kind": "review-elevator_location_outside_source_route",
+        "file": "keyframes/00062-review-elevator_location_outside_source_route.png",
+        "sha256": "2852e707d813713372491f4551f5a8ccd885547acce472813f477a8d6895be05",
+        "location": {
+          "map_id": 202,
+          "x": 2,
+          "y": 1
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 3810.109,
+          "model_wait_seconds": 23.62,
+          "review_pause_seconds": 3739.53,
+          "non_review_session_seconds": 70.579,
+          "emulated_seconds": 703.867
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "c89d6414f1aeb86ba9e4477582a315ce364e785712ffecabf666cad44108d20d",
+      "record": {
+        "at": "2026-10-23T16:13:38.911305+00:00",
+        "kind": "rocket_elevator-verified",
+        "file": "keyframes/00063-rocket_elevator-verified.png",
+        "sha256": "a8cf1205104d3d93bb9a4317c05cb608c48adde2a66e19f1db400a200c021b9f",
+        "location": {
+          "map_id": 202,
+          "x": 25,
+          "y": 15
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 3892.844,
+          "model_wait_seconds": 23.62,
+          "review_pause_seconds": 3822.14,
+          "non_review_session_seconds": 70.704,
+          "emulated_seconds": 704.533
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    }
+  ],
+  "frame_mapping_zh_tw": "每4模擬幀取樣一次、15fps、scale3=480x432。所有來源動作為4幀整數倍，完整影格數等於sum(emulated_frames)/4與closure；整數trim幀邊界，成片30fps／1x或後製4x。",
+  "timing_caution_zh_tw": "1x是模擬遊戲影格原速，4x是後製四倍。各一次工程校準等待已另列，不重建成影片；片長不是推論速度、牆鐘通關或任務耗時。",
+  "result_scope_zh_tw": "只有月之石進化與正常電梯抵達；不宣稱首領或透視鏡成果。",
+  "visual_review": {
+    "formal_screenshots_reviewed": 14,
+    "method_zh_tw": "逐張檢視正式PNG；保留原始影格與白色清屏，不修圖、不補生成畫面。probe與first／last檔僅本機檢查素材，不列為正式14張。"
+  },
+  "game_or_state_operations": false,
+  "source_footage_modified": false
+}

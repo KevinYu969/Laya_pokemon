@@ -143,4 +143,8 @@ def read_progress(pyboy, constants=None) -> dict:
     rocket=read_rocket_progress(pyboy.memory,result,constants)
     result['story_event_bits'].update(rocket['story_event_bits'])
     result['rocket_item_presence']=rocket['item_presence']
+    from .tower_progress import read_tower_progress
+    tower=read_tower_progress(pyboy.memory,result,constants)
+    result['story_event_bits'].update(tower['story_event_bits'])
+    result['tower_item_presence']=tower['item_presence']
     return result

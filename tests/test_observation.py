@@ -1,5 +1,7 @@
 from types import SimpleNamespace
 
+import pytest
+
 from laya_pokemon.observation import PROFILE, read_visible_text
 from laya_pokemon.observation import opening_context
 
@@ -48,6 +50,8 @@ def test_disabled_window_does_not_leak_hidden_text():
     assert result["lines"] == ["AB"]
     assert game.tilemap_window.reads == []
     assert result["profile"] == PROFILE and result["warnings"]
+    assert result['read_valid'] is True and result['alignment_verified'] is True
+    assert result['window_visible'] is False and result['read_error'] is None
 
 
 def test_scroll_and_xy_indexing_use_visible_background_only():
@@ -72,6 +76,7 @@ def test_enabled_window_overrides_background_at_its_visible_position():
     result = read_visible_text(game, DECODING)
     assert result["lines"] == ["AB", "          ▶CD"]
     assert (10, 14) not in game.tilemap_background.reads
+    assert result['read_valid'] and result['alignment_verified'] and result['window_visible']
 
 
 def test_offscreen_window_is_never_read():
@@ -94,7 +99,11 @@ def test_mid_tile_window_boundary_does_not_decode_hidden_background():
     game = emulator(lcdc=0xB1, position=(0, 0, 4, 0))
     game.tilemap_background.cells.update({(0, 0): 1, (1, 0): 2})
     game.tilemap_window.cells.update({(0, 0): 3, (1, 0): 4})
-    assert read_visible_text(game, DECODING)["lines"] == []
+    result = read_visible_text(game, DECODING)
+    assert result['lines'] == []
+    assert result['read_valid'] is False and result['alignment_verified'] is False
+    assert result['window_visible'] is True
+    assert result['read_error'] == 'visible_tile_alignment_incomplete'
 
 
 def test_lcd_or_background_disabled_does_not_decode_any_layer():
@@ -102,6 +111,9 @@ def test_lcd_or_background_disabled_does_not_decode_any_layer():
         game = emulator(lcdc=lcdc)
         assert read_visible_text(game, DECODING)["lines"] == []
         assert game.tilemap_background.reads == game.tilemap_window.reads == []
+        result = read_visible_text(game, DECODING)
+        assert result['read_valid'] is False and result['alignment_verified'] is False
+        assert result['window_visible'] is None and result['read_error'] == 'visible_display_disabled'
 
 
 def test_unknown_tiles_and_control_tokens_are_not_text_and_rows_are_bounded():
@@ -130,6 +142,59 @@ def test_missing_scanline_positions_produces_warning():
     game.screen.tilemap_position_list = []
     result = read_visible_text(game, DECODING)
     assert result["lines"] == [] and len(result["warnings"]) == 2
+    assert result['read_valid'] is False and result['alignment_verified'] is False
+    assert result['window_visible'] is None
+
+
+@pytest.mark.parametrize('bad', [None, True, 0.0, '0', -1, 256])
+def test_unknown_scanline_values_cannot_be_coerced_into_alignment_evidence(bad):
+    game = emulator()
+    game.screen.tilemap_position_list[77][0] = bad
+    result = read_visible_text(game, DECODING)
+    assert result['read_valid'] is False and result['alignment_verified'] is False
+    assert result['read_error'] == 'visible_scanline_positions_invalid'
+    assert game.tilemap_background.reads == game.tilemap_window.reads == []
+
+
+@pytest.mark.parametrize('position', [(0, 0, -8, 0), (0, 0, 249, 0), (0, 0, 0, 256)])
+def test_scanline_window_coordinates_follow_installed_pyboy_wx_minus_seven_contract(position):
+    result = read_visible_text(emulator(position=position), DECODING)
+    assert result['read_valid'] is False and result['alignment_verified'] is False
+    assert result['read_error'] == 'visible_scanline_positions_invalid'
+
+
+@pytest.mark.parametrize('mode', ['scroll', 'scanline', 'window'])
+def test_partial_alignment_never_publishes_valid_read_flags(mode):
+    game = emulator()
+    if mode == 'scroll':
+        game.screen.tilemap_position_list = [[4, 0, 0, 0] for _ in range(144)]
+    elif mode == 'scanline':
+        game.screen.tilemap_position_list[3][0] = 8
+    else:
+        game.memory[0xFF40] = 0xB1
+        game.screen.tilemap_position_list = [[0, 0, 4, 0] for _ in range(144)]
+    result = read_visible_text(game, DECODING)
+    assert result['read_valid'] is False and result['alignment_verified'] is False
+    assert result['read_error'] == 'visible_tile_alignment_incomplete'
+
+
+def test_offscreen_and_disabled_windows_do_not_claim_visible_ui():
+    for lcdc, position in [(0x91, (0, 0, -7, 0)), (0xB1, (0, 0, 160, 0)),
+                           (0xB1, (0, 0, 0, 144))]:
+        result = read_visible_text(emulator(lcdc=lcdc, position=position), DECODING)
+        assert result['read_valid'] and result['alignment_verified']
+        assert result['window_visible'] is False
+
+
+def test_tile_getter_failure_never_marks_a_partial_read_as_valid():
+    class BrokenTilemap:
+        def __getitem__(self, xy):
+            raise RuntimeError('synthetic getter failure')
+    game = emulator()
+    game.tilemap_background = BrokenTilemap()
+    result = read_visible_text(game, DECODING)
+    assert result['read_valid'] is False and result['alignment_verified'] is False
+    assert result['read_error'] == 'visible_tile_getter_failed'
 
 
 def test_npc_wait_dialogue_is_data_and_only_dialogue_buttons_are_candidates():

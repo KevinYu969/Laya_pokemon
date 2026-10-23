@@ -1,0 +1,1113 @@
+{
+  "at": "2026-10-23T16:12:17.542318+00:00",
+  "source_run": "league-campaign-20261023-16",
+  "status": "verified_local_unpublished",
+  "published": false,
+  "clip_count": 8,
+  "theme_count": 4,
+  "closed_source_videos_only": true,
+  "maximum_source_segment": 19,
+  "video020_read": false,
+  "source_video_validation": [
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-009.mp4",
+      "sha256": "1dc379dd31159dad3a0c6cc8ad7c0433784122f430b0af5cdbb11dcef9036990",
+      "frames_decoded": 370,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 24.666666666666668,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-009.jsonl",
+      "source_log_sha256": "5b128056c6cef3f13e2bc76a7a814810d66347f4f197ceaa90a5f5e3e19a83c2",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:38:51.654146+00:00",
+        "segment": 9,
+        "timing": {
+          "wall_seconds": 1805.594,
+          "model_wait_seconds": 15.035,
+          "review_pause_seconds": 1769.343,
+          "non_review_session_seconds": 36.251,
+          "emulated_seconds": 328.0
+        },
+        "video": {
+          "filename": "video-009.mp4",
+          "fps": 15,
+          "frames": 370,
+          "playback_seconds": 24.666666666666668,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "ca1d9f96181bba3c3c266128a0ff6fa100b154353d93fabc955e62f49ef2fb6c"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-010.mp4",
+      "sha256": "0be1c44437fcf0c34ce3db096aee674f39a1f86fa334a9897e6437a4847afe4a",
+      "frames_decoded": 40,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 2.6666666666666665,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-010.jsonl",
+      "source_log_sha256": "f3d7c9f27d481dc49b008d3ef9a1717959fbd86d4d47c88dd329593f4bcca46d",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:40:22.642308+00:00",
+        "segment": 10,
+        "timing": {
+          "wall_seconds": 1896.578,
+          "model_wait_seconds": 15.035,
+          "review_pause_seconds": 1860.0,
+          "non_review_session_seconds": 36.578,
+          "emulated_seconds": 330.667
+        },
+        "video": {
+          "filename": "video-010.mp4",
+          "fps": 15,
+          "frames": 40,
+          "playback_seconds": 2.6666666666666665,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "e8fe17c677c29a600054a00d3511facfba71574a183a2089f86aae4f8b1bc49e"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-011.mp4",
+      "sha256": "3597f10fa8bb290e1ea7238f2dda96b77e91038ff2f2ad3c0028cde9cf4d93dd",
+      "frames_decoded": 510,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 34.0,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-011.jsonl",
+      "source_log_sha256": "5c954756b01aac7f6851bb31780b7c0514338b3f174f05dc18272e79a986a540",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:41:33.263719+00:00",
+        "segment": 11,
+        "timing": {
+          "wall_seconds": 1967.203,
+          "model_wait_seconds": 15.724,
+          "review_pause_seconds": 1927.703,
+          "non_review_session_seconds": 39.5,
+          "emulated_seconds": 364.667
+        },
+        "video": {
+          "filename": "video-011.mp4",
+          "fps": 15,
+          "frames": 510,
+          "playback_seconds": 34.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "aca17248d2d120cc8e7333b9f4206903fa9a79fd1d88e58d0c0f4996ee8248e0"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+      "sha256": "95c1561aca889bab1f320a0248015ec3f0012965cb10fb076f53877a925b47d0",
+      "frames_decoded": 1906,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 127.06666666666666,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-012.jsonl",
+      "source_log_sha256": "5f57bd3b2e8ec3aa5f130707afc9c49910445db7656361828ebbdfad8ce07a4b",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:44:34.657300+00:00",
+        "segment": 12,
+        "timing": {
+          "wall_seconds": 2148.594,
+          "model_wait_seconds": 19.913,
+          "review_pause_seconds": 2096.797,
+          "non_review_session_seconds": 51.797,
+          "emulated_seconds": 491.733
+        },
+        "video": {
+          "filename": "video-012.mp4",
+          "fps": 15,
+          "frames": 1906,
+          "playback_seconds": 127.06666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "41b86cf9ca20855e848457c40ca14c336a8c66fed9b94dd2d5be9035b028dd6f"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-017.mp4",
+      "sha256": "21706ba6cbbfdc70385bd9d4a64faa2d43fc015274acc585c91dd5b233597bca",
+      "frames_decoded": 320,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 21.333333333333332,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-017.jsonl",
+      "source_log_sha256": "37d15e021033036958932f0ac60d75024aef7936a5fc221170f1d28aafd79d8b",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:53:29.071422+00:00",
+        "segment": 17,
+        "timing": {
+          "wall_seconds": 2683.0,
+          "model_wait_seconds": 20.898,
+          "review_pause_seconds": 2625.328,
+          "non_review_session_seconds": 57.672,
+          "emulated_seconds": 560.4
+        },
+        "video": {
+          "filename": "video-017.mp4",
+          "fps": 15,
+          "frames": 320,
+          "playback_seconds": 21.333333333333332,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "08a8ca5a937e07a21dc80c7e230bebe0e880084f4ba6701798e9d5b616009c90"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-019.mp4",
+      "sha256": "db030092081ffbbbc73b9d1dbcebfa4780569e0b265bca3c07faca3bf363a50c",
+      "frames_decoded": 462,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 30.8,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "source_log": "outputs/league-campaign-20261023-16/game/steps-019.jsonl",
+      "source_log_sha256": "f670623e076ebd9c4d88f03445893b629977724bce9cdebfe17d79c9f8bb1c6e",
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T16:05:07.792549+00:00",
+        "segment": 19,
+        "timing": {
+          "wall_seconds": 3381.719,
+          "model_wait_seconds": 21.273,
+          "review_pause_seconds": 3320.499,
+          "non_review_session_seconds": 61.22,
+          "emulated_seconds": 608.533
+        },
+        "video": {
+          "filename": "video-019.mp4",
+          "fps": 15,
+          "frames": 462,
+          "playback_seconds": 30.8,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "d54411b6d09178407f7ea08ebd9e0fb2a6cbd81abd5328dde8292f1646e73d66"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "six-arrow-hops-selected",
+      "caption_zh_tw": "六段真實箭頭滑行合輯，入口一次後只等待遊戲移動",
+      "source_intervals": [
+        [
+          338,
+          342
+        ],
+        [
+          344,
+          351
+        ],
+        [
+          363,
+          375
+        ],
+        [
+          554,
+          557
+        ],
+        [
+          561,
+          565
+        ],
+        [
+          618,
+          641
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-009.mp4",
+          "source_video_sha256": "1dc379dd31159dad3a0c6cc8ad7c0433784122f430b0af5cdbb11dcef9036990",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-009.jsonl",
+          "source_log_sha256": "5b128056c6cef3f13e2bc76a7a814810d66347f4f197ceaa90a5f5e3e19a83c2",
+          "source_steps": [
+            338,
+            338
+          ],
+          "source_start_frame_inclusive": 360,
+          "source_end_frame_exclusive": 370,
+          "source_start_emulated_seconds": 24.0,
+          "source_duration_emulated_seconds": 0.6666666666666666,
+          "source_first_action_recorded_at": "2026-10-23T15:38:51.569323+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:38:51.569323+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 788.297,
+            "review_pause_seconds": 787.985,
+            "model_wait_seconds": 0.219,
+            "non_review_wall_seconds": 0.312
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-010.mp4",
+          "source_video_sha256": "0be1c44437fcf0c34ce3db096aee674f39a1f86fa334a9897e6437a4847afe4a",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-010.jsonl",
+          "source_log_sha256": "f3d7c9f27d481dc49b008d3ef9a1717959fbd86d4d47c88dd329593f4bcca46d",
+          "source_steps": [
+            339,
+            342
+          ],
+          "source_start_frame_inclusive": 0,
+          "source_end_frame_exclusive": 40,
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 2.6666666666666665,
+          "source_first_action_recorded_at": "2026-10-23T15:38:51.725727+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:40:22.565105+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 90.984,
+            "review_pause_seconds": 90.657,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.327
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-011.mp4",
+          "source_video_sha256": "3597f10fa8bb290e1ea7238f2dda96b77e91038ff2f2ad3c0028cde9cf4d93dd",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-011.jsonl",
+          "source_log_sha256": "5c954756b01aac7f6851bb31780b7c0514338b3f174f05dc18272e79a986a540",
+          "source_steps": [
+            344,
+            351
+          ],
+          "source_start_frame_inclusive": 10,
+          "source_end_frame_exclusive": 90,
+          "source_start_emulated_seconds": 0.6666666666666666,
+          "source_duration_emulated_seconds": 5.333333333333333,
+          "source_first_action_recorded_at": "2026-10-23T15:40:23.050579+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:40:23.348926+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.656,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.297,
+            "non_review_wall_seconds": 0.656
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-011.mp4",
+          "source_video_sha256": "3597f10fa8bb290e1ea7238f2dda96b77e91038ff2f2ad3c0028cde9cf4d93dd",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-011.jsonl",
+          "source_log_sha256": "5c954756b01aac7f6851bb31780b7c0514338b3f174f05dc18272e79a986a540",
+          "source_steps": [
+            363,
+            375
+          ],
+          "source_start_frame_inclusive": 200,
+          "source_end_frame_exclusive": 330,
+          "source_start_emulated_seconds": 13.333333333333334,
+          "source_duration_emulated_seconds": 8.666666666666666,
+          "source_first_action_recorded_at": "2026-10-23T15:40:24.144496+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:40:24.665525+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.906,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.36,
+            "non_review_wall_seconds": 0.906
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-017.mp4",
+          "source_video_sha256": "21706ba6cbbfdc70385bd9d4a64faa2d43fc015274acc585c91dd5b233597bca",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-017.jsonl",
+          "source_log_sha256": "37d15e021033036958932f0ac60d75024aef7936a5fc221170f1d28aafd79d8b",
+          "source_steps": [
+            554,
+            557
+          ],
+          "source_start_frame_inclusive": 40,
+          "source_end_frame_exclusive": 80,
+          "source_start_emulated_seconds": 2.6666666666666665,
+          "source_duration_emulated_seconds": 2.6666666666666665,
+          "source_first_action_recorded_at": "2026-10-23T15:51:11.922602+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:51:12.097682+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.468,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.266,
+            "non_review_wall_seconds": 0.468
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-017.mp4",
+          "source_video_sha256": "21706ba6cbbfdc70385bd9d4a64faa2d43fc015274acc585c91dd5b233597bca",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-017.jsonl",
+          "source_log_sha256": "37d15e021033036958932f0ac60d75024aef7936a5fc221170f1d28aafd79d8b",
+          "source_steps": [
+            561,
+            565
+          ],
+          "source_start_frame_inclusive": 110,
+          "source_end_frame_exclusive": 160,
+          "source_start_emulated_seconds": 7.333333333333333,
+          "source_duration_emulated_seconds": 3.3333333333333335,
+          "source_first_action_recorded_at": "2026-10-23T15:51:12.268172+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:51:12.467485+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.25,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.25
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-019.mp4",
+          "source_video_sha256": "db030092081ffbbbc73b9d1dbcebfa4780569e0b265bca3c07faca3bf363a50c",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-019.jsonl",
+          "source_log_sha256": "f670623e076ebd9c4d88f03445893b629977724bce9cdebfe17d79c9f8bb1c6e",
+          "source_steps": [
+            618,
+            641
+          ],
+          "source_start_frame_inclusive": 100,
+          "source_end_frame_exclusive": 340,
+          "source_start_emulated_seconds": 6.666666666666667,
+          "source_duration_emulated_seconds": 16.0,
+          "source_first_action_recorded_at": "2026-10-23T15:59:04.295031+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:59:05.207449+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.953,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.031,
+            "non_review_wall_seconds": 0.953
+          }
+        }
+      ],
+      "notes_zh_tw": "依實際先後剪選B3F去程三段、返程兩段、B2F長滑行一段；省略段與段之間普通步行、守衛戰及工程停頓，不能當完整不中斷基地路線。每段來源含實際入口及停止影格；沒有將來源RLE另生成畫面。",
+      "clips": [
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/six-arrow-hops-selected-post1x.mp4",
+          "sha256": "ae98b67e66acfa65fb67cdf0bc83306b7156cff0f94261f2b3d0c9897f4d5c79",
+          "frames_decoded": 1180,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 39.333333333333336,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 39.33333333333333,
+          "editing_zh_tw": "原始PyBoy像素，來源15fps／每4模擬幀取樣；後製1x及30fps輸出。推論、工程與檢討等待未重建，片長不是牆鐘或模型速度。"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/six-arrow-hops-selected-post4x.mp4",
+          "sha256": "a4284c293f0305d21da89d37c8b245563b7d4d5463844aa6a4b6df39761cfba2",
+          "frames_decoded": 295,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 9.833333333333334,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 9.833333333333332,
+          "editing_zh_tw": "原始PyBoy像素，來源15fps／每4模擬幀取樣；後製4x及30fps輸出。推論、工程與檢討等待未重建，片長不是牆鐘或模型速度。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/b3f-first-arrow-before.png",
+          "sha256": "36303619e1fa636b722457a7e6587a6d5d9de7d897bd83a18d0ff4c6e49088b3",
+          "source_step_observation": 338,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-009.mp4",
+          "source_frame_index": 359,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 23.933333333333334,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/b3f-first-arrow-stop.png",
+          "sha256": "b2c7921593a22c9fe5a5a2d8586145c802a3fb8d474f1f4bba51d336b2e0aa58",
+          "source_step_observation": 341,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-010.mp4",
+          "source_frame_index": 19,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 1.2666666666666666,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/b3f-arrow-sliding-south.png",
+          "sha256": "6d1a4114969e18a1a292d78714832075c1d2407f1bc816a5e6537d14184fae1d",
+          "source_step_observation": 370,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-011.mp4",
+          "source_frame_index": 269,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 17.933333333333334,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/b3f-third-arrow-stop.png",
+          "sha256": "aefd91b217df2ee566aaed454b363e427647492d53903232930dd74298dd802d",
+          "source_step_observation": 374,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-011.mp4",
+          "source_frame_index": 309,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 20.6,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/b3f-return-arrow-stop.png",
+          "sha256": "8a8bac552ad14782d70346de6fe7a75bb58685bca550c8c8cb8897eabad6c8ff",
+          "source_step_observation": 564,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-017.mp4",
+          "source_frame_index": 139,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 9.266666666666667,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/b2f-long-arrow-turn.png",
+          "sha256": "04d3e654ce1fb145f9b7a490addffba1a57b595e4b99f12ade8bb344d4402a2e",
+          "source_step_observation": 627,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-019.mp4",
+          "source_frame_index": 189,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 12.6,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/b2f-long-arrow-stop.png",
+          "sha256": "92aa55aaa273f03759c7ed871ee9c2a1bbfed0e29eb295a30990afb05bb74bbe",
+          "source_step_observation": 640,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-019.mp4",
+          "source_frame_index": 319,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 21.266666666666666,
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "logged_review_pauses_in_source_order": [
+        {
+          "resume_action_step": 338,
+          "previous_action_step": 337,
+          "previous_action_at_utc": "2026-10-23T15:25:43.272839+00:00",
+          "resume_action_at_utc": "2026-10-23T15:38:51.569323+00:00",
+          "logged_review_pause_seconds": 787.985,
+          "cumulative_review_pause_seconds": 1769.343
+        },
+        {
+          "resume_action_step": 342,
+          "previous_action_step": 341,
+          "previous_action_at_utc": "2026-10-23T15:38:51.797415+00:00",
+          "resume_action_at_utc": "2026-10-23T15:40:22.565105+00:00",
+          "logged_review_pause_seconds": 90.657,
+          "cumulative_review_pause_seconds": 1860.0
+        }
+      ]
+    },
+    {
+      "id": "lift-key-guard-full-battle-drop-pickup",
+      "caption_zh_tw": "鑰匙守衛完整戰鬥：泡沫光線、升27級、掉落並取得電梯鑰匙",
+      "source_intervals": [
+        [
+          409,
+          478
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_video_sha256": "95c1561aca889bab1f320a0248015ec3f0012965cb10fb076f53877a925b47d0",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-012.jsonl",
+          "source_log_sha256": "5f57bd3b2e8ec3aa5f130707afc9c49910445db7656361828ebbdfad8ce07a4b",
+          "source_steps": [
+            409,
+            478
+          ],
+          "source_start_frame_inclusive": 150,
+          "source_end_frame_exclusive": 1906,
+          "source_start_emulated_seconds": 10.0,
+          "source_duration_emulated_seconds": 117.06666666666666,
+          "source_first_action_recorded_at": "2026-10-23T15:41:33.967873+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:44:34.590134+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 180.656,
+            "review_pause_seconds": 169.094,
+            "model_wait_seconds": 4.173,
+            "non_review_wall_seconds": 11.562
+          }
+        }
+      ],
+      "notes_zh_tw": "保留開戰前對話、21級瓦斯彈與超音蝠完整戰鬥、尼多力諾升27、勝利／獎金、再對話掉鑰匙及正常拾取。連續保留409–478所有動作影格；最後一步前有工程暫停，等待未錄成影片節奏。這是鑰匙守衛戰。",
+      "clips": [
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/lift-key-guard-full-battle-drop-pickup-post1x.mp4",
+          "sha256": "f04c329847352949d1bf2c642c65915199dd64ca91a3ceb2479bb7d8a08d644a",
+          "frames_decoded": 3512,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 117.06666666666666,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 117.06666666666666,
+          "editing_zh_tw": "原始PyBoy像素，來源15fps／每4模擬幀取樣；後製1x及30fps輸出。推論、工程與檢討等待未重建，片長不是牆鐘或模型速度。"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/lift-key-guard-full-battle-drop-pickup-post4x.mp4",
+          "sha256": "6ce9a27d95b8e4fd6bd72f859535843fd36a29dfad7dda5a68d1620b989ddf4f",
+          "frames_decoded": 878,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 29.266666666666666,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 29.266666666666666,
+          "editing_zh_tw": "原始PyBoy像素，來源15fps／每4模擬幀取樣；後製4x及30fps輸出。推論、工程與檢討等待未重建，片長不是牆鐘或模型速度。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/key-guard-rocket-wants-to-fight.png",
+          "sha256": "9f84fa71ed9c2f9008c9a9e75e90e7e402bf21f4149e421f96dd2d304f336ab8",
+          "source_step_observation": 419,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_frame_index": 359,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 23.933333333333334,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/nidorino-bubblebeam-vs-koffing.png",
+          "sha256": "266c209dd41f763cef7230e129b89b3f89a54119a713a1dca175e4a64c9fe19a",
+          "source_step_observation": 426,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_frame_index": 539,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 35.93333333333333,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/nidorino-level27-during-key-guard.png",
+          "sha256": "01bff2eb4eb7029a74ef91deb0bd55050eaec5ce915f9d1b2bbd83fd89060442",
+          "source_step_observation": 446,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_frame_index": 1091,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 72.73333333333333,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/key-guard-zubat-battle-menu.png",
+          "sha256": "2803fc92861284d2737728976009cbcf5be5899bf63a733597c5ada84575e919",
+          "source_step_observation": 453,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_frame_index": 1293,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 86.2,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/key-guard-defeated.png",
+          "sha256": "36005021f09084ba2936dc7ec64a80bef0a14cd9e20471bbd3aaf2fa7851c5e1",
+          "source_step_observation": 466,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_frame_index": 1621,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 108.06666666666666,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/rocket-dropped-lift-key.png",
+          "sha256": "7029283df05f08cb27e18c29dcde5a0b425d35991082ec0dfdb1917938527f1d",
+          "source_step_observation": 473,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_frame_index": 1801,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 120.06666666666666,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/kevin-found-lift-key.png",
+          "sha256": "cf14c472f0bd18c4f4e90d71329b13135fdcdb73674a520df38344cd4d18f18b",
+          "source_step_observation": 477,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_frame_index": 1876,
+          "source_step_frame_offset": 12,
+          "source_emulated_seconds": 125.06666666666666,
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "logged_review_pauses_in_source_order": [
+        {
+          "resume_action_step": 478,
+          "previous_action_step": 477,
+          "previous_action_at_utc": "2026-10-23T15:41:45.414663+00:00",
+          "resume_action_at_utc": "2026-10-23T15:44:34.590134+00:00",
+          "logged_review_pause_seconds": 169.094,
+          "cumulative_review_pause_seconds": 2096.797
+        }
+      ],
+      "verified_result": {
+        "visible_victory_step": 466,
+        "dropped_key_visible_step": 473,
+        "key_inventory_first_observed_step": 477,
+        "key_inventory_observed_action_at_utc": "2026-10-23T15:41:45.414663+00:00",
+        "key_item_id": 74,
+        "quantity_added": 1,
+        "other_inventory_unchanged": true,
+        "enemy_species_observed": [
+          "KOFFING",
+          "ZUBAT"
+        ],
+        "enemy_levels_observed": [
+          21,
+          21
+        ],
+        "nidorino_level_before": 26,
+        "nidorino_level_after": 27
+      }
+    },
+    {
+      "id": "lift-key-drop-and-pickup",
+      "caption_zh_tw": "守衛掉鑰匙後，正常走近取得LIFT KEY",
+      "source_intervals": [
+        [
+          470,
+          478
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-012.mp4",
+          "source_video_sha256": "95c1561aca889bab1f320a0248015ec3f0012965cb10fb076f53877a925b47d0",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-012.jsonl",
+          "source_log_sha256": "5f57bd3b2e8ec3aa5f130707afc9c49910445db7656361828ebbdfad8ce07a4b",
+          "source_steps": [
+            470,
+            478
+          ],
+          "source_start_frame_inclusive": 1750,
+          "source_end_frame_exclusive": 1906,
+          "source_start_emulated_seconds": 116.66666666666667,
+          "source_duration_emulated_seconds": 10.4,
+          "source_first_action_recorded_at": "2026-10-23T15:41:44.138749+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:44:34.590134+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 171.343,
+            "review_pause_seconds": 169.094,
+            "model_wait_seconds": 1.546,
+            "non_review_wall_seconds": 2.249
+          }
+        }
+      ],
+      "notes_zh_tw": "前一完整戰片的道具片段另剪短版；先再對話讓守衛掉落，再往左面向道具並拾取，不把勝利直接當取得。",
+      "clips": [
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/lift-key-drop-and-pickup-post1x.mp4",
+          "sha256": "f677d54ac03a9ed31d48d4d32e2d0e431774aa6d990cde26fa4c09d537c85206",
+          "frames_decoded": 312,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 10.4,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 10.4,
+          "editing_zh_tw": "原始PyBoy像素，來源15fps／每4模擬幀取樣；後製1x及30fps輸出。推論、工程與檢討等待未重建，片長不是牆鐘或模型速度。"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/lift-key-drop-and-pickup-post4x.mp4",
+          "sha256": "cdfc11e14f900cf943299bded567470498abaa77d5aca458e165e166425d7083",
+          "frames_decoded": 78,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 2.6,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 2.6,
+          "editing_zh_tw": "原始PyBoy像素，來源15fps／每4模擬幀取樣；後製4x及30fps輸出。推論、工程與檢討等待未重建，片長不是牆鐘或模型速度。"
+        }
+      ],
+      "screenshots": [],
+      "logged_review_pauses_in_source_order": [
+        {
+          "resume_action_step": 478,
+          "previous_action_step": 477,
+          "previous_action_at_utc": "2026-10-23T15:41:45.414663+00:00",
+          "resume_action_at_utc": "2026-10-23T15:44:34.590134+00:00",
+          "logged_review_pause_seconds": 169.094,
+          "cumulative_review_pause_seconds": 2096.797
+        }
+      ]
+    },
+    {
+      "id": "moon-stone-pickup",
+      "caption_zh_tw": "B2F走近並正常撿取月之石",
+      "source_intervals": [
+        [
+          641,
+          650
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-019.mp4",
+          "source_video_sha256": "db030092081ffbbbc73b9d1dbcebfa4780569e0b265bca3c07faca3bf363a50c",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-019.jsonl",
+          "source_log_sha256": "f670623e076ebd9c4d88f03445893b629977724bce9cdebfe17d79c9f8bb1c6e",
+          "source_steps": [
+            641,
+            650
+          ],
+          "source_start_frame_inclusive": 330,
+          "source_end_frame_exclusive": 452,
+          "source_start_emulated_seconds": 22.0,
+          "source_duration_emulated_seconds": 8.133333333333333,
+          "source_first_action_recorded_at": "2026-10-23T15:59:05.207449+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:59:05.692501+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.562,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.562
+          }
+        }
+      ],
+      "notes_zh_tw": "從B2F長箭頭落地後步行到月之石、正常A拾取，背包新增item10一份。本片在650結束，未納入651開選單或video020進化。",
+      "clips": [
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/moon-stone-pickup-post1x.mp4",
+          "sha256": "e6df1942c156018ad1dd1c11390abd5e56144ce24db4b7a0bfbd5a63fd01a6f5",
+          "frames_decoded": 244,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 8.133333333333333,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 8.133333333333333,
+          "editing_zh_tw": "原始PyBoy像素，來源15fps／每4模擬幀取樣；後製1x及30fps輸出。推論、工程與檢討等待未重建，片長不是牆鐘或模型速度。"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/moon-stone-pickup-post4x.mp4",
+          "sha256": "0a1f3caeec66d53d4ec9c4cecbf99744222aadf60f41bf5bc597e0c913b5724d",
+          "frames_decoded": 61,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 2.033333333333333,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 2.033333333333333,
+          "editing_zh_tw": "原始PyBoy像素，來源15fps／每4模擬幀取樣；後製4x及30fps輸出。推論、工程與檢討等待未重建，片長不是牆鐘或模型速度。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/moon-stone-before-pickup.png",
+          "sha256": "a85e5a473550efe094de33fe9f22fd75d0ef5ca6c39ca5235ad6358322cd3a41",
+          "source_step_observation": 649,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-019.mp4",
+          "source_frame_index": 409,
+          "source_step_frame_offset": -1,
+          "source_emulated_seconds": 27.266666666666666,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/rocket-hideout-20261024/kevin-found-moon-stone.png",
+          "sha256": "a2eb833c56cfda09a25bd9af3f65eae32eaf3b8632dc0ef12f92acbb6bf66aae",
+          "source_step_observation": 650,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-019.mp4",
+          "source_frame_index": 432,
+          "source_step_frame_offset": 12,
+          "source_emulated_seconds": 28.8,
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "logged_review_pauses_in_source_order": [],
+      "verified_result": {
+        "moon_stone_inventory_first_observed_step": 650,
+        "inventory_observed_action_at_utc": "2026-10-23T15:59:05.692501+00:00",
+        "item_id": 10,
+        "quantity_added": 1,
+        "other_inventory_unchanged": true,
+        "evolution_included": false
+      }
+    }
+  ],
+  "supporting_capture_snapshots": [
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "99c7517b32f2a9f5a5250a507765eeec45f4170f218701870f023136657eff6a",
+      "record": {
+        "at": "2026-10-23T15:38:51.805746+00:00",
+        "kind": "arrow-201-12-11-verified",
+        "file": "keyframes/00026-arrow-201-12-11-verified.png",
+        "sha256": "47178726fca23cdcfcd496f1be989ad13cc4e9fa54a8d4f2715cbeea8aef5704",
+        "location": {
+          "map_id": 201,
+          "x": 10,
+          "y": 11
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 1805.75,
+          "model_wait_seconds": 15.035,
+          "review_pause_seconds": 1769.343,
+          "non_review_session_seconds": 36.407,
+          "emulated_seconds": 330.0
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "9856496312faa31f4ad205b51678bdf6f03250f899ebe6322e694a17724b32dc",
+      "record": {
+        "at": "2026-10-23T15:40:23.290565+00:00",
+        "kind": "arrow-201-10-13-verified",
+        "file": "keyframes/00028-arrow-201-10-13-verified.png",
+        "sha256": "8ec1c7db3c83e10f92a9916c3c5d12a304021d8fecb2e04f387232062be5cc88",
+        "location": {
+          "map_id": 201,
+          "x": 14,
+          "y": 13
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 1897.234,
+          "model_wait_seconds": 15.332,
+          "review_pause_seconds": 1860.0,
+          "non_review_session_seconds": 37.234,
+          "emulated_seconds": 336.0
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "1bb069465d46c93520921a0f8af69801745bfd0a3dc10b074a92418e9bd7618f",
+      "record": {
+        "at": "2026-10-23T15:40:24.600223+00:00",
+        "kind": "arrow-201-11-18-verified",
+        "file": "keyframes/00029-arrow-201-11-18-verified.png",
+        "sha256": "0f282f3af16cab82e46382844d6feed26e108eb8c2118ff32ac68745503f78d7",
+        "location": {
+          "map_id": 201,
+          "x": 15,
+          "y": 22
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 1898.531,
+          "model_wait_seconds": 15.692,
+          "review_pause_seconds": 1860.0,
+          "non_review_session_seconds": 38.531,
+          "emulated_seconds": 352.0
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "c2d27d13d202dd5bcd78c6a349b04c23cff8de6b43ba021a06ddb022cfcaa03e",
+      "record": {
+        "at": "2026-10-23T15:41:42.749456+00:00",
+        "kind": "trainer-defeated",
+        "file": "keyframes/00037-trainer-defeated.png",
+        "sha256": "add8ed6a512c59c7a56fc9ea80830e02da0bbe4a941020a7a089a5f3b592433f",
+        "location": {
+          "map_id": 202,
+          "x": 11,
+          "y": 3
+        },
+        "text": [
+          "          NIDORINO",
+          "               27",
+          "            73/ 82",
+          " KEVIN defeated",
+          " ROCKET!"
+        ],
+        "timing": {
+          "wall_seconds": 1976.688,
+          "model_wait_seconds": 18.367,
+          "review_pause_seconds": 1927.703,
+          "non_review_session_seconds": 48.985,
+          "emulated_seconds": 472.8
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "6d583154e1d73c45a6f8ae225e1e079ce62db40910efa9a139b32fb2a96cdbde",
+      "record": {
+        "at": "2026-10-23T15:41:45.059463+00:00",
+        "kind": "milestone-rocket_dropped_lift_key",
+        "file": "keyframes/00038-milestone-rocket_dropped_lift_key.png",
+        "sha256": "14cf6e89a39b371933a2e92581b7f761a02c0da5d5fe00c3a912123cd9ee9c63",
+        "location": {
+          "map_id": 202,
+          "x": 11,
+          "y": 3
+        },
+        "text": [
+          " Oh no! I dropped",
+          " the LIFT KEY!"
+        ],
+        "timing": {
+          "wall_seconds": 1979.0,
+          "model_wait_seconds": 19.898,
+          "review_pause_seconds": 1927.703,
+          "non_review_session_seconds": 51.297,
+          "emulated_seconds": 484.8
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "73a6b27ac344bf803339310ec1b3215dc9a92f314524546c83a67df18118f599",
+      "record": {
+        "at": "2026-10-23T15:51:12.022515+00:00",
+        "kind": "arrow-201-18-16-verified",
+        "file": "keyframes/00044-arrow-201-18-16-verified.png",
+        "sha256": "8992539daa3c80a891829010670842574a06dd3a7a88de13f95b65d8052013f2",
+        "location": {
+          "map_id": 201,
+          "x": 18,
+          "y": 15
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 2545.953,
+          "model_wait_seconds": 20.882,
+          "review_pause_seconds": 2489.453,
+          "non_review_session_seconds": 56.5,
+          "emulated_seconds": 543.733
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "8ab3a045e7bddd2e1277d19bf4e1d776e0c25f8f93f182906586937412b785db",
+      "record": {
+        "at": "2026-10-23T15:51:12.399688+00:00",
+        "kind": "arrow-201-16-13-verified",
+        "file": "keyframes/00045-arrow-201-16-13-verified.png",
+        "sha256": "ffc1f3592419670661631ce4853f8a3499b1238a09f7dd7e7ba516b18e4d32b4",
+        "location": {
+          "map_id": 201,
+          "x": 16,
+          "y": 11
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 2546.328,
+          "model_wait_seconds": 20.882,
+          "review_pause_seconds": 2489.453,
+          "non_review_session_seconds": 56.875,
+          "emulated_seconds": 549.067
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/captures.jsonl",
+      "source_record_sha256_without_newline": "58a3c0929012d0e0e316059db6509d47b27e5b8e854cddf89f0ed150edf6b7a9",
+      "record": {
+        "at": "2026-10-23T15:59:05.137936+00:00",
+        "kind": "arrow-200-17-11-verified",
+        "file": "keyframes/00048-arrow-200-17-11-verified.png",
+        "sha256": "c2901b6d5ad9198adfc4b471af20705c42e698f98fe1cb70e328e17e4281dd9f",
+        "location": {
+          "map_id": 200,
+          "x": 2,
+          "y": 9
+        },
+        "text": [],
+        "timing": {
+          "wall_seconds": 3019.063,
+          "model_wait_seconds": 21.008,
+          "review_pause_seconds": 2958.843,
+          "non_review_session_seconds": 60.22,
+          "emulated_seconds": 599.733
+        }
+      },
+      "referenced_png_not_read_or_copied": true
+    }
+  ],
+  "frame_mapping_zh_tw": "逐步emulated_frames皆為4的倍數；source frame=start之前累積emulated_frames/4。各來源完整影格數等於分段sum(emulated_frames)/4並符合closure。15fps、scale3=480x432；影片以整數trim start_frame inclusive/end_frame exclusive，無seek四捨五入。",
+  "timing_caution_zh_tw": "1x是模擬遊戲影格原速，4x是後製四倍；推論／工程／檢討等待未重建。播放時長不是模型推論速度、任務牆鐘時間或通關時間。原始source at時間與pause增量另列，不能用片長相減推回實際耗時。",
+  "pickup_time_caution_zh_tw": "inventory first observed step是動作前觀測；對應at是該動作完成後的日誌時間，只是觀測記錄錨點，不冒充精確拾取瞬間。",
+  "visual_review": {
+    "formal_screenshots_checked": 16,
+    "passed": true,
+    "confirmed_zh_tw": [
+      "B3F去返及B2F長箭頭的真實移動與停止畫面",
+      "完整ROCKET開戰、泡沫光線、尼多力諾升27及勝利文字",
+      "Oh no! I dropped the LIFT KEY!",
+      "KEVIN found LIFT KEY!",
+      "KEVIN found MOON STONE!"
+    ],
+    "probe_pngs_zh_tw": "probe-*僅供挑選逐字印字中的完整道具文字，不是額外事件或正式截圖數量。"
+  },
+  "result_scope_zh_tw": "只有箭頭滑行、鑰匙守衛戰／掉落／拾取及月之石拾取；不聲稱首領或透視鏡完成，不含進化。",
+  "source_footage_modified": false,
+  "game_or_state_operations": false
+}

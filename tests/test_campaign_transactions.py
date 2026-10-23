@@ -262,3 +262,84 @@ def test_arrow_adapter_rejects_unreviewed_trigger_or_wrong_explicit_stance():
     args[2]['steps'][0]['trigger']=[12,11]
     args[2]['steps'][0]['target']=[12,11]
     assert call(args)[0]['review_reason']=='arrow_explicit_stance_unverified'
+
+
+def decoded_observation(*, mode='aligned'):
+    from laya_pokemon.observation import read_visible_text
+    from tests.test_observation import emulator, DECODING
+    game = emulator()
+    if mode in {'window', 'aligned_window'}:
+        game.memory[0xFF40] = 0xB1
+        game.screen.tilemap_position_list = [[0, 0, 4 if mode == 'window' else 0, 0] for _ in range(144)]
+        # 未對齊時這個真實可見marker會被decoder安全略過，不能當成無UI。
+        if mode == 'window':
+            game.tilemap_window.cells[(0, 0)] = 7
+    elif mode == 'scanline':
+        game.screen.tilemap_position_list[3][0] = 8
+    elif mode == 'unknown_scanline':
+        game.screen.tilemap_position_list[10][0] = None
+    return read_visible_text(game, DECODING)
+
+
+def test_real_decoder_ready_uses_structured_evidence_and_not_warning_wording():
+    valid = decoded_observation()
+    assert valid['warnings'] and tx.ui_overworld_ready(valid, {})
+    invalid = decoded_observation(mode='window')
+    invalid['warnings'] = []
+    assert not tx.ui_overworld_ready(invalid, {})
+    # 對齊但空白的Window仍不證明野外，背景grid不會替可見UI背書。
+    aligned_window = decoded_observation(mode='aligned_window')
+    assert aligned_window['read_valid'] and aligned_window['alignment_verified']
+    assert not tx.ui_overworld_ready(aligned_window, {})
+    assert tx.ui_overworld_ready(text_at(), {})  # 舊純fixture沒有實際decoder profile。
+
+
+@pytest.mark.parametrize('change', ['missing_read', 'missing_alignment', 'missing_window',
+                                   'numeric_read', 'numeric_alignment', 'unknown_profile'])
+def test_actual_decoder_profile_cannot_omit_or_coerce_validity_proof(change):
+    text = decoded_observation()
+    if change == 'missing_read': text.pop('read_valid')
+    elif change == 'missing_alignment': text.pop('alignment_verified')
+    elif change == 'missing_window': text.pop('window_visible')
+    elif change == 'numeric_read': text['read_valid'] = 1
+    elif change == 'numeric_alignment': text['alignment_verified'] = 1
+    else: text['profile'] = 'unknown-decoder'
+    assert not tx.ui_overworld_ready(text, {})
+
+
+@pytest.mark.parametrize('mode', ['window', 'aligned_window', 'scanline', 'unknown_scanline'])
+def test_incomplete_real_decoder_ui_cannot_send_arrow_entry(mode):
+    args, model, observation = arrow_setup()
+    _, grid = observation(model, frame=100)
+    result, next_id = call(args, text=decoded_observation(mode=mode), grid=grid)
+    assert result['available_actions'] == ['wait'] and result['phase'] == 'campaign_review'
+    assert not result.get('field_move_complete') and next_id == 'gift'
+
+
+@pytest.mark.parametrize('mode', ['window', 'aligned_window', 'scanline', 'unknown_scanline'])
+def test_incomplete_real_decoder_cannot_complete_arrow_and_resets_idle_samples(mode):
+    args, model, observation = arrow_setup()
+    _, grid = observation(model, frame=100)
+    assert call(args, text=decoded_observation(), grid=grid)[0]['available_actions'] == ['left', 'wait']
+    for frame, text in [(132, decoded_observation()), (164, decoded_observation(mode=mode)),
+                        (196, decoded_observation(mode=mode)), (228, decoded_observation())]:
+        location, grid = observation(model, model.hop['expected_landing'], frame)
+        args[1].update(location=location, frame=frame)
+        args[0].frame_count = frame
+        result, next_id = call(args, text=text, grid=grid)
+        assert result['available_actions'] == ['wait'] and not result.get('field_move_complete')
+        assert next_id == 'gift'
+    location, grid = observation(model, model.hop['expected_landing'], 260)
+    args[1].update(location=location, frame=260)
+    args[0].frame_count = 260
+    result, next_id = call(args, text=decoded_observation(), grid=grid)
+    assert result['field_move_complete'] is True and next_id == 'after'
+
+
+@pytest.mark.parametrize('mechanic', ['gift_eevee', 'teach_bubblebeam'])
+def test_other_transactions_keep_rejection_of_incomplete_actual_decoder(mechanic):
+    args = setup(mechanic)
+    result, next_id = call(args, text=decoded_observation(mode='window'), grid={})
+    assert result['review_reason'] == 'transaction_visible_text_not_verified'
+    assert result['available_actions'] == ['wait'] and next_id == 'gift'
+    assert not tx._CONTROLLERS

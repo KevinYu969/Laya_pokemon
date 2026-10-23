@@ -1,0 +1,139 @@
+{
+  "type": "verified_campaign_receipt",
+  "updated": "2026-10-24",
+  "run": "league-campaign-20261023-16",
+  "scope": "寶可夢塔勁敵勝利及正常返回紫苑中心；未取得笛子或第五徽章。",
+  "victory": {
+    "at_taipei": "2026-10-24T00:38:06.892508+08:00",
+    "location": {
+      "map_id": 143,
+      "x": 14,
+      "y": 6
+    },
+    "visible_text": [
+      "          NIDOKING",
+      "               29",
+      "            96/ 99",
+      " KEVIN defeated",
+      " BLUE!"
+    ],
+    "capture_sha256": "2f5a58a633b103d750ff3a711687e9e3dcdfbb5f535710276686ac7d6ebbbfbf",
+    "event_false_before_battle": true,
+    "event_true_observed_by_taipei": "2026-10-24T00:38:07.606485+08:00",
+    "event_timestamp_semantics": "動作後記錄，狀態取樣在動作前；是已觀測的時間上限。"
+  },
+  "lesson": {
+    "single_faint": false,
+    "whole_party_loss": false,
+    "observed_enemy_move": "DRAGON RAGE",
+    "fixed_damage": 40,
+    "observed_fearow_hp_sequence": [
+      81,
+      41,
+      1
+    ],
+    "existing_low_hp_threshold": 30,
+    "cause": "本場原三分之一門檻未提早回應固定40傷害；正常換人後取勝。",
+    "improvement_status": "提早換人候選研發中，尚未宣稱實戰攔截。"
+  },
+  "normal_center_recovery": {
+    "at_taipei": "2026-10-24T00:39:28.333477+08:00",
+    "location": {
+      "map_id": 141,
+      "x": 3,
+      "y": 3
+    },
+    "party": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 29,
+        "hp": 99,
+        "max_hp": 99,
+        "exp": 21241,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 29,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 26793,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 9,
+        "species_name": "IVYSAUR",
+        "level": 31,
+        "hp": 86,
+        "max_hp": 86,
+        "exp": 26348,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 25,
+        "hp": 63,
+        "max_hp": 63,
+        "exp": 15625,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          0,
+          0
+        ],
+        "pp": [
+          35,
+          15,
+          0,
+          0
+        ]
+      }
+    ],
+    "all_hp_status_and_pp_restored": true,
+    "checkpoint_sha256": "505ab1381b68615b50f404c53145461989d6af59992f17c8774cac60af38a3ac"
+  },
+  "badges_raw": 15,
+  "full_game_elapsed_seconds": null,
+  "gameplay_cloud_fallback": false,
+  "strata_configuration_changed": false
+}

@@ -21,23 +21,48 @@ def read_visible_text(pyboy, decoding: Mapping[int, str] | None = None) -> dict:
     """解碼完整出現在 20×18 螢幕格的 tile，略過不對齊或跨層的格子。
 
     這是字碼候選而非 OCR：尚未核對字型外觀，也不重建 sprite 遮罩。
+    read_valid／alignment_verified只證明本次完整格讀取與對齊，不能把略過的
+    空白當作野外；window_visible另外記錄是否有任何可見Window像素。
     ``decoding`` 可供不載入 PyBoy 的合成測試使用。
     """
     result = {"lines": [], "line_rows": [], "cells": [], "warnings": [
         "文字候選依 tilemap 字碼推測，尚未完全校準；未核對字型外觀或 sprite 遮罩。"
-    ], "profile": PROFILE}
-    lcdc = int(pyboy.memory[0xFF40])
+    ], "profile": PROFILE, "read_valid": False, "alignment_verified": False,
+        "window_visible": None, "read_error": None}
+    try:
+        lcdc = pyboy.memory[0xFF40]
+    except Exception:
+        result["read_error"] = "visible_lcdc_getter_failed"
+        return result
+    if type(lcdc) is not int or not 0 <= lcdc <= 255:
+        result["read_error"] = "visible_lcdc_invalid"
+        return result
     # 紅／藍版的 DMG 模式：bit 7 關閉 LCD；bit 0 關閉背景與視窗。
     if not lcdc & 0x80 or not lcdc & 0x01:
+        result["read_error"] = "visible_display_disabled"
         return result
     if decoding is None:
         from pyboy.plugins.game_wrapper_pokemon_gen1_constants import POKEMON_TEXT_DECODING
         decoding = POKEMON_TEXT_DECODING
-    positions = pyboy.screen.tilemap_position_list
-    if len(positions) < 144 or any(len(line) != 4 for line in positions[:144]):
-        result["warnings"].append("掃描線位置資料不完整，已略過文字候選。")
+    try:
+        positions = pyboy.screen.tilemap_position_list
+    except Exception:
+        result["read_error"] = "visible_scanline_getter_failed"
         return result
+    # PyBoy提供SCX/SCY原始byte，以及WX-7/WY；不能用int()將未知值猜成座標。
+    if (not isinstance(positions, (list, tuple)) or len(positions) < 144
+            or any(not isinstance(line, (list, tuple)) or len(line) != 4
+                   or any(type(value) is not int for value in line)
+                   or not (0 <= line[0] <= 255 and 0 <= line[1] <= 255
+                           and -7 <= line[2] <= 248 and 0 <= line[3] <= 255)
+                   for line in positions[:144])):
+        result["warnings"].append("掃描線位置資料不完整，已略過文字候選。")
+        result["read_error"] = "visible_scanline_positions_invalid"
+        return result
+    positions = tuple(tuple(line) for line in positions[:144])
     window_enabled = bool(lcdc & 0x20)
+    result["window_visible"] = window_enabled and any(
+        y >= wy and wx < 160 and wy < 144 for y, (_, _, wx, wy) in enumerate(positions))
     skipped_alignment = False
     rows = []
     row_indices = []
@@ -61,8 +86,12 @@ def read_visible_text(pyboy, decoding: Mapping[int, str] | None = None) -> dict:
                 skipped_alignment = True
                 chars.append(" ")
                 continue
-            tilemap = pyboy.tilemap_window if layer == "window" else pyboy.tilemap_background
-            char = decoding.get(int(tilemap[tile_x, tile_y]), " ")
+            try:
+                tilemap = pyboy.tilemap_window if layer == "window" else pyboy.tilemap_background
+                char = decoding.get(int(tilemap[tile_x, tile_y]), " ")
+            except Exception:
+                result["read_error"] = "visible_tile_getter_failed"
+                return result
             chars.append(char if isinstance(char, str) and _PRINTABLE.fullmatch(char) else " ")
         text = "".join(chars).rstrip()
         result["cells"].append(chars)
@@ -73,6 +102,9 @@ def read_visible_text(pyboy, decoding: Mapping[int, str] | None = None) -> dict:
     result["line_rows"] = row_indices[:12]
     if skipped_alignment:
         result["warnings"].append("已略過捲動、視窗邊界或掃描線變化造成的不完整 tile。")
+        result["read_error"] = "visible_tile_alignment_incomplete"
+    else:
+        result["read_valid"] = result["alignment_verified"] = True
     return result
 
 
