@@ -77,3 +77,16 @@ HM教學於台北2026-10-23 21:21:52實際核對妙蛙草招式為`[77,15,73,22]
 | 藤鞭耗盡、全敗與自然恢復 | `outputs/videos/rock-tunnel-lessons-20261023/rock-tunnel-pp-exhaustion-blackout-recovery-post4x.mp4` | 38.567秒；步4107–4189。保留弱效居合斬、BLACKED OUT及正常中心恢復，結尾定格3秒 |
 
 兩片均後製4倍並省略工程／檢討等待；不是實際牆鐘耗時。金錢由23145降至11572、經驗及已勝訓練家保留，沒有回讀洗掉敗北。來源23,903幀與成品完整解碼，10張截圖及25份檔案SHA核對；見`results/rock-tunnel-lessons-clips-20261023.json`。14的新低血閘門攔截屬後續實戰，沒有倒剪回13冒充已避免這次敗北。
+
+## 第四館與自然學招素材（2026-10-23）
+
+以下檔案位於本機`outputs/videos/fourth-gym-20261023/`，未上傳GitHub或正式發布。
+
+| 檔案 | 時長 | 內容 |
+|---|---|---|
+| `erika-full-battle-badge-tm21-post4x.mp4` | 55.567秒 | 14步2396–2515，完整莉佳三隻對手、彩虹徽章與TM21 |
+| `razor-leaf-only-poisonpowder-replaced-post4x.mp4` | 11.633秒 | 步1106–1166，保留Poof文字等待修正，只把毒粉換成飛葉快刀 |
+| `fearow25-mirror-move-skip-post4x.mp4` | 11.167秒 | 步974–1029，完整略過鸚鵡學舌，原四招保持 |
+| `gym-cut-trainer-battle-cut-again-selected-post4x.mp4` | 39.867秒 | 步1947–2040＋2067–2077剪選；砍樹、館員戰、樹恢復及重新砍除，略去2041–2066定位／工程 |
+
+四片均為後製4倍模擬影格，省略推論與檢討等待，不能當作實際通關或推論耗時。來源30,502幀與成品3,547幀完整解碼、15張截圖目視核對；來源、事件與成品SHA見`results/fourth-gym-clips-20261023.json`。

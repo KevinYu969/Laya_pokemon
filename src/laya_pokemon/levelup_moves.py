@@ -131,16 +131,36 @@ def _forget_action(rows):
 def _fearow_skip(rows, progress):
     """封閉個案：Delete NO→Abandon YES→Did not learn；絕不進入四招刪除頁。"""
     global _SESSION
-    if _SESSION.get('error'):
-        return _fail(_SESSION['error'])
     party = progress.get('party', [])
     index = _SESSION['index']
+    lower = '\n'.join(rows[12:])
+    compact = normalize(lower)
+    # 唯一已人工審查的v2卡頁：確認未學會的前半句需要▼翻頁才能看到招式名。
+    if (_SESSION.get('schema_version') == 2
+            and _SESSION.get('error') == 'natural_learning_known_transition_wait_exhausted'
+            and _SESSION.get('kind') == 'fearow_mirror_skip'
+            and _SESSION.get('stage') == 'abandon_requested'
+            and _SESSION.get('delete_no_requested') is True and _SESSION.get('abandon_yes_requested') is True
+            and _SESSION.get('seen_move') is True and _SESSION.get('plan', {}).get('decision') == 'skip'
+            and _SESSION.get('last_page') == 'FEAROWDIDNOTLEARN'
+            and compact == 'FEAROWDIDNOTLEARN'
+            and progress.get('party_read_valid') is True and isinstance(party, list)
+            and type(index) is int and 0 <= index < len(party)
+            and party[index].get('species') == 35 and party[index].get('level') == 25
+            and _fingerprint(party) == _SESSION['baseline']):
+        _SESSION.pop('error')
+        _SESSION['schema_version'] = 3
+        _SESSION['waits'] = 0
+        _SESSION['migration_v3_reviewed_result_page'] = {
+            'cleared_error': 'natural_learning_known_transition_wait_exhausted',
+            'verified_page': 'FEAROWDIDNOTLEARN', 'moves_unchanged': True,
+            'advance_requires_visible_marker': True, 'completion_verified': False}
+    if _SESSION.get('error'):
+        return _fail(_SESSION['error'])
     if (progress.get('party_read_valid') is not True or len(party) <= index
             or party[index].get('species') != 35 or party[index].get('level') != 25
             or _fingerprint(party) != _SESSION['baseline']):
         return _fail('fearow_skip_party_changed_unexpectedly')
-    lower = '\n'.join(rows[12:])
-    compact = normalize(lower)
     stage = _SESSION['stage']
     full_result = 'FEAROWDIDNOTLEARNMIRRORMOVE'
     if stage == 'complete':
@@ -163,8 +183,8 @@ def _fearow_skip(rows, progress):
     delete_pages = ('DELETEANOLDERMOVETOMAKEROOMFORMIRRORMOVE', 'MOVETOMAKEROOMFORMIRRORMOVE', 'FORMIRRORMOVE')
     abandon_pages = ('ABANDONLEARNINGMIRRORMOVE', 'STOPLEARNINGMIRRORMOVE', 'LEARNINGMIRRORMOVE', 'MIRRORMOVE')
     result_pages = (full_result, 'DIDNOTLEARNMIRRORMOVE', 'LEARNMIRRORMOVE', 'MIRRORMOVE')
-    if (compact == full_result or (full_result in _SESSION['history']
-                                  and stage == 'abandon_requested' and _prefix(compact, result_pages))):
+    if (compact == full_result or (_SESSION.get('result_prefix_observed') is True
+                                  and compact in {'MIRRORMOVE','DIDNOTLEARNMIRRORMOVE'})):
         if (not _SESSION['seen_move'] or not _SESSION['abandon_yes_requested']
                 or stage != 'abandon_requested'):
             return _fail('fearow_skip_completion_not_verified')
@@ -174,6 +194,16 @@ def _fearow_skip(rows, progress):
         return _hint('a', 'skip_mirror_move_confirmed', learning_complete=True,
                      learning_result='skipped_unchanged', learning_moves_unchanged=True,
                      moves_verified=[64, 45, 43, 31])
+    if stage == 'abandon_requested' and compact == 'FEAROWDIDNOTLEARN':
+        if not _SESSION['seen_move'] or not _SESSION['abandon_yes_requested']:
+            return _fail('fearow_skip_completion_not_verified')
+        if '▼' in lower:
+            _SESSION['result_prefix_observed'] = True
+            return _hint('a', 'advance_verified_mirror_did_not_learn_page', learning_moves_unchanged=True)
+        return _wait('await_complete_mirror_result_prefix')
+    if (_SESSION.get('result_prefix_observed') is True and stage == 'abandon_requested'
+            and _prefix(compact, ('MIRRORMOVE',))):
+        return _wait('await_complete_mirror_move_result_tail')
     if not compact and not choices:
         return _wait('await_known_mirror_skip_transition')
     abandon_start = compact and any(word.startswith(compact) or word in compact
@@ -256,7 +286,7 @@ def context(text, progress):
             _SESSION = {'kind': 'fearow_mirror_skip', 'stage': 'intro', 'index': index,
                         'baseline': _fingerprint(party), 'plan': plan, 'seen_move': False,
                         'history': '', 'last_page': None, 'delete_no_requested': False,
-                        'abandon_yes_requested': False, 'waits': 0, 'schema_version': 2}
+                        'abandon_yes_requested': False, 'waits': 0, 'schema_version': 3}
             return _fearow_skip(rows, progress)
         if (plan['decision'] != 'replace' or plan.get('replace_index') != 0
                 or plan.get('forget') != 'POISONPOWDER' or plan.get('move') != 'RAZOR_LEAF'):
@@ -268,9 +298,35 @@ def context(text, progress):
                     'before': (77, 15, 73, 22), 'plan': plan, 'seen_move': False,
                     'history': '', 'last_page': None, 'delete_yes_requested': False,
                     'seen_forgot': False, 'and_requested': False, 'abandon_yes_requested': False,
-                    'waits': 0, 'schema_version': 1}
+                    'waits': 0, 'schema_version': 2}
     if _SESSION.get('kind') == 'fearow_mirror_skip':
         return _fearow_skip(rows, progress)
+    # 唯一已審查的v1卡頁：Poof完整顯示後仍被當作自動動畫等待。
+    # 只解除同一不可逆選擇、同一頁及全隊原四招均未變的timeout；不是學會證明。
+    index = _SESSION['index']
+    if (_SESSION.get('schema_version') == 1
+            and _SESSION.get('error') == 'natural_learning_known_transition_wait_exhausted'
+            and _SESSION.get('stage') == 'forget_selected'
+            and _SESSION.get('seen_move') is True and _SESSION.get('delete_yes_requested') is True
+            and _SESSION.get('seen_forgot') is False and _SESSION.get('and_requested') is False
+            and _SESSION.get('last_page') == '12ANDPOOF' and compact == '12ANDPOOF'
+            and ('!' in lower or '▼' in lower)
+            and _SESSION.get('before') == (77, 15, 73, 22)
+            and _SESSION.get('plan', {}).get('decision') == 'replace'
+            and _SESSION['plan'].get('replace_index') == 0
+            and _SESSION['plan'].get('forget') == 'POISONPOWDER'
+            and _SESSION['plan'].get('move') == 'RAZOR_LEAF'
+            and progress.get('party_read_valid') is True and isinstance(party, list)
+            and type(index) is int and 0 <= index < len(party)
+            and party[index].get('species') == 9 and party[index].get('level') == 30
+            and _fingerprint(party) == _SESSION['baseline']):
+        _SESSION.pop('error')
+        _SESSION['schema_version'] = 2
+        _SESSION['waits'] = 0
+        _SESSION['migration_v2_reviewed_poof_page'] = {
+            'cleared_error': 'natural_learning_known_transition_wait_exhausted',
+            'verified_page': '12ANDPOOF', 'moves_unchanged': True,
+            'completion_verified': False}
     if _SESSION.get('error'):
         return _fail(_SESSION['error'])
     current = _fingerprint(party)
@@ -357,6 +413,13 @@ def context(text, progress):
                 return _hint('a', 'advance_verified_poisonpowder_forgot')
             return _wait('await_verified_poisonpowder_forgot')
         if _prefix(compact, _POOF) and stage == 'forget_selected':
+            if compact == '12ANDPOOF' and ('!' in lower or '▼' in lower):
+                if (not _SESSION['seen_move'] or not _SESSION['delete_yes_requested']
+                        or current != _SESSION['baseline']):
+                    return _fail('natural_learning_poof_without_verified_selection')
+                # text_pause之後的_ForgotAndText以para銜接；與已校準CUT流程相同。
+                # 只前進這個已完成頁；仍須另見FORGOT POISONPOWDER及And...才驗證改招。
+                return _hint('a', 'advance_verified_poisonpowder_poof')
             return _wait('await_forget_animation')
         if not compact:
             return _wait('await_known_learning_transition')

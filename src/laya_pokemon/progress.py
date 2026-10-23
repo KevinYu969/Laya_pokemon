@@ -139,4 +139,8 @@ def read_progress(pyboy, constants=None) -> dict:
             result["badge_count"] = badges.bit_count()
         result["champion_observed"] = result["story_event_bits"].get("beat_champion_rival")
     # hall_of_fame_dex_rating 的事件名稱不足以證明完成名人堂登錄。
+    from .rocket_progress import read_rocket_progress
+    rocket=read_rocket_progress(pyboy.memory,result,constants)
+    result['story_event_bits'].update(rocket['story_event_bits'])
+    result['rocket_item_presence']=rocket['item_presence']
     return result

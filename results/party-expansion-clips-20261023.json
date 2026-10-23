@@ -1,0 +1,1452 @@
+{
+  "at": "2026-10-23T15:28:28.223557+00:00",
+  "source_run": "league-campaign-20261023-14+16",
+  "status": "verified_local_unpublished",
+  "published": false,
+  "clip_count": 6,
+  "closed_source_videos_only": true,
+  "scenes": [
+    {
+      "caption_zh_tw": "正常領取伊布，選NO保留原名，第四位隊員成功入隊",
+      "source_intervals": [
+        [
+          2739,
+          2751
+        ]
+      ],
+      "notes_zh_tw": "保留正常轉向、領球、收取文字、暱稱YES轉NO及確認後回野外；未產生或改寫遊戲畫面。來源前置工程審查等待不在遊戲影格中；原速亦不是牆鐘節奏。",
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-011.mp4",
+          "source_video_sha256": "1bf2208273e9a054b3546ce4cd26eedb578e3607546208c5ac896ecbcf3a741c",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-011.jsonl",
+          "source_log_sha256": "2b1788ca58339cb252e8343bf41078c761016bd4fc1c93a40e8759c110d3205a",
+          "source_steps": [
+            2739,
+            2739
+          ],
+          "source_start_emulated_seconds": 19.333333333333332,
+          "source_duration_emulated_seconds": 0.6666666666666666,
+          "source_first_action_recorded_at": "2026-10-23T15:03:50.381764+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:03:50.381764+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 520.875,
+            "review_pause_seconds": 520.562,
+            "model_wait_seconds": 0.234,
+            "non_review_wall_seconds": 0.313
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-012.mp4",
+          "source_video_sha256": "a5874124c2716f3ecb38c1fae3accec45e4b2b2a0d9cc34c5b50f4522f64105e",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-012.jsonl",
+          "source_log_sha256": "d70ae820142c49d55e22980a44e702c5dd5464a69b60ea20ce838060b06bfa08",
+          "source_steps": [
+            2740,
+            2751
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 8.0,
+          "source_first_action_recorded_at": "2026-10-23T15:03:50.782735+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:03:51.583087+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 1.187,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.547,
+            "non_review_wall_seconds": 1.187
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/party-expansion-20261023/eevee-gift-decline-nickname-post1x.mp4",
+          "sha256": "ac6af64ddf3e6e60e6311a0405a9ad3da0a599dd4b000df384129bfe1d87c864",
+          "frames_decoded": 260,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 8.666666666666666,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 8.666666666666666,
+          "editing_zh_tw": "原始PyBoy遊戲像素，後製1x；未重建推論或工程等待，片長不是牆鐘任務耗時。1x只表示模擬遊戲影格原速。"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/eevee-gift-decline-nickname-post4x.mp4",
+          "sha256": "86e81d98ae5717e8a6e18bdf2eae0a563bb1350aef2faac95130369a7210d01f",
+          "frames_decoded": 65,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 2.1666666666666665,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 2.1666666666666665,
+          "editing_zh_tw": "原始PyBoy遊戲像素，後製4x；未重建推論或工程等待，片長不是牆鐘任務耗時。1x只表示模擬遊戲影格原速。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/party-expansion-20261023/eevee-gift-ball-before.png",
+          "sha256": "25f01ea9f1315f0ee348e55f4ebdeef1c67e739f74ff97e51e407df097c3fae0",
+          "source_step_observation": 2740,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-012.mp4",
+          "source_emulated_seconds": 0,
+          "visible_text_candidates": [],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/kevin-got-eevee.png",
+          "sha256": "0a94902398c1fb12b51aa29c332082a827bcc23bf993f342f85b48d3e841e6df",
+          "source_step_observation": 2742,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-012.mp4",
+          "source_emulated_seconds": 1.2666666666666666,
+          "visible_text_candidates": [
+            " KEVIN got",
+            " EEVEE!"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/eevee-nickname-yes-before-down.png",
+          "sha256": "a6f814e7faa80dcefe9671cac17d57a7f0c55ca24de66a8341a3c3bda9320a00",
+          "source_step_observation": 2747,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-012.mp4",
+          "source_emulated_seconds": 4.6000000000000005,
+          "visible_text_candidates": [
+            "               ▶YES",
+            "                NO",
+            " give a nickname",
+            " to EEVEE?"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/eevee-nickname-no-confirm.png",
+          "sha256": "92fa902e818788193e3c66d72a641b84c33d0ff3b3f8c238a0e352430e3cb3ca",
+          "source_step_observation": 2748,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-012.mp4",
+          "source_emulated_seconds": 5.266666666666667,
+          "visible_text_candidates": [
+            "                YES",
+            "               ▶NO",
+            " give a nickname",
+            " to EEVEE?"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/eevee-gift-ball-removed.png",
+          "sha256": "e4dc6a21c94cb0c28cd0b872bfbcbe0e76df1ebf74b2467beb068929cbea11e6",
+          "source_step_observation": 2749,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-012.mp4",
+          "source_emulated_seconds": 5.933333333333334,
+          "visible_text_candidates": [],
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "verified_completion": {
+        "at_utc": "2026-10-23T15:03:51.464406+00:00",
+        "at_taipei": "2026-10-23T23:03:51.464406+08:00",
+        "party_count": 4,
+        "new_member": {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 25,
+          "hp": 63,
+          "max_hp": 63,
+          "exp": 15625,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            0,
+            0
+          ],
+          "pp": [
+            35,
+            15,
+            0,
+            0
+          ]
+        },
+        "nickname_declined": true,
+        "existing_members_unchanged": true,
+        "decline_action_steps": [
+          2747,
+          2748
+        ]
+      },
+      "source_run": "league-campaign-20261023-14"
+    },
+    {
+      "caption_zh_tw": "四人隊伍含25級伊布，正常SWITCH將26級尼多力諾放首位",
+      "source_intervals": [
+        [
+          2816,
+          2825
+        ]
+      ],
+      "notes_zh_tw": "連續保留選POKéMON、四人列表、SWITCH、選首位及取消回選單，證據是正常選單操作與完整隊伍指紋重新排序；沒有額外操控遊戲來補拍。",
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-013.mp4",
+          "source_video_sha256": "e517483f0af5b5324abbe81e88073808ab6e4c30dd97d7b43a52f79b17ca2851",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-013.jsonl",
+          "source_log_sha256": "ea73eca304b96eb07b9b855bf4b641feaf9ff3ad86eab7f69a81d0b06a32ad14",
+          "source_steps": [
+            2816,
+            2825
+          ],
+          "source_start_emulated_seconds": 1.3333333333333333,
+          "source_duration_emulated_seconds": 6.666666666666667,
+          "source_first_action_recorded_at": "2026-10-23T15:06:25.288025+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:06:25.655043+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.406,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.406
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/party-expansion-20261023/four-member-party-normal-lead-switch-post1x.mp4",
+          "sha256": "938fee7e03804f8d5686eac8a3d357130319b8a6f9891bc6a73a59c00a0cb7aa",
+          "frames_decoded": 200,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 6.666666666666667,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 6.666666666666667,
+          "editing_zh_tw": "原始PyBoy遊戲像素，後製1x；未重建推論或工程等待，片長不是牆鐘任務耗時。1x只表示模擬遊戲影格原速。"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/four-member-party-normal-lead-switch-post4x.mp4",
+          "sha256": "f17a11cbeae8887d90df9793d04810863859d8e8f18de963eef8355c8212555f",
+          "frames_decoded": 50,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 1.6666666666666667,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 1.6666666666666667,
+          "editing_zh_tw": "原始PyBoy遊戲像素，後製4x；未重建推論或工程等待，片長不是牆鐘任務耗時。1x只表示模擬遊戲影格原速。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/party-expansion-20261023/four-member-party-with-eevee.png",
+          "sha256": "2b84bb61b64c6cf54ae13d9b17b997cf151d0fd8601789e4a59a3a328f51c7b2",
+          "source_step_observation": 2817,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-013.mp4",
+          "source_emulated_seconds": 1.9333333333333333,
+          "visible_text_candidates": [
+            "   FEAROW     29",
+            "              90/ 90",
+            "   NIDORINO   26",
+            "              79/ 79",
+            "   IVYSAUR    30",
+            "▶             84/ 84",
+            "   EEVEE      25",
+            "              63/ 63",
+            " Choose a POKéMON."
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/normal-party-switch-menu.png",
+          "sha256": "eb02d837ae02989b471d37929a3903e0bdaeb764b33538d6eb977c7acaf164f0",
+          "source_step_observation": 2820,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-013.mp4",
+          "source_emulated_seconds": 3.933333333333333,
+          "visible_text_candidates": [
+            "   FEAROW     29",
+            "              90/ 90",
+            "   NIDORINO   26",
+            "▷             79/ 79",
+            "   IVYSAUR    30",
+            "              84/ 84",
+            "   EEVEE      25",
+            "              63/ 63",
+            "             STATS",
+            " Choose a P ▶SWITCH",
+            "             CANCEL"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/nidorino-lead-four-member-party.png",
+          "sha256": "852e74a6e915016a271f491d10c9966edac4363fe0a7fee290d38af462a10e4e",
+          "source_step_observation": 2823,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-013.mp4",
+          "source_emulated_seconds": 5.933333333333334,
+          "visible_text_candidates": [
+            "   NIDORINO   26",
+            "▶             79/ 79",
+            "   FEAROW     29",
+            "              90/ 90",
+            "   IVYSAUR    30",
+            "              84/ 84",
+            "   EEVEE      25",
+            "              63/ 63",
+            " Choose a POKéMON."
+          ],
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "verified_completion": {
+        "source_step": 2823,
+        "recorded_at_utc": "2026-10-23T15:06:25.566270+00:00",
+        "before_species_order": [
+          35,
+          167,
+          9,
+          102
+        ],
+        "after_species_order": [
+          167,
+          35,
+          9,
+          102
+        ],
+        "members_unchanged_except_order": true,
+        "eevee_level": 25,
+        "eevee_hp": [
+          63,
+          63
+        ]
+      },
+      "source_run": "league-campaign-20261023-14"
+    },
+    {
+      "id": "nidorino-tm11-bubblebeam",
+      "source_run": "league-campaign-20261023-16",
+      "caption_zh_tw": "尼多力諾正常用TM11學會泡沫光線，只遺忘瞪眼LEER",
+      "source_intervals": [
+        [
+          14,
+          60
+        ]
+      ],
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-000.mp4",
+          "source_video_sha256": "3d27852362fc6cb2bea2eb5a0c84dbf2e0effd16ba2e36b0e20fd4901d0b5179",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-000.jsonl",
+          "source_log_sha256": "eb640f186739d24e48ad630034b2410d22a7eb78400dd3bd3b12ef42cfb158f6",
+          "source_steps": [
+            14,
+            21
+          ],
+          "source_start_emulated_seconds": 24.8,
+          "source_duration_emulated_seconds": 5.333333333333333,
+          "source_first_action_recorded_at": "2026-10-23T15:08:54.222980+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:11:25.028392+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 151.203,
+            "review_pause_seconds": 149.812,
+            "model_wait_seconds": 1.0,
+            "non_review_wall_seconds": 1.391
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-001.mp4",
+          "source_video_sha256": "297a61b786f4e1406bf1be0b8624a2c58dd7a693f2ac677a52e3074187be90ab",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-001.jsonl",
+          "source_log_sha256": "d7f184c2333a77abdcbe04adb030e8967d7e3a49979f3881d2dad56cd49c4385",
+          "source_steps": [
+            22,
+            27
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 4.0,
+          "source_first_action_recorded_at": "2026-10-23T15:11:25.171903+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:13:04.907458+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 99.875,
+            "review_pause_seconds": 99.5,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.375
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-002.mp4",
+          "source_video_sha256": "e499c623e678bc941c0e829d9e40d26b8c7bc28246a99e250dd791b9e3ceb47c",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-002.jsonl",
+          "source_log_sha256": "edaf69cc923934a983b8f428178975547e342c27ce0f12c40360223f49195420",
+          "source_steps": [
+            28,
+            28
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 0.6666666666666666,
+          "source_first_action_recorded_at": "2026-10-23T15:14:52.267954+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:14:52.267954+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 107.36,
+            "review_pause_seconds": 107.187,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.173
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-003.mp4",
+          "source_video_sha256": "8ffc0ffd8cfc4faf3214e4adaf847f140aa954a0c73cab341710ded6eaf19152",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-003.jsonl",
+          "source_log_sha256": "0c19aa46b3186b96d14f10feaf13bb58211cb799bcb08519722bc19d16b3e32c",
+          "source_steps": [
+            29,
+            34
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 4.0,
+          "source_first_action_recorded_at": "2026-10-23T15:14:52.411157+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:16:38.847137+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 106.578,
+            "review_pause_seconds": 106.172,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.406
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-004.mp4",
+          "source_video_sha256": "6ce5ec82c8cb398b3ea0b57654980368464410384d310cb1ca5828639a3cf0a4",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-004.jsonl",
+          "source_log_sha256": "d119d4016298c6fb9f604a2cff42f89938a55858acf9c7584cac98039f125914",
+          "source_steps": [
+            35,
+            42
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 5.333333333333333,
+          "source_first_action_recorded_at": "2026-10-23T15:16:38.985798+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:18:12.226190+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 93.375,
+            "review_pause_seconds": 92.906,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.469
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-005.mp4",
+          "source_video_sha256": "ed7efca98f2bc3d3282524d15ff7709df2305622a46a6cd7495b8c10c4ac760f",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-005.jsonl",
+          "source_log_sha256": "5e1c5ec6703c964f07b11bab198d89c019644024f3caf5b0fcb6198db8ccaab0",
+          "source_steps": [
+            43,
+            59
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 11.333333333333334,
+          "source_first_action_recorded_at": "2026-10-23T15:18:12.358606+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:19:36.520381+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 84.297,
+            "review_pause_seconds": 83.156,
+            "model_wait_seconds": 0.313,
+            "non_review_wall_seconds": 1.141
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-16/game/video-006.mp4",
+          "source_video_sha256": "8bd890491d13457ffb13ef297cf41462863897ad072610ad58c927d24e9801fb",
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-006.jsonl",
+          "source_log_sha256": "746f09f8044b3881262be4a4f6116f94bf5802b780c795bc1ea37658e092f95d",
+          "source_steps": [
+            60,
+            60
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 0.6666666666666666,
+          "source_first_action_recorded_at": "2026-10-23T15:19:36.698722+00:00",
+          "source_last_action_recorded_at": "2026-10-23T15:19:36.698722+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.172,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.172
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/party-expansion-20261023/nidorino-tm11-bubblebeam-only-leer-replaced-post1x.mp4",
+          "sha256": "0fd786c06bce368b7b00d789ce2f1c97e0b1455c7dd272186daf27ed564b00d8",
+          "frames_decoded": 940,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 31.333333333333332,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 1,
+          "expected_playback_seconds": 31.333333333333332,
+          "editing_zh_tw": "原始PyBoy遊戲像素，後製1x；完整保留14–60步及六次暫停前後的來源順序，工程等待未重建。片長不是實際學招牆鐘耗時或模型推論速度。"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/nidorino-tm11-bubblebeam-only-leer-replaced-post4x.mp4",
+          "sha256": "9b6d07e023d3186a6b0edd7b7f33c35106c0fea957e5a0cbbba1e23551fa85b7",
+          "frames_decoded": 235,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 7.833333333333333,
+          "full_frame_decode_passed": true,
+          "ffmpeg_xerror_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 7.833333333333333,
+          "editing_zh_tw": "原始PyBoy遊戲像素，後製4x；完整保留14–60步及六次暫停前後的來源順序，工程等待未重建。片長不是實際學招牆鐘耗時或模型推論速度。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/party-expansion-20261023/tm11-bag-selected.png",
+          "sha256": "fdfdcb40295402418dee3676b1ee9c625023e17f2e607bbfccf729188a0a48d5",
+          "source_step_observation": 20,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-000.mp4",
+          "source_emulated_seconds": 28.733333333333334,
+          "visible_text_candidates": [
+            "      TM34",
+            "      HELIX FOSSIL",
+            "     ▶TM11",
+            "      NUGGET",
+            "            EXIT"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/tm11-teach-bubblebeam-yes.png",
+          "sha256": "8d3d85c2bd457e52e88049770e2c6f100761b7faa2684f8984bb0a96e6c27fbd",
+          "source_step_observation": 27,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-001.mp4",
+          "source_emulated_seconds": 3.2666666666666666,
+          "visible_text_candidates": [
+            "      TM34",
+            "      HELIX FOSSIL",
+            "     ▷TM11     ▶YES",
+            "      NUGGET    NO",
+            " Teach BUBBLEBEAM",
+            " to a POKéMON?"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/nidorino-able-four-member-party.png",
+          "sha256": "292a2bfa25a992f05bf1efc48b5fff556b65e7034547a62bf56acf326b269674",
+          "source_step_observation": 28,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-002.mp4",
+          "source_emulated_seconds": 0,
+          "visible_text_candidates": [
+            "   NIDORINO   26",
+            "▶           ABLE",
+            "   FEAROW     29",
+            "            NOT ABLE",
+            "   IVYSAUR    30",
+            "            NOT ABLE",
+            "   EEVEE      25",
+            "            NOT ABLE",
+            " Use TM on which",
+            " POKéMON?"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/bubblebeam-forget-only-leer-selected.png",
+          "sha256": "32a90181d475d76761d2d298a1deae542f51fe6e0d904443f02d8964255e63f9",
+          "source_step_observation": 45,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-005.mp4",
+          "source_emulated_seconds": 1.2666666666666666,
+          "visible_text_candidates": [
+            "   NIDORINO   26",
+            "▷           ABLE",
+            "   FEAROW     29",
+            "            NOT ABLE",
+            "   IVYSAUR    30",
+            "            NOT ABLE",
+            "   EEVEE      25",
+            "     ▶LEER",
+            "      TACKLE",
+            "      HORN ATTACK",
+            "      POISON STING",
+            " Which move should"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/nidorino-forgot-leer.png",
+          "sha256": "7bb3a4ebca1bfb5851b2104ade0a9127995347adf7ef4ae7fa65bc2b4395d5e5",
+          "source_step_observation": 50,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-005.mp4",
+          "source_emulated_seconds": 4.6000000000000005,
+          "visible_text_candidates": [
+            "   NIDORINO   26",
+            "▷           ABLE",
+            "   FEAROW     29",
+            "            NOT ABLE",
+            "   IVYSAUR    30",
+            "            NOT ABLE",
+            "   EEVEE      25",
+            "            NOT ABLE",
+            " NIDORINO forgot",
+            " LEER!"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/nidorino-learned-bubblebeam.png",
+          "sha256": "e33a63b2b1c9c8c38937e7a1b788b35bfd3cd722d5a508691ccd6522db7d8c70",
+          "source_step_observation": 56,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-005.mp4",
+          "source_emulated_seconds": 8.6,
+          "visible_text_candidates": [
+            "   NIDORINO   26",
+            "▷           ABLE",
+            "   FEAROW     29",
+            "            NOT ABLE",
+            "   IVYSAUR    30",
+            "            NOT ABLE",
+            "   EEVEE      25",
+            "            NOT ABLE",
+            " NIDORINO learned",
+            " BUBBLEBEAM!      ▼"
+          ],
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/party-expansion-20261023/bubblebeam-menus-closed-overworld.png",
+          "sha256": "f508a5717e784a499b2302c9843c833e89dff76fa6685f4c40b541f693f5729d",
+          "source_step_observation": 60,
+          "source_video": "outputs/league-campaign-20261023-16/game/video-006.mp4",
+          "source_emulated_seconds": 0,
+          "visible_text_candidates": [],
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "notes_zh_tw": "按原順序連續保留所有14–60動作影格，含選TM11、USE、YES、ABLE、Delete、四招只選LEER、Poof、FORGOT、And、LEARNED及關閉選單。六次工程暫停共638.733秒由日誌保留，影片省略等待，不代表一次無停頓成功；沒有回讀洗掉問題或改寫影格。",
+      "logged_review_pauses_in_original_order": [
+        {
+          "resume_action_step": 21,
+          "previous_action_step": 20,
+          "previous_action_recorded_at_utc": "2026-10-23T15:08:55.128097+00:00",
+          "resume_action_recorded_at_utc": "2026-10-23T15:11:25.028392+00:00",
+          "logged_review_pause_seconds": 149.812,
+          "cumulative_review_pause_seconds": 149.812,
+          "visible_ui_on_resume": [
+            "      TM34",
+            "      HELIX FOSSIL",
+            "     ▷TM11",
+            "      NUGGET",
+            "              ▶USE",
+            "               TOSS"
+          ],
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-000.jsonl",
+          "reason_caution_zh_tw": "此處證據為逐步timing的review_pause_seconds增量；未以不存在的review事件捏造精確錯誤原因。"
+        },
+        {
+          "resume_action_step": 27,
+          "previous_action_step": 26,
+          "previous_action_recorded_at_utc": "2026-10-23T15:11:25.339475+00:00",
+          "resume_action_recorded_at_utc": "2026-10-23T15:13:04.907458+00:00",
+          "logged_review_pause_seconds": 99.5,
+          "cumulative_review_pause_seconds": 249.312,
+          "visible_ui_on_resume": [
+            "      TM34",
+            "      HELIX FOSSIL",
+            "     ▷TM11     ▶YES",
+            "      NUGGET    NO",
+            " Teach BUBBLEBEAM",
+            " to a POKéMON?"
+          ],
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-001.jsonl",
+          "reason_caution_zh_tw": "此處證據為逐步timing的review_pause_seconds增量；未以不存在的review事件捏造精確錯誤原因。"
+        },
+        {
+          "resume_action_step": 28,
+          "previous_action_step": 27,
+          "previous_action_recorded_at_utc": "2026-10-23T15:13:04.907458+00:00",
+          "resume_action_recorded_at_utc": "2026-10-23T15:14:52.267954+00:00",
+          "logged_review_pause_seconds": 107.187,
+          "cumulative_review_pause_seconds": 356.499,
+          "visible_ui_on_resume": [
+            "   NIDORINO   26",
+            "▶           ABLE",
+            "   FEAROW     29",
+            "            NOT ABLE",
+            "   IVYSAUR    30",
+            "            NOT ABLE",
+            "   EEVEE      25",
+            "            NOT ABLE",
+            " Use TM on which",
+            " POKéMON?"
+          ],
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-002.jsonl",
+          "reason_caution_zh_tw": "此處證據為逐步timing的review_pause_seconds增量；未以不存在的review事件捏造精確錯誤原因。"
+        },
+        {
+          "resume_action_step": 34,
+          "previous_action_step": 33,
+          "previous_action_recorded_at_utc": "2026-10-23T15:14:52.593646+00:00",
+          "resume_action_recorded_at_utc": "2026-10-23T15:16:38.847137+00:00",
+          "logged_review_pause_seconds": 106.172,
+          "cumulative_review_pause_seconds": 462.671,
+          "visible_ui_on_resume": [
+            "   NIDORINO   26",
+            "▷           ABLE",
+            "   FEAROW     29",
+            "            NOT ABLE",
+            "   IVYSAUR    30",
+            "            NOT ABLE",
+            "   EEVEE      25",
+            "            NOT ABLE",
+            " But, NIDORINO",
+            " can't le"
+          ],
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-003.jsonl",
+          "reason_caution_zh_tw": "此處證據為逐步timing的review_pause_seconds增量；未以不存在的review事件捏造精確錯誤原因。"
+        },
+        {
+          "resume_action_step": 42,
+          "previous_action_step": 41,
+          "previous_action_recorded_at_utc": "2026-10-23T15:16:39.242671+00:00",
+          "resume_action_recorded_at_utc": "2026-10-23T15:18:12.226190+00:00",
+          "logged_review_pause_seconds": 92.906,
+          "cumulative_review_pause_seconds": 555.577,
+          "visible_ui_on_resume": [
+            "   NIDORINO   26",
+            "▷           ABLE",
+            "   FEAROW     29",
+            "            NOT ABLE",
+            "   IVYSAUR    30",
+            "            NOT ABLE",
+            "   EEVEE      25",
+            "            NO",
+            "               ▶YES",
+            "                NO",
+            " move to make room",
+            " for BUBBLEBEAM?"
+          ],
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-004.jsonl",
+          "reason_caution_zh_tw": "此處證據為逐步timing的review_pause_seconds增量；未以不存在的review事件捏造精確錯誤原因。"
+        },
+        {
+          "resume_action_step": 59,
+          "previous_action_step": 58,
+          "previous_action_recorded_at_utc": "2026-10-23T15:18:13.294370+00:00",
+          "resume_action_recorded_at_utc": "2026-10-23T15:19:36.520381+00:00",
+          "logged_review_pause_seconds": 83.156,
+          "cumulative_review_pause_seconds": 638.733,
+          "visible_ui_on_resume": [
+            "            POKéDEX",
+            "            POKéMON",
+            "           ▶ITEM",
+            "            KEVIN",
+            "            SAVE",
+            "            OPTION",
+            "            EXIT"
+          ],
+          "source_log": "outputs/league-campaign-20261023-16/game/steps-005.jsonl",
+          "reason_caution_zh_tw": "此處證據為逐步timing的review_pause_seconds增量；未以不存在的review事件捏造精確錯誤原因。"
+        }
+      ],
+      "verified_completion": {
+        "at_utc": "2026-10-23T15:19:36.625273+00:00",
+        "at_taipei": "2026-10-23T23:19:36.625273+08:00",
+        "species": 167,
+        "level": 26,
+        "before_moves": [
+          43,
+          33,
+          30,
+          40
+        ],
+        "after_moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "after_pp": [
+          20,
+          35,
+          25,
+          35
+        ],
+        "forgotten_move": 43,
+        "protected_moves": [
+          33,
+          30,
+          40
+        ],
+        "tm_consumed": 211,
+        "tm_quantity_used": 1,
+        "other_party_unchanged": true,
+        "other_inventory_unchanged": true,
+        "overworld_observation_step": 60,
+        "logged_timing_from_previous_action_to_verified_completion": {
+          "wall_seconds": 642.797,
+          "review_pause_seconds": 638.733,
+          "model_wait_seconds": 1.313,
+          "non_review_wall_seconds": 4.064
+        }
+      }
+    }
+  ],
+  "timing_caution_zh_tw": "1x為模擬遊戲影格原速；4x為後製四倍。兩者皆省略推論、工程及檢討等待，不代表模型速度或牆鐘通關時間。領取時間獨立依完成事件列出。",
+  "source_video_validation": [
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-011.mp4",
+      "sha256": "1bf2208273e9a054b3546ce4cd26eedb578e3607546208c5ac896ecbcf3a741c",
+      "frames_decoded": 300,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 20.0,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-14/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:03:50.473001+00:00",
+        "segment": 11,
+        "timing": {
+          "wall_seconds": 3495.766,
+          "model_wait_seconds": 56.265,
+          "review_pause_seconds": 3251.906,
+          "non_review_session_seconds": 243.86,
+          "emulated_seconds": 3367.467
+        },
+        "video": {
+          "filename": "video-011.mp4",
+          "fps": 15,
+          "frames": 300,
+          "playback_seconds": 20.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      }
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-012.mp4",
+      "sha256": "a5874124c2716f3ecb38c1fae3accec45e4b2b2a0d9cc34c5b50f4522f64105e",
+      "frames_decoded": 740,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 49.333333333333336,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-14/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:06:25.139687+00:00",
+        "segment": 12,
+        "timing": {
+          "wall_seconds": 3650.438,
+          "model_wait_seconds": 57.422,
+          "review_pause_seconds": 3402.156,
+          "non_review_session_seconds": 248.282,
+          "emulated_seconds": 3416.8
+        },
+        "video": {
+          "filename": "video-012.mp4",
+          "fps": 15,
+          "frames": 740,
+          "playback_seconds": 49.333333333333336,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      }
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-013.mp4",
+      "sha256": "e517483f0af5b5324abbe81e88073808ab6e4c30dd97d7b43a52f79b17ca2851",
+      "frames_decoded": 170,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 11.333333333333334,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-14/game/summary.json",
+      "closure_summary_status": "saved_stopped",
+      "closure_record": {
+        "filename": "video-013.mp4",
+        "fps": 15,
+        "frames": 170,
+        "playback_seconds": 11.333333333333334,
+        "timing": "emulated_time",
+        "audio": false
+      }
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-000.mp4",
+      "sha256": "3d27852362fc6cb2bea2eb5a0c84dbf2e0effd16ba2e36b0e20fd4901d0b5179",
+      "frames_decoded": 452,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 30.133333333333333,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:11:25.106909+00:00",
+        "segment": 0,
+        "timing": {
+          "wall_seconds": 159.063,
+          "model_wait_seconds": 7.032,
+          "review_pause_seconds": 149.812,
+          "non_review_session_seconds": 9.251,
+          "emulated_seconds": 30.133
+        },
+        "video": {
+          "filename": "video-000.mp4",
+          "fps": 15,
+          "frames": 452,
+          "playback_seconds": 30.133333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "75e818cc2ae63cc318be3894ac30fa6ea80a32089ff4b436d7a7e2ed32f8874f"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-001.mp4",
+      "sha256": "297a61b786f4e1406bf1be0b8624a2c58dd7a693f2ac677a52e3074187be90ab",
+      "frames_decoded": 60,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 4.0,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:13:04.973167+00:00",
+        "segment": 1,
+        "timing": {
+          "wall_seconds": 258.922,
+          "model_wait_seconds": 7.032,
+          "review_pause_seconds": 249.312,
+          "non_review_session_seconds": 9.61,
+          "emulated_seconds": 34.133
+        },
+        "video": {
+          "filename": "video-001.mp4",
+          "fps": 15,
+          "frames": 60,
+          "playback_seconds": 4.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "c34be7e447f6e3cb79c6b9b39f82d15edebce5c119e4ad7818c1dd085d93bd7f"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-002.mp4",
+      "sha256": "e499c623e678bc941c0e829d9e40d26b8c7bc28246a99e250dd791b9e3ceb47c",
+      "frames_decoded": 10,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 0.6666666666666666,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:14:52.330155+00:00",
+        "segment": 2,
+        "timing": {
+          "wall_seconds": 366.281,
+          "model_wait_seconds": 7.032,
+          "review_pause_seconds": 356.499,
+          "non_review_session_seconds": 9.782,
+          "emulated_seconds": 34.8
+        },
+        "video": {
+          "filename": "video-002.mp4",
+          "fps": 15,
+          "frames": 10,
+          "playback_seconds": 0.6666666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "d054d5b9d12b11901ccf331a7f7228a7a7830bf09b9df6390daa9d0182a22917"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-003.mp4",
+      "sha256": "8ffc0ffd8cfc4faf3214e4adaf847f140aa954a0c73cab341710ded6eaf19152",
+      "frames_decoded": 60,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 4.0,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:16:38.915931+00:00",
+        "segment": 3,
+        "timing": {
+          "wall_seconds": 472.859,
+          "model_wait_seconds": 7.032,
+          "review_pause_seconds": 462.671,
+          "non_review_session_seconds": 10.188,
+          "emulated_seconds": 38.8
+        },
+        "video": {
+          "filename": "video-003.mp4",
+          "fps": 15,
+          "frames": 60,
+          "playback_seconds": 4.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "031b84936a5bfabc086e301a88ecbd1ed90952da09cb63339fb1f8ea106992a0"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-004.mp4",
+      "sha256": "6ce5ec82c8cb398b3ea0b57654980368464410384d310cb1ca5828639a3cf0a4",
+      "frames_decoded": 80,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 5.333333333333333,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:18:12.292282+00:00",
+        "segment": 4,
+        "timing": {
+          "wall_seconds": 566.234,
+          "model_wait_seconds": 7.032,
+          "review_pause_seconds": 555.577,
+          "non_review_session_seconds": 10.657,
+          "emulated_seconds": 44.133
+        },
+        "video": {
+          "filename": "video-004.mp4",
+          "fps": 15,
+          "frames": 80,
+          "playback_seconds": 5.333333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "55288eea93d59ed0066460b622ea7a71f101d473bb4018f5bcbb35e959fb9b98"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-005.mp4",
+      "sha256": "ed7efca98f2bc3d3282524d15ff7709df2305622a46a6cd7495b8c10c4ac760f",
+      "frames_decoded": 170,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 11.333333333333334,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:19:36.594390+00:00",
+        "segment": 5,
+        "timing": {
+          "wall_seconds": 650.547,
+          "model_wait_seconds": 7.345,
+          "review_pause_seconds": 638.733,
+          "non_review_session_seconds": 11.814,
+          "emulated_seconds": 55.467
+        },
+        "video": {
+          "filename": "video-005.mp4",
+          "fps": 15,
+          "frames": 170,
+          "playback_seconds": 11.333333333333334,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "bac8050908afb47981aea45ae8befdf06281aaab6ae479ca722ea159ee7c9e16"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/video-006.mp4",
+      "sha256": "8bd890491d13457ffb13ef297cf41462863897ad072610ad58c927d24e9801fb",
+      "frames_decoded": 490,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 32.666666666666664,
+      "full_frame_decode_passed": true,
+      "ffmpeg_xerror_decode_passed": true,
+      "closure_source": "outputs/league-campaign-20261023-16/game/segments.jsonl",
+      "closure_record": {
+        "at": "2026-10-23T15:20:46.295354+00:00",
+        "segment": 6,
+        "timing": {
+          "wall_seconds": 720.25,
+          "model_wait_seconds": 9.391,
+          "review_pause_seconds": 704.171,
+          "non_review_session_seconds": 16.079,
+          "emulated_seconds": 88.133
+        },
+        "video": {
+          "filename": "video-006.mp4",
+          "fps": 15,
+          "frames": 490,
+          "playback_seconds": 32.666666666666664,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256_without_newline": "8f2b3e16217a3b6c99a37ee471d006f688adf049a64e1dd92c87f0b3f2dac01b"
+    }
+  ],
+  "supporting_event_snapshots": [
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/field-moves.jsonl",
+      "source_record_sha256_without_newline": "1c552cf00c8f0d314367b71035975443cb05cc64b7505ac02f1823a35d51ab2d",
+      "record": {
+        "at": "2026-10-23T15:03:51.464406+00:00",
+        "context": {
+          "phase": "gift_menu",
+          "objective": "Wait.",
+          "available_actions": [
+            "wait"
+          ],
+          "controller_menu_verified": true,
+          "gift_tactic": "gift_verified_complete",
+          "phase_source": "bounded source-verified visible Eevee gift controller",
+          "gift_controller": "source_verified_eevee_candidate",
+          "gift_stage": "complete",
+          "gift_calls": 10,
+          "gift_wait_count": 0,
+          "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+          "sources": {
+            "gift": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/CeladonMansionRoofHouse.asm#L12",
+            "give": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/events/give_pokemon.asm#L1",
+            "nickname_call": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/add_mon.asm#L40",
+            "nickname_menu": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/naming_screen.asm#L1",
+            "nickname_text": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_2.asm#L1756",
+            "receipt_text": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_5.asm#L75",
+            "initial_moves": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/eevee.asm#L13",
+            "learnset": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/evos_moves.asm#L1252",
+            "toggle_index": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm#L140",
+            "toggle_flags": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/ram/wram.asm#L1910",
+            "toggle_bit": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/toggleable_objects.asm#L137"
+          },
+          "gift_eevee_complete": true,
+          "gift_species": 102,
+          "gift_level": 25,
+          "gift_moves": [
+            33,
+            28,
+            0,
+            0
+          ],
+          "gift_pp": [
+            35,
+            15,
+            0,
+            0
+          ],
+          "gift_toggle_index": 69,
+          "existing_members_unchanged": true,
+          "nickname_declined": true,
+          "field_move_complete": true,
+          "field_move_kind": "gift_eevee"
+        },
+        "party": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 29,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 25202,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 167,
+            "species_name": "NIDORINO",
+            "level": 26,
+            "hp": 79,
+            "max_hp": 79,
+            "exp": 14516,
+            "status": 0,
+            "moves": [
+              43,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              30,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 30,
+            "hp": 84,
+            "max_hp": 84,
+            "exp": 22487,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 25,
+            "hp": 63,
+            "max_hp": 63,
+            "exp": 15625,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              0,
+              0
+            ],
+            "pp": [
+              35,
+              15,
+              0,
+              0
+            ]
+          }
+        ],
+        "timing": {
+          "wall_seconds": 3496.766,
+          "model_wait_seconds": 56.812,
+          "review_pause_seconds": 3251.906,
+          "non_review_session_seconds": 244.86,
+          "emulated_seconds": 3373.467
+        }
+      }
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-16/game/field-moves.jsonl",
+      "source_record_sha256_without_newline": "c2bc97a752c9d022fb2359aaa677cebe8eba7832906930734e6ba58607894a64",
+      "record": {
+        "at": "2026-10-23T15:19:36.625273+00:00",
+        "context": {
+          "phase": "tm_teaching_complete",
+          "objective": "Wait.",
+          "available_actions": [
+            "wait"
+          ],
+          "tm_teaching_complete": true,
+          "tm_teaching_kind": "teach_bubblebeam",
+          "moves_verified": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "tm_consumed": 211,
+          "tm_quantity_used": 1,
+          "forgotten_move": 43,
+          "protected_moves": [
+            33,
+            30,
+            40
+          ],
+          "sources": [
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/nidorino.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/moves/moves.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/learn_move.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_4.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm"
+          ],
+          "field_move_complete": true,
+          "field_move_kind": "teach_bubblebeam"
+        },
+        "party": [
+          {
+            "species": 167,
+            "species_name": "NIDORINO",
+            "level": 26,
+            "hp": 79,
+            "max_hp": 79,
+            "exp": 14516,
+            "status": 0,
+            "moves": [
+              61,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 29,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 25202,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 30,
+            "hp": 84,
+            "max_hp": 84,
+            "exp": 22487,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 25,
+            "hp": 63,
+            "max_hp": 63,
+            "exp": 15625,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              0,
+              0
+            ],
+            "pp": [
+              35,
+              15,
+              0,
+              0
+            ]
+          }
+        ],
+        "timing": {
+          "wall_seconds": 650.578,
+          "model_wait_seconds": 7.345,
+          "review_pause_seconds": 638.733,
+          "non_review_session_seconds": 11.845,
+          "emulated_seconds": 55.467
+        }
+      }
+    }
+  ],
+  "source_frame_alignment_note_zh_tw": "step觀測在動作前，at在動作後；截圖取累積emulated_frames之前一個15fps來源影格，邊界有一幀量化限制。",
+  "pending": [],
+  "visual_review": {
+    "screenshots_checked": 8,
+    "passed": true,
+    "confirmed_zh_tw": [
+      "領取前桌上有球",
+      "KEVIN got EEVEE收取文字",
+      "暱稱YES與NO兩個游標位置",
+      "完成後球已移除",
+      "四人隊伍含25級伊布63/63",
+      "正常SWITCH選單",
+      "尼多力諾換首位後其餘三人仍在隊伍"
+    ]
+  },
+  "game_or_state_operations": false,
+  "source_footage_modified": false,
+  "source_runs": [
+    "league-campaign-20261023-14",
+    "league-campaign-20261023-16"
+  ]
+}

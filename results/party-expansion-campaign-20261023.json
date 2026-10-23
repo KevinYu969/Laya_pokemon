@@ -1,0 +1,185 @@
+{
+  "status": "verified_local_unpublished",
+  "record_date": "2026-10-23",
+  "eevee": {
+    "completed_at_utc": "2026-10-23T15:03:51.464406+00:00",
+    "completed_at_taipei": "2026-10-23T23:03:51.464406+08:00",
+    "species": 102,
+    "level": 25,
+    "hp": 63,
+    "max_hp": 63,
+    "moves": [
+      33,
+      28,
+      0,
+      0
+    ],
+    "pp": [
+      35,
+      15,
+      0,
+      0
+    ],
+    "nickname_declined": true,
+    "existing_members_unchanged": true,
+    "gift_object_removed_verified": true,
+    "evidence": "normal receipt, nickname NO, new actual party member and gift removal; no RAM or save edit"
+  },
+  "bubblebeam": {
+    "completed_at_utc": "2026-10-23T15:19:36.625273+00:00",
+    "completed_at_taipei": "2026-10-23T23:19:36.625273+08:00",
+    "species": 167,
+    "level": 26,
+    "before": [
+      43,
+      33,
+      30,
+      40
+    ],
+    "after": [
+      61,
+      33,
+      30,
+      40
+    ],
+    "pp": [
+      20,
+      35,
+      25,
+      35
+    ],
+    "tm11_item": 211,
+    "quantity_used": 1,
+    "forgotten_move": 43,
+    "closed_ui_verified": true
+  },
+  "party_after": [
+    {
+      "species": 167,
+      "species_name": "NIDORINO",
+      "level": 26,
+      "hp": 79,
+      "max_hp": 79,
+      "exp": 14516,
+      "status": 0,
+      "moves": [
+        61,
+        33,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        35,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 29,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 25202,
+      "status": 0,
+      "moves": [
+        64,
+        45,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        40,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 9,
+      "species_name": "IVYSAUR",
+      "level": 30,
+      "hp": 84,
+      "max_hp": 84,
+      "exp": 22487,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 25,
+      "hp": 63,
+      "max_hp": 63,
+      "exp": 15625,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        0,
+        0
+      ],
+      "pp": [
+        35,
+        15,
+        0,
+        0
+      ]
+    }
+  ],
+  "state_chain": {
+    "run14_final_sha256": "e87edfc84980f94091abb37ef6e3d9d03ad4ee1df6a3b74fabfd5309c1353a41",
+    "run16_source_matches": true,
+    "rollback": false,
+    "run15": "preserved failed startup: restricted network URLError before model decision or game; existing output retained, next retry used16"
+  },
+  "strata16": {
+    "usage": {
+      "prompt_tokens": 7588,
+      "completion_tokens": 24,
+      "total_tokens": 7612,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "latency_seconds": 4.10999999998603,
+    "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2",
+    "configuration_changed": false,
+    "cloud_fallback": false
+  },
+  "lessons_zh_tw": [
+    "導航抵達mechanic步驟只能wait交專用控制器，不能先泛按A；實際曾打開護士對話，正常保存續接並完成對話，沒有回讀戰前。",
+    "USE/TOSS為二列沒有CANCEL；YES/NO疊背包，名稱與等級分欄，紅版單格縮寫需保留字格座標。",
+    "四人隊NOT ABLE可被框截成NO，只能依已驗學員／基線相容性及固定殘字位置排除背景，不放寬未知重複選項。",
+    "背景格網成立不等於Window選單已關，完成須另排除可見菜單及下方文字。"
+  ],
+  "test_validation": "965 full suite passed; subsequent readonly rocket reader integration 94 related tests passed",
+  "evidence_files": [
+    {
+      "file": "outputs/league-campaign-20261023-14/game/field-moves.jsonl",
+      "selected_line_sha256": "1c552cf00c8f0d314367b71035975443cb05cc64b7505ac02f1823a35d51ab2d",
+      "hash_scope": "parsed selected record canonical serialization; not raw line"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-16/game/field-moves.jsonl",
+      "selected_line_sha256": "c2bc97a752c9d022fb2359aaa677cebe8eba7832906930734e6ba58607894a64",
+      "hash_scope": "parsed selected record canonical serialization; not raw line"
+    }
+  ],
+  "limits_zh_tw": [
+    "四名隊員不是最佳六人隊或同級；後續仍須正常進化／捕捉與輪換訓練。",
+    "尚未四天王、冠軍、名人堂；影片與狀態留本機，網站未正式發布。"
+  ]
+}

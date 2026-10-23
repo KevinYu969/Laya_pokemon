@@ -92,7 +92,7 @@ def test_complete_natural_replacement_requires_forgot_and_and_expected_fingerpri
     assert control.context(question('for RAZOR LEAF?', '', selected='NO'), state)['objective'] == 'Move UP.'
     assert control.context(question('for RAZOR LEAF?', ''), state)['menu_label'] == 'YES'
     assert control.context(forget(), state)['forgotten_move'] == 77
-    assert control.context(text_at((1, 14, '1, 2 and... Poof!')), state)['available_actions'] == ['wait']
+    assert control.context(text_at((1, 14, '1, 2 and... Poof!')), state)['available_actions'] == ['a', 'wait']
     result = control.context(text_at((1, 14, 'IVYSAUR forgot'), (1, 16, 'POISONPOWDER!')), state)
     assert result['learning_tactic'] == 'advance_verified_poisonpowder_forgot'
     assert control.context(text_at((1, 14, 'And...')), state)['learning_tactic'] == 'advance_verified_learning_and'
@@ -386,7 +386,7 @@ def test_fearow_name_and_final_result_can_wrap_across_separate_pages():
     control.context(text_at((1, 14, 'MOVE!')), state)
     control.context(question('Delete an older', 'move?', selected='NO'), state)
     control.context(question('Abandon learning', 'MIRROR MOVE?'), state)
-    assert control.context(text_at((1, 14, 'FEAROW did not'), (1, 16, 'learn▼')), state)['available_actions'] == ['wait']
+    assert control.context(text_at((1, 14, 'FEAROW did not'), (1, 16, 'learn▼')), state)['available_actions'] == ['a', 'wait']
     result = control.context(text_at((1, 14, 'MIRROR MOVE!')), state)
     assert result['learning_complete'] and result['learning_moves_unchanged']
 
@@ -456,3 +456,222 @@ def test_fearow_inactive_only_yes_no_cursor_cannot_confirm_any_option():
     page = question('Delete an older', 'move?', selected='NO')
     page['cells'][10][14] = '▷'
     assert control.context(page, state)['review_reason'] == 'fearow_skip_yes_no_cursor_unreadable'
+
+
+def mirror_result_prefix():
+    return text_at((1, 14, 'FEAROW'), (1, 16, 'did not learn'), (18, 16, '▼'))
+
+
+def test_live_mirror_did_not_learn_page_advances_only_then_waits_for_full_move_name():
+    state = fearow_progress()
+    mirror_to_abandon_yes(state)
+    result = control.context(mirror_result_prefix(), state)
+    assert result['learning_tactic'] == 'advance_verified_mirror_did_not_learn_page'
+    assert result['available_actions'] == ['a', 'wait'] and not result.get('learning_complete')
+    for partial in ('M', 'MIRROR', 'MIRROR MOV'):
+        result = control.context(text_at((1, 14, partial)), state)
+        assert result['available_actions'] == ['wait'] and not result.get('learning_complete')
+    result = control.context(text_at((1, 14, 'MIRROR MOVE!')), state)
+    assert result['learning_complete'] and result['learning_moves_unchanged']
+
+
+def legacy_result_timeout_session(state):
+    mirror_to_abandon_yes(state)
+    control._SESSION.update(schema_version=2, waits=31, last_page='FEAROWDIDNOTLEARN',
+                            error='natural_learning_known_transition_wait_exhausted')
+    control._SESSION['history'] += 'FEAROWDIDNOTLEARN'
+
+
+def test_reviewed_v2_result_timeout_migrates_exact_case_once_without_changing_proofs():
+    state = fearow_progress()
+    legacy_result_timeout_session(state)
+    preserved = {name: copy.deepcopy(control._SESSION[name])
+                 for name in ('baseline', 'history', 'stage', 'seen_move', 'abandon_yes_requested')}
+    importlib.reload(control)
+    result = control.context(mirror_result_prefix(), state)
+    assert result['available_actions'] == ['a', 'wait'] and not result.get('learning_complete')
+    assert control._SESSION['schema_version'] == 3 and control._SESSION['waits'] == 0
+    assert not control._SESSION['migration_v3_reviewed_result_page']['completion_verified']
+    for name, value in preserved.items():
+        assert control._SESSION[name] == value
+    control._SESSION['error'] = 'natural_learning_known_transition_wait_exhausted'
+    importlib.reload(control)
+    assert control.context(mirror_result_prefix(), state)['review_reason'] == 'natural_learning_known_transition_wait_exhausted'
+
+
+@pytest.mark.parametrize('error', ['fearow_skip_party_changed_unexpectedly',
+                                 'fearow_skip_unexpected_forget_or_learned_screen', 'fearow_skip_page_unknown'])
+def test_result_page_migration_does_not_clear_other_errors(error):
+    state = fearow_progress()
+    legacy_result_timeout_session(state)
+    control._SESSION['error'] = error
+    assert control.context(mirror_result_prefix(), state)['review_reason'] == error
+
+
+@pytest.mark.parametrize('change', ['wrong_phase', 'without_yes', 'changed_moves'])
+def test_reviewed_timeout_requires_exact_page_phase_yes_and_unchanged_fingerprint(change):
+    state = fearow_progress()
+    legacy_result_timeout_session(state)
+    page = mirror_result_prefix()
+    if change == 'wrong_phase':
+        control._SESSION['stage'] = 'delete_question'
+    elif change == 'without_yes':
+        control._SESSION['abandon_yes_requested'] = False
+    else:
+        state['party'][0]['moves'][0] = 75
+    result = control.context(page, state)
+    assert result['review_reason'] == 'natural_learning_known_transition_wait_exhausted'
+    assert control._SESSION['schema_version'] == 2
+
+
+def test_reviewed_mirror_timeout_without_flashing_arrow_clears_but_only_waits_until_arrow():
+    state = fearow_progress()
+    legacy_result_timeout_session(state)
+    page = mirror_result_prefix()
+    page['cells'][16][18] = ' '
+    result = control.context(page, state)
+    assert result['available_actions'] == ['wait'] and not result.get('learning_complete')
+    assert 'error' not in control._SESSION and control._SESSION['schema_version'] == 3
+    assert control._SESSION['migration_v3_reviewed_result_page']['advance_requires_visible_marker']
+    assert not control._SESSION.get('result_prefix_observed')
+    result = control.context(mirror_result_prefix(), state)
+    assert result['available_actions'] == ['a', 'wait'] and not result.get('learning_complete')
+    assert control._SESSION['result_prefix_observed']
+
+
+@pytest.mark.parametrize('ending', ['!', '▼'])
+def test_mirror_wrapped_did_not_learn_tail_requires_observed_prefix_and_terminal_marker(ending):
+    state = fearow_progress()
+    mirror_to_abandon_yes(state)
+    control.context(mirror_result_prefix(), state)
+    page = text_at((1, 14, 'did not learn'), (1, 16, 'MIRROR MOVE' + ending))
+    result = control.context(page, state)
+    assert result['learning_complete'] and result['learning_moves_unchanged']
+
+
+@pytest.mark.parametrize('prefix,ending', [(False, '!'), (True, '')])
+def test_mirror_wrapped_tail_without_prefix_or_terminal_marker_is_not_complete(prefix, ending):
+    state = fearow_progress()
+    mirror_to_abandon_yes(state)
+    if prefix:
+        control.context(mirror_result_prefix(), state)
+    result = control.context(text_at((1, 14, 'did not learn'), (1, 16, 'MIRROR MOVE' + ending)), state)
+    assert result['available_actions'] == ['wait'] and not result.get('learning_complete')
+    assert control._SESSION['stage'] != 'complete'
+
+
+def poof_page(ending='!'):
+    return text_at((10, 7, 'IVYSAUR'), (14, 8, '30'), (10, 10, '73/84'),
+                   (1, 14, '1, 2 and... Poof' + ending))
+
+
+@pytest.mark.parametrize('ending', ['!', '▼'])
+def test_live_complete_poof_advances_without_claiming_forgot_or_learned(ending):
+    state = progress()
+    original = copy.deepcopy(state)
+    to_forget(state)
+    result = control.context(poof_page(ending), state)
+    assert result['available_actions'] == ['a', 'wait']
+    assert result['learning_tactic'] == 'advance_verified_poisonpowder_poof'
+    assert not result.get('learning_complete') and state == original
+    assert control._SESSION['stage'] == 'forget_selected'
+    assert not control._SESSION['seen_forgot'] and not control._SESSION['and_requested']
+
+
+@pytest.mark.parametrize('partial', ['1', '1, 2 and...', '1, 2 and... P', '1, 2 and... Poof', 'Poof!'])
+def test_poof_partial_or_unverified_tail_only_waits(partial):
+    state = progress()
+    to_forget(state)
+    result = control.context(text_at((1, 14, partial)), state)
+    assert result['available_actions'] == ['wait'] and not result.get('learning_complete')
+    assert not control._SESSION['seen_forgot'] and not control._SESSION['and_requested']
+
+
+@pytest.mark.parametrize('flag', ['seen_move', 'delete_yes_requested'])
+def test_complete_poof_requires_both_prior_confirmations(flag):
+    state = progress()
+    to_forget(state)
+    control._SESSION[flag] = False
+    # seen_move must remain false rather than be reconstructed from prior history.
+    if flag == 'seen_move':
+        control._SESSION['history'] = '12ANDPOOF'
+    result = control.context(poof_page(), state)
+    assert result['review_reason'] == 'natural_learning_poof_without_verified_selection'
+    assert result['available_actions'] == ['wait']
+
+
+def legacy_poof_timeout_session(state):
+    to_forget(state)
+    control._SESSION.update(schema_version=1, waits=31, last_page='12ANDPOOF',
+                            error='natural_learning_known_transition_wait_exhausted')
+    control._SESSION['history'] += '12ANDPOOF'
+
+
+def test_reviewed_poof_timeout_migrates_exact_case_once_and_still_requires_all_result_pages():
+    state = progress()
+    original = copy.deepcopy(state)
+    legacy_poof_timeout_session(state)
+    preserved = {name: copy.deepcopy(control._SESSION[name]) for name in
+                 ('baseline', 'expected', 'history', 'stage', 'seen_move', 'delete_yes_requested')}
+    importlib.reload(control)
+    result = control.context(poof_page(), state)
+    assert result['available_actions'] == ['a', 'wait'] and not result.get('learning_complete')
+    assert control._SESSION['schema_version'] == 2 and control._SESSION['waits'] == 0
+    assert 'error' not in control._SESSION
+    assert control._SESSION['migration_v2_reviewed_poof_page']['moves_unchanged']
+    assert not control._SESSION['migration_v2_reviewed_poof_page']['completion_verified']
+    for name, value in preserved.items():
+        assert control._SESSION[name] == value
+    assert state == original
+    # _ForgotAndText有para與And... prompt，不能繼續當自動動畫等待。
+    result = control.context(text_at((1, 14, 'IVYSAUR forgot'), (1, 16, 'POISONPOWDER!')), state)
+    assert result['available_actions'] == ['a', 'wait'] and not result.get('learning_complete')
+    result = control.context(text_at((1, 14, 'And...')), state)
+    assert result['available_actions'] == ['a', 'wait'] and not result.get('learning_complete')
+    state['party'][0]['moves'][0] = 75
+    result = control.context(text_at((1, 14, 'IVYSAUR learned'), (1, 16, 'RAZOR LEAF!')), state)
+    assert result['learning_complete'] and result['moves_verified'] == [75, 15, 73, 22]
+
+
+@pytest.mark.parametrize('change', ['other_error', 'wrong_phase', 'unseen_move', 'without_delete_yes',
+                                  'wrong_page', 'partial_page', 'without_terminal', 'changed_moves',
+                                  'invalid_party', 'already_migrated'])
+def test_poof_timeout_migration_never_clears_other_or_unverified_cases(change):
+    state = progress()
+    legacy_poof_timeout_session(state)
+    page = poof_page()
+    error = 'natural_learning_known_transition_wait_exhausted'
+    if change == 'other_error':
+        error = control._SESSION['error'] = 'natural_learning_unexpected_move_change'
+    elif change == 'wrong_phase':
+        control._SESSION['stage'] = 'await_forget'
+    elif change == 'unseen_move':
+        control._SESSION['seen_move'] = False
+    elif change == 'without_delete_yes':
+        control._SESSION['delete_yes_requested'] = False
+    elif change == 'wrong_page':
+        control._SESSION['last_page'] = '12AND'
+    elif change == 'partial_page':
+        page = text_at((1, 14, '1, 2 and... P'))
+    elif change == 'without_terminal':
+        page = poof_page('')
+    elif change == 'changed_moves':
+        state['party'][1]['moves'][0] = 31
+    elif change == 'invalid_party':
+        state['party_read_valid'] = False
+    else:
+        control._SESSION['schema_version'] = 2
+    result = control.context(page, state)
+    assert result['review_reason'] == error and result['available_actions'] == ['wait']
+    assert 'migration_v2_reviewed_poof_page' not in control._SESSION
+
+
+def test_poof_timeout_migration_cannot_be_repeated_after_hot_reload():
+    state = progress()
+    legacy_poof_timeout_session(state)
+    control.context(poof_page(), state)
+    control._SESSION['error'] = 'natural_learning_known_transition_wait_exhausted'
+    importlib.reload(control)
+    result = control.context(poof_page(), state)
+    assert result['review_reason'] == 'natural_learning_known_transition_wait_exhausted'
+    assert control._SESSION['schema_version'] == 2

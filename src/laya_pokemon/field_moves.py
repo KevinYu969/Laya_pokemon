@@ -1,7 +1,7 @@
 """正常 HM01 教學與 CUT 野外選單候選控制器；不執行按鍵或讀寫模擬器。
 
 呼叫端必須明確指定意圖並提供唯讀進度、可見文字與已核對的野外地圖。
-HM01教妙蛙草及地面CUT已實機核對；玉虹館內圖格仍待實戰驗證。
+HM01教妙蛙草、地面與玉虹館內CUT已實機核對；妙蛙花使用仍為合成候選。
 未知畫面一律回到檢討，不以連按 A 探路。
 """
 from __future__ import annotations
@@ -20,9 +20,13 @@ SOURCES = [SOURCE_ROOT + path for path in (
     "engine/items/item_effects.asm", "engine/pokemon/learn_move.asm",
     "engine/menus/start_sub_menus.asm", "engine/overworld/cut.asm", "home/window.asm",
     "data/text/text_4.asm", "data/text/text_6.asm", "data/text/text_7.asm",
-    "data/pokemon/base_stats/ivysaur.asm", "home/list_menu.asm",
+    "data/pokemon/base_stats/ivysaur.asm", "data/pokemon/base_stats/venusaur.asm",
+    "data/pokemon/evos_moves.asm", "constants/pokemon_constants.asm",
+    "engine/menus/party_menu.asm", "engine/menus/text_box.asm", "home/list_menu.asm",
     "data/items/names.asm", "data/items/key_items.asm", "constants/item_constants.asm")]
 HM01, CUT, IVYSAUR, GROWL, VINE_WHIP = 196, 15, 9, 45, 22
+VENUSAUR = 154
+_CUT_USERS = {IVYSAUR: "IVYSAUR", VENUSAUR: "VENUSAUR"}
 MAX_SAFE_TEXT_WAITS = 30
 MAX_BAG_DOWN_REQUESTS = 20
 MAX_BAG_STAGNANT_REQUESTS = 3
@@ -55,7 +59,6 @@ _DELETE_PAGES = ("DELETEANOLDERMOVETOMAKEROOMFORCUT", "MOVETOMAKEROOMFORCUT", "F
 _FORGET_PAGES = ("WHICHMOVESHOULDBEFORGOTTEN", "BEFORGOTTEN")
 _FORGOT_PAGES = ("12ANDPOOF", "12AND", "POOF", "IVYSAURFORGOTGROWLAND", "IVYSAURFORGOTGROWL", "GROWLAND", "GROWL", "AND")
 _LEARNED_PAGES = ("IVYSAURLEARNEDCUT", "LEARNEDCUT", "CUT")
-_FIELD_PAGES = ("IVYSAURHACKEDAWAYWITHCUT", "AWAYWITHCUT")
 
 
 def _review(reason):
@@ -96,6 +99,8 @@ class CutController:
     HM01 合法教給妙蛙草，四招時替換叫聲並保留藤鞭。已會 CUT 可直接核對。
     ``intent={'kind':'use_cut','species':9,'map_id':5,'tree_x':15,'tree_y':18}``
     必須從與樹相鄰、朝向樹、已核對的野外畫面開始；樹格由 ``grid`` 驗證。
+    使用者只接受9或154，且必須是全隊唯一實際會CUT15的成員。自然進化後
+    由呼叫端核對實際物種再建立species154的新意圖，不以family猜測或改隊伍。
 
     ``context`` 的 ``overworld_ready`` 是呼叫端完成畫面校驗後的明確聲明；
     ``grid`` 接既有 ``read_world_grid`` 結果，``location`` 接唯讀座標與朝向。
@@ -106,8 +111,11 @@ class CutController:
         self.intent = deepcopy(intent)
         if intent.get("kind") not in {"teach_cut", "use_cut"}:
             raise ValueError("僅允許 teach_cut 或 use_cut 明確意圖")
-        if intent.get("species") != IVYSAUR:
-            raise ValueError("此候選控制器僅校對妙蛙草的 CUT 相容性")
+        species = intent.get("species")
+        if (type(species) is not int
+                or intent["kind"] == "teach_cut" and species != IVYSAUR
+                or intent["kind"] == "use_cut" and species not in _CUT_USERS):
+            raise ValueError("教學僅限妙蛙草9；使用僅限已核對CUT的妙蛙草9／妙蛙花154")
         if intent["kind"] == "teach_cut" and intent.get("replace_move", GROWL) != GROWL:
             raise ValueError("四招時僅允許替換叫聲；不得刪除藤鞭")
         if intent["kind"] == "use_cut":
@@ -131,6 +139,7 @@ class CutController:
         self.error = None
         self.safe_wait_count = 0
         self.safe_wait_stage = None
+        self.field_user_confirmed = False
 
     def _fail(self, reason):
         self.error = reason
@@ -147,15 +156,29 @@ class CutController:
         if rows is None:
             return self._fail("cut_visible_cells_invalid")
         party = progress.get("party", [])
-        targets = [i for i, mon in enumerate(party) if mon.get("species") == IVYSAUR]
+        targets = [i for i, mon in enumerate(party) if mon.get("species") == self.intent["species"]]
         if len(targets) != 1 or progress.get("party_read_valid") is not True:
             return self._fail("cut_target_party_not_verified")
         target = party[targets[0]]
         moves = target.get("moves")
         if not isinstance(moves, list) or len(moves) != 4:
             return self._fail("cut_target_moves_unreadable")
-        if "CUT" not in reference()["species"]["IVYSAUR"]["tmhm"]:
+        target_name = _CUT_USERS[self.intent["species"]]
+        if "CUT" not in reference()["species"][target_name]["tmhm"]:
             return self._fail("cut_source_compatibility_missing")
+        if self.intent["kind"] == "use_cut":
+            if (not 1 <= len(party) <= 6
+                    or any(species_key(mon.get("species")) is None
+                           or not isinstance(mon.get("moves"), list) or len(mon["moves"]) != 4
+                           or any(type(move) is not int or not 0 <= move <= 165 for move in mon["moves"])
+                           for mon in party)):
+                return self._fail("cut_field_party_unverifiable")
+            if CUT not in moves:
+                return self._fail("cut_field_move_not_known")
+            if moves.count(CUT) != 1:
+                return self._fail("cut_field_duplicate_cut_slots")
+            if [i for i, mon in enumerate(party) if CUT in mon["moves"]] != targets:
+                return self._fail("cut_field_multiple_cut_users")
         if self.baseline is None:
             self.target_index = targets[0]
             self.baseline = [(mon.get("species"), list(mon.get("moves", []))) for mon in party]
@@ -192,7 +215,8 @@ class CutController:
         lower = normalize(" ".join(rows[12:18]))
         if any(normalize(row.strip()) in {"YES", "NO"} for row in rows):
             return None
-        pages = ({"cut_selected": _FIELD_PAGES, "cut_animation": _FIELD_PAGES} if field else {
+        field_pages = (self._field_message(), "AWAYWITHCUT")
+        pages = ({"cut_selected": field_pages, "cut_animation": field_pages} if field else {
             "hm_selected": _HM_PAGES, "hm_dialogue": _HM_PAGES + _TEACH_PAGES,
             "teach_question": _TEACH_PAGES,
             "choose_learner": _LEARN_PAGES,
@@ -504,6 +528,52 @@ class CutController:
         except (IndexError, KeyError, TypeError):
             return None
 
+    def _field_message(self):
+        return _CUT_USERS[self.intent["species"]] + "HACKEDAWAYWITHCUT"
+
+    def _field_party_choice(self, rows, party):
+        """use_cut限定正常名字／來源槽位與單一active游標，不借同family成員。"""
+        labels = [normalize(species_key(mon["species"])) for mon in party]
+        if (len(set(labels)) != len(labels)
+                or any(normalize(rows[2*i][3:13]) != label for i, label in enumerate(labels))
+                or any(normalize(rows[2*i][3:13]) for i in range(len(party), 6))
+                or any(sum(normalize(row[3:13]) == label for row in rows[:12]) != 1
+                       for label in labels)):
+            return self._fail("cut_field_party_names_or_slots_unverified")
+        active = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == "▶"]
+        inactive = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == "▷"]
+        positions = {(0, y) for y in range(2*len(party))}
+        if not active and len(inactive) == 1 and inactive[0] in positions:
+            return self._bounded_wait("await_active_cut_party_cursor")
+        if len(active) != 1 or active[0] not in positions or inactive:
+            return self._fail("cut_field_party_cursor_unverified")
+        current = active[0][1] // 2
+        action = "a" if current == self.target_index else "up" if current > self.target_index else "down"
+        if action == "a":
+            self.field_user_confirmed = True
+        return _hint(action, "choose_verified_cut_user", party_target_index=self.target_index,
+                     cut_user_species=self.intent["species"], cut_user_name=_CUT_USERS[self.intent["species"]])
+
+    def _field_cut_choice(self, rows):
+        """兩種使用者都只有CUT這個已核對野外招；不確認CUTTER或錯誤選項。"""
+        # start_sub_menus.asm：topY=12−2×一個field move；CUT在10，CANCEL固定16。
+        labels = {"CUT": 10, "STATS": 12, "SWITCH": 14, "CANCEL": 16}
+        if any(rows[y][13:].strip() != label
+               or sum(bool(re.search(r"(?<![A-Z])" + label + r"(?![A-Z])", row)) for row in rows) != 1
+               for label, y in labels.items()):
+            return self._fail("cut_field_submenu_labels_unverified")
+        active = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == "▶"]
+        inactive = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == "▷"]
+        positions = {(12, y) for y in labels.values()}
+        if not active and len(inactive) == 1 and inactive[0] in positions:
+            return self._bounded_wait("await_active_cut_submenu_cursor")
+        if len(active) != 1 or active[0] not in positions or inactive:
+            return self._fail("cut_field_submenu_cursor_unverified")
+        action = "a" if active[0][1] == labels["CUT"] else "up"
+        self.stage = "cut_selected" if action == "a" else "cut_menu"
+        return _hint(action, "select_party_cut", menu_label="CUT",
+                     cut_user_species=self.intent["species"])
+
     def _use(self, rows, progress, moves, location, grid, overworld_ready):
         compact = normalize(" ".join(rows))
         before_tile,after_tile=_CUT_TILES[self.intent.get('tileset_id',0)]
@@ -530,8 +600,11 @@ class CutController:
         if partial:
             return partial
         if "HACKED" in compact and "AWAYWITHCUT" in compact:
-            if self.stage not in {"cut_selected", "cut_animation"} or "IVYSAUR" not in compact:
+            lower = normalize(" ".join(rows[12:18]))
+            if self.stage not in {"cut_selected", "cut_animation"} or lower != self._field_message():
                 return self._fail("cut_field_user_or_stage_unverified")
+            if "!" not in " ".join(rows[12:18]):
+                return self._bounded_wait("await_complete_cut_field_message")
             self.seen_used_cut = True
             self.stage = "cut_animation"
             return _hint("a", "advance_verified_cut_field_message")
@@ -543,20 +616,20 @@ class CutController:
                 if self.seen_used_cut and tree == (after_tile, 1):
                     return self._complete("use_cut", tree_removal_verified=True,
                                           tree_position=[self.intent["tree_x"], self.intent["tree_y"]],
-                                          before_tile=before_tile, after_tile=tree[0])
+                                          before_tile=before_tile, after_tile=tree[0],
+                                          cut_user_species=self.intent["species"],
+                                          cut_user_party_index=self.target_index)
                 return self._fail("cut_tree_removal_not_verified")
             return self._fail("cut_field_animation_screen_unrecognized")
         if self._start_menu(rows) and self.stage == "start_menu":
             label = "POKÉMON" if any("POKÉMON" in row for row in rows) else "POKEMON"
             return _choose(rows, label, "open_party_for_cut")
         if "CUT" in compact and "STATS" in compact and "SWITCH" in compact and "CANCEL" in compact:
-            if self.stage not in {"choose_user", "cut_menu", "cut_selected"}:
+            if (self.stage not in {"choose_user", "cut_menu", "cut_selected"}
+                    or not getattr(self, "field_user_confirmed", False)):
                 return self._fail("cut_field_submenu_without_verified_user")
-            result = _choose(rows, "CUT", "select_party_cut")
-            self.stage = "cut_selected" if result.get("objective", "").startswith("Confirm") else "cut_menu"
-            return result
-        result = party_choice(rows, progress["party"], self.target_index)
-        if result and self.stage in {"start_menu", "choose_user"}:
+            return self._field_cut_choice(rows)
+        if self.stage in {"start_menu", "choose_user"}:
             self.stage = "choose_user"
-            return {**result, "phase": "field_move_menu", "field_move_tactic": "choose_verified_cut_user", "sources": SOURCES}
+            return self._field_party_choice(rows, progress["party"])
         return self._fail("cut_field_screen_unrecognized")

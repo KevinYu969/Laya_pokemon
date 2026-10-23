@@ -15,6 +15,8 @@ from . import field_moves as field_moves_module
 importlib.reload(field_moves_module)
 from . import gym_switches as gym_switches_module
 importlib.reload(gym_switches_module)
+from . import campaign_transactions
+importlib.reload(campaign_transactions)
 for controller in _GYM_CONTROLLERS.values():controller._last_now=None
 
 
@@ -44,7 +46,11 @@ def switch_context(pyboy,state,plan,step_id,previous):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
-    if not step or step['kind'] not in {'teach_cut','use_cut'}:return None
+    if campaign_transactions.applies(step_id,step):
+        from .observation import read_visible_text
+        return campaign_transactions.context(pyboy,state,plan,step_id,read_visible_text(pyboy),read_world_grid(pyboy,state['location']))
+    if not step:return None
+    if step['kind'] not in {'teach_cut','use_cut'}:return None
     if state.get('battle_state',{}).get('kind')!='none':return None
     loc=dict(state['location'])
     if loc['map_id']!=step['map_id'] or [loc['x'],loc['y']]!=step['target']:return None
@@ -140,7 +146,7 @@ def waypoint(pyboy,state,plan,step_id,previous):
         target={'x':target[0],'y':target[1]}
         if step['kind']=='heal' and healthy(progress):index+=1;continue
         if step['kind']=='move' and [x,y]==list(target.values()) and 'next_map' not in step:index+=1;continue
-        if step['kind'] in {'teach_cut','use_cut','gym_switches'} and [x,y]==list(target.values()):
+        if (step['kind'] in {'teach_cut','use_cut','gym_switches'} or 'mechanic' in step) and [x,y]==list(target.values()):
             return {'phase':'overworld','objective':'Wait.','available_actions':['wait'],'goal':'field_transaction_pending'},step['id']
         if [x,y]==list(target.values()) and step['kind'] in {'interact','heal'}:
             direction=step.get('face','up')

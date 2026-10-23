@@ -173,7 +173,8 @@ def world(*, removed=False):
 
 LOCATION = {"map_id": 5, "x": 15, "y": 17, "facing": "down"}
 FIELD_PARTY = text_at((3, 0, "IVYSAUR"), (0, 1, "▶"), (3, 2, "NIDORINO"), (3, 4, "SPEAROW"))
-CUT_MENU = text_at((12, 8, "▶CUT"), (13, 10, "STATS"), (13, 12, "SWITCH"), (13, 14, "CANCEL"))
+# 固定source的單一野外招：topY=12−2；原合成fixture曾誤放y8。
+CUT_MENU = text_at((12, 10, "▶CUT"), (13, 12, "STATS"), (13, 14, "SWITCH"), (13, 16, "CANCEL"))
 
 
 def to_field_selection(controller, state):
@@ -510,3 +511,203 @@ def test_visible_hm_is_selected_only_after_the_actual_label_order_is_verified():
     text["cells"][4][6:19] = list("NUGGET       ")
     result = controller.context(text, state)
     assert result["phase"] == "campaign_review" and "a" not in result["available_actions"]
+
+
+def venusaur_state(index=2, cut_slot=1):
+    state = progress(cut=True)
+    user = state["party"].pop(0)
+    user["species"] = 154
+    user["moves"] = [75, 73, 22]
+    user["moves"].insert(cut_slot, 15)
+    state["party"].insert(index, user)
+    return state
+
+
+def field_party(state, selected=0, cursor="▶"):
+    names = {9: "IVYSAUR", 154: "VENUSAUR", 167: "NIDORINO", 5: "SPEAROW"}
+    entries = [(3, 2*i, names[mon["species"]]) for i, mon in enumerate(state["party"])]
+    if cursor:
+        entries.append((0, 2*selected+1, cursor))
+    return text_at(*entries)
+
+
+def venusaur_field(tileset=0):
+    intent = {"kind": "use_cut", "species": 154, "map_id": 5,
+              "tree_x": 15, "tree_y": 18}
+    if tileset == 7:
+        intent.update(map_id=134, tree_x=5, tree_y=7, tileset_id=7)
+    return CutController(intent)
+
+
+def gym_world(removed=False):
+    grid = {"tileset_id": 7, "screen_cells_verified": 90,
+            "tiles": [[0x2B]*10 for _ in range(18)],
+            "walkable": [[1]*10 for _ in range(18)]}
+    if not removed:
+        grid["tiles"][7][5], grid["walkable"][7][5] = 0x50, 0
+    return grid
+
+
+def to_venusaur_selection(controller, state, *, tileset=0):
+    location = LOCATION if tileset == 0 else {"map_id": 134, "x": 5, "y": 6, "facing": "down"}
+    grid = world() if tileset == 0 else gym_world()
+    assert controller.context(text_at(), state, location=location, grid=grid,
+                              overworld_ready=True)["available_actions"] == ["start", "wait"]
+    assert controller.context(START, state)["menu_label"] == "POKÉMON"
+    target = next(i for i, mon in enumerate(state["party"]) if mon["species"] == 154)
+    if target:
+        moving = controller.context(field_party(state, 0), state)
+        assert moving["available_actions"] == ["down", "wait"]
+        assert "a" not in moving["available_actions"]
+    chosen = controller.context(field_party(state, target), state)
+    assert chosen["available_actions"] == ["a", "wait"]
+    assert chosen["party_target_index"] == target and chosen["cut_user_species"] == 154
+    assert controller.context(CUT_MENU, state)["menu_label"] == "CUT"
+    return location
+
+
+@pytest.mark.parametrize("tileset", [0, 7])
+@pytest.mark.parametrize("index", [0, 1, 2])
+@pytest.mark.parametrize("cut_slot", [0, 1, 2, 3])
+def test_venusaur_exact_member_slot_and_cut_move_slot_work_on_both_verified_tilesets(tileset, index, cut_slot):
+    controller, state = venusaur_field(tileset), venusaur_state(index, cut_slot)
+    snapshot = deepcopy(state)
+    location = to_venusaur_selection(controller, state, tileset=tileset)
+    full = text_at((1, 14, "VENUSAUR hacked"), (1, 16, "away with CUT!"))
+    assert controller.context(full, state)["available_actions"] == ["a", "wait"]
+    assert controller.context(text_at(), state)["available_actions"] == ["wait"]
+    grid = world(removed=True) if tileset == 0 else gym_world(removed=True)
+    result = controller.context(text_at(), state, location=location, grid=grid, overworld_ready=True)
+    assert result["field_move_complete"] and result["tree_removal_verified"]
+    assert result["cut_user_species"] == 154 and result["cut_user_party_index"] == index
+    assert (result["before_tile"], result["after_tile"]) == ((0x3D, 0x2C) if tileset == 0 else (0x50, 0x2B))
+    assert state == snapshot
+
+
+@pytest.mark.parametrize("species", [3, 102, 167, 0, True, "154"])
+def test_use_cut_does_not_expand_to_unknown_species_or_family_guesses(species):
+    with pytest.raises(ValueError):
+        CutController({"kind": "use_cut", "species": species, "map_id": 5,
+                       "tree_x": 15, "tree_y": 18})
+
+
+def test_venusaur_does_not_expand_hm_teaching_or_auto_migrate_existing_ivysaur_intent():
+    with pytest.raises(ValueError):
+        CutController({"kind": "teach_cut", "species": 154, "replace_move": 45})
+    state = venusaur_state()
+    result = field().context(text_at(), state, location=LOCATION, grid=world(), overworld_ready=True)
+    assert result["review_reason"] == "cut_target_party_not_verified"
+    result = venusaur_field().context(text_at(), progress(cut=True), location=LOCATION,
+                                      grid=world(), overworld_ready=True)
+    assert result["review_reason"] == "cut_target_party_not_verified"
+
+
+@pytest.mark.parametrize("mutation,reason", [
+    (lambda p: p["party"][2].update(moves=[75, 73, 22, 0]), "cut_field_move_not_known"),
+    (lambda p: p["party"][2].update(moves=[15, 15, 73, 22]), "cut_field_duplicate_cut_slots"),
+    (lambda p: p["party"][0].update(moves=[43, 15, 30, 40]), "cut_field_multiple_cut_users"),
+    (lambda p: p["party"][0].update(species=999), "cut_field_party_unverifiable"),
+    (lambda p: p["party"][0].update(moves=None), "cut_field_party_unverifiable"),
+    (lambda p: p["party"].append(deepcopy(p["party"][2])), "cut_target_party_not_verified"),
+])
+def test_unreadable_duplicate_cut_or_wrong_actual_member_never_opens_menu(mutation, reason):
+    state = venusaur_state()
+    mutation(state)
+    result = venusaur_field().context(text_at(), state, location=LOCATION, grid=world(), overworld_ready=True)
+    assert result["review_reason"] == reason and result["available_actions"] == ["wait"]
+
+
+def test_related_species_with_cut_is_not_substituted_for_explicit_venusaur_user():
+    state = venusaur_state()
+    state["party"][2]["moves"] = [75, 45, 73, 22]
+    state["party"][0] = {"species": 9, "moves": [75, 15, 73, 22]}
+    result = venusaur_field().context(text_at(), state, location=LOCATION, grid=world(), overworld_ready=True)
+    assert result["review_reason"] == "cut_field_move_not_known" and "a" not in result["available_actions"]
+
+
+@pytest.mark.parametrize("edit", [
+    lambda t: t["cells"][4].__setitem__(slice(3, 13), list("IVYSAUR   ")),
+    lambda t: t["cells"][4].__setitem__(slice(3, 13), list("VENUSAURX ")),
+    lambda t: t["cells"][6].__setitem__(slice(3, 13), list("VENUSAUR  ")),
+    lambda t: t["cells"][6].__setitem__(slice(3, 13), list("PIKACHU   ")),
+    lambda t: (t["cells"].__setitem__(0, t["cells"][4]), t["cells"].__setitem__(4, [" "]*20)),
+])
+def test_party_visible_name_mismatch_duplicate_or_wrong_slot_is_not_confirmed(edit):
+    controller, state = venusaur_field(), venusaur_state()
+    controller.context(text_at(), state, location=LOCATION, grid=world(), overworld_ready=True)
+    controller.context(START, state)
+    bad = field_party(state, 2)
+    edit(bad)
+    result = controller.context(bad, state)
+    assert result["review_reason"] == "cut_field_party_names_or_slots_unverified"
+    assert result["available_actions"] == ["wait"]
+
+
+def test_inactive_party_cursor_cannot_select_member_and_wrong_active_slot_only_moves():
+    controller, state = venusaur_field(), venusaur_state()
+    controller.context(text_at(), state, location=LOCATION, grid=world(), overworld_ready=True)
+    controller.context(START, state)
+    assert controller.context(field_party(state, 2, "▷"), state)["available_actions"] == ["wait"]
+    assert controller.context(field_party(state, 0), state)["available_actions"] == ["down", "wait"]
+    # 尚未在target送出確認，不接受突然出現的CUT子選單。
+    assert controller.context(CUT_MENU, state)["review_reason"] == "cut_field_submenu_without_verified_user"
+
+
+def test_venusaur_party_or_move_change_during_menu_latches_review():
+    controller, state = venusaur_field(), venusaur_state()
+    to_venusaur_selection(controller, state)
+    state["party"][2]["moves"] = [75, 15, 45, 22]
+    result = controller.context(CUT_MENU, state)
+    assert result["review_reason"] == "cut_field_party_moves_changed"
+    state["party"][2]["moves"] = [75, 15, 73, 22]
+    assert controller.context(CUT_MENU, state) == result
+
+
+@pytest.mark.parametrize("edit", [
+    lambda t: t["cells"][10].__setitem__(slice(13, 20), list("CUTTER ")),
+    lambda t: t["cells"][0].__setitem__(slice(0, 3), list("CUT")),
+    lambda t: t["cells"][12].__setitem__(12, "▶"),
+    lambda t: (t["cells"][10].__setitem__(12, " "), t["cells"][10].__setitem__(11, "▶")),
+])
+def test_cut_submenu_requires_complete_unique_labels_and_single_source_cursor(edit):
+    controller, state = venusaur_field(), venusaur_state()
+    to_venusaur_selection(controller, state)
+    bad = deepcopy(CUT_MENU)
+    edit(bad)
+    result = controller.context(bad, state)
+    assert result["phase"] == "campaign_review" and result["available_actions"] == ["wait"]
+
+
+def test_cut_submenu_inactive_cursor_waits_and_other_option_only_moves_up():
+    controller, state = venusaur_field(), venusaur_state()
+    to_venusaur_selection(controller, state)
+    inactive = deepcopy(CUT_MENU)
+    inactive["cells"][10][12] = "▷"
+    assert controller.context(inactive, state)["available_actions"] == ["wait"]
+    stats = deepcopy(CUT_MENU)
+    stats["cells"][10][12] = " "
+    stats["cells"][12][12] = "▶"
+    assert controller.context(stats, state)["available_actions"] == ["up", "wait"]
+
+
+@pytest.mark.parametrize("name", ["IVYSAUR", "VENUSAURX", "NIDORINO"])
+def test_cut_success_text_from_wrong_or_partial_name_cannot_complete(name):
+    controller, state = venusaur_field(), venusaur_state()
+    to_venusaur_selection(controller, state)
+    result = controller.context(text_at((1, 14, f"{name} hacked"), (1, 16, "away with CUT!")), state)
+    assert result["review_reason"] == "cut_field_user_or_stage_unverified"
+    assert result["available_actions"] == ["wait"]
+
+
+def test_venusaur_partial_source_message_waits_and_wrong_after_tile_stops():
+    controller, state = venusaur_field(7), venusaur_state()
+    location = to_venusaur_selection(controller, state, tileset=7)
+    for phrase in ("VENUSAUR hack", "VENUSAUR hacked", "away with C"):
+        assert controller.context(text_at((1, 14, phrase)), state)["available_actions"] == ["wait"]
+    no_bang = text_at((1, 14, "VENUSAUR hacked"), (1, 16, "away with CUT"), (18, 16, "▼"))
+    assert controller.context(no_bang, state)["available_actions"] == ["wait"]
+    controller.context(text_at((1, 14, "VENUSAUR hacked"), (1, 16, "away with CUT!")), state)
+    wrong = gym_world(removed=True)
+    wrong["tiles"][7][5] = 0x2C
+    result = controller.context(text_at(), state, location=location, grid=wrong, overworld_ready=True)
+    assert result["review_reason"] == "cut_tree_removal_not_verified"

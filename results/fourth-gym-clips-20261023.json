@@ -1,0 +1,1282 @@
+{
+  "at": "2026-10-23T14:53:29.136889+00:00",
+  "source_run": "league-campaign-20261023-14",
+  "status": "verified_local_unpublished",
+  "clip_count": 4,
+  "published": false,
+  "closed_source_videos_only": true,
+  "timing_caution_zh_tw": "所有4x均為後製四倍遊戲影格，省略模型及工程／檢討等待；影片時長不是牆鐘通關時間或推論速度。實際事件時間由日誌另列。",
+  "scenes": [
+    {
+      "caption_zh_tw": "莉佳完整戰鬥、彩虹徽章與TM21獎勵",
+      "source_intervals": [
+        [
+          2396,
+          2515
+        ]
+      ],
+      "notes_zh_tw": "從打招呼至完整獎勵收尾連續保留，含三隻對手、戰勝文字、徽章與TM21。省略的工程等待不代表模型運算變快。",
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-008.mp4",
+          "source_video_sha256": "04ba86fbe3582463848ef70fe431a06aa6322120e75a645e2cd79dc98ace9037",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-008.jsonl",
+          "source_log_sha256": "5e08d72c391793e3fb65d4974c7e20da399a7e36e605fdf37b0b343c254f2b32",
+          "source_steps": [
+            2396,
+            2515
+          ],
+          "source_start_emulated_seconds": 100.0,
+          "source_duration_emulated_seconds": 222.26666666666668,
+          "source_first_action_recorded_at": "2026-10-23T14:43:58.795524+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:44:13.017359+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 14.375,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 2.971,
+            "non_review_wall_seconds": 14.375
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/fourth-gym-20261023/erika-full-battle-badge-tm21-post4x.mp4",
+          "sha256": "c3371521944a455e70de7c04e9da0c6375610a53500b190ed55200740b70e290",
+          "frames_decoded": 1667,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 55.56666666666667,
+          "full_frame_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 55.56666666666667,
+          "editing_zh_tw": "原始PyBoy遊戲像素、後製4x；推論與工程／檢討等待未呈現，片長不是實際通關耗時。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/fourth-gym-20261023/erika-defeated.png",
+          "sha256": "ffe8ebe718b187135f15d74c87335d4b0f8925d87131899ea35e897562a73a15",
+          "source_step_observation": 2497,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-008.mp4",
+          "source_emulated_seconds": 281.6666666666667,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/rainbowbadge-reward.png",
+          "sha256": "9c314cdaa6c66f02e225d9e5369313f8652efedfca13f1acf798ea210c29bd44",
+          "source_step_observation": 2501,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-008.mp4",
+          "source_emulated_seconds": 290.2,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/tm21-received.png",
+          "sha256": "e6233bf2e277b806dc3c93d8f8449147fdb0782aaae34dea08c4631dc94f659f",
+          "source_step_observation": 2510,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-008.mp4",
+          "source_emulated_seconds": 309.4,
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "verified_completion": {
+        "milestone_at_utc": "2026-10-23T14:44:13.022364+00:00",
+        "milestone_at_taipei": "2026-10-23T22:44:13.022364+08:00",
+        "badges_raw": 15,
+        "beat_erika": true,
+        "tm21_item_id": 221,
+        "tm21_received_visible_step": 2510,
+        "checkpoint_sha256": "d90be458952dabf49d5793bd6492ed3ab11c49ec1b2198756387b8b8254d0e29"
+      }
+    },
+    {
+      "caption_zh_tw": "30級學飛葉快刀，只遺忘毒粉，Poof校準後成功",
+      "source_intervals": [
+        [
+          1106,
+          1166
+        ]
+      ],
+      "notes_zh_tw": "保留Poof錯等頁的遊戲影格；工程修正與暫停省略，仍為同一學招流程接續，沒有回讀洗掉問題。成功後四招[75,15,73,22]，保留CUT、寄生種子、藤鞭。",
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+          "source_video_sha256": "12b659052da7d753cd9b6f8cb2551217bfa562f7eacdd712c2078deb8f26cd64",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-003.jsonl",
+          "source_log_sha256": "72476f3d60eed604c6d5ddbee46763ff788c2a746fe30e876777e7d03ed8a748",
+          "source_steps": [
+            1106,
+            1156
+          ],
+          "source_start_emulated_seconds": 112.0,
+          "source_duration_emulated_seconds": 39.86666666666667,
+          "source_first_action_recorded_at": "2026-10-23T14:23:05.819741+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:32:00.698307+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 534.984,
+            "review_pause_seconds": 532.75,
+            "model_wait_seconds": 0.032,
+            "non_review_wall_seconds": 2.234
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-004.mp4",
+          "source_video_sha256": "35cfb0f47574423dca7e9e28f4eb15f0d4d955ad402c3d45d9360ae439b8ae1b",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-004.jsonl",
+          "source_log_sha256": "1be8bc60945d6c35cb0ed4b9d18bca0514ad889177e89fc0a6082aa5b614090c",
+          "source_steps": [
+            1157,
+            1166
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 6.666666666666667,
+          "source_first_action_recorded_at": "2026-10-23T14:32:00.829766+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:32:01.176441+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.469,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.016,
+            "non_review_wall_seconds": 0.469
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/fourth-gym-20261023/razor-leaf-only-poisonpowder-replaced-post4x.mp4",
+          "sha256": "0dc4f08c5ccb0bc356335f8a209802f672e536a5a640bbacc92ba5243a277bd5",
+          "frames_decoded": 349,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 11.633333333333333,
+          "full_frame_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 11.633333333333333,
+          "editing_zh_tw": "原始PyBoy遊戲像素、後製4x；推論與工程／檢討等待未呈現，片長不是實際通關耗時。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/fourth-gym-20261023/razor-forget-poisonpowder-selected.png",
+          "sha256": "7a70498d0b30cfb59c8d9d402b777e84e5ce931519f276d73bb4cda8c225d5e7",
+          "source_step_observation": 1125,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+          "source_emulated_seconds": 130.46666666666667,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/razor-poof-after-calibration.png",
+          "sha256": "d9b946bb6ee1bf368812cd0be5c8481c976eddd3ff127c7a01db1b4ea0890eb7",
+          "source_step_observation": 1156,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+          "source_emulated_seconds": 151.13333333333333,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/poisonpowder-forgotten.png",
+          "sha256": "f9184c14f8466b3e5666ae49ee0eaf75500ad166f46cf0dd409f8ee7ef7cc86a",
+          "source_step_observation": 1159,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-004.mp4",
+          "source_emulated_seconds": 1.2666666666666666,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/razor-leaf-learned.png",
+          "sha256": "e09c9c9ef2c0e3c0e20217738a7aaec4d7af39c4456df8cf6a60acbb72d4b597",
+          "source_step_observation": 1162,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-004.mp4",
+          "source_emulated_seconds": 3.2666666666666666,
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "verified_completion": {
+        "source_step": 1162,
+        "recorded_at_utc": "2026-10-23T14:32:01.030524+00:00",
+        "before_moves": [
+          77,
+          15,
+          73,
+          22
+        ],
+        "after_moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "forgotten_move": 77,
+        "protected_moves": [
+          15,
+          73,
+          22
+        ],
+        "new_move_pp": 25
+      }
+    },
+    {
+      "caption_zh_tw": "大嘴雀25級正常略過鸚鵡學舌，原四招不變",
+      "source_intervals": [
+        [
+          974,
+          1029
+        ]
+      ],
+      "notes_zh_tw": "保留Delete NO、Abandon YES、did not learn跨頁及修正前等待影格；省略工程暫停。同一流程接續，四招[64,45,43,31]維持不變。",
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-002.mp4",
+          "source_video_sha256": "53a63660a9919cb1fc419d6de09d5297cbbc105ac5408c822ae08b8be7631681",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-002.jsonl",
+          "source_log_sha256": "f46bd53965c3a0d0731a11690af7bfd83ae0b497377163ab303622a0cf6f9d86",
+          "source_steps": [
+            974,
+            1025
+          ],
+          "source_start_emulated_seconds": 210.4,
+          "source_duration_emulated_seconds": 40.53333333333333,
+          "source_first_action_recorded_at": "2026-10-23T14:14:06.973232+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:22:57.831618+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 530.969,
+            "review_pause_seconds": 527.937,
+            "model_wait_seconds": 0.625,
+            "non_review_wall_seconds": 3.032
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+          "source_video_sha256": "12b659052da7d753cd9b6f8cb2551217bfa562f7eacdd712c2078deb8f26cd64",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-003.jsonl",
+          "source_log_sha256": "72476f3d60eed604c6d5ddbee46763ff788c2a746fe30e876777e7d03ed8a748",
+          "source_steps": [
+            1026,
+            1029
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 4.133333333333334,
+          "source_first_action_recorded_at": "2026-10-23T14:22:57.969860+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:22:58.168473+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.344,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.344
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/fourth-gym-20261023/fearow25-mirror-move-skip-post4x.mp4",
+          "sha256": "941053ec7cb0cf094a66a459c3b7580cbd35d87726e99cd185fa404eb646e015",
+          "frames_decoded": 335,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 11.166666666666666,
+          "full_frame_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 11.166666666666666,
+          "editing_zh_tw": "原始PyBoy遊戲像素、後製4x；推論與工程／檢討等待未呈現，片長不是實際通關耗時。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/fourth-gym-20261023/mirror-delete-no.png",
+          "sha256": "c8db302ef950db276fd04bf43e801539db74f17008f301d0f36b41674ee169c4",
+          "source_step_observation": 991,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-002.mp4",
+          "source_emulated_seconds": 227.53333333333333,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/mirror-abandon-yes.png",
+          "sha256": "9bf3d2a297fe2247bf6e96764f1b01e7ddc3796deb03be4997e25e22b44272bb",
+          "source_step_observation": 994,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-002.mp4",
+          "source_emulated_seconds": 229.53333333333333,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/mirror-move-did-not-learn.png",
+          "sha256": "a49b196897a01f3c3ae0e1747752ed41ea6214c7fa4e2d7c8fe711f427870260",
+          "source_step_observation": 1028,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+          "source_emulated_seconds": 1.2666666666666666,
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "verified_completion": {
+        "visible_result_step": 1028,
+        "recorded_at_utc": "2026-10-23T14:22:58.054051+00:00",
+        "after_result_step": 1029,
+        "moves_before_and_after": [
+          64,
+          45,
+          43,
+          31
+        ]
+      }
+    },
+    {
+      "caption_zh_tw": "館內CUT50→2B，館員戰後樹恢復，再正常使用CUT",
+      "source_intervals": [
+        [
+          1947,
+          2040
+        ],
+        [
+          2067,
+          2077
+        ]
+      ],
+      "notes_zh_tw": "剪選第一次館內CUT、完整COOLTRAINER♀戰及同樹再CUT。省略2041–2066的無路徑／再次定位動作及其工程暫停；不能當作不中斷的全館錄影。兩次地圖134樹(5,7)均由80→43，沒有改圖或RAM。",
+      "source_parts": [
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-005.mp4",
+          "source_video_sha256": "8e3fd11a556d171a83febe2bc3c40591c8933f3d5d352060a61351f29ff9a213",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-005.jsonl",
+          "source_log_sha256": "a149d0b2e8c40247fa691241c056d2441b8c46015e026c3af6cc8c79e56ef0df",
+          "source_steps": [
+            1947,
+            2040
+          ],
+          "source_start_emulated_seconds": 562.4,
+          "source_duration_emulated_seconds": 152.13333333333333,
+          "source_first_action_recorded_at": "2026-10-23T14:36:03.509311+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:36:15.985571+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 12.531,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 3.143,
+            "non_review_wall_seconds": 12.531
+          }
+        },
+        {
+          "source_video": "outputs/league-campaign-20261023-14/game/video-007.mp4",
+          "source_video_sha256": "ce014051cc635838285a844b147dd2012781a3f544089d081547347865368989",
+          "source_log": "outputs/league-campaign-20261023-14/game/steps-007.jsonl",
+          "source_log_sha256": "624a04cd5b5a2a456301dadc534d7c1a6bc5d15c8bafe09ae104871bc143c933",
+          "source_steps": [
+            2067,
+            2077
+          ],
+          "source_start_emulated_seconds": 0.0,
+          "source_duration_emulated_seconds": 7.333333333333333,
+          "source_first_action_recorded_at": "2026-10-23T14:41:15.831919+00:00",
+          "source_last_action_recorded_at": "2026-10-23T14:41:16.244682+00:00",
+          "logged_action_timing_delta": {
+            "wall_seconds": 0.547,
+            "review_pause_seconds": 0.0,
+            "model_wait_seconds": 0.0,
+            "non_review_wall_seconds": 0.547
+          }
+        }
+      ],
+      "clips": [
+        {
+          "file": "outputs/videos/fourth-gym-20261023/gym-cut-trainer-battle-cut-again-selected-post4x.mp4",
+          "sha256": "ba80ebd2e24e64ec2b8de07684b6defb351e850659496eb101b0e57fd15661af",
+          "frames_decoded": 1196,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 39.86666666666667,
+          "full_frame_decode_passed": true,
+          "postproduction_speed": 4,
+          "expected_playback_seconds": 39.86666666666667,
+          "editing_zh_tw": "原始PyBoy遊戲像素、後製4x；推論與工程／檢討等待未呈現，片長不是實際通關耗時。"
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "outputs/videos/fourth-gym-20261023/gym-tree-before-first-cut.png",
+          "sha256": "8dbfe8aa072b50fd80aad0d7de59371e6f4bf0ff55294ff8ed0fb8e3690cd58e",
+          "source_step_observation": 1947,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-005.mp4",
+          "source_emulated_seconds": 562.3333333333333,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/gym-tree-after-first-cut.png",
+          "sha256": "37d01373ffd3871a2176b7dfacccd6bef59d272996992c4cb5160f508a38b2e6",
+          "source_step_observation": 1956,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-005.mp4",
+          "source_emulated_seconds": 568.3333333333333,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/gym-trainer-defeated.png",
+          "sha256": "4fed35ee52d7fe73af9709574034fe465f59745dd1521465c5de19ddb2c32451",
+          "source_step_observation": 2037,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-005.mp4",
+          "source_emulated_seconds": 705.9333333333333,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/gym-tree-restored-after-trainer.png",
+          "sha256": "a576d1fd5103cf0c6a8c1e143f2d18fc83accf81b449890ba7708f9da5e553ad",
+          "source_step_observation": 2067,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-007.mp4",
+          "source_emulated_seconds": 0,
+          "kind": "unmodified_source_video_frame"
+        },
+        {
+          "file": "outputs/videos/fourth-gym-20261023/gym-tree-cut-again.png",
+          "sha256": "6581eef006477a9c529f3f587fda9b8992658267e5243b99163696bc34c3eb6d",
+          "source_step_observation": 2076,
+          "source_video": "outputs/league-campaign-20261023-14/game/video-007.mp4",
+          "source_emulated_seconds": 5.933333333333334,
+          "kind": "unmodified_source_video_frame"
+        }
+      ],
+      "verified_completion": {
+        "map_id": 134,
+        "tree_position": [
+          5,
+          7
+        ],
+        "before_tile_hex": "0x50",
+        "after_tile_hex": "0x2B",
+        "first_verified_at": "2026-10-23T14:36:03.921041+00:00",
+        "after_trainer_verified_at": "2026-10-23T14:41:16.172718+00:00",
+        "trainer_defeated_step": 2037
+      }
+    }
+  ],
+  "pending": [],
+  "screenshots": [
+    {
+      "file": "outputs/videos/fourth-gym-20261023/erika-defeated.png",
+      "sha256": "ffe8ebe718b187135f15d74c87335d4b0f8925d87131899ea35e897562a73a15",
+      "source_step_observation": 2497,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-008.mp4",
+      "source_emulated_seconds": 281.6666666666667,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/rainbowbadge-reward.png",
+      "sha256": "9c314cdaa6c66f02e225d9e5369313f8652efedfca13f1acf798ea210c29bd44",
+      "source_step_observation": 2501,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-008.mp4",
+      "source_emulated_seconds": 290.2,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/tm21-received.png",
+      "sha256": "e6233bf2e277b806dc3c93d8f8449147fdb0782aaae34dea08c4631dc94f659f",
+      "source_step_observation": 2510,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-008.mp4",
+      "source_emulated_seconds": 309.4,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/razor-forget-poisonpowder-selected.png",
+      "sha256": "7a70498d0b30cfb59c8d9d402b777e84e5ce931519f276d73bb4cda8c225d5e7",
+      "source_step_observation": 1125,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+      "source_emulated_seconds": 130.46666666666667,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/razor-poof-after-calibration.png",
+      "sha256": "d9b946bb6ee1bf368812cd0be5c8481c976eddd3ff127c7a01db1b4ea0890eb7",
+      "source_step_observation": 1156,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+      "source_emulated_seconds": 151.13333333333333,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/poisonpowder-forgotten.png",
+      "sha256": "f9184c14f8466b3e5666ae49ee0eaf75500ad166f46cf0dd409f8ee7ef7cc86a",
+      "source_step_observation": 1159,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-004.mp4",
+      "source_emulated_seconds": 1.2666666666666666,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/razor-leaf-learned.png",
+      "sha256": "e09c9c9ef2c0e3c0e20217738a7aaec4d7af39c4456df8cf6a60acbb72d4b597",
+      "source_step_observation": 1162,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-004.mp4",
+      "source_emulated_seconds": 3.2666666666666666,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/mirror-delete-no.png",
+      "sha256": "c8db302ef950db276fd04bf43e801539db74f17008f301d0f36b41674ee169c4",
+      "source_step_observation": 991,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-002.mp4",
+      "source_emulated_seconds": 227.53333333333333,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/mirror-abandon-yes.png",
+      "sha256": "9bf3d2a297fe2247bf6e96764f1b01e7ddc3796deb03be4997e25e22b44272bb",
+      "source_step_observation": 994,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-002.mp4",
+      "source_emulated_seconds": 229.53333333333333,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/mirror-move-did-not-learn.png",
+      "sha256": "a49b196897a01f3c3ae0e1747752ed41ea6214c7fa4e2d7c8fe711f427870260",
+      "source_step_observation": 1028,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+      "source_emulated_seconds": 1.2666666666666666,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/gym-tree-before-first-cut.png",
+      "sha256": "8dbfe8aa072b50fd80aad0d7de59371e6f4bf0ff55294ff8ed0fb8e3690cd58e",
+      "source_step_observation": 1947,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-005.mp4",
+      "source_emulated_seconds": 562.3333333333333,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/gym-tree-after-first-cut.png",
+      "sha256": "37d01373ffd3871a2176b7dfacccd6bef59d272996992c4cb5160f508a38b2e6",
+      "source_step_observation": 1956,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-005.mp4",
+      "source_emulated_seconds": 568.3333333333333,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/gym-trainer-defeated.png",
+      "sha256": "4fed35ee52d7fe73af9709574034fe465f59745dd1521465c5de19ddb2c32451",
+      "source_step_observation": 2037,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-005.mp4",
+      "source_emulated_seconds": 705.9333333333333,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/gym-tree-restored-after-trainer.png",
+      "sha256": "a576d1fd5103cf0c6a8c1e143f2d18fc83accf81b449890ba7708f9da5e553ad",
+      "source_step_observation": 2067,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-007.mp4",
+      "source_emulated_seconds": 0,
+      "kind": "unmodified_source_video_frame"
+    },
+    {
+      "file": "outputs/videos/fourth-gym-20261023/gym-tree-cut-again.png",
+      "sha256": "6581eef006477a9c529f3f587fda9b8992658267e5243b99163696bc34c3eb6d",
+      "source_step_observation": 2076,
+      "source_video": "outputs/league-campaign-20261023-14/game/video-007.mp4",
+      "source_emulated_seconds": 5.933333333333334,
+      "kind": "unmodified_source_video_frame"
+    }
+  ],
+  "source_video_validation": [
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-008.mp4",
+      "sha256": "04ba86fbe3582463848ef70fe431a06aa6322120e75a645e2cd79dc98ace9037",
+      "frames_decoded": 4844,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 322.93333333333334,
+      "full_frame_decode_passed": true
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-003.mp4",
+      "sha256": "12b659052da7d753cd9b6f8cb2551217bfa562f7eacdd712c2078deb8f26cd64",
+      "frames_decoded": 2278,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 151.86666666666667,
+      "full_frame_decode_passed": true
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-004.mp4",
+      "sha256": "35cfb0f47574423dca7e9e28f4eb15f0d4d955ad402c3d45d9360ae439b8ae1b",
+      "frames_decoded": 5778,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 385.2,
+      "full_frame_decode_passed": true
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-002.mp4",
+      "sha256": "53a63660a9919cb1fc419d6de09d5297cbbc105ac5408c822ae08b8be7631681",
+      "frames_decoded": 3764,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 250.93333333333334,
+      "full_frame_decode_passed": true
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-005.mp4",
+      "sha256": "8e3fd11a556d171a83febe2bc3c40591c8933f3d5d352060a61351f29ff9a213",
+      "frames_decoded": 10728,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 715.2,
+      "full_frame_decode_passed": true
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/video-007.mp4",
+      "sha256": "ce014051cc635838285a844b147dd2012781a3f544089d081547347865368989",
+      "frames_decoded": 3110,
+      "fps": 15.0,
+      "size": [
+        480,
+        432
+      ],
+      "playback_seconds": 207.33333333333334,
+      "full_frame_decode_passed": true
+    }
+  ],
+  "supporting_event_snapshots": [
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/milestones.jsonl",
+      "source_record_sha256_without_newline": "01df38d8438c17320c07de1b6decc9ec48b9a357880ff628e1116788169338d9",
+      "record": {
+        "id": "erika",
+        "label": "彩虹徽章／莉佳",
+        "kind": "gym",
+        "completed_at_utc": "2026-10-23T14:44:13.022364+00:00",
+        "completed_at_taipei": "2026-10-23T22:44:13.022364+08:00",
+        "timing": {
+          "wall_seconds": 2318.328,
+          "model_wait_seconds": 54.157,
+          "review_pause_seconds": 2087.313,
+          "non_review_session_seconds": 231.015,
+          "emulated_seconds": 3202.0
+        },
+        "badges_raw": 15,
+        "story_event_bits": {
+          "followed_oak_into_lab": true,
+          "oak_asked_to_choose_mon": true,
+          "battled_rival_in_oaks_lab": true,
+          "got_starter": true,
+          "got_pokedex": true,
+          "got_oaks_parcel": true,
+          "oak_got_parcel": true,
+          "got_hm01": true,
+          "got_hm03": false,
+          "got_hm04": false,
+          "got_poke_flute": false,
+          "beat_silph_co_giovanni": false,
+          "beat_brock": true,
+          "beat_misty": true,
+          "beat_lt_surge": true,
+          "beat_erika": true,
+          "beat_koga": false,
+          "beat_sabrina": false,
+          "beat_blaine": false,
+          "beat_viridian_gym_giovanni": false,
+          "beat_loreleis_room_trainer_0": false,
+          "beat_brunos_room_trainer_0": false,
+          "beat_agathas_room_trainer_0": false,
+          "beat_lance": false,
+          "beat_champion_rival": false,
+          "hall_of_fame_dex_rating": false,
+          "beat_cerulean_rival": true,
+          "beat_cerulean_rocket_thief": true,
+          "got_nugget": true,
+          "beat_route24_rocket": true,
+          "got_hm02": false,
+          "got_hm05": false,
+          "met_bill": true,
+          "bill_said_use_cell_separator": true,
+          "used_cell_separator_on_bill": true,
+          "got_ss_ticket": true,
+          "left_bills_house_after_helping": true,
+          "beat_mt_moon_exit_super_nerd": true,
+          "got_dome_fossil": false,
+          "got_helix_fossil": true,
+          "got_master_ball": false,
+          "first_lock_opened": true,
+          "second_lock_opened": true,
+          "ss_anne_left": true
+        },
+        "party": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 29,
+            "hp": 73,
+            "max_hp": 90,
+            "exp": 25202,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              27,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 167,
+            "species_name": "NIDORINO",
+            "level": 26,
+            "hp": 79,
+            "max_hp": 79,
+            "exp": 14516,
+            "status": 0,
+            "moves": [
+              43,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              30,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 30,
+            "hp": 84,
+            "max_hp": 84,
+            "exp": 22487,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          }
+        ],
+        "checkpoint_sha256": "d90be458952dabf49d5793bd6492ed3ab11c49ec1b2198756387b8b8254d0e29",
+        "capture": {
+          "at": "2026-10-23T14:44:13.024363+00:00",
+          "kind": "milestone-erika",
+          "file": "keyframes/00105-milestone-erika.png",
+          "sha256": "d740cb7f33ae8ae6e6c571231118ad856b39580778d7a034b85ad518ba647ea7",
+          "location": {
+            "map_id": 134,
+            "x": 4,
+            "y": 4
+          },
+          "text": [],
+          "timing": {
+            "wall_seconds": 2318.328,
+            "model_wait_seconds": 54.157,
+            "review_pause_seconds": 2087.313,
+            "non_review_session_seconds": 231.015,
+            "emulated_seconds": 3202.0
+          }
+        }
+      }
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/field-moves.jsonl",
+      "source_record_sha256_without_newline": "3e9354187a06699ab53bb4c18d39e18ac93945bfef51c3585216540905638c24",
+      "record": {
+        "at": "2026-10-23T14:36:03.921041+00:00",
+        "context": {
+          "phase": "field_move_complete",
+          "objective": "Wait.",
+          "available_actions": [
+            "wait"
+          ],
+          "field_move_complete": true,
+          "field_move_kind": "use_cut",
+          "sources": [
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/learn_move.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/start_sub_menus.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/cut.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/window.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_4.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_7.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/ivysaur.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/list_menu.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/names.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/key_items.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm"
+          ],
+          "tree_removal_verified": true,
+          "tree_position": [
+            5,
+            7
+          ],
+          "before_tile": 80,
+          "after_tile": 43
+        },
+        "party": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 26,
+            "hp": 58,
+            "max_hp": 82,
+            "exp": 18385,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              32,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 167,
+            "species_name": "NIDORINO",
+            "level": 26,
+            "hp": 79,
+            "max_hp": 79,
+            "exp": 14516,
+            "status": 0,
+            "moves": [
+              43,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              30,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 30,
+            "hp": 84,
+            "max_hp": 84,
+            "exp": 22487,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          }
+        ],
+        "timing": {
+          "wall_seconds": 1829.235,
+          "model_wait_seconds": 44.684,
+          "review_pause_seconds": 1646.906,
+          "non_review_session_seconds": 182.329,
+          "emulated_seconds": 2508.933
+        }
+      }
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/field-moves.jsonl",
+      "source_record_sha256_without_newline": "d584e781ae5acc94208e20059cc64d5b4e4ca91fbeffdb42be426ca42468d708",
+      "record": {
+        "at": "2026-10-23T14:41:16.172718+00:00",
+        "context": {
+          "phase": "field_move_complete",
+          "objective": "Wait.",
+          "available_actions": [
+            "wait"
+          ],
+          "field_move_complete": true,
+          "field_move_kind": "use_cut",
+          "sources": [
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/learn_move.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/start_sub_menus.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/cut.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/window.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_4.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_7.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/ivysaur.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/list_menu.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/names.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/key_items.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm"
+          ],
+          "tree_removal_verified": true,
+          "tree_position": [
+            5,
+            7
+          ],
+          "before_tile": 80,
+          "after_tile": 43
+        },
+        "party": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 27,
+            "hp": 47,
+            "max_hp": 85,
+            "exp": 20562,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              26,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 167,
+            "species_name": "NIDORINO",
+            "level": 26,
+            "hp": 79,
+            "max_hp": 79,
+            "exp": 14516,
+            "status": 0,
+            "moves": [
+              43,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              30,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 30,
+            "hp": 84,
+            "max_hp": 84,
+            "exp": 22487,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          }
+        ],
+        "timing": {
+          "wall_seconds": 2141.485,
+          "model_wait_seconds": 48.171,
+          "review_pause_seconds": 1945.094,
+          "non_review_session_seconds": 196.391,
+          "emulated_seconds": 2678.4
+        }
+      }
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/field-moves.jsonl",
+      "source_record_sha256_without_newline": "15dd30bb357b8e04309987e65980484e0ca5b69ea7a85212a8686047bb66ac5d",
+      "record": {
+        "at": "2026-10-23T14:43:57.240133+00:00",
+        "context": {
+          "phase": "field_move_complete",
+          "objective": "Wait.",
+          "available_actions": [
+            "wait"
+          ],
+          "field_move_complete": true,
+          "field_move_kind": "use_cut",
+          "sources": [
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/learn_move.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/start_sub_menus.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/cut.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/window.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_4.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_7.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/ivysaur.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/list_menu.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/names.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/key_items.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm"
+          ],
+          "tree_removal_verified": true,
+          "tree_position": [
+            5,
+            7
+          ],
+          "before_tile": 80,
+          "after_tile": 43
+        },
+        "party": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 28,
+            "hp": 87,
+            "max_hp": 87,
+            "exp": 22020,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 167,
+            "species_name": "NIDORINO",
+            "level": 26,
+            "hp": 79,
+            "max_hp": 79,
+            "exp": 14516,
+            "status": 0,
+            "moves": [
+              43,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              30,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 30,
+            "hp": 84,
+            "max_hp": 84,
+            "exp": 22487,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          }
+        ],
+        "timing": {
+          "wall_seconds": 2302.547,
+          "model_wait_seconds": 50.045,
+          "review_pause_seconds": 2087.313,
+          "non_review_session_seconds": 215.234,
+          "emulated_seconds": 2975.067
+        }
+      }
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/field-moves.jsonl",
+      "source_record_sha256_without_newline": "002e57f8ef5594c0b351fafe4bed0446896b6a71c8d3b3b9e3d5213103867a0f",
+      "record": {
+        "at": "2026-10-23T14:52:35.594278+00:00",
+        "context": {
+          "phase": "field_move_complete",
+          "objective": "Wait.",
+          "available_actions": [
+            "wait"
+          ],
+          "field_move_complete": true,
+          "field_move_kind": "use_cut",
+          "sources": [
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/learn_move.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/start_sub_menus.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/cut.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/window.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_4.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_7.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/ivysaur.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/list_menu.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/names.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/items/key_items.asm",
+            "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm"
+          ],
+          "tree_removal_verified": true,
+          "tree_position": [
+            5,
+            7
+          ],
+          "before_tile": 80,
+          "after_tile": 43
+        },
+        "party": [
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 29,
+            "hp": 73,
+            "max_hp": 90,
+            "exp": 25202,
+            "status": 0,
+            "moves": [
+              64,
+              45,
+              43,
+              31
+            ],
+            "pp": [
+              27,
+              40,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 167,
+            "species_name": "NIDORINO",
+            "level": 26,
+            "hp": 79,
+            "max_hp": 79,
+            "exp": 14516,
+            "status": 0,
+            "moves": [
+              43,
+              33,
+              30,
+              40
+            ],
+            "pp": [
+              30,
+              35,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 9,
+            "species_name": "IVYSAUR",
+            "level": 30,
+            "hp": 84,
+            "max_hp": 84,
+            "exp": 22487,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          }
+        ],
+        "timing": {
+          "wall_seconds": 2820.891,
+          "model_wait_seconds": 54.173,
+          "review_pause_seconds": 2589.11,
+          "non_review_session_seconds": 231.781,
+          "emulated_seconds": 3210.667
+        }
+      }
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/reviews.jsonl",
+      "source_record_sha256_without_newline": "22710a9223a04f54409398f179792599dd40bd94f7b11a975593d81c9f2f8c22",
+      "record": {
+        "at": "2026-10-23T14:20:30.964388+00:00",
+        "reason": "natural_learning_known_transition_wait_exhausted",
+        "review": "Reviewed exact Fearow25 skip result wrap: Delete NO and Abandon YES already seen, baseline moves unchanged. 117 relevant tests pass. Allow bounded page advance and require visible Mirror Move tail plus unchanged fingerprint before completion; one-time exact timeout migration only. Then follow explicit normal south exit and Lavender Center recovery corridor; no rollback."
+      }
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/reviews.jsonl",
+      "source_record_sha256_without_newline": "fa79738058393ad360e70067f7aa17b32cb4ceb4d28f8b73906a3b4db243393a",
+      "record": {
+        "at": "2026-10-23T14:22:57.761831+00:00",
+        "reason": "natural_learning_known_transition_wait_exhausted",
+        "review": "Reviewed follow-up: page marker blinks and was absent on paused frame, preventing schema2 timeout migration. Clear only that exact verified mirror result error with unchanged fingerprint, never send A until visible ▼ appears. Previously logged steps998..1022 contain marker; controller still requires actual marker and final move-name page."
+      }
+    },
+    {
+      "source_file": "outputs/league-campaign-20261023-14/game/reviews.jsonl",
+      "source_record_sha256_without_newline": "3de53cabae27f73296f3c8d5b389388411e3946deb41aef42de515335971ab4b",
+      "record": {
+        "at": "2026-10-23T14:32:00.641584+00:00",
+        "reason": "natural_learning_known_transition_wait_exhausted",
+        "review": "Reviewed Razor Leaf Poof prompt at map82: exact PoisonPowder selection and original party fingerprint confirmed; source PrintText requires button on full Poof page. 132 relevant tests pass. One-time exact schema1 timeout migration; advance only complete Poof, then confirm FORGOT77, And, LEARNED75 and unique moves[75,15,73,22]. Keep unknowns locked. Then normal south Center recovery route; Fearow leads for grass trainers."
+      }
+    }
+  ],
+  "source_event_caution_zh_tw": "正在續玩的JSONL可能繼續追加；以上證據以原始單行文字雜湊及完整事件快照鎖定，不用整個持續增長檔案的SHA冒充不變來源。",
+  "source_frame_alignment_note_zh_tw": "step觀測在動作前、at在動作後；截圖取累積emulated_frames對應時間前一個15fps來源影格，以保留確認前選單。邊界有一幀量化限制。",
+  "game_or_state_operations": false,
+  "source_footage_modified": false,
+  "manual_visual_qa_zh_tw": "15張正式截圖逐張目視：選毒粉/Poof/忘毒粉/學飛葉快刀、Mirror NO/Abandon YES/did not learn、館內砍樹前後/館員勝利/樹恢復再砍、莉佳勝利/彩虹徽章/TM21。成品首尾亦抽核；沒有生成或修改遊戲畫面。",
+  "verification_summary": {
+    "unique_source_and_output_sha_files_verified": 31,
+    "source_frames_fully_decoded": 30502,
+    "output_frames_fully_decoded": 3547,
+    "independent_ffmpeg_xerror_full_decode_clips": 4,
+    "event_record_sha_memberships_verified": 8
+  }
+}

@@ -1,0 +1,794 @@
+{
+  "recorded_at_utc": "2026-10-23T14:57:34.355979+00:00",
+  "record_status": "parent_reviewed_verified_local",
+  "parent_review_completed": true,
+  "achievement": "fourth_gym_milestone_verified_from_logs",
+  "evidence_cutoff": {
+    "run": 14,
+    "run_id": "league-campaign-20261023-14",
+    "first_step": 1,
+    "last_step": 2515,
+    "contiguous_steps": true,
+    "later_actions_excluded": true
+  },
+  "scope_zh_tw": "整段14從岩隧前中心外至第四館，含岩隧、道路、學招、補給、館員、館主與檢討；不是純館戰測速。",
+  "gym": {
+    "id": "erika",
+    "completed_at_utc": "2026-10-23T14:44:13.022364+00:00",
+    "completed_at_taipei": "2026-10-23T22:44:13.022364+08:00",
+    "badges_before": 7,
+    "badges_raw": 15,
+    "beat_erika": true,
+    "checkpoint_basename": "milestone-erika.state",
+    "checkpoint_sha256": "d90be458952dabf49d5793bd6492ed3ab11c49ec1b2198756387b8b8254d0e29",
+    "checkpoint_manifest_matches_parent_supplied_sha": true,
+    "checkpoint_file_read_or_rehashed": true,
+    "capture": {
+      "at": "2026-10-23T14:44:13.024363+00:00",
+      "file": "keyframes/00105-milestone-erika.png",
+      "sha256": "d740cb7f33ae8ae6e6c571231118ad856b39580778d7a034b85ad518ba647ea7",
+      "location": {
+        "map_id": 134,
+        "x": 4,
+        "y": 4
+      }
+    },
+    "stop_at_cutoff": "gym_review；當次里程碑後停下檢討，之後恢復另記。",
+    "reward_inventory": {
+      "item_id": 221,
+      "name": "TM21 / MEGA_DRAIN",
+      "quantity_before_run14": 0,
+      "quantity_observed_by_step2515": 1
+    },
+    "step_observation_caution_zh_tw": "steps.state是按鍵前觀測；2515前徽章仍7、beat_erika已true。該動作後Journal觀測徽章15，不能將前觀測與後里程碑當矛盾。"
+  },
+  "timing_at_milestone": {
+    "wall_seconds": 2318.328,
+    "model_wait_seconds": 54.157,
+    "review_pause_seconds": 2087.313,
+    "non_review_session_seconds": 231.015,
+    "emulated_seconds": 3202.0
+  },
+  "timing_definitions_zh_tw": {
+    "wall": "2318.328秒為run14整段單調時鐘，含review。",
+    "review": "2087.313秒為已結束的review暫停累計。",
+    "non_review": "231.015＝2318.328−2087.313，包含載入、推論、模擬、記錄、岩隧、路程、學招、補給及館戰；不是純館主戰或全程通關耗時。",
+    "model_wait": "54.157秒是runner包住模型建構／policy.choose的時間，含載入、快取／被動分支、窗口處理等包裝成本；已包含於231.015，不可再相加。",
+    "emulated": "3202.0為模擬影格/60，與真實牆鐘、影片後製播放時間不同。",
+    "summary": "首次讀取summary時actions2515，計數與前綴一致；其wall2318.391/non_review231.078比milestone晚0.063秒，報告固定採231.015。",
+    "summary_collection_actions_now": 2738,
+    "later_summary_not_used_for_cutoff_timing": true
+  },
+  "laya_button_classification": {
+    "model": "laya-rl-agent",
+    "runtime": "offline CPU, 4 threads（既有runner設定）",
+    "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+    "actions_including_passive_waits": 2515,
+    "actual_uncached_choices": 65,
+    "cache_hits": 2356,
+    "passive_waits": 94,
+    "partition_checked": true,
+    "cache_hit_percent_of_classification_calls": 97.3151590251962,
+    "cache_hit_percent_of_all_logged_actions": 93.6779324055666,
+    "uncached_latency_ms": {
+      "sample_count": 65,
+      "percentile_method": "nearest-rank: sorted[ceil(q*n)-1]",
+      "p50_rank_1_based": 33,
+      "p50": 495.18269998952746,
+      "p95_rank_1_based": 62,
+      "p95": 757.9863999853842,
+      "min": 227.04039997188374,
+      "max": 793.8384999870323,
+      "mean": 486.2847646178964,
+      "sum": 31608.509700163268
+    },
+    "model_load_count": 1,
+    "model_load_seconds": 16.559678399993572,
+    "cloud_fallback": false,
+    "usage_caution_zh_tw": "未快取樣本排除2356快取與94被動wait的0ms。快取重用已核對子目標的按鍵語意，不代表模型重新觀察每個遊戲畫面。"
+  },
+  "strata": {
+    "model": "qwen3.8-flash-next-iq3_s",
+    "stage": "league_campaign",
+    "decision_at_utc": "2026-10-23T14:05:34.162207+00:00",
+    "latency_seconds": 3.5160000000032596,
+    "usage": {
+      "prompt_tokens": 5844,
+      "completion_tokens": 24,
+      "total_tokens": 5868,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "guide_sha256": "6c46e45aa5b28ffe8029c2848dde1e51e072e6287ca19abe5879fe800580c7ef",
+    "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2",
+    "configuration_changed": false,
+    "cloud_fallback": false,
+    "role_zh_tw": "一次本機路段策略調用，與Laya按鍵分類分開；此調用在runner起算前，另列不併入231.015秒。工程／人工復核所用模型額度也不是遊戲分類統計。"
+  },
+  "party_at_milestone": [
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 29,
+      "hp": 73,
+      "max_hp": 90,
+      "exp": 25202,
+      "status": 0,
+      "moves": [
+        64,
+        45,
+        43,
+        31
+      ],
+      "pp": [
+        27,
+        40,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 167,
+      "species_name": "NIDORINO",
+      "level": 26,
+      "hp": 79,
+      "max_hp": 79,
+      "exp": 14516,
+      "status": 0,
+      "moves": [
+        43,
+        33,
+        30,
+        40
+      ],
+      "pp": [
+        30,
+        35,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 9,
+      "species_name": "IVYSAUR",
+      "level": 30,
+      "hp": 84,
+      "max_hp": 84,
+      "exp": 22487,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    }
+  ],
+  "party_level_change_in_run14": [
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "start_level": 22,
+      "milestone_level": 29,
+      "level_gain": 7
+    },
+    {
+      "species": 167,
+      "species_name": "NIDORINO",
+      "start_level": 25,
+      "milestone_level": 26,
+      "level_gain": 1
+    },
+    {
+      "species": 9,
+      "species_name": "IVYSAUR",
+      "start_level": 28,
+      "milestone_level": 30,
+      "level_gain": 2
+    }
+  ],
+  "team_limit_zh_tw": "當次只有3隻，等級26／29／30；尚未組成最佳六人或全員同級，後續仍需捕捉、輪換訓練與補PP。",
+  "natural_move_learning": {
+    "mirror_move_skip": {
+      "step": 1028,
+      "at_utc": "2026-10-23T14:22:58.054051+00:00",
+      "at_taipei": "2026-10-23T22:22:58.054051+08:00",
+      "tactic": "skip_mirror_move_confirmed",
+      "learning_complete": true,
+      "location": {
+        "map_id": 82,
+        "x": 22,
+        "y": 27
+      },
+      "party": [
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 25,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            5,
+            40,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 167,
+          "species_name": "NIDORINO",
+          "level": 25,
+          "moves": [
+            43,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            30,
+            35,
+            20,
+            35
+          ]
+        },
+        {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 29,
+          "moves": [
+            77,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            35,
+            30,
+            10,
+            2
+          ]
+        }
+      ]
+    },
+    "mirror_note_zh_tw": "成功結果為正常跳過Mirror Move，Fearow原moves[64,45,43,31]不變，不能寫成已學會。",
+    "razor_leaf_learned": {
+      "step": 1162,
+      "at_utc": "2026-10-23T14:32:01.030524+00:00",
+      "at_taipei": "2026-10-23T22:32:01.030524+08:00",
+      "tactic": "verified_razor_leaf_learned",
+      "learning_complete": true,
+      "location": {
+        "map_id": 82,
+        "x": 15,
+        "y": 29
+      },
+      "party": [
+        {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 30,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            28,
+            10,
+            2
+          ]
+        },
+        {
+          "species": 167,
+          "species_name": "NIDORINO",
+          "level": 25,
+          "moves": [
+            43,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            30,
+            35,
+            20,
+            35
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 25,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            2,
+            40,
+            30,
+            20
+          ]
+        }
+      ]
+    },
+    "razor_leaf_page_dismissed": {
+      "step": 1163,
+      "at_utc": "2026-10-23T14:32:01.067456+00:00",
+      "at_taipei": "2026-10-23T22:32:01.067456+08:00",
+      "tactic": "dismiss_verified_razor_leaf_learned",
+      "learning_complete": true,
+      "location": {
+        "map_id": 82,
+        "x": 15,
+        "y": 29
+      },
+      "party": [
+        {
+          "species": 9,
+          "species_name": "IVYSAUR",
+          "level": 30,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            28,
+            10,
+            2
+          ]
+        },
+        {
+          "species": 167,
+          "species_name": "NIDORINO",
+          "level": 25,
+          "moves": [
+            43,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            30,
+            35,
+            20,
+            35
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 25,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            2,
+            40,
+            30,
+            20
+          ]
+        }
+      ]
+    },
+    "razor_leaf_note_zh_tw": "Ivysaur30以Razor Leaf75取代PoisonPowder77，保留CUT15／LeechSeed73／VineWhip22；1162讀回[75,15,73,22]，1163關頁。"
+  },
+  "verified_field_cut_records": [
+    {
+      "at_utc": "2026-10-23T14:35:48.207248+00:00",
+      "at_taipei": "2026-10-23T22:35:48.207248+08:00",
+      "after_completed_step": 1791,
+      "kind": "use_cut",
+      "tree": [
+        35,
+        32
+      ],
+      "before_tile": 61,
+      "after_tile": 44,
+      "tree_removal_verified": true
+    },
+    {
+      "at_utc": "2026-10-23T14:36:03.921041+00:00",
+      "at_taipei": "2026-10-23T22:36:03.921041+08:00",
+      "after_completed_step": 1955,
+      "kind": "use_cut",
+      "tree": [
+        5,
+        7
+      ],
+      "before_tile": 80,
+      "after_tile": 43,
+      "tree_removal_verified": true
+    },
+    {
+      "at_utc": "2026-10-23T14:41:16.172718+00:00",
+      "at_taipei": "2026-10-23T22:41:16.172718+08:00",
+      "after_completed_step": 2075,
+      "kind": "use_cut",
+      "tree": [
+        5,
+        7
+      ],
+      "before_tile": 80,
+      "after_tile": 43,
+      "tree_removal_verified": true
+    },
+    {
+      "at_utc": "2026-10-23T14:41:24.995313+00:00",
+      "at_taipei": "2026-10-23T22:41:24.995313+08:00",
+      "after_completed_step": 2193,
+      "kind": "use_cut",
+      "tree": [
+        35,
+        32
+      ],
+      "before_tile": 61,
+      "after_tile": 44,
+      "tree_removal_verified": true
+    },
+    {
+      "at_utc": "2026-10-23T14:43:54.214766+00:00",
+      "at_taipei": "2026-10-23T22:43:54.214766+08:00",
+      "after_completed_step": 2321,
+      "kind": "use_cut",
+      "tree": [
+        35,
+        32
+      ],
+      "before_tile": 61,
+      "after_tile": 44,
+      "tree_removal_verified": true
+    },
+    {
+      "at_utc": "2026-10-23T14:43:57.240133+00:00",
+      "at_taipei": "2026-10-23T22:43:57.240133+08:00",
+      "after_completed_step": 2388,
+      "kind": "use_cut",
+      "tree": [
+        5,
+        7
+      ],
+      "before_tile": 80,
+      "after_tile": 43,
+      "tree_removal_verified": true
+    }
+  ],
+  "gym_attack_examples": [
+    {
+      "step": 2420,
+      "at_utc": "2026-10-23T14:44:02.707185+00:00",
+      "opponent": "VICTREEBEL",
+      "chosen_move": "PECK"
+    },
+    {
+      "step": 2452,
+      "at_utc": "2026-10-23T14:44:06.202499+00:00",
+      "opponent": "TANGELA",
+      "chosen_move": "PECK"
+    },
+    {
+      "step": 2472,
+      "at_utc": "2026-10-23T14:44:08.609812+00:00",
+      "opponent": "VILEPLUME",
+      "chosen_move": "PECK"
+    }
+  ],
+  "review_evidence": {
+    "captures": [
+      {
+        "at_utc": "2026-10-23T14:06:05.160420+00:00",
+        "at_taipei": "2026-10-23T22:06:05.160420+08:00",
+        "kind": "review-party_attrition_requires_center",
+        "location": {
+          "map_id": 82,
+          "x": 20,
+          "y": 4
+        }
+      },
+      {
+        "at_utc": "2026-10-23T14:14:09.820198+00:00",
+        "at_taipei": "2026-10-23T22:14:09.820198+08:00",
+        "kind": "review-natural_learning_known_transition_wait_exhausted",
+        "location": {
+          "map_id": 82,
+          "x": 22,
+          "y": 27
+        }
+      },
+      {
+        "at_utc": "2026-10-23T14:23:07.912170+00:00",
+        "at_taipei": "2026-10-23T22:23:07.912170+08:00",
+        "kind": "review-natural_learning_known_transition_wait_exhausted",
+        "location": {
+          "map_id": 82,
+          "x": 15,
+          "y": 29
+        }
+      },
+      {
+        "at_utc": "2026-10-23T14:32:25.213727+00:00",
+        "at_taipei": "2026-10-23T22:32:25.213727+08:00",
+        "kind": "review-party_attrition_requires_center",
+        "location": {
+          "map_id": 19,
+          "x": 50,
+          "y": 12
+        }
+      },
+      {
+        "at_utc": "2026-10-23T14:36:16.010653+00:00",
+        "at_taipei": "2026-10-23T22:36:16.010653+08:00",
+        "kind": "review-party_attrition_requires_center",
+        "location": {
+          "map_id": 134,
+          "x": 5,
+          "y": 6
+        }
+      },
+      {
+        "at_utc": "2026-10-23T14:37:55.276025+00:00",
+        "at_taipei": "2026-10-23T22:37:55.276025+08:00",
+        "kind": "review-navigation_stall",
+        "location": {
+          "map_id": 134,
+          "x": 5,
+          "y": 6
+        }
+      },
+      {
+        "at_utc": "2026-10-23T14:41:28.225731+00:00",
+        "at_taipei": "2026-10-23T22:41:28.225731+08:00",
+        "kind": "review-recovery_complete",
+        "location": {
+          "map_id": 133,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "at_utc": "2026-10-23T14:44:13.087063+00:00",
+        "at_taipei": "2026-10-23T22:44:13.087063+08:00",
+        "kind": "review-gym_review",
+        "location": {
+          "map_id": 134,
+          "x": 4,
+          "y": 4
+        }
+      }
+    ],
+    "explicit_resume_note_count": 3,
+    "resisted_wild_policy_rows": 9,
+    "resisted_wild_sequences": [
+      {
+        "steps": [
+          240,
+          241,
+          242
+        ],
+        "opponent": "GEODUDE"
+      },
+      {
+        "steps": [
+          395,
+          396,
+          397
+        ],
+        "opponent": "ONIX"
+      },
+      {
+        "steps": [
+          758,
+          759,
+          760
+        ],
+        "opponent": "ONIX"
+      }
+    ],
+    "sequence_caution_zh_tw": "三組連續選單決策不是九場戰鬥，也不能單靠標籤宣稱九次成功逃跑。"
+  },
+  "review_recommendations_zh_tw": [
+    "保留Strata既有配置，先改善已核對子目標快取和等待。此段沒有同場景硬體控制組，不能推算換GPU／主機倍數。",
+    "屬性、有效PP、血量及命中優先於單看面板威力；館主戰實例2420/2452/2472以PECK對Victreebel/Tangela/Vileplume。",
+    "已確認野生非捕捉目標若所有可用攻擊被抵抗，正常RUN；不對訓練家或捕捉目標套用。14有9條決策、3組分支，逃跑結果另驗。",
+    "任一倒下或首名低血先停，正常回中心；14實際有損耗閘門與恢復capture，不能只追求不停前進。",
+    "館員戰後5,7曾重成50，從5,6向下正常再CUT核對50→2B；館主戰後也重查，不能改出口或沿用舊complete。",
+    "UI分頁需完整來源文字、active/inactive marker、唯一游標、原隊伍指紋及最後讀回。Mirror/Razor尾頁曾停機，限定修正後完成，不盲按A。"
+  ],
+  "timeline_events": [
+    {
+      "id": "brock",
+      "label": "第一館／小剛",
+      "time_status": "receipt_confirmation_upper_bound_not_exact_completion",
+      "completed_at_utc": null,
+      "confirmed_by_utc": "2026-10-23T08:02:07.008910+00:00",
+      "confirmed_by_taipei": "2026-10-23T16:02:07.008910+08:00",
+      "badges_raw": 1,
+      "evidence": "results/first-gym-campaign-20261023.json",
+      "note_zh_tw": "收據證明此前已完成；不能用收據或影片build_at反推真正獲勝瞬間。"
+    },
+    {
+      "id": "misty",
+      "label": "第二館／小霞",
+      "time_status": "journal_milestone",
+      "completed_at_utc": "2026-10-23T10:19:12.357069+00:00",
+      "completed_at_taipei": "2026-10-23T18:19:12.357069+08:00",
+      "badges_raw": 3,
+      "evidence": "results/second-gym-campaign-20261023.json"
+    },
+    {
+      "id": "lt_surge",
+      "label": "第三館／馬志士",
+      "time_status": "journal_milestone",
+      "completed_at_utc": "2026-10-23T13:29:45.387780+00:00",
+      "completed_at_taipei": "2026-10-23T21:29:45.387780+08:00",
+      "badges_raw": 7,
+      "evidence": "results/third-gym-campaign-20261023.json"
+    },
+    {
+      "id": "erika",
+      "label": "第四館／莉佳",
+      "time_status": "journal_milestone",
+      "completed_at_utc": "2026-10-23T14:44:13.022364+00:00",
+      "completed_at_taipei": "2026-10-23T22:44:13.022364+08:00",
+      "badges_raw": 15,
+      "evidence": "results/fourth-gym-campaign-20261023.json"
+    }
+  ],
+  "global_elapsed": {
+    "verified_global_start_utc": null,
+    "verified_end_to_end_elapsed_seconds": null,
+    "first_gym_exact_completion_utc": null,
+    "champion_complete": false,
+    "hall_of_fame_complete": false,
+    "note_zh_tw": "跨重啟／review的統一起算與全程elapsed尚待完整證據，不產生已通關或幾分鐘破紅版標題。"
+  },
+  "evidence_files": [
+    {
+      "file": "outputs/league-campaign-20261023-14/game/milestones.jsonl",
+      "selected_records": 1,
+      "selected_raw_lines_sha256": "d345a0f99a66f68485f237d0ea4ef8c032dab5782aea192b90caccc44fa6474e",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-000.jsonl",
+      "selected_records": 111,
+      "selected_raw_lines_sha256": "ad042ad97870e0474c871ad60b93d90d0e4751445422108387b704a2b398309c",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-001.jsonl",
+      "selected_records": 729,
+      "selected_raw_lines_sha256": "6626f4e86112ee279ff6fde360b3dc6f87f52b47c03646c307b8dda087b680da",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-002.jsonl",
+      "selected_records": 185,
+      "selected_raw_lines_sha256": "f46bd53965c3a0d0731a11690af7bfd83ae0b497377163ab303622a0cf6f9d86",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-003.jsonl",
+      "selected_records": 131,
+      "selected_raw_lines_sha256": "72476f3d60eed604c6d5ddbee46763ff788c2a746fe30e876777e7d03ed8a748",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-004.jsonl",
+      "selected_records": 283,
+      "selected_raw_lines_sha256": "1be8bc60945d6c35cb0ed4b9d18bca0514ad889177e89fc0a6082aa5b614090c",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-005.jsonl",
+      "selected_records": 602,
+      "selected_raw_lines_sha256": "a149d0b2e8c40247fa691241c056d2441b8c46015e026c3af6cc8c79e56ef0df",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-006.jsonl",
+      "selected_records": 25,
+      "selected_raw_lines_sha256": "e5cbffc5d656534090e6766b90fc3574290fd3258545d40b2da07699025d6224",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-007.jsonl",
+      "selected_records": 190,
+      "selected_raw_lines_sha256": "624a04cd5b5a2a456301dadc534d7c1a6bc5d15c8bafe09ae104871bc143c933",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/steps-008.jsonl",
+      "selected_records": 259,
+      "selected_raw_lines_sha256": "f0f6444fda6412dd83e076340cf25d19ce051e49e5c774b4ae60742e481b9f39",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/summary.json",
+      "sha256_as_read": "ffc8de992fe6ad379f2eb41a09590a10a8343370c8c0eefd2bfb5ab42647cc92",
+      "scope": "JSON讀取當下的完整檔；報告僅選取指定欄位"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/initial-strata-decision.json",
+      "sha256_as_read": "2fa5ea2124ba051cc465f45bc90bbb5486878b7ea460ea87dabbabba7b42097b",
+      "scope": "JSON讀取當下的完整檔；報告僅選取指定欄位"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/field-moves.jsonl",
+      "selected_records": 6,
+      "selected_raw_lines_sha256": "276c85527cc6912049faf5ff748698c438324a0291acc87594640d6250718853",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/captures.jsonl",
+      "selected_records": 106,
+      "selected_raw_lines_sha256": "299191f73dc583f01fa57ae5d331026363d1a693819aa42ee8a852e7a42020f5",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "outputs/league-campaign-20261023-14/game/reviews.jsonl",
+      "selected_records": 3,
+      "selected_raw_lines_sha256": "4407745d0e97d182dc6adc73e482e2a04153b794995f88da2858f6fb3986dbc7",
+      "scope": "只hash符合截止條件的原始JSONL列，不是未來追加後全檔hash"
+    },
+    {
+      "file": "results/first-gym-campaign-20261023.json",
+      "sha256_as_read": "08154edf4cf18ff135cbe0aeba462a1f07c6dfea0e86b2c3d4cdea1be196f4b7",
+      "scope": "JSON讀取當下的完整檔；報告僅選取指定欄位"
+    },
+    {
+      "file": "results/second-gym-campaign-20261023.json",
+      "sha256_as_read": "092b5eabe19e604c54dd093510f7df6157aa613d74b83f69feca7ec587cd4877",
+      "scope": "JSON讀取當下的完整檔；報告僅選取指定欄位"
+    },
+    {
+      "file": "results/third-gym-campaign-20261023.json",
+      "sha256_as_read": "1c987c075e29580eb79dd1aaba2cfa26b4f97fd2a17f4ac166f9822aa3c48e19",
+      "scope": "JSON讀取當下的完整檔；報告僅選取指定欄位"
+    },
+    {
+      "file": "results/rock-tunnel-loss-20261023.json",
+      "sha256_as_read": "ddaaac61315c4f063240c5f97c64b0ba7105d76f82a62c7407466a8dc96926d9",
+      "scope": "JSON讀取當下的完整檔；報告僅選取指定欄位"
+    },
+    {
+      "file": "results/rock-tunnel-lessons-clips-20261023.json",
+      "sha256_as_read": "305a890f9e2afc157fb5057c30146b4386e8807b7a5c34c803bb7a6f94c529d2",
+      "scope": "JSON讀取當下的完整檔；報告僅選取指定欄位"
+    }
+  ],
+  "collection_limits_zh_tw": [
+    "初稿代理只讀JSON/JSONL與程式；主程序再獨立重算步數、分位數、實際里程碑存檔及截圖SHA。",
+    "影片來源與成品檔案SHA已獨立重算；影片未發布，片長不能當通關耗時。",
+    "持續遊玩時summary會更新；本收據固定至step2515，排除之後動作。"
+  ],
+  "parent_validation": {
+    "steps_recomputed": 2515,
+    "percentiles_recomputed": true,
+    "checkpoint_and_capture_rehashed": true,
+    "clip_receipt_files_rehashed": 32,
+    "full_test_suite": "761 passed before subsequent adapter boundary hardening; later checks recorded separately",
+    "no_game_inputs_during_validation": true
+  }
+}
