@@ -842,3 +842,34 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 - 公開新增results/route12-snorlax-capture-20261024.json與成功影片收據，README、timeline與教訓已更新；舊10投進度保留為歷史。GitHub上次備份96d8cc9b43d55ecdc87497a0f4cc5137a77401e2，遠端SHA已核且Actions40009744351成功。本批新進度待來源凍結與安全備份；影片／state／ROM／原始輸出仍只在本機，網站未發布。
 - 所有遊戲按鍵仍由本機Laya離線分類／精確語意快取；被動WAIT不呼叫模型。Strata配置不變、工程及獨立審查與遊戲分類統計分開；不宣稱整場工程零GPT額度。
 
+## 41. 2026-10-24 抵達淺紅中心、正常接續最新狀態與百變怪機制
+
+- **04:08:43.652244台北時間已抵達淺紅中心154(3,3)**，五人全HP/status/PP滿：尼多王32 HP108、Fearow33 HP102、Eevee30 HP77、Snorlax30 HP141、Venusaur34 HP108，金錢31279；Fearow沿路中毒已正常治好、沒有新FNT或整隊敗北。四枚徽章raw15／beat_koga=false，沒有第五館或聯盟成果。新增公開results/fuchsia-arrival-20261024.json及timeline、README。
+- 沿12–15號道路五名隊員都取得EXP；卡比獸／尼多王／伊布受傷後各透過正常選單換健康預備隊，大嘴雀升33、妙蛙花升34，尼多王升32。回紫苑正常恢復後再前進，沒有把換位當治療，也沒有為追速度改HP或無視最後一名健康隊員。04:05:19.803602紫苑中心全補再次驗收。
+- Route14(15,8)多次LEFT不動，BFS對真grid與10個來源NPC仍回LEFT/path63；joy_ignore/walk_counter/movement_flags均0。獨立checkpoint複本由離線Laya實選LEFT一次（272.561ms），40frames正常15,8→14,8，原ROM/checkpoint SHA不變，stop(save=False)。clone冷載模型31.083秒、整個probe34.5秒；只證明fresh clone可走，不冒稱找到即時SDL卡點根因。
+- game18正常STOP，3593動作、75未快取／3186快取／332被動wait，非檢討526.643秒、檢討7309.092秒；這整段含伊布、塔後與捕捉等任務，不能當單純道路速度。最新final SHA662a8d2d7c7d59d8c28f29e63dde9a6c8461f5365b24e66a321b15316dd0dc91，核對party／位置／EXP與停前完全相同後，game19b從此接續並走過卡點。不是回讀戰前洗勝負。已封片保留，原934個路標封存私人archive，當前只保留剩餘9步降低策略上下文。
+- 19首次啟動在受限網路遇URLError，未啟動遊戲，空輸出保留；使用既有已授權私人連線後19b成功。Strata配置SHA c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2不變。父層指派核對最新狀態與9路標；本機Qwen/Strata回league_campaign、2.984秒，prompt4168／completion27／total4195 tokens，cloud_fallback=false；父層再核state鏈與實際轉場，所有按鍵仍由離線Laya。
+- Computer Use只用於原生PyBoy視窗選取／前景／截圖核對，沒有用它輸入遊戲按鍵。成功選取當前Python原生window並帶到桌面，實際可見紅版道路，當時因補給review標PAUSED；不是4173網頁或Showdown回放。後續Laya正常繼續遊戲。
+- Route15東側來源門14,8不能只站門口等切圖，需正常LEFT13,8，via14,8保留其他NPC／warp障礙；校準後自然入184、西出、進淺紅。中毒大嘴雀當時HP33，正常護送到中心全恢復，沒有任意清狀態。04:09:59.019835又由中心反向正常走到草地26(18,8)，兩格18,8／19,8均為實際grass82，唯讀複本1tick交叉核對。
+- Fearow34 Drill Peck純候選僅將Growl45換65，保留Peck64／Leer43／FuryAttack31及全隊HM，與既有Ivy同一封閉忘招流程。父層190相關回歸通過，完整**3572 passed／1 SDL warning／13.27秒**，尚未真學34。Snorlax35 Body Slam若仍3招走原生空槽，Eevee31 TailWhip同理；Nido進化後無新自然招，Venu43／55未做4招case。不能把純測通過說成已學會。
+- 15號道路試刷第一隻DITTO26變身後停visible_enemy_and_wild_opponent_signal_disagree：畫面仍DITTO，CFE5有效種族已FEAROW，屬原生Transform，不是假RAM。固定source核EnemyStatus3 D069 bit3、原EnemySpecies2 CFD8／nick CFDA保持，HP／level／maxHP不複製，types／招／DV／四stat複製，非空招PP變5。父層唯讀真checkpoint證76、DITTO@@@@@@、rawflag8、CurOpponent0，enemy有效35 Lv26 HP7/63、types0/2、PP全5；我方Fearow33 HP102/102，雙方四stat85/72/81/62與DV93/47相同。只用1tick、不按鍵／存回；不把敵HP改成Fearow基礎值。目前窄adapter候選正在製作，其他物種或未變身的可見／RAM不一致仍須停。
+- Koga準備來源知識：Fearow34啄鑽、Snorlax35泰山壓頂優先；先全隊35再檢討，主力38–40只是heuristic。Gen1自爆威力130及防禦折半，不能套後代200。Nido受毒傷0.25且免普通中毒，但不抗Normal自爆；Venu不等於抗毒傷。館員還有Hypno／Kadabra，不能以防毒邏輯直接讓Nido／Venu吃Psychic。Abra/Kadabra有價值但不是第五館必需前置。
+- 私人Fuchsia全隊35 supervisor候選已寫、未啟動，900秒／72次排程界限、每批8草步、逐review核五人／PP／狀態，低血正常中心，未知／FNT停；雙向校準旗標False待父層最後返程／獨審。不改Strata或公用程式，不可當全遊戲掛機成品。
+- GitHub備份**5d9fa2b60747db01835a5fac63ff95c78f3b5d42**已核遠端SHA，201白名單檔，Actions40015897841成功；含§40與已驗卡比獸素材收據／Fearow候選，不含本節稍後進度。ROM／state／影片／原始輸出仍本機；網站未發布。成功素材12片50PNG與全程計時未定稿等界線維持。
+
+## 42. 2026-10-24 自動補練、Windows事件阻塞隔離與百變怪收尾
+
+- 2026-10-23T21:13:29.649073+00:00中心全隊HP/status/PP全補快照：VENUSAUR34／NIDOKING32／EEVEE32／SNORLAX31／FEAROW33；其後2026-10-23T21:14:42.349949+00:00即時觀測VENUSAUR34／SNORLAX32／EEVEE32／NIDOKING33／FEAROW33，狀態running。仍四徽章，第五館與聯盟未完成。最新快照是明確帶時點的結果，不以影片片長充當全程通關耗時。
+- 繼第41節：alive Ditto adapter經父層補decoder profile與布林frame反例，3631全回歸通過；04:23:40大嘴雀同場正常打倒變身百變怪並取得226EXP。04:24:44正常回淺紅中心全隊HP/status/PP全滿，沒有回讀戰前。
+- 五人補練監督器只排已實走的普通移動、首位輪換與護士治療，不呼叫外部模型、不直接替Laya送按鍵。首輪靜態城內路標29,17導致navigation_stall後立即停止，不能推定是NPC或單向地形；改真grid/NPC BFS走已驗中心與出口端點。其後28次排程約143.806秒，伊布與卡比獸由30自然升31。04:33:23中心五人再全補，19b因讀route JSON的PermissionError停止，final與checkpoint同SHA fe8345c7702993d9d9a1586e482cce90952c51829969207cfd62277dff10157d，無新FNT或已知全敗。新pause讀鎖維持暫停，主迴圈未讀成功不換plan/cursor。
+- game20原生啟動無動作且不回應，精確核對本任務PID後停止，所有輸出保留，根因未定。game21從19b同一final續接；後續04:45:28步1575卡住，faulthandler多次同一SDL_PumpEvents堆疊，沒有推論thread。官方Sky只作視窗前景／截圖及一次Escape退出/解除OS modal嘗試，沒有用Computer Use分類或輸入遊戲方向/A/B；退出嘗試未返回，才終止已核任務PID。另一GLFW只讀60tick smoke也卡poll_events，不將改renderer當修好。
+- game21只能用最後已發布checkpoint作技術恢復：SHA0e0a2e5d1c29790656613649709cc5837343d95f84cc08cf20b945d03b6ffe80，草19,8／Wild DITTO appeared。與1575的party EXP/HP相同，本場尚無完成輸贏；回播約22個未完成動作與兩次PP消耗，不能寫成零時間回退。原始未封片、失敗檔與來源存檔全保留，沒有拿舊進度洗已知敗北。
+- 新可選--window null --live-view讓真PyBoy繼續運算，250ms最多發布真160×144 PNG與最多六人的白名單摘要；伺服器只bind127.0.0.1，只讀首頁/PNG/status，沒有ROM/state下載或控制端點。各檔原子替換不是跨檔交易，隊伍位置標為最近觀測。pause/stopped/影格年齡明確顯示；瀏覽器自動開頁受工具政策拒絕，open_in_codex queued，不能宣稱已完成桌面UI渲染驗收。HTTP與PNG實取證據另記公開結果。
+- game22正常完成原同場Ditto並令伊布32/EXP32929，回中心全補，再正常換卡比獸首位。303動作、17未快取/286快取、非review20.422秒/模擬254.8秒；接著summary原子replace碰讀者共享鎖失敗，final SHA568a8d59126eefb7c731f8b0da377de22847f1f9a90f3a9f6005513f5073ad7d保存草18,8的健康五人。core.write_json只對同一tmp替換PermissionError最多10次、間隔25ms，持續鎖/其他錯仍拋出，沒有刪target或吞錯。
+- game23從22最新final精確續接，04:59:37卡比獸EXP37251→38856、目前這場未計EXP。新Ditto KO過場曾停：來源FaintEnemyPokemon先清含Status3在內五byte，才滑落敵圖與印fainted；所以原DITTO、有效SNORLAX、HP0與status3=0同存是正常過場。唯讀checkpoint SHA bdae9c342ad2c50dee352cad287adfb8b65c5adaa475f3af370fd7e4bdfc52e5、零鍵零保存，證實HP0/max68/status2/Lv26、原76+DITTO、有效132+Normaltypes。後續修正的實戰驗收見本節最新快照與公開補練收據，不把HP0入口提前當完整勝利或EXP完成。
+- 現有來源準備另核第五館：隱形牆可用真碰撞BFS，gym_switches不能套map157；館員事件尚缺觀測、satisfied多條件並非AND、Journal里程碑仍需event+badge+closed UI後核驗。第一可選館員Hypno38有Psychic，尼多王/妙蛙花不適合直接承傷。35級全隊只是下一門檻，不保證能安全承受43雙彈瓦斯Gen1自爆130/防禦折半。
+- 父層委派/覆核分工：本機Strata在game20核league_campaign，2.641秒，prompt3690/completion25/total3715tokens；21/22/23技術續接重用該已核階段與父層最新state/plan審查，沒有新增API呼叫。配置SHA c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2不變。離線Laya實選按鍵與語意cache維持，雲端工程/來源複核額度另計，不能稱整個工程不消耗GPT。
+- 新增自動補練2片8PNG：139.333333秒原速/34.833333秒後製4x，完整伊布226EXP、正常換位/護士/再出發；只讀closed010，明列剪去660影格普通步行。父層重算17檔SHA並看QA。此批連此前捕捉/進化合計14片58精選PNG留本機，GitHub只有整理結果，網站未發布。
+- 本次最終完整回歸3706通過（SDL2既有warning）；前一完整3667/12.62秒，Node --check即時頁JS通過。之前loopback socket測試因沙盒WinError10013，改真HTTP parser+BytesIO路由測試，再另作已授權本機HTTP實取；沒有減弱OS網路保護。上次已核GitHub5d9fa2b/Actions40015897841成功，本節後由白名單備份腳本正常push並核遠端SHA。ROM/state/weights/video/raw outputs/憑證與其他筆記不備份。
+- 滿血卻Headbutt4/15的護士略過已用可選require_full_pp修正；全隊每招依固定reference基礎PP核對，空槽須0，未知/PPUp未支援不算滿。05:11:38正常護士全補實驗成功。私人監督雙讀遇發布中版本變化曾保守停止；現在不以混合版本決策，而是在同一有界批次稍後重讀穩定版本，穩定未知原因仍停；來源/owner/SHA/party/控制檔驗證保留。前批64次因未知結束後，父層依持續遊玩授權審查新900秒180次補練；首9次出版競態後保留剩890秒171次，並未靜默重設同一job。05:13:56本機HTTP真frame78642→79611，running，卡比獸升32並自然把首位換尼多王；不宣稱瀏覽器UI成功渲染。
+

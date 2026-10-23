@@ -1,0 +1,186 @@
+{
+  "schema": "laya-fuchsia-arrival-v1",
+  "record_date": "2026-10-24",
+  "status": "fuchsia_center_reached_before_fifth_gym",
+  "arrival": {
+    "at": "2026-10-23T20:08:43.652244+00:00",
+    "at_taipei": "2026-10-24T04:08:43.652244+08:00",
+    "frame": 78097,
+    "location": {
+      "map_id": 154,
+      "x": 3,
+      "y": 3
+    },
+    "party": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 32,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 29184,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 33,
+        "hp": 102,
+        "max_hp": 102,
+        "exp": 38064,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 30,
+        "hp": 77,
+        "max_hp": 77,
+        "exp": 28368,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          0
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          0
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 30,
+        "hp": 141,
+        "max_hp": 141,
+        "exp": 36232,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          0
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          0
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 34,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 35622,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      }
+    ],
+    "money": 33204,
+    "all_five_hp_status_pp_recovered": true,
+    "fearow_poison_cured_normally": true,
+    "badges_raw": 15,
+    "badge_count": 4,
+    "beat_koga": false
+  },
+  "route": {
+    "journey": "Lavender→Route12→Route13→Route14→Route15→Fuchsia",
+    "normal_recovery_in_lavender_at_taipei": "2026-10-24T04:05:19.803602+08:00",
+    "normal_gate_calibration": "Route15東側來源門14,8須正常LEFT到13,8，仍map26才走額外一步；其餘NPC與warp障礙保留。",
+    "all_five_received_experience": true,
+    "venusaur_level": 34,
+    "fearow_level": 33,
+    "nidoking_level": 32,
+    "eevee_level": 30,
+    "snorlax_level": 30
+  },
+  "runtime_recovery": {
+    "previous_status": "saved_stopped",
+    "previous_actions": 3593,
+    "same_latest_state_sha256": "662a8d2d7c7d59d8c28f29e63dde9a6c8461f5365b24e66a321b15316dd0dc91",
+    "loss_rewind": false,
+    "diagnostic": "獨立存檔複本由離線Laya選LEFT一次，15,8→14,8；實況正常STOP後以最新final接續成功。原生程序停滯根因仍未知。",
+    "desktop_native_window_foreground_verified": true,
+    "browser_replay_used_as_live_game": false
+  },
+  "local_planner": {
+    "cloud_parent_assignment": "核對最新狀態與九個剩餘路標，再從Route14續行。",
+    "strata_result": "league_campaign",
+    "model": "qwen3.8-flash-next-iq3_s",
+    "usage": {
+      "prompt_tokens": 4168,
+      "completion_tokens": 27,
+      "total_tokens": 4195,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "latency_seconds": 2.9839999999967404,
+    "configuration_sha256": "c5a4cce96ffb7322eadbf11377f670294175f88f714f6b33e38b1bc9f2ad18d2",
+    "configuration_changed": false,
+    "cloud_fallback": false,
+    "parent_review": "核對stage、source state SHA鏈、五人進度與實際轉場；按鍵仍由離線Laya分類。"
+  },
+  "validation": {
+    "full_suite_passed": 3572,
+    "warnings": 1,
+    "duration_seconds": 13.27,
+    "scope": "含Fearow34啄鑽純候選；不等於已學會或已擊敗第五館。"
+  },
+  "backup": {
+    "verified_commit": "5d9fa2b60747db01835a5fac63ff95c78f3b5d42",
+    "validated_files": 201,
+    "ci_conclusion": "success",
+    "ci_url": "https://github.com/KevinYu969/Laya_pokemon/actions/runs/40015897841",
+    "scope_note": "該備份含已驗卡比獸成果與學招候選；本收據生成在其後，另待備份。"
+  },
+  "completion": {
+    "fifth_gym": false,
+    "elite_four": false,
+    "champion": false,
+    "whole_game_clear_wall_seconds": null,
+    "website_published": false
+  }
+}

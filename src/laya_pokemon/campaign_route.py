@@ -110,8 +110,22 @@ def attack_pp(mon):
     return sum(pp&63 for move,pp in zip(mon.get('moves',[]),mon.get('pp',[])) if effective_power(move,mon.get('species'))>0)
 
 
-def healthy(progress):
+def healthy(progress, *, require_full_pp=False):
     party=progress['party']
+    if require_full_pp:
+        from .team_strategy import reference,move_key
+        for mon in party:
+            moves,pp=mon.get('moves'),mon.get('pp')
+            if (not isinstance(moves,(list,tuple)) or not isinstance(pp,(list,tuple))
+                    or len(moves)!=4 or len(pp)!=4):return False
+            for move,remaining in zip(moves,pp):
+                if type(move) is not int or type(remaining) is not int:return False
+                if move==0:
+                    if remaining!=0:return False
+                    continue
+                key=move_key(move)
+                base=reference()['moves'].get(key,{}).get('pp')
+                if type(base) is not int or remaining!=base:return False
     return bool(party) and all(m['hp']==m['max_hp'] and not m.get('status',0) for m in party) and attack_pp(party[0])>=3
 
 
@@ -190,7 +204,7 @@ def waypoint(pyboy,state,plan,step_id,previous):
         target={'x':target[0],'y':target[1]}
         if 'await_script_event' in step and [x,y]==list(target.values()):
             return coordinate_script_wait(state,step),step['id']
-        if step['kind']=='heal' and healthy(progress):index+=1;continue
+        if step['kind']=='heal' and healthy(progress,require_full_pp=step.get('require_full_pp') is True):index+=1;continue
         if step['kind']=='move' and [x,y]==list(target.values()) and 'next_map' not in step:index+=1;continue
         if (step['kind'] in {'teach_cut','use_cut','gym_switches'} or 'mechanic' in step) and [x,y]==list(target.values()):
             return {'phase':'overworld','objective':'Wait.','available_actions':['wait'],'goal':'field_transaction_pending'},step['id']

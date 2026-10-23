@@ -1,10 +1,75 @@
 import json
+from pathlib import Path
 
 import pytest
 
 from laya_pokemon.core import append_jsonl, parse_rom_header, percentile, validate_action, write_json
 from laya_pokemon.game import advance_action
 from laya_pokemon.policy import RandomPolicy
+
+
+def test_write_json_retries_transient_replace_lock_without_rewriting_payload(tmp_path, monkeypatch):
+    import laya_pokemon.core as core
+    path = tmp_path / 'summary.json'
+    path.write_text('{"old": true}\n', encoding='utf-8')
+    payload = {'status': 'running', 'party': [{'species_name': 'EEVEE', 'level': 32}], 'text': '補練'}
+    original_replace = Path.replace
+    original_write = Path.write_text
+    attempts, writes, sleeps = [], [], []
+    def write(temporary, data, *args, **kwargs):
+        writes.append(data)
+        return original_write(temporary, data, *args, **kwargs)
+    def replace(temporary, target):
+        attempts.append(temporary.read_bytes())
+        assert json.loads(path.read_text(encoding='utf-8')) == {'old': True}
+        if len(attempts) <= 2:
+            raise PermissionError('sharing lock')
+        return original_replace(temporary, target)
+    monkeypatch.setattr(Path, 'write_text', write)
+    monkeypatch.setattr(Path, 'replace', replace)
+    monkeypatch.setattr(core.time, 'sleep', sleeps.append)
+    write_json(path, payload)
+    assert len(attempts) == 3 and len(writes) == 1 and len(set(attempts)) == 1
+    assert sleeps == [.025, .025]
+    assert json.loads(path.read_text(encoding='utf-8')) == payload
+    assert not path.with_suffix('.json.tmp').exists()
+
+
+def test_write_json_persistent_lock_is_bounded_and_keeps_original(tmp_path, monkeypatch):
+    import laya_pokemon.core as core
+    path = tmp_path / 'summary.json'
+    original = b'{"old": true}\n'
+    path.write_bytes(original)
+    attempts, sleeps = [], []
+    error = PermissionError('persistent sharing lock')
+    def replace(temporary, target):
+        attempts.append(temporary.read_bytes())
+        raise error
+    monkeypatch.setattr(Path, 'replace', replace)
+    monkeypatch.setattr(core.time, 'sleep', sleeps.append)
+    with pytest.raises(PermissionError) as caught:
+        write_json(path, {'new': True})
+    assert caught.value is error
+    assert len(attempts) == 10 and sleeps == [.025] * 9
+    assert len(set(attempts)) == 1 and path.read_bytes() == original
+    assert json.loads(path.with_suffix('.json.tmp').read_text(encoding='utf-8')) == {'new': True}
+
+
+def test_write_json_other_replace_errors_are_not_retried(tmp_path, monkeypatch):
+    import laya_pokemon.core as core
+    path = tmp_path / 'summary.json'
+    path.write_text('{"old": true}', encoding='utf-8')
+    attempts, sleeps = [], []
+    error = OSError('disk error')
+    def replace(temporary, target):
+        attempts.append(temporary)
+        raise error
+    monkeypatch.setattr(Path, 'replace', replace)
+    monkeypatch.setattr(core.time, 'sleep', sleeps.append)
+    with pytest.raises(OSError) as caught:
+        write_json(path, {'new': True})
+    assert caught.value is error and len(attempts) == 1 and sleeps == []
+    assert json.loads(path.read_text(encoding='utf-8')) == {'old': True}
 
 
 def test_unknown_action_cannot_be_executed():

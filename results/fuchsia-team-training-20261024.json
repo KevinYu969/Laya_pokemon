@@ -1,0 +1,814 @@
+{
+  "schema": "laya-pokemon-training-progress-v1",
+  "date": "2026-10-24",
+  "timezone": "Asia/Taipei",
+  "language": "zh-Hant",
+  "snapshot_type": "verified_ko_recovery_then_bounded_balanced_training",
+  "documentation": "docs/fuchsia-training-progress.md",
+  "historical_result": {
+    "run": "league-campaign-20261024-19b",
+    "training_mode": "有界自動排程、正常換首位、野戰訓練與回中心治療",
+    "supervisor_revision": "reviewed2",
+    "queued_batches": 28,
+    "supervisor_wall_seconds_approx": 143.806,
+    "duration_scope": "reviewed2監督器本次有界執行的約略牆鐘；不是完整遊戲通關時間或影片片長",
+    "last_batch": {
+      "number": 28,
+      "phase": "outbound",
+      "lead_species": "EEVEE",
+      "execution_evidence": "排程已寫入；停止前未見該批之後的新遊戲動作"
+    },
+    "milestones": [
+      {
+        "at": "2026-10-24T04:23:40+08:00",
+        "time_precision": "秒",
+        "result": "完成Ditto原生變身觀測適配後，正常戰鬥自然勝利"
+      },
+      {
+        "at": "2026-10-24T04:24:44.697805+08:00",
+        "result": "五人正常回到淺紅中心，HP、狀態與PP補滿"
+      },
+      {
+        "at": "2026-10-24T04:33:23.754661+08:00",
+        "frame": 216801,
+        "result": "最後遊戲review：淺紅中心全隊正常補給完成、非戰鬥、對話關閉"
+      },
+      {
+        "at": "2026-10-24T04:33:23.846618+08:00",
+        "frame": 216801,
+        "result": "監督器再次核對中心全補狀態；與前一筆為同一遊戲觀測，不能算作額外訓練進度"
+      }
+    ],
+    "team": [
+      {
+        "species": "VENUSAUR",
+        "name_zh": "妙蛙花",
+        "level_before": 34,
+        "level_after": 34,
+        "hp_after": 108,
+        "max_hp_after": 108,
+        "status_after": 0,
+        "moves_after": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp_after": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": "NIDOKING",
+        "name_zh": "尼多王",
+        "level_before": 32,
+        "level_after": 32,
+        "hp_after": 108,
+        "max_hp_after": 108,
+        "status_after": 0,
+        "moves_after": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp_after": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": "EEVEE",
+        "name_zh": "伊布",
+        "level_before": 30,
+        "level_after": 31,
+        "hp_after": 80,
+        "max_hp_after": 80,
+        "status_after": 0,
+        "moves_after": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp_after": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": "SNORLAX",
+        "name_zh": "卡比獸",
+        "level_before": 30,
+        "level_after": 31,
+        "hp_after": 147,
+        "max_hp_after": 147,
+        "status_after": 0,
+        "moves_after": [
+          29,
+          133,
+          156,
+          0
+        ],
+        "pp_after": [
+          15,
+          20,
+          10,
+          0
+        ]
+      },
+      {
+        "species": "FEAROW",
+        "name_zh": "大嘴雀",
+        "level_before": 33,
+        "level_after": 33,
+        "hp_after": 102,
+        "max_hp_after": 102,
+        "status_after": 0,
+        "moves_after": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp_after": [
+          35,
+          40,
+          30,
+          20
+        ]
+      }
+    ],
+    "final_observation": {
+      "map_id": 154,
+      "x": 3,
+      "y": 3,
+      "battle_kind": "none",
+      "visible_text": [],
+      "party_count": 5,
+      "all_hp_full": true,
+      "all_status_clear": true,
+      "all_pp_full": true,
+      "badge_count": 4,
+      "great_balls": 9
+    },
+    "stop": {
+      "summary_status": "failed",
+      "error_type": "PermissionError",
+      "cause_observed": "暫停期間讀取計畫檔雜湊時遇到檔案存取錯誤",
+      "gameplay_loss": false,
+      "final_state_bytes": 178100,
+      "final_state_sha256": "fe8345c7702993d9d9a1586e482cce90952c51829969207cfd62277dff10157d",
+      "checkpoint_same_sha256": true,
+      "continuation_basis": "final與最後中心checkpoint逐byte相同，可保留本輪最新進度續接；本次文件整理未重新載入ROM驗證反序列化"
+    },
+    "loss_audit": {
+      "step_records_checked": 3715,
+      "observed_party_zero_hp_records": 0,
+      "observed_player_fainted_text_records": 0,
+      "observed_zero_hp_hud_records": 0,
+      "observed_battle_loss_review_records": 0,
+      "scope": "19b已發布steps、最後review與監督器事件；未宣稱逐影片影格或重新解碼state的獨立驗證"
+    },
+    "evidence_files_kept_local": [
+      "summary.json",
+      "review-request.json",
+      "steps-012.jsonl",
+      "監督器事件紀錄",
+      "game.log",
+      "final.state",
+      "checkpoint.state"
+    ]
+  },
+  "navigation_finding": {
+    "previous_waypoint": [
+      29,
+      17
+    ],
+    "observed_failure": "navigation_stall",
+    "observed_improvement": "改以經實走核對的直接BFS端點後，完成本輪往返與補給",
+    "root_cause": "尚未證實",
+    "not_supported_by_evidence": [
+      "不能據此斷定是NPC阻擋",
+      "不能據此斷定道路為單向"
+    ]
+  },
+  "engineering_followup": {
+    "plan_read_retry": {
+      "change_reported_by_parent": "campaign讀檔只對PermissionError暫停後重試，其他例外不一併忽略",
+      "validation_reported_by_parent": {
+        "passed": 3644,
+        "warnings": 1,
+        "seconds": 11.92,
+        "scope": "完整測試；本次文件整理沒有另行重跑"
+      },
+      "game20_native_hang_root_cause_resolved": false
+    },
+    "game20": {
+      "status": "啟動後卡在native階段",
+      "steps_produced": false,
+      "new_gameplay_progress_confirmed": false,
+      "source_state_advanced": false,
+      "action_taken": "只停止該次自有程序並保留診斷輸出"
+    },
+    "game21": {
+      "purpose": "先以faulthandler進行啟動診斷，再從同一最新final有限續接",
+      "startup_succeeded": true,
+      "laya_cold_load_seconds": 3.23788,
+      "strategy_approval_reused": true,
+      "new_api_requests_for_startup": 0,
+      "reused_game20_strata_receipt": {
+        "prompt_tokens": 3690,
+        "completion_tokens": 25,
+        "total_tokens": 3715,
+        "seconds": 2.641
+      },
+      "supervisor_resumed_at": "2026-10-24T04:43:45+08:00",
+      "remaining_supervisor_limits": {
+        "seconds": 750,
+        "queued_batches": 43
+      },
+      "verified_progress_snapshot": {
+        "at": "2026-10-24T04:44:29+08:00",
+        "queued_batches": 11,
+        "steps": 656,
+        "eevee_exp_before": 30221,
+        "eevee_exp_after": 31752,
+        "observed_behavior": "毒或麻痺後，正常以健康妙蛙花護送回中心"
+      },
+      "continuous_gameplay_verified_at": "2026-10-24T04:44:29+08:00",
+      "desktop_window_activation_confirmed": true,
+      "new_screenshot_acquired": false,
+      "screenshot_result": "FrameArrived timeout；不能當作新截圖成功",
+      "game20_native_hang_root_cause_confirmed": false,
+      "initial_source_state_sha256": "fe8345c7702993d9d9a1586e482cce90952c51829969207cfd62277dff10157d",
+      "initial_same_latest_source_as_19b_final": true,
+      "initial_resume_rollback_used": false,
+      "status": "已因確證SDL事件泵阻塞而停止該次自有程序",
+      "stop": {
+        "at": "2026-10-24T04:45:28+08:00",
+        "step": 1575,
+        "repeated_faulthandler_stack": "advance_action → SDL_PumpEvents",
+        "multiple_matching_stacks": true,
+        "inference_thread_present_in_dump": false,
+        "escape_attempt": "僅退出或OS解除嘗試，未成功恢復；沒有遊戲按鍵",
+        "termination": "只終止精確該task程序，保留全部輸出及未封片影片，未刪除"
+      },
+      "native_event_pump_block_confirmed": true,
+      "drag_or_resize_cause_proven": false
+    },
+    "snapshot_status": "截至2026-10-24 04:59:37，23已有402動作後停在變身Ditto收尾讀值未知，等待來源核對與修正；不能宣稱該戰已勝或已恢復持續更新",
+    "technical_recovery_after_game21": {
+      "checkpoint_step_approx": 1553,
+      "stalled_step": 1575,
+      "source_state_sha256": "0e0a2e5d1c29790656613649709cc5837343d95f84cc08cf20b945d03b6ffe80",
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      },
+      "scene": "Wild DITTO appeared，本場尚未完成",
+      "actions_replayed_approx": 22,
+      "zero_time_rollback": false,
+      "party_exp_and_hp_regressed": false,
+      "eevee_exp": 32703,
+      "eevee_level": 31,
+      "eevee_hp": 80,
+      "observed_difference": "本場用招的PP30→28差異；技術恢復會重播這段未完成動作",
+      "known_battle_outcome_replayed_or_changed": false,
+      "interpretation": "有局部時間／動作重播，不能稱完全零時間回退；沒有重洗已知勝負或回退已取得的EXP／HP成果"
+    },
+    "glfw_readonly_smoke": {
+      "result": "同樣卡在poll_events",
+      "gameplay_keys_sent": false,
+      "state_saved": false,
+      "scope": "只讀smoke，不能當成新遊戲成果或根因確定證據"
+    },
+    "game22": {
+      "status": "已停止，原子替換summary輸出時PermissionError；最新final已保存",
+      "source_state_sha256": "0e0a2e5d1c29790656613649709cc5837343d95f84cc08cf20b945d03b6ffe80",
+      "window_backend": "null",
+      "real_pyboy_emulation": true,
+      "eevee_natural_ditto_victory": true,
+      "eevee_level": 32,
+      "eevee_exp": 32929,
+      "normal_center_heal_completed": true,
+      "lead_species": "SNORLAX",
+      "actions": 303,
+      "uncached_choices": 17,
+      "cache_hits": 286,
+      "timing": {
+        "wall_seconds": 49.906,
+        "non_review_session_seconds": 20.422,
+        "review_pause_seconds": 29.484,
+        "emulated_seconds": 254.8
+      },
+      "stop_error_type": "PermissionError",
+      "stop_stage": "summary暫存檔原子替換正式檔",
+      "latest_final_state_sha256": "568a8d59126eefb7c731f8b0da377de22847f1f9a90f3a9f6005513f5073ad7d",
+      "latest_final_state_bytes": 178100,
+      "last_review_at": "2026-10-24T04:56:08.055961+08:00",
+      "last_review_frame": 14969,
+      "latest_frame_at": "2026-10-24T04:56:08.662975+08:00",
+      "latest_frame": 15289,
+      "location": {
+        "map_id": 26,
+        "x": 18,
+        "y": 8
+      },
+      "all_party_healthy": true,
+      "cloud_fallback": false,
+      "raw_evidence_kept_local": [
+        "summary.json",
+        "review-request.json",
+        "final.state",
+        "live-frame.json",
+        "live-frame.png"
+      ]
+    },
+    "live_frame_publisher": {
+      "run": "game22",
+      "interval_ms": 250,
+      "image_source": "真PyBoy目前screen的PNG，並非回放或合成遊戲畫面",
+      "last_status": "stopped",
+      "png_sha256": "edb0b9635ede5341b35ab92c58bd8b7cef06a3af6c1fccbe521419dbc59458cb",
+      "png_inspected_from_output": true,
+      "http_checks_reported_by_parent": {
+        "html": 200,
+        "status": 200,
+        "png": 200
+      },
+      "browser_auto_open": "被工具政策拒絕",
+      "open_in_codex_result": "queued",
+      "browser_ui_render_verified": false,
+      "proof_limit": "HTTP200與本機PNG可讀不等於瀏覽器或桌面UI已成功渲染"
+    },
+    "summary_atomic_replace_retry": {
+      "change_reported_by_parent": "只對PermissionError有界重試原子replace，保留同份暫存資料",
+      "max_attempts": 10,
+      "retry_delay_ms": 25,
+      "post_change_full_suite_final_confirmation_pending": false,
+      "validation_reported_by_parent": {
+        "passed": 3667,
+        "warnings": 1,
+        "seconds": 12.62
+      }
+    },
+    "latest_completed_full_suite_reported_by_parent": {
+      "passed": 3667,
+      "warnings": 1,
+      "seconds": 12.62,
+      "scope": "父層已確認最新完整測試；文件整理未另行重跑"
+    },
+    "game23": {
+      "status": "已從22最新final接續，402動作後停在變身Ditto未知收尾判讀",
+      "source_state_sha256": "568a8d59126eefb7c731f8b0da377de22847f1f9a90f3a9f6005513f5073ad7d",
+      "source_exact_match": true,
+      "startup_and_gameplay_progress_verified": true,
+      "paused_at": "2026-10-24T04:59:37+08:00",
+      "actions": 402,
+      "scene": "對手為有效變身Snorlax的Ditto；HEADBUTT後可見敵HP條空且SLP",
+      "getter_unknown_reason": "not_normal_transformed_wild",
+      "opponent_ko_or_battle_closing_confirmed": false,
+      "pending_source_question": "核對KO是否清除Transform bit，判讀修正仍待來源proof",
+      "same_battle_preserved": true,
+      "known_win_loss_reset": false,
+      "player_faint_reported": false,
+      "snorlax_exp_before": 37251,
+      "snorlax_exp_at_pause": 38856,
+      "snorlax_exp_gain_before_pause": 1605,
+      "eevee_level": 32,
+      "eevee_exp": 32929,
+      "progress_attribution": "EXP增加是23停點前累積成果，不能算成這場未知收尾已獲勝",
+      "next_action": "等待來源核對與收尾判讀修正；尚無恢復後的新收據"
+    },
+    "official_sdl_references": [
+      {
+        "title": "SDL官方：AppFreezeDuringDrag",
+        "url": "https://wiki.libsdl.org/SDL3/AppFreezeDuringDrag",
+        "summary": "官方SDL3說明部分作業系統在拖曳或縮放視窗時，事件泵可能阻塞",
+        "applicability": "僅為相符的阻塞類型參考；本次SDL2堆疊不能證明有人拖曳、縮放或相同具體成因"
+      },
+      {
+        "title": "SDL2官方：SDL_PumpEvents",
+        "url": "https://wiki.libsdl.org/SDL2/SDL_PumpEvents",
+        "summary": "說明事件泵更新輸入與事件佇列，應在初始化video的同一執行緒使用",
+        "applicability": "本紀錄沒有據此判定執行緒使用錯誤"
+      }
+    ],
+    "live_js_syntax_validation_reported_by_parent": {
+      "command": "node --check",
+      "passed": true,
+      "scope": "即時頁JavaScript語法檢查，不是瀏覽器渲染或連續更新驗證"
+    },
+    "game23_live_frame_verification": {
+      "http_checks_reported_by_parent": {
+        "html": 200,
+        "status": 200,
+        "png": 200
+      },
+      "paused_image_fetch_confirmed": true,
+      "two_observed_frames": [
+        23561,
+        23561
+      ],
+      "continuous_update_verified": false,
+      "browser_ui_render_verified": false,
+      "scope": "三路由可取實際暫停影格，兩次frame未增加；不能宣稱已驗連續更新或瀏覽器UI成功"
+    }
+  },
+  "media": [
+    {
+      "topic": "19b有界自動訓練一輪",
+      "receipt": "results/fuchsia-training-clips-20261024.json",
+      "receipt_sha256": "4718a02aefdac8745e2dfbdfc9d11d97595b47e4354230a78277adfa203d3df9",
+      "one_x_seconds": 139.33333333333334,
+      "four_x_seconds": 34.833333333333336,
+      "formal_png_count": 8,
+      "videos_and_pngs_location": "僅留本機，素材檔名與SHA見收據，未提供公開下載"
+    },
+    {
+      "topic": "前一階段第十一球成功捕獲卡比獸",
+      "receipt": "results/snorlax-success-clips-20261024.json",
+      "receipt_sha256": "d139c517e1436f65f9f063df62cc80aa88277007c08fb1b65609a9c9c8dc58a9",
+      "one_x_seconds": 24.666666666666668,
+      "four_x_seconds": 6.166666666666667,
+      "formal_png_count": 8,
+      "videos_and_pngs_location": "僅留本機，這是先前成果，沒有混入19b訓練影片"
+    }
+  ],
+  "media_timing_warning": "1x依模擬器影格時間，4x為後製加速；片長不等於真實牆鐘、推論效能或全程破關時間",
+  "remaining_work": [
+    "百變怪KO來源與同場226EXP已驗，持續累積全隊補練與收尾樣本",
+    "完成五人全部至少35級；保留未完成戰鬥技術恢復約22動作重播的透明紀錄，不能稱零時間回退",
+    "在保持正常遊戲流程下挑戰第五道館；目前仍四枚徽章",
+    "後續道館、四大天王與冠軍仍未完成",
+    "網站文章與影片尚未發布"
+  ],
+  "publication_scope": "只包含整理後的程式實驗成果；不含ROM、存檔二進位、模型權重、原始私人輸出或影片",
+  "latest_verified_gameplay": {
+    "run": "league-campaign-20261024-23",
+    "same_battle_preserved": true,
+    "enemy_fainted_at": "2026-10-23T21:08:12.574145+00:00",
+    "exp_visible_at": "2026-10-23T21:08:12.621072+00:00",
+    "enemy_original_name": "DITTO",
+    "effective_species": "SNORLAX",
+    "recipient": "SNORLAX",
+    "exp_gained": 226,
+    "exp_before": 38856,
+    "exp_after": 39082,
+    "source_checkpoint_sha256": "bdae9c342ad2c50dee352cad287adfb8b65c5adaa475f3af370fd7e4bdfc52e5",
+    "live_view": "actual_pyboy_framebuffer_on_loopback",
+    "browser_render_verified": false,
+    "new_training_batch": {
+      "target_all_members_level": 35,
+      "seconds_limit": 900,
+      "append_limit": 180,
+      "previous_attempts_preserved": true,
+      "unknown_or_faint_pauses": true
+    },
+    "validation": {
+      "full_suite_passed": 3706,
+      "existing_sdl_warning": 1,
+      "client_javascript_syntax": "passed"
+    },
+    "scope": "四枚徽章；本批為全隊補練，沒有宣稱第五館或聯盟完成。"
+  },
+  "latest_full_party_snapshot": {
+    "at": "2026-10-23T21:13:29.649073+00:00",
+    "location": {
+      "map_id": 154,
+      "x": 3,
+      "y": 3
+    },
+    "party": [
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 34,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 35622,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 32,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 29184,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 32,
+        "hp": 82,
+        "max_hp": 82,
+        "exp": 32929,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 31,
+        "hp": 147,
+        "max_hp": 147,
+        "exp": 39488,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          0
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          0
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 33,
+        "hp": 102,
+        "max_hp": 102,
+        "exp": 38783,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      }
+    ],
+    "badge_count": 4,
+    "frame": 47825,
+    "hp_status_pp_full": true,
+    "note": "After native Ditto KO, full-PP nurse verification and publication consistency review; before remaining bounded training",
+    "all_team_level35": false,
+    "fifth_gym_completed": false,
+    "league_completed": false,
+    "website_published": false
+  },
+  "post_ko_review_history": {
+    "latest_verified_gameplay": {
+      "run": "league-campaign-20261024-23",
+      "at": "2026-10-24T04:59:37+08:00",
+      "status": "paused_for_unknown_battle_closing",
+      "actions": 402,
+      "source_state_sha256": "568a8d59126eefb7c731f8b0da377de22847f1f9a90f3a9f6005513f5073ad7d",
+      "snorlax_exp": 38856,
+      "eevee_level": 32,
+      "eevee_exp": 32929,
+      "party_hp_snapshot_scope": "最新完整五人健康快照仍為22；本次更新不補造23停點的完整HP表",
+      "battle_outcome_confirmed": false,
+      "all_team_level35": false,
+      "fifth_gym_completed": false,
+      "league_completed": false
+    },
+    "latest_full_party_snapshot": {
+      "run": "league-campaign-20261024-22",
+      "at": "2026-10-24T04:56:08.662975+08:00",
+      "status": "stopped",
+      "location": {
+        "map_id": 26,
+        "x": 18,
+        "y": 8
+      },
+      "lead_species": "SNORLAX",
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 31,
+          "hp": 147,
+          "max_hp": 147,
+          "exp": 37251,
+          "status": 0,
+          "moves": [
+            29,
+            133,
+            156,
+            0
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            0
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 32,
+          "hp": 108,
+          "max_hp": 108,
+          "exp": 29184,
+          "status": 0,
+          "moves": [
+            61,
+            33,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            35,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 32,
+          "hp": 82,
+          "max_hp": 82,
+          "exp": 32929,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 34,
+          "hp": 108,
+          "max_hp": 108,
+          "exp": 35622,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 33,
+          "hp": 102,
+          "max_hp": 102,
+          "exp": 38783,
+          "status": 0,
+          "moves": [
+            64,
+            45,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            40,
+            30,
+            20
+          ]
+        }
+      ],
+      "badge_count": 4,
+      "all_team_level35": false,
+      "fifth_gym_completed": false,
+      "league_completed": false,
+      "final_state_sha256": "568a8d59126eefb7c731f8b0da377de22847f1f9a90f3a9f6005513f5073ad7d"
+    }
+  },
+  "latest_runtime_snapshot": {
+    "frame": 129074,
+    "at": "2026-10-23T21:14:29.734349+00:00",
+    "status": "running",
+    "phase": "overworld",
+    "review_reason": null,
+    "location": {
+      "map_id": 7,
+      "x": 17,
+      "y": 20
+    },
+    "party": [
+      {
+        "species_name": "VENUSAUR",
+        "level": 34,
+        "hp": 108,
+        "max_hp": 108,
+        "status": 0
+      },
+      {
+        "species_name": "SNORLAX",
+        "level": 32,
+        "hp": 152,
+        "max_hp": 152,
+        "status": 0
+      },
+      {
+        "species_name": "EEVEE",
+        "level": 32,
+        "hp": 46,
+        "max_hp": 82,
+        "status": 0
+      },
+      {
+        "species_name": "NIDOKING",
+        "level": 33,
+        "hp": 111,
+        "max_hp": 111,
+        "status": 0
+      },
+      {
+        "species_name": "FEAROW",
+        "level": 33,
+        "hp": 102,
+        "max_hp": 102,
+        "status": 0
+      }
+    ],
+    "badges_raw": 15
+  },
+  "live_frame_advance_proof": {
+    "html_status": 200,
+    "frame_before": 78642,
+    "frame_after": 79611,
+    "advanced": true,
+    "status": "running",
+    "at": "2026-10-23T21:13:56.696554+00:00"
+  },
+  "pp_healing_lesson": {
+    "observed_at": "2026-10-23T21:08:15.534758+00:00",
+    "hp_and_status_full_but_pp_full": false,
+    "snorlax_headbutt_pp": 4,
+    "base_pp": 15,
+    "supervisor_refused_to_start": true,
+    "adjustment": "require_full_pp只在明確標記的heal路標要求每位隊員所有招式補滿；正常護士完成後再驗。",
+    "verified_snapshot_at": "2026-10-23T21:13:29.649073+00:00"
+  }
+}

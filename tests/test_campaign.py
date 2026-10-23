@@ -1,6 +1,7 @@
 from types import SimpleNamespace
 from pathlib import Path
 import json
+import pytest
 from laya_pokemon.campaign_journal import Journal,GYMS
 from laya_pokemon.campaign_route import waypoint
 
@@ -147,6 +148,48 @@ def test_healing_pp_counts_flying_and_horn_attacks_not_status_moves():
     assert healthy({'party':[spearow]})
 
 
+def test_full_pp_heal_still_interacts_when_full_hp_and_only_completes_after_nurse():
+    from laya_pokemon.campaign_route import healthy,waypoint
+    mon={'species':132,'hp':147,'max_hp':147,'status':0,'moves':[29,133,156,0],'pp':[4,20,10,0]}
+    state={'location':{'map_id':154,'x':3,'y':3},
+           'progress':{'party':[mon],'story_event_bits':{}}}
+    plan={'steps':[{'id':'heal','kind':'heal','map_id':154,'target':[3,3],'face':'up','require_full_pp':True}]}
+    assert healthy(state['progress']) and not healthy(state['progress'],require_full_pp=True)
+    context,step=waypoint(None,state,plan,'heal',['up'])
+    assert step=='heal' and context['controller_interaction'] is True
+    assert context['objective']=='Confirm the current selection.' and context['available_actions']==['a','b']
+    mon['pp'][0]=15
+    assert healthy(state['progress'],require_full_pp=True)
+    context,step=waypoint(None,state,plan,'heal',[])
+    assert step=='complete' and context['review_reason']=='route_extension_required'
+
+
+def test_full_pp_requires_bench_status_moves_and_preserves_default_heal_behavior():
+    from laya_pokemon.campaign_route import healthy,waypoint
+    lead={'species':132,'hp':147,'max_hp':147,'moves':[29,133,156,0],'pp':[15,20,10,0]}
+    bench={'species':35,'hp':102,'max_hp':102,'moves':[64,45,43,31],'pp':[35,39,30,20]}
+    progress={'party':[lead,bench],'story_event_bits':{}}
+    assert healthy(progress) and not healthy(progress,require_full_pp=True)
+    state={'location':{'map_id':154,'x':3,'y':3},'progress':progress}
+    step={'id':'heal','kind':'heal','map_id':154,'target':[3,3]}
+    assert waypoint(None,state,{'steps':[step]},'heal',[])[1]=='complete'
+    step['require_full_pp']=True
+    assert waypoint(None,state,{'steps':[step]},'heal',[])[1]=='heal'
+    bench['pp'][1]=40
+    assert healthy(progress,require_full_pp=True)
+
+
+@pytest.mark.parametrize('moves,pp', [([29,133,156,0],[15,20,10,1]),
+                                    ([29,133,156,166],[15,20,10,5]),
+                                    ([29,133,156,0],[79,20,10,0]),
+                                    ([29,133,156,0],None),([29,133,156],[15,20,10]),
+                                    ([29,133,156,False],[15,20,10,0])])
+def test_full_pp_empty_unknown_malformed_or_ppup_values_are_not_full(moves,pp):
+    from laya_pokemon.campaign_route import healthy
+    mon={'species':132,'hp':147,'max_hp':147,'moves':moves,'pp':pp}
+    assert healthy({'party':[mon]},require_full_pp=True) is False
+
+
 def test_injured_bridge_lead_returns_to_cerulean_center(monkeypatch):
     import laya_pokemon.campaign_route as route
     monkeypatch.setattr(route,'read_world_grid',lambda *a:{'walkable':[[1]*20 for _ in range(36)],'screen_cells_verified':90})
@@ -205,3 +248,84 @@ def test_low_hp_trainee_switches_before_fainting_to_retain_shared_experience(mon
     result=battle.battle_context(text,{'active':True,'kind':'trainer','opponent_species':'DROWZEE'},party)
     assert result['battle_tactic']=='switch_pending_party'
     assert result['objective']=='Confirm the current selection.'
+
+
+def test_review_plan_hash_lock_stays_paused_until_actual_change(monkeypatch):
+    import laya_pokemon.campaign as campaign
+    responses = iter([PermissionError('sharing violation'), 'same', 'changed'])
+    def read_hash(path):
+        result = next(responses)
+        if isinstance(result, Exception):raise result
+        return result
+    monkeypatch.setattr(campaign, 'sha256_file', read_hash)
+    assert campaign.plan_changed(Path('plan.json'), 'same') is False
+    assert campaign.plan_changed(Path('plan.json'), 'same') is False
+    assert campaign.plan_changed(Path('plan.json'), 'same') is True
+
+
+@pytest.mark.parametrize('locked_operation', ['load', 'hash'])
+def test_plan_snapshot_lock_does_not_expose_candidate_until_full_success(monkeypatch, locked_operation):
+    import laya_pokemon.campaign as campaign
+    candidate = {'resume_revision': 2, 'resume_step': 'center', 'steps': []}
+    calls = {'load': 0, 'hash': 0}
+    def maybe_locked(operation, result):
+        calls[operation] += 1
+        if operation == locked_operation and calls[operation] == 1:
+            raise PermissionError('sharing violation')
+        return result
+    monkeypatch.setattr(campaign, 'load_plan', lambda _:maybe_locked('load', candidate))
+    monkeypatch.setattr(campaign, 'sha256_file', lambda _:maybe_locked('hash', 'new-hash'))
+    assert campaign.load_plan_snapshot(Path('plan.json')) is None
+    assert campaign.load_plan_snapshot(Path('plan.json')) == (candidate, 'new-hash')
+
+
+def test_persistent_plan_lock_never_publishes_candidate_and_only_pumps_paused_ui(monkeypatch):
+    import laya_pokemon.campaign as campaign
+    calls, sleeps = [], []
+    emulator = SimpleNamespace(send_input=lambda event:calls.append(event),
+        tick=lambda *args:calls.append(('tick', *args)) or True)
+    def locked(_):raise PermissionError('sharing violation')
+    monkeypatch.setattr(campaign, 'load_plan', locked)
+    monkeypatch.setattr(campaign.time, 'sleep', sleeps.append)
+    for _ in range(3):
+        snapshot = campaign.load_plan_snapshot(Path('plan.json'))
+        assert snapshot is None
+        campaign.wait_for_plan_read(emulator, SimpleNamespace(exists=lambda:False), 'PAUSE', 'UNPAUSE')
+    assert calls == ['PAUSE', ('tick', 1, True, False), 'UNPAUSE'] * 3
+    assert sleeps == [.05] * 3
+
+
+@pytest.mark.parametrize('condition', ['stop', 'closed'])
+def test_plan_lock_ui_wait_still_honors_stop_and_window_close(monkeypatch, condition):
+    import laya_pokemon.campaign as campaign
+    from laya_pokemon.game import WindowClosed
+    calls = []
+    emulator = SimpleNamespace(send_input=calls.append, tick=lambda *args:condition != 'closed')
+    def no_sleep(_):raise AssertionError('STOP或關窗後不得繼續等鎖')
+    monkeypatch.setattr(campaign.time, 'sleep', no_sleep)
+    expected = KeyboardInterrupt if condition == 'stop' else WindowClosed
+    with pytest.raises(expected):
+        campaign.wait_for_plan_read(emulator, SimpleNamespace(exists=lambda:condition == 'stop'), 'PAUSE', 'UNPAUSE')
+    assert calls == ['PAUSE', 'UNPAUSE']
+
+
+@pytest.mark.parametrize('error', [FileNotFoundError('missing'), ValueError('bad hash'), UnicodeError('decode')])
+def test_plan_hash_does_not_hide_nonpermission_errors(monkeypatch, error):
+    import laya_pokemon.campaign as campaign
+    def failed(_):raise error
+    monkeypatch.setattr(campaign, 'sha256_file', failed)
+    with pytest.raises(type(error)):
+        campaign.plan_changed(Path('plan.json'), 'old')
+
+
+@pytest.mark.parametrize('operation,error', [('load', ValueError('invalid plan')),
+                                           ('load', UnicodeError('decode')),
+                                           ('load', FileNotFoundError('missing')),
+                                           ('hash', FileNotFoundError('missing'))])
+def test_snapshot_preserves_existing_invalid_plan_and_other_error_handling(monkeypatch, operation, error):
+    import laya_pokemon.campaign as campaign
+    def failed(_):raise error
+    monkeypatch.setattr(campaign, 'load_plan', failed if operation == 'load' else lambda _:{'steps': []})
+    monkeypatch.setattr(campaign, 'sha256_file', failed if operation == 'hash' else lambda _:'hash')
+    with pytest.raises(type(error)):
+        campaign.load_plan_snapshot(Path('plan.json'))

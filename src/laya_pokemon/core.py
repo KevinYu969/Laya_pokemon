@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -52,7 +53,15 @@ def write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")
-    temporary.replace(path)
+    for attempt in range(10):
+        try:
+            temporary.replace(path)
+            return
+        except PermissionError:
+            # Windows reader 的短暫共享鎖：只重試同一份 atomic replace。
+            if attempt == 9:
+                raise
+            time.sleep(.025)
 
 
 def append_jsonl(path: Path, value: Any) -> None:

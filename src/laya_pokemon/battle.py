@@ -4,9 +4,10 @@ from __future__ import annotations
 from numbers import Integral
 import re
 import importlib
-from . import levelup_control, levelup_moves
+from . import levelup_control, levelup_moves, ditto_transform
 importlib.reload(levelup_control)
 importlib.reload(levelup_moves)
+importlib.reload(ditto_transform)
 
 
 # wram.asm: wIsInBattle、單 byte wPartyGainExpFlags、wCurOpponent；後者由 PyBoy 定位 D059。
@@ -296,9 +297,21 @@ def read_battle_state(pyboy) -> dict:
                 opponent = species_key(int(value))
         except (KeyError, IndexError, TypeError, ValueError):
             pass
+    transform = ko_transition = None
+    battle_frame = getattr(pyboy, 'frame_count', None)
+    if raw == 1:
+        from pyboy.plugins import game_wrapper_pokemon_gen1_constants as sdk
+        from .ditto_transform import read_ditto_transform, read_ditto_ko_transition
+        from .team_strategy import reference
+        transform = read_ditto_transform(pyboy, observation_frame=battle_frame,
+                                         constants=sdk, reference_data=reference())
+        ko_transition = read_ditto_ko_transition(pyboy, observation_frame=battle_frame,
+                                                constants=sdk, reference_data=reference())
     return {"raw": raw, "active": raw in (1, 2) if raw in (0, 1, 2, 255) else None,
             "kind": {0: "none", 1: "wild", 2: "trainer", 255: "lost_transition"}.get(raw, "unknown"),
             "wild_opponent_species": opponent if raw==1 else None, "opponent_species":opponent,
+            "observation_frame": battle_frame, "ditto_transform": transform,
+            "ditto_ko_transition": ko_transition,
             "opponent_source": "https://github.com/pret/pokered/blob/53ae0e93fad9f4c3eaef92f102b1eeb531e59d68/wram.asm#L641",
             "source": SOURCE, "victory_confirmed": None,
             "player_disabled_move": _read_player_disabled_move(pyboy) if raw in {1, 2}
@@ -331,6 +344,69 @@ def _selection_hint(rows, target, menu):
             "battle_strategy": "controller menu subgoal; chosen move or capture tactic logged separately", "source": MENU_SOURCE}
 
 
+def _ditto_ko_context(text, battle_state, party):
+    """只准已驗證0HP百變怪的正常收尾；舊攻擊頁絕不送A。"""
+    signal = battle_state.get('ditto_ko_transition')
+    if not isinstance(signal, dict) or signal.get('read_valid') is not True:
+        return None
+    from .team_strategy import reference, species_key, move_key
+    from .ditto_transform import verified_ko_transition
+    def review():
+        return {'phase': 'strategy_review', 'objective': 'Wait.', 'available_actions': ['wait'],
+                'review_reason': 'ditto_ko_transition_ui_not_verified'}
+    if (type(battle_state.get('raw')) is not int or battle_state['raw'] != 1
+            or battle_state.get('kind') != 'wild' or battle_state.get('active') is not True
+            or not verified_ko_transition(signal, ram_enemy=battle_state.get('opponent_species'), party=party,
+                observation_frame=battle_state.get('observation_frame'), reference_data=reference())):
+        return review()
+    rows = _fixed_damage_rows(text)
+    if rows is None or any(marker in ''.join(rows) for marker in ('▶', '▷')):
+        return review()
+    upper_names = [row.strip() for row in rows[:4] if row.strip() in reference()['species']]
+    if upper_names not in ([], ['DITTO']):
+        return review()
+    allowed_upper = {'DITTO', 'SLP', 'PSN', 'BRN', 'FRZ', 'PAR', 'ATTACK', 'DEFENSE', 'SPEED', 'SPECIAL'}
+    allowed_upper.update(species_key(mon['species']) for mon in party)
+    if (any(word not in allowed_upper for word in re.findall(r'[A-Z_]+', ' '.join(rows[:12])))
+            or re.search(r'[^A-Z0-9_ /]', ''.join(rows[:12]))):
+        return review()
+    lower = ' '.join(' '.join(rows[12:]).split())
+    markers = lower.count('▼')
+    if markers > 1 or '▼' in ''.join(rows[:12]) or markers and not lower.endswith('▼'):
+        return review()
+    lower = lower.removesuffix('▼').strip()
+    first = species_key(party[0]['species'])
+    if not first:
+        return review()
+    complete = (lower == 'ENEMY DITTO FAINTED!'
+                or re.fullmatch(re.escape(first) + r' GAINED [1-9][0-9]{0,3} EXP\. POINTS!', lower)
+                or type(party[0].get('level')) is int
+                and lower == f"{first} GREW TO LEVEL {party[0]['level']}!")
+    details = {'ditto_ko_stage': 'enemy_zero_hp_faint_transition', 'battle_tactic': 'wait_ditto_faint_transition'}
+    if complete:
+        return {'phase': 'battle_dialogue', 'objective': 'Confirm the current selection.',
+                'available_actions': ['a', 'wait'], **details}
+    if markers:
+        return review()
+    # 正常逐字／空白動畫只等待；未核實的攻擊文字不視作收據。
+    known = ['ENEMY DITTO FAINTED!', f"{first} GREW TO LEVEL {party[0].get('level')}!"]
+    if upper_names == ['DITTO']:
+        active_names = [row.strip() for row in rows[6:10] if row.strip() in reference()['species']]
+        active = [mon for mon in party if species_key(mon['species']) in active_names]
+        if len(active) == 1:
+            name = species_key(active[0]['species'])
+            known.extend(f"{name} USED {move_key(move).replace('_', ' ')}!"
+                         for move in active[0].get('moves', []) if move_key(move))
+    exp_prefix = f'{first} GAINED'
+    partial_exp = exp_prefix.startswith(lower)
+    if lower.startswith(exp_prefix + ' '):
+        match = re.fullmatch(r'([1-9][0-9]{0,3})(?: (.*))?', lower[len(exp_prefix) + 1:])
+        partial_exp = bool(match and 'EXP. POINTS!'.startswith(match[2] or ''))
+    if not lower or any(message.startswith(lower) for message in known) or partial_exp:
+        return {'phase': 'battle_animation', 'objective': 'Wait.', 'available_actions': ['wait'], **details}
+    return review()
+
+
 def battle_context(text, battle_state, party=(), inventory=None, *, capture_focus=False) -> dict | None:
     """僅對已核對 ROM 的實驗性路線提供局部提示；不執行按鍵。"""
     global _no_pp_switch
@@ -340,6 +416,9 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
     if battle_state["active"] is not True:
         _no_pp_switch=None
         return None
+    ko_context = _ditto_ko_context(text, battle_state, party)
+    if ko_context is not None:
+        return ko_context
     signal = battle_state.get('player_disabled_move')
     party, disabled_error = _disabled_policy_party(party, signal)
     if disabled_error:
@@ -391,7 +470,19 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
         enemy = next(iter(enemy_matches), None)
         ram_enemy = battle_state.get("opponent_species") or battle_state.get("wild_opponent_species")
         if enemy and ram_enemy and enemy != ram_enemy:
-            return {"phase": "strategy_review", "review_reason": "visible_enemy_and_wild_opponent_signal_disagree"}
+            from .ditto_transform import verified_effective_enemy
+            transformed = (verified_effective_enemy(battle_state.get('ditto_transform'),
+                visible_enemy=enemy, ram_enemy=ram_enemy, party=party,
+                observation_frame=battle_state.get('observation_frame'), reference_data=reference())
+                if type(battle_state.get('raw')) is int and battle_state.get('raw') == 1
+                and battle_state.get('kind') == 'wild' and battle_state.get('active') is True
+                and len(enemy_matches) == 1
+                and (text.get('profile') == _VISIBLE_PROFILE and text.get('read_valid') is True
+                    and text.get('alignment_verified') is True and text.get('read_error') is None
+                    and type(text.get('window_visible')) is bool) else None)
+            if transformed is None:
+                return {"phase": "strategy_review", "review_reason": "visible_enemy_and_wild_opponent_signal_disagree"}
+            enemy = transformed
         if enemy is None:
             enemy = ram_enemy  # 背包可能蓋住 HUD；只在野生旗標下讀已核對的wEnemyMonSpecies。
         visible_names={normalize(row.strip()) for row in rows[6:10]}
