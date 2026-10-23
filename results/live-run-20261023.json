@@ -1,0 +1,143 @@
+{
+  "at": "2026-10-23T03:08:06.259611+00:00",
+  "kind": "local_laya_red_live_observation",
+  "status": "milestone_snapshot",
+  "run": "pyboy-live-20261023-10",
+  "rom_sha256": "5ca7ba01642a3b27b0cc0b5349b52792795b62d3ed977e98a09390659af96b7b",
+  "model_revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "decision_backend": "local_laya_cpu",
+  "offline": true,
+  "python_network_denied": true,
+  "cloud_model_fallback": false,
+  "native_desktop_verified": true,
+  "desktop_observations": [
+    "真新鎮 OAK: Hey! Wait! 對話",
+    "大木博士研究所與初始精靈球",
+    "勁敵取得小火龍對話"
+  ],
+  "steps_observed": 294,
+  "actions_observed": [
+    "a",
+    "b",
+    "down",
+    "left",
+    "right",
+    "up",
+    "wait"
+  ],
+  "achieved_this_session": [
+    "玩家 KEVIN 命名",
+    "勁敵 BLUE 命名",
+    "二樓繞過植物並下樓",
+    "離家進入真新鎮",
+    "觸發博士並進入研究所",
+    "取得等級 5 妙蛙種子"
+  ],
+  "starter_evidence": {
+    "dialogue_step_indices": [
+      110,
+      111,
+      112,
+      113
+    ],
+    "first_valid_party_step_index": 119,
+    "step_index_base": 0,
+    "party": [
+      {
+        "species": 153,
+        "species_name": "BULBASAUR",
+        "level": 5,
+        "hp": 19,
+        "max_hp": 19,
+        "exp": 135
+      }
+    ],
+    "player_name_read_only": "KEVIN",
+    "method": "遊戲畫面文字候選與後續唯讀隊伍欄位相互核對；沒有寫入遊戲進度記憶體"
+  },
+  "latest_location": {
+    "map_id": 40,
+    "x": 8,
+    "y": 4
+  },
+  "mission_objective": "培養並升級隊伍、完成必要劇情、取得八枚徽章、擊敗四天王與冠軍，並完成名人堂登錄。",
+  "mission_milestones": [
+    {
+      "id": "train_party",
+      "label": "培養並升級隊伍",
+      "status": "pending"
+    },
+    {
+      "id": "required_story",
+      "label": "完成必要劇情",
+      "status": "pending"
+    },
+    {
+      "id": "eight_badges",
+      "label": "取得八枚徽章",
+      "status": "pending"
+    },
+    {
+      "id": "elite_four",
+      "label": "擊敗四天王",
+      "status": "pending"
+    },
+    {
+      "id": "champion",
+      "label": "擊敗冠軍",
+      "status": "pending"
+    },
+    {
+      "id": "hall_of_fame",
+      "label": "完成名人堂登錄",
+      "status": "pending"
+    }
+  ],
+  "hall_of_fame_confirmed": null,
+  "tests": {
+    "passed": 153,
+    "seconds": 3.16,
+    "scope": "本機完整單元測試；實際遊戲與桌面另行驗證"
+  },
+  "code_commit_at_start": "61e23beee35a92c9e628747db8007877d88386fd",
+  "code_dirty_at_start": true,
+  "source_sha256": {
+    "src/laya_pokemon/__init__.py": "d40c5e48fe1d84e0360809e148143b68592b39cc00d1f5add32a33e175bfb0cf",
+    "src/laya_pokemon/cli.py": "b609b2a6dbcc16314b3f0d51317249d0916f089748f25e167c2da3938f9b3140",
+    "src/laya_pokemon/core.py": "2e291aa7f8878354021b96df6cd3495ab206fb9c6d8168a143b5df1e5dee7496",
+    "src/laya_pokemon/game.py": "2d54798f1f78b9c5393a151f389ac710816d2e231d95ea656a8c89f896024619",
+    "src/laya_pokemon/naming.py": "0788e2914df6256789024ea4ca08ae2628ae61a7326f97c3633bbb10a62afee7",
+    "src/laya_pokemon/navigation.py": "1652322697d11a86f9d9ecb8335f40cb6657bf75c73700981c2830909cd19db0",
+    "src/laya_pokemon/observation.py": "6cd9caf88313c32e65eba16eec4d272ec4533bbc83c42193e7a8d2d6d7ec055d",
+    "src/laya_pokemon/policy.py": "50e167c88bbf2677448311b2854284ce5d20e8d8630d3ea5aa68c96819cd728a",
+    "src/laya_pokemon/progress.py": "98fa88859b6b79076b70e66df4e57ee90e7c2af0657915a2575327382f91f436",
+    "src/laya_pokemon/runtime.py": "fa8bc091a8815c9a278f9c6267fac853b52b97dfe65b093f2fdbeeca5812ec2f",
+    "src/laya_pokemon/showdown.py": "6d16c54e68fbf39f4299e667de99e58268de699748e92397fc1da31c4a2013ac",
+    "src/laya_pokemon/video.py": "45e9a8f4c18e5ad65d22f344805159f59344f252a8775823ff8f29bb13046ee2"
+  },
+  "controller_contribution": "本機文字／字格解析、場景子目標、已核對 waypoint、碰撞 BFS 與候選遮罩；所有已執行遊戲按鍵仍由本機 Laya 分類選出",
+  "current_limit": "本輪 waypoint 到取得妙蛙種子後等待；尚未完成研究所勁敵對戰、升級、道館或聯盟。這是單次分段證據，沒有成功率或完整自主通關證據。",
+  "cost_scope": "遊戲分類不呼叫 GPT；Codex 工程、檢查與查攻略仍使用 Codex 額度。",
+  "strategy_sources": [
+    "https://strategywiki.org/wiki/Pok%C3%A9mon_Red_and_Blue/Pallet_Town",
+    "https://raw.githubusercontent.com/pret/pokered/master/scripts/PalletTown.asm",
+    "https://raw.githubusercontent.com/pret/pokered/master/scripts/OaksLab.asm"
+  ],
+  "problem_resolution": [
+    {
+      "run": "08",
+      "problem": "直線走向樓梯被植物擋住",
+      "resolution": "唯讀碰撞格 BFS 繞路；run09 實際下樓"
+    },
+    {
+      "run": "09",
+      "problem": "站在一樓門格 (3,7) 等待，沒有切圖",
+      "resolution": "獨立 headless 存檔複本測到再往下可進真新鎮；run10 由 Laya 實際重現"
+    }
+  ],
+  "video": {
+    "naming_clip_receipt": "results/kevin-naming-clip-20261023.json",
+    "files_publicly_uploaded": false,
+    "timing": "emulated_time"
+  }
+}

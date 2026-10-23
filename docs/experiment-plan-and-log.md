@@ -338,3 +338,79 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 先取得有權使用且完整的英文紅／藍版ROM；驗證SHA256與標頭後，執行start-live.ps1。必須實際核對桌面視窗、遊戲開機／標題、Laya決策JSONL對應的按鍵與遊戲畫面變化，再校準開場／導航及錄影。未完成前README維持「尚無真實遊玩」狀態。
 
 參考：[Nintendo 紅版](https://www.nintendo.com/en-gb/Games/Game-Boy/Pokemon-Red-Version-266109.html)、[GB Operator 遊戲資料備份功能](https://www.epilogue.co/product/gb-operator)、[Pan Docs 卡匣標頭](https://gbdev.io/pandocs/The_Cartridge_Header.html)。
+
+## 14. 2026-10-23 紅版取得、桌面實測、離線分類與冠軍目標
+
+### 使用者要求與目前進度
+
+- Kevin明確授權下載紅版後，已走來源頁的正常配額與表單流程取得單一ZIP；未繞過配額。散布授權仍未獨立驗證；使用者授權執行下載不等於已驗證權利人授權。ROM僅留本機roms，未進GitHub。
+- ROM 1,048,576 bytes、標頭POKEMON RED、revision0；CRC32 9f7fdd53與來源公布值一致，logo、容量、header/global checksum均通過。SHA256：5ca7ba01642a3b27b0cc0b5349b52792795b62d3ed977e98a09390659af96b7b。結構檢查本身不證明來源授權。
+- 已實際啟動SDL2四倍桌面視窗，用Windows Computer Use聚焦並取得新畫面；親見大木博士歡迎詞與後續尼多力諾／POKéMON介紹。這是PyBoy即時執行，不是Showdown回放。
+- Kevin曾要求暫停並用Esc中止Computer Use；當時未確認遊戲程序停止，沒有假稱關閉成功。Kevin後來明確恢復，要求本機Laya離線操作、分類不可使用GPT-6.1 Sol額度。
+- 正式長程目標：培養升級隊伍、完成必要劇情、八枚道館徽章、四天王及冠軍、名人堂。這是目標，不是已達成成果；目前仍校準開場與姓名選單，未取得初始寶可夢，沒有自主全程通關能力證據。
+- Kevin指定玩家名稱Kevin，預定在遊戲中輸入KEVIN；目前尚未完成命名，不能寫成已成功設定。後續從本機checkpoint接續，不以記憶體改名代替遊戲輸入。
+
+### 離線與模型額度
+
+- 真正按鍵分類使用convaiinnovations/laya固定revision 7b928d828b7b0e022f929d9bd2e44165aa270148、CPU四執行緒、已快取權重。沒有OpenAI API或雲端模型備援。
+- --offline設定HF_HUB_OFFLINE、TRANSFORMERS_OFFLINE、HF_HUB_DISABLE_TELEMETRY；遊戲程序以Python audit hook拒絕socket.connect、getaddrinfo、sendto。這只影響該程序，不改系統防火牆或其他服務。子程序測試驗證三種Python網路嘗試都先被擋下。
+- Codex工程開發、除錯、讀畫面驗收與對話仍使用對話模型額度；它們不進入每一步遊戲分類迴圈。不能籠統宣稱整個專案開發完全不消耗GPT額度。
+
+### 實際問題、修復與結果
+
+- RUN-01：pyboy-live-20261023-095530-801以舊碰撞摘要觀測運行，模型重複START，停在Hello there歡迎詞。600秒上限正常停止，留下116.4秒／3492幀／30fps無聲真實遊戲時間影片。這是卡關案例，非開場完成。
+- DISPLAY-002：直接Alt+F4被自動安全審核拒絕，理由是可能遺失未保存的遊戲狀態；沒有改用CLI kill繞過。嘗試內建保存鍵時遇到foreground process id錯誤，未宣稱保存成功；之後舊run自行達時間上限結束。新版每一步保存本機checkpoint，停止時另存final.state與last-frame.png。
+- RUN-02：接可見tile文字、按鍵前後PNG、progress前置觀測及完整診斷後，於完成8步後下一次分類觸發輸入截斷保護。失敗run與checkpoint保留，MP4為9.4667秒。原因是警告／hash等稽核資料消耗小模型上下文；未套用截斷後的動作。
+- 修復：完整state留JSONL，分類只傳目標、phase、可見文字及精簡隊伍；中文診斷與hash不送模型，回傳model_state保存真正輸入。離線從checkpoint續跑。
+- RUN-03：300次動作、280秒遊戲時間影片，但大部分重複START。實際可見文字Hello there／Welcome to the已讀出；僅加入文字仍不足。
+- 本機對照：同一dialogue目標只含phase/goal時Laya選A；加入三次START歷史後選START；移除歷史、保留對話文字後選A。這是單一觀測的排查，不作一般效能結論。另試由Laya直接分類畫面階段，把Hello there錯分overworld；未採用為已驗證phase辨識器，失敗結果保留於outputs。
+- RUN-04修復：歷史只保留稽核，不進分類。以本機可見文字位置與NEW NAME等標記提供phase／當下子目標提示，再讓Laya選按鍵。已在真實遊戲中以A從歡迎詞推進至OAK／POKéMON介紹與玩家姓名選單；姓名選單仍觀測到重複START，下一步處理KEVIN輸入。控制器規則貢獻明列，不能宣稱全由模型理解遊戲。
+- 新增唯讀progress.jsonl：有效隊伍／等級／經驗、徽章原始值與限定劇情事件；初始化只是candidate，不等於校準成功。名人堂確認維持null，冠軍bit不能單獨當已通關。不能透過setter直接取得徽章、寶可夢或劇情進度。
+- 本輪完整測試70 passed in 3.17s；包含可見文字範圍、離線連線擋下、分類輸入精簡、UI子目標提示與進度讀取。實際ROM／SDL畫面另外驗證，兩者不混算。
+- 所有本機遊戲幀、ROM、存檔與MP4仍在忽略目錄；公開results僅是整理摘要。當前執行的code_dirty與逐檔source_sha256保留，不能以稍後提交SHA代替執行起點版本。
+
+### 接續
+
+先以遊戲命名介面輸入KEVIN，完成開場取得可控制角色；再逐步實作起點／地圖／局部路徑、初始寶可夢、升級及戰鬥任務。長程目標與每階段成功條件分開記錄，沒有徽章與聯盟成果前維持待測。分類繼續本機Laya離線，工程對話額度另計。
+
+## 15. 2026-10-23 KEVIN 命名成功、遊戲影片與攻略策略授權
+
+### 已完成的實際遊戲里程碑
+
+- 玩家名稱KEVIN已經由命名介面完成：run06第21步Laya選START提交已輸入的KEVIN，第25步遊戲顯示Right! So your name is KEVIN!。run07另以唯讀玩家姓名欄驗證player_name_raw=KEVIN，沒有直接寫入姓名記憶體。
+- run07第11步提交對手BLUE，第17步對話確認name is BLUE!，隨後到達角色房間。Windows Computer Use新畫面已確認房間與主選單中的KEVIN；不是以瀏覽器回放代驗。
+- 實際遊戲影片已剪出21秒命名片段：outputs/videos/kevin-naming-20261023.mp4，480×432、30fps、630幀，首尾可解碼。影片SHA256 5744bd9cf5b90abe9ad5f7e8130fd219c44c087020131e3b1fa32dea6a489d0f；來源run06 MP4。這是遊戲時間剪輯，省略模型等待，不宣稱21秒牆鐘完成。影片尚未公開上傳。
+
+### 命名與視窗問題的後續修復
+
+- run05以可見字格和游標解析輸入K，移向E時方向誤選；同一目標的本機對照顯示短指令Move UP比附帶目標字母的長指令可靠。本次僅有少量觀測，不作一般能力宣稱。
+- 命名規則解析YOUR NAME?/RIVAL's NAME?、三列9欄字母配置、單一游標及已輸入名稱；本機子目標規劃器提供移動／確認／刪錯／提交目標及多個候選，Laya仍分類選按鍵。命名盤不能用一般兩字母門檻的文字行反推，因此另保留可見20×18字碼格。
+- 玩家名稱可由--player-name設定，接受1–7個英文字母。預設本次KEVIN；對手使用BLUE。鍵盤規則與候選遮罩的貢獻明列，不宣稱模型自行發現字盤路徑。
+- 字元B的確認目標又出現wait重複；run07移除目標句中的字母字面，使用Confirm the current selection及A/B兩個候選後，實際完成BLUE。完整失敗run06仍保留。
+- 視窗關閉先遭自動審核拒絕；獨立headless複本實測QUIT→save_state→load_state後，K與游標完整保留，未觸碰live視窗。通過檢查後正常UI關閉重試獲允許；run05最後以window_closed停止、final.state保留。沒有使用kill或刪除繞過拒絕。
+- run06及run07各保留200秒遊戲時間MP4；run05有170.667秒。每次從不可覆寫的本機存檔／新run輸出續接；部分開發期間曾同時存在舊輪與新輪視窗，舊輪按既有上限結束，各自不覆寫ROM/RAM。
+- 命名階段完整測試105 passed；加入初期waypoint與選單解析後144 passed。測試數與階段分開記，GUI／ROM另有實機證據。
+
+### 攻略查詢與策略回饋
+
+- Kevin明確允許後續卡關上網查攻略，再回饋策略給Laya。查攻略及工程整理屬Codex對話用量；每一步分類仍本機Laya CPU離線，程序拒絕Python網路連線，沒有GPT分類或雲端備援。
+- 已查[StrategyWiki真新鎮](https://strategywiki.org/wiki/Pok%C3%A9mon_Red_and_Blue/Pallet_Town)、[開局流程](https://bulbapedia.bulbagarden.net/wiki/Appendix%3ARed_and_Blue_walkthrough/Section_1)，並以pret/pokered的地圖／劇情程式核對：離家後先到北方觸發Oak，不直接前往研究所；等待Oak指示後才拿初始寶可夢。攻略只整理必要事實與連結，不整篇複製。
+- 初始寶可夢已詢問偏好，尚未收到回答時，依預先告知的假設採妙蛙種子作首輪條件；使用者後續選擇優先。設定在本機.local/active-strategy.json，遊戲程序每步讀取starter及策略雜湊，不自行上網。
+- 已核對英文紅版RAM map=0xD35E、x=0xD362、y=0xD361與此ROM實測：角色房間map0x26、(3,6)，姓名KEVIN；移動後x3→5。來源為PWhiddy/PokemonRedExperiments與pret/pokered原始碼。
+- 路線為實驗性waypoint，限本次已核對ROM SHA：2F樓梯(7,1)→1F出口(3,7)→Pallet北方y1觸發Oak→研究所接指示。妙蛙種子球(8,3)，互動鄰格(8,4)朝北；這些是玩家行走格，不是8px螢幕tile。
+- run08初次直線向樓梯被植物擋在2F(5,6)，已以實際畫面與collision matrix核對右側不可走；下一步加碰撞繞路，不能把目標座標當無障礙路徑。尚未離家或取得初始寶可夢，不把waypoint存在寫成達成。
+- 長程驗收仍為隊伍升級／必要劇情／八徽章／四天王冠軍／名人堂。所有原始ROM、存檔、逐幀與影片留本機；公開結果摘要另行白名單備份，網站文章未發布。
+
+## 16. 2026-10-23 碰撞繞路、離家及取得妙蛙種子
+
+- run09 使用唯讀碰撞格 BFS，Laya 實際繞過二樓植物、走樓梯切至一樓；不是只有路線單元測試。當時仍卡在一樓門格 (3,7)，原因是 waypoint 到格後只等待，尚須再向下走一步才出門。
+- 先從 run09 存檔建立獨立 headless 機制探測：向下 8 幀、等待 64 幀後，map37 (3,7) 變成 map0 (5,6)。這是工程探測，不記為 Laya 遊戲成績。修正 step_out_house 目標與相鄰出口碰撞例外後，run10 從保存的 final.state 續接，所有實際按鍵均由本機 Laya 選擇，成功出門並往北觸發博士。
+- Windows Computer Use 已選取並啟用真正 Python SDL2 視窗，現場確認真新鎮 OAK: Hey! Wait!、博士研究所與三個精靈球，以及勁敵取得小火龍的畫面；不是 Showdown 或瀏覽器影片。視窗標題 PAUSED 為模型等待，主執行緒持續處理事件。
+- run10 第111–113個零起算步驟可見 KEVIN received a BULBASAUR!，第118步看到暱稱詢問，由 Laya 選 B 跳過；第119步開始唯讀隊伍有效，species=0x99／BULBASAUR、等級5、HP19/19，姓名欄 KEVIN。無直接寫入隊伍或劇情記憶體。勁敵隨後選小火龍。
+- 初始寶可夢偏好未收到新回答，依已告知的首輪預設採妙蛙種子。攻略與公開原始碼只提供局部策略／waypoint，碰撞 BFS、場景提示與候選遮罩是工程控制器貢獻，不能將這次成果描述為模型完全自主理解遊戲。
+- 完整測試153 passed（3.16秒）；遊戲與桌面另外以實際日誌／畫面驗收。本機臨時 Python 輸出曾因 Windows cp1252 無法列印 ▼ 而失敗，改用 -X utf8 後正常；沒有影響遊戲程序。
+- 每步分類仍使用固定 revision 的本機 Laya CPU，Python 網路封鎖、無 GPT fallback。查攻略／工程整理仍消耗 Codex 額度。卡關研究會記來源、採用條件、修改內容與結果。
+- 本輪路線範圍止於取得初始寶可夢，之後等待；研究所勁敵戰、升級、道館、四天王／冠軍及名人堂尚未完成。單次分段成功不能估計成功率。後續先校準戰鬥畫面與招式選單，再延伸路線。
+- 21秒命名影片與每輪完整 gameplay.mp4 留本機，影片採模擬器時間，不能當牆鐘速度。公開 README 與 results/live-run-20261023.json 更新到本輪證據，ROM／存檔／權重／影片／原始日誌不上傳，網站文章尚未發布。
+
+策略來源：[真新鎮攻略](https://strategywiki.org/wiki/Pok%C3%A9mon_Red_and_Blue/Pallet_Town)、[博士劇情](https://github.com/pret/pokered/blob/master/scripts/PalletTown.asm)、[研究所選初始流程](https://github.com/pret/pokered/blob/master/scripts/OaksLab.asm)。先前開場及命名問題見第14–15節。

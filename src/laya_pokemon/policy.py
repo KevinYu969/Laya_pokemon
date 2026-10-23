@@ -47,10 +47,20 @@ class LayaPolicy:
         return {"action": key, "model_ms": elapsed_ms, "raw": result}
 
     def choose(self, state: dict[str, Any]) -> dict[str, Any]:
-        decision = self.choose_options(state,
+        # 雜湊、中文診斷與 profile 是稽核資料；不要消耗小模型的遊戲上下文。
+        model_state = {key: state[key] for key in ("objective", "phase", "visible_text_candidates", "party_summary")
+                       if key in state}
+        available = state.get("available_actions", [action.key for action in ACTIONS])
+        if len(available) < 2 or len(set(available)) != len(available):
+            raise ValueError("分類須有至少兩個不重複的候選動作")
+        for key in available:
+            validate_action(key)
+        decision = self.choose_options(model_state,
             "Choose the next button action that best advances the stated objective. Use the supplied state only.",
-            {action.key: action.description for action in ACTIONS})
+            {action.key: action.description for action in ACTIONS if action.key in available})
         validate_action(decision["action"])
+        decision["model_state"] = model_state
+        decision["candidate_actions"] = available
         return decision
 
 

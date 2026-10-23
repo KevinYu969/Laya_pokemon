@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-23T02:49:39.258329+00:00",
+  "kind": "actual_red_gameplay_excerpt",
+  "source_run": "pyboy-live-20261023-06",
+  "source_video_sha256": "0499974ba7e0459e8deb108806d4e78ce789de3a9bf6796a7e798f3dc76cb07f",
+  "clip_sha256": "5744bd9cf5b90abe9ad5f7e8130fd219c44c087020131e3b1fa32dea6a489d0f",
+  "local_filename": "kevin-naming-20261023.mp4",
+  "fps": 30.0,
+  "duration_seconds": 21.0,
+  "frames_checked": [
+    0,
+    629
+  ],
+  "size": [
+    480,
+    432
+  ],
+  "timing": "emulated_time; inference waits omitted",
+  "content": "Laya-controlled KEVIN name entry and in-game confirmation",
+  "published_video": false
+}

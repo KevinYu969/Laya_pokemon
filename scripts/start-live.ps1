@@ -1,7 +1,8 @@
 param(
     [string]$Rom,
     [string]$State,
-    [string]$Objective = 'Start a new game and advance the opening dialogue. Choose one button using the observed state.',
+    [string]$PlayerName = 'KEVIN',
+    [string]$Objective = 'Complete the opening introduction and choose a default name to reach the player bedroom.',
     [ValidateRange(1, 300)][int]$Steps = 300
 )
 
@@ -25,6 +26,7 @@ try {
     $taskRun = 'outputs/runs/pyboy-live-' + (Get-Date -Format 'yyyyMMdd-HHmmss-fff')
     $taskArguments = @('-m', 'laya_pokemon.cli', 'play', '--rom', $Rom,
         '--objective', $Objective, '--policy', 'laya', '--steps', "$Steps",
+        '--player-name', $PlayerName,
         '--window', '--scale', '4', '--offline', '--video', '--output', $taskRun)
     if ($State) { $taskArguments += @('--state', $State) }
     Write-Host '即將開啟 PyBoy 桌面視窗。PAUSED 表示正在載入／等待模型；可關閉視窗停止。'
