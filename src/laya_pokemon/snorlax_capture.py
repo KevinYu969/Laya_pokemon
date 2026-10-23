@@ -386,6 +386,12 @@ class SnorlaxCaptureController:
             if known:
                 safety = self._safety(party, self.active_index)
                 if safety: return safety
+                raw_packet=deepcopy((None,text,progress,location,battle_state,enemy_snapshot))
+                if frame==self.last_frame:
+                    if raw_packet!=self.last_packet:return self._fail('snorlax_capture_same_frame_changed_packet')
+                    return {**self._wait('same_native_animation_frame_no_resend'),
+                            'controller_menu_verified':False,'native_decoder_read_valid':False}
+                self.last_frame,self.last_packet=frame,raw_packet
                 self.native_animation_waits = getattr(self, 'native_animation_waits', 0) + 1
                 if self.native_animation_waits <= 25:
                     return {**self._wait('await_verified_headbutt_native_animation'),

@@ -392,3 +392,49 @@ def test_no_runtime_io_buttons_ram_generic_battle_or_model_calls():
         if isinstance(node,ast.Attribute):assert node.attr not in {'tick','button','memory','load_state','save_state'}
     s=Session();before=deepcopy(s.b);t=command(s.p);p=deepcopy(s.p);s.call(t)
     assert s.b==before and s.p==p
+
+
+def native_wipe():
+    t=text_at((1,0,'SNORLAX'))
+    t.update(read_valid=False,alignment_verified=False,read_error='visible_tile_alignment_incomplete')
+    return t
+
+
+def test_exact_native_switch_wipe_only_waits_with_original_decoder_failure_and_fixed_budget():
+    s=Session();s.switch();t=native_wipe();before=deepcopy(s.p)
+    for _ in range(25):
+        r=s.call(t);assert r['available_actions']==['wait'] and not r['controller_menu_verified']
+    assert s.call(t)['phase']=='campaign_review' and s.p==before
+
+
+@pytest.mark.parametrize('change',['not_switching','wrong_text','extra_cursor','wrong_error','already_sent'])
+def test_native_switch_wipe_does_not_allow_other_unknown_ui(change):
+    s=Session();s.switch();t=native_wipe()
+    if change=='not_switching':s.c.stage='party'
+    elif change=='wrong_text':t['cells'][0][1]='X'
+    elif change=='extra_cursor':t['cells'][14][9]='▶'
+    elif change=='wrong_error':t['read_error']='unknown'
+    else:s.c.seen_sendout=True
+    r=s.call(t);assert r['phase']=='campaign_review' and r['available_actions']==['wait']
+
+
+def test_native_headbutt_flash_after_verified_sendout_and_action_only_waits():
+    s=Session();s.switch();s.enemy_headbutt()
+    t=native_wipe();before=deepcopy(s.p)
+    assert s.call(t)['available_actions']==['wait'] and s.p==before
+
+
+@pytest.mark.parametrize('offset',[0,-1])
+def test_native_wipe_records_frame_so_conflicting_critical_cannot_confirm(offset):
+    s=Session();s.switch();s.enemy_headbutt();t=native_wipe()
+    assert s.call(t)['available_actions']==['wait'];frame=s.frame
+    critical=dialogue(s.p,s.c.target_index,'CRITICAL HIT!',prompt=True)
+    r=s.call(critical,frame=frame+offset)
+    assert r['phase']=='campaign_review' and r['available_actions']==['wait']
+
+
+def test_verified_headbutt_flash_may_clear_enemy_name_without_inventing_decoder_proof():
+    s=Session();s.switch();s.enemy_headbutt();t=native_wipe();t['cells'][0]=[' ']*20
+    r=s.call(t)
+    assert r['available_actions']==['wait'] and not r['controller_menu_verified']
+    assert r['native_decoder_read_valid'] is False

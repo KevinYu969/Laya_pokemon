@@ -484,3 +484,26 @@ def test_same_frame_world_observation_never_counts_as_second_frame():
     frame = s.frame
     assert not s.call(world=True, frame=frame, grid=grid(frame))['capture_complete']
     assert s.call(world=True)['capture_complete']
+
+
+def placeholder():
+    return text_at((9,2,'SNORLAX'),(9,4,'SLEEPING'),(9,6,'HT'),(13,6,'?'),(15,6,'??'),
+                   (4,8,'143'),(9,8,'WT'),(14,8,'???'),(17,8,'lb'))
+
+
+def test_initial_source_dex_question_marks_only_wait_then_real_owned_page_can_confirm():
+    s=Session();s.through(last='new_dex_receipt');t=placeholder();before=deepcopy(t)
+    assert s.call(t)['available_actions']==['wait']
+    assert s.call(t)['available_actions']==['wait'] and t==before
+    assert s.call(page('dex_first',s.snapshot))['available_actions']==['a','wait']
+
+
+@pytest.mark.parametrize('change',['species','dex_number','wrong_question_position','prompt','unknown_body'])
+def test_dex_placeholder_cannot_accept_other_header_or_confirm_unknown_page(change):
+    s=Session();s.through(last='new_dex_receipt');t=placeholder()
+    if change=='species':t['cells'][2][9]='X'
+    elif change=='dex_number':t['cells'][8][6]='4'
+    elif change=='wrong_question_position':t['cells'][6][13],t['cells'][6][12]=' ','?'
+    elif change=='prompt':t['cells'][16][18]='▼'
+    else:t['cells'][11][1]='X'
+    assert s.call(t)['phase']=='campaign_review'

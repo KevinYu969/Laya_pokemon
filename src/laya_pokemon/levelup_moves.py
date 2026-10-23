@@ -1,4 +1,4 @@
-"""自然學招工程候選：妙蛙草30級換飛葉快刀、大嘴雀25級略過模仿。
+"""自然學招候選：妙蛙草30級飛葉快刀、大嘴雀25級略過／34級換啄鑽。
 
 純文字／唯讀進度輸入，只回傳 Laya 子目標；不啟動模擬器、不執行按鍵。
 其他已知候選只提供策略並要求檢討；尚未宣稱實機校準成功。
@@ -21,6 +21,7 @@ _CASES = {
     # 固定紅版 source 是32級，不是30級；尼多力諾此案例僅提供計畫。
     (167, 32): (31, (43, 33, 30, 40), False),
     (35, 25): (119, (64, 45, 43, 31), True),
+    (35, 34): (65, (64, 45, 43, 31), True),
 }
 _INTRO = ('IVYSAURISTRYINGTOLEARNRAZORLEAF', 'TRYINGTOLEARNRAZORLEAF', 'RAZORLEAF',
           'LEAF', 'BUTIVYSAURCANTLEARNMORETHAN4MOVES', 'IVYSAURCANTLEARNMORETHAN4MOVES',
@@ -32,6 +33,35 @@ _POOF = ('12ANDPOOF', '12AND', 'POOF')
 _FORGOT = ('IVYSAURFORGOTPOISONPOWDER', 'FORGOTPOISONPOWDER', 'POISONPOWDER')
 _LEARNED = ('IVYSAURLEARNEDRAZORLEAF', 'LEARNEDRAZORLEAF', 'RAZORLEAF')
 _DID_NOT = ('IVYSAURDIDNOTLEARNRAZORLEAF', 'DIDNOTLEARNRAZORLEAF', 'LEARNRAZORLEAF')
+
+# 只有這兩個精確自然案例能共用既有正常忘招流程；不接受任意名字／招式。
+_REPLACEMENTS = {
+    (9, 30): {
+        'before': (77, 15, 73, 22), 'after': (75, 15, 73, 22), 'slot': 0,
+        'old': 'POISONPOWDER', 'new': 'RAZOR_LEAF', 'old_id': 77,
+        'old_tactic': 'poisonpowder', 'new_tactic': 'razor_leaf',
+        'intro': _INTRO, 'delete': _DELETE, 'abandon': _ABANDON,
+        'forgot': _FORGOT, 'learned': _LEARNED, 'did_not': _DID_NOT,
+    },
+    (35, 34): {
+        'before': (64, 45, 43, 31), 'after': (64, 65, 43, 31), 'slot': 1,
+        'old': 'GROWL', 'new': 'DRILL_PECK', 'old_id': 45,
+        'old_tactic': 'growl', 'new_tactic': 'drill_peck',
+        'intro': ('FEAROWISTRYINGTOLEARNDRILLPECK', 'TRYINGTOLEARNDRILLPECK',
+                  'DRILLPECK', 'PECK', 'BUTFEAROWCANTLEARNMORETHAN4MOVES',
+                  'FEAROWCANTLEARNMORETHAN4MOVES', 'CANTLEARNMORETHAN4MOVES', 'THAN4MOVES'),
+        'delete': ('DELETEANOLDERMOVETOMAKEROOMFORDRILLPECK', 'MOVETOMAKEROOMFORDRILLPECK', 'FORDRILLPECK'),
+        'abandon': ('ABANDONLEARNINGDRILLPECK', 'STOPLEARNINGDRILLPECK', 'LEARNINGDRILLPECK', 'DRILLPECK'),
+        'forgot': ('FEAROWFORGOTGROWL', 'FORGOTGROWL', 'GROWL'),
+        'learned': ('FEAROWLEARNEDDRILLPECK', 'LEARNEDDRILLPECK', 'DRILLPECK'),
+        'did_not': ('FEAROWDIDNOTLEARNDRILLPECK', 'DIDNOTLEARNDRILLPECK', 'LEARNDRILLPECK'),
+    },
+}
+
+
+def _replacement_profile():
+    # 舊Ivy session沒有此key；僅缺key的舊交易沿用原精確個案。
+    return _REPLACEMENTS.get(_SESSION.get('replacement_case', (9, 30)))
 
 
 def candidate_plan(species, level, moves):
@@ -108,6 +138,9 @@ def _choice(rows, label):
 
 
 def _forget_action(rows):
+    profile = _replacement_profile()
+    if profile is None:
+        return _fail('natural_learning_replacement_case_unverified')
     before = _SESSION['before']
     expected = [normalize(move_key(move)) for move in before]
     actual = [normalize(rows[y][6:]) for y in range(8, 12)]
@@ -121,11 +154,13 @@ def _forget_action(rows):
     active = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == '▶']
     if len(active) != 1 or active[0][0] != 5 or active[0][1] not in range(8, 12):
         return _fail('natural_learning_forget_active_cursor_unreadable')
-    action = 'a' if active[0][1] == 8 else 'up'
+    target_row = 8 + profile['slot']
+    action = 'a' if active[0][1] == target_row else 'up' if active[0][1] > target_row else 'down'
     if action == 'a':
         _SESSION['stage'] = 'forget_selected'
-    return _hint(action, 'forget_only_verified_poisonpowder', forgotten_move=77,
-                 protected_moves=[15, 73, 22], menu_label='POISONPOWDER')
+    return _hint(action, 'forget_only_verified_' + profile['old_tactic'], forgotten_move=profile['old_id'],
+                 protected_moves=[move for i, move in enumerate(before) if i != profile['slot']],
+                 menu_label=profile['old'])
 
 
 def _fearow_skip(rows, progress):
@@ -288,19 +323,29 @@ def context(text, progress):
                         'history': '', 'last_page': None, 'delete_no_requested': False,
                         'abandon_yes_requested': False, 'waits': 0, 'schema_version': 3}
             return _fearow_skip(rows, progress)
-        if (plan['decision'] != 'replace' or plan.get('replace_index') != 0
-                or plan.get('forget') != 'POISONPOWDER' or plan.get('move') != 'RAZOR_LEAF'):
+        case = (learner['species'], learner['level'])
+        profile = _REPLACEMENTS.get(case)
+        if (profile is None or plan['decision'] != 'replace' or plan.get('replace_index') != profile['slot']
+                or plan.get('forget') != profile['old'] or plan.get('move') != profile['new']):
             return _fail('natural_learning_replacement_plan_mismatch', learn_move_plan=plan)
         baseline = _fingerprint(party)
         expected = list(baseline)
-        expected[index] = (9, (75, 15, 73, 22))
+        expected[index] = (learner['species'], profile['after'])
         _SESSION = {'stage': 'intro', 'index': index, 'baseline': baseline, 'expected': tuple(expected),
-                    'before': (77, 15, 73, 22), 'plan': plan, 'seen_move': False,
+                    'before': profile['before'], 'plan': plan, 'seen_move': False,
+                    'replacement_case': case,
                     'history': '', 'last_page': None, 'delete_yes_requested': False,
                     'seen_forgot': False, 'and_requested': False, 'abandon_yes_requested': False,
                     'waits': 0, 'schema_version': 2}
     if _SESSION.get('kind') == 'fearow_mirror_skip':
         return _fearow_skip(rows, progress)
+    profile = _replacement_profile()
+    if profile is None:
+        return _fail('natural_learning_replacement_case_unverified')
+    species, level = _SESSION.get('replacement_case', (9, 30))
+    learner_name = species_key(species)
+    learned_page = learner_name + 'LEARNED' + normalize(profile['new'])
+    forgot_page = learner_name + 'FORGOT' + normalize(profile['old'])
     # 唯一已審查的v1卡頁：Poof完整顯示後仍被當作自動動畫等待。
     # 只解除同一不可逆選擇、同一頁及全隊原四招均未變的timeout；不是學會證明。
     index = _SESSION['index']
@@ -332,8 +377,8 @@ def context(text, progress):
     current = _fingerprint(party)
     if progress.get('party_read_valid') is not True:
         return _fail('natural_learning_party_not_verified')
-    if (len(party) <= _SESSION['index'] or party[_SESSION['index']].get('species') != 9
-            or party[_SESSION['index']].get('level') != 30):
+    if (len(party) <= _SESSION['index'] or party[_SESSION['index']].get('species') != species
+            or party[_SESSION['index']].get('level') != level):
         return _fail('natural_learning_learner_changed')
     if current not in (_SESSION['baseline'], _SESSION['expected']):
         return _fail('natural_learning_unexpected_move_change')
@@ -341,14 +386,14 @@ def context(text, progress):
         return _fail('natural_learning_move_changed_before_verified_selection')
     stage = _SESSION['stage']
     if stage == 'complete':
-        if compact == 'IVYSAURLEARNEDRAZORLEAF':
-            return _hint('a', 'dismiss_verified_razor_leaf_learned', learning_complete=True)
+        if compact == learned_page:
+            return _hint('a', 'dismiss_verified_' + profile['new_tactic'] + '_learned', learning_complete=True)
         _SESSION = None
         return None
     if compact != _SESSION['last_page']:
         _SESSION['history'] = (_SESSION['history'] + compact)[-2048:]
         _SESSION['last_page'] = compact
-    if 'RAZORLEAF' in _SESSION['history']:
+    if normalize(profile['new']) in _SESSION['history']:
         _SESSION['seen_move'] = True
     choices = any(re.search(r'(?<![A-Z])(?:YES|NO)(?![A-Z])', row) for row in rows)
     if not compact and not choices and not any('▶' in row for row in rows):
@@ -372,16 +417,16 @@ def context(text, progress):
                 _SESSION['abandon_yes_requested'] = True
                 _SESSION['stage'] = 'abandon_requested'
             return _hint(action, 'safely_abandon_learning', menu_label='YES')
-        if not _prefix(compact, _ABANDON):
+        if not _prefix(compact, profile['abandon']):
             return _fail('natural_learning_abandon_page_unknown')
         return _hint('a', 'advance_wrapped_abandon_question') if '▼' in lower else _wait('await_abandon_choices')
     if stage == 'abandon_requested':
         if current != _SESSION['baseline']:
             return _fail('natural_learning_abandon_changed_moves')
-        if compact == 'IVYSAURDIDNOTLEARNRAZORLEAF':
+        if compact == learner_name + 'DIDNOTLEARN' + normalize(profile['new']):
             return _fail('natural_learning_abandoned_safely', learning_moves_unchanged=True,
                          learning_result='did_not_learn', learn_move_plan=_SESSION['plan'])
-        if _prefix(compact, _DID_NOT) or not compact:
+        if _prefix(compact, profile['did_not']) or not compact:
             return _wait('await_did_not_learn_confirmation')
         return _fail('natural_learning_abandon_result_unknown')
 
@@ -398,20 +443,21 @@ def context(text, progress):
             _SESSION['stage'] = 'and_message'
             _SESSION['and_requested'] = True
             return _hint('a', 'advance_verified_learning_and')
-        if _prefix(compact, _LEARNED) and stage == 'and_message':
-            if compact == 'IVYSAURLEARNEDRAZORLEAF' and ('!' in lower or '▼' in lower):
+        if _prefix(compact, profile['learned']) and stage == 'and_message':
+            if compact == learned_page and ('!' in lower or '▼' in lower):
                 if current != _SESSION['expected']:
                     return _fail('natural_learning_learned_without_expected_moves')
                 _SESSION['stage'] = 'complete'
-                return _hint('a', 'verified_razor_leaf_learned', learning_complete=True,
-                             moves_verified=[75, 15, 73, 22], forgotten_move=77, protected_moves=[15, 73, 22])
-            return _wait('await_verified_razor_leaf_learned')
-        if _prefix(compact, _FORGOT) and stage in {'forget_selected', 'forgot_message'}:
-            if compact == 'IVYSAURFORGOTPOISONPOWDER' and ('!' in lower or '▼' in lower):
+                return _hint('a', 'verified_' + profile['new_tactic'] + '_learned', learning_complete=True,
+                             moves_verified=list(profile['after']), forgotten_move=profile['old_id'],
+                             protected_moves=[move for i, move in enumerate(profile['before']) if i != profile['slot']])
+            return _wait('await_verified_' + profile['new_tactic'] + '_learned')
+        if _prefix(compact, profile['forgot']) and stage in {'forget_selected', 'forgot_message'}:
+            if compact == forgot_page and ('!' in lower or '▼' in lower):
                 _SESSION['seen_forgot'] = True
                 _SESSION['stage'] = 'forgot_message'
-                return _hint('a', 'advance_verified_poisonpowder_forgot')
-            return _wait('await_verified_poisonpowder_forgot')
+                return _hint('a', 'advance_verified_' + profile['old_tactic'] + '_forgot')
+            return _wait('await_verified_' + profile['old_tactic'] + '_forgot')
         if _prefix(compact, _POOF) and stage == 'forget_selected':
             if compact == '12ANDPOOF' and ('!' in lower or '▼' in lower):
                 if (not _SESSION['seen_move'] or not _SESSION['delete_yes_requested']
@@ -419,7 +465,7 @@ def context(text, progress):
                     return _fail('natural_learning_poof_without_verified_selection')
                 # text_pause之後的_ForgotAndText以para銜接；與已校準CUT流程相同。
                 # 只前進這個已完成頁；仍須另見FORGOT POISONPOWDER及And...才驗證改招。
-                return _hint('a', 'advance_verified_poisonpowder_poof')
+                return _hint('a', 'advance_verified_' + profile['old_tactic'] + '_poof')
             return _wait('await_forget_animation')
         if not compact:
             return _wait('await_known_learning_transition')
@@ -436,12 +482,12 @@ def context(text, progress):
         return _forget_action(rows)
     if 'FORGOT' in compact or 'POOF' in compact or 'LEARNED' in compact or '12AND' in compact:
         return _fail('natural_learning_forget_without_verified_selection')
-    if _prefix(compact, _DELETE):
+    if _prefix(compact, profile['delete']):
         if not _SESSION['seen_move'] or stage not in {'intro', 'delete_question', 'await_forget'}:
             return _fail('natural_learning_delete_without_confirmed_move')
         _SESSION['stage'] = stage = 'delete_question'
     if choices:
-        if stage != 'delete_question' or not _SESSION['seen_move'] or not _prefix(compact, _DELETE):
+        if stage != 'delete_question' or not _SESSION['seen_move'] or not _prefix(compact, profile['delete']):
             return _fail('natural_learning_question_not_verified')
         action = _choice(rows, 'YES')
         if action is None:
@@ -449,14 +495,14 @@ def context(text, progress):
         if action == 'a':
             _SESSION['delete_yes_requested'] = True
             _SESSION['stage'] = 'await_forget'
-        return _hint(action, 'accept_verified_poisonpowder_replacement', menu_label='YES')
+        return _hint(action, 'accept_verified_' + profile['old_tactic'] + '_replacement', menu_label='YES')
     if stage == 'delete_question':
         return _hint('a', 'advance_wrapped_delete_question') if '▼' in lower else _wait('await_delete_choices')
     if stage in {'await_forget', 'forget_menu'} and not compact:
         return _wait('await_verified_forget_menu')
-    if stage == 'intro' and _prefix(compact, _INTRO):
+    if stage == 'intro' and _prefix(compact, profile['intro']):
         # 首屏已核對唯一學習者；僅已完整訊息或▼可前進，其餘逐字等待。
-        if '▼' in lower or '!' in lower or compact == 'IVYSAURISTRYINGTOLEARN':
+        if '▼' in lower or '!' in lower or compact == learner_name + 'ISTRYINGTOLEARN':
             return _hint('a', 'advance_verified_natural_learning_intro')
         return _wait('await_natural_learning_text')
     return _fail('natural_learning_page_unknown')

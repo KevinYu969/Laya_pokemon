@@ -675,3 +675,202 @@ def test_poof_timeout_migration_cannot_be_repeated_after_hot_reload():
     result = control.context(poof_page(), state)
     assert result['review_reason'] == 'natural_learning_known_transition_wait_exhausted'
     assert control._SESSION['schema_version'] == 2
+
+
+# 大嘴雀34級的封閉replacement profile；五人隊與HM均是純合成資料。
+def drill_progress():
+    return {'party_read_valid': True, 'party': [
+        {'species': 154, 'level': 33, 'moves': [75, 15, 73, 22]},
+        {'species': 102, 'level': 30, 'moves': [33, 28, 98, 0]},
+        {'species': 35, 'level': 34, 'moves': [64, 45, 43, 31]},
+        {'species': 7, 'level': 31, 'moves': [61, 33, 30, 40]},
+        {'species': 132, 'level': 30, 'moves': [29, 133, 156, 0]},
+    ]}
+
+
+def start_drill(state):
+    return control.context(text_at((1, 14, 'FEAROW is'), (1, 16, 'trying to learn')), state)
+
+
+def drill_to_delete(state):
+    start_drill(state)
+    control.context(text_at((1, 14, 'DRILL PECK!')), state)
+    return control.context(text_at((1, 14, 'Delete an older'), (1, 16, 'move to make room▼')), state)
+
+
+def drill_forget(selected=9, *, inactive=False):
+    return text_at((6, 8, 'PECK'), (6, 9, 'GROWL'), (6, 10, 'LEER'), (6, 11, 'FURY ATTACK'),
+                   (5, selected, '▶'), (0, 3, '▷' if inactive else ' '),
+                   (1, 14, 'Which move should'), (1, 16, 'be forgotten?'))
+
+
+def drill_to_forget(state):
+    drill_to_delete(state)
+    control.context(question('for DRILL PECK?', ''), state)
+    return control.context(drill_forget(), state)
+
+
+def drill_to_and(state):
+    drill_to_forget(state)
+    control.context(text_at((1, 14, '1, 2 and... Poof!')), state)
+    control.context(text_at((1, 14, 'FEAROW forgot'), (1, 16, 'GROWL!')), state)
+    return control.context(text_at((1, 14, 'And...')), state)
+
+
+def test_drill_fixed_source_plan_replaces_only_growl():
+    plan = control.candidate_plan(35, 34, [64, 45, 43, 31])
+    assert plan['natural_level'] == 34 and plan['new_move_id'] == 65
+    assert plan['decision'] == 'replace' and plan['replace_index'] == 1
+    assert plan['forget'] == 'GROWL' and plan['move'] == 'DRILL_PECK'
+    assert plan['ui_candidate_implemented']
+    assert control.candidate_plan(35, 33, [64, 45, 43, 31]) is None
+
+
+def test_drill_full_normal_sequence_preserves_five_party_hm_and_three_other_moves():
+    state = drill_progress()
+    before = copy.deepcopy(state)
+    assert start_drill(state)['available_actions'] == ['a', 'wait']
+    control.context(text_at((1, 14, 'DRILL PECK!')), state)
+    control.context(text_at((1, 14, 'But, FEAROW'), (1, 16, "can't learn more")), state)
+    control.context(text_at((1, 14, 'than 4 moves!')), state)
+    control.context(text_at((1, 14, 'Delete an older'), (1, 16, 'move to make room▼')), state)
+    assert control.context(question('for DRILL PECK?', '', selected='NO'), state)['objective'] == 'Move UP.'
+    assert control.context(question('for DRILL PECK?', ''), state)['menu_label'] == 'YES'
+    assert control.context(drill_forget(8), state)['objective'] == 'Move DOWN.'
+    assert control.context(drill_forget(11), state)['objective'] == 'Move UP.'
+    chosen = control.context(drill_forget(9, inactive=True), state)
+    assert chosen['available_actions'] == ['a', 'wait'] and chosen['menu_label'] == 'GROWL'
+    assert chosen['forgotten_move'] == 45 and chosen['protected_moves'] == [64, 43, 31]
+    assert control.context(text_at((1, 14, '1, 2 and... Poof!')), state)['available_actions'] == ['a', 'wait']
+    assert control.context(text_at((1, 14, 'FEAROW forgot'), (1, 16, 'GROWL!')), state)['available_actions'] == ['a', 'wait']
+    assert control.context(text_at((1, 14, 'And...')), state)['available_actions'] == ['a', 'wait']
+    assert state == before
+    state['party'][2]['moves'] = [64, 65, 43, 31]
+    result = control.context(text_at((1, 14, 'FEAROW learned'), (1, 16, 'DRILL PECK!')), state)
+    assert result['learning_complete'] and result['moves_verified'] == [64, 65, 43, 31]
+    assert result['forgotten_move'] == 45 and result['protected_moves'] == [64, 43, 31]
+    assert state['party'][0]['moves'][1] == 15
+    assert control.context(text_at(), state) is None and control._SESSION is None
+
+
+@pytest.mark.parametrize('row,action', [(8, 'down'), (9, 'a'), (10, 'up'), (11, 'up')])
+def test_drill_forget_cursor_can_confirm_only_second_slot(row, action):
+    state = drill_progress()
+    drill_to_delete(state)
+    control.context(question('for DRILL PECK?', ''), state)
+    assert control.context(drill_forget(row), state)['available_actions'] == [action, 'wait']
+
+
+@pytest.mark.parametrize('mutation', ['wrong_move', 'wrong_order', 'wrong_column', 'double_active', 'inactive_only'])
+def test_drill_rejects_wrong_forget_labels_order_or_active_cursor(mutation):
+    state = drill_progress()
+    drill_to_delete(state)
+    control.context(question('for DRILL PECK?', ''), state)
+    page = drill_forget()
+    if mutation == 'wrong_move':
+        page['cells'][9][6:] = list('CUT           ')
+    elif mutation == 'wrong_order':
+        page['cells'][8][6:], page['cells'][9][6:] = page['cells'][9][6:], page['cells'][8][6:]
+    elif mutation == 'wrong_column':
+        page['cells'][9][5], page['cells'][9][4] = ' ', '▶'
+    elif mutation == 'double_active':
+        page['cells'][8][5] = '▶'
+    else:
+        page['cells'][9][5] = '▷'
+    result = control.context(page, state)
+    assert result['phase'] == 'strategy_review' and result['available_actions'] == ['wait']
+
+
+@pytest.mark.parametrize('change', ['moves', 'level', 'duplicate', 'party_invalid'])
+def test_drill_initial_contract_never_selects_an_unverified_replacement(change):
+    state = drill_progress()
+    if change == 'moves':
+        state['party'][2]['moves'][1] = 15
+    elif change == 'level':
+        state['party'][2]['level'] = 33
+    elif change == 'duplicate':
+        state['party'].append(copy.deepcopy(state['party'][2]))
+    else:
+        state['party_read_valid'] = False
+    result = start_drill(state)
+    if change == 'level':
+        assert result is None
+    else:
+        assert result['phase'] == 'strategy_review' and result['available_actions'] == ['wait']
+    assert control._SESSION is None
+
+
+def test_drill_delete_requires_visually_observed_new_move_before_yes():
+    state = drill_progress()
+    start_drill(state)
+    result = control.context(question('Delete an older', 'move?'), state)
+    assert result['available_actions'] == ['wait'] and result['phase'] == 'strategy_review'
+
+
+@pytest.mark.parametrize('partial', ['D', 'Delete', 'for D', 'for DRILL', 'for DRILL PEC'])
+def test_drill_known_delete_prefixes_wait_without_confirming(partial):
+    state = drill_progress()
+    drill_to_delete(state)
+    assert control.context(text_at((1, 14, partial)), state)['available_actions'] == ['wait']
+
+
+@pytest.mark.parametrize('wrong', ['PECK!', 'CUT!', 'LEER!', 'POISONPOWDER!', 'FURY ATTACK!'])
+def test_drill_wrong_forgot_receipt_latches_review(wrong):
+    state = drill_progress()
+    drill_to_forget(state)
+    result = control.context(text_at((1, 14, 'FEAROW forgot'), (1, 16, wrong)), state)
+    assert result['phase'] == 'strategy_review' and result['available_actions'] == ['wait']
+    assert control.context(text_at((1, 14, 'And...')), state)['review_reason'] == result['review_reason']
+
+
+@pytest.mark.parametrize('phase', ['before_forgot', 'before_and'])
+def test_drill_and_never_replaces_the_actual_forgot_confirmation(phase):
+    state = drill_progress()
+    drill_to_forget(state)
+    if phase == 'before_and':
+        state['party'][2]['moves'][1] = 65
+    result = control.context(text_at((1, 14, 'And...')), state)
+    assert result['phase'] == 'strategy_review' and result['available_actions'] == ['wait']
+
+
+@pytest.mark.parametrize('member,slot,value', [(0, 1, 33), (1, 0, 98), (2, 0, 65), (2, 3, 65), (4, 0, 34)])
+def test_drill_any_change_outside_growl_requires_review_including_other_hm(member, slot, value):
+    state = drill_progress()
+    drill_to_and(state)
+    state['party'][member]['moves'][slot] = value
+    result = control.context(text_at((1, 14, 'FEAROW learned'), (1, 16, 'DRILL PECK!')), state)
+    assert result['review_reason'] == 'natural_learning_unexpected_move_change'
+
+
+def test_drill_learned_text_does_not_replace_actual_readonly_move_evidence():
+    state = drill_progress()
+    drill_to_and(state)
+    result = control.context(text_at((1, 14, 'FEAROW learned'), (1, 16, 'DRILL PECK!')), state)
+    assert result['review_reason'] == 'natural_learning_learned_without_expected_moves'
+
+
+def test_drill_reload_preserves_slot1_intent_fingerprint_and_partial_print_waits():
+    state = drill_progress()
+    drill_to_forget(state)
+    for part in ['F', 'FEAROW f', 'FEAROW forgot']:
+        assert control.context(text_at((1, 14, part)), state)['available_actions'] == ['wait']
+    control.context(text_at((1, 14, 'FEAROW forgot'), (1, 16, 'GROWL!')), state)
+    for part in ['A', 'An', 'And']:
+        assert control.context(text_at((1, 14, part)), state)['available_actions'] == ['wait']
+    control.context(text_at((1, 14, 'And...')), state)
+    snapshot = copy.deepcopy(control._SESSION)
+    importlib.reload(control)
+    assert control._SESSION == snapshot and control._SESSION['replacement_case'] == (35, 34)
+    state['party'][2]['moves'][1] = 65
+    for part in ['F', 'FEAROW learned', 'FEAROW learnedDR']:
+        assert control.context(text_at((1, 14, part)), state)['available_actions'] == ['wait']
+    assert control.context(text_at((1, 14, 'FEAROW learned'), (1, 16, 'DRILL PECK!')), state)['learning_complete']
+
+
+def test_drill_unknown_page_and_bounded_wait_never_advance():
+    state = drill_progress()
+    drill_to_delete(state)
+    for _ in range(30):
+        assert control.context(text_at((1, 14, 'for D')), state)['available_actions'] == ['wait']
+    assert control.context(text_at((1, 14, 'for D')), state)['review_reason'] == 'natural_learning_known_transition_wait_exhausted'
+

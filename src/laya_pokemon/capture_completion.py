@@ -137,6 +137,16 @@ def _dex_header():
     return tuple(''.join(row) for row in rows)
 
 
+def _dex_initial_placeholder():
+    # DrawDexEntryScreen先印來源問號，播放叫聲後才填owned資料。
+    # 此頁不能A；本場checkpoint純WAIT已證會進完整資料頁。
+    rows=[[' ']*20 for _ in range(18)]
+    for x,y,value in ((9,2,'SNORLAX'),(9,4,'SLEEPING'),(9,6,'HT'),(13,6,'?'),
+                      (15,6,'??'),(4,8,'143'),(9,8,'WT'),(14,8,'???'),(17,8,'LB')):
+        _put(rows,x,y,value)
+    return tuple(''.join(row) for row in rows)
+
+
 class CaptureCompletionController:
     """最後一投的明確交易；完整逐頁才確認，只有兩幀野外驗收才complete。
 
@@ -366,6 +376,8 @@ class CaptureCompletionController:
         # 完全空白只能是已投球後／已知頁面之間的有界動畫，絕不A。
         if not ''.join(rows).strip():
             return self._wait('await_known_capture_transition')
+        if self.stage=='dex_first' and rows==_dex_initial_placeholder():
+            return self._wait('await_native_dex_owned_details_after_initial_question_marks')
         if self.stage == 'nickname_menu':
             return self._nickname(rows)
         status = self._page(rows, self.stage)

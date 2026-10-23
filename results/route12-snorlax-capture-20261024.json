@@ -1,0 +1,317 @@
+{
+  "schema": "laya-route12-snorlax-capture-v1",
+  "record_date": "2026-10-24",
+  "status": "capture_verified_and_party_recovered",
+  "run": "league-campaign-20261024-18",
+  "capture": {
+    "at": "2026-10-23T19:39:36.291008+00:00",
+    "at_taipei": "2026-10-24T03:39:36.291008+08:00",
+    "species": 132,
+    "name": "SNORLAX",
+    "level": 30,
+    "hp": 141,
+    "max_hp": 141,
+    "great_ball_throw_requests_total": 11,
+    "great_balls_initial": 20,
+    "great_balls_remaining": 9,
+    "last_throw_only_receipt": {
+      "phase": "capture_completion_complete",
+      "objective": "Wait.",
+      "available_actions": [
+        "wait"
+      ],
+      "capture_completion_controller": "route12_snorlax_candidate",
+      "capture_stage": "complete",
+      "capture_tactic": "capture_complete_after_two_verified_world_frames",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "sources": [
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm#L510",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm#L29",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/add_mon.asm#L12",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/naming_screen.asm#L1",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/text_box.asm#L206",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_2.asm#L1756",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/pokedex.asm#L449",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/dex_entries.asm#L963",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/dex_text.asm#L1091",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/text.asm#L245"
+      ],
+      "capture_complete": true,
+      "controller_menu_verified": true,
+      "captured_species": 132,
+      "captured_level": 30,
+      "original_party_identity_and_order_preserved": true,
+      "last_throw_ball_item": 3,
+      "last_throw_ball_quantity_used": 1,
+      "baseline_scope": "last throw only; earlier throws are excluded",
+      "nickname_evidence": "verified normal NO flow; species_name is not nickname RAM",
+      "completion_observation_frame": 139481,
+      "first_world_observation_frame": 139441,
+      "last_throw_observation_frame": 138121,
+      "field_move_complete": true,
+      "field_move_kind": "snorlax_capture_verified"
+    },
+    "party_at_capture": [
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 33,
+        "hp": 56,
+        "max_hp": 105,
+        "exp": 30051,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          17,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 30,
+        "hp": 77,
+        "max_hp": 77,
+        "exp": 27350,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          0
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          0
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 32,
+        "hp": 67,
+        "max_hp": 99,
+        "exp": 33482,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 31,
+        "hp": 48,
+        "max_hp": 105,
+        "exp": 24713,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 30,
+        "hp": 141,
+        "max_hp": 141,
+        "exp": 33750,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          0
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          0
+        ]
+      }
+    ],
+    "verified_state_sha256": "f08e488ee3550e630e0d57fe99999941d4c9cfb97b9d052d45fc7c55aac5ed51",
+    "new_faint_or_whole_party_loss": false,
+    "rewound_for_capture": false
+  },
+  "normal_recovery": {
+    "reviewed_closed_at_taipei": "2026-10-24T03:47:23.317220+08:00",
+    "next_logged_closed_overworld_at": "2026-10-23T19:48:12.006485+00:00",
+    "source_segment": 26,
+    "step": 2488,
+    "frame": 147089,
+    "location": {
+      "map_id": 141,
+      "x": 3,
+      "y": 3
+    },
+    "normal_menu_lead_species": 132,
+    "party": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 30,
+        "hp": 141,
+        "max_hp": 141,
+        "exp": 33750,
+        "status": 0,
+        "moves": [
+          29,
+          133,
+          156,
+          0
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          0
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 30,
+        "hp": 77,
+        "max_hp": 77,
+        "exp": 27350,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          0
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          0
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 32,
+        "hp": 99,
+        "max_hp": 99,
+        "exp": 33482,
+        "status": 0,
+        "moves": [
+          64,
+          45,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          40,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 31,
+        "hp": 105,
+        "max_hp": 105,
+        "exp": 24713,
+        "status": 0,
+        "moves": [
+          61,
+          33,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          35,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 33,
+        "hp": 105,
+        "max_hp": 105,
+        "exp": 30051,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      }
+    ],
+    "all_hp_status_pp_verified": true
+  },
+  "validation": {
+    "full_suite_passed": 3536,
+    "warnings": 1,
+    "duration_seconds": 13.71,
+    "note": "合成回歸測試與本場實戰收據分開；未宣稱全程自主通關。"
+  },
+  "gameplay": {
+    "button_model": "offline_laya",
+    "gpt_button_classification": false,
+    "strata_configuration_changed": false,
+    "rom_or_ram_written": false,
+    "loss_rewind": false,
+    "badge_count": 4,
+    "fifth_gym_confirmed": false,
+    "champion_confirmed": false,
+    "whole_game_clear_wall_seconds": null
+  },
+  "lessons": [
+    "保留同一場每次投球基線；11次正常投球20→9，最後一投收據只驗10→9。",
+    "低血先核完整command，再透過PKMN正常換尼多王、大嘴雀；不重建原投球數或改寫血量。",
+    "圖鑑問號模板先印，再等待原生叫聲與資料載入；精確已知模板只WAIT，不補造數值。",
+    "完整Caught、圖鑑、正常NO、原隊保留＋第五名Snorlax，以及兩個closedworld frame才宣告收服。",
+    "收尾兩幀只允許WAIT，完成後原損耗檢查仍要求補給；已正常中心恢復五人。",
+    "五人換位與全隊HP/status可用；recovery旗標本身也允許FNT，不能誤稱它有獨立倒下攔截。",
+    "來源warp列為障礙時，需先以via接近實際門格，再在仍未轉場時走原生額外一步。"
+  ],
+  "media": {
+    "videos_uploaded_to_github": false,
+    "website_published": false,
+    "timing_note": "1x為錄得模擬時間，4x為後製；推論／工程等待與全程牆鐘不可用片長代替。"
+  }
+}

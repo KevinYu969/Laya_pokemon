@@ -617,3 +617,12 @@ def test_complete_woke_prompt_with_missing_hp_never_confirms_from_cached_upper()
     t['cells'][10] = [' '] * 20
     r=s.call(t)
     assert r['phase'] == 'campaign_review' and r['available_actions'] == ['wait']
+
+
+@pytest.mark.parametrize('offset',[0,-1])
+def test_native_headbutt_frame_is_not_lost_before_a_critical_packet(offset):
+    s=Session();s.throw();s.fail();t=headbutt_animation(s)
+    assert s.call(t)['available_actions']==['wait'];frame=s.frame
+    critical=dialogue(s.p,[(1,14,'CRITICAL HIT!')])
+    r=s.call(critical,frame=frame+offset)
+    assert r['phase']=='campaign_review' and r['available_actions']==['wait']

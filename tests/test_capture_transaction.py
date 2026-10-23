@@ -244,3 +244,326 @@ def test_active_contract_review_latches_and_excludes_only_explicitly_acknowledge
     r=advance(sw.command(a[1]['progress'],0,(9,14)))
     assert r['available_actions']==['right','wait'] and record['switch'] is s
     assert c.error==tx._SAFE_SWITCH_ERROR and record['bridge_error'] is None
+
+
+def test_switch_completion_same_frame_never_calls_capturer_or_reader_or_changes_clock(monkeypatch):
+    from tests import test_snorlax_switch as sw
+    a,clock,advance,record,c=reviewed_switch_session(monkeypatch)
+    result=perform_switch(a,advance)
+    assert result['available_actions']==['wait'] and record['last_switch_frame']==a[1]['frame']
+    before=deepcopy(c.__dict__);offset=record['clock_offset']
+    def forbidden(*args,**kwargs):raise AssertionError('same completion frame must not reach capture or enemy reader')
+    monkeypatch.setattr(tx.snorlax_capture.SnorlaxCaptureController,'context',forbidden)
+    monkeypatch.setattr(tx,'_enemy_snapshot',forbidden)
+    for _ in range(3):
+        clock[0]+=.1
+        r,_=call(a,sw.command(a[1]['progress'],3,(9,16)))
+        assert r['available_actions']==['wait'] and r['capture_resume_pending'] and not r['capture_complete']
+    assert record['capture'] is c and c.__dict__==before and record['clock_offset']==offset
+
+
+@pytest.mark.parametrize('frame',['regressed',True,None,2.5])
+def test_switch_resume_invalid_or_regressed_frame_reviews_without_calling_capture(monkeypatch,frame):
+    from tests import test_snorlax_switch as sw
+    a,_,advance,record,c=reviewed_switch_session(monkeypatch);perform_switch(a,advance)
+    before=deepcopy(c.__dict__);offset=record['clock_offset']
+    a[1]['frame']=record['last_switch_frame']-1 if frame=='regressed' else frame
+    def forbidden(*args,**kwargs):raise AssertionError('invalid resume frame must not reach capture')
+    monkeypatch.setattr(tx.snorlax_capture.SnorlaxCaptureController,'context',forbidden)
+    r,_=call(a,sw.command(a[1]['progress'],3,(9,16)))
+    assert r['review_reason']=='capture_switch_resume_frame_invalid_or_regressed'
+    assert r['available_actions']==['wait'] and c.__dict__==before and record['clock_offset']==offset
+
+
+def test_old_hotload_record_without_frame_fence_remains_compatible(monkeypatch):
+    from tests import test_snorlax_switch as sw
+    a,_,advance,record,c=reviewed_switch_session(monkeypatch);perform_switch(a,advance)
+    del record['last_switch_frame']
+    r=advance(sw.command(a[1]['progress'],3,(9,16)))
+    assert r['available_actions']==['a','wait'] and record['capture'] is c
+    assert record['last_switch_frame'] is None and c.throws==4
+
+
+def ten_throw_pre_switch_session(monkeypatch):
+    """先真四投與正常換Nido，再六投失敗；不手改capturer的投球基線。"""
+    from tests import test_snorlax_switch as sw
+    a,clock,advance,record,c=reviewed_switch_session(monkeypatch)
+    perform_switch(a,advance)
+    p=a[1]['progress'];fp={'species':132,'level':30,'hp':140,'max_hp':140,'status':0}
+    assert advance(sw.command(p,3,(9,16)))['available_actions']==['a','wait']
+    for turn in range(6):
+        assert advance(bag(p,cursor=0,enemy=fp))['available_actions']==['down','wait']
+        assert advance(bag(p,cursor=1,enemy=fp))['available_actions']==['a','wait']
+        failure=dialogue(p,F['failure_pages']['broke_free'],fp)
+        failure['cells'][:12]=deepcopy(sw.hud(p,3)['cells'][:12])
+        assert advance(failure)['available_actions']==['a','wait']
+        next(x for x in p['inventory'] if x['item']==3)['quantity']-=1
+        if turn==5:
+            p['party'][3]['hp']=48
+            result=advance(sw.dialogue(p,3,'Enemy SNORLAX','used HEADBUTT!'))
+        else:
+            result=advance(sw.command(p,3,(9,16)))
+            assert result['available_actions']==['a','wait']
+    assert result['review_reason']==tx._SAFE_SWITCH_ERROR and c.throws==10 and c.active_index==3
+    assert next(x for x in p['inventory'] if x['item']==3)['quantity']==10
+    return a,clock,advance,record,c
+
+
+def begin_pre_switch(monkeypatch):
+    from tests import test_snorlax_switch as sw
+    a,clock,advance,record,c=ten_throw_pre_switch_session(monkeypatch)
+    request_switch(a,2,35)
+    t=sw.dialogue(a[1]['progress'],3,'Enemy SNORLAX','used HEADBUTT!')
+    return a,clock,advance,record,c,t
+
+
+def test_low_hp_headbutt_waits_for_real_command_then_normal_switch_keeps_ten_throws(monkeypatch):
+    from tests import test_snorlax_switch as sw
+    a,clock,advance,record,c,t=begin_pre_switch(monkeypatch)
+    original=deepcopy(c.__dict__);last=c.last_throw;started=c.started_at;pause=clock[0]
+    old_offset=record['clock_offset']
+    clock[0]+=120.
+    r=advance(t)
+    assert r['phase']=='capture_pre_switch_wait' and r['available_actions']==['wait']
+    assert record['switch'] is None and record['capture'] is c and c.__dict__==original
+    pending_started=record['pre_switch']['started_now']
+    assert advance(sw.hud(a[1]['progress'],3))['available_actions']==['wait']
+    assert c.__dict__==original
+    p=a[1]['progress']
+    r=advance(sw.command(p,3,(9,16)))
+    s=record['switch']
+    assert r['available_actions']==['up','wait'] and record['pre_switch'] is None
+    assert s.target_species==35 and s.baseline['now']==clock[0]-record['clock_offset']
+    assert s.baseline['now']>pending_started and record['switch_start_now']==pending_started
+    assert advance(sw.command(p,3,(9,14)))['available_actions']==['right','wait']
+    assert advance(sw.command(p,3,(15,14)))['available_actions']==['a','wait']
+    for i in range(2):assert advance(sw.party_page(p,i))['available_actions']==['down','wait']
+    assert advance(sw.party_page(p,2))['available_actions']==['a','wait']
+    assert advance(sw.submenu(p,2))['available_actions']==['a','wait']
+    assert advance(sw.dialogue(p,3,'NIDOKING enough!','Come back!'))['available_actions']==['wait']
+    assert advance(sw.dialogue(p,3,'Go! FEAROW!'))['available_actions']==['wait']
+    assert advance(sw.dialogue(p,2,'Enemy SNORLAX','used HEADBUTT!'))['available_actions']==['wait']
+    p['party'][2]['hp']=70
+    result=advance(sw.command(p,2,(9,16)))
+    assert result['capture_resume_pending'] and result['available_actions']==['wait']
+    assert record['capture'] is c and c.throws==10 and c.last_throw is last and c.started_at==started
+    assert c.initial_items==original['initial_items'] and c.current_items==original['current_items']
+    assert c.error is None and c.active_index==2 and c.party_hp==[56,70,70,48]
+    assert record['clock_offset']==old_offset+clock[0]-pause
+    assert advance(sw.command(p,2,(9,16)))['available_actions']==['a','wait']
+    assert c.throws==10 and next(x for x in p['inventory'] if x['item']==3)['quantity']==10
+
+
+@pytest.mark.parametrize('empty_lower',[False,True])
+def test_same_wait_contract_supports_other_throw_count_revision_and_healthy_target(monkeypatch,empty_lower):
+    from tests import test_snorlax_switch as sw
+    a,_,advance,record,c=reviewed_switch_session(monkeypatch)
+    request_switch(a,3,102)
+    before=deepcopy(c.__dict__)
+    t=sw.hud(a[1]['progress'],0) if empty_lower else sw.dialogue(a[1]['progress'],0,'Enemy SNORLAX','used HEADBUTT!')
+    r=advance(t)
+    assert r['phase']=='capture_pre_switch_wait' and c.throws==4 and c.__dict__==before
+    r=advance(sw.command(a[1]['progress'],0,(9,16)))
+    assert r['available_actions']==['up','wait']
+    assert record['switch'].target_species==102 and record['switch_revision']==3
+
+
+@pytest.mark.parametrize('damage',['prompt','active_cursor','inactive_cursor','unknown','partial',
+    'hp','missing_hp','other_active','proof','window','faint','enemy','ball','money','party','location','battle'])
+def test_pre_switch_never_waits_on_unknown_or_changed_initial_observation(monkeypatch,damage):
+    from tests import test_snorlax_switch as sw
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch);before=deepcopy(c.__dict__)
+    if damage=='prompt':sw.put(t,18,16,'▼')
+    elif damage=='active_cursor':sw.put(t,0,0,'▶')
+    elif damage=='inactive_cursor':sw.put(t,0,0,'▷')
+    elif damage=='unknown':sw.put(t,1,14,'Delete')
+    elif damage=='partial':sw.put(t,1,16,'used HEADBU  ')
+    elif damage=='hp':sw.put(t,11,10,' 49/ 95')
+    elif damage=='missing_hp':t['cells'][10]=[' ']*20
+    elif damage=='other_active':t=sw.dialogue(a[1]['progress'],0,'Enemy SNORLAX','used HEADBUTT!')
+    elif damage=='proof':t['alignment_verified']=False
+    elif damage=='window':t['window_visible']=None
+    elif damage=='faint':a[1]['progress']['party'][1]['hp']=0
+    elif damage=='enemy':monkeypatch.setattr(tx,'_enemy_snapshot',lambda *args:snapshot(a[1]['frame'],{'species':132,'level':30,'hp':139,'max_hp':140,'status':0}))
+    elif damage=='ball':a[1]['progress']['inventory'][1]['quantity']+=1
+    elif damage=='money':a[1]['progress']['money']+=1
+    elif damage=='party':a[1]['progress']['party'][1]['exp']+=1
+    elif damage=='location':a[1]['location']['x']=11
+    else:a[1]['battle_state']['raw']=0
+    r=advance(t)
+    assert r['phase']=='campaign_review' and r['available_actions']==['wait']
+    assert record['pre_switch'] is None and record['switch'] is None and c.__dict__==before
+
+
+@pytest.mark.parametrize('change',['revision','target','removed','capture','enemy','ball','healing','other_hp','money'])
+def test_pending_contract_or_baseline_change_latches_review_and_never_clears_capture(monkeypatch,change):
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch)
+    advance(t);before=deepcopy(c.__dict__)
+    if change=='revision':a[2]['steps'][0]['reviewed_switch_revision']=3
+    elif change=='target':a[2]['steps'][0]['reviewed_switch_target_species']=102
+    elif change=='removed':a[2]['steps'][0].pop('reviewed_switch_target_species')
+    elif change=='capture':c.current_items=[]
+    elif change=='enemy':monkeypatch.setattr(tx,'_enemy_snapshot',lambda *args:snapshot(a[1]['frame'],{'species':132,'level':30,'hp':139,'max_hp':140,'status':0}))
+    elif change=='ball':a[1]['progress']['inventory'][1]['quantity']-=1
+    elif change=='healing':a[1]['progress']['party'][3]['hp']+=1
+    elif change=='other_hp':a[1]['progress']['party'][1]['hp']-=1
+    else:a[1]['progress']['money']+=1
+    r=advance(t)
+    assert r['phase']=='campaign_review' and r['available_actions']==['wait']
+    assert record['bridge_error']==r['review_reason'] and record['switch'] is None
+    assert c.error==tx._SAFE_SWITCH_ERROR and (change=='capture' or c.__dict__==before)
+
+
+def test_pending_same_frame_wait_is_bounded_and_changed_packet_reviewed(monkeypatch):
+    from tests import test_snorlax_switch as sw
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch);advance(t)
+    before=deepcopy(c.__dict__)
+    assert call(a,t)[0]['available_actions']==['wait']
+    changed=sw.hud(a[1]['progress'],3)
+    assert call(a,changed)[0]['review_reason']=='capture_pre_switch_same_frame_conflict'
+    assert c.__dict__==before
+
+
+def test_pending_twenty_five_wait_limit_stops_without_resetting_capture(monkeypatch):
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch);before=deepcopy(c.__dict__)
+    for _ in range(25):assert advance(t)['phase']=='capture_pre_switch_wait'
+    r=advance(t)
+    assert r['review_reason']=='capture_pre_switch_wait_budget_exhausted'
+    assert record['pre_switch']['waits']==25 and c.__dict__==before and record['switch'] is None
+
+
+def test_native_command_on_call_twenty_six_is_allowed_after_exactly_twenty_five_waits(monkeypatch):
+    from tests import test_snorlax_switch as sw
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch)
+    for _ in range(25):assert advance(t)['phase']=='capture_pre_switch_wait'
+    pending=record['pre_switch']
+    r=advance(sw.command(a[1]['progress'],3,(9,16)))
+    assert r['available_actions']==['up','wait'] and pending['calls']==26
+    assert record['pre_switch'] is None and record['switch'].target_species==35 and c.throws==10
+
+
+def test_pending_active_hp_may_decrease_but_capture_baseline_is_not_rewritten(monkeypatch):
+    from tests import test_snorlax_switch as sw
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch);advance(t)
+    before=deepcopy(c.__dict__)
+    a[1]['progress']['party'][3]['hp']=47
+    assert advance(sw.dialogue(a[1]['progress'],3,'Enemy SNORLAX','used HEADBUTT!'))['phase']=='capture_pre_switch_wait'
+    assert record['pre_switch']['party_hp'][3]==47 and c.__dict__==before
+    assert advance(sw.command(a[1]['progress'],3,(9,16)))['available_actions']==['up','wait']
+    assert record['switch'].baseline['progress']['party'][3]['hp']==47 and c.party_hp[3]==48
+
+
+def test_pending_sixty_second_budget_does_not_include_initial_engineering_pause(monkeypatch):
+    a,clock,advance,record,c,t=begin_pre_switch(monkeypatch);before=deepcopy(c.__dict__)
+    clock[0]+=120.;assert advance(t)['phase']=='capture_pre_switch_wait'
+    clock[0]+=60.
+    r=advance(t)
+    assert r['review_reason']=='capture_pre_switch_transaction_budget_exhausted'
+    assert c.__dict__==before and record['switch'] is None
+
+
+def test_pending_review_ack_preserves_safe_error_and_excludes_only_engineering_time(monkeypatch):
+    from tests import test_snorlax_switch as sw
+    a,clock,advance,record,c,t=begin_pre_switch(monkeypatch);advance(t)
+    before=deepcopy(c.__dict__)
+    bad=deepcopy(t);sw.put(bad,1,14,'Delete')
+    reason=advance(bad)['review_reason'];clock[0]+=120.
+    assert advance(t)['review_reason']==reason
+    a[2]['steps'][0].update(reviewed_controller_revision=1,reviewed_controller_error=reason)
+    r=advance(sw.command(a[1]['progress'],3,(9,16)))
+    assert r['available_actions']==['up','wait'] and record['switch'].target_species==35
+    assert c.error==tx._SAFE_SWITCH_ERROR and c.__dict__==before
+
+
+@pytest.mark.parametrize('body',['command','headbutt'])
+@pytest.mark.parametrize('damage',['old_frame','old_now'])
+def test_first_new_switch_request_must_not_regress_original_capture_frame_or_clock(monkeypatch,body,damage):
+    from tests import test_snorlax_switch as sw
+    a,clock,_,record,c,t=begin_pre_switch(monkeypatch);before=deepcopy(c.__dict__)
+    if damage=='old_frame':a[1]['frame']-=80
+    else:clock[0]-=10.
+    current=sw.command(a[1]['progress'],3,(9,16)) if body=='command' else t
+    r=call(a,current)[0]
+    assert r['review_reason']=='capture_switch_new_request_clock_or_frame_regressed'
+    assert r['available_actions']==['wait'] and c.__dict__==before
+    assert record['pre_switch'] is None and record['switch'] is None
+
+
+@pytest.mark.parametrize('damage',['rows','progress','location','battle','enemy','window'])
+def test_first_equal_frame_request_must_match_capturer_full_original_packet(monkeypatch,damage):
+    from tests import test_snorlax_switch as sw
+    a,_,_,record,c,t=begin_pre_switch(monkeypatch);before=deepcopy(c.__dict__)
+    if damage=='rows':t=sw.command(a[1]['progress'],3,(9,16))
+    elif damage=='progress':a[1]['progress']['money']+=1
+    elif damage=='location':a[1]['location']['observation_frame']=a[1]['frame']
+    elif damage=='battle':a[1]['battle_state']['observation_frame']=a[1]['frame']
+    elif damage=='enemy':
+        def changed(_p,frame,_loc):
+            e=snapshot(frame,{'species':132,'level':30,'hp':140,'max_hp':140,'status':0})
+            e['enemy']['pp'][0]-=1
+            return e
+        monkeypatch.setattr(tx,'_enemy_snapshot',changed)
+    else:t['window_visible']=False
+    r=call(a,t)[0]
+    assert r['review_reason']=='capture_switch_new_request_same_frame_conflict'
+    assert r['available_actions']==['wait'] and c.__dict__==before
+    assert record['pre_switch'] is None and record['switch'] is None
+
+
+def test_first_equal_frame_identical_headbutt_packet_can_only_start_bounded_wait(monkeypatch):
+    a,_,_,record,c,t=begin_pre_switch(monkeypatch);before=deepcopy(c.__dict__)
+    r=call(a,t)[0]
+    assert r['phase']=='capture_pre_switch_wait' and r['available_actions']==['wait']
+    assert record['switch'] is None and c.__dict__==before
+
+
+@pytest.mark.parametrize('packet',[None,(),(None,)*6])
+@pytest.mark.parametrize('body',['command','headbutt'])
+def test_unknown_original_capture_packet_never_creates_new_action_or_owner(monkeypatch,packet,body):
+    from tests import test_snorlax_switch as sw
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch)
+    c.last_packet=packet;before=deepcopy(c.__dict__)
+    if body=='command':t=sw.command(a[1]['progress'],3,(9,16))
+    r=advance(t)
+    assert r['review_reason']=='capture_switch_prior_capture_packet_unverified'
+    assert r['available_actions']==['wait'] and c.__dict__==before
+    assert record['pre_switch'] is None and record['switch'] is None
+
+
+@pytest.mark.parametrize('damage',['window','enemy_pp'])
+def test_pending_same_frame_requires_full_raw_packet_not_only_rows_and_enemy_fingerprint(monkeypatch,damage):
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch);advance(t)
+    before=deepcopy(c.__dict__)
+    if damage=='window':t['window_visible']=False
+    else:
+        def changed(_p,frame,_loc):
+            e=snapshot(frame,{'species':132,'level':30,'hp':140,'max_hp':140,'status':0})
+            e['enemy']['pp'][0]-=1
+            return e
+        monkeypatch.setattr(tx,'_enemy_snapshot',changed)
+    r=call(a,t)[0]
+    assert r['review_reason']=='capture_pre_switch_same_frame_conflict'
+    assert r['available_actions']==['wait'] and record['switch'] is None and c.__dict__==before
+
+
+def test_pending_same_frame_exact_raw_packet_only_waits_without_touching_capture(monkeypatch):
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch);advance(t)
+    before=deepcopy(c.__dict__);packet=deepcopy(record['pre_switch']['last_packet']['raw_packet'])
+    assert call(a,t)[0]['phase']=='capture_pre_switch_wait'
+    assert record['pre_switch']['last_packet']['raw_packet']==packet and c.__dict__==before
+
+
+@pytest.mark.parametrize('damage',['window','enemy_pp'])
+def test_pending_different_frame_does_not_require_raw_packet_equality(monkeypatch,damage):
+    a,_,advance,record,c,t=begin_pre_switch(monkeypatch);advance(t)
+    before=deepcopy(c.__dict__)
+    if damage=='window':t['window_visible']=False
+    else:
+        def changed(_p,frame,_loc):
+            e=snapshot(frame,{'species':132,'level':30,'hp':140,'max_hp':140,'status':0})
+            e['enemy']['pp'][0]-=1
+            return e
+        monkeypatch.setattr(tx,'_enemy_snapshot',changed)
+    r=advance(t)
+    assert r['phase']=='capture_pre_switch_wait' and r['available_actions']==['wait']
+    assert record['switch'] is None and c.__dict__==before

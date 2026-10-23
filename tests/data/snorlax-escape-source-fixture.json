@@ -1,0 +1,100 @@
+{
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "live_ui_calibrated": false,
+  "kind": "public-source-only-normal-run-controller-candidate",
+  "sources": [
+    {
+      "path": "engine/battle/core.asm",
+      "git_blob_sha": "7a5d617dc5ed080623bfb189f81d254c83ef4cc3",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/battle/core.asm",
+      "line_count": 6913,
+      "excerpts": [
+        {
+          "start_line": 1494,
+          "end_line": 1611,
+          "text": "; try to run from battle (hl = player speed, de = enemy speed)\n; stores whether the attempt was successful in carry flag\nTryRunningFromBattle:\n\tcall IsGhostBattle\n\tjp z, .canEscape ; jump if it's a ghost battle\n\tld a, [wBattleType]\n\tcp BATTLE_TYPE_SAFARI\n\tjp z, .canEscape ; jump if it's a safari battle\n\tld a, [wLinkState]\n\tcp LINK_STATE_BATTLING\n\tjp z, .canEscape\n\tld a, [wIsInBattle]\n\tdec a\n\tjr nz, .trainerBattle ; jump if it's a trainer battle\n\tld a, [wNumRunAttempts]\n\tinc a\n\tld [wNumRunAttempts], a\n\tld a, [hli]\n\tldh [hMultiplicand + 1], a\n\tld a, [hl]\n\tldh [hMultiplicand + 2], a\n\tld a, [de]\n\tldh [hEnemySpeed], a\n\tinc de\n\tld a, [de]\n\tldh [hEnemySpeed + 1], a\n\tcall LoadScreenTilesFromBuffer1\n\tld de, hMultiplicand + 1\n\tld hl, hEnemySpeed\n\tld c, 2\n\tcall StringCmp\n\tjr nc, .canEscape ; jump if player speed greater than enemy speed\n\txor a\n\tldh [hMultiplicand], a\n\tld a, 32\n\tldh [hMultiplier], a\n\tcall Multiply ; multiply player speed by 32\n\tldh a, [hProduct + 2]\n\tldh [hDividend], a\n\tldh a, [hProduct + 3]\n\tldh [hDividend + 1], a\n\tldh a, [hEnemySpeed]\n\tld b, a\n\tldh a, [hEnemySpeed + 1]\n; divide enemy speed by 4\n\tsrl b\n\trr a\n\tsrl b\n\trr a\n\tand a\n\tjr z, .canEscape ; jump if enemy speed divided by 4, mod 256 is 0\n\tldh [hDivisor], a ; ((enemy speed / 4) % 256)\n\tld b, $2\n\tcall Divide ; divide (player speed * 32) by ((enemy speed / 4) % 256)\n\tldh a, [hQuotient + 2]\n\tand a ; is the quotient greater than 256?\n\tjr nz, .canEscape ; if so, the player can escape\n\tld a, [wNumRunAttempts]\n\tld c, a\n; add 30 to the quotient for each run attempt\n.loop\n\tdec c\n\tjr z, .compareWithRandomValue\n\tld b, 30\n\tldh a, [hQuotient + 3]\n\tadd b\n\tldh [hQuotient + 3], a\n\tjr c, .canEscape\n\tjr .loop\n.compareWithRandomValue\n\tcall BattleRandom\n\tld b, a\n\tldh a, [hQuotient + 3]\n\tcp b\n\tjr nc, .canEscape ; if the random value was less than or equal to the quotient\n\t                  ; plus 30 times the number of attempts, the player can escape\n; can't escape\n\tld a, $1\n\tld [wActionResultOrTookBattleTurn], a ; you lose your turn when you can't escape\n\tld hl, CantEscapeText\n\tjr .printCantEscapeOrNoRunningText\n.trainerBattle\n\tld hl, NoRunningText\n.printCantEscapeOrNoRunningText\n\tcall PrintText\n\tld a, 1\n\tld [wForcePlayerToChooseMon], a\n\tcall SaveScreenTilesToBuffer1\n\tand a ; reset carry\n\tret\n.canEscape\n\tld a, [wLinkState]\n\tcp LINK_STATE_BATTLING\n\tld a, $2\n\tjr nz, .playSound\n; link battle\n\tcall SaveScreenTilesToBuffer1\n\txor a\n\tld [wActionResultOrTookBattleTurn], a\n\tld a, LINKBATTLE_RUN\n\tld [wPlayerMoveListIndex], a\n\tcall LinkBattleExchangeData\n\tcall LoadScreenTilesFromBuffer1\n\tld a, [wSerialExchangeNybbleReceiveData]\n\tcp LINKBATTLE_RUN\n\tld a, $2\n\tjr z, .playSound\n\tdec a\n.playSound\n\tld [wBattleResult], a\n\tld a, SFX_RUN\n\tcall PlaySoundWaitForCurrent\n\tld hl, GotAwayText\n\tcall PrintText\n\tcall WaitForSoundToFinish\n\tcall SaveScreenTilesToBuffer1\n\tscf ; set carry\n\tret\n"
+        },
+        {
+          "start_line": 2446,
+          "end_line": 2459,
+          "text": "BattleMenu_RunWasSelected:\n\tcall LoadScreenTilesFromBuffer1\n\tld a, $3\n\tld [wCurrentMenuItem], a\n\tld hl, wBattleMonSpeed\n\tld de, wEnemyMonSpeed\n\tcall TryRunningFromBattle\n\tld a, 0\n\tld [wForcePlayerToChooseMon], a\n\tret c\n\tld a, [wActionResultOrTookBattleTurn]\n\tand a\n\tret nz ; return if the player couldn't escape\n\tjp DisplayBattleMenu\n"
+        }
+      ]
+    },
+    {
+      "path": "home/compare.asm",
+      "git_blob_sha": "e2da785779a79d5e0e71f72c5640e6127b8ba176",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/compare.asm",
+      "line_count": 12,
+      "excerpts": [
+        {
+          "start_line": 1,
+          "end_line": 11,
+          "text": "; Compare strings, c bytes in length, at de and hl.\n; Often used to compare big endian numbers in battle calculations.\nStringCmp::\n\tld a, [de]\n\tcp [hl]\n\tret nz\n\tinc de\n\tinc hl\n\tdec c\n\tjr nz, StringCmp\n\tret\n"
+        }
+      ]
+    },
+    {
+      "path": "data/text_boxes.asm",
+      "git_blob_sha": "f96f2d687be49d471fc7bd4ccb7a4371d4aaa7c0",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text_boxes.asm",
+      "line_count": 89,
+      "excerpts": [
+        {
+          "start_line": 25,
+          "end_line": 33,
+          "text": "TextBoxTextAndCoordTable:\n\t; text box ID, upper-left X, upper-left Y, lower-right X, lower-right Y, text pointer, text X, text Y\n\ttext_box_text JP_MOCHIMONO_MENU_TEMPLATE,         0,  0, 14, 17, JapaneseMochimonoText,    3,  0\n\ttext_box_text USE_TOSS_MENU_TEMPLATE,            13, 10, 19, 14, UseTossText,             15, 11\n\ttext_box_text JP_SAVE_MESSAGE_MENU_TEMPLATE,      0,  0,  7,  5, JapaneseSaveMessageText,  2,  2\n\ttext_box_text JP_SPEED_OPTIONS_MENU_TEMPLATE,     0,  6,  5, 10, JapaneseSpeedOptionsText, 2,  7\n\ttext_box_text BATTLE_MENU_TEMPLATE,               8, 12, 19, 17, BattleMenuText,          10, 14\n\ttext_box_text SAFARI_BATTLE_MENU_TEMPLATE,        0, 12, 19, 17, SafariZoneBattleMenuText, 2, 14\n\ttext_box_text SWITCH_STATS_CANCEL_MENU_TEMPLATE, 11, 11, 19, 17, SwitchStatsCancelText,   13, 12\n"
+        },
+        {
+          "start_line": 68,
+          "end_line": 70,
+          "text": "BattleMenuText:\n\tdb   \"FIGHT <PK><MN>\"\n\tnext \"ITEM  RUN@\"\n"
+        }
+      ]
+    },
+    {
+      "path": "data/text/text_2.asm",
+      "git_blob_sha": "917feb8953c9c2b688395dfb54459b1d04bf7a71",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_2.asm",
+      "line_count": 1792,
+      "excerpts": [
+        {
+          "start_line": 937,
+          "end_line": 949,
+          "text": "_CantEscapeText::\n\ttext \"Can't escape!\"\n\tprompt\n\n_NoRunningText::\n\ttext \"No! There's no\"\n\tline \"running from a\"\n\tcont \"trainer battle!\"\n\tprompt\n\n_GotAwayText::\n\ttext \"Got away safely!\"\n\tprompt\n"
+        }
+      ]
+    },
+    {
+      "path": "home/text.asm",
+      "git_blob_sha": "8ec872e0f2a2fefdac146f72cb91258678140373",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/text.asm",
+      "line_count": 641,
+      "excerpts": [
+        {
+          "start_line": 209,
+          "end_line": 225,
+          "text": "PromptText::\n\tld a, [wLinkState]\n\tcp LINK_STATE_BATTLING\n\tjp z, .ok\n\tld a, '▼'\n\tldcoord_a 18, 16\n.ok\n\tcall ProtectedDelay3\n\tcall ManualTextScroll\n\tld a, ' '\n\tldcoord_a 18, 16\n\nDoneText::\n\tpop hl\n\tld de, .stop\n\tdec de\n\tret\n"
+        },
+        {
+          "start_line": 434,
+          "end_line": 445,
+          "text": "TextCommand_PROMPT_BUTTON::\n; wait for button press; show arrow\n\tld a, [wLinkState]\n\tcp LINK_STATE_BATTLING\n\tjp z, TextCommand_WAIT_BUTTON\n\tld a, '▼'\n\tldcoord_a 18, 16 ; place down arrow in lower right corner of dialogue text box\n\tpush bc\n\tcall ManualTextScroll ; blink arrow and wait for A or B to be pressed\n\tpop bc\n\tld a, ' '\n\tldcoord_a 18, 16 ; overwrite down arrow with blank space\n"
+        }
+      ]
+    },
+    {
+      "path": "scripts/Route12.asm",
+      "git_blob_sha": "c658ce11573dd35e864bb37614bb00463dd920fd",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/Route12.asm",
+      "line_count": 244,
+      "excerpts": [
+        {
+          "start_line": 24,
+          "end_line": 62,
+          "text": "Route12DefaultScript:\n\tCheckEventHL EVENT_BEAT_ROUTE12_SNORLAX\n\tjp nz, CheckFightingMapTrainers\n\tCheckEventReuseHL EVENT_FIGHT_ROUTE12_SNORLAX\n\tResetEventReuseHL EVENT_FIGHT_ROUTE12_SNORLAX\n\tjp z, CheckFightingMapTrainers\n\tld a, TEXT_ROUTE12_SNORLAX_WOKE_UP\n\tldh [hTextID], a\n\tcall DisplayTextID\n\tld a, SNORLAX\n\tld [wCurOpponent], a\n\tld a, 30\n\tld [wCurEnemyLevel], a\n\tld a, TOGGLE_ROUTE_12_SNORLAX\n\tld [wToggleableObjectIndex], a\n\tpredef HideObject\n\tld a, SCRIPT_ROUTE12_SNORLAX_POST_BATTLE\n\tld [wRoute12CurScript], a\n\tld [wCurMapScript], a\n\tret\n\nRoute12SnorlaxPostBattleScript:\n\tld a, [wIsInBattle]\n\tcp LOST_BATTLE\n\tjr z, Route12ResetScripts\n\tcall UpdateSprites\n\tld a, [wBattleResult]\n\tcp $2\n\tjr z, .caught_snorlax\n\tld a, TEXT_ROUTE12_SNORLAX_CALMED_DOWN\n\tldh [hTextID], a\n\tcall DisplayTextID\n.caught_snorlax\n\tSetEvent EVENT_BEAT_ROUTE12_SNORLAX\n\tcall Delay3\n\tld a, SCRIPT_ROUTE12_DEFAULT\n\tld [wRoute12CurScript], a\n\tld [wCurMapScript], a\n\tret\n"
+        }
+      ]
+    }
+  ]
+}

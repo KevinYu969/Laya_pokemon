@@ -291,8 +291,6 @@ class SnorlaxSwitchController:
             return self._fail('snorlax_switch_transaction_budget_exhausted')
         self.last_now = now
         rows = _rows(text, frame)
-        if rows is None:
-            return self._fail('snorlax_switch_full_decoder_proof_required')
         if not _stance(location, frame) or not _battle(battle_state, frame):
             return self._fail('snorlax_switch_location_or_wild_identity_changed')
         if (not isinstance(progress, dict) or 'observation_frame' in progress
@@ -310,6 +308,34 @@ class SnorlaxSwitchController:
         party, error = self._progress(progress)
         if error:
             return self._fail(error)
+        if rows is None:
+            cells=text.get('cells') if isinstance(text,dict) else None
+            expected=[' '*20 for _ in range(18)];expected[0]=' SNORLAX'.ljust(20)
+            known=(self.stage=='switching' and self.switch_requested
+                   and (not self.seen_sendout or self.enemy_action=='headbutt' and self.seen_enemy_turn)
+                   and isinstance(text,dict) and text.get('profile')==TEXT_PROFILE
+                   and text.get('read_valid') is False and text.get('alignment_verified') is False
+                   and text.get('window_visible') is True
+                   and text.get('read_error')=='visible_tile_alignment_incomplete'
+                   and isinstance(cells,(list,tuple)) and len(cells)==18
+                   and all(isinstance(r,(list,tuple)) and len(r)==20
+                           and all(isinstance(c,str) and len(c)==1 for c in r) for r in cells)
+                   and _match(tuple(''.join(r).upper() for r in cells),tuple(expected))!='invalid'
+                   and ('observation_frame' not in text or type(text['observation_frame']) is int
+                        and text['observation_frame']==frame))
+            if known:
+                raw_packet=deepcopy((None,text,progress,location,battle_state,enemy_snapshot))
+                if frame==self.last_frame:
+                    if raw_packet!=self.last_packet:return self._fail('snorlax_switch_same_frame_conflict')
+                    return {**self._wait('same_native_wipe_frame_no_resend'),
+                            'controller_menu_verified':False,'native_decoder_read_valid':False}
+                self.last_frame,self.last_packet=frame,raw_packet
+                self.native_wipe_waits=getattr(self,'native_wipe_waits',0)+1
+                if self.native_wipe_waits<=25:
+                    return {**self._wait('await_native_switch_or_verified_headbutt_wipe'),
+                            'controller_menu_verified':False,'native_decoder_read_valid':False}
+            return self._fail('snorlax_switch_full_decoder_proof_required')
+        self.native_wipe_waits=0
         packet = deepcopy((rows, text['window_visible'], progress, location, battle_state, enemy_snapshot))
         if frame == self.last_frame:
             return self._wait('same_frame_no_resend') if packet == self.last_packet else self._fail('snorlax_switch_same_frame_conflict')
