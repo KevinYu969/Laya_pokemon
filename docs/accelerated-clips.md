@@ -9,6 +9,9 @@ updated: 2026-10-23
 
 | 片段 | 本機檔案（專案相對路徑） | 時長與速度 |
 |---|---|---|
+| 小霞、藍色徽章與TM11完整分段 | `outputs/videos/second-gym-cleared-20261023/second-gym-cleared-4x.mp4` | 38.73秒；完整原始分段後製4倍 |
+| 小霞戰鬥節錄 | `outputs/videos/misty-battle-20261023/battle-4x.mp4` | 20秒；後製4倍模擬時間 |
+| 小霞戰鬥節奏重建 | `outputs/videos/misty-battle-20261023/battle-wall-clock-reconstructed.mp4` | 5.93秒；依每步耗時重採樣 |
 | 全員18級後正常換首位 | `outputs/videos/party-level18-20261023/party-1x.mp4` | 9.33秒；1倍模擬時間 |
 | 月見山化石訓練家戰鬥節錄 | `outputs/videos/mt-moon-battle-20261023/battle-4x.mp4` | 20秒；後製4倍模擬時間 |
 | 月見山戰鬥節奏重建 | `outputs/videos/mt-moon-battle-20261023/battle-wall-clock-reconstructed.mp4` | 7.27秒；依日誌重採樣 |
@@ -35,6 +38,8 @@ updated: 2026-10-23
 
 全員18級檢查點於台北17:47:46完成：烈雀18、尼多力諾18、妙蛙草22。已正常保存後回主線並進入月見山；第二枚徽章與聯盟尚未完成。完整檢查點收據見`results/balanced-training-18-checkpoint-20261023.json`。
 
+後續更新：第二枚藍色徽章已於台北18:19:12實際取得，隊伍妙蛙草24／尼多力諾19／烈雀18；逐館檢討後已正常回中心補滿HP／PP。第二館成果與速度檢討見`results/second-gym-campaign-20261023.json`。聯盟仍未完成。
+
 ## 網站
 
-已在既有網站專案準備雙語文章與5段影片頁，使用`build:pages`保留造訪計數Worker。54頁靜態檢查與53項網站測試通過。Cloudflare CLI登入過期；瀏覽器存取Cloudflare受政策限制，本機瀏覽器驗收也遭URL政策拒絕，因此未發布，沒有嘗試繞過瀏覽器政策。
+已在既有網站專案準備雙語文章與6段影片頁，含小霞成果，使用`build:pages`保留造訪計數Worker。54頁靜態檢查通過，網站既有53項測試亦曾通過。Cloudflare CLI登入過期；瀏覽器存取Cloudflare受政策限制，本機瀏覽器驗收也遭URL政策拒絕，因此未發布，沒有嘗試繞過瀏覽器政策。

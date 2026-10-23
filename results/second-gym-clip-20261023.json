@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-23T10:23:29.833660+00:00",
+  "file": "second-gym-cleared-4x.mp4",
+  "sha256": "9e3bceb9915c307c904560ec22a955b6d3c3621220387874b0c29180cf9be7f0",
+  "frames_decoded": 1162,
+  "fps": 30.0,
+  "playback_seconds": 38.733333333333334,
+  "source_run": "league-campaign-20261023-08",
+  "source_video": "video-011.mp4",
+  "source_steps": [
+    4103,
+    4187
+  ],
+  "editing": "Full source segment in original order, 4x emulated-time postproduction; model and review waits omitted. Includes Misty battle, badge/TM11 dialogue and first step after review.",
+  "published": false
+}

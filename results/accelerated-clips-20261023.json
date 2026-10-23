@@ -200,14 +200,70 @@
           "logged_active_wall_seconds": 7.2970000000000255
         }
       ]
+    },
+    {
+      "at": "2026-10-23T10:23:01.904131+00:00",
+      "kind": "battle",
+      "source_run": "league-campaign-20261023-08",
+      "source_video": "video-011.mp4",
+      "source_steps": [
+        4118,
+        4175
+      ],
+      "source_start_emulated_seconds": 24.666666666666668,
+      "source_duration_emulated_seconds": 80,
+      "editing": "Original PyBoy pixels; post-production 4x; inference waits omitted; not wall-clock speed.",
+      "published": false,
+      "clips": [
+        {
+          "file": "battle-4x.mp4",
+          "sha256": "577c21c9ac81340d71c4777bec8f4c22ffc6c84aaf5f773fd5b517dfc2924921",
+          "frames_decoded": 600,
+          "fps": 30.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 20.0
+        },
+        {
+          "file": "battle-wall-clock-reconstructed.mp4",
+          "sha256": "bdb2b51c2248c85c37f7b4475b2c1c45553925a373c86df6d0afe5f916dd94ce",
+          "frames_decoded": 89,
+          "fps": 15.0,
+          "size": [
+            480,
+            432
+          ],
+          "playback_seconds": 5.933333333333334,
+          "editing": "Reconstructed from per-action wall times; review pauses omitted. Original frames resampled; waiting position within each action is approximate.",
+          "logged_active_wall_seconds": 5.905999999999949
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T10:23:29.833660+00:00",
+      "file": "second-gym-cleared-4x.mp4",
+      "sha256": "9e3bceb9915c307c904560ec22a955b6d3c3621220387874b0c29180cf9be7f0",
+      "frames_decoded": 1162,
+      "fps": 30.0,
+      "playback_seconds": 38.733333333333334,
+      "source_run": "league-campaign-20261023-08",
+      "source_video": "video-011.mp4",
+      "source_steps": [
+        4103,
+        4187
+      ],
+      "editing": "Full source segment in original order, 4x emulated-time postproduction; model and review waits omitted. Includes Misty battle, badge/TM11 dialogue and first step after review.",
+      "published": false
     }
   ],
   "public_video_upload": false,
   "website_article_ready": true,
   "website_published": false,
   "browser_playback_verified": false,
-  "website_local_commit": "5c3cedc80c193fd0cc63776d67d0e56ce12b9212",
-  "release_zip_sha256": "c436e92cd3229c39506ca6ad0f1e0ebda7cb29304ca665b04f17b558a3d4b3ee",
+  "website_local_commit": "cacaa02988e2a699389b21dcc75e39466ae4f2b4",
+  "release_zip_sha256": "ac2cc0c37a5222b04463e0e3ca8ae1e1a690d96aed2283a0e924085ca9d7f348",
   "game_tests_passed": 258,
   "website_tests_passed": 53
 }

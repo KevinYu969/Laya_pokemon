@@ -230,11 +230,11 @@
       "id": "challenge-misty",
       "map_id": 65,
       "target": [
-        4,
-        3
+        5,
+        2
       ],
       "kind": "interact",
-      "face": "up",
+      "face": "left",
       "badge": 2
     }
   ],
