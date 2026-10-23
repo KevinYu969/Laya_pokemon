@@ -259,5 +259,16 @@
     "四招遺忘介面、稀有怪削血／狀態與PC管理仍待實機校準。",
     "原生桌面另以Computer Use核對；影片省略模型等待，不能當牆鐘速度。",
     "ROM、存檔、影片與原始輸出只留本機；尚未道館或聯盟通關。"
-  ]
+  ],
+  "saved_state_restore_check": {
+    "method": "isolated_copy_60_render_frames_no_buttons_no_save_back",
+    "party_count": 2,
+    "location": {
+      "map_id": 33,
+      "x": 30,
+      "y": 8
+    },
+    "overworld_image_visually_verified": true,
+    "counts_as_live_gameplay": false
+  }
 }
