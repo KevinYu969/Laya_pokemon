@@ -20,7 +20,9 @@ STORY_EVENT_NAMES = (
     "beat_silph_co_giovanni", "beat_brock", "beat_misty", "beat_lt_surge", "beat_erika", "beat_koga",
     "beat_sabrina", "beat_blaine", "beat_viridian_gym_giovanni", "beat_loreleis_room_trainer_0",
     "beat_brunos_room_trainer_0", "beat_agathas_room_trainer_0", "beat_lance", "beat_champion_rival",
-    "hall_of_fame_dex_rating",
+    "hall_of_fame_dex_rating", "beat_cerulean_rival", "got_hm02", "got_hm05",
+    "met_bill", "used_cell_separator_on_bill", "got_ss_ticket", "left_bills_house_after_helping",
+    "beat_mt_moon_exit_super_nerd", "got_dome_fossil", "got_helix_fossil", "got_master_ball",
 )
 
 

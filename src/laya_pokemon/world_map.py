@@ -4,7 +4,7 @@ from collections import deque
 
 def read_world_grid(pyboy, location):
     width, height = int(pyboy.memory[0xD369]), int(pyboy.memory[0xD368])
-    if not 1 <= width <= 40 or not 1 <= height <= 72 or (width+6)*(height+6) > 1300:
+    if not 1 <= width <= 100 or not 1 <= height <= 72 or (width+6)*(height+6) > 1300:
         return None
     bank = int(pyboy.memory[0xD52B])
     pointer = int(pyboy.memory[0xD52C]) + (int(pyboy.memory[0xD52D]) << 8)
@@ -54,6 +54,13 @@ def world_direction(grid, location, target, blocked=()):
     cells = grid['walkable'];height=len(cells);width=len(cells[0])
     start = location['x'],location['y'];raw = target['x'],target['y']
     end = max(0,min(width-1,raw[0])),max(0,min(height-1,raw[1]))
+    if raw != end and not cells[end[1]][end[0]]:
+        if raw[1]<0:candidates=[(x,0) for x,v in enumerate(cells[0]) if v]
+        elif raw[1]>=height:candidates=[(x,height-1) for x,v in enumerate(cells[-1]) if v]
+        elif raw[0]<0:candidates=[(0,y) for y,row in enumerate(cells) if row[0]]
+        else:candidates=[(width-1,y) for y,row in enumerate(cells) if row[-1]]
+        if not candidates:return None
+        end=min(candidates,key=lambda p:abs(p[0]-raw[0])+abs(p[1]-raw[1]))
     if start == end:
         if raw == end:return None
         direction='left' if raw[0]<0 else 'right' if raw[0]>=width else 'up' if raw[1]<0 else 'down'

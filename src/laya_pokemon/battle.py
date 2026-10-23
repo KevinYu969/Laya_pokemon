@@ -18,7 +18,7 @@ def read_battle_state(pyboy) -> dict:
         raise ValueError("戰鬥旗標不是 byte")
     raw = int(raw)
     opponent = None
-    if raw == 1:
+    if raw in {1,2}:
         try:
             # wCurOpponent(D059)在自然戰鬥中可歸零；改讀實際在場結構wEnemyMonSpecies。
             value = pyboy.memory[0xCFE5]
@@ -29,7 +29,7 @@ def read_battle_state(pyboy) -> dict:
             pass
     return {"raw": raw, "active": raw in (1, 2) if raw in (0, 1, 2, 255) else None,
             "kind": {0: "none", 1: "wild", 2: "trainer", 255: "lost_transition"}.get(raw, "unknown"),
-            "wild_opponent_species": opponent,
+            "wild_opponent_species": opponent if raw==1 else None, "opponent_species":opponent,
             "opponent_source": "https://github.com/pret/pokered/blob/53ae0e93fad9f4c3eaef92f102b1eeb531e59d68/wram.asm#L641",
             "source": SOURCE, "victory_confirmed": None}
 
@@ -62,6 +62,8 @@ def _selection_hint(rows, target, menu):
 
 def battle_context(text, battle_state, party=(), inventory=None, *, capture_focus=False) -> dict | None:
     """僅對已核對 ROM 的實驗性路線提供局部提示；不執行按鍵。"""
+    if battle_state.get("kind")=="lost_transition":
+        return {"phase":"strategy_review","objective":"Wait.","available_actions":["wait","b"],"review_reason":"battle_loss_requires_review","battle_loss_confirmed":True,"phase_source":"read-only wIsInBattle LOST_BATTLE=255; save and review before continuing"}
     if battle_state["active"] is not True:
         return None
     cells = text.get("cells", [])
@@ -84,13 +86,28 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
                    and health[0]["hp"] * 2 <= health[0]["max_hp"])
         from .team_strategy import reference, normalize, species_key, move_key, choose_damage_move, capture_plan
         names = reference()["species"]
-        enemy_rows = [normalize(row.strip()) for row in rows[:4]]
+        party_form = len(party)>1 and all(species_key(mon["species"]) and any(normalize(species_key(mon["species"])) in normalize(row) for row in rows[:12]) for mon in party)
+        enemy_rows = [] if party_form else [normalize(row.strip()) for row in rows[:4]]
         enemy = next((key for key in names if normalize(key) in enemy_rows), None)
-        ram_enemy = battle_state.get("wild_opponent_species")
+        ram_enemy = battle_state.get("opponent_species") or battle_state.get("wild_opponent_species")
         if enemy and ram_enemy and enemy != ram_enemy:
             return {"phase": "strategy_review", "review_reason": "visible_enemy_and_wild_opponent_signal_disagree"}
-        if enemy is None and battle_state.get("kind") == "wild":
+        if enemy is None:
             enemy = ram_enemy  # 背包可能蓋住 HUD；只在野生旗標下讀已核對的wEnemyMonSpecies。
+        # 強制換人／戰鬥隊伍頁：名字每三列、游標在HP列，不把FNT主力反覆選入。
+        if "NOWILLTOFIGHT" in normalize(" ".join(rows)):
+            return {"phase":"battle_menu","objective":"Confirm the current selection.","available_actions":["a","b"],"battle_tactic":"dismiss_fainted_message"}
+        party_names=[(index,mon,y) for index,mon in enumerate(party) for y,row in enumerate(rows[:12]) if species_key(mon['species']) and normalize(species_key(mon['species'])) in normalize(row)]
+        party_cursors=[(x,y) for y,row in enumerate(rows[:12]) for x,c in enumerate(row[:2]) if c in {'▶','▷'}]
+        if len(party_names)==len(party) and len(party)>1 and len(party_cursors)==1:
+            healthy=[(index,mon) for index,mon in enumerate(party) if mon['hp']>0]
+            if healthy:
+                from .team_strategy import effective_power
+                target=max(healthy,key=lambda item:(max((effective_power(move,item[1]['species'],enemy) for move,pp in zip(item[1].get('moves',[]),item[1].get('pp',[])) if pp&63),default=0)*item[1]['level'],item[1]['hp']))[0]
+                current=next((index for index,mon,y in party_names if y<=party_cursors[0][1]<=y+1),None)
+                if current is None:return {'phase':'strategy_review','review_reason':'party_cursor_not_at_verified_member'}
+                objective='Confirm the current selection.' if current==target else 'Move DOWN.' if current<target else 'Move UP.'
+                return {'phase':'battle_menu','objective':objective,'available_actions':['a','b'] if current==target else ['up','down','wait'],'battle_tactic':'select_healthy_party','party_target_index':target,'enemy_species':enemy}
         owned = [mon["species"] for mon in party]
         balls = sum(item["quantity"] for item in inventory or [] if item["item"] == 4)
         capture = capture_plan(enemy, owned, balls, wild=battle_state.get("kind") == "wild", party_count=len(party))

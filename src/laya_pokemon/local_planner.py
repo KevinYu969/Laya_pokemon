@@ -1,6 +1,7 @@
 """Strata 高階階段決策；在獨立監督程序使用，遊戲程序保持完全離線。"""
 from dataclasses import dataclass
 import ipaddress
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -20,6 +21,8 @@ STAGE_CAPABILITIES = {
     "deliver_parcel": "Return the parcel to Oak and receive the Pokedex.",
     "team_capture": "Heal, resupply Poke Balls, hunt east Route22, stop after catching Nidoran male.",
     "team_training": "Train the current lead only to level 13 in east Route22; no party switching or shared EXP. Other party members do not automatically gain EXP.",
+    "battle_recovery": "Resolve the current active trainer battle using implemented mandatory healthy-party selection. Trainer battles cannot be escaped. If the remaining party loses, accept the blackout, preserve the loss, and heal at the last known Pokemon Center. Pause for review after healing; do not continue the travel route yet.",
+    "league_campaign": "Continue the locally validated route toward the next badge and Champion. All button control is offline Laya. Pause for an engineering review after every new gym badge. Unsupported mechanics must be reviewed, not invented.",
     "first_gym": "Continue first gym mission: heal and train Bulbasaur to level 13 for Vine Whip, cross Viridian Forest to Pewter, heal, defeat Brock and receive Boulder Badge. Capture useful unowned encounters.",
     "review": "Save and stop for unsupported or uncertain state.",
     "stop": "Stop without starting another game episode.",
@@ -123,6 +126,20 @@ class StrataPlanner:
         return {"model": self.config.model, "catalog_verified": True}
 
     def decide(self, snapshot, allowed):
+        lessons_path=Path(__file__).resolve().parents[2]/'docs/battle-lessons.md'
+        if lessons_path.exists():
+            lessons=lessons_path.read_text(encoding='utf-8')
+            snapshot={**snapshot,'battle_lessons':{'source_sha256':hashlib.sha256(lessons_path.read_bytes()).hexdigest(),
+                      'reviewed_policy_excerpt':lessons[:2200]}}
+        if "league_campaign" in allowed:
+            guide_path=Path(__file__).resolve().parents[2]/"docs/pokemon-red-strategy-guide.md"
+            guide=guide_path.read_text(encoding="utf-8")
+            sections=guide.split("\n## ")
+            selected=[part for part in sections if part.startswith(("00 ","01 ","02 ","03 ","04 ","05 ","06 "))]
+            snapshot={**snapshot,"strategy_knowledge":{"source_sha256":hashlib.sha256(guide_path.read_bytes()).hexdigest(),
+                      "retrieval":"Full guide stored locally; bounded chapter extracts supplied for this decision.",
+                      "chapter_index":[part.splitlines()[0] for part in sections[1:]],
+                      "chapter_extracts":[part[:300] for part in selected if part.startswith(("00 ","02 ","03 "))]}}
         schema = {"type": "object", "properties": {"stage": {"type": "string", "enum": allowed},
                   "reason": {"type": "string", "maxLength": 240}},
                   "required": ["stage", "reason"], "additionalProperties": False}

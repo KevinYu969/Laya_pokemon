@@ -1,0 +1,25 @@
+{
+  "review_date": "2026-10-23",
+  "historical_trace_replay": true,
+  "live_gate_interception": false,
+  "losses_detected": [
+    {
+      "at": "2026-10-23T08:43:53.847372+00:00",
+      "step": 480,
+      "signals": [
+        "all_party_fainted"
+      ],
+      "location": {
+        "map_id": 14,
+        "x": 19,
+        "y": 4
+      }
+    }
+  ],
+  "money_before": 3361,
+  "money_after": 1680,
+  "rewound": false,
+  "regression_tests": "237 passed; temporary output explicitly inside workspace",
+  "lessons": "docs/battle-lessons.md",
+  "policy": "per-frame read-only loss guard; structured cause/evidence/adjustments/validation required; no route-change bypass"
+}
