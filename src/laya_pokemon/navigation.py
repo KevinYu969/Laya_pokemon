@@ -148,10 +148,10 @@ def _center_waypoint(map_id, x, y, injured, previous_actions, sources):
     return _goal("step_out_center", "Move DOWN.", map_id, (3, 8), sources)
 
 
-def _parcel_waypoint(map_id, x, y, flags, injured, previous_actions):
+def _parcel_waypoint(map_id, x, y, flags, injured, previous_actions, *, resupply=False):
     sources = ["data/maps/objects/OaksLab.asm", "data/maps/objects/ViridianCity.asm",
                "scripts/ViridianMart.asm", "constants/map_constants.asm", "data/maps/objects/ViridianPokecenter.asm"]
-    if flags.get("got_oaks_parcel") is True:
+    if flags.get("got_oaks_parcel") is True and not resupply:
         return _goal("parcel_collected", "Wait.", map_id, None, sources, waiting=True)
     if flags.get("battled_rival_in_oaks_lab") is not True:
         return _goal("parcel_requires_lab_battle", "Wait.", map_id, None, sources, waiting=True)
@@ -180,6 +180,12 @@ def _parcel_waypoint(map_id, x, y, flags, injured, previous_actions):
             return _goal("enter_viridian_mart", "Move UP.", map_id, (29, 19), sources)
         return _goal("reach_viridian_mart", "Move UP.", map_id, (29, 20), sources)
     if map_id == 0x2A:
+        if resupply:
+            if (x, y) != (2, 5):
+                return _goal("reach_mart_clerk", "Move UP.", map_id, (2, 5), sources)
+            if not previous_actions or previous_actions[-1] != "left":
+                return _goal("face_mart_clerk", "Move LEFT.", map_id, (1, 5), sources)
+            return _goal("interact_with_mart_clerk", "Interact using the confirm button.", map_id, (1, 5), sources, interaction=True)
         return _goal("wait_for_parcel_script", "Wait.", map_id, None, sources, waiting=True)
     return _goal("unverified_parcel_map", "Wait.", map_id, None, sources, waiting=True)
 
@@ -238,6 +244,10 @@ def opening_waypoint(location, previous_actions=(), story_flags=None, has_party=
         raise ValueError("位置須包含 map_id、x、y")
     map_id, x, y = (_byte(location[key]) for key in ("map_id", "x", "y"))
     flags = {} if story_flags is None else story_flags
+    if stage == "team_resupply" and has_party:
+        if flags.get("got_pokedex") is not True:
+            return _goal("resupply_requires_pokedex", "Wait.", map_id, None, ["scripts/ViridianMart.asm"], waiting=True)
+        return _parcel_waypoint(map_id, x, y, flags, party_injured, previous_actions, resupply=True)
     if stage == "to_parcel" and has_party:
         return _parcel_waypoint(map_id, x, y, flags, party_injured, previous_actions)
     if stage == "deliver_parcel" and has_party:

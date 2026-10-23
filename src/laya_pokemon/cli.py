@@ -22,7 +22,8 @@ def environment() -> dict:
             packages[name] = None
     commit = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True)
     changes = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
-    source = {path.as_posix(): sha256_file(path) for path in sorted(Path("src").rglob("*.py"))}
+    source = {path.as_posix(): sha256_file(path) for path in sorted(Path("src").rglob("*"))
+              if path.is_file() and path.suffix in {".py", ".json"}}
     return {"recorded_at": utc_now(), "python": platform.python_version(), "os": platform.system(),
             "packages": packages, "code_commit": commit.stdout.strip() if commit.returncode == 0 else None,
             "code_dirty": bool(changes.stdout.strip()), "source_sha256": source}

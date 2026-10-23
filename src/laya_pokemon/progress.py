@@ -88,10 +88,29 @@ def read_progress(pyboy, constants=None) -> dict:
                    "level": int(level), "hp": int(hp), "max_hp": int(max_hp)}
             if "exp" in mon and _integer(mon["exp"]) and mon["exp"] >= 0:
                 row["exp"] = int(mon["exp"])
+            for key, maximum in (("moves", 165), ("pp", 255)):
+                values = mon.get(key)
+                if (isinstance(values, (tuple, list)) and len(values) == 4
+                        and all(_integer(value) and 0 <= value <= maximum for value in values)):
+                    row[key] = list(map(int, values))
             summary.append(row)
         result.update(party_read_valid=True, party=summary, initialization_candidate=bool(summary))
     except (AttributeError, KeyError, IndexError, TypeError, ValueError) as error:
         result["warnings"].append(f"隊伍尚不可驗證：{type(error).__name__}")
+    # 只呼叫 property getter；不使用 SDK 的 set_inventory/set_money/set_party。
+    result.update(inventory=None, money=None)
+    try:
+        inventory = list(pyboy.game_wrapper.inventory)
+        if len(inventory) > 20 or any(not _integer(item["item"]) or not 1 <= item["item"] <= 255
+                                    or not _integer(item["quantity"]) or not 1 <= item["quantity"] <= 99
+                                    for item in inventory):
+            raise ValueError("invalid inventory")
+        result["inventory"] = [{"item": int(item["item"]), "quantity": int(item["quantity"])} for item in inventory]
+        money = pyboy.game_wrapper.money
+        if _integer(money) and 0 <= money <= 999999:
+            result["money"] = int(money)
+    except (AttributeError, KeyError, IndexError, TypeError, ValueError):
+        pass  # 較舊 wrapper 或合成測試沒有此 property；保持未知，不視為空背包。
     badges = read_byte(constants.OBTAINED_BADGES_ADDRESS)
     result["badges_raw"] = badges
     for name in STORY_EVENT_NAMES:

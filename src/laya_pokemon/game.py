@@ -22,6 +22,14 @@ class TimeBudgetReached(RuntimeError):
     pass
 
 
+class StrategyReviewRequired(RuntimeError):
+    pass
+
+
+class MilestoneReached(RuntimeError):
+    pass
+
+
 def run_with_window_events(pyboy, operation, deadline: float, pause_event, unpause_event):
     """模型不碰模擬器；主執行緒在暫停遊戲時持續處理 SDL 事件。"""
     if time.perf_counter() >= deadline:
@@ -70,18 +78,32 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
     if opening_route:
         from .navigation import read_location, opening_waypoint, collision_direction, verified_down_ledge
         state["location"] = read_location(pyboy)
-        if route_stage in {"lab_rival", "to_parcel", "deliver_parcel"}:
-            from .battle import read_battle_state, battle_context
+        if route_stage in {"lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture"}:
+            from .battle import read_battle_state, battle_context, learning_context
             state["battle_state"] = read_battle_state(pyboy)
-            context = battle_context(text, state["battle_state"])
+            context = learning_context(text, progress["party"])
+            if context is None and "NICKNAME" not in " ".join(text["lines"]).upper():
+                context = battle_context(text, state["battle_state"], progress["party"], progress["inventory"])
             if context:
                 state.update(context)
             elif state["battle_state"]["active"] is None:
                 state.update(phase="unknown_battle_state", objective="Wait.", available_actions=["wait", "b"])
+        if (route_stage in {"team_resupply", "team_capture"} and state["location"]["map_id"] == 42
+                and state.get("battle_state", {}).get("active") is False):
+            from .shopping import shopping_context
+            context = shopping_context(text, progress["inventory"], progress["money"])
+            if context:
+                state.update(context)
         if state["phase"] == "unclassified" and progress["player_name_raw"] == player_name:
             waypoint = opening_waypoint(state["location"], previous_actions,
                                         progress["story_event_bits"], bool(progress["party"]), starter, route_stage,
                                         any(mon["hp"] < mon["max_hp"] for mon in progress["party"]))
+            if route_stage == "team_capture":
+                from .capture_route import team_waypoint, visible_grass_world
+                from .shopping import ball_count
+                waypoint = team_waypoint(state["location"], progress["story_event_bits"], progress["party"],
+                                         ball_count(progress["inventory"]), previous_actions,
+                                         visible_grass_world(pyboy, state["location"]) if state["location"]["map_id"] == 33 else ())
             if waypoint:
                 state.update(waypoint)
                 state["phase"] = "overworld"
@@ -110,7 +132,7 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
                             if ledge:
                                 state["objective"] = "Move DOWN."
                                 state["ledge_jump_hint"] = ledge
-                            elif distance != 1 or waypoint["goal"] not in {"enter_1f_exit", "step_out_house", "reach_2f_stairs_y", "step_out_lab", "leave_pallet_north", "route1_north", "enter_viridian_mart", "enter_viridian_center", "step_out_center", "step_out_mart", "leave_viridian_south", "route1_south", "enter_oaks_lab"}:
+                            elif distance != 1 or waypoint["goal"] not in {"enter_1f_exit", "step_out_house", "reach_2f_stairs_y", "step_out_lab", "leave_pallet_north", "route1_north", "enter_viridian_mart", "enter_viridian_center", "step_out_center", "step_out_mart", "leave_viridian_south", "route1_south", "enter_oaks_lab", "leave_viridian_west", "return_route22_east"}:
                                 state["objective"] = "Wait for a verified traversable path."
                                 state["available_actions"] = ["wait", "b"]
                                 state["navigation_warning"] = "No closer reachable collision-grid waypoint."
@@ -247,7 +269,7 @@ def play_game(args) -> None:
             if starter not in {"BULBASAUR", "SQUIRTLE", "CHARMANDER"}:
                 raise ValueError("策略檔的 starter 不在允許集合")
             route_stage = strategy.get("stage", "starter")
-            if route_stage not in {"starter", "lab_rival", "to_parcel", "deliver_parcel"}:
+            if route_stage not in {"starter", "lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture"}:
                 raise ValueError("策略檔的 stage 不在允許集合")
             state = observe(emulator, args.objective, args.player_name, previous_actions, args.opening_route, starter, route_stage)
             state["strategy_starter"] = starter
@@ -255,6 +277,12 @@ def play_game(args) -> None:
             state["strategy_sha256"] = hashlib.sha256(strategy_bytes).hexdigest()
             state["previous_actions"] = previous_actions[-3:]
             emulator.screen.image.save(screenshot_dir / f"{index:04d}-before.png")
+            if state["phase"] == "strategy_review":
+                write_json(output / "strategy-review.json", state)
+                raise StrategyReviewRequired(state.get("review_reason", "unknown_strategy_context"))
+            if state.get("goal") == "first_team_capture_complete":
+                write_json(output / "capture-milestone.json", state)
+                raise MilestoneReached("已驗證首隻目標加入隊伍")
             decision = model_task(lambda: policy.choose(state))
             frames = advance_action(emulator, decision["action"], args.hold_frames, args.settle_frames, frame_ready)
             emulator.screen.image.save(screenshot_dir / f"{index:04d}-after.png")
@@ -277,9 +305,11 @@ def play_game(args) -> None:
             metadata["stop_reason"] = "action_budget"
         emulator.screen.image.save(output / "last-frame.png")
         metadata["status"] = "completed_demo"
-    except (WindowClosed, TimeBudgetReached, KeyboardInterrupt) as error:
+    except (WindowClosed, TimeBudgetReached, StrategyReviewRequired, MilestoneReached, KeyboardInterrupt) as error:
         metadata.update(status="stopped", stop_reason="window_closed" if isinstance(error, WindowClosed)
-                        else "wall_clock_limit" if isinstance(error, TimeBudgetReached) else "keyboard_interrupt")
+                        else "wall_clock_limit" if isinstance(error, TimeBudgetReached)
+                        else "strategy_review_required" if isinstance(error, StrategyReviewRequired)
+                        else "capture_milestone" if isinstance(error, MilestoneReached) else "keyboard_interrupt")
     except Exception as error:
         metadata.update(status="failed", error_type=type(error).__name__, error=str(error))
         raise
