@@ -485,3 +485,16 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 - 公開Git只備份程式、公開規格、整理結果與指定兩份去識別筆記；ROM／存檔／權重／原始日誌／MP4及其他私人知識庫不公開。既有每天23:00備份設定不變。
 
 - 捕捉存檔另以獨立複本僅等待60個模擬器幀、不送按鍵、不回寫來源，確認戰後轉場完成、回到22號道路草地(30,8)，隊伍2隻；這是工程復原檢查，不當作新的Laya遊玩成果。
+
+
+## 19. 2026-10-23 Strata地端監督器實作，端點用途待確認
+
+- Kevin希望ROG NUC的Strata決策服務自動接到Laya，減少Computer Use畫面判斷。已說明現有遊戲按鍵本來由離線Laya執行，Computer Use用於畫面核對；Strata是推論服務，須核對實際載入的模型。
+- 已讀[Strata官方說明](https://github.com/Niko1221/Strata)及[API文件](https://github.com/Niko1221/Strata/blob/main/docs/DETAILS.md)，採GET /v1/models與POST /v1/chat/completions／JSON schema。舊地端連線健康檢查失敗；未將其他服務假稱Strata。私人操作端點及設備識別只保留原有操作設定／對話，不抄入筆記。
+- 使用者提供的端點用途尚待確認是否符合既定私人設備隔離，已詢問；未向待確認端點送遊戲狀態、圖片或筆記，未啟用它執行推論。本輪無新的遊戲執行，最新實際進度仍為run32的7級妙蛙種子與3級尼多朗♂。
+- 新增src/laya_pokemon/local_planner.py與scripts/strata_supervisor.py：監督程序讀PyBoy存檔複本與有限遊戲狀態，向已確認私人設備的模型詢問下一階段；遊戲子程序維持Python網路封鎖與離線Laya分類，無Computer Use依賴、無GPT備援。不是每次按鍵都呼叫地端大模型。
+- 只允許前置條件成立的已實作階段，模型JSON只能含stage／reason；拒絕額外指令、候選外階段、重複欄位、截斷輸出、重新導向與公開雲端API。API金鑰只讀指定環境變數，設定檔放.local，不公開；不修改其他模型／遠端服務設定。
+- 監督器預設最多3輪、可指定1至20輪；每個遊戲子程序仍上限60秒。正常預算結束或里程碑才可考慮續接；使用者關窗、Ctrl+C、未知選單、錯誤或模型不符停止，不自動重啟或降級到GPT。API有usage就原樣保存，沒有則unknown，不能估算。
+- 新team_training階段可以沿既有22號道路路線培養目前首位寶可夢至13級停止；只完成程式／合成測試，尚未真實遊戲驗收，不包含自動換人、PC與完整忘招流程。
+- 214項完整測試通過（3.22秒）；新增合成測試涵蓋端點與憑證限制、JSON／權限、實際usage保留，以及關窗不重啟。沒有Strata真實推論或雙模型遊戲成績、模型ID與實際token usage仍未知，不能把測試當實機成功。
+- 公開規格docs/local-planner.md、就緒度results/strata-bridge-readiness-20261023.json與README明示未驗收。後續先確認私人設備用途，再核對實際模型／認證、測一次階段JSON、單輪遊戲，最後驗證多輪續接；ROM／存檔／MP4與私人API設定不公開，網站未發布。

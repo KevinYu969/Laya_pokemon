@@ -1,0 +1,69 @@
+# Strata 地端決策橋接
+
+更新：2026-10-23。目標是讓地端服務選擇已實作的遊戲階段，減少Codex逐輪續接與Computer Use畫面核對。Strata是推論服務，實際決策模型以該API目前載入、且通過目錄核對的模型ID為準。
+
+**目前完成程式與合成測試，尚未完成實際Strata API推論／雙模型遊戲驗收。** 私人服務端點仍待設備用途與模型／認證確認；本次沒有將遊戲觀測送到待確認端點，也沒有因此啟動新的遊戲輪次。
+
+```mermaid
+flowchart LR
+    A[PyBoy存檔與唯讀狀態] --> B[獨立本機監督器]
+    B --> C[私人設備上的Strata模型API]
+    C --> D[JSON與階段前置條件檢查]
+    D --> E[離線Laya選按鍵]
+    E --> F[PyBoy原生視窗與錄影]
+    F --> A
+```
+
+## 分工
+
+- 監督器讀最新遊戲存檔複本、隊伍、劇情旗標與遊戲字碼文字；不讀私人筆記、其他應用程式或桌面截圖。
+- Strata模型每輪選下一個高階階段，不是每一按鍵都呼叫大模型。候選僅包含當下前置條件成立且已實作的階段，以及review／stop。
+- Python控制器提供導航、碰撞、選單與戰術子目標；Laya以CPU離線分類按鍵。遊戲子程序維持既有Python網路封鎖，沒有GPT備援。
+- 獨立監督器才可呼叫明確設定的私人Strata API。金鑰只讀指定環境變數，不寫程式、策略、公開日誌或Git。
+- 遊戲視窗與MP4由PyBoy直接產生，迴圈不呼叫Computer Use。已校準流程可以自動續接；未知畫面／學招／PC等仍需後續校準，不能宣稱全程自主破關。
+
+## 已實作範圍
+
+監督器會檢查開局、研究所對戰、包裹往返、圖鑑與首隻尼多朗♂等前置進度。已捕獲尼多朗家族後，新增team_training階段：在已知22號道路東側培養目前首位寶可夢，至13級停在里程碑。這個新訓練階段尚未實機驗收，不代表自動換人或平均培養所有隊員。
+
+每個遊戲子程序仍上限60秒；監督器預設最多3輪、可指定1至20輪，達上限保存停止。只有正常時間／步數結束或里程碑才可考慮下一輪。使用者關窗、Ctrl+C、未知選單、模型錯誤、非法JSON、模型目錄不符及非正常遊戲退出，都不自動重啟或改接雲端。
+
+模型回覆只能含stage／reason，禁止額外指令與工具呼叫；不接受重複JSON欄位、截斷回覆或候選外階段。模型不能提供shell、任意檔案路徑、任意座標或修改遊戲記憶體。
+
+## 私人設定與啟動
+
+確認設備確屬私人用途後，設定放在Git忽略的`.local/strata-planner.json`；不要將真實端點／金鑰寫進公開README或實驗日誌。下列是格式範例，模型ID必須換成API實際列出的ID；設備尚未確認時保留unconfirmed，程式會停止。
+
+```json
+{
+  "device_lane": "unconfirmed",
+  "base_url": "http://127.0.0.1:8080/v1",
+  "model": "REPLACE_WITH_ACTUAL_LOADED_MODEL_ID",
+  "api_key_env": "LAYA_STRATA_API_KEY",
+  "timeout_seconds": 15
+}
+```
+
+部署流程確認私人設備後才填入`private_personal_confirmed`，這個欄位不取代設備用途確認，也不能用來繞過私人／工作設備隔離。若伺服器不需要API key，api_key_env可留空；有認證時使用已存在的環境變數，不能把金鑰放在網址。程式不跟隨重新導向、不讀環境HTTP代理，並只接受本機、私人網路或Tailscale端點。
+
+只核對模型目錄（不讀ROM／存檔或傳遊戲資料）：
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 scripts/strata_supervisor.py --config .local/strata-planner.json --probe-only --output outputs/strata-probe-01
+```
+
+完成連線與模型核對後，從已捕獲尼多朗的真實存檔啟動有限輪次：
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 scripts/strata_supervisor.py --config .local/strata-planner.json --state outputs/runs/pyboy-live-20261023-32/final.state --output outputs/strata-session-01 --episodes 3
+```
+
+輸出包含監督器summary.json、每次決策及API回報的token usage、逐輪策略、遊戲日誌、MP4與final.state。這些全部留本機；沒有回報usage時記為未知，不估算。Strata無法連線就保存錯誤停止，不借用GPT分類額度。
+
+## 驗收與限制
+
+合成測試涵蓋私人端點限制、環境變數認證、拒絕重新導向、JSON／階段限制、保留API實際usage，以及關窗後不重啟。這些測試不證明實際地端模型會選對策略。
+
+後續驗收順序：確認私人設備 → 核對實際模型與認證 → 一次有來源的階段JSON → 一輪真實Laya按鍵／錄影 → 多輪自動續接。視覺能力是否可用需另測，目前只送結構化遊戲狀態，未傳送影像。
+
+介面依據：[Strata官方API說明](https://github.com/Niko1221/Strata/blob/main/docs/DETAILS.md)。使用GET /v1/models與POST /v1/chat/completions、JSON schema回覆；客戶端仍自行驗證，不假設伺服器一定遵循schema。

@@ -45,6 +45,8 @@
 
 ## 如何運作
 
+新增[Strata地端階段監督器](docs/local-planner.md)，由私人設備上的模型選高階階段、離線Laya選按鍵，程式不依賴Computer Use。**目前程式／合成測試完成，端點設備用途、模型認證及真實雙模型遊戲驗收仍待確認**，詳見[橋接就緒度](results/strata-bridge-readiness-20261023.json)。
+
 `PyBoy 狀態 → 精簡 JSON 與候選按鍵 → Laya 選擇 → 按鍵及等待幀數 → 新狀態與紀錄`
 
 - Laya 處理文字／JSON 狀態及候選選項，回傳選擇與分數。

@@ -78,7 +78,7 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
     if opening_route:
         from .navigation import read_location, opening_waypoint, collision_direction, verified_down_ledge
         state["location"] = read_location(pyboy)
-        if route_stage in {"lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture"}:
+        if route_stage in {"lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture", "team_training"}:
             from .battle import read_battle_state, battle_context, learning_context
             state["battle_state"] = read_battle_state(pyboy)
             context = learning_context(text, progress["party"])
@@ -89,7 +89,7 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
                 state.update(context)
             elif state["battle_state"]["active"] is None:
                 state.update(phase="unknown_battle_state", objective="Wait.", available_actions=["wait", "b"])
-        if (route_stage in {"team_resupply", "team_capture"} and state["location"]["map_id"] == 42
+        if (route_stage in {"team_resupply", "team_capture", "team_training"} and state["location"]["map_id"] == 42
                 and state.get("battle_state", {}).get("active") is False):
             from .shopping import shopping_context
             context = shopping_context(text, progress["inventory"], progress["money"])
@@ -99,12 +99,13 @@ def observe(pyboy, objective: str, player_name: str = "KEVIN", previous_actions=
             waypoint = opening_waypoint(state["location"], previous_actions,
                                         progress["story_event_bits"], bool(progress["party"]), starter, route_stage,
                                         any(mon["hp"] < mon["max_hp"] for mon in progress["party"]))
-            if route_stage == "team_capture":
+            if route_stage in {"team_capture", "team_training"}:
                 from .capture_route import team_waypoint, visible_grass_world
                 from .shopping import ball_count
                 waypoint = team_waypoint(state["location"], progress["story_event_bits"], progress["party"],
                                          ball_count(progress["inventory"]), previous_actions,
-                                         visible_grass_world(pyboy, state["location"]) if state["location"]["map_id"] == 33 else ())
+                                         visible_grass_world(pyboy, state["location"]) if state["location"]["map_id"] == 33 else (),
+                                         training=route_stage == "team_training")
             if waypoint:
                 state.update(waypoint)
                 state["phase"] = "overworld"
@@ -270,7 +271,7 @@ def play_game(args) -> None:
             if starter not in {"BULBASAUR", "SQUIRTLE", "CHARMANDER"}:
                 raise ValueError("策略檔的 starter 不在允許集合")
             route_stage = strategy.get("stage", "starter")
-            if route_stage not in {"starter", "lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture"}:
+            if route_stage not in {"starter", "lab_rival", "to_parcel", "deliver_parcel", "team_resupply", "team_capture", "team_training"}:
                 raise ValueError("策略檔的 stage 不在允許集合")
             state = observe(emulator, args.objective, args.player_name, previous_actions, args.opening_route, starter, route_stage)
             state["strategy_starter"] = starter
@@ -281,9 +282,9 @@ def play_game(args) -> None:
             if state["phase"] == "strategy_review":
                 write_json(output / "strategy-review.json", state)
                 raise StrategyReviewRequired(state.get("review_reason", "unknown_strategy_context"))
-            if state.get("goal") == "first_team_capture_complete":
-                write_json(output / "capture-milestone.json", state)
-                raise MilestoneReached("已驗證首隻目標加入隊伍")
+            if state.get("goal") in {"first_team_capture_complete", "lead_training_complete"}:
+                write_json(output / ("training-milestone.json" if state["goal"] == "lead_training_complete" else "capture-milestone.json"), state)
+                raise MilestoneReached(state["goal"])
             decision = model_task(lambda: policy.choose(state))
             frames = advance_action(emulator, decision["action"], args.hold_frames, args.settle_frames, frame_ready)
             emulator.screen.image.save(screenshot_dir / f"{index:04d}-after.png")
@@ -310,6 +311,7 @@ def play_game(args) -> None:
         metadata.update(status="stopped", stop_reason="window_closed" if isinstance(error, WindowClosed)
                         else "wall_clock_limit" if isinstance(error, TimeBudgetReached)
                         else "strategy_review_required" if isinstance(error, StrategyReviewRequired)
+                        else "training_milestone" if isinstance(error, MilestoneReached) and str(error) == "lead_training_complete"
                         else "capture_milestone" if isinstance(error, MilestoneReached) else "keyboard_interrupt")
     except Exception as error:
         metadata.update(status="failed", error_type=type(error).__name__, error=str(error))

@@ -6,11 +6,13 @@ from .team_strategy import family
 SOURCES = ["data/maps/objects/Route22.asm", "scripts/Route22.asm", "data/wild/maps/Route22.asm"]
 
 
-def team_waypoint(location, flags, party, balls, previous_actions=(), grass_world=()):
+def team_waypoint(location, flags, party, balls, previous_actions=(), grass_world=(), *, training=False):
     mid, x, y = (location[key] for key in ("map_id", "x", "y"))
     injured = any(mon["hp"] < mon["max_hp"] for mon in party)
     owned = {family(mon["species"]) for mon in party}
-    if "NIDORAN_M" in owned:
+    if training and party and party[0]["level"] >= 13:
+        return _goal("lead_training_complete", "Wait.", mid, None, SOURCES, waiting=True)
+    if not training and "NIDORAN_M" in owned:
         return _goal("first_team_capture_complete", "Wait.", mid, None, SOURCES, waiting=True)
     if balls is None or not flags.get("got_pokedex"):
         return _goal("capture_requires_verified_inventory_and_pokedex", "Wait.", mid, None, SOURCES, waiting=True)

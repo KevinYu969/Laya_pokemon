@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-23",
+  "status": "implemented_pending_private_endpoint_confirmation",
+  "implemented": ["separate_local_supervisor", "validated_stage_json", "offline_laya_game_process", "bounded_episode_resume", "stop_on_window_close_or_unknown_menu"],
+  "computer_use_dependency_in_supervisor": false,
+  "game_max_wall_seconds": 60,
+  "default_episode_limit": 3,
+  "tests_passed": 214,
+  "actual_strata_inference_verified": false,
+  "actual_strata_laya_gameplay_verified": false,
+  "requested_endpoint_game_data_sent": false,
+  "planner_model_id": null,
+  "planner_token_usage": null,
+  "new_gameplay_this_session": false,
+  "cloud_model_fallback": false,
+  "notes": ["端點需先確認私人設備用途，再核對模型與認證。", "本次僅有程式及合成驗證，不能寫成已完成雙模型遊戲實測。", "team_training為新增階段，僅培養首位寶可夢至13級，尚未實機驗收。"]
+}
