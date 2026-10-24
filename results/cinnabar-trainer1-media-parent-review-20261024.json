@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-24",
+  "status": "passed",
+  "parent_review": "passed",
+  "source_receipt": {
+    "path": "results/cinnabar-trainer1-clips-20261024.json",
+    "sha256": "fde0e2c2ea03f9fd8cf121b111a8f4d94828657dab3ce73017fd85ae30313e4e"
+  },
+  "source_freeze": {
+    "path": "outputs/research/cinnabar-trainer1-media-freeze-20261024.json",
+    "sha256": "7f095d5d4eceddc8bb63c61a6a73d7c891ea7169bb60f4c13e022b9730c1e4a6"
+  },
+  "all_15_fixed_file_hashes_verified": true,
+  "visually_viewed_qa_sha256": "11450a7f4ae47649d5571fa4058e18cb848dc1f3028457b7c4d50288d7b72a23",
+  "visible_proofs": [
+    "SURF",
+    "GROWLITHE/VULPIX/NINETALES fainted",
+    "Critical hit 89HP",
+    "69HP",
+    "KEVIN defeated BURGLAR",
+    "¥3240"
+  ],
+  "clip_count": 2,
+  "formal_png_count": 8,
+  "qa_png_count": 1,
+  "published": false,
+  "uploaded": false,
+  "limits": [
+    "原製作凍結收據的pending保持歷史值，本新增父層審核為較後驗收。",
+    "原速138.133333秒、後製4倍34.533333秒，不是實際牆鐘通關時間。"
+  ]
+}

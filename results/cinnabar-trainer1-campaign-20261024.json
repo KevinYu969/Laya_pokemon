@@ -1,0 +1,227 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_first_cinnabar_trainer_and_normal_center_recovery",
+  "trainer_index": 1,
+  "battle_at": "2026-10-24T06:18:51.948991+00:00",
+  "battle_frame": 1515945,
+  "recovered_at": "2026-10-24T06:24:31.930081+00:00",
+  "recovered_frame": 1518961,
+  "battle_actions": 72,
+  "preparation_actions": 1,
+  "total_preparation_and_battle_actions": 73,
+  "new_laya_including_preparation": 3,
+  "cache": 70,
+  "passive": 0,
+  "opponents": [
+    {
+      "opponent": "GROWLITHE",
+      "level": 36,
+      "fainted_receipt": {
+        "step": 25696,
+        "frame": 1509865,
+        "at": "2026-10-24T06:18:48.607210+00:00",
+        "action_after_observation": "a",
+        "emulated_frames_advanced": 128,
+        "visible_text": [
+          "          LAPRAS",
+          "               31",
+          "           128/128",
+          " Enemy GROWLITHE",
+          " fainted!"
+        ]
+      },
+      "exp_receipt": {
+        "step": 25698,
+        "frame": 1510121,
+        "at": "2026-10-24T06:18:48.705697+00:00",
+        "action_after_observation": "a",
+        "emulated_frames_advanced": 128,
+        "visible_text": [
+          "          LAPRAS",
+          "               31",
+          "           128/128",
+          " LAPRAS gained",
+          " 702 EXP. Points!"
+        ]
+      },
+      "lapras_exp_gain": 702
+    },
+    {
+      "opponent": "VULPIX",
+      "level": 36,
+      "fainted_receipt": {
+        "step": 25712,
+        "frame": 1511649,
+        "at": "2026-10-24T06:18:50.026056+00:00",
+        "action_after_observation": "a",
+        "emulated_frames_advanced": 128,
+        "visible_text": [
+          "          LAPRAS",
+          "               31",
+          "           128/128",
+          " Enemy VULPIX",
+          " fainted!         ▼"
+        ]
+      },
+      "exp_receipt": {
+        "step": 25713,
+        "frame": 1511777,
+        "at": "2026-10-24T06:18:50.075745+00:00",
+        "action_after_observation": "a",
+        "emulated_frames_advanced": 128,
+        "visible_text": [
+          "          LAPRAS",
+          "               31",
+          "           128/128",
+          " LAPRAS gained",
+          " 486 EXP. Points!"
+        ]
+      },
+      "lapras_exp_gain": 486
+    },
+    {
+      "opponent": "NINETALES",
+      "level": 36,
+      "fainted_receipt": {
+        "step": 25743,
+        "frame": 1515177,
+        "at": "2026-10-24T06:18:51.637519+00:00",
+        "action_after_observation": "a",
+        "emulated_frames_advanced": 128,
+        "visible_text": [
+          "          LAPRAS",
+          "               31",
+          "            69/128",
+          " Enemy NINETALES",
+          " fainted!"
+        ]
+      },
+      "exp_receipt": {
+        "step": 25744,
+        "frame": 1515305,
+        "at": "2026-10-24T06:18:51.696023+00:00",
+        "action_after_observation": "a",
+        "emulated_frames_advanced": 128,
+        "visible_text": [
+          "          LAPRAS",
+          "               31",
+          "            69/128",
+          " LAPRAS gained",
+          " 1372 EXP. Points!"
+        ]
+      },
+      "lapras_exp_gain": 1372
+    }
+  ],
+  "result": {
+    "full_win_receipt": {
+      "step": 25745,
+      "frame": 1515433,
+      "at": "2026-10-24T06:18:51.758497+00:00",
+      "action_after_observation": "a",
+      "emulated_frames_advanced": 128,
+      "visible_text": [
+        "          LAPRAS",
+        "               31",
+        "            69/128",
+        " KEVIN defeated",
+        " BURGLAR!"
+      ]
+    },
+    "full_money_receipt": {
+      "step": 25748,
+      "frame": 1515817,
+      "at": "2026-10-24T06:18:51.920639+00:00",
+      "action_after_observation": "a",
+      "emulated_frames_advanced": 128,
+      "visible_text": [
+        "          LAPRAS",
+        "               31",
+        "            69/128",
+        " KEVIN got ¥3240",
+        " for winning!     ▼"
+      ]
+    },
+    "money_before": 55372,
+    "money_after": 58612,
+    "money_gain": 3240,
+    "lapras_exp_before": 37657,
+    "lapras_exp_after": 40217,
+    "lapras_exp_gain": 2560,
+    "lapras_hp_before": 128,
+    "lapras_hp_after": 69,
+    "total_hp_lost": 59,
+    "surf_pp_before": 15,
+    "surf_pp_after": 11,
+    "other_five_full_dicts_unchanged": true,
+    "bag_unchanged": true,
+    "no_fnt_in_every_record": true,
+    "blackout": false
+  },
+  "event_evidence": {
+    "beat_trainer1_before": false,
+    "beat_trainer1_after": true,
+    "beat_event": {
+      "sdk_key": "beat_cinnabar_gym_trainer_1",
+      "event_id": 667,
+      "event_hex": "0x29b",
+      "address": "0xD79A",
+      "bit": 3,
+      "mask": 8
+    },
+    "gate1_direct_observation": null,
+    "gate1_expected": {
+      "sdk_key": "cinnabar_gym_gate1_unlocked",
+      "event_id": 681,
+      "event_hex": "0x2a9",
+      "address": "0xD79C",
+      "bit": 1,
+      "mask": 2
+    },
+    "normal_opening_source": "CinnabarGymOpenGateScript先排除LOST，再設beat與gate、更新tile後回DEFAULT。最後none/blank和beatTrue支持已返回勝後流程，但本封包無獨立gatebit或grid，不能把推定當親讀門已開。",
+    "beat_blaine_after": false
+  },
+  "recovery_actions": 49,
+  "recovery_new_laya": 2,
+  "recovery_cache": 47,
+  "recovery_passive": 0,
+  "all_six_full_hp_status_pp_after_recovery": true,
+  "no_party_fainted": true,
+  "source_evidence": [
+    {
+      "path": "outputs/research/cinnabar-first-trainer-review-20261024.json",
+      "sha256": "d6f345cfd5c50d4bc04b6aeb94da49938dc3b40b14a9074a988bfcb398e22eb2",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-trainer1-fixed-review-20261024.json",
+      "sha256": "74a4949130c743e00fc75b3e98623d2a676bc382a82e3fc91ebbabbd7e489189",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-trainer1-fixed-summary-20261024.json",
+      "sha256": "f02a824bba90bcf3031c282cbd164fe2c00f268b6c1bf5316680b19e325c1ee8",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-trainer1-fixed-steps-20261024.jsonl",
+      "sha256": "862a216b6f85f41d6f78990b7f2412aa2f627af1582c41f26b614ad34fc435be",
+      "local_only": true
+    },
+    {
+      "path": ".local/gym-reviewed-history/cinnabar-trainer0-20261024-before-review.json",
+      "sha256": "ca923f4d612b7f393a70d56d84d06f21a0323e526924404121c43eaab5510370",
+      "local_only": true
+    },
+    {
+      "path": ".local/gym-reviewed-history/cinnabar-trainer0-20261024-before-summary.json",
+      "sha256": "9a0dd0e6aee509006163cc491268382370379e33393e81e08b0366f0473e9d46",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "門1在戰末沒有獨立RAM/grid封包；後續實際通行另列，未回填戰末直接開門證據。",
+    "首次唯讀複本預檢誤保留main frame capsule而assert停止，0遊戲按鍵；只關複本training_shared_experience後驗證，正式plan保持。",
+    "夏伯尚未挑戰、仍六徽章。"
+  ]
+}

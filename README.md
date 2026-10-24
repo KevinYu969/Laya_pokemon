@@ -8,13 +8,12 @@
 
 ## 目前進度
 
-**六枚徽章，已正常取得祕密鑰匙，返回紅蓮中心補滿隊伍。** 2026-10-24台北14:00:52，完成PC存物、背包空出一格，準備第七館暖場戰。夏伯與聯盟尚未完成。
+**六枚徽章，七名紅蓮館員已實戰全勝；夏伯前補練與策略檢討中。** 2026-10-24台北14:31:11，七戰共16隻KO、拉普拉斯31→34，逐場正常回中心全補。
 
-- 隊伍：尼多王36、卡比獸41、伊布35、妙蛙花35、大嘴雀37、拉普拉斯31，全員HP／狀態／PP已恢復。拉普拉斯正常學會衝浪，31級只忘白霧學奇異之光，保留唱歌的捕獲用途。
-- [正常取Key](results/mansion-secret-key-campaign-20261024.json)6步、[31級學招與返程](results/lapras31-mansion-return-campaign-20261024.json)、[正常回中心](results/mansion-return-center-campaign-20261024.json)與[PC存TM46](results/cinnabar-tm46-campaign-20261024.json)均有固定驗收。Key、HM與大師球保持，袋19格。Weezing37一戰帶傷正常逃跑，沒有冒稱勝利；回程座標失誤也如實保留。
-- [最新6843項完整回歸](results/code-validation-cinnabar-pc-20261024.json)31.16秒通過，src/tests SHA穩定。[Key來源索引更正](results/mansion-secret-key-source-correction-20261024.json)保留原計數失誤與修正證據。
-- 逐鍵分類使用本機離線Laya及快取，工程開發／審查另計，Strata配置未改。娜姿戰的中毒卡比獸遭擊倒教訓保留於[逐館檢討](docs/sabrina-gym-review.md)；換人策略候選仍未接入，不冒稱模型權重自行學習。
-- [本機即時畫面](http://127.0.0.1:8767/)直接來自PyBoy。素材52片、171張PNG含QA；[六支洋館影片](results/mansion-progress-clips-20261024.json)包含學Surf、正常換首位打瓦斯彈與第一雕像，各有原速及後製四倍速。媒體留本機、網站尚未發布，原生SDL視窗問題仍在處理。
+- [七場勝利時刻與檢討](docs/cinnabar-gym-review.md)：EXP+13066、獎金13960；1247實際動作中21次新離線Laya、1226快取，沒有新增隊員倒下。七旗標有逐場戰鬥收據，不以夏伯腳本bulkset假充勝場。
+- 後續拉普拉斯已至少35級，正在正常短巡迴補練；低血／中毒／PP／新學招／戰敗仍停檢。38是再評估急所容錯的門檻，夏伯與聯盟尚未完成。
+- [最新6931項完整回歸](results/code-validation-cinnabar-progress-20261024.json)31.75秒通過，來源SHA穩定。逐鍵本機離線Laya及快取，工程開發／審查另計，Strata配置未改。
+- [本機PyBoy即時畫面](http://127.0.0.1:8767/)；素材54片、180張PNG含QA。新增[首館員原速／四倍速](results/cinnabar-trainer1-clips-20261024.json)與[父層QA](results/cinnabar-trainer1-media-parent-review-20261024.json)，保留九尾會心、HP69、勝利獎金。影片留本機、網站尚未發布，原生SDL問題仍在處理。
 
 通關耗時以[里程碑時間軸](docs/campaign-timeline.md)記錄；牆鐘、工程停檢、模擬遊戲時間與後製倍速分開，尚未公布全程通關時間。[第七館前置與問題紀錄](docs/seventh-gym-progress.md)持續更新。
 

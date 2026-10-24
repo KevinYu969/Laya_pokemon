@@ -1,0 +1,256 @@
+{
+  "schema": "cinnabar-trainer-fixed-center-cycle-v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "status": "verified_fixed_center_cycle",
+  "trainer_index": 4,
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "before_at": "2026-10-24T06:28:12.296731+00:00",
+  "after_at": "2026-10-24T06:29:52.857835+00:00",
+  "frame_range": [
+    1556257,
+    1568905
+  ],
+  "steps": [
+    26319,
+    26511
+  ],
+  "action_counts": {
+    "actions": 193,
+    "new_laya": 2,
+    "cache": 191,
+    "passive": 0,
+    "keys": {
+      "down": 44,
+      "wait": 6,
+      "right": 16,
+      "up": 45,
+      "left": 16,
+      "a": 66
+    }
+  },
+  "timing_delta_seconds": {
+    "wall_seconds": 100.563,
+    "review_pause_seconds": 91.922,
+    "non_review_session_seconds": 8.641,
+    "model_wait_seconds": 1.268,
+    "emulated_seconds": 210.8
+  },
+  "actual_defeated_party": [
+    {
+      "opponent": "RAPIDASH",
+      "level": 41,
+      "fainted": {
+        "step": 26430,
+        "frame": 1564041,
+        "at": "2026-10-24T06:29:03.979379+00:00",
+        "visible_text": [
+          "          LAPRAS",
+          "               33",
+          "            86/136",
+          " Enemy RAPIDASH",
+          " fainted!         ▼"
+        ],
+        "actual_recorded_action_after_observation": "a"
+      },
+      "exp_gain": 1686,
+      "exp_receipt": {
+        "step": 26431,
+        "frame": 1564169,
+        "at": "2026-10-24T06:29:04.045014+00:00",
+        "visible_text": [
+          "          LAPRAS",
+          "               33",
+          "            86/136",
+          " LAPRAS gained",
+          " 1686 EXP. Points!"
+        ],
+        "actual_recorded_action_after_observation": "a"
+      }
+    }
+  ],
+  "class_name": "SUPER NERD",
+  "win_receipt": {
+    "step": 26432,
+    "frame": 1564297,
+    "at": "2026-10-24T06:29:04.114229+00:00",
+    "visible_text": [
+      "          LAPRAS",
+      "               33",
+      "            86/136",
+      " KEVIN defeated",
+      " SUPER NERD!      ▼"
+    ],
+    "actual_recorded_action_after_observation": "a"
+  },
+  "money_receipt": {
+    "step": 26435,
+    "frame": 1564681,
+    "at": "2026-10-24T06:29:04.314916+00:00",
+    "visible_text": [
+      "          LAPRAS",
+      "               33",
+      "            86/136",
+      " KEVIN got ¥1025",
+      " for winning!     ▼"
+    ],
+    "actual_recorded_action_after_observation": "a"
+  },
+  "money_before": 64052,
+  "money_after": 65077,
+  "money_gain": 1025,
+  "lapras_before": {
+    "species": 19,
+    "species_name": "LAPRAS",
+    "level": 33,
+    "hp": 136,
+    "max_hp": 136,
+    "exp": 46597,
+    "status": 0,
+    "moves": [
+      57,
+      34,
+      47,
+      109
+    ],
+    "pp": [
+      15,
+      15,
+      15,
+      10
+    ]
+  },
+  "lapras_after": {
+    "species": 19,
+    "species_name": "LAPRAS",
+    "level": 33,
+    "hp": 136,
+    "max_hp": 136,
+    "exp": 48283,
+    "status": 0,
+    "moves": [
+      57,
+      34,
+      47,
+      109
+    ],
+    "pp": [
+      15,
+      15,
+      15,
+      10
+    ]
+  },
+  "lapras_exp_gain": 1686,
+  "complete_levelup_receipts": [],
+  "raw_pp_spent_by_slot": [
+    2,
+    0,
+    0,
+    0
+  ],
+  "center_pp_restore_observations": [
+    {
+      "step": 26504,
+      "frame": 1567969,
+      "slot": 0,
+      "before": 13,
+      "after": 15
+    }
+  ],
+  "other_five_unchanged_every_row": true,
+  "inventory_unchanged_every_row": true,
+  "no_observed_fnt": true,
+  "both_endpoints_center_171_3_4_full_hp_status_base_pp": true,
+  "badges_raw": 63,
+  "beat_blaine": false,
+  "beat_event": {
+    "sdk_key": "beat_cinnabar_gym_trainer_4",
+    "event_id": 670,
+    "event_hex": "0x29e",
+    "address": "0xD79A",
+    "bit": 6,
+    "mask": 64
+  },
+  "only_this_trainer_flag_changed": true,
+  "gate_direct_observation": null,
+  "gate_expected_from_source": {
+    "sdk_key": "cinnabar_gym_gate4_unlocked",
+    "event_id": 684,
+    "event_hex": "0x2ac",
+    "address": "0xD79C",
+    "bit": 4,
+    "mask": 16
+  },
+  "evidence": [
+    {
+      "path": ".local/gym-reviewed-history/cinnabar-trainer4-20261024-before-review.json",
+      "sha256": "e83a342bce384996ce92a1ad8174d612a8917b5637e270778eba20ba2fbeb0d0",
+      "bytes": 12365
+    },
+    {
+      "path": ".local/gym-reviewed-history/cinnabar-trainer4-20261024-before-summary.json",
+      "sha256": "d137ea2e770b1e3d674ff211aab68481b194f17e40c59045f324fcc691b40204",
+      "bytes": 915
+    },
+    {
+      "path": ".local/gym-reviewed-history/cinnabar-trainer5-20261024-before-review.json",
+      "sha256": "6f4bf0ae241256624e17fcd368e06ccbb12c2daff5a3f9f4cb8d3a0e8a05b432",
+      "bytes": 12364
+    },
+    {
+      "path": ".local/gym-reviewed-history/cinnabar-trainer5-20261024-before-summary.json",
+      "sha256": "e5eda0c1e967441333264101bf2f8ab6a980303fd64c18777b9c17b9ae21f804",
+      "bytes": 916
+    },
+    {
+      "path": "src/laya_pokemon/data/gen1_reference.json",
+      "sha256": "248c70e24eda08e57e818e8ace37877d3452dda417d0c04dbb21e0dc64b1941b",
+      "bytes": 214432
+    },
+    {
+      "path": "outputs/research/source-cinnabar-mansion-20261024/gym__data__pokemon__base_stats__lapras.asm",
+      "sha256": "eca0e9600e96abdb13835dc797c8d4a83541008aff6751a7ffdf62a6387f5d4f",
+      "bytes": 784
+    },
+    {
+      "path": "outputs/research/cinnabar-trainer-training-route-20261024.json",
+      "sha256": "1b5c30d9c9093c5131fcb8dee71b580e869604852f9775d846a4cb498ca6b241",
+      "bytes": 73707
+    }
+  ],
+  "ledger_sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-095.jsonl",
+      "selected_steps": [
+        26319,
+        26436
+      ],
+      "selected_original_line_bytes_sha256": "e71b5d5d821dfedf0bd3b2cf6d798c6e2e088cb53d78767dbb2989043b763e9a"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-096.jsonl",
+      "selected_steps": [
+        26437,
+        26511
+      ],
+      "selected_original_line_bytes_sha256": "d1694c363ab829594e8a25452dd62cea7f00da67a6931b2ef06e07823c074f5b"
+    }
+  ],
+  "fixed_ledger": {
+    "path": ".local/cinnabar-trainer4-cycle-fixed-steps-20261024.jsonl",
+    "sha256": "e469ecccb1a6843baf7629213ab4947cd1ebb018e7396f879989f01384328f09",
+    "local_only": true
+  },
+  "limits": [
+    "state是已執行按鍵前觀測；完整native收據、EXP/PP/金錢後續值另交叉，候選不是實按證明。",
+    "不以重複partial/完整動畫文字重算攻擊；未校準HUD不給數字傷害，本工具不看影片或讀RAM。",
+    "沒有直接gate bit/grid觀測，不把來源腳本推定改寫成實讀開門。",
+    "計時含出入館／戰鬥／正常補給及工程review，分欄列示；不是全程通關或模型單次效能。",
+    "首戰trainer1不在本工具範圍；未知狀態、額外隊員變動、新學招或其它旗標變更均拒絕。"
+  ],
+  "audit": {
+    "path": "outputs/research/cinnabar-trainer4-cycle-audit-20261024.json",
+    "sha256": "fea5d3ef7c3d94c0eec2c68def0ec0ea044f5173c035bb02311673e8b8ee205c"
+  }
+}

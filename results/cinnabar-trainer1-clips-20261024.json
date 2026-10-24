@@ -1,0 +1,545 @@
+{
+  "schema": "cinnabar-trainer1-closed-media-v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "title": "紅蓮第一場館員戰：拉普拉斯正常衝浪擊倒三敵，戰後69HP",
+  "source_run": "league-campaign-20261024-24",
+  "closure_snapshot": {
+    "segments_file_sha256_at_selection": "9caab156a8db8ac0db75da9260b8e9b0297b48c0a688ddf25d0e431d60f4c699",
+    "highest_closed_segment_at_selection": 94,
+    "current_segment_at_selection": 95,
+    "selected_segments": [
+      91,
+      92
+    ],
+    "open_video_read": false
+  },
+  "utility_dependency": {
+    "path": ".local/build-fly-surf-clips-20261024.py",
+    "sha256": "af5445f4eac0e359bdd1b9522bf223cd6b487faafbaed1854f8ba91fe6a03b7b"
+  },
+  "fixed_ledger": {
+    "sha256": "862a216b6f85f41d6f78990b7f2412aa2f627af1582c41f26b614ad34fc435be",
+    "rows": 73,
+    "steps": [
+      25676,
+      25748
+    ]
+  },
+  "fixed_endpoint": {
+    "review_sha256": "74a4949130c743e00fc75b3e98623d2a676bc382a82e3fc91ebbabbd7e489189",
+    "summary_sha256": "f02a824bba90bcf3031c282cbd164fe2c00f268b6c1bf5316680b19e325c1ee8",
+    "frame": 1515945,
+    "at": "2026-10-24T06:18:51.948991+00:00",
+    "reason": "party_attrition_requires_center"
+  },
+  "source_logs": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-091.jsonl",
+      "selected_steps": [
+        25676
+      ],
+      "selected_original_bytes_sha256": "625496dcc015125292d80950147ce46891e287ae27871b18f4c2240603ace8cc"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-092.jsonl",
+      "selected_steps": [
+        25677,
+        25678,
+        25679,
+        25680,
+        25681,
+        25682,
+        25683,
+        25684,
+        25685,
+        25686,
+        25687,
+        25688,
+        25689,
+        25690,
+        25691,
+        25692,
+        25693,
+        25694,
+        25695,
+        25696,
+        25697,
+        25698,
+        25699,
+        25700,
+        25701,
+        25702,
+        25703,
+        25704,
+        25705,
+        25706,
+        25707,
+        25708,
+        25709,
+        25710,
+        25711,
+        25712,
+        25713,
+        25714,
+        25715,
+        25716,
+        25717,
+        25718,
+        25719,
+        25720,
+        25721,
+        25722,
+        25723,
+        25724,
+        25725,
+        25726,
+        25727,
+        25728,
+        25729,
+        25730,
+        25731,
+        25732,
+        25733,
+        25734,
+        25735,
+        25736,
+        25737,
+        25738,
+        25739,
+        25740,
+        25741,
+        25742,
+        25743,
+        25744,
+        25745,
+        25746,
+        25747,
+        25748
+      ],
+      "selected_original_bytes_sha256": "ccbfff4facf6599f2cc3cc552a088c8ca2ce438cefce6e94cb757feab635a290"
+    }
+  ],
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-091.mp4",
+      "sha256": "8a6ab29579b04f49c055ebda08788f2134748c06cbb9bd420eea0a1b7ef55810",
+      "bytes": 39533,
+      "closure": {
+        "at": "2026-10-24T06:18:46.984778+00:00",
+        "segment": 91,
+        "timing": {
+          "wall_seconds": 21374.312,
+          "model_wait_seconds": 152.953,
+          "review_pause_seconds": 20145.24,
+          "non_review_session_seconds": 1229.072,
+          "emulated_seconds": 25128.267
+        },
+        "video": {
+          "filename": "video-091.mp4",
+          "fps": 15,
+          "frames": 100,
+          "playback_seconds": 6.666666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_original_line_sha256": "00d683b080e0e7bb3aecfac240e20f5bbaa898e83f55de8daa0b5f15b50d7c8d",
+      "global_prior_recorded_frames": 376824,
+      "consecutive_pts": true,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "6.666667",
+          "nb_frames": "100",
+          "nb_read_frames": "100"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-092.mp4",
+      "sha256": "284da00ab025c37506977975ab6f0dc4c471673bcdf4dd9882068c43dce701de",
+      "bytes": 648893,
+      "closure": {
+        "at": "2026-10-24T06:24:29.079303+00:00",
+        "segment": 92,
+        "timing": {
+          "wall_seconds": 21716.39,
+          "model_wait_seconds": 154.234,
+          "review_pause_seconds": 20482.099,
+          "non_review_session_seconds": 1234.291,
+          "emulated_seconds": 25266.4
+        },
+        "video": {
+          "filename": "video-092.mp4",
+          "fps": 15,
+          "frames": 2072,
+          "playback_seconds": 138.13333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_original_line_sha256": "a65c4a84b08feef2a1cc8281fa06b6b3121248d49d0417b87a7a8f4869097573",
+      "global_prior_recorded_frames": 376924,
+      "consecutive_pts": true,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "138.133333",
+          "nb_frames": "2072",
+          "nb_read_frames": "2072"
+        }
+      }
+    }
+  ],
+  "steps_included": [
+    25676,
+    25748
+  ],
+  "campaign_frame_range": [
+    1507657,
+    1515945
+  ],
+  "emulated_frames": 8288,
+  "action_counts": {
+    "actions": 73,
+    "new_laya": 3,
+    "cache": 70,
+    "passive": 0,
+    "keys": {
+      "up": 1,
+      "a": 68,
+      "wait": 2,
+      "b": 2
+    }
+  },
+  "source_ranges": [
+    {
+      "segment": 91,
+      "frames_zero_based_half_open": [
+        90,
+        100
+      ],
+      "source_seconds": [
+        6.0,
+        6.666666666666667
+      ]
+    },
+    {
+      "segment": 92,
+      "frames_zero_based_half_open": [
+        0,
+        2062
+      ],
+      "source_seconds": [
+        0.0,
+        137.46666666666667
+      ]
+    }
+  ],
+  "observed_result": {
+    "trainer": "BURGLAR",
+    "opponents": [
+      {
+        "species": "GROWLITHE",
+        "level": 36,
+        "exp": 702
+      },
+      {
+        "species": "VULPIX",
+        "level": 36,
+        "exp": 486
+      },
+      {
+        "species": "NINETALES",
+        "level": 36,
+        "exp": 1372
+      }
+    ],
+    "learner": "LAPRAS",
+    "level": 31,
+    "exp_before": 37657,
+    "exp_after": 40217,
+    "exp_gain": 2560,
+    "hp_before": 128,
+    "hp_after": 69,
+    "max_hp": 128,
+    "surf_pp_before": 15,
+    "surf_pp_after": 11,
+    "surf_uses": 4,
+    "winning_money": 3240,
+    "money_before": 55372,
+    "money_after": 58612,
+    "no_party_fainted": true,
+    "other_five_members_unchanged": true,
+    "inventory_unchanged": true,
+    "koga_blaine_or_league_victory": false
+  },
+  "clips": [
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/cinnabar-trainer1-full-battle-1x.mp4",
+      "sha256": "8e14390d6d640fe08980d639a932a7ce69b754dec1a058840ab272044b17546a",
+      "bytes": 1254619,
+      "frames": 2072,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "duration_seconds": 138.13333333333333,
+      "speed": 1,
+      "audio": false,
+      "speed_basis": "emulated_time",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "138.133333",
+          "nb_frames": "2072",
+          "nb_read_frames": "2072"
+        }
+      },
+      "every_decoded_frame_matches_source": true,
+      "consecutive_pts": true,
+      "all_original_frames_in_order": true
+    },
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/cinnabar-trainer1-full-battle-4x.mp4",
+      "sha256": "a2b611a0676c68a3dd7fbc8f09038882d2d0e9042eff26b6e3fa0cf92f2fda4a",
+      "bytes": 1254619,
+      "frames": 2072,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "duration_seconds": 34.53333333333333,
+      "speed": 4,
+      "audio": false,
+      "speed_basis": "post_production_4x",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "34.533333",
+          "nb_frames": "2072",
+          "nb_read_frames": "2072"
+        }
+      },
+      "every_decoded_frame_matches_source": true,
+      "consecutive_pts": true,
+      "all_original_frames_in_order": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/01-growlithe36-lapras31-full-hud.png",
+      "sha256": "85873f124d740e784de7073439501c1fa0b09865553bab7827d8b5b84141a3e6",
+      "width": 480,
+      "height": 432,
+      "observation_step": 25688,
+      "observation_campaign_frame": 1509017,
+      "clip_frame": 339,
+      "source_segment": 92,
+      "source_frame": 329,
+      "relative_1x_seconds": 22.6,
+      "rgb24_sha256": "04acf5b1a954ea0b542e72f742a304902f167633a2ec213cb371af2bfab9db6b",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " GROWLITHE",
+        "     36",
+        "          LAPRAS",
+        "               31",
+        "           128/128",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ]
+    },
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/02-lapras-used-surf.png",
+      "sha256": "7ad881cde29396245c39f3cbbc06befb701a298324b53cd03197eedd6142436a",
+      "width": 480,
+      "height": 432,
+      "observation_step": 25691,
+      "observation_campaign_frame": 1509225,
+      "clip_frame": 391,
+      "source_segment": 92,
+      "source_frame": 381,
+      "relative_1x_seconds": 26.066666666666666,
+      "rgb24_sha256": "11aa5b98166ad2ef091f90dc08b6e8d1a2d86c5fae3946a114d4fc30f8956851",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " GROWLITHE",
+        "     36",
+        "          LAPRAS",
+        "               31",
+        "           128/128",
+        " LAPRAS",
+        " used SURF!"
+      ]
+    },
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/03-growlithe-fainted.png",
+      "sha256": "5a3e8f6c8b01fb060ddadc1b2bfd58aa42292fec5049734547dff399e4220467",
+      "width": 480,
+      "height": 432,
+      "observation_step": 25697,
+      "observation_campaign_frame": 1509993,
+      "clip_frame": 583,
+      "source_segment": 92,
+      "source_frame": 573,
+      "relative_1x_seconds": 38.86666666666667,
+      "rgb24_sha256": "9cf6aa81b397fc2476971969920ffb2763e8dca2b700e0ee22c6c627f2c59526",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               31",
+        "           128/128",
+        " Enemy GROWLITHE",
+        " fainted!"
+      ]
+    },
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/04-vulpix-fainted.png",
+      "sha256": "2acf48bdd5b5d511ca7b9ee4e68a5ee23baee286e6e0c9da9c41d4b1dd5d4fd9",
+      "width": 480,
+      "height": 432,
+      "observation_step": 25712,
+      "observation_campaign_frame": 1511649,
+      "clip_frame": 997,
+      "source_segment": 92,
+      "source_frame": 987,
+      "relative_1x_seconds": 66.46666666666667,
+      "rgb24_sha256": "9cfaaccc777e1fa03dcb264f70874a8f5044eeafe418c1eae9f2cd60b368c01a",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               31",
+        "           128/128",
+        " Enemy VULPIX",
+        " fainted!         ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/05-ninetales-ember-critical-hp89.png",
+      "sha256": "64b2220eddf2a9bbd1e20abc26600599ea66c6e7aa7c0e34d5beb0fe2111eee2",
+      "width": 480,
+      "height": 432,
+      "observation_step": 25724,
+      "observation_campaign_frame": 1512921,
+      "clip_frame": 1315,
+      "source_segment": 92,
+      "source_frame": 1305,
+      "relative_1x_seconds": 87.66666666666667,
+      "rgb24_sha256": "bf3988ed8f296c12ea723526582911b05c4381abbbd466af638da20d978c0e69",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " NINETALES",
+        "     36",
+        "          LAPRAS",
+        "               31",
+        "            89/128",
+        " Critical hit!"
+      ]
+    },
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/06-ninetales-fainted-lapras-hp69.png",
+      "sha256": "80682f4a7ccfe0b3d34f46f0d4ecef85595c8f3aa4eef21f5720c40033187678",
+      "width": 480,
+      "height": 432,
+      "observation_step": 25743,
+      "observation_campaign_frame": 1515177,
+      "clip_frame": 1879,
+      "source_segment": 92,
+      "source_frame": 1869,
+      "relative_1x_seconds": 125.26666666666667,
+      "rgb24_sha256": "cc315e3072247c688124d9abf83f306d9b8132107261179af6f2fad7f6c3aa06",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               31",
+        "            69/128",
+        " Enemy NINETALES",
+        " fainted!"
+      ]
+    },
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/07-kevin-defeated-burglar.png",
+      "sha256": "40bec18fe8be8b6de604f8140f8ccda69ec4b3d8ca7b14d48c941e5665bbacbc",
+      "width": 480,
+      "height": 432,
+      "observation_step": 25745,
+      "observation_campaign_frame": 1515433,
+      "clip_frame": 1943,
+      "source_segment": 92,
+      "source_frame": 1933,
+      "relative_1x_seconds": 129.53333333333333,
+      "rgb24_sha256": "8548fe476c4218824d61083098bbe26d88906fc60ba153839a3fb1bf653accbf",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               31",
+        "            69/128",
+        " KEVIN defeated",
+        " BURGLAR!"
+      ]
+    },
+    {
+      "path": "outputs/videos/cinnabar-trainer1-20261024/08-winning-3240-lapras-hp69.png",
+      "sha256": "bc7ea8a8761bbc5e39786d3b3874004b8a3147e20fe13b5ac65a7039d90f28dc",
+      "width": 480,
+      "height": 432,
+      "observation_step": 25748,
+      "observation_campaign_frame": 1515817,
+      "clip_frame": 2039,
+      "source_segment": 92,
+      "source_frame": 2029,
+      "relative_1x_seconds": 135.93333333333334,
+      "rgb24_sha256": "4a3dd96c243aae2e47644534aca0f5495431e15cdc50197a8be588605b6e7e4e",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               31",
+        "            69/128",
+        " KEVIN got ¥3240",
+        " for winning!     ▼"
+      ]
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/cinnabar-trainer1-20261024/qa-contact-sheet.png",
+    "sha256": "11450a7f4ae47649d5571fa4058e18cb848dc1f3028457b7c4d50288d7b72a23",
+    "width": 1920,
+    "height": 948
+  },
+  "editing": {
+    "internal_frame_cuts": [],
+    "retained_all_frames_in_range": true,
+    "engineering_pause_wall_time_not_encoded": true,
+    "interpretation": "兩個封片邊界連續，所有8288模擬幀連續對齊；未刪內部戰鬥幀。"
+  },
+  "parent_review": "pending",
+  "published": false,
+  "uploaded": false,
+  "limitations": [
+    "1x是每4模擬幀取樣一次的15fps；4x後製60fps使用相同2072真幀，不插幀、不補畫、不重演。",
+    "影片138.133333秒與34.533333秒不是牆鐘、模型推論時間或道館通關時間；工程等待沒有錄影取樣時亦不能由片長推算。",
+    "本素材只證明一名BURGLAR三隻36級敵人的戰鬥；不是夏伯勝利、第七徽章或聯盟通關。",
+    "影片保留EMBER會心、HP128→89→69；原進度party HP可能落後畫面，截圖HP以當時原生HUD為準。",
+    "全體HP大於0依固定ledger核對；像素內容由本代理QA抽看，父層最終視覺與hash審查待完成。"
+  ],
+  "frame_mapping_audit": {
+    "path": "outputs/research/cinnabar-trainer1-media-audit-20261024.json",
+    "sha256": "431669bcfc69ae3a53327a3cd0347fb677ca686cb58ea50c8c2671945a79ede5"
+  }
+}

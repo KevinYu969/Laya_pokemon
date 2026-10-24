@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_secret_key_unlocked_gym_entry_and_normal_up",
+  "at": "2026-10-24T06:04:31.315879+00:00",
+  "frame": 1507257,
+  "location": {
+    "map_id": 166,
+    "x": 16,
+    "y": 16
+  },
+  "actions": 53,
+  "new_laya": 1,
+  "cache": 52,
+  "passive_waits": 0,
+  "lead_species": 19,
+  "all_six_full_hp_status_pp": true,
+  "all_party_values_other_than_normal_order_inventory_money_unchanged": true,
+  "secret_key_preserved": true,
+  "source_evidence": [
+    {
+      "path": ".local/cinnabar-gym-entry-fixed-review-20261024.json",
+      "sha256": "805125f5e484ac181b18c0f61f5c000d2660e208354738d9a69ade023ca50584",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-gym-entry-fixed-summary-20261024.json",
+      "sha256": "5e72481c657587a03008b9772827279ac0c6348da2c978024f03fef341d2a068",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-gym-entry-fixed-steps-20261024.jsonl",
+      "sha256": "e79f0fe09231b86290b44ebf446e11508f4c5e4e2595891f7aa55f7f906efb95",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "入口16,17的42tile不是Facility door，不宣稱nativeUP；已正常UP到16,16並兩fresh真idle。",
+    "七名館員與Blaine尚未戰鬥。"
+  ]
+}

@@ -32,6 +32,9 @@ STORY_EVENT_NAMES = (
     "beat_mt_moon_exit_super_nerd", "got_dome_fossil", "got_helix_fossil", "got_master_ball",
     "first_lock_opened", "second_lock_opened", "ss_anne_left", "beat_silph_co_rival",
     "silph_co_11_unlocked_door", "mansion_switch_on",
+    "got_tm38", "beat_cinnabar_gym_trainer_0", "beat_cinnabar_gym_trainer_1",
+    "beat_cinnabar_gym_trainer_2", "beat_cinnabar_gym_trainer_3",
+    "beat_cinnabar_gym_trainer_4", "beat_cinnabar_gym_trainer_5", "beat_cinnabar_gym_trainer_6",
 )
 EVENT_FLAG_ALIASES={'first_lock_opened':'1st_lock_opened','second_lock_opened':'2nd_lock_opened'}
 
@@ -56,6 +59,32 @@ _SABRINA_EVENT_IDS = {
     "beat_saffron_gym_trainer_4": 0x366, "beat_saffron_gym_trainer_5": 0x367,
     "beat_saffron_gym_trainer_6": 0x368,
 }
+
+
+# 固定pret/pokered a53671100ec22e5394ff26ec028d0812a238dae2：
+# constants/event_constants.asm:164–177：278→skip16→289→skip14→298。
+# https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/event_constants.asm#L164
+# D747+298//8=D79A；TM38 bit0、既有Blaine bit1、館員0..5 bit2..7；
+# 館員6跨D79B bit0。beat_blaine僅作新欄SDK錨，不改既有generic讀法。
+_CINNABAR_EVENT_IDS = {
+    "got_tm38": 0x298, "beat_blaine": 0x299,
+    "beat_cinnabar_gym_trainer_0": 0x29A, "beat_cinnabar_gym_trainer_1": 0x29B,
+    "beat_cinnabar_gym_trainer_2": 0x29C, "beat_cinnabar_gym_trainer_3": 0x29D,
+    "beat_cinnabar_gym_trainer_4": 0x29E, "beat_cinnabar_gym_trainer_5": 0x29F,
+    "beat_cinnabar_gym_trainer_6": 0x2A0,
+}
+
+
+def _cinnabar_events_supported(constants) -> bool:
+    """九個真int SDK錨全部吻合才啟用八個新事件；異常只使新欄未知。"""
+    try:
+        base = getattr(constants, "EVENT_FLAGS_ADDRESS", None)
+        events = getattr(constants, "EVENT_FLAGS", None)
+        return (type(base) is int and base == 0xD747 and isinstance(events, Mapping)
+                and all(type(events.get(name)) is int and events[name] == event_id
+                        for name, event_id in _CINNABAR_EVENT_IDS.items()))
+    except Exception:
+        return False
 
 
 def _integer(value) -> bool:
@@ -206,7 +235,16 @@ def read_progress(pyboy, constants=None) -> dict:
     silph_rival_supported = _silph_rival_event_supported(constants)
     silph_11_door_supported = _silph_11_door_event_supported(constants)
     mansion_switch_supported = _mansion_switch_event_supported(constants)
+    cinnabar_supported = _cinnabar_events_supported(constants)
     for name in STORY_EVENT_NAMES:
+        if name in _CINNABAR_EVENT_IDS and name != "beat_blaine":
+            event_id = _CINNABAR_EVENT_IDS[name]
+            try:
+                value = read_byte(0xD747 + event_id // 8) if cinnabar_supported else None
+            except Exception:
+                value = None  # 僅新欄getter錯誤；不改legacy Blaine或共用read_byte。
+            result["story_event_bits"][name] = None if value is None else bool(value & (1 << (event_id % 8)))
+            continue
         if name == "mansion_switch_on":
             try:
                 value = read_byte(0xD796) if mansion_switch_supported else None

@@ -1,0 +1,288 @@
+{
+  "schema": "cinnabar-trainer-fixed-center-cycle-v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "status": "verified_fixed_center_cycle",
+  "trainer_index": 6,
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "before_at": "2026-10-24T06:30:37.205164+00:00",
+  "after_at": "2026-10-24T06:31:11.511759+00:00",
+  "frame_range": [
+    1581129,
+    1593617
+  ],
+  "steps": [
+    26712,
+    26922
+  ],
+  "action_counts": {
+    "actions": 211,
+    "new_laya": 2,
+    "cache": 209,
+    "passive": 0,
+    "keys": {
+      "down": 53,
+      "wait": 5,
+      "right": 24,
+      "up": 53,
+      "left": 24,
+      "a": 51,
+      "b": 1
+    }
+  },
+  "timing_delta_seconds": {
+    "wall_seconds": 34.313,
+    "review_pause_seconds": 25.359,
+    "non_review_session_seconds": 8.954,
+    "model_wait_seconds": 1.686,
+    "emulated_seconds": 208.134
+  },
+  "actual_defeated_party": [
+    {
+      "opponent": "GROWLITHE",
+      "level": 37,
+      "fainted": {
+        "step": 26808,
+        "frame": 1586289,
+        "at": "2026-10-24T06:31:06.701641+00:00",
+        "visible_text": [
+          "          LAPRAS",
+          "               34",
+          "           140/140",
+          " Enemy GROWLITHE",
+          " fainted!"
+        ],
+        "actual_recorded_action_after_observation": "a"
+      },
+      "exp_gain": 721,
+      "exp_receipt": {
+        "step": 26810,
+        "frame": 1586545,
+        "at": "2026-10-24T06:31:06.832178+00:00",
+        "visible_text": [
+          "          LAPRAS",
+          "               34",
+          "           140/140",
+          " LAPRAS gained",
+          " 721 EXP. Points!"
+        ],
+        "actual_recorded_action_after_observation": "a"
+      }
+    },
+    {
+      "opponent": "VULPIX",
+      "level": 37,
+      "fainted": {
+        "step": 26824,
+        "frame": 1588073,
+        "at": "2026-10-24T06:31:08.405297+00:00",
+        "visible_text": [
+          "          LAPRAS",
+          "               34",
+          "           140/140",
+          " Enemy VULPIX",
+          " fainted!         ▼"
+        ],
+        "actual_recorded_action_after_observation": "a"
+      },
+      "exp_gain": 499,
+      "exp_receipt": {
+        "step": 26825,
+        "frame": 1588201,
+        "at": "2026-10-24T06:31:08.457461+00:00",
+        "visible_text": [
+          "          LAPRAS",
+          "               34",
+          "           140/140",
+          " LAPRAS gained",
+          " 499 EXP. Points!"
+        ],
+        "actual_recorded_action_after_observation": "a"
+      }
+    }
+  ],
+  "class_name": "SUPER NERD",
+  "win_receipt": {
+    "step": 26826,
+    "frame": 1588329,
+    "at": "2026-10-24T06:31:08.529312+00:00",
+    "visible_text": [
+      "          LAPRAS",
+      "               34",
+      "           140/140",
+      " KEVIN defeated",
+      " SUPER NERD!      ▼"
+    ],
+    "actual_recorded_action_after_observation": "a"
+  },
+  "money_receipt": {
+    "step": 26829,
+    "frame": 1588713,
+    "at": "2026-10-24T06:31:08.680400+00:00",
+    "visible_text": [
+      "          LAPRAS",
+      "               34",
+      "           140/140",
+      " KEVIN got ¥925",
+      " for winning!     ▼"
+    ],
+    "actual_recorded_action_after_observation": "a"
+  },
+  "money_before": 68407,
+  "money_after": 69332,
+  "money_gain": 925,
+  "lapras_before": {
+    "species": 19,
+    "species_name": "LAPRAS",
+    "level": 34,
+    "hp": 140,
+    "max_hp": 140,
+    "exp": 49503,
+    "status": 0,
+    "moves": [
+      57,
+      34,
+      47,
+      109
+    ],
+    "pp": [
+      15,
+      15,
+      15,
+      10
+    ]
+  },
+  "lapras_after": {
+    "species": 19,
+    "species_name": "LAPRAS",
+    "level": 34,
+    "hp": 140,
+    "max_hp": 140,
+    "exp": 50723,
+    "status": 0,
+    "moves": [
+      57,
+      34,
+      47,
+      109
+    ],
+    "pp": [
+      15,
+      15,
+      15,
+      10
+    ]
+  },
+  "lapras_exp_gain": 1220,
+  "complete_levelup_receipts": [],
+  "raw_pp_spent_by_slot": [
+    2,
+    0,
+    0,
+    0
+  ],
+  "center_pp_restore_observations": [
+    {
+      "step": 26915,
+      "frame": 1592681,
+      "slot": 0,
+      "before": 13,
+      "after": 15
+    }
+  ],
+  "other_five_unchanged_every_row": true,
+  "inventory_unchanged_every_row": true,
+  "no_observed_fnt": true,
+  "both_endpoints_center_171_3_4_full_hp_status_base_pp": true,
+  "badges_raw": 63,
+  "beat_blaine": false,
+  "beat_event": {
+    "sdk_key": "beat_cinnabar_gym_trainer_6",
+    "event_id": 672,
+    "event_hex": "0x2a0",
+    "address": "0xD79B",
+    "bit": 0,
+    "mask": 1
+  },
+  "only_this_trainer_flag_changed": true,
+  "gate_direct_observation": null,
+  "gate_expected_from_source": {
+    "sdk_key": "cinnabar_gym_gate6_unlocked",
+    "event_id": 686,
+    "event_hex": "0x2ae",
+    "address": "0xD79C",
+    "bit": 6,
+    "mask": 64
+  },
+  "evidence": [
+    {
+      "path": ".local/gym-reviewed-history/cinnabar-trainer6-20261024-before-review.json",
+      "sha256": "888075f2cee4ce0deb5589d9a9f5c86189bbdb191b0f370fc9dda595e3e6a0ba",
+      "bytes": 12365
+    },
+    {
+      "path": ".local/gym-reviewed-history/cinnabar-trainer6-20261024-before-summary.json",
+      "sha256": "533cc391a4156e99af6e625cec8b00a73d0bc0d194e22c6eb40e7977eded7aa8",
+      "bytes": 919
+    },
+    {
+      "path": ".local/cinnabar-trainer6-after-review-20261024.json",
+      "sha256": "57747b465305b0623c339271465a5ae854752dc62c8410c5d270147ad07e303a",
+      "bytes": 12364
+    },
+    {
+      "path": ".local/cinnabar-trainer6-after-summary-20261024.json",
+      "sha256": "35da8a76addea75d8769e6f5f5a71930f4c8b981d7f186a469bc45d2520ba1d2",
+      "bytes": 918
+    },
+    {
+      "path": "src/laya_pokemon/data/gen1_reference.json",
+      "sha256": "248c70e24eda08e57e818e8ace37877d3452dda417d0c04dbb21e0dc64b1941b",
+      "bytes": 214432
+    },
+    {
+      "path": "outputs/research/source-cinnabar-mansion-20261024/gym__data__pokemon__base_stats__lapras.asm",
+      "sha256": "eca0e9600e96abdb13835dc797c8d4a83541008aff6751a7ffdf62a6387f5d4f",
+      "bytes": 784
+    },
+    {
+      "path": "outputs/research/cinnabar-trainer-training-route-20261024.json",
+      "sha256": "1b5c30d9c9093c5131fcb8dee71b580e869604852f9775d846a4cb498ca6b241",
+      "bytes": 73707
+    }
+  ],
+  "ledger_sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-096.jsonl",
+      "selected_steps": [
+        26712,
+        26712
+      ],
+      "selected_original_line_bytes_sha256": "9bc8dfbf24bf0709214a742c99873960c68f70cada3142da99ed0eaaa2d7deeb"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-097.jsonl",
+      "selected_steps": [
+        26713,
+        26922
+      ],
+      "selected_original_line_bytes_sha256": "0a6cb3c9d63c49f291fff2cb861179ce879c5c626e8baeb2637f2a1a1cdbeb31"
+    }
+  ],
+  "fixed_ledger": {
+    "path": ".local/cinnabar-trainer6-cycle-fixed-steps-20261024.jsonl",
+    "sha256": "da09eff6fd28faaf57b4574f3f1a5bc968cedd83561aa63ad87af54f7cd63cc4",
+    "local_only": true
+  },
+  "limits": [
+    "state是已執行按鍵前觀測；完整native收據、EXP/PP/金錢後續值另交叉，候選不是實按證明。",
+    "不以重複partial/完整動畫文字重算攻擊；未校準HUD不給數字傷害，本工具不看影片或讀RAM。",
+    "沒有直接gate bit/grid觀測，不把來源腳本推定改寫成實讀開門。",
+    "計時含出入館／戰鬥／正常補給及工程review，分欄列示；不是全程通關或模型單次效能。",
+    "首戰trainer1不在本工具範圍；未知狀態、額外隊員變動、新學招或其它旗標變更均拒絕。"
+  ],
+  "audit": {
+    "path": "outputs/research/cinnabar-trainer6-cycle-audit-20261024.json",
+    "sha256": "a1d5e38a6c0e9daf9f6faaca9c50daa829a8338958c7059a22ef1436d8575979"
+  }
+}
