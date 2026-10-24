@@ -1,4 +1,4 @@
-"""自然學招候選：妙蛙草30級、大嘴雀25／34級與拉普拉斯25／31級。
+"""自然學招候選：妙蛙草30級、大嘴雀25／34級與拉普拉斯25／31／38級。
 
 純文字／唯讀進度輸入，只回傳 Laya 子目標；不啟動模擬器、不執行按鍵。
 其他已知候選只提供策略並要求檢討；尚未宣稱實機校準成功。
@@ -28,6 +28,7 @@ _CASES = {
     (35, 34): (65, (64, 45, 43, 31), True),
     (19, 25): (34, (55, 45, 47, 54), True),
     (19, 31): (109, (57, 34, 47, 54), True),
+    (19, 38): (58, (57, 34, 47, 109), True),
 }
 _INTRO = ('IVYSAURISTRYINGTOLEARNRAZORLEAF', 'TRYINGTOLEARNRAZORLEAF', 'RAZORLEAF',
           'LEAF', 'BUTIVYSAURCANTLEARNMORETHAN4MOVES', 'IVYSAURCANTLEARNMORETHAN4MOVES',
@@ -88,6 +89,22 @@ _REPLACEMENTS = {
         'learned': ('LAPRASLEARNEDCONFUSERAY', 'LEARNEDCONFUSERAY', 'CONFUSERAY'),
         'did_not': ('LAPRASDIDNOTLEARNCONFUSERAY', 'DIDNOTLEARNCONFUSERAY', 'LEARNCONFUSERAY'),
     },
+
+    (19, 38): {
+        'before': (57, 34, 47, 109), 'after': (57, 34, 58, 109), 'slot': 2,
+        'old': 'SING', 'new': 'ICE_BEAM', 'old_id': 47,
+        'old_tactic': 'sing', 'new_tactic': 'ice_beam',
+        # 原生cont前先等待「trying to learn▼」；僅完整首屏允許翻頁。
+        'require_intro_prompt': True,
+        'intro': ('LAPRASISTRYINGTOLEARNICEBEAM', 'TRYINGTOLEARNICEBEAM',
+                  'ICEBEAM', 'BUTLAPRASCANTLEARNMORETHAN4MOVES',
+                  'LAPRASCANTLEARNMORETHAN4MOVES', 'CANTLEARNMORETHAN4MOVES', 'THAN4MOVES'),
+        'delete': ('DELETEANOLDERMOVETOMAKEROOMFORICEBEAM', 'MOVETOMAKEROOMFORICEBEAM', 'FORICEBEAM'),
+        'abandon': ('ABANDONLEARNINGICEBEAM', 'STOPLEARNINGICEBEAM', 'LEARNINGICEBEAM', 'ICEBEAM'),
+        'forgot': ('LAPRASFORGOTSING', 'FORGOTSING', 'SING'),
+        'learned': ('LAPRASLEARNEDICEBEAM', 'LEARNEDICEBEAM', 'ICEBEAM'),
+        'did_not': ('LAPRASDIDNOTLEARNICEBEAM', 'DIDNOTLEARNICEBEAM', 'LEARNICEBEAM'),
+    },
 }
 
 
@@ -98,6 +115,12 @@ def _replacement_profile():
 
 def candidate_plan(species, level, moves):
     """固定 source 自然等級核對；不以『小於目前等級』推測本次正在學哪招。"""
+    # 此新案例不接受Python數值相等造成的float/bool冒充來源整數。
+    if (species, level) == (19, 38) and (
+            type(species) is not int or type(level) is not int
+            or not isinstance(moves, (list, tuple))
+            or any(type(move) is not int for move in moves)):
+        return {'decision': 'review', 'reason': 'lapras38_learning_values_not_typed_integers'}
     case = _CASES.get((species, level))
     if case is None:
         if (species, level) == (167, 30):
@@ -536,6 +559,10 @@ def context(text, progress):
     if stage in {'await_forget', 'forget_menu'} and not compact:
         return _wait('await_verified_forget_menu')
     if stage == 'intro' and _prefix(compact, profile['intro']):
+        if profile.get('require_intro_prompt') is True and not _SESSION['seen_move']:
+            if compact == learner_name + 'ISTRYINGTOLEARN' and '▼' in lower:
+                return _hint('a', 'advance_verified_ice_beam_initial_prompt')
+            return _wait('await_ice_beam_initial_prompt')
         # 首屏已核對唯一學習者；僅已完整訊息或▼可前進，其餘逐字等待。
         if '▼' in lower or '!' in lower or compact == learner_name + 'ISTRYINGTOLEARN':
             return _hint('a', 'advance_verified_natural_learning_intro')

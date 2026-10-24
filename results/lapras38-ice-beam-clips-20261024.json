@@ -1,0 +1,466 @@
+{
+  "schema": "lapras38-ice-beam-media-audit-v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "title": "拉普拉斯38級正常忘唱歌、學冰凍光束，再回紅蓮中心",
+  "source_run": "league-campaign-20261024-24",
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "parent_review": "pending",
+  "published": false,
+  "main_scope": {
+    "steps_included": [
+      28932,
+      29038
+    ],
+    "campaign_frame_range": [
+      1721585,
+      1727977
+    ],
+    "emulated_frames": 6392,
+    "recorded_frames": 1598,
+    "action_counts": {
+      "actions": 107,
+      "new_laya": 2,
+      "cache": 93,
+      "passive": 12,
+      "actual_keys": {
+        "wait": 17,
+        "a": 39,
+        "down": 15,
+        "left": 14,
+        "right": 17,
+        "up": 5
+      }
+    },
+    "source_ranges": [
+      {
+        "segment": 103,
+        "frames_zero_based_half_open": [
+          2726,
+          2736
+        ],
+        "source_pts_seconds_half_open": [
+          181.73333333333332,
+          182.4
+        ]
+      },
+      {
+        "segment": 104,
+        "frames_zero_based_half_open": [
+          0,
+          1588
+        ],
+        "source_pts_seconds_half_open": [
+          0.0,
+          105.86666666666666
+        ]
+      }
+    ],
+    "last_following_action_excluded": true,
+    "no_clone_frames_used": true,
+    "ledger_timing_deltas_seconds": {
+      "wall_seconds": 820.485,
+      "review_pause_seconds": 815.734,
+      "non_review_session_seconds": 4.751,
+      "model_wait_seconds": 1.281
+    },
+    "within_107_actions_review_pause_count": 0,
+    "native_learning": {
+      "level": 38,
+      "before_moves": [
+        57,
+        34,
+        47,
+        109
+      ],
+      "after_moves": [
+        57,
+        34,
+        58,
+        109
+      ],
+      "forgot_move": 47,
+      "new_move": 58,
+      "source_base_pp": 10,
+      "learned_receipt_steps": [
+        28957,
+        28958,
+        28959,
+        28960
+      ],
+      "after_learning_pp": [
+        13,
+        15,
+        10,
+        10
+      ],
+      "after_center_pp": [
+        15,
+        15,
+        10,
+        10
+      ]
+    },
+    "following_wild_battle": {
+      "species": "KOFFING",
+      "level": 30,
+      "fainted_step": 28978,
+      "exp_step": 28979,
+      "exp_gain": 488,
+      "lapras_exp_before": 68711,
+      "lapras_exp_after": 69199
+    },
+    "six_positive_hp_and_other_five_full_dict_unchanged": true,
+    "inventory_order_quantity_money_unchanged": true,
+    "money": 69332,
+    "badge_count": 6
+  },
+  "fixed_source_evidence": [
+    {
+      "path": ".local/lapras38-learning-fixed-steps-20261024.jsonl",
+      "sha256": "1a95c0d116d619372c81af1a0b054a2cbcb324a3f108c2127e70a24ac935e70a",
+      "fixed": true
+    },
+    {
+      "path": ".local/lapras38-learning-before-review-20261024.json",
+      "sha256": "518a244b03fa0606035c1ff1ab2ae3f6f4000b69ff86b8f168db0d4a29676c3d",
+      "fixed": true
+    },
+    {
+      "path": ".local/lapras38-learned-center-fixed-review-20261024.json",
+      "sha256": "9727d3e35865d772b49810d5cdfc1ac031ea78e1276d5e1b875f3609f88c6904",
+      "fixed": true
+    },
+    {
+      "path": ".local/lapras38-learned-center-fixed-summary-20261024.json",
+      "sha256": "27d3b970b521df1428d1eaecd77135fc05432274e04220896855e508631ba3f0",
+      "fixed": true
+    }
+  ],
+  "closed_video_sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-103.mp4",
+      "sha256": "8bfe712ba0edd53da75567f9092f26f0937f5b8aac4405976ed089334d4c3b56",
+      "bytes": 2059719,
+      "closure": {
+        "at": "2026-10-24T07:05:36.511534+00:00",
+        "segment": 103,
+        "timing": {
+          "wall_seconds": 24183.797,
+          "model_wait_seconds": 175.924,
+          "review_pause_seconds": 22812.741,
+          "non_review_session_seconds": 1371.056,
+          "emulated_seconds": 28693.733
+        },
+        "video": {
+          "filename": "video-103.mp4",
+          "fps": 15,
+          "frames": 2736,
+          "playback_seconds": 182.4,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "1b69102ac88fcb45e2837d3de8274391d92a7768d19336500dddf3f679bb2629",
+      "global_prior_recorded_frames": 427670,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "182.400000",
+          "nb_frames": "2736",
+          "nb_read_frames": "2736"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-104.mp4",
+      "sha256": "296a850e6a11c41e341913beade06f67ec632dd8c1603147dae89e2c5c8f8071",
+      "bytes": 1112800,
+      "closure": {
+        "at": "2026-10-24T07:09:06.170350+00:00",
+        "segment": 104,
+        "timing": {
+          "wall_seconds": 24393.453,
+          "model_wait_seconds": 177.205,
+          "review_pause_seconds": 23017.647,
+          "non_review_session_seconds": 1375.806,
+          "emulated_seconds": 28800.267
+        },
+        "video": {
+          "filename": "video-104.mp4",
+          "fps": 15,
+          "frames": 1598,
+          "playback_seconds": 106.53333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "468ade529c04d785d155c21f58ae5086d85a4c994b1f8d7e3ceda4073cb0173d",
+      "global_prior_recorded_frames": 430406,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "106.533333",
+          "nb_frames": "1598",
+          "nb_read_frames": "1598"
+        }
+      }
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/lapras38-ice-beam-1x.mp4",
+      "sha256": "3bf9def995f69ef99fcdca4141d213542bd25a3e9aece3fc984bab0ed73dcaff",
+      "bytes": 4730764,
+      "frames": 1598,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "duration_seconds": 106.53333333333333,
+      "speed": 1.0,
+      "audio": false,
+      "speed_basis": "emulated_time",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "106.533333",
+          "nb_frames": "1598",
+          "nb_read_frames": "1598"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    },
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/lapras38-ice-beam-4x.mp4",
+      "sha256": "c96067ca658819d2546498f39f8b10579b4fc2193ae66ce270db97e7707bb23f",
+      "bytes": 4617199,
+      "frames": 1598,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "duration_seconds": 26.633333333333333,
+      "speed": 4.0,
+      "audio": false,
+      "speed_basis": "post_production_4x",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "26.633333",
+          "nb_frames": "1598",
+          "nb_read_frames": "1598"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/01-native-intro-prompt.png",
+      "title": "原生第一頁完整句與▼",
+      "sha256": "7989ebf78bf176895fe30c1c3dd5064ba783d139908ddda310f5065b1c097910",
+      "observation_step": 28933,
+      "observation_campaign_frame": 1721625,
+      "observation_basis": "main_fixed_ledger",
+      "clip_frame": 9,
+      "relative_1x_seconds": 0.6,
+      "source_segment": 103,
+      "source_frame": 2735,
+      "source_pts_seconds": 182.33333333333334,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "8be3436f385c36754218b54840f0abde5ebfae92436ac4a43463a40043726d72",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               38",
+        "           156/156",
+        " LAPRAS is",
+        " trying to learn  ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/02-delete-yes.png",
+      "title": "完整ICE BEAM問題與YES確認",
+      "sha256": "ef78055d23dc7b3dc1589b380741804dc82c8d8e4d18b4a9d3feb323c3fd1383",
+      "observation_step": 28944,
+      "observation_campaign_frame": 1722065,
+      "observation_basis": "main_fixed_ledger",
+      "clip_frame": 119,
+      "relative_1x_seconds": 7.933333333333334,
+      "source_segment": 104,
+      "source_frame": 109,
+      "source_pts_seconds": 7.266666666666667,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "9253db859a60eab86a2371f1bf36a87104941ce92e48f223cb94bd20db7b8d9b",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPR",
+        "               ▶YES",
+        "           156  NO",
+        " move to make room",
+        " for ICE BEAM?"
+      ]
+    },
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/03-forget-only-sing.png",
+      "title": "四招游標只選唱歌",
+      "sha256": "bef18c4f25973fa85d107aaf3e3b0bac4f7e3e92cff94544ff662d74d7a7343a",
+      "observation_step": 28949,
+      "observation_campaign_frame": 1722265,
+      "observation_basis": "main_fixed_ledger",
+      "clip_frame": 169,
+      "relative_1x_seconds": 11.266666666666667,
+      "source_segment": 104,
+      "source_frame": 159,
+      "source_pts_seconds": 10.6,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "0c9d907bcc6efb1f864d5b194721ccb827b609bf9d4b7aa03f7522d9750b8480",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "      SURF",
+        "      BODY SLAM",
+        "     ▶SING",
+        "      CONFUSE RAY",
+        " Which move should",
+        " be forgotten?"
+      ]
+    },
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/04-native-forgot-sing.png",
+      "title": "原生LAPRAS forgot SING",
+      "sha256": "41b2f6361dc2f689624cddd458fd7db31db800ce418effd1717c386076732f24",
+      "observation_step": 28954,
+      "observation_campaign_frame": 1722465,
+      "observation_basis": "main_fixed_ledger",
+      "clip_frame": 219,
+      "relative_1x_seconds": 14.6,
+      "source_segment": 104,
+      "source_frame": 209,
+      "source_pts_seconds": 13.933333333333334,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "7dab091cf19416f9018e26a2b9834084aa746039f3eeaa36b3ca7b0c7430e539",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               38",
+        "           156/156",
+        " LAPRAS forgot",
+        " SING!            ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/05-native-learned-ice-beam.png",
+      "title": "原生LAPRAS learned ICE BEAM",
+      "sha256": "117cb5b9448fbe96ec0bfef9877ed056cac822580e2c1a8f6cbb2a6c7fdc3dcc",
+      "observation_step": 28957,
+      "observation_campaign_frame": 1722585,
+      "observation_basis": "main_fixed_ledger",
+      "clip_frame": 249,
+      "relative_1x_seconds": 16.6,
+      "source_segment": 104,
+      "source_frame": 239,
+      "source_pts_seconds": 15.933333333333334,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "4f0a71b30fd7507a5925bc30eb2d4ba7d02adb19722aeaf956b701e6a76892b1",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               38",
+        "           156/156",
+        " LAPRAS learned",
+        " ICE BEAM!"
+      ]
+    },
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/06-new-four-moves.png",
+      "title": "後續野戰的真四招欄",
+      "sha256": "b40b5fc9897f0c8734e6c4100b6377b9c3c4be3baeefe1e593921b8b9217e8dc",
+      "observation_step": 28972,
+      "observation_campaign_frame": 1723625,
+      "observation_basis": "main_fixed_ledger",
+      "clip_frame": 509,
+      "relative_1x_seconds": 33.93333333333333,
+      "source_segment": 104,
+      "source_frame": 499,
+      "source_pts_seconds": 33.266666666666666,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "287a2083b61ad858b37620cfd8443242a4debb428f91508d212cad4dd0a855b8",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " KOFFING",
+        "     30",
+        "          LAPRAS",
+        "               38",
+        " TYPE/",
+        "  WATER    156/156",
+        "     13/15",
+        "     ▶SURF",
+        "      BODY SLAM",
+        "      ICE BEAM",
+        "      CONFUSE RAY"
+      ]
+    },
+    {
+      "path": "outputs/videos/lapras38-ice-beam-20261024/07-center-closed-full.png",
+      "title": "正常回紅蓮中心閉合與補滿",
+      "sha256": "8ff98ae14cc4bf9b1221ad36e12994a509f367c16611b0f08b7d25ec4687e690",
+      "observation_step": null,
+      "observation_campaign_frame": 1727977,
+      "observation_basis": "main_fixed_center_review",
+      "clip_frame": 1597,
+      "relative_1x_seconds": 106.46666666666667,
+      "source_segment": 104,
+      "source_frame": 1587,
+      "source_pts_seconds": 105.8,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "a34f66e8fdca2928e2c7ee90451a397cc76e0f364bd03c18e5c5214733a09070",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": []
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/lapras38-ice-beam-20261024/qa-contact-sheet.png",
+    "sha256": "af504a4198d08ecac750ae28d608dacbac8fd9624b694f2cad31b983be339d88",
+    "width": 1920,
+    "height": 948
+  },
+  "editing": "每4模擬幀取1真幀；1x15fps與後製4x60fps保留同樣1598幀，無插幀、補畫、重演或刪除真實選單過程。",
+  "limitations": [
+    "1x106.533333秒為模擬時間，4x26.633333秒是後製播放時間；不能當真實牆鐘、模型判斷速度或整個紅版通關耗時。",
+    "起點38學招先停檢，父層在採用前修正測試安裝路徑與首屏cont翻頁契約；這些工程等待不產生錄影幀。固定端點wall差820.485秒／review815.734秒／nonreview4.751秒，不抹去停檢歷史。",
+    "107實際動作內review累計保持不變；前置無鍵clone只供校準，影片與截圖全為main錄影，clone_frame不當campaign frame。",
+    "本段正常以Surf擊倒下一隻Koffing取得488EXP，IceBeam已學但此片不宣稱已用IceBeam攻擊或已勝夏伯。",
+    "只讀已自然封口103與104，排除104最後10幀的下一動作；未讀open片、ROM或state，也未停止錄影器。",
+    "原生完整learned／忘Sing／四招欄依真像素擷取，不由可見文字重建；父層視覺審閱pending，未發布／上傳。"
+  ],
+  "frame_mapping_audit": {
+    "path": "outputs/research/lapras38-ice-beam-media-audit-20261024.json",
+    "sha256": "6fd851b7e3453f253c8b56ed44961c83650335dff0d5a82458d24ec7a94904e9"
+  }
+}

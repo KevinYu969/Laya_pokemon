@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_lapras38_ice_beam_and_normal_center_recovery",
+  "learned_at": "2026-10-24T07:05:37.075859+00:00",
+  "learned_frame": 1722585,
+  "learned_step": 28957,
+  "learned_text": [
+    "          LAPRAS",
+    "               38",
+    "           156/156",
+    " LAPRAS learned",
+    " ICE BEAM!"
+  ],
+  "closed_at": "2026-10-24T07:05:41.088777+00:00",
+  "closed_frame": 1727977,
+  "location": {
+    "map_id": 171,
+    "x": 3,
+    "y": 4
+  },
+  "moves_before": [
+    57,
+    34,
+    47,
+    109
+  ],
+  "moves_after": [
+    57,
+    34,
+    58,
+    109
+  ],
+  "forgotten_move": 47,
+  "learned_move": 58,
+  "new_move_pp": 10,
+  "after_all_full_pp": [
+    15,
+    15,
+    10,
+    10
+  ],
+  "level": 38,
+  "hp": 156,
+  "exp_at_learning": 68711,
+  "exp_after_return": 69199,
+  "return_wild_exp": 488,
+  "total_actions": 107,
+  "new_laya": 2,
+  "cache": 93,
+  "passive_waits": 12,
+  "other_five_inventory_money_unchanged_every_row": true,
+  "no_fnt": true,
+  "all_six_full_hp_status_pp": true,
+  "source_evidence": [
+    {
+      "path": ".local/lapras38-learning-fixed-steps-20261024.jsonl",
+      "sha256": "1a95c0d116d619372c81af1a0b054a2cbcb324a3f108c2127e70a24ac935e70a",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/lapras38-learned-center-closed-proof-20261024.json",
+      "sha256": "f4151cd99748c8c96fbdc4db722323f5362209a98bbff29202012ad578c10516",
+      "local_only": true
+    },
+    {
+      "path": ".local/lapras38-learning-before-review-20261024.json",
+      "sha256": "518a244b03fa0606035c1ff1ab2ae3f6f4000b69ff86b8f168db0d4a29676c3d",
+      "local_only": true
+    },
+    {
+      "path": ".local/lapras38-learned-center-fixed-review-20261024.json",
+      "sha256": "9727d3e35865d772b49810d5cdfc1ac031ea78e1276d5e1b875f3609f88c6904",
+      "local_only": true
+    },
+    {
+      "path": ".local/lapras38-learned-center-fixed-summary-20261024.json",
+      "sha256": "27d3b970b521df1428d1eaecd77135fc05432274e04220896855e508631ba3f0",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "38級只是重新評估夏伯的門檻，尚未挑戰Boss。",
+    "本次選IceBeam替Sing，睡眠捕獲用途暫失；非永久最佳隊伍保證。",
+    "兩個採用前候選問題：tests安裝來源錯路、首屏需要▼翻頁；皆預檢抓出，未在main造成額外停滯或遊戲失敗。",
+    "學招沿原session/owner/計數，不重訓模型。"
+  ]
+}

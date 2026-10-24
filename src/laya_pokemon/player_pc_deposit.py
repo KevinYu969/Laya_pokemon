@@ -26,7 +26,9 @@ LOCATION = {'map_id': 182, 'x': 13, 'y': 4}
 CINNABAR_TM46_INTENT = {**INTENT_BASE, 'map_id': 171, 'item': 246}
 INTENTS = {(182,234): {**INTENT_BASE, 'item':234},
            (182,221): {**INTENT_BASE, 'item':221},
-           (171,246): CINNABAR_TM46_INTENT}
+           (171,246): CINNABAR_TM46_INTENT,
+           (171,228): {**INTENT_BASE, 'map_id':171, 'item':228},
+           (171,206): {**INTENT_BASE, 'map_id':171, 'item':206}}
 LOCATIONS = {182: LOCATION, 171: {'map_id':171,'x':13,'y':4}}
 MAP_NAMES = {182:'saffron_pokecenter',171:'cinnabar_pokecenter'}
 

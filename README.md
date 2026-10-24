@@ -8,12 +8,13 @@
 
 ## 目前進度
 
-**六枚徽章，七名紅蓮館員已實戰全勝；夏伯前補練與策略檢討中。** 2026-10-24台北14:31:11，七戰共16隻KO、拉普拉斯31→34，逐場正常回中心全補。
+**六枚徽章，七名紅蓮館員已全勝；拉普拉斯38級，已補藥並到夏伯面前。** 2026-10-24台北15:37:57，六隻HP／狀態／全招PP滿。夏伯與聯盟尚未完成。
 
-- [七場勝利時刻與檢討](docs/cinnabar-gym-review.md)：EXP+13066、獎金13960；1247實際動作中21次新離線Laya、1226快取，沒有新增隊員倒下。七旗標有逐場戰鬥收據，不以夏伯腳本bulkset假充勝場。
-- 後續拉普拉斯已至少35級，正在正常短巡迴補練；低血／中毒／PP／新學招／戰敗仍停檢。38是再評估急所容錯的門檻，夏伯與聯盟尚未完成。
-- [最新6931項完整回歸](results/code-validation-cinnabar-progress-20261024.json)31.75秒通過，來源SHA穩定。逐鍵本機離線Laya及快取，工程開發／審查另計，Strata配置未改。
-- [本機PyBoy即時畫面](http://127.0.0.1:8767/)；素材54片、180張PNG含QA。新增[首館員原速／四倍速](results/cinnabar-trainer1-clips-20261024.json)與[父層QA](results/cinnabar-trainer1-media-parent-review-20261024.json)，保留九尾會心、HP69、勝利獎金。影片留本機、網站尚未發布，原生SDL問題仍在處理。
+- [最新學招、補給與問題紀錄](docs/cinnabar-supply-and-lapras38.md)：32隻野怪、拉普拉斯34→38，正常以冰凍光束替換唱歌；保衝浪／泰山壓頂／奇異之光。
+- 正常買高級傷藥與萬靈藥各10份，餘48,332，背包19格、保留獎品空位；[67動作實測收據](results/cinnabar-medicine-purchase-campaign-20261024.json)。戰鬥使用流程仍在接線，尚未對話開打夏伯。
+- [7,226項完整回歸](results/code-validation-cinnabar-purchase-20261024.json)33.78秒通過，來源SHA穩定；逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
+- [七名館員逐場勝利時刻](docs/cinnabar-gym-review.md)保留16隻KO與正常補給；[本機PyBoy即時畫面](http://127.0.0.1:8767/)可看真遊戲影格。
+- 正式素材索引56片／188PNG含QA。新增[38級原速／四倍速與7張圖](results/lapras38-ice-beam-clips-20261024.json)及[父層QA](results/lapras38-media-parent-review-20261024.json)，影片留本機，網站未發布，原生SDL問題尚未修復。
 
 通關耗時以[里程碑時間軸](docs/campaign-timeline.md)記錄；牆鐘、工程停檢、模擬遊戲時間與後製倍速分開，尚未公布全程通關時間。[第七館前置與問題紀錄](docs/seventh-gym-progress.md)持續更新。
 

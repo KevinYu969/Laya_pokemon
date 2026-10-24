@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-24",
+  "status": "passed",
+  "parent_review": "passed",
+  "source_receipt": {
+    "path": "results/lapras38-ice-beam-clips-20261024.json",
+    "sha256": "162eeb8bdc172e69c78e8ba333b119eaba7856a2294a038bd55e4585ef2d4f0e"
+  },
+  "source_freeze": {
+    "path": "outputs/research/lapras38-ice-beam-media-freeze-20261024.json",
+    "sha256": "730b4293ae4a63d853f388b6ae54c52079de3fc693194f1a2c7ff331bd319ed3"
+  },
+  "fixed_hash_count": 13,
+  "all_fixed_hashes_verified": true,
+  "visually_viewed_qa_sha256": "af504a4198d08ecac750ae28d608dacbac8fd9624b694f2cad31b983be339d88",
+  "visible_proofs": [
+    "LAPRAS is trying to learn ▼",
+    "ICE BEAM YES",
+    "SING exact third slot",
+    "LAPRAS forgot SING",
+    "LAPRAS learned ICE BEAM",
+    "SURF/BODY SLAM/ICE BEAM/CONFUSE RAY",
+    "normal Cinnabar center"
+  ],
+  "clip_count": 2,
+  "formal_png_count": 7,
+  "qa_png_count": 1,
+  "indexed_reviewed_mp4_total": 56,
+  "indexed_reviewed_png_total_including_qa": 188,
+  "raw_directory_counts_for_distinction": {
+    "mp4": 130,
+    "png": 523
+  },
+  "published": false,
+  "uploaded": false,
+  "limits": [
+    "原製作pending凍結收據維持歷史值，另立較後父層親看QA與SHA驗收。",
+    "56/188為正式素材索引累計；資料夾另含原片、試作與其他轉碼，不以全目錄計數混充正式素材。",
+    "1x106.533333秒/後製4x26.633333秒，非推論速度或全程通關時間。"
+  ]
+}

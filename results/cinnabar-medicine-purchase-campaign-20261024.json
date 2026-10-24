@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_cinnabar_medicine_purchases",
+  "at": "2026-10-24T07:36:21.128150+00:00",
+  "frame": 1734777,
+  "location": {
+    "map_id": 172,
+    "x": 2,
+    "y": 5
+  },
+  "hyper_potion": 10,
+  "full_heal": 10,
+  "money_before": 69332,
+  "money_after": 48332,
+  "money_spent": 21000,
+  "bag_before": 17,
+  "bag_after": 19,
+  "reward_slot_reserved": 1,
+  "all_six_party_unchanged_every_row": true,
+  "other_inventory_order_quantity_preserved": true,
+  "all_six_full_hp_status_pp": true,
+  "actions": 67,
+  "new_laya": 4,
+  "cache": 41,
+  "passive_waits": 22,
+  "timing_endpoint_deltas_seconds": {
+    "wall_seconds": 1023.593,
+    "model_wait_seconds": 1.048,
+    "review_pause_seconds": 1020.5,
+    "non_review_session_seconds": 3.093,
+    "emulated_seconds": 44.666
+  },
+  "purchase_native_receipts": [
+    {
+      "at": "2026-10-24T07:36:20.111515+00:00",
+      "frame": 1733377,
+      "item": 18,
+      "money_after": 54332
+    },
+    {
+      "at": "2026-10-24T07:36:21.100421+00:00",
+      "frame": 1734777,
+      "item": 52,
+      "money_after": 48332
+    }
+  ],
+  "source_evidence": [
+    {
+      "path": ".local/cinnabar-medicine-purchase-fixed-review-20261024.json",
+      "sha256": "dd622bdf9904b8d6ffc8d99dbeb05ff12f6b680fa32b197be2a7539fca891db8",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-medicine-purchase-fixed-summary-20261024.json",
+      "sha256": "5e3f298e0195b9dc27a54ea152eac919aa4fe5411f04399f35ce3fbcc3f09e4f",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-medicine-purchase-fixed-steps-20261024.jsonl",
+      "sha256": "172ad3e45c4eb2938eef9a42c1344762907627327224f1a72c3291416c0a52c1",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-medicine-purchase-fixed-field-20261024.json",
+      "sha256": "8d95a27b108c7a7aa17a0c94abe85076ad1c2df3f7bf7b756c81e60949f8ea72",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/cinnabar-medicine-purchase-native-closed-proof-20261024.json",
+      "sha256": "a51e46bed707fb6a801d2722e08f5234f60710977e78f03439f0412cdd5c1b51",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "首次main兩購皆正常閉合，無中途工程停檢；此收據不宣稱戰鬥用藥已部署。",
+    "新frame上限與正式testloader錯路在採用前修正，未在main送出錯鍵。",
+    "父層現只排正常走到夏伯前3,4，不含interact或自動挑戰。"
+  ]
+}

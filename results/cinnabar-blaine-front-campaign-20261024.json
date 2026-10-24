@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_normal_blaine_front_arrival_no_boss_battle",
+  "at": "2026-10-24T07:37:57.467582+00:00",
+  "frame": 1737977,
+  "location": {
+    "map_id": 166,
+    "x": 3,
+    "y": 4
+  },
+  "actions": 80,
+  "new_laya": 0,
+  "cache": 80,
+  "passive": 0,
+  "party_inventory_money_unchanged": true,
+  "source_evidence": [
+    {
+      "path": ".local/cinnabar-blaine-front-fixed-review-20261024.json",
+      "sha256": "06f763401ccf79eb6e873a1c2e4ae1599997c1d3d6b119bfcaa17f80e562261f",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-blaine-front-fixed-summary-20261024.json",
+      "sha256": "7635565daffb1cefc3a63eea98aaa0aa8419b2ffefb053d4296c88d63a529361",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "只正常步行至夏伯前，尚未對話／開戰；戰鬥補藥仍待接線。"
+  ]
+}

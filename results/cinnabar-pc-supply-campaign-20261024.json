@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_two_tm_deposits_for_supply_slots",
+  "at": "2026-10-24T07:11:52.302127+00:00",
+  "frame": 1731537,
+  "items": [
+    {
+      "item": 228,
+      "quantity": 1
+    },
+    {
+      "item": 206,
+      "quantity": 1
+    }
+  ],
+  "bag_before": 19,
+  "bag_after": 17,
+  "pc_before": [
+    {
+      "item": 20,
+      "quantity": 1
+    },
+    {
+      "item": 234,
+      "quantity": 1
+    },
+    {
+      "item": 221,
+      "quantity": 1
+    },
+    {
+      "item": 246,
+      "quantity": 1
+    }
+  ],
+  "pc_after": [
+    {
+      "item": 20,
+      "quantity": 1
+    },
+    {
+      "item": 234,
+      "quantity": 1
+    },
+    {
+      "item": 221,
+      "quantity": 1
+    },
+    {
+      "item": 246,
+      "quantity": 1
+    },
+    {
+      "item": 228,
+      "quantity": 1
+    },
+    {
+      "item": 206,
+      "quantity": 1
+    }
+  ],
+  "actions": 77,
+  "new_laya": 0,
+  "cache": 55,
+  "passive_waits": 22,
+  "party_money_other_inventory_preserved": true,
+  "all_six_hp_status_pp_full": true,
+  "source_evidence": [
+    {
+      "path": ".local/cinnabar-pc-supply-fixed-review-20261024.json",
+      "sha256": "5dd54c9dc6b575f1566b456d10c4b4829d10a7de4726f481db160da4d2d8ea32",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-pc-supply-fixed-summary-20261024.json",
+      "sha256": "7c46932e32d8375ad4cc964f8580d5c20a7ddf4787220a79232ee4da5076f5a0",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-pc-supply-fixed-steps-20261024.jsonl",
+      "sha256": "0be8329bd76378d3524c5bc4b84f1ad1c586493aa63728e3958a681fcf16da39",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-pc-supply-fixed-field-20261024.json",
+      "sha256": "ab37849ff8134a32b8dbfa3adb48cdee37348fc51e7f1a2a6faff4011e9858d0",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/cinnabar-pc-two-supply-tm-closed-proof-20261024.json",
+      "sha256": "027d999495eeb2e0f137b61d439b270d8b754bb737fe99c69921f0fc9d7c817d",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "只正常可逆存TM28/TM06；未購藥、未打夏伯。",
+    "購前父層預檢錯把PC首鍵當START，兩次assert停在無鍵clone；實際精確opening候選A修正後才排程，未改任何runtime護欄。"
+  ]
+}

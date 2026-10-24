@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-24",
+  "status": "passed",
+  "parent_review": "passed",
+  "source_audit": {
+    "path": "outputs/research/lapras38-training-prelearning-audit-20261024.json",
+    "sha256": "4074211570058f020327d95d719a156dba2a3af51d59f0c4b04df24c21b3e30e",
+    "local_only": true
+  },
+  "selected_rows": 2009,
+  "selected_raw_ranges_and_fixed_hashes_verified": true,
+  "all_31_native_faint_exp_pairs_and_four_growth_receipts_verified": true,
+  "exp_gain": 17988,
+  "other_five_complete_dict_inventory_money_badges_preserved_every_row": true,
+  "no_observed_fnt": true,
+  "native_heals": 8,
+  "actions": 2009,
+  "new_laya": 12,
+  "cache": 1997,
+  "passive": 0,
+  "limits": [
+    "此段截止38級學招前，末場仍active wild；學會冰凍光束與返城另有107動作收據。",
+    "八次真恢復不含第5批零遇敵的全滿中心停點。",
+    "每列影格觀測無FNT不冒稱整個紅版從未倒下。"
+  ]
+}

@@ -46,6 +46,8 @@ from . import lapras_bridge
 importlib.reload(lapras_bridge)
 from . import player_pc_bridge
 importlib.reload(player_pc_bridge)
+from . import cinnabar_purchase_bridge
+importlib.reload(cinnabar_purchase_bridge)
 from . import fly_pallet_bridge
 importlib.reload(fly_pallet_bridge)
 from . import pallet_surf_bridge
@@ -67,6 +69,20 @@ for controller in _GYM_CONTROLLERS.values():controller._last_now=None
 
 def switch_context(pyboy,state,plan,step_id,previous):
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if cinnabar_purchase_bridge.applies(step_id,step):
+        bridges=(mansion_secret_key_bridge,mansion_statue_bridge,mansion_transition_ready,
+                 mansion_native_landing,route21_water_bridge,pallet_surf_bridge,
+                 fly_pallet_bridge,safari_entry,hm_teaching_bridge,vending_bridge,
+                 saffron_guard_bridge,silph_card_bridge,lapras_bridge,player_pc_bridge,
+                 campaign_transactions)
+        if (any(set(m._BINDINGS)-m._COMPLETED for m in bridges)
+                or safari_entry._RUN_CONTROLLER is not None
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'cinnabar_purchase_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return cinnabar_purchase_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                                read_world_grid(pyboy,state['location']),previous)
     if mansion_secret_key_bridge.applies(step_id,step):
         bridges=(mansion_statue_bridge,mansion_transition_ready,mansion_native_landing,
                  route21_water_bridge,pallet_surf_bridge,fly_pallet_bridge,safari_entry,
@@ -188,6 +204,8 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if cinnabar_purchase_bridge.applies(step_id,step):
+        return None  # 固定購藥交易只由switch_context接主runner真previous。
     if mansion_secret_key_bridge.applies(step_id,step):
         return None  # 祕密鑰匙只由switch_context接主runner真previous。
     if mansion_transition_ready.applies(step_id,step):
