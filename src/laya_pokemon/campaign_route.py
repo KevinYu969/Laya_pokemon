@@ -48,6 +48,8 @@ from . import player_pc_bridge
 importlib.reload(player_pc_bridge)
 from . import cinnabar_purchase_bridge
 importlib.reload(cinnabar_purchase_bridge)
+from . import opponent_review_gate
+importlib.reload(opponent_review_gate)
 from . import fly_pallet_bridge
 importlib.reload(fly_pallet_bridge)
 from . import pallet_surf_bridge
@@ -204,6 +206,8 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    opponent_gate=opponent_review_gate.context(state,step)
+    if opponent_gate is not None:return opponent_gate,step_id
     if cinnabar_purchase_bridge.applies(step_id,step):
         return None  # 固定購藥交易只由switch_context接主runner真previous。
     if mansion_secret_key_bridge.applies(step_id,step):
