@@ -1,0 +1,611 @@
+{
+  "schema": "laya-six-party-route-calibration-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "title": "拉普拉斯入隊後正常南返、中心與草叢往返校準",
+  "badge_count": 5,
+  "endpoints": [
+    {
+      "at_utc": "2026-10-24T00:32:12.738985+00:00",
+      "frame": 5921,
+      "location": {
+        "map_id": 19,
+        "x": 0,
+        "y": 10
+      },
+      "reason": "route_extension_required",
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 37,
+          "hp": 177,
+          "max_hp": 177,
+          "exp": 66666,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            15
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 121,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            57,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            15,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 36,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 50081,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            20,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 19,
+          "species_name": "LAPRAS",
+          "level": 15,
+          "hp": 64,
+          "max_hp": 64,
+          "exp": 4218,
+          "status": 0,
+          "moves": [
+            55,
+            45,
+            0,
+            0
+          ],
+          "pp": [
+            25,
+            40,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "at_utc": "2026-10-24T00:39:04.208328+00:00",
+      "frame": 35497,
+      "location": {
+        "map_id": 154,
+        "x": 3,
+        "y": 4
+      },
+      "reason": "route_extension_required",
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 37,
+          "hp": 177,
+          "max_hp": 177,
+          "exp": 67113,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            15
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 121,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            57,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            15,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 36,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 50081,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            20,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 19,
+          "species_name": "LAPRAS",
+          "level": 15,
+          "hp": 64,
+          "max_hp": 64,
+          "exp": 4218,
+          "status": 0,
+          "moves": [
+            55,
+            45,
+            0,
+            0
+          ],
+          "pp": [
+            25,
+            40,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "at_utc": "2026-10-24T00:39:53.376852+00:00",
+      "frame": 39617,
+      "location": {
+        "map_id": 26,
+        "x": 18,
+        "y": 8
+      },
+      "reason": "route_extension_required",
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 37,
+          "hp": 177,
+          "max_hp": 177,
+          "exp": 67113,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            15
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 121,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            57,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            15,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 36,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 50081,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            20,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 19,
+          "species_name": "LAPRAS",
+          "level": 15,
+          "hp": 64,
+          "max_hp": 64,
+          "exp": 4218,
+          "status": 0,
+          "moves": [
+            55,
+            45,
+            0,
+            0
+          ],
+          "pp": [
+            25,
+            40,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "at_utc": "2026-10-24T00:40:36.189037+00:00",
+      "frame": 43817,
+      "location": {
+        "map_id": 154,
+        "x": 3,
+        "y": 3
+      },
+      "reason": "route_extension_required",
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 37,
+          "hp": 177,
+          "max_hp": 177,
+          "exp": 67113,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            15
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 121,
+          "max_hp": 121,
+          "exp": 40019,
+          "status": 0,
+          "moves": [
+            61,
+            57,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            15,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 36,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 50081,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            20,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 19,
+          "species_name": "LAPRAS",
+          "level": 15,
+          "hp": 64,
+          "max_hp": 64,
+          "exp": 4218,
+          "status": 0,
+          "moves": [
+            55,
+            45,
+            0,
+            0
+          ],
+          "pp": [
+            25,
+            40,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "verified": {
+    "six_members_full_at_arrival": true,
+    "six_member_round_trip": true,
+    "actual_grass_18_8_and_19_8": true,
+    "return_hp_status_pp_full": true,
+    "no_party_change_during_calibration": true
+  },
+  "southbound_experience": {
+    "species": 132,
+    "before": 66666,
+    "after": 67113,
+    "delta": 447,
+    "note": "南返途中卡比獸EXP增447；本收據未逐戰核對對手，不猜遭遇。校準往返本身EXP未增。"
+  },
+  "route8_stall": {
+    "frame": 6961,
+    "location": {
+      "map_id": 19,
+      "x": 1,
+      "y": 10
+    },
+    "resolution": "來源warp在目前(1,10)，正常向右撞前方(2,10)0F入口觸發換圖；不修改碰撞或遊戲記憶體。"
+  },
+  "evidence": [
+    {
+      "file": ".local/six-route8-west-final-review-20261024.json",
+      "sha256": "d0203eeba98e3c703be4e5250074f4ed1a4ca96eba297ece2cdcc9a5ea99175e"
+    },
+    {
+      "file": ".local/six-fuchsia-arrival-final-review-20261024.json",
+      "sha256": "1f84e285881728cafb06a7e315ce5ed5e6ebc31dbbbe41aa35eeb5a5932a9623"
+    },
+    {
+      "file": ".local/six-grass-calibration-final-review-20261024.json",
+      "sha256": "27a53b66071de9cedff6ac6e4601e7a7cd9de613d154bf063fc2b3c2878b4ecd"
+    },
+    {
+      "file": ".local/six-center-calibration-final-review-20261024.json",
+      "sha256": "bb02a87ff7baba18e3db448dd0f67f65a3d948ec56950839eb4b61ddd75ff866"
+    },
+    {
+      "file": "outputs/research/six-party-grass-calibration-proof-20261024.json",
+      "sha256": "8e23a4dc510663acf3447f69e4d407bf82de2a7d9d8ad2e53f51108835bce3e6"
+    }
+  ],
+  "limits": [
+    "這是正常道路與補給驗收；尚未在此切點啟用六人訓練supervisor或證實拉普拉斯實際分得EXP。",
+    "固定08:40:36中心端點，五徽章；坂木、第六館、聯盟未完成。",
+    "獨立無鍵複本只有local frame1，和campaign frame分開，不冒充同幀。"
+  ]
+}

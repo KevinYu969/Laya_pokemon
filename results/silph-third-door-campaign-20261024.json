@@ -1,0 +1,361 @@
+{
+  "schema": "laya-pokemon-campaign-receipt/v1",
+  "language": "zh-Hant-TW",
+  "title": "Silph 3F Card Key正常開門與閉合",
+  "status": "third_floor_door_unlocked_and_closed",
+  "scope": {
+    "name": "中心至3F刷卡開門閉合",
+    "before_at_utc": "2026-10-24T00:12:22.647295+00:00",
+    "before_at_taipei": "2026-10-24T08:12:22.647295+08:00",
+    "closed_at_utc": "2026-10-24T00:13:12.038252+00:00",
+    "closed_at_taipei": "2026-10-24T08:13:12.038252+08:00",
+    "frame_interval_half_open": [
+      1045057,
+      1049217
+    ],
+    "steps_inclusive": [
+      18643,
+      18746
+    ],
+    "before_location": {
+      "map_id": 182,
+      "x": 3,
+      "y": 3
+    },
+    "closed_location": {
+      "map_id": 208,
+      "x": 18,
+      "y": 8
+    },
+    "runner_timer_delta_seconds": {
+      "wall_seconds": 49.39,
+      "model_wait_seconds": 0.797,
+      "review_pause_seconds": 45.969,
+      "non_review_session_seconds": 3.421,
+      "emulated_seconds": 69.333
+    },
+    "iso_review_wall_seconds": 49.390957,
+    "emulated_frames": 4160,
+    "emulated_seconds_exact": "69.33333333333333333333333333",
+    "counts": {
+      "actions": 104,
+      "new_laya_predictions": 2,
+      "laya_cache_hits": 94,
+      "controller_passive_waits": 8,
+      "passive_steps": [
+        18736,
+        18738,
+        18739,
+        18740,
+        18742,
+        18743,
+        18745,
+        18746
+      ],
+      "semantic_laya_waits": 2,
+      "action_counts": {
+        "down": 15,
+        "wait": 10,
+        "left": 15,
+        "up": 27,
+        "right": 34,
+        "a": 3
+      },
+      "new_model_ms_sum": 717.4721999908797,
+      "new_prediction_steps": [
+        18648,
+        18737
+      ],
+      "note": "prediction_cache_hit=False的被動等待不計為新Laya推論。"
+    }
+  },
+  "normal_transaction": {
+    "field_steps_inclusive": [
+      18737,
+      18746
+    ],
+    "counts": {
+      "actions": 10,
+      "new_laya_predictions": 1,
+      "laya_cache_hits": 2,
+      "controller_passive_waits": 7,
+      "passive_steps": [
+        18738,
+        18739,
+        18740,
+        18742,
+        18743,
+        18745,
+        18746
+      ],
+      "semantic_laya_waits": 0,
+      "action_counts": {
+        "a": 3,
+        "wait": 7
+      },
+      "new_model_ms_sum": 226.08839999884367,
+      "new_prediction_steps": [
+        18737
+      ],
+      "note": "prediction_cache_hit=False的被動等待不計為新Laya推論。"
+    },
+    "a_receipts": [
+      {
+        "step": 18737,
+        "pre_action_frame": 1048817,
+        "recorded_at_utc": "2026-10-24T00:13:11.796958+00:00",
+        "recorded_at_taipei": "2026-10-24T08:13:11.796958+08:00",
+        "time_semantics": "動作記錄時刻；state為按鍵前，非該畫面首次出現的精確UTC。",
+        "location": {
+          "map_id": 208,
+          "x": 18,
+          "y": 8
+        },
+        "phase": "silph_card_door",
+        "battle_kind": "none",
+        "visible_text": [],
+        "action": "a",
+        "emulated_frames": 40
+      },
+      {
+        "step": 18741,
+        "pre_action_frame": 1048977,
+        "recorded_at_utc": "2026-10-24T00:13:11.891907+00:00",
+        "recorded_at_taipei": "2026-10-24T08:13:11.891907+08:00",
+        "time_semantics": "動作記錄時刻；state為按鍵前，非該畫面首次出現的精確UTC。",
+        "location": {
+          "map_id": 208,
+          "x": 18,
+          "y": 8
+        },
+        "phase": "silph_card_door",
+        "battle_kind": "none",
+        "visible_text": [
+          " Bingo!",
+          " The CARD KEY     ▼"
+        ],
+        "action": "a",
+        "emulated_frames": 40
+      },
+      {
+        "step": 18744,
+        "pre_action_frame": 1049097,
+        "recorded_at_utc": "2026-10-24T00:13:11.964361+00:00",
+        "recorded_at_taipei": "2026-10-24T08:13:11.964361+08:00",
+        "time_semantics": "動作記錄時刻；state為按鍵前，非該畫面首次出現的精確UTC。",
+        "location": {
+          "map_id": 208,
+          "x": 18,
+          "y": 8
+        },
+        "phase": "silph_card_door",
+        "battle_kind": "none",
+        "visible_text": [
+          " The CARD KEY",
+          " opened the door!"
+        ],
+        "action": "a",
+        "emulated_frames": 40
+      }
+    ],
+    "a_roles": [
+      "面向門正常A互動",
+      "Bingo / The CARD KEY真▼確認",
+      "完整opened the door全文穩定後外層關頁A"
+    ],
+    "two_closed_observations": [
+      {
+        "step": 18745,
+        "pre_action_frame": 1049137,
+        "recorded_at_utc": "2026-10-24T00:13:11.985533+00:00",
+        "recorded_at_taipei": "2026-10-24T08:13:11.985533+08:00",
+        "time_semantics": "動作記錄時刻；state為按鍵前，非該畫面首次出現的精確UTC。",
+        "location": {
+          "map_id": 208,
+          "x": 18,
+          "y": 8
+        },
+        "phase": "silph_card_door",
+        "battle_kind": "none",
+        "visible_text": [],
+        "action": "wait",
+        "emulated_frames": 40
+      },
+      {
+        "step": 18746,
+        "pre_action_frame": 1049177,
+        "recorded_at_utc": "2026-10-24T00:13:12.005939+00:00",
+        "recorded_at_taipei": "2026-10-24T08:13:12.005939+08:00",
+        "time_semantics": "動作記錄時刻；state為按鍵前，非該畫面首次出現的精確UTC。",
+        "location": {
+          "map_id": 208,
+          "x": 18,
+          "y": 8
+        },
+        "phase": "silph_card_door_complete",
+        "battle_kind": "none",
+        "visible_text": [],
+        "action": "wait",
+        "emulated_frames": 40
+      }
+    ],
+    "stance": {
+      "map_id": 208,
+      "x": 18,
+      "y": 8
+    },
+    "door_world_cell": [
+      17,
+      8
+    ],
+    "post_door_normal_walk": [
+      {
+        "step": 18747,
+        "pre_action_frame": 1049217,
+        "recorded_at_utc": "2026-10-24T00:15:12.495480+00:00",
+        "recorded_at_taipei": "2026-10-24T08:15:12.495480+08:00",
+        "time_semantics": "動作記錄時刻；state為按鍵前，非該畫面首次出現的精確UTC。",
+        "location": {
+          "map_id": 208,
+          "x": 18,
+          "y": 8
+        },
+        "phase": "overworld",
+        "battle_kind": "none",
+        "visible_text": [],
+        "action": "left",
+        "emulated_frames": 40
+      },
+      {
+        "step": 18748,
+        "pre_action_frame": 1049257,
+        "recorded_at_utc": "2026-10-24T00:15:12.625304+00:00",
+        "recorded_at_taipei": "2026-10-24T08:15:12.625304+08:00",
+        "time_semantics": "動作記錄時刻；state為按鍵前，非該畫面首次出現的精確UTC。",
+        "location": {
+          "map_id": 208,
+          "x": 17,
+          "y": 8
+        },
+        "phase": "overworld",
+        "battle_kind": "none",
+        "visible_text": [],
+        "action": "left",
+        "emulated_frames": 40
+      }
+    ]
+  },
+  "readonly_after_proof": {
+    "origin": "父層已保存的唯讀副本JSON；本成果任務只讀該proof，未另開模擬器。",
+    "clone_frame": 1,
+    "live_review_frame": 1049217,
+    "location": {
+      "map_id": 208,
+      "x": 18,
+      "y": 8
+    },
+    "text_blank": true,
+    "window_visible": false,
+    "overworld_ready": true,
+    "card_door": {
+      "profile": "red-en-silph-card-door-source-v1-unvalidated",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "read_valid": true,
+      "unknown_reason": null,
+      "live_calibrated": false,
+      "observation_frame": 1,
+      "location": {
+        "map_id": 208,
+        "x": 18,
+        "y": 8
+      },
+      "event_name": "silph_co_3_unlocked_door2",
+      "event_id": 1801,
+      "address": 55336,
+      "bit": 1,
+      "raw_flags": 2,
+      "unlocked": true
+    },
+    "door_tile": 1,
+    "door_walkable": 1,
+    "door_cell_visible_verified": true,
+    "reader_metadata_note": "live_calibrated=false與unvalidated的profile名稱照原proof保留；此固定門已由正常文字、格網與事件交叉，未泛稱其他門已校準。",
+    "before_raw_bit_note": "前端review沒有序列化此door-specific raw bit／門格，故不捏造一份先前raw0／tile24觀測。"
+  },
+  "invariants": {
+    "party_exact_unchanged_all_selected": true,
+    "inventory_exact_unchanged_all_selected": true,
+    "money": 43496,
+    "card_key_item48_quantity": 1,
+    "key_consumed": false,
+    "no_battle_in_scope": true,
+    "badge_raw": 31
+  },
+  "routing_contract": {
+    "new_strata_calls": 0,
+    "gpt_gameplay_classification_calls": 0,
+    "cloud_gameplay_fallback_calls": 0,
+    "evidence": "父層本次執行契約，非本成果工作獨立封包查核；Codex工程與審查額度另計。"
+  },
+  "evidence": {
+    "closed_step_files": [
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-053.jsonl",
+        "bytes": 1067446,
+        "sha256": "e989a1fd68649db1b1cce1819c86edf410e8ff42eb4650be3b91aa0ecc5e62a6",
+        "selected_lines": 1,
+        "selected_raw_lines_sha256": "332b69a8252f76f9508a044ae8271b1b544a91e4b4ef9eba0bd8ae05924a6fe9"
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-054.jsonl",
+        "bytes": 879140,
+        "sha256": "0edd48b7bf7414e2444e7de2ef49d03367f24e34549c38a31eb810ed13804f74",
+        "selected_lines": 104,
+        "selected_raw_lines_sha256": "0edd48b7bf7414e2444e7de2ef49d03367f24e34549c38a31eb810ed13804f74"
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-055.jsonl",
+        "bytes": 1479915,
+        "sha256": "49944ac35a432ac73a98a6d8bbc46f62cb27cd34b623208ceb8263294350327d",
+        "selected_lines": 194,
+        "selected_raw_lines_sha256": "49944ac35a432ac73a98a6d8bbc46f62cb27cd34b623208ceb8263294350327d"
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-056.jsonl",
+        "bytes": 1025223,
+        "sha256": "0623df850d39280462d10bae65b468acdb3e8cb45b59d551acda4d7f252143a6",
+        "selected_lines": 122,
+        "selected_raw_lines_sha256": "fa95ce8e8308d96c325de77866a6ecc993823b9a4dea37959d0782f8452d00d6"
+      }
+    ],
+    "selected_closed_segments": [
+      53,
+      54,
+      55,
+      56
+    ],
+    "selected_raw_lines_sha256": {
+      "door": "b6d1781e265ff95adfaea67d83e37f20d590f6f944bed4b8fc3b955f35002fce",
+      "rival": "33ee43a0b98155e7ae8ef63d8748a3a3e972b7a75d35451b5df6f2e5798f58df",
+      "recovery": "d5af9d472da652d6b249f25ccf6e629df04890cda9a8b66bb3adcba60f1d322c"
+    },
+    "review_snapshot_sha256": {
+      "before_door": "85e294c9f6f5670a2b04ef85ddbc4a2299352d4b1d9f0cf971a7ebf9ad826f43",
+      "door_closed": "8943e96dbe4bc2d6461dd4a1e31696b66597bf7aec9097ad69c83c532945cad4",
+      "rival_before": "8943e96dbe4bc2d6461dd4a1e31696b66597bf7aec9097ad69c83c532945cad4",
+      "rival_closed": "be201dfd9daf6fe3ee8785b623a6fea03e2a654a08486978d6fd7292f0ab98e0",
+      "recovery_closed": "c655c78fd631e464196e04c7470439243f55a42ca23527e943ea9a4479c1d93d"
+    },
+    "root_closed_proofs_sha256": {
+      "silph-third-door-closed-proof-20261024.json": "ae5f52688cd2133ea1b56476ac0f348931ae27bf04db053301d8d8baf305450c",
+      "silph-rival-closed-proof-20261024.json": "302fe859eac21f4624c3923e260939c5b7e0632c18aa20007dfb04b52694b1fe"
+    },
+    "private_audit": "outputs/research/silph-rival-campaign-audit-20261024.json",
+    "no_new_video_or_png": true
+  },
+  "limits": [
+    "此為3F這一扇門，不代表11F門、坂木或聯盟已完成。",
+    "scope含正常往返路線與工程準備等待，模擬時間不是牆鐘。",
+    "本工作未新剪片／圖片、未改遊戲或程式。"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "laya-six-party-code-validation-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "validation": {
+    "command": ".venv/Scripts/python.exe -m pytest -q --tb=short --basetemp outputs/<unique-test-directory>",
+    "passed": 5450,
+    "failed": 0,
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 31.88,
+    "warning": "既有pysdl2-dll 2.32.10二進位提示"
+  },
+  "source_sha256": {
+    "src/laya_pokemon/balanced_training.py": "de29fb0a206f2ded7d6f29a0f44f9a48b2deca757333c98f7c84cbbca4c44ec0",
+    "src/laya_pokemon/battle.py": "75d8033f406a43f270532eb6479cf57e7675301bdae24b5bf975609d44b64256",
+    "src/laya_pokemon/campaign.py": "b03aa0dd6b600d86debe17e96fd3774e1cece4dfdde9e8b7541e2ccc24ddfb95",
+    "src/laya_pokemon/campaign_route.py": "3ae5e4761f372a9fa64847f75856a85d119def4740208c67deed63f4562945db",
+    "src/laya_pokemon/campaign_safety.py": "d77b5322dbc58b8ef5cd2dc376e7f4302cbaa18d021726532dff3828a775c32c",
+    "src/laya_pokemon/lapras_bridge.py": "70e1f1176bbbdac53ebc92de76aa853f20ab2c8bf61e8e128d17fd8629334192",
+    "tests/test_shared_experience_training.py": "f4ed91a85576f19624c8e07dd167b3a80087dd028f9defd413d9196a19757544",
+    "tests/test_shared_exp_campaign_integration.py": "bf0a2204d2869aad9d3599e97c0c7b9f90f5ca6bacae1f051cde7e9fe408ac93",
+    "tests/test_shared_exp_independent.py": "dc5df800774fdef8e7ecd437b8363b812a78ce5495a9a28fc3725224756f5b54",
+    "tests/test_shared_exp_completion.py": "1b1f26a62042e6f6cc34e32d293a85f8ac7a56a103276dfa22e686e8ce176588",
+    "tests/test_shared_exp_target_status.py": "dee83ea6139b1981292af63949a468b8e781a780fb9dfa749539f0ba223a0821",
+    "tests/test_shared_exp_ditto.py": "c0b27f2cf3e59e1962c21f63bfd946dcbe87ecf749df97688763aadb2e2af58e",
+    "tests/test_shared_training_attrition.py": "d55d53f84369c8f44cc2c6405b4864c7937cf2664f39fe499926c22721749a31",
+    "tests/test_ditto_shared_exp_learning.py": "cf6575b4dee2519369cd28f22bcbf73fe60bd6d34303e9e7edf77653930fc16f",
+    "tests/test_ditto_transform.py": "2eae72aa0bff10196c54752b9a784adb4b2285d75d8025c8689235a4e635797d",
+    "tests/test_lapras_bridge.py": "d11cabb37f712ced2b560b2915ec5cd65d25e97ed5d5695f68cd5c7d34cfa2c3",
+    "tests/test_campaign_lapras_integration.py": "a645b9844a9eebb8641e8cd65c54d569ba4426401782dc732541fb1db35224e5"
+  },
+  "coverage": [
+    "Lapras贈送與已綁交易的命名未初始化窄接線",
+    "六人正常PKMN/SWITCH與同幀矛盾保護",
+    "WHIRLWIND已核none收尾、明示一次性歷史ledger審核",
+    "支援換上後PSN/已核Ditto變身之正常交接",
+    "只在明示訓練時，全隊HP/status/攻擊PP於下次走草前要求正常回中心",
+    "Ditto真0HP來源證明下，真隊員分EXP、當級且已持有的學招完整／partial收尾",
+    "自然新學收據只接受rawPP等於basePP；PPUp raw79/82均不冒稱新學完成"
+  ],
+  "constraints": [
+    "僅此程式SHA切點；後續碼需另驗，不改寫較早5272項快照。",
+    "沒有用測試通過宣稱八館／聯盟或全程自主完成；實戰收據分開核對。",
+    "私人路線監督器55項合成測試另列，不混入5448，也未上傳該私人執行設定。",
+    "兩次新測試fixture問題已修：舊VENUSAUR HUD不在Lapras fixture party、錯誤calibration預設預期；未放寬來源guard。",
+    "5450項在遊戲背景持續運行時執行；31.88秒不是單獨基準或推論速度。"
+  ],
+  "previous_snapshot": {
+    "validation": {
+      "command": ".venv/Scripts/python.exe -m pytest -q --tb=short --basetemp outputs/<unique-test-directory>",
+      "passed": 5448,
+      "failed": 0,
+      "errors": 0,
+      "warnings": 1,
+      "seconds": 22.56,
+      "warning": "既有pysdl2-dll 2.32.10二進位提示"
+    },
+    "source_sha256": {
+      "src/laya_pokemon/balanced_training.py": "de29fb0a206f2ded7d6f29a0f44f9a48b2deca757333c98f7c84cbbca4c44ec0",
+      "src/laya_pokemon/battle.py": "b4e3605a57770f889e3bac9b1b16b6395b2c0ae62de460ae50a66126699d622c",
+      "src/laya_pokemon/campaign.py": "b03aa0dd6b600d86debe17e96fd3774e1cece4dfdde9e8b7541e2ccc24ddfb95",
+      "src/laya_pokemon/campaign_route.py": "3ae5e4761f372a9fa64847f75856a85d119def4740208c67deed63f4562945db",
+      "src/laya_pokemon/campaign_safety.py": "d77b5322dbc58b8ef5cd2dc376e7f4302cbaa18d021726532dff3828a775c32c",
+      "src/laya_pokemon/lapras_bridge.py": "70e1f1176bbbdac53ebc92de76aa853f20ab2c8bf61e8e128d17fd8629334192",
+      "tests/test_shared_experience_training.py": "f4ed91a85576f19624c8e07dd167b3a80087dd028f9defd413d9196a19757544",
+      "tests/test_shared_exp_campaign_integration.py": "bf0a2204d2869aad9d3599e97c0c7b9f90f5ca6bacae1f051cde7e9fe408ac93",
+      "tests/test_shared_exp_independent.py": "dc5df800774fdef8e7ecd437b8363b812a78ce5495a9a28fc3725224756f5b54",
+      "tests/test_shared_exp_completion.py": "1b1f26a62042e6f6cc34e32d293a85f8ac7a56a103276dfa22e686e8ce176588",
+      "tests/test_shared_exp_target_status.py": "dee83ea6139b1981292af63949a468b8e781a780fb9dfa749539f0ba223a0821",
+      "tests/test_shared_exp_ditto.py": "c0b27f2cf3e59e1962c21f63bfd946dcbe87ecf749df97688763aadb2e2af58e",
+      "tests/test_shared_training_attrition.py": "d55d53f84369c8f44cc2c6405b4864c7937cf2664f39fe499926c22721749a31",
+      "tests/test_ditto_shared_exp_learning.py": "c40578bc630a9f044024283d2d4d656444382c1b439541f9430d717ca2c1395c",
+      "tests/test_ditto_transform.py": "2eae72aa0bff10196c54752b9a784adb4b2285d75d8025c8689235a4e635797d",
+      "tests/test_lapras_bridge.py": "d11cabb37f712ced2b560b2915ec5cd65d25e97ed5d5695f68cd5c7d34cfa2c3",
+      "tests/test_campaign_lapras_integration.py": "a645b9844a9eebb8641e8cd65c54d569ba4426401782dc732541fb1db35224e5"
+    },
+    "note": "5448項／22.56秒保留為PPUp窄校準前的歷史程式切點。"
+  }
+}

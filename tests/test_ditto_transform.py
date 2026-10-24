@@ -315,7 +315,7 @@ def test_ko_unknown_or_contradictory_pages_review_without_a(change):
     state, members = signal_state(ko_memory()), party()
     if change == 'unknown_attack': text = ko_text((1,14,'VENUSAUR'),(1,16,'used EXPLOSION!'))
     elif change == 'wrong_fainted': text = ko_text((1,14,'Enemy FEAROW'),(1,16,'fainted!'))
-    elif change == 'wrong_exp': text = ko_text((1,14,'SNORLAX gained'),(1,16,'123 EXP. Points!'))
+    elif change == 'wrong_exp': text = ko_text((1,14,'PIKACHU gained'),(1,16,'123 EXP. Points!'))
     elif change == 'wrong_grew': text = ko_text((1,14,'VENUSAUR grew'),(1,16,'to level 34!'))
     elif change == 'profile': text.pop('profile')
     elif change == 'alignment': text['alignment_verified'] = False

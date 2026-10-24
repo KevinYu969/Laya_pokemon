@@ -60,7 +60,18 @@ def attrition_context(state, plan, step_id):
     fainted = [index for index, (hp, _) in enumerate(health) if hp == 0]
     lead_hp, lead_max = health[0]
     low_lead = lead_hp * 3 <= lead_max * 2
-    if not fainted and not low_lead:
+    training_needs_center=False
+    if (plan.get('training_shared_experience') is True
+            and type(plan.get('training_direct_from_level')) is int
+            and plan['training_direct_from_level']==25 and len(party)==6
+            and {m.get('species') for m in party}=={19,7,102,154,35,132}):
+        from .battle import _trainer_half_party_valid
+        from .campaign_route import attack_pp
+        if not _trainer_half_party_valid(party):
+            return _review('party_attrition_state_unverified',step_id,issue='training_party_moves_or_status_unverified')
+        training_needs_center=any(hp*3<=maximum*2 or mon['status'] or attack_pp(mon)<3
+                                  for mon,(hp,maximum) in zip(party,health))
+    if not fainted and not low_lead and not training_needs_center:
         return None
     if not fainted:
         from .capture_closing_gate import eligible
@@ -70,4 +81,4 @@ def attrition_context(state, plan, step_id):
         return None
     return _review('party_attrition_requires_center', step_id,
                    fainted_party_indices=fainted, lead_hp=lead_hp, lead_max_hp=lead_max,
-                   lead_at_or_below_two_thirds=low_lead)
+                   lead_at_or_below_two_thirds=low_lead,training_team_needs_center=training_needs_center)

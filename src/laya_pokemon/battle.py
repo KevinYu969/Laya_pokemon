@@ -199,12 +199,37 @@ def _trainer_half_pending(text, battle_state, party):
     target = target[0]
     if text['cells'][14][4]=="'m":
         # SendOutMon immediately draws the new HUD/animation after this done
-        # text; there is no outer prompt. Keep even the old HUD pending, never
-        # send an early A, and finish only on the later complete command page.
+        # text; there is no outer prompt. A verified new HUD completes the
+        # switch, but this observation still only WAITs. The old HUD stays
+        # pending. The enemy consumes its turn before the next command page.
+        if rows[7]==(' '*10+species_key(target['species'])).ljust(20):
+            _no_pp_switch=None
+            return {'phase':'battle_animation','objective':'Wait.','available_actions':['wait'],
+                    'battle_tactic':'wait_trainer_half_hp_switch_handoff'}
         record['waits']=record.get('waits',0)+1
         if record['waits']>25:return _trainer_half_review('pending_transition_wait_exhausted')
         return {'phase':'battle_animation','objective':'Wait.','available_actions':['wait'],
                 'battle_tactic':'wait_trainer_half_hp_switch'}
+    if record.get('switch_requested') is True:
+        # Sampling may miss Get'm entirely. Only the observed native DISABLE
+        # retaliation page plus the complete new target HUD proves this
+        # narrow handoff; no generic enemy text or early A is authorized.
+        expected=[' '*20 for _ in range(18)]
+        expected[0]=(' '+record['enemy_species']).ljust(20)
+        expected[1]=rows[1]
+        expected[7]=(' '*10+species_key(target['species'])).ljust(20)
+        expected[8]=rows[8]
+        expected[10]=(' '*11+f"{target['hp']:3}/{target['max_hp']:3}").ljust(20)
+        expected[14]=(' ENEMY '+record['enemy_species']).ljust(20)
+        expected[16]=' USED DISABLE!'.ljust(20)
+        if (rows==expected and target['hp']>0 and target['status']==0
+                and rows[1][:5]==' '*5 and rows[1][8:]==' '*12
+                and rows[1][5:8].strip().isdigit() and 1<=int(rows[1][5:8])<=100
+                and rows[8][:14]==' '*14 and rows[8][18:]==' '*2
+                and rows[8][14:18].strip()==str(target['level'])):
+            _no_pp_switch=None
+            return {'phase':'battle_animation','objective':'Wait.','available_actions':['wait'],
+                    'battle_tactic':'wait_trainer_half_hp_switch_handoff'}
     party_view = all(normalize(rows[i*2][3:13]) == normalize(species_key(m['species']))
                      for i,m in enumerate(party))
     lower = ' '.join(' '.join(rows[12:]).split())
@@ -624,10 +649,22 @@ def _ditto_ko_context(text, battle_state, party):
     first = species_key(party[0]['species'])
     if not first:
         return review()
-    complete = (lower == 'ENEMY DITTO FAINTED!'
-                or re.fullmatch(re.escape(first) + r' GAINED [1-9][0-9]{0,3} EXP\. POINTS!', lower)
-                or type(party[0].get('level')) is int
-                and lower == f"{first} GREW TO LEVEL {party[0]['level']}!")
+    member_names=[species_key(mon['species']) for mon in party]
+    growth=[f"{species_key(mon['species'])} GREW TO LEVEL {mon['level']}!"
+            for mon in party if type(mon.get('level')) is int]
+    learned=[]
+    ref=reference()
+    for mon in party:
+        name=species_key(mon['species']);species=ref['species'].get(name,{})
+        for entry in species.get('level_moves',[]):
+            move=ref['moves'].get(entry['move'],{})
+            if entry['level']==mon.get('level') and move.get('id') in mon.get('moves',[]):
+                slot=mon['moves'].index(move['id'])
+                if mon.get('pp',[0]*4)[slot]==move['pp']:
+                    learned.append(f"{name} LEARNED {entry['move'].replace('_',' ')}!")
+    complete = (lower == 'ENEMY DITTO FAINTED!' or lower in growth+learned
+                or any(re.fullmatch(re.escape(name)+r' GAINED [1-9][0-9]{0,3} EXP\. POINTS!',lower)
+                       for name in member_names))
     details = {'ditto_ko_stage': 'enemy_zero_hp_faint_transition', 'battle_tactic': 'wait_ditto_faint_transition'}
     if complete:
         return {'phase': 'battle_dialogue', 'objective': 'Confirm the current selection.',
@@ -635,7 +672,7 @@ def _ditto_ko_context(text, battle_state, party):
     if markers:
         return review()
     # 正常逐字／空白動畫只等待；未核實的攻擊文字不視作收據。
-    known = ['ENEMY DITTO FAINTED!', f"{first} GREW TO LEVEL {party[0].get('level')}!"]
+    known = ['ENEMY DITTO FAINTED!', *growth, *learned]
     if upper_names == ['DITTO']:
         active_names = [row.strip() for row in rows[6:10] if row.strip() in reference()['species']]
         active = [mon for mon in party if species_key(mon['species']) in active_names]
@@ -643,11 +680,13 @@ def _ditto_ko_context(text, battle_state, party):
             name = species_key(active[0]['species'])
             known.extend(f"{name} USED {move_key(move).replace('_', ' ')}!"
                          for move in active[0].get('moves', []) if move_key(move))
-    exp_prefix = f'{first} GAINED'
-    partial_exp = exp_prefix.startswith(lower)
-    if lower.startswith(exp_prefix + ' '):
-        match = re.fullmatch(r'([1-9][0-9]{0,3})(?: (.*))?', lower[len(exp_prefix) + 1:])
-        partial_exp = bool(match and 'EXP. POINTS!'.startswith(match[2] or ''))
+    partial_exp=False
+    for name in member_names:
+        exp_prefix=f'{name} GAINED'
+        partial_exp=partial_exp or exp_prefix.startswith(lower)
+        if lower.startswith(exp_prefix+' '):
+            match=re.fullmatch(r'([1-9][0-9]{0,3})(?: (.*))?',lower[len(exp_prefix)+1:])
+            partial_exp=partial_exp or bool(match and 'EXP. POINTS!'.startswith(match[2] or ''))
     if not lower or any(message.startswith(lower) for message in known) or partial_exp:
         return {'phase': 'battle_animation', 'objective': 'Wait.', 'available_actions': ['wait'], **details}
     return review()

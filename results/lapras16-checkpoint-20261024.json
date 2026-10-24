@@ -1,0 +1,685 @@
+{
+  "schema": "laya-lapras16-checkpoint-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "title": "拉普拉斯正常升16、第三槽學唱歌並六人中心全補",
+  "scope": {
+    "run": "league-campaign-20261024-24",
+    "before_at_utc": "2026-10-24T01:00:00.866366+00:00",
+    "closed_at_utc": "2026-10-24T01:08:24.734183+00:00",
+    "closed_at_taipei": "2026-10-24T09:08:24.734183+08:00",
+    "frame_interval_half_open": [
+      76961,
+      121073
+    ],
+    "steps_inclusive": [
+      1573,
+      2358
+    ],
+    "original_rows": 786,
+    "location": {
+      "map_id": 154,
+      "x": 3,
+      "y": 3
+    },
+    "badge_count": 5,
+    "badge_raw": 31
+  },
+  "party": {
+    "before": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 15,
+        "hp": 64,
+        "max_hp": 64,
+        "exp": 4668,
+        "status": 0,
+        "moves": [
+          55,
+          45,
+          0,
+          0
+        ],
+        "pp": [
+          25,
+          40,
+          0,
+          0
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 37,
+        "hp": 177,
+        "max_hp": 177,
+        "exp": 67563,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      }
+    ],
+    "after": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 16,
+        "hp": 68,
+        "max_hp": 68,
+        "exp": 5190,
+        "status": 0,
+        "moves": [
+          55,
+          45,
+          47,
+          0
+        ],
+        "pp": [
+          25,
+          40,
+          15,
+          0
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 37,
+        "hp": 177,
+        "max_hp": 177,
+        "exp": 68085,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      }
+    ],
+    "lapras_exp_gain": 522,
+    "snorlax_exp_gain": 522,
+    "unchanged_members": [
+      7,
+      102,
+      154,
+      35
+    ],
+    "four_members_unchanged_every_selected_observation": true,
+    "all_logged_player_hp_positive": true,
+    "minimum_observed_hp": {
+      "7": 121,
+      "19": 64,
+      "102": 90,
+      "154": 111,
+      "35": 111,
+      "132": 118
+    },
+    "full_hp_and_status_at_center": true,
+    "full_pp_matches_existing_baselines_and_new_sing15": true,
+    "normal_lead_changes_occurred": true,
+    "endpoint_order_matches": true
+  },
+  "exp_victories": [
+    {
+      "enemy": "VENONAT",
+      "level": 26,
+      "each_exp": 137,
+      "faint": {
+        "step": 1789,
+        "frame": 88857,
+        "recorded_at_utc": "2026-10-24T01:02:53.693570+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               PSN",
+          "           177/177",
+          " Enemy VENONAT",
+          " fainted!"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      },
+      "lapras": {
+        "step": 1790,
+        "frame": 88985,
+        "recorded_at_utc": "2026-10-24T01:02:53.747988+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               PSN",
+          "           177/177",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      },
+      "snorlax": {
+        "step": 1791,
+        "frame": 89113,
+        "recorded_at_utc": "2026-10-24T01:02:53.800420+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               PSN",
+          "           177/177",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      }
+    },
+    {
+      "enemy": "VENONAT",
+      "level": 26,
+      "each_exp": 137,
+      "faint": {
+        "step": 2069,
+        "frame": 102433,
+        "recorded_at_utc": "2026-10-24T01:03:06.525114+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           172/177",
+          " Enemy VENONAT",
+          " fainted!"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      },
+      "lapras": {
+        "step": 2070,
+        "frame": 102561,
+        "recorded_at_utc": "2026-10-24T01:03:06.594480+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           172/177",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      },
+      "snorlax": {
+        "step": 2071,
+        "frame": 102689,
+        "recorded_at_utc": "2026-10-24T01:03:06.657756+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           172/177",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      }
+    },
+    {
+      "enemy": "VENONAT",
+      "level": 26,
+      "each_exp": 137,
+      "faint": {
+        "step": 2139,
+        "frame": 108049,
+        "recorded_at_utc": "2026-10-24T01:03:10.840247+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           172/177",
+          " Enemy VENONAT",
+          " fainted!         ▼"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      },
+      "lapras": {
+        "step": 2140,
+        "frame": 108177,
+        "recorded_at_utc": "2026-10-24T01:03:10.907498+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           172/177",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      },
+      "snorlax": {
+        "step": 2141,
+        "frame": 108305,
+        "recorded_at_utc": "2026-10-24T01:03:10.977426+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           172/177",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      }
+    },
+    {
+      "enemy": "DITTO",
+      "level": 26,
+      "each_exp": 111,
+      "faint": {
+        "step": 2221,
+        "frame": 113881,
+        "recorded_at_utc": "2026-10-24T01:05:09.323325+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           118/177",
+          " Enemy DITTO",
+          " fainted!         ▼"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      },
+      "lapras": {
+        "step": 2222,
+        "frame": 114009,
+        "recorded_at_utc": "2026-10-24T01:05:09.396961+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           118/177",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      },
+      "snorlax": {
+        "step": 2227,
+        "frame": 114649,
+        "recorded_at_utc": "2026-10-24T01:08:18.072989+00:00",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           118/177",
+          " SNORLAX gained",
+          " 111 EXP. Points!"
+        ],
+        "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+      }
+    }
+  ],
+  "learned_move": {
+    "species": 19,
+    "level": 16,
+    "move_id": 47,
+    "move_name": "SING",
+    "slot_one_based": 3,
+    "new_pp": 15,
+    "before_moves": [
+      55,
+      45,
+      0,
+      0
+    ],
+    "after_moves": [
+      55,
+      45,
+      47,
+      0
+    ],
+    "existing_moves_preserved": true,
+    "grew_receipt": {
+      "step": 2223,
+      "frame": 114137,
+      "recorded_at_utc": "2026-10-24T01:05:09.486892+00:00",
+      "action": "a",
+      "visible_text": [
+        "          SNORLAX",
+        "               37",
+        "           118/177",
+        " LAPRAS grew",
+        " to level 16!"
+      ],
+      "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+    },
+    "learned_receipt": {
+      "step": 2225,
+      "frame": 114393,
+      "recorded_at_utc": "2026-10-24T01:08:17.811114+00:00",
+      "action": "a",
+      "visible_text": [
+        "          SNORLAX",
+        "               37",
+        "           118/177",
+        " LAPRAS learned",
+        " SING!"
+      ],
+      "time_semantics": "state是按鍵前觀測；at是動作後落盤，包含停檢後續接，不能當畫面首次出現時刻。"
+    },
+    "independent_no_input_proof_local_frame": 1,
+    "proof_corresponding_campaign_frame": 114393,
+    "proof_not_campaign_same_frame": true
+  },
+  "economy": {
+    "money_before_after": 46096,
+    "inventory_order_and_quantities_unchanged": true,
+    "no_new_capture_observed": true,
+    "no_new_badge_or_story_flag_in_endpoints": true
+  },
+  "operations": {
+    "actions": 786,
+    "action_counts": {
+      "start": 4,
+      "a": 162,
+      "down": 102,
+      "up": 54,
+      "b": 12,
+      "wait": 41,
+      "left": 201,
+      "right": 210
+    },
+    "new_laya_predictions": 7,
+    "laya_cache_hits": 778,
+    "controller_passive_waits": 1,
+    "semantic_laya_waits": 40,
+    "emulated_frames": 44112,
+    "emulated_seconds": 735.2,
+    "new_model_ms_sum": 4602.912600035779
+  },
+  "timing": {
+    "runner_counter_delta_seconds": {
+      "wall_seconds": 503.875,
+      "model_wait_seconds": 5.194,
+      "review_pause_seconds": 468.129,
+      "non_review_session_seconds": 35.746,
+      "emulated_seconds": 735.2
+    },
+    "iso_review_boundary_seconds": 503.867817,
+    "note": "wall含工程review；模擬時間、逐筆model_ms、model_wait與全程通關時間分開。"
+  },
+  "retained_reviews": [
+    {
+      "issue": "Ditto變身後原身與有效物種不同，shared支援owner保守誤停",
+      "adjustment": "父層只沿既有同幀變身證明核原身與有效目標，保留同場資料後正常續行；本builder未修改來源。"
+    },
+    {
+      "issue": "Ditto倒下後拉普拉斯學SING頁不在原KO收尾白名單，完整頁停檢",
+      "adjustment": "父層核來源當級學招、真party已在第三槽及PP15、原生完整收據，正常續另一成員EXP；未知頁仍停。",
+      "evidence_file": "outputs/research/ditto-lapras-sing-closed-page-proof-20261024.json",
+      "local_clone_frame": 1,
+      "campaign_frame": 114393
+    }
+  ],
+  "budget_contract": {
+    "source": "父層執行契約；本任務沒有讀supervisor事件或plan",
+    "first_target35_job_appends_used": 12,
+    "first_job_seconds": 900,
+    "target16_job_appends_used": 15,
+    "target16_job_seconds": 180,
+    "original_deadlines_and_counts_not_reset": true,
+    "next_job": "all35-after-review",
+    "next_job_seconds": 900,
+    "next_job_max_appends": 500,
+    "next_job_status": "另行授權繼續目標；不屬本16級固定結果，尚不能稱全隊35"
+  },
+  "classification": {
+    "ledger_model": "laya-rl-agent",
+    "cloud_fallback": false,
+    "strata_configuration_changed": false,
+    "gpt_gameplay_classification_calls": 0,
+    "new_strata_calls": 0,
+    "zero_external_calls_source": "父層離線執行契約，非本builder讀外部API流量或計費。"
+  },
+  "code_validation": {
+    "provided_by_parent": true,
+    "passed": 5450,
+    "seconds": 31.88,
+    "warnings": 1,
+    "warning_kind": "既有SDL提示",
+    "scope": "含全隊health與Ditto學招修正，不等於全程實戰驗證"
+  },
+  "previous_code_validation": {
+    "provided_by_parent": true,
+    "passed": 5448,
+    "seconds": 22.56,
+    "warnings": 1,
+    "status": "PPUp極窄修補前的歷史快照"
+  },
+  "independent_ledger_crosscheck": {
+    "agent": "bill_route",
+    "counts_and_four_exp_awards_agree": true,
+    "no_faint_in_selected_observations": true,
+    "scope": "同一固定786原行與party數值，沒有另外逐幀看像素或操作實況"
+  },
+  "media_reference": {
+    "file": "results/six-party-shared-exp-clips-20261024.json",
+    "shows_only_first_pidgey_shared_88": true,
+    "not_video_of_lapras16": true,
+    "added_videos": 2,
+    "added_formal_pngs": 4,
+    "added_qa": 1,
+    "phase_videos": 34,
+    "phase_pngs_including_qa": 119
+  },
+  "evidence": [
+    {
+      "file": ".local/six-training-round1-final-review-20261024.json",
+      "sha256": "f4a5484bb48318f5a5aea7584d59f9ddf6e5abc6e6400605d956612630650bc2"
+    },
+    {
+      "file": ".local/lapras16-final-review-20261024.json",
+      "sha256": "83f5104bbbe56eac3fdb6ee556324ac15de6e4cb51a2220163819eb6add3c233"
+    },
+    {
+      "file": ".local/lapras16-final-summary-20261024.json",
+      "sha256": "c5a71ae7e6c96ca23ea36ac9fa41a494d0991c5525c828955fb19bc79665f12e"
+    },
+    {
+      "file": ".local/lapras16-fixed-steps-20261024.jsonl",
+      "sha256": "54018a16dc13a25fc2a7abe1d7791753156d8271e92ec836777f30eccf261087"
+    },
+    {
+      "file": "outputs/research/ditto-lapras-sing-closed-page-proof-20261024.json",
+      "sha256": "877c709ea30131ec3646a2e6671a3593be0363aa251bf566187fea66ea221b61"
+    },
+    {
+      "file": "results/six-party-shared-exp-clips-20261024.json",
+      "sha256": "299c55b6ed6c9f2b83f0a6352ae58e99ff98fd1e8a9fe0a7aa073645e054ad1c"
+    }
+  ],
+  "limits": [
+    "五枚徽章；希魯夫坂木、第六館、聯盟與全六人35尚未完成。",
+    "固定786行不是全部訓練歷史，不將其每個動作當四場EXP戰。",
+    "Sing的落盤時間含停檢後續接，不當成頁面最初印出時間；無鍵clone本地frame1不是campaign114393。",
+    "900秒／180秒為supervisor排程預算；不能當作含工程停檢及人工正常回城的整段牆鐘。",
+    "本工作未載入ROM/state、送鍵、呼叫模型/API、讀supervisor事件/plan、改來源或進行備份部署。",
+    "影片只首場兩員各88EXP，不能冒充16級學招畫面；影片／網站未發布，原生SDL故障仍未修。"
+  ]
+}

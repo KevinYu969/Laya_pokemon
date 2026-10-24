@@ -1,0 +1,702 @@
+{
+  "schema": "laya-six-party-training-first-round-v1",
+  "language": "zh-Hant",
+  "recorded_date": "2026-10-24",
+  "title": "六人首輪分經驗：拉普拉斯與卡比獸各+450 EXP，正常返中心補給",
+  "cutoff_taipei": "2026-10-24T09:00:00.866366+08:00",
+  "scope": {
+    "before_taipei": "2026-10-24T08:40:36.189037+08:00",
+    "after_taipei": "2026-10-24T09:00:00.866366+08:00",
+    "frames_half_open": [
+      43817,
+      76961
+    ],
+    "note": "固定首輪547個動作，含換首位、移動、10次野戰遭遇、工程停檢與返中心；不是四場勝利全程混算"
+  },
+  "source_receipts": [
+    {
+      "role": "before",
+      "sha256": "bb02a87ff7baba18e3db448dd0f67f65a3d948ec56950839eb4b61ddd75ff866"
+    },
+    {
+      "role": "after",
+      "sha256": "f4a5484bb48318f5a5aea7584d59f9ddf6e5abc6e6400605d956612630650bc2"
+    },
+    {
+      "role": "summary",
+      "sha256": "f8f3aec8ec682aceb47d09ab327b87e906933774f3a22f3323ee761f6f0335ff"
+    },
+    {
+      "role": "ledger",
+      "sha256": "f3acdafbb5639ba58d2f40fa60f5718f0abe9364f0e9beae1aabea84c0df12ae"
+    }
+  ],
+  "before_party": [
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 37,
+      "hp": 177,
+      "max_hp": 177,
+      "exp": 67113,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 40019,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 36,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 50081,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 15,
+      "hp": 64,
+      "max_hp": 64,
+      "exp": 4218,
+      "status": 0,
+      "moves": [
+        55,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        25,
+        40,
+        0,
+        0
+      ]
+    }
+  ],
+  "after_party": [
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 40019,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 15,
+      "hp": 64,
+      "max_hp": 64,
+      "exp": 4668,
+      "status": 0,
+      "moves": [
+        55,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        25,
+        40,
+        0,
+        0
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 36,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 50081,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 37,
+      "hp": 177,
+      "max_hp": 177,
+      "exp": 67563,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    }
+  ],
+  "changes": {
+    "lapras_exp": [
+      4218,
+      4668
+    ],
+    "snorlax_exp": [
+      67113,
+      67563
+    ],
+    "exp_gain_each": 450,
+    "lapras_level": [
+      15,
+      15
+    ],
+    "snorlax_level": [
+      37,
+      37
+    ],
+    "other_four_member_records_unchanged": true,
+    "before_order": [
+      132,
+      7,
+      102,
+      154,
+      35,
+      19
+    ],
+    "after_order": [
+      7,
+      19,
+      102,
+      154,
+      35,
+      132
+    ],
+    "money": [
+      46096,
+      46096
+    ],
+    "inventory_order_and_quantity_unchanged": true,
+    "new_captures": 0,
+    "observed_party_faints": 0,
+    "observed_total_defeats": 0,
+    "badges": 5
+  },
+  "four_experience_wins": [
+    {
+      "opponent_species": "PIDGEY",
+      "opponent_level": 23,
+      "lapras_exp": 88,
+      "snorlax_exp": 88,
+      "fainted_step": 1204,
+      "lapras_exp_step": 1205,
+      "snorlax_exp_step": 1206,
+      "steps_inclusive": [
+        1176,
+        1206
+      ],
+      "frames_half_open": [
+        50433,
+        53169
+      ],
+      "first_logged_at": "2026-10-24T00:45:09.363267+00:00",
+      "last_logged_at": "2026-10-24T00:45:11.106394+00:00",
+      "selected_raw_lines_sha256": "89e2efd26dae8b28b0dbf0c7ee76c6df5e58bccd1cbc6d6499936736525b17a8",
+      "actions": 31,
+      "action_counts": {
+        "wait": 5,
+        "a": 17,
+        "right": 1,
+        "down": 8
+      },
+      "new_laya_choices": 2,
+      "cache_hits": 29,
+      "passive_waits": 0,
+      "emulated_frames": 2736,
+      "emulated_seconds_exact": 45.6,
+      "cumulative_counter_delta": {
+        "wall_seconds": 1.797,
+        "model_wait_seconds": 0.532,
+        "review_pause_seconds": 0.0,
+        "non_review_session_seconds": 1.797,
+        "emulated_seconds": 45.6
+      },
+      "logged_prediction_ms_sum": 492.9396
+    },
+    {
+      "opponent_species": "VENONAT",
+      "opponent_level": 26,
+      "lapras_exp": 137,
+      "snorlax_exp": 137,
+      "fainted_step": 1252,
+      "lapras_exp_step": 1253,
+      "snorlax_exp_step": 1254,
+      "steps_inclusive": [
+        1226,
+        1254
+      ],
+      "frames_half_open": [
+        53929,
+        56409
+      ],
+      "first_logged_at": "2026-10-24T00:45:12.827250+00:00",
+      "last_logged_at": "2026-10-24T00:45:13.947890+00:00",
+      "selected_raw_lines_sha256": "284d9912e2b335bcb37bd6a45c10e891eca4e044b3cf0ee7a8947dba12d52b07",
+      "actions": 29,
+      "action_counts": {
+        "wait": 3,
+        "a": 17,
+        "right": 1,
+        "down": 8
+      },
+      "new_laya_choices": 0,
+      "cache_hits": 29,
+      "passive_waits": 0,
+      "emulated_frames": 2480,
+      "emulated_seconds_exact": 41.333333333333336,
+      "cumulative_counter_delta": {
+        "wall_seconds": 1.172,
+        "model_wait_seconds": 0.0,
+        "review_pause_seconds": 0.0,
+        "non_review_session_seconds": 1.172,
+        "emulated_seconds": 41.333
+      },
+      "logged_prediction_ms_sum": 0.0
+    },
+    {
+      "opponent_species": "PIDGEY",
+      "opponent_level": 23,
+      "lapras_exp": 88,
+      "snorlax_exp": 88,
+      "fainted_step": 1301,
+      "lapras_exp_step": 1303,
+      "snorlax_exp_step": 1304,
+      "steps_inclusive": [
+        1276,
+        1304
+      ],
+      "frames_half_open": [
+        57865,
+        60345
+      ],
+      "first_logged_at": "2026-10-24T00:45:14.996865+00:00",
+      "last_logged_at": "2026-10-24T00:45:16.149827+00:00",
+      "selected_raw_lines_sha256": "ba03cc1a81f54197b910896e4fb28154de79fec03ccb68a089e2464713871a22",
+      "actions": 29,
+      "action_counts": {
+        "wait": 3,
+        "a": 17,
+        "right": 1,
+        "down": 8
+      },
+      "new_laya_choices": 0,
+      "cache_hits": 29,
+      "passive_waits": 0,
+      "emulated_frames": 2480,
+      "emulated_seconds_exact": 41.333333333333336,
+      "cumulative_counter_delta": {
+        "wall_seconds": 1.219,
+        "model_wait_seconds": 0.015,
+        "review_pause_seconds": 0.0,
+        "non_review_session_seconds": 1.219,
+        "emulated_seconds": 41.333
+      },
+      "logged_prediction_ms_sum": 0.0
+    },
+    {
+      "opponent_species": "VENONAT",
+      "opponent_level": 26,
+      "lapras_exp": 137,
+      "snorlax_exp": 137,
+      "fainted_step": 1414,
+      "lapras_exp_step": 1415,
+      "snorlax_exp_step": 1416,
+      "steps_inclusive": [
+        1386,
+        1416
+      ],
+      "frames_half_open": [
+        65697,
+        68345
+      ],
+      "first_logged_at": "2026-10-24T00:45:20.832421+00:00",
+      "last_logged_at": "2026-10-24T00:56:39.353731+00:00",
+      "selected_raw_lines_sha256": "9ab546c28c744dd8614753459e53df22ddc6b370495580ac39b046bd8c22c2ba",
+      "actions": 31,
+      "action_counts": {
+        "wait": 5,
+        "a": 17,
+        "right": 1,
+        "down": 8
+      },
+      "new_laya_choices": 0,
+      "cache_hits": 30,
+      "passive_waits": 1,
+      "emulated_frames": 2648,
+      "emulated_seconds_exact": 44.13333333333333,
+      "cumulative_counter_delta": {
+        "wall_seconds": 678.578,
+        "model_wait_seconds": 0.016,
+        "review_pause_seconds": 676.766,
+        "non_review_session_seconds": 1.812,
+        "emulated_seconds": 44.134
+      },
+      "logged_prediction_ms_sum": 0.0
+    }
+  ],
+  "four_win_cost_only": {
+    "actions": 120,
+    "action_counts": {
+      "wait": 16,
+      "a": 68,
+      "right": 4,
+      "down": 32
+    },
+    "new_laya_choices": 2,
+    "cache_hits": 117,
+    "passive_waits": 1,
+    "emulated_frames": 10344,
+    "emulated_seconds_exact": 172.4,
+    "cumulative_counter_delta": {
+      "wall_seconds": 682.766,
+      "model_wait_seconds": 0.563,
+      "review_pause_seconds": 676.766,
+      "non_review_session_seconds": 6.0,
+      "emulated_seconds": 172.4
+    }
+  },
+  "whole_first_round_cost": {
+    "steps_inclusive": [
+      1026,
+      1572
+    ],
+    "frames_half_open": [
+      43817,
+      76961
+    ],
+    "first_logged_at": "2026-10-24T00:45:02.529441+00:00",
+    "last_logged_at": "2026-10-24T01:00:00.827806+00:00",
+    "selected_raw_lines_sha256": "f3acdafbb5639ba58d2f40fa60f5718f0abe9364f0e9beae1aabea84c0df12ae",
+    "actions": 547,
+    "action_counts": {
+      "start": 2,
+      "down": 77,
+      "a": 135,
+      "up": 31,
+      "b": 6,
+      "wait": 38,
+      "left": 125,
+      "right": 133
+    },
+    "new_laya_choices": 12,
+    "cache_hits": 534,
+    "passive_waits": 1,
+    "emulated_frames": 33144,
+    "emulated_seconds_exact": 552.4,
+    "cumulative_counter_delta": {
+      "wall_seconds": 1164.641,
+      "model_wait_seconds": 5.032,
+      "review_pause_seconds": 1140.204,
+      "non_review_session_seconds": 24.437,
+      "emulated_seconds": 552.4
+    },
+    "logged_prediction_ms_sum": 4575.2656,
+    "end_review_counter_delta": {
+      "wall_seconds": 1164.672,
+      "model_wait_seconds": 5.032,
+      "review_pause_seconds": 1140.204,
+      "non_review_session_seconds": 24.468,
+      "emulated_seconds": 552.4
+    },
+    "center_endpoint_wall_clock_seconds": 1164.677329
+  },
+  "time_interpretation": [
+    "wall含工程等待；review是runtime記錄的停檢時間；non_review是其餘runtime時間，不等於模型推論時間。",
+    "emulated由遊戲幀數/60計算；不能作牆鐘時間、短片時長或整款破關時間。",
+    "四場cost是各段action之累積counter減前一row counter後加總；四場不連續，含第四場的兩次工程停檢。",
+    "端點UTC差與四捨五入runtime counter有毫秒差異，兩者分開保留。"
+  ],
+  "events": [
+    {
+      "kind": "lapras_lead_swap",
+      "step": 1043,
+      "frame": 44497,
+      "at": "2026-10-24T00:45:04.091755+00:00"
+    },
+    {
+      "kind": "whirlwind_forced_end",
+      "steps": [
+        1378,
+        1379,
+        1380
+      ],
+      "frames": [
+        65201,
+        65329,
+        65457
+      ],
+      "outcome": "招式結束野戰，無EXP，沒有我方倒下"
+    },
+    {
+      "kind": "stale_pending_review",
+      "pause_frame": 66337,
+      "logged_resume_step": 1391,
+      "reason": "training_shared_experience_owner_or_intent_changed",
+      "fix": "正常非戰鬥閉合收尾與一次性審核capsule，不在新敵上直接重設owner"
+    },
+    {
+      "kind": "one_observed_poison_application",
+      "text_step": 1405,
+      "first_party_status_step": 1406,
+      "status": 8,
+      "note": "只有一個完整was poisoned事件；不從持續PSN重算第二次中毒，也未讀到完整致毒招式名"
+    },
+    {
+      "kind": "over_strict_poison_handoff_review",
+      "pause_frame": 67417,
+      "logged_resume_step": 1407,
+      "reason": "training_shared_experience_support_not_safe",
+      "fix": "完整target HUD已證明換人完成，中毒交回原battle，不再誤當候補未就緒"
+    },
+    {
+      "kind": "unsafe_support_review",
+      "pause_frame": 69145,
+      "logged_resume_step": 1426,
+      "reason": "training_shared_experience_support_not_safe",
+      "assessment": "卡比獸已中毒，拉普拉斯健康；此停點正確，顯示原lead-only草前損耗檢查漏看隊友狀態"
+    },
+    {
+      "kind": "ditto_escape_after_one_water_gun",
+      "steps": [
+        1427,
+        1429,
+        1432,
+        1433,
+        1438,
+        1440
+      ],
+      "note": "先正常選WATER GUN；敵TRANSFORM成LAPRAS，原生顯示WATER GUN與抗性，再正常RUN/Got away safely，無EXP勝利"
+    },
+    {
+      "kind": "nidoking_escort_swap",
+      "step": 1451,
+      "frame": 71025,
+      "at": "2026-10-24T00:59:55.153720+00:00"
+    },
+    {
+      "kind": "center_full_restore_first_observed",
+      "step": 1566,
+      "frame": 76065,
+      "at": "2026-10-24T01:00:00.460738+00:00"
+    },
+    {
+      "kind": "closed_center_endpoint",
+      "frame": 76961,
+      "at": "2026-10-24T01:00:00.866366+00:00",
+      "location": {
+        "map_id": 154,
+        "x": 3,
+        "y": 3
+      }
+    }
+  ],
+  "recovery": {
+    "first_full_restore_step": 1566,
+    "endpoint_taipei": "2026-10-24T09:00:00.866366+08:00",
+    "endpoint_frame": 76961,
+    "location": {
+      "map_id": 154,
+      "x": 3,
+      "y": 3
+    },
+    "all_six_full_hp": true,
+    "all_status_zero": true,
+    "all_pp_restored_to_before": true,
+    "exp_retained": true,
+    "snorlax_min_observed_hp": 127,
+    "snorlax_max_hp": 177,
+    "note": "尼多王正常換首位帶路；治療前卡比獸仍中毒且最低127/177，沒有倒下。"
+  },
+  "runtime_evidence": {
+    "logged_choice_model": "laya-rl-agent",
+    "logged_new_laya_choices": 12,
+    "logged_cache_hits": 534,
+    "logged_controller_passive_waits": 1,
+    "summary_cloud_fallback": false,
+    "summary_strata_configuration_changed": false,
+    "caveat": "以上是固定執行紀錄與摘要，不是網路流量審計；工程助理的雲端額度另計。"
+  },
+  "execution_contract_parent_reported": {
+    "original_budget_seconds": 900,
+    "job_appends": 12,
+    "deadline_not_reset": true,
+    "note": "由父層執行契約提供，547筆不含完整plan歷史；不是本收據獨立查驗過deadline。"
+  },
+  "validation_parent_reported": {
+    "full_suite": {
+      "passed": 5443,
+      "seconds": 22.17,
+      "warnings": 1,
+      "warning_kind": "SDL"
+    },
+    "new_training_only_attrition_guard_targeted_passed": 62,
+    "new_guard_behavior": "下一次草前任何隊員中毒、HP≤2/3或低PP，走正常回中心策略",
+    "new_guard_live_verified_in_this_round": false
+  },
+  "evidence_limits": [
+    "文字頁依紀錄候選與進度RAM交叉，沒有本次逐幀像素複審。",
+    "固定summary是原mutable摘要的copy；其recorded_at為session初始化時間，不能當09:00成果時間。",
+    "原始547行固定copy已核SHA；不讀更新中的game24 summary或open影片。",
+    "尚未達成Lapras16、全六人35、第六館、聯盟或網站發布；後續短里程碑不在本收據。"
+  ]
+}

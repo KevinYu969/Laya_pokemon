@@ -941,3 +941,30 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 - 正式結果results/celadon-water-purchase-20261024.json、route7-guard-water-20261024.json及對應clips；公開頁docs/saffron-entry-progress.md固定至07:34中心，之後Silph另列。卡片門pure候選155測試＋新runtimebridge21測試通過，來源驗門事件及真可見tile，不消耗卡；尚待實況開門。Lapras贈送pure138測試及獨審完成，尚未橋接、未領取。
 - 後續正常走回3F時，07:51:19.454141已遇28級Rocket；卡比獸82/173觸發半血正常換滿血大嘴雀，停在Get'm! FEAROW!的合字辨識review，未倒下、未洗存檔。正在保留同戰況窄修，沒有把工程停檢說成戰敗或首次無卡關。逐鍵Laya仍本機離線，Strata配置不改、零新增API、沒有GPT遊戲分類；雲端工程額度另計。原生SDL視窗阻塞未修，真framebuffer仍由本機8767頁顯示；網站未發布，聯盟未完成。
 
+## 50. 2026-10-24 希魯夫勁敵勝利、拉普拉斯入隊與六人正常往返
+
+- 3F半血換人的兩次工程停檢保留原戰況：07:51單實體tile的'm；08:07目標已換上、敵方先用DISABLE。原生換人會先吃敵方回合，不能強等command才結案。只在完整目標HUD與來源台詞匹配時解除pending並WAIT，不刪pending、不洗存檔；08:11:52.207892正常擊敗28級Raticate／Hypno／Raticate，大嘴雀35→36，無倒下。第一張Get'm截圖仍舊SnorlaxHUD、文字metadata已變Fearow的渲染落差明確保留，不冒稱當幀全相符。
+- 08:12:22.647295正常金黃中心補滿；08:13:12.038252正常3F刷Card Key開門，三次A各對話階段、原鑰匙1份不消耗，D828bit1與可見17,8門tile01/walk1及兩個closed驗收。11F門來源候選仍未實走，不能由3F外推已全校準。
+- 08:15:25.117691希魯夫勁敵勝利閉合，實際五敵Pidgeot37／Exeggcute38／Gyarados35／Alakazam35／Charizard40。卡比獸37、56/177且PAR，大嘴雀36、63/111，原三員保持，無玩家倒下；money43496→46096。勝利旗標先於原生告別／離場，closed複本joy_ignore255如實保留，不冒稱當幀零輸入鎖。正常回城08:16:39.566961全五人HP/status/PP滿，麻痺正常治好。
+- 08:20:39.492837到Lapras NPC前全五人滿，正常STOP舊game23、保存最新final並由game24載入，沒有回退。舊final與checkpoint及新source SHA同為5113ce7372d06ae3cec7b8496f8d706be01d001a3015311ebc7a73fc58d11111；首次progress/location/screen hash一致。跨run frame重設不可相減。重啟因執行中的main函式不能熱換新增attrition窄接線，不是實驗回滾。
+- 08:22:41.084612正常NPC贈送拉普拉斯入第六格：species19／Lv15／HP64/64／EXP4218、水槍55與叫聲45、PP25/40/0/0；NO保留LAPRAS原名。原五完整可讀數值、背包／money／五徽章保持。47動作＝A16／DOWN1／WAIT30，2新Laya／15快取／30被動等待；未初始化命名7筆party保持未知，專屬已綁交易窄橋接1筆，不關閉一般損耗或敗北保護。原五raw前快照未另存，不冒稱兩份raw直接比對。
+- 贈送8.906秒程序牆鐘含4.379秒冷載入；冷載入巢狀於7.533秒model_wait不可相加。1880幀31.333秒是模擬時間。game24持續summary未另存原bytes，公開收據已標其SHA僅歷史稽核值；固定47筆ledger與before/after reviews仍保留，不能聲稱現summary仍同hash。
+- 08:32:12.738985六人出金黃東側；8號道路1,10停滯因需要向右撞前方0F地毯才能觸發目前格warp。保存frame6961、正常把路線terminal設2,10後續行，不改碰撞／不刪NPC。08:39:04.208328六人正常回淺紅154(3,4)全HP/status/PP滿，Snorlax37 EXP67113（南返+447，未逐戰核對者不猜對手）、Nido36／Eevee35／Venusaur35／Fearow36／Lapras15。
+- 08:39:53.376852六人正常到Route15(18,8)，無鍵獨立複本確認18,8與19,8真草且walk1；08:40:36.189037正常154(3,3)全HP/status/PP滿，校準往返party/EXP未改。此切點只證明正常補給路線，尚未聲稱Lapras分得EXP。新六人訓練候選先首發最低level/EXP，25級前正常PKMN換健康最高級支援，25級後直打；顯式job、25次/60秒換人預算、900秒/240批監督預算，不重設同job。獨審找同幀矛盾HUD能過早清pending，已補sticky/packet檢查；全5432回歸通過21.21秒、1既有SDL提示。私人supervisor另48項，CAS已提交但事件缺失改為停給父層檢查，不猜補紀錄。
+- 新勁敵戰素材2片：原速327.333333秒、後製4x81.833333秒，4910來源影格全保留；8正式PNG＋1QA。本素材階段32片114PNG含QA，不代表歷來總數。父層重核28唯一固定證據檔SHA並親看8格QA；影片工程等待未編入，不能當牆鐘或通關時間。影片與私人raw／ROM／存檔都不上GitHub。
+- 公開收據新增silph-third-trainer、silph-third-door-campaign、silph-rival-campaign、lapras-gift-campaign、session23-to24-continuity、silph-rival-clips與six-party-return-and-calibration（20261024）。最近已核GitHub備份25739bcb4e3deca80a660677bcad852a3fa8b4f2／261檔，CI40043474162成功；本節其後尚待新備份。
+- 逐鍵分類仍本機Laya離線、Strata配置不改、沒有GPT遊戲分類／雲端fallback。另一次local-Qwen健康探測fetch failed，沒有派任務、沒有輸出或可用token用量；這是工程連線檢查，不能稱所有網路嘗試為零。真framebuffer仍8767，原生SDL／GLFW阻塞未修。五枚徽章；希魯夫坂木／第六館／聯盟未完成，網站仍未發布。
+
+## 51. 2026-10-24 真六人分經驗、拉普拉斯16級學唱歌後持續補練
+
+- 第一輪固定08:40:36.189037／frame43817→09:00:00.866366／76961，正常回淺紅154(3,3)六人HP/status/PP全滿。四場實勝各+88/+137/+88/+137，拉普拉斯與卡比獸各+450EXP；Lapras4218→4668、Snor67113→67563，其他四員逐547筆完整保持。十次遭遇不全是勝利；第一個ODDISH正常RUN不冒稱分EXP，Ditto保留先一發水槍再RUN，不寫零攻擊立即逃或戰勝。實際只有一次完整中毒事件。
+- 547動作為12新Laya／534快取／1被動等待；四場EXP勝利120動作另為2新／117快取／1被動。整段counterwall1164.672、review1140.204、非review24.468秒，模擬552.4秒；四勝範圍wall682.766含review676.766，非review6秒、模擬172.4秒。都不是全紅版通關時間，也不把工程查核等待隱去。首輪固定summary另存，避免後續持續檔案覆寫舊hash。
+- 吹飛正常結束戰鬥卻沒有主力command，舊shared pending未結→下一毛球review。保存65457/65497兩筆真none/overworld/相鄰正常移動與原行SHA，明示父層一次性historical ledger capsule綁原job／敵PIDGEY／隊伍／lastframe64777/current66337後正常收尾，另記audit WAIT；沒有捏造歷史decoder或像素目視、沒有在新敵直接無條件刪pending。新自動收尾依真decoder閉合與同owner；nonce跨reload保留。
+- 之後主力正常換上被毛球中毒，完整PSN HUD應代表換人已完成；已改交回原戰鬥，不在招式頁繼續要求狀態零。第三次support_not_safe確實擋下中毒主力；因原損耗只檢首位、Lapras仍健康而漏掉支援中毒，新增明示六人訓練時全隊HP/status/攻擊PP閘門，下一步草前回中心。首輪正常停分EXP、保留450EXP，以健康Nido護送治毒，不回讀戰前。
+- 16級短里程碑是檢討後新job180秒/60批，前一35級job原900秒期限與12批原值保留；短job15批後遇Ditto變身，RAM物種變成Snor而HUD仍DITTO。shared helper接既有同幀變身證明，保留original DITTO遭遇，評分用effective屬性，不冒稱換敵。其後Lapras16學SING頁被原Ditto0HP收尾擋住；只擴為真party分EXP／當級來源且moves已持有、PP完整的learned收據，partial WAIT、未知仍review。原wrong_exp測試改成未在隊伍PIKACHU；Snorlax在真隊伍正常分EXP本就應通過。
+- 無鍵獨立clone source114393→localframe1核完整LAPRAS learned SING!與既有0HP證明、A/WAIT收尾，stop(save=False)、原checkpoint SHA未變；clone1不當campaign幀。09:08:24.734183正常中心121073完成關頁與全隊HP/status/PP恢復，Lapras15EXP4668→16EXP5190(+522)、HP64→68、第三槽SING47／15PP；卡比獸EXP67563→68085(+522)，原四員保持。贈送後兩階段合計兩員各+972，未全六人35級。
+- 最新完整回歸5448項通過22.56秒／1既有SDL提示，code-validation-six-party-20261024.json固定17檔SHA；私人監督器另55合成測試。原兩job期限與12／15批不重設，CAS缺事件直接停檢；同job正常草終點／中途party_attrition可依原phase／期限續接，未知不清。短期TARGET完成事件改記實際target，不硬碼35。
+- 09:10:18從121073中心全補另開明示all35-after-review，900秒／500批，持續讓最低level/EXP首發、25級前正常換健康主力；支援低血／中毒自動回中心全補。09:11:26實測Lapras17／Snor38、HP81/182時在下一步草前正常回中心排程；09:12:42觀測Lapras18 HP76/76／Snor38 HP166/182，仍持續跑。後兩項是執行中觀測，最新固定完整中心收據仍是16級；不宣稱35或第六館完成。
+- 首場真正PIDGEY23分EXP另剪2片：1x46.266667秒／後製4x11.566667秒，694幀完整保留；六人slot6 SWITCH與Lapras／Snor各88EXP四張正式PNG＋1QA。前一ODDISH RUN及後來兩場／吹飛不混入。父層親看QA與36唯一固定檔SHA核通過；本素材階段34片119PNG含QA，影片／raw留本機，僅公開收據。命令多行錯用literal\n導致一次驗證腳本SyntaxError，改為正式檔執行後核通過，未改證據資料。
+- 真framebuffer服務改用隱藏背景程序，HTTP200／當前六人核通過。舊IAB tab3網路錯誤頁是data URL，reload/goto/close被URL政策擋；不繞政策，依支援方式開新正常tab4至同一8767，頁面真實可見並保留。原生SDL視窗仍未修，網站未發布。逐鍵仍離線Laya，Strata配置不改；分類無GPT／雲端fallback，工程額度另計。五徽章，希魯夫坂木／第六館／聯盟未完。
+

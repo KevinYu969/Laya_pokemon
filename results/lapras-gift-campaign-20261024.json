@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "title": "西爾佛公司正常領取拉普拉斯，六人隊伍成立",
+  "date": "2026-10-24",
+  "scope": "game24前47筆，NPC對話→自動領取→暱稱NO→完整六人與兩幀閉合驗收",
+  "completed_at_utc": "2026-10-24T00:22:41.084612+00:00",
+  "completed_at_taipei": "2026-10-24T08:22:41.084612+08:00",
+  "location": {
+    "map_id": 212,
+    "x": 2,
+    "y": 5
+  },
+  "party_count_before": 5,
+  "party_count_after": 6,
+  "new_member": {
+    "species": 19,
+    "species_name": "LAPRAS",
+    "level": 15,
+    "hp": 64,
+    "max_hp": 64,
+    "exp": 4218,
+    "status": 0,
+    "moves": [
+      55,
+      45,
+      0,
+      0
+    ],
+    "pp": [
+      25,
+      40,
+      0,
+      0
+    ]
+  },
+  "existing_party": [
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 37,
+      "hp": 177,
+      "max_hp": 177,
+      "exp": 66666,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 40019,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 36,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 50081,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        30,
+        20
+      ]
+    }
+  ],
+  "verified": {
+    "existing_five_numeric_fields_and_order_unchanged": true,
+    "inventory_order_and_quantities_unchanged": true,
+    "money_unchanged": 46096,
+    "card_key_item_48_quantity": 1,
+    "badges_raw_unchanged": 31,
+    "endpoint_story_flags_unchanged": true,
+    "unknown_transition_story_flags_preserved_none": 37,
+    "nickname_no_selected": true,
+    "gift_flag_final_true": true,
+    "flags4_final_raw": 15,
+    "new_member_final_raw_matches_progress": true,
+    "original_five_final_raw_numeric_projection_matches_before": true,
+    "direct_before_after_raw_comparison_available": false,
+    "two_closed_frames": [
+      1801,
+      1841
+    ],
+    "final_review_frame": 1881
+  },
+  "operations": {
+    "ledger_rows": 47,
+    "actions": {
+      "a": 16,
+      "wait": 30,
+      "down": 1
+    },
+    "uncached_laya_choices": 2,
+    "cached_laya_choices": 15,
+    "passive_waits": 30,
+    "pre_attrition_hook_observed_count": 1,
+    "pre_attrition_hook_steps": [
+      16
+    ],
+    "pre_attrition_hook_frames": [
+      601
+    ],
+    "uninitialized_party_steps": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "uninitialized_party_original_empty_packet_preserved": true,
+    "no_synthetic_party_in_ledger": true,
+    "intermediate_review_pause_seconds": 0.0,
+    "emulated_frames": 1880,
+    "emulated_seconds": 31.333333
+  },
+  "timing": {
+    "process_wall_to_closed_review_seconds": 8.906,
+    "review_pause_seconds": 0.0,
+    "non_review_process_seconds": 8.906,
+    "model_wait_seconds_includes_initialization": 7.533,
+    "reported_model_cold_load_seconds": 4.379108799970709,
+    "recorded_choice_model_ms_sum": 537.8670000354759,
+    "first_logged_action_at_utc": "2026-10-24T00:22:39.618730+00:00",
+    "last_logged_action_at_utc": "2026-10-24T00:22:41.054333+00:00"
+  },
+  "classification": {
+    "ledger_model": "laya-rl-agent",
+    "cloud_fallback": false,
+    "strata_configuration_changed": false,
+    "gpt_classification_calls": 0,
+    "new_strata_calls": 0,
+    "zero_external_calls_evidence": "父層離線執行契約；非本收據讀取外部計費紀錄"
+  },
+  "key_events": [
+    {
+      "step": 1,
+      "frame": 1,
+      "at": "2026-10-24T00:22:39.618730+00:00",
+      "action": "a",
+      "tactic": "talk_to_only_lapras_worker_once",
+      "visible_text": []
+    },
+    {
+      "step": 13,
+      "frame": 481,
+      "at": "2026-10-24T00:22:39.923199+00:00",
+      "action": "a",
+      "tactic": "advance_verified_source_prompt",
+      "visible_text": [
+        " have this POKéMON",
+        " for saving us.   ▼"
+      ]
+    },
+    {
+      "step": 14,
+      "frame": 521,
+      "at": "2026-10-24T00:22:39.943731+00:00",
+      "action": "wait",
+      "tactic": "automatic_got_lapras_receipt_no_a",
+      "visible_text": [
+        " KEVIN got",
+        " LAPRAS!"
+      ]
+    },
+    {
+      "step": 16,
+      "frame": 601,
+      "at": "2026-10-24T00:22:39.998528+00:00",
+      "action": "wait",
+      "tactic": "source_blank_no_resend",
+      "visible_text": []
+    },
+    {
+      "step": 19,
+      "frame": 721,
+      "at": "2026-10-24T00:22:40.085438+00:00",
+      "action": "a",
+      "tactic": "advance_nickname_cont_once",
+      "visible_text": [
+        " Do you want to",
+        " give a nickname  ▼"
+      ]
+    },
+    {
+      "step": 21,
+      "frame": 801,
+      "at": "2026-10-24T00:22:40.408881+00:00",
+      "action": "down",
+      "tactic": "select_only_no_nickname",
+      "visible_text": [
+        "               ▶YES",
+        "                NO",
+        " give a nickname",
+        " to LAPRAS?"
+      ]
+    },
+    {
+      "step": 22,
+      "frame": 841,
+      "at": "2026-10-24T00:22:40.431482+00:00",
+      "action": "a",
+      "tactic": "confirm_complete_unique_no_once",
+      "visible_text": [
+        "                YES",
+        "               ▶NO",
+        " give a nickname",
+        " to LAPRAS?"
+      ]
+    },
+    {
+      "step": 23,
+      "frame": 881,
+      "at": "2026-10-24T00:22:40.453484+00:00",
+      "action": "wait",
+      "tactic": "source_dialogue_partial_prompt_or_old_page",
+      "visible_text": [
+        " It's LAP"
+      ]
+    },
+    {
+      "step": 44,
+      "frame": 1721,
+      "at": "2026-10-24T00:22:40.980996+00:00",
+      "action": "wait",
+      "tactic": "start_final_sixteen_frame_stability",
+      "visible_text": [
+        " swimmer. It'll",
+        " give you a lift!"
+      ]
+    },
+    {
+      "step": 45,
+      "frame": 1761,
+      "at": "2026-10-24T00:22:41.010236+00:00",
+      "action": "a",
+      "tactic": "close_complete_source_lapras_description_once",
+      "visible_text": [
+        " swimmer. It'll",
+        " give you a lift!"
+      ]
+    },
+    {
+      "step": 46,
+      "frame": 1801,
+      "at": "2026-10-24T00:22:41.031483+00:00",
+      "action": "wait",
+      "tactic": "first_closed_lapras_world",
+      "visible_text": []
+    },
+    {
+      "step": 47,
+      "frame": 1841,
+      "at": "2026-10-24T00:22:41.054333+00:00",
+      "action": "wait",
+      "tactic": null,
+      "visible_text": []
+    }
+  ],
+  "independent_closed_proof": {
+    "evidence": {
+      "file": "outputs/research/lapras-gift-closed-proof-20261024.json",
+      "sha256": "657d74dd89c902801f2902ec8fe3c9a561c8c39347554751aec070e5ef139c61"
+    },
+    "local_clone_frame": 1,
+    "campaign_final_review_frame": 1881,
+    "overworld_ready": true,
+    "grid_verified_cells": 72,
+    "got_lapras": true,
+    "flags4_raw": 15,
+    "getter_live_calibrated": false,
+    "prefix_raw_sha256": {
+      "prefix_mons_raw": "e0aab0d700d7afc0c4f7e0edb54cd12f2efc4f3f96c5a0f8af34672d8bd15817",
+      "prefix_ot_raw": "90d8187766869a30632704e41b91a72647bd65904aa03b9feae3c2d05f4a316f",
+      "prefix_nicks_raw": "20dd4b542d7971236dca690e22f94942c35e822cd7a3d94f0463c628e4cbad3e"
+    },
+    "new_raw_sha256": {
+      "new_mon_raw": "7994530cab1b29eb1f441e774f87c76e7c4accf98e397af45e39d74c2f71efe2",
+      "new_ot_raw": "20dc944731f7a204cfb1865dd4b67ac2e81f433353fab4ae2f24b29eb0a85829",
+      "new_nickname_raw": "204b99ab8914ab278f067398357299dff69ebee1176ccb5e1d7058d0d7acbe04"
+    }
+  },
+  "evidence": [
+    {
+      "file": ".local/lapras-entry-final-review-20261024.json",
+      "sha256": "8695d94b6ab3e06ec5e260c010442e3d3987da7639369bff3cc2e081ec4a75d5"
+    },
+    {
+      "file": ".local/lapras-gift-final-review-20261024.json",
+      "sha256": "a50bb764e2ef3925c7dd532451634f481b1172ce6762464880fccb06c610f2c1"
+    },
+    {
+      "file": ".local/lapras-gift-fixed-steps-20261024.jsonl",
+      "sha256": "4ecf6732c3c185eba4e8836ee78ac052f37f19034c0005be879e14d3f66401c9"
+    },
+    {
+      "file": "outputs/league-campaign-20261024-24/game/summary.json",
+      "sha256": "205eb2c3d224de2d2704a48e2b7c13807460abdbb5f46dbaff919246cc84f582",
+      "historical_hash_only": true,
+      "mutable_file_note": "此SHA為領取閉合當時稽核值；原summary持續隨遊戲更新且未另存原位元組，不宣稱現檔仍同SHA。固定review與47筆ledger另有不變檔案。"
+    },
+    {
+      "file": "outputs/research/lapras-gift-closed-proof-20261024.json",
+      "sha256": "657d74dd89c902801f2902ec8fe3c9a561c8c39347554751aec070e5ef139c61"
+    }
+  ],
+  "limitations": [
+    "本段是正常NPC贈送，不是野生捕捉；沒有第六道館、西爾佛首領、衝浪／怪力野外使用或網站發布宣稱。",
+    "指定before review沒有raw44／OT／nickname快照；原五可讀數值可直接前後比較，raw完整不變由成功控制器契約支持。獨立final raw只核對終態、來源數值與雜湊，不冒稱有兩份raw直接比對。",
+    "step16–22真party未知時，37個既有story讀值也維持None，沒有補成True；前後完整端點才直接核對旗標全等。getter仍標live_calibrated=false及unvalidated profile，此場closed proof不是所有贈送情境已校準。",
+    "8.906秒是新session到閉合檢討的程序牆鐘，含載入與模型等待；4.379秒冷載入和7.533秒model_wait為重疊／巢狀口徑，不相加成遊玩時間。31.333秒是1880原生模擬幀，並非牆鐘或全程通關耗時。",
+    "不同session frame會重新從1起算；1079145與1881不可相減。未從兩個session端點日期推算遊戲操作耗時。",
+    "分類不使用GPT、Strata沒有新呼叫由父層執行契約提供；47筆只直接證實17筆laya-rl-agent分類（2新／15快取）、30筆被動等待及summary cloud_fallback=false，未讀取任何外部API計費遙測。"
+  ]
+}

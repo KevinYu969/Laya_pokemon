@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "title": "game23正常停止後，game24從同一最新final接續",
+  "date": "2026-10-24",
+  "old_session": {
+    "game": "outputs/league-campaign-20261024-23/game",
+    "status": "saved_stopped",
+    "stop_reason": "KeyboardInterrupt",
+    "actions": 19173,
+    "emulated_frames": 1079144,
+    "last_observed_frame": 1079145,
+    "final": {
+      "file": "outputs/league-campaign-20261024-23/game/final.state",
+      "sha256": "5113ce7372d06ae3cec7b8496f8d706be01d001a3015311ebc7a73fc58d11111"
+    },
+    "checkpoint": {
+      "file": "outputs/league-campaign-20261024-23/game/checkpoint.state",
+      "sha256": "5113ce7372d06ae3cec7b8496f8d706be01d001a3015311ebc7a73fc58d11111"
+    }
+  },
+  "new_session": {
+    "game": "outputs/league-campaign-20261024-24/game",
+    "source_state_sha256": "5113ce7372d06ae3cec7b8496f8d706be01d001a3015311ebc7a73fc58d11111",
+    "model_load_count": 1,
+    "window_backend": "null",
+    "first_observed_frame": 1,
+    "first_progress_matches_previous_review": true,
+    "first_location_matches_previous_review": true,
+    "first_screen_sha256_matches_previous_review": true,
+    "gift_final_frame": 1881,
+    "gift_actions": 47
+  },
+  "verified": {
+    "old_final_equals_old_checkpoint": true,
+    "new_source_equals_old_latest_final": true,
+    "active_campaign_source_sha_agrees": true,
+    "initial_five_party_progress_preserved": true
+  },
+  "evidence": [
+    {
+      "file": ".local/lapras-entry-final-review-20261024.json",
+      "sha256": "8695d94b6ab3e06ec5e260c010442e3d3987da7639369bff3cc2e081ec4a75d5"
+    },
+    {
+      "file": ".local/lapras-gift-fixed-steps-20261024.jsonl",
+      "sha256": "4ecf6732c3c185eba4e8836ee78ac052f37f19034c0005be879e14d3f66401c9"
+    },
+    {
+      "file": "outputs/league-campaign-20261024-23/game/summary.json",
+      "sha256": "1098e4e42c94869ecc4a5354e22d1c197711376bea28bd5885b8a25cca301f2a"
+    },
+    {
+      "file": "outputs/league-campaign-20261024-24/game/summary.json",
+      "sha256": "205eb2c3d224de2d2704a48e2b7c13807460abdbb5f46dbaff919246cc84f582",
+      "historical_hash_only": true,
+      "mutable_file_note": "此SHA為領取閉合當時稽核值；原summary持續隨遊戲更新且未另存原位元組，不宣稱現檔仍同SHA。固定review與47筆ledger另有不變檔案。"
+    },
+    {
+      "file": ".local/active-campaign.json",
+      "sha256": "bcf442486ceb4b3a77ede750cb371269cf36ac4551b317adde91c32c8ba8254e"
+    }
+  ],
+  "limitations": [
+    "兩個.state檔只讀取位元組計算SHA-256，未載入、執行或改寫遊戲。",
+    "此收據證實指定交接的雜湊與首次可讀進度／畫面一致，不是所有歷史session的全面稽核。",
+    "session frame會重新起算，不把跨run frame差或冷啟動作遊玩耗時。"
+  ]
+}

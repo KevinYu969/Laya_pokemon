@@ -36,6 +36,8 @@ from . import silph_card_bridge
 importlib.reload(silph_card_bridge)
 from . import silph_rival_wait
 importlib.reload(silph_rival_wait)
+from . import lapras_bridge
+importlib.reload(lapras_bridge)
 importlib.reload(campaign_safety)
 importlib.reload(capture_closing_gate)
 for controller in _GYM_CONTROLLERS.values():controller._last_now=None
@@ -64,9 +66,24 @@ def switch_context(pyboy,state,plan,step_id,previous):
     return context,next_id
 
 
+def attrition_transition_context(pyboy,state,plan,step_id,attrition):
+    """只將已綁Lapras的來源命名未初始化過渡交專屬reader；其他損耗照常停。"""
+    if (not isinstance(attrition,dict)
+            or attrition.get('review_reason')!='party_attrition_state_unverified'
+            or attrition.get('party_attrition',{}).get('issue')!='party_read_not_verified'):
+        return None
+    from .observation import read_visible_text
+    return lapras_bridge.pre_attrition_context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                              read_world_grid(pyboy,state['location']))
+
+
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if lapras_bridge.applies(step_id,step):
+        from .observation import read_visible_text
+        return lapras_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                     read_world_grid(pyboy,state['location']))
     if silph_card_bridge.applies(step_id,step):
         if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
                 or safari_entry._RUN_CONTROLLER is not None
@@ -124,6 +141,10 @@ def field_context(pyboy,state,plan,step_id):
     if campaign_transactions.applies(step_id,step):
         from .observation import read_visible_text
         return campaign_transactions.context(pyboy,state,plan,step_id,read_visible_text(pyboy),read_world_grid(pyboy,state['location']))
+    if (step and step.get('kind')=='move' and plan.get('training_shared_experience') is True
+            and plan.get('mode')=='league_campaign'):
+        training=balanced_training.shared_experience_battle_context(pyboy,state,plan)
+        if training is not None:return training,step_id
     if not step:return None
     if step['kind'] not in {'teach_cut','use_cut'}:return None
     if state.get('battle_state',{}).get('kind')!='none':return None

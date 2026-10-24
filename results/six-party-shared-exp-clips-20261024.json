@@ -1,0 +1,1059 @@
+{
+  "schema": "laya-six-party-first-shared-exp-clips-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "title": "六人首場分經驗值：拉普拉斯15先出場、卡比獸支援，各得88 EXP",
+  "source": {
+    "path": "outputs/league-campaign-20261024-24/game/video-005.mp4",
+    "sha256": "c5a0d9d0b5700fb05189aeb83c28d33e5fccaecbec61218724d7e2de49ae8338",
+    "closure": {
+      "at": "2026-10-24T00:54:18.154385+00:00",
+      "segment": 5,
+      "timing": {
+        "wall_seconds": 1905.984,
+        "model_wait_seconds": 15.84,
+        "review_pause_seconds": 1847.082,
+        "non_review_session_seconds": 58.902,
+        "emulated_seconds": 1106.267
+      },
+      "video": {
+        "filename": "video-005.mp4",
+        "fps": 15,
+        "frames": 5630,
+        "playback_seconds": 375.3333333333333,
+        "timing": "emulated_time",
+        "audio": false
+      }
+    },
+    "closed_before_read": true,
+    "steps_path": "outputs/league-campaign-20261024-24/game/steps-005.jsonl",
+    "steps_sha256": "ce168624cfe59781f7d07ddc65f79140af061149417a8f2dc2bb987c609db870",
+    "fixed_ledger_sha256": "f3acdafbb5639ba58d2f40fa60f5718f0abe9364f0e9beae1aabea84c0df12ae",
+    "full_decode": {
+      "decoded_frames": 5630,
+      "strict_xerror": true,
+      "decoder_errors": 0
+    }
+  },
+  "selection": {
+    "observation_start_frame": 50433,
+    "observation_end_frame": 53209,
+    "source_start_frame_zero_based": 1644,
+    "source_end_frame_exclusive": 2338,
+    "first_sample_emulator_frame": 50436,
+    "last_sample_emulator_frame": 53208,
+    "first_step": 1176,
+    "last_step": 1208,
+    "source_frame_count": 694,
+    "continuous": true,
+    "note": "每4模擬幀取1影格；首樣本比起始觀測晚3幀，末樣本比最後觀測早1幀。",
+    "excluded": "前一場ODDISH22正常RUN且無EXP；後續+137/+88及WHIRLWIND均未編入。"
+  },
+  "actual_outcome": {
+    "enemy": "PIDGEY",
+    "enemy_level": 23,
+    "lapras_level_before": 15,
+    "lapras_level_after": 15,
+    "lapras_exp_before": 4218,
+    "lapras_exp_after": 4306,
+    "lapras_exp_delta": 88,
+    "snorlax_level": 37,
+    "snorlax_exp_before": 67113,
+    "snorlax_exp_after": 67201,
+    "snorlax_exp_delta": 88,
+    "snorlax_hp_before": 177,
+    "snorlax_hp_after": 156,
+    "snorlax_max_hp": 177,
+    "normal_support_party_slot": 6,
+    "party_order_preserved": true,
+    "no_party_faint_observed": true,
+    "other_four_exp_unchanged": true,
+    "badges_raw": 31
+  },
+  "videos": [
+    {
+      "path": "outputs/videos/six-party-shared-exp-20261024/first-shared-exp-1x.mp4",
+      "sha256": "e59b9085b7b06c876167b0479d230a7c1558fd5d2a62fbb41dc91d35e8bf07d3",
+      "bytes": 1416845,
+      "frames": 694,
+      "fps": 15,
+      "duration_seconds": 46.266666666666666,
+      "speed": 1,
+      "width": 480,
+      "height": 432,
+      "audio": false,
+      "full_decode": {
+        "decoded_frames": 694,
+        "strict_xerror": true,
+        "decoder_errors": 0
+      },
+      "all_source_frames_retained": true,
+      "each_decoded_yuv420p_frame_equals_source": true,
+      "decoded_pts_and_duration_verified": true,
+      "decoded_timebase": "1/15"
+    },
+    {
+      "path": "outputs/videos/six-party-shared-exp-20261024/first-shared-exp-4x.mp4",
+      "sha256": "b5835241a09b5bac782356fd9a56bb84e8fa52531f843c542429c4de9ce5690b",
+      "bytes": 1416820,
+      "frames": 694,
+      "fps": 60,
+      "duration_seconds": 11.566666666666666,
+      "speed": 4,
+      "width": 480,
+      "height": 432,
+      "audio": false,
+      "full_decode": {
+        "decoded_frames": 694,
+        "strict_xerror": true,
+        "decoder_errors": 0
+      },
+      "all_source_frames_retained": true,
+      "each_decoded_yuv420p_frame_equals_source": true,
+      "decoded_pts_and_duration_verified": true,
+      "decoded_timebase": "1/60"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/six-party-shared-exp-20261024/01-lapras15-pidgey23.png",
+      "sha256": "9d52cd499b94745c85fcc0537d9d5129e87ebe6f59b472bbeac0e6220f426998",
+      "source_frame_zero_based": 1803,
+      "source_emulator_frame": 51072,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "095169b8208f4b061ad16d6e9603036d58f534a49380f2a1858195f86cbd117c",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 1181,
+        "observation_frame": 51073,
+        "action_recorded_at_utc": "2026-10-24T00:45:09.611435+00:00",
+        "phase": "battle_menu",
+        "action": "right",
+        "visible_text": [
+          " PIDGEY",
+          "     23",
+          "          LAPRAS",
+          "               15",
+          "            64/ 64",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "battle_kind": "wild",
+        "party": [
+          {
+            "species": 19,
+            "level": 15,
+            "exp": 4218,
+            "hp": 64,
+            "max_hp": 64,
+            "status": 0
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0
+          },
+          {
+            "species": 132,
+            "level": 37,
+            "exp": 67113,
+            "hp": 177,
+            "max_hp": 177,
+            "status": 0
+          }
+        ],
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    },
+    {
+      "path": "outputs/videos/six-party-shared-exp-20261024/02-six-slot6-snorlax-switch.png",
+      "sha256": "ba26014c26f9bf29b5a81de212ecf9c2644f7de7888647b7615c359ecb608905",
+      "source_frame_zero_based": 1883,
+      "source_emulator_frame": 51392,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "2ed1a9c87301755a4d8afd3b124802d147e64fd4b19c9de4472331cd86273ca3",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 1189,
+        "observation_frame": 51393,
+        "action_recorded_at_utc": "2026-10-24T00:45:10.374541+00:00",
+        "phase": "battle_menu",
+        "action": "a",
+        "visible_text": [
+          "   LAPRAS     15",
+          "              64/ 64",
+          "   NIDOKING   36",
+          "             121/121",
+          "   EEVEE      35",
+          "              90/ 90",
+          "   VENUSAUR   35",
+          "             111/111",
+          "   FEAROW     36",
+          "             111/111",
+          "   SNORLAX    37",
+          "            ▶SWITCH"
+        ],
+        "battle_kind": "wild",
+        "party": [
+          {
+            "species": 19,
+            "level": 15,
+            "exp": 4218,
+            "hp": 64,
+            "max_hp": 64,
+            "status": 0
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0
+          },
+          {
+            "species": 132,
+            "level": 37,
+            "exp": 67113,
+            "hp": 177,
+            "max_hp": 177,
+            "status": 0
+          }
+        ],
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    },
+    {
+      "path": "outputs/videos/six-party-shared-exp-20261024/03-lapras-gained88.png",
+      "sha256": "a544df5afc9841431a117fa8e783116538b45e83170303324f8ceb8614d0ae09",
+      "source_frame_zero_based": 2263,
+      "source_emulator_frame": 52912,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "38ebc5ce8d68355b66d76d0b7f1db0fb1970af2dce172b7e684e9fb81e37129d",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 1205,
+        "observation_frame": 52913,
+        "action_recorded_at_utc": "2026-10-24T00:45:11.049186+00:00",
+        "phase": "battle_dialogue",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           156/177",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "battle_kind": "wild",
+        "party": [
+          {
+            "species": 19,
+            "level": 15,
+            "exp": 4306,
+            "hp": 64,
+            "max_hp": 64,
+            "status": 0
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0
+          },
+          {
+            "species": 132,
+            "level": 37,
+            "exp": 67113,
+            "hp": 156,
+            "max_hp": 177,
+            "status": 0
+          }
+        ],
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    },
+    {
+      "path": "outputs/videos/six-party-shared-exp-20261024/04-snorlax-gained88.png",
+      "sha256": "e157ad73f4bc12445a701c0c94dbbb2b2b29fb5ea14d515d4444cba1666061d4",
+      "source_frame_zero_based": 2295,
+      "source_emulator_frame": 53040,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "54d0858a073a2ac26ffd9fafa07ed5f2352a31006f08e9d4063e54f1c2b5a596",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 1206,
+        "observation_frame": 53041,
+        "action_recorded_at_utc": "2026-10-24T00:45:11.106394+00:00",
+        "phase": "battle_dialogue",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           156/177",
+          " SNORLAX gained",
+          " 88 EXP. Points!"
+        ],
+        "battle_kind": "wild",
+        "party": [
+          {
+            "species": 19,
+            "level": 15,
+            "exp": 4306,
+            "hp": 64,
+            "max_hp": 64,
+            "status": 0
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0
+          },
+          {
+            "species": 132,
+            "level": 37,
+            "exp": 67201,
+            "hp": 156,
+            "max_hp": 177,
+            "status": 0
+          }
+        ],
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "step": 1181,
+      "observation_frame": 51073,
+      "action_recorded_at_utc": "2026-10-24T00:45:09.611435+00:00",
+      "phase": "battle_menu",
+      "action": "right",
+      "visible_text": [
+        " PIDGEY",
+        "     23",
+        "          LAPRAS",
+        "               15",
+        "            64/ 64",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "battle_kind": "wild",
+      "party": [
+        {
+          "species": 19,
+          "level": 15,
+          "exp": 4218,
+          "hp": 64,
+          "max_hp": 64,
+          "status": 0
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 132,
+          "level": 37,
+          "exp": 67113,
+          "hp": 177,
+          "max_hp": 177,
+          "status": 0
+        }
+      ],
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      }
+    },
+    {
+      "step": 1188,
+      "observation_frame": 51353,
+      "action_recorded_at_utc": "2026-10-24T00:45:10.341469+00:00",
+      "phase": "battle_menu",
+      "action": "a",
+      "visible_text": [
+        "   LAPRAS     15",
+        "              64/ 64",
+        "   NIDOKING   36",
+        "             121/121",
+        "   EEVEE      35",
+        "              90/ 90",
+        "   VENUSAUR   35",
+        "             111/111",
+        "   FEAROW     36",
+        "             111/111",
+        "   SNORLAX    37",
+        "▶            177/177"
+      ],
+      "battle_kind": "wild",
+      "party": [
+        {
+          "species": 19,
+          "level": 15,
+          "exp": 4218,
+          "hp": 64,
+          "max_hp": 64,
+          "status": 0
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 132,
+          "level": 37,
+          "exp": 67113,
+          "hp": 177,
+          "max_hp": 177,
+          "status": 0
+        }
+      ],
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      }
+    },
+    {
+      "step": 1189,
+      "observation_frame": 51393,
+      "action_recorded_at_utc": "2026-10-24T00:45:10.374541+00:00",
+      "phase": "battle_menu",
+      "action": "a",
+      "visible_text": [
+        "   LAPRAS     15",
+        "              64/ 64",
+        "   NIDOKING   36",
+        "             121/121",
+        "   EEVEE      35",
+        "              90/ 90",
+        "   VENUSAUR   35",
+        "             111/111",
+        "   FEAROW     36",
+        "             111/111",
+        "   SNORLAX    37",
+        "            ▶SWITCH"
+      ],
+      "battle_kind": "wild",
+      "party": [
+        {
+          "species": 19,
+          "level": 15,
+          "exp": 4218,
+          "hp": 64,
+          "max_hp": 64,
+          "status": 0
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 132,
+          "level": 37,
+          "exp": 67113,
+          "hp": 177,
+          "max_hp": 177,
+          "status": 0
+        }
+      ],
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      }
+    },
+    {
+      "step": 1191,
+      "observation_frame": 51561,
+      "action_recorded_at_utc": "2026-10-24T00:45:10.478730+00:00",
+      "phase": "battle_dialogue",
+      "action": "a",
+      "visible_text": [
+        " PIDGEY",
+        "     23",
+        "          SNORLAX",
+        "               37",
+        "           177/177",
+        " Go! SNORLAX!"
+      ],
+      "battle_kind": "wild",
+      "party": [
+        {
+          "species": 19,
+          "level": 15,
+          "exp": 4218,
+          "hp": 64,
+          "max_hp": 64,
+          "status": 0
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 132,
+          "level": 37,
+          "exp": 67113,
+          "hp": 177,
+          "max_hp": 177,
+          "status": 0
+        }
+      ],
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      }
+    },
+    {
+      "step": 1202,
+      "observation_frame": 52529,
+      "action_recorded_at_utc": "2026-10-24T00:45:10.890291+00:00",
+      "phase": "battle_dialogue",
+      "action": "a",
+      "visible_text": [
+        " PIDGEY",
+        "     23",
+        "          SNORLAX",
+        "               37",
+        "           156/177",
+        " SNORLAX",
+        " used BODY SLAM!"
+      ],
+      "battle_kind": "wild",
+      "party": [
+        {
+          "species": 19,
+          "level": 15,
+          "exp": 4218,
+          "hp": 64,
+          "max_hp": 64,
+          "status": 0
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 132,
+          "level": 37,
+          "exp": 67113,
+          "hp": 164,
+          "max_hp": 177,
+          "status": 0
+        }
+      ],
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      }
+    },
+    {
+      "step": 1205,
+      "observation_frame": 52913,
+      "action_recorded_at_utc": "2026-10-24T00:45:11.049186+00:00",
+      "phase": "battle_dialogue",
+      "action": "a",
+      "visible_text": [
+        "          SNORLAX",
+        "               37",
+        "           156/177",
+        " LAPRAS gained",
+        " 88 EXP. Points!"
+      ],
+      "battle_kind": "wild",
+      "party": [
+        {
+          "species": 19,
+          "level": 15,
+          "exp": 4306,
+          "hp": 64,
+          "max_hp": 64,
+          "status": 0
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 132,
+          "level": 37,
+          "exp": 67113,
+          "hp": 156,
+          "max_hp": 177,
+          "status": 0
+        }
+      ],
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      }
+    },
+    {
+      "step": 1206,
+      "observation_frame": 53041,
+      "action_recorded_at_utc": "2026-10-24T00:45:11.106394+00:00",
+      "phase": "battle_dialogue",
+      "action": "a",
+      "visible_text": [
+        "          SNORLAX",
+        "               37",
+        "           156/177",
+        " SNORLAX gained",
+        " 88 EXP. Points!"
+      ],
+      "battle_kind": "wild",
+      "party": [
+        {
+          "species": 19,
+          "level": 15,
+          "exp": 4306,
+          "hp": 64,
+          "max_hp": 64,
+          "status": 0
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 132,
+          "level": 37,
+          "exp": 67201,
+          "hp": 156,
+          "max_hp": 177,
+          "status": 0
+        }
+      ],
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      }
+    },
+    {
+      "step": 1208,
+      "observation_frame": 53209,
+      "action_recorded_at_utc": "2026-10-24T00:45:11.544240+00:00",
+      "phase": "overworld",
+      "action": "right",
+      "visible_text": [],
+      "battle_kind": "none",
+      "party": [
+        {
+          "species": 19,
+          "level": 15,
+          "exp": 4306,
+          "hp": 64,
+          "max_hp": 64,
+          "status": 0
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0
+        },
+        {
+          "species": 132,
+          "level": 37,
+          "exp": 67201,
+          "hp": 156,
+          "max_hp": 177,
+          "status": 0
+        }
+      ],
+      "location": {
+        "map_id": 26,
+        "x": 18,
+        "y": 8
+      }
+    }
+  ],
+  "qa": {
+    "contactsheet": "outputs/videos/six-party-shared-exp-20261024/qa-contactsheet.png",
+    "visual_review": "passed",
+    "source_and_outputs_full_decode": true,
+    "all_4x_frames_retained": true,
+    "all_output_frame_hashes_equal_source": true,
+    "all_png_rgb_channels_equal_source": true,
+    "source_frame_sequence_sha256": "0e0e037cb12c7fc3624e18b5f19e51c0888fc98afc1c21187bb4a96d0ba8292d",
+    "contactsheet_sha256": "1beb8dc74f8bfdb3279de29b660bedc781c30c7bedeef1c0d5d2e6bb61896aa9",
+    "visual_review_method": "view_image original-resolution 960x916 contact sheet",
+    "visual_review_notes": [
+      "PIDGEY23對LAPRAS15 64/64完整",
+      "六人第6槽SNORLAX37與SWITCH可見",
+      "LAPRAS gained 88 EXP. Points!完整",
+      "SNORLAX gained 88 EXP. Points!完整；HP156/177保留"
+    ]
+  },
+  "limits": [
+    "1x為模擬錄影時間，4x僅後製，不代表牆鐘通關速度",
+    "只有第一場+88分EXP，不宣稱拉普拉斯已升級或全隊35",
+    "未生成、重演、修飾遊戲畫面；來源H.264解碼像素保持",
+    "影片與PNG留本機，本輪未發布網站或上傳影片"
+  ],
+  "asset_inventory": {
+    "before_videos": 32,
+    "before_pngs": 114,
+    "added_videos": 2,
+    "added_pngs_including_qa": 5,
+    "after_videos": 34,
+    "after_pngs": 119,
+    "baseline_supplied_by_parent": true
+  }
+}

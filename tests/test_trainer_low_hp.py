@@ -289,14 +289,15 @@ def native_getm_pending(*,old_hud=False):
 
 
 @pytest.mark.parametrize('old_hud',[False,True])
-def test_exact_native_getm_waits_with_target_or_old_hud_and_keeps_pending(old_hud):
+def test_exact_native_getm_waits_and_hands_off_only_with_complete_new_hud(old_hud):
     party,text=native_getm_pending(old_hud=old_hud);before=deepcopy(party)
     record=battle._no_pp_switch
     assert battle._fixed_damage_rows(text) is None
     assert battle._trainer_half_rows(text) is None  # no unbound/new-start expansion
     result=battle.battle_context(text,state(opponent_species='HYPNO'),party)
     assert result['available_actions']==['wait'] and result['phase']=='battle_animation'
-    assert battle._no_pp_switch is record and party==before
+    assert (battle._no_pp_switch is record) if old_hud else (battle._no_pp_switch is None)
+    assert party==before
     result=battle.battle_context(command(party,active=4,enemy='HYPNO'),state(opponent_species='HYPNO'),party)
     assert result['battle_tactic']=='damage' and battle._no_pp_switch is None
 
@@ -354,9 +355,69 @@ def test_native_getm_unknown_enemy_or_target_party_change_reviews():
 
 
 def test_native_getm_wait_uses_existing_25_call_budget_without_clearing_pending():
-    party,text=native_getm_pending();record=battle._no_pp_switch
+    party,text=native_getm_pending(old_hud=True);record=battle._no_pp_switch
     for _ in range(25):
         result=battle.battle_context(text,state(opponent_species='HYPNO'),party)
         assert result['phase']=='battle_animation' and result['available_actions']==['wait']
     assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
     assert battle._no_pp_switch is record and record['waits']==26
+
+
+def native_disable_retaliation(*,old_hud=False):
+    party,text=native_getm_pending(old_hud=old_hud)
+    text['cells'][14]=[' ']*20
+    for x,y,value in ((1,14,'Enemy HYPNO'),(1,16,'used DISABLE!')):
+        text['cells'][y][x:x+len(value)]=list(value)
+    return party,verified(text)
+
+
+def test_missed_getm_current_exact_disable_page_hands_off_wait_without_rebuilding_intent():
+    party,text=native_disable_retaliation();before=deepcopy(party)
+    assert battle._no_pp_switch['switch_requested'] is True
+    result=battle.battle_context(text,state(opponent_species='HYPNO'),party)
+    assert result['battle_tactic']=='wait_trainer_half_hp_switch_handoff'
+    assert result['available_actions']==['wait'] and battle._no_pp_switch is None
+    assert party==before
+    assert battle.battle_context(command(party,active=4,enemy='HYPNO'),
+                                 state(opponent_species='HYPNO'),party)['battle_tactic']=='damage'
+
+
+@pytest.mark.parametrize('change',[
+    lambda t:t['cells'][14].__setitem__(1,' '),
+    lambda t:t['cells'][14].__setitem__(8,'X'),
+    lambda t:t['cells'][16].__setitem__(12,' '),
+    lambda t:t['cells'][16].__setitem__(6,'X'),
+    lambda t:t['cells'][15].__setitem__(1,'X'),
+    lambda t:t['cells'][16].__setitem__(18,'▼'),
+    lambda t:t['cells'][0].__setitem__(2,'X'),
+    lambda t:t['cells'][7].__setitem__(11,'X'),
+    lambda t:t['cells'][8].__setitem__(16,'4'),
+    lambda t:t['cells'][10].__setitem__(13,'7'),
+    lambda t:t['cells'][1].__setitem__(10,'7'),
+])
+def test_retaliation_handoff_requires_exact_source_page_target_hud_and_no_pollution(change):
+    party,text=native_disable_retaliation();change(text);text=verified(text)
+    assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
+    assert battle._no_pp_switch is not None
+
+
+def test_retaliation_with_old_hud_or_changed_enemy_status_never_clears_pending():
+    party,text=native_disable_retaliation(old_hud=True)
+    assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
+    assert battle._no_pp_switch is not None
+    party,text=native_disable_retaliation();party[4]['status']=8
+    assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
+    assert battle._no_pp_switch is not None
+    party,text=native_disable_retaliation()
+    assert_review(battle.battle_context(text,state(opponent_species='KOFFING'),party))
+    assert battle._no_pp_switch is not None
+
+
+@pytest.mark.parametrize('change',[
+    lambda t:t.update(read_valid=False),lambda t:t.update(alignment_verified=False),
+    lambda t:t.update(profile='unknown'),lambda t:t.update(lines=['used DISABLE!']),
+])
+def test_retaliation_handoff_does_not_accept_missing_decoder_or_raw_proofs(change):
+    party,text=native_disable_retaliation();change(text)
+    assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
+    assert battle._no_pp_switch is not None

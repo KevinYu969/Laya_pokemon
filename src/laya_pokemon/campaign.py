@@ -190,9 +190,12 @@ def main():
                 stats['champion_event_seen']=True
             from .campaign_safety import attrition_context
             attrition=attrition_context(state,plan,step_id)
+            field=None
             if attrition:
-                state.update(attrition);pause(attrition['review_reason'],state,plan_sha);continue
-            field=campaign_route.field_context(emulator,state,plan,step_id)
+                field=campaign_route.attrition_transition_context(emulator,state,plan,step_id,attrition)
+                if not field:
+                    state.update(attrition);pause(attrition['review_reason'],state,plan_sha);continue
+            if not field:field=campaign_route.field_context(emulator,state,plan,step_id)
             if not field:field=campaign_route.switch_context(emulator,state,plan,step_id,previous)
             if field:
                 context,step_id=field;state.update(context)

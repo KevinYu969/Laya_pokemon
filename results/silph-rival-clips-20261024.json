@@ -1,0 +1,1541 @@
+{
+  "schema": "laya-silph-rival-clips-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "title": "希魯夫公司勁敵戰：卡比獸麻痺、正常換大嘴雀與真實勝利",
+  "milestone": "silph_rival_won_not_a_gym_badge",
+  "gym_badges_still": 5,
+  "source_segments": [
+    {
+      "segment": 54,
+      "path": "outputs/league-campaign-20261024-23/game/video-054.mp4",
+      "sha256": "7a33bf5096c926d4c2c2e2d34b2effbced071da560f1c7ef6265f120660e08c2",
+      "closure": {
+        "at": "2026-10-24T00:15:12.571299+00:00",
+        "segment": 54,
+        "timing": {
+          "wall_seconds": 11784.062,
+          "model_wait_seconds": 90.376,
+          "review_pause_seconds": 11110.768,
+          "non_review_session_seconds": 673.294,
+          "emulated_seconds": 17487.6
+        },
+        "video": {
+          "filename": "video-054.mp4",
+          "fps": 15,
+          "frames": 1040,
+          "playback_seconds": 69.33333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closed_before_read": true,
+      "full_decode": {
+        "decoded_frames": 1040,
+        "strict_xerror": true,
+        "decoder_errors": 0
+      },
+      "steps_sha256": "0edd48b7bf7414e2444e7de2ef49d03367f24e34549c38a31eb810ed13804f74"
+    },
+    {
+      "segment": 55,
+      "path": "outputs/league-campaign-20261024-23/game/video-055.mp4",
+      "sha256": "0f6c9148ed779a9284372df57868fdd8d3a930cd28f15aef8a477b03724c8cf0",
+      "closure": {
+        "at": "2026-10-24T00:16:35.020828+00:00",
+        "segment": 55,
+        "timing": {
+          "wall_seconds": 11866.516,
+          "model_wait_seconds": 93.548,
+          "review_pause_seconds": 11180.549,
+          "non_review_session_seconds": 685.967,
+          "emulated_seconds": 17814.933
+        },
+        "video": {
+          "filename": "video-055.mp4",
+          "fps": 15,
+          "frames": 4910,
+          "playback_seconds": 327.3333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closed_before_read": true,
+      "full_decode": {
+        "decoded_frames": 4910,
+        "strict_xerror": true,
+        "decoder_errors": 0
+      },
+      "steps_sha256": "49944ac35a432ac73a98a6d8bbc46f62cb27cd34b623208ceb8263294350327d"
+    }
+  ],
+  "selection": {
+    "before_frame": 1049217,
+    "after_closed_frame": 1068857,
+    "first_recorded_sample_frame": 1049220,
+    "last_recorded_sample_frame": 1068856,
+    "boundary_note": "15fps每4模擬幀取樣；起點比baseline晚3模擬幀，末樣本比closed觀測早1幀。",
+    "parts": [
+      {
+        "segment": 54,
+        "start_frame": 1030,
+        "end_frame_exclusive": 1040
+      },
+      {
+        "segment": 55,
+        "start_frame": 0,
+        "end_frame_exclusive": 4900
+      }
+    ],
+    "continuous_selected_frames": true,
+    "dropped_selected_frames": 0,
+    "playback_is_emulated_time": true,
+    "engineering_review_waits_recorded": false,
+    "duration_is_not_wall_clock": true
+  },
+  "outcome": {
+    "beat_silph_co_rival_before": false,
+    "beat_silph_co_rival_after": true,
+    "before_review_at_utc": "2026-10-24T00:13:12.038252+00:00",
+    "after_review_at_utc": "2026-10-24T00:15:25.117691+00:00",
+    "closed_ui_observed": true,
+    "all_logged_party_hp_positive": true,
+    "before_party": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 36,
+        "hp": 173,
+        "max_hp": 173,
+        "exp": 62203,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 47593,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "after_party": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 37,
+        "hp": 56,
+        "max_hp": 177,
+        "exp": 66666,
+        "status": 64,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          7
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 63,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          16,
+          30,
+          20
+        ]
+      }
+    ],
+    "before_money": 43496,
+    "after_money": 46096,
+    "after_review_reason": "party_attrition_requires_center",
+    "retained_adverse_result": "SNORLAX37 HP56/177，status64麻痺；FEAROW36 HP63/111；五人均未倒下。"
+  },
+  "videos": [
+    {
+      "path": "outputs/videos/silph-rival-20261024/silph-rival-complete-1x.mp4",
+      "sha256": "f7190a7f3a940b7949ac0f321874a40f9f6a040a538cf9ea3153c55c679de400",
+      "bytes": 4119661,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "frames": 4910,
+      "speed": 1,
+      "duration_seconds": 327.3333333333333,
+      "audio": false,
+      "full_decode": {
+        "decoded_frames": 4910,
+        "strict_xerror": true,
+        "decoder_errors": 0
+      },
+      "all_frames_equal_to_selected_source_yuv420p": true,
+      "frame_md5_file": "outputs/videos/silph-rival-20261024/qa-output-1x.framemd5"
+    },
+    {
+      "path": "outputs/videos/silph-rival-20261024/silph-rival-complete-4x.mp4",
+      "sha256": "8c2f33a7683235f9fc55a7172e283a191ab2c0bb7c8b07d521d33e52d6e0be16",
+      "bytes": 4129312,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "frames": 4910,
+      "speed": 4,
+      "duration_seconds": 81.83333333333333,
+      "audio": false,
+      "full_decode": {
+        "decoded_frames": 4910,
+        "strict_xerror": true,
+        "decoder_errors": 0
+      },
+      "all_frames_equal_to_selected_source_yuv420p": true,
+      "frame_md5_file": "outputs/videos/silph-rival-20261024/qa-output-4x.framemd5"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/silph-rival-20261024/01-pidgeot-command.png",
+      "sha256": "875bb436bd257fa8ae088ea55a331fb20cfe7f208a2107a3598442daed5393a4",
+      "width": 480,
+      "height": 432,
+      "source_segment": 55,
+      "source_frame_zero_based": 735,
+      "source_emulator_frame": 1052200,
+      "observation_offset_frames": -1,
+      "raw_rgb_sha256": "899304e98270298c7f1593f61ebbfcd8f60398fde45f3ba5dd750aba6c81ba2c",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 18782,
+        "action_recorded_at_utc": "2026-10-24T00:15:13.966908+00:00",
+        "action_recorded_at_taipei": "2026-10-24T08:15:13.966908+08:00",
+        "observation_frame": 1052201,
+        "visible_text": [
+          " PIDGEOT",
+          "     37",
+          "          SNORLAX",
+          "               36",
+          "           173/173",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "phase": "battle_menu",
+        "action": "a",
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 212,
+          "x": 3,
+          "y": 3
+        },
+        "beat_silph_co_rival": false,
+        "badges_raw": 31,
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 36,
+            "hp": 173,
+            "max_hp": 173,
+            "exp": 62203,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              15
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 47593,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          }
+        ],
+        "money": 43496
+      }
+    },
+    {
+      "path": "outputs/videos/silph-rival-20261024/02-snorlax-level37.png",
+      "sha256": "957e4d760434df936433269d29157c45b02acb7675555cd667bc042ffd556618",
+      "width": 480,
+      "height": 432,
+      "source_segment": 55,
+      "source_frame_zero_based": 1273,
+      "source_emulator_frame": 1054352,
+      "observation_offset_frames": -1,
+      "raw_rgb_sha256": "6e06b26395c7479c279a27272103857a72db211f936d35eb1f61a717bf4c613e",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 18805,
+        "action_recorded_at_utc": "2026-10-24T00:15:15.129020+00:00",
+        "action_recorded_at_taipei": "2026-10-24T08:15:15.129020+08:00",
+        "observation_frame": 1054353,
+        "visible_text": [
+          "          SNORLAX",
+          "               37",
+          "           159/177",
+          " SNORLAX grew",
+          " to level 37!"
+        ],
+        "phase": "battle_dialogue",
+        "action": "a",
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 212,
+          "x": 3,
+          "y": 3
+        },
+        "beat_silph_co_rival": false,
+        "badges_raw": 31,
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 37,
+            "hp": 159,
+            "max_hp": 177,
+            "exp": 63566,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              12
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 47593,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          }
+        ],
+        "money": 43496
+      }
+    },
+    {
+      "path": "outputs/videos/silph-rival-20261024/03-paralysis-gyarados.png",
+      "sha256": "1b79b2768c70bee3a7479d8f86e42d9cf8226e788abacd97abc5d00ceb86b203",
+      "width": 480,
+      "height": 432,
+      "source_segment": 55,
+      "source_frame_zero_based": 2249,
+      "source_emulator_frame": 1058256,
+      "observation_offset_frames": -1,
+      "raw_rgb_sha256": "654e09568255c37c29dcbccc30836ab8bd90c70788db97cead0790fc9b56e9b6",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 18841,
+        "action_recorded_at_utc": "2026-10-24T00:15:18.301955+00:00",
+        "action_recorded_at_taipei": "2026-10-24T08:15:18.301955+08:00",
+        "observation_frame": 1058257,
+        "visible_text": [
+          " GYARADOS",
+          "     35",
+          "          SNORLAX",
+          "               PAR",
+          "           159/177",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "phase": "battle_menu",
+        "action": "a",
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 212,
+          "x": 3,
+          "y": 3
+        },
+        "beat_silph_co_rival": false,
+        "badges_raw": 31,
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 37,
+            "hp": 159,
+            "max_hp": 177,
+            "exp": 64364,
+            "status": 64,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              9
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 47593,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          }
+        ],
+        "money": 43496
+      }
+    },
+    {
+      "path": "outputs/videos/silph-rival-20261024/04-normal-switch-fearow.png",
+      "sha256": "93de4ad82617a2e1dc760d7871dcfe8d7b87aabc4a1595d63e940356f7fb5ea8",
+      "width": 480,
+      "height": 432,
+      "source_segment": 55,
+      "source_frame_zero_based": 3157,
+      "source_emulator_frame": 1061888,
+      "observation_offset_frames": -1,
+      "raw_rgb_sha256": "551bc69c2323efad824a2f0b22e6f54c4f4eeaa417e02006c4401b5a0ba78987",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 18879,
+        "action_recorded_at_utc": "2026-10-24T00:15:21.095891+00:00",
+        "action_recorded_at_taipei": "2026-10-24T08:15:21.095891+08:00",
+        "observation_frame": 1061889,
+        "visible_text": [
+          "   SNORLAX    37 PAR",
+          "              56/177",
+          "   NIDOKING   36",
+          "             121/121",
+          "   EEVEE      35",
+          "              90/ 90",
+          "   VENUSAUR   35",
+          "             111/111",
+          "   FEAROW     36",
+          "▷            111/111",
+          "            ▶SWITCH",
+          " Choose a P  STATS"
+        ],
+        "phase": "battle_menu",
+        "action": "a",
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 212,
+          "x": 3,
+          "y": 3
+        },
+        "beat_silph_co_rival": false,
+        "badges_raw": 31,
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 37,
+            "hp": 56,
+            "max_hp": 177,
+            "exp": 65969,
+            "status": 64,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 47593,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          }
+        ],
+        "money": 43496
+      }
+    },
+    {
+      "path": "outputs/videos/silph-rival-20261024/05-drill-peck-charizard.png",
+      "sha256": "7cfbc799992e17a58ae564607c91b5b6997b4fd911585ea75f01c22b043a3c2f",
+      "width": 480,
+      "height": 432,
+      "source_segment": 55,
+      "source_frame_zero_based": 3919,
+      "source_emulator_frame": 1064936,
+      "observation_offset_frames": -1,
+      "raw_rgb_sha256": "18bb758e45a577d9a1ed3c208e05a4b3cd7561f1ccf51050ffd63f0e8e118c6c",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 18909,
+        "action_recorded_at_utc": "2026-10-24T00:15:23.456385+00:00",
+        "action_recorded_at_taipei": "2026-10-24T08:15:23.456385+08:00",
+        "observation_frame": 1064937,
+        "visible_text": [
+          " CHARIZARD",
+          "     40",
+          "          FEAROW",
+          "               36",
+          "            78/111",
+          " FEAROW",
+          " used DRILL PECK!"
+        ],
+        "phase": "battle_dialogue",
+        "action": "a",
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 212,
+          "x": 3,
+          "y": 3
+        },
+        "beat_silph_co_rival": false,
+        "badges_raw": 31,
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 37,
+            "hp": 56,
+            "max_hp": 177,
+            "exp": 66666,
+            "status": 64,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 78,
+            "max_hp": 111,
+            "exp": 48290,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              17,
+              30,
+              20
+            ]
+          }
+        ],
+        "money": 43496
+      }
+    },
+    {
+      "path": "outputs/videos/silph-rival-20261024/06-kevin-defeated-blue.png",
+      "sha256": "43413b39c8a6adb1ffcfef2bcb47007573446d477ba9942eaad9be016fa9335f",
+      "width": 480,
+      "height": 432,
+      "source_segment": 55,
+      "source_frame_zero_based": 4291,
+      "source_emulator_frame": 1066424,
+      "observation_offset_frames": -1,
+      "raw_rgb_sha256": "ff56dc2fa585921de93f5bd598cff0ac35d5c55e5fdc667fd7019817ea0d9a6c",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 18922,
+        "action_recorded_at_utc": "2026-10-24T00:15:24.089405+00:00",
+        "action_recorded_at_taipei": "2026-10-24T08:15:24.089405+08:00",
+        "observation_frame": 1066425,
+        "visible_text": [
+          "          FEAROW",
+          "               36",
+          "            63/111",
+          " KEVIN defeated",
+          " BLUE!"
+        ],
+        "phase": "battle_dialogue",
+        "action": "a",
+        "battle_kind": "trainer",
+        "location": {
+          "map_id": 212,
+          "x": 3,
+          "y": 3
+        },
+        "beat_silph_co_rival": false,
+        "badges_raw": 31,
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 37,
+            "hp": 56,
+            "max_hp": 177,
+            "exp": 66666,
+            "status": 64,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 63,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              16,
+              30,
+              20
+            ]
+          }
+        ],
+        "money": 43496
+      }
+    },
+    {
+      "path": "outputs/videos/silph-rival-20261024/07-rival-farewell.png",
+      "sha256": "b2a61e647ee7734f5a7d35b9f9b00b15ca3f63a1146db8560f97a00f6133f260",
+      "width": 480,
+      "height": 432,
+      "source_segment": 55,
+      "source_frame_zero_based": 4867,
+      "source_emulator_frame": 1068728,
+      "observation_offset_frames": -1,
+      "raw_rgb_sha256": "7d4ed7f910f591c8de5a9d3eca48a5433f2e43238fde9eefaef87d37a96dd849",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 18940,
+        "action_recorded_at_utc": "2026-10-24T00:15:25.089076+00:00",
+        "action_recorded_at_taipei": "2026-10-24T08:15:25.089076+08:00",
+        "observation_frame": 1068729,
+        "visible_text": [
+          " Don't sweat it!",
+          " Smell ya!"
+        ],
+        "phase": "dialogue",
+        "action": "a",
+        "battle_kind": "none",
+        "location": {
+          "map_id": 212,
+          "x": 3,
+          "y": 3
+        },
+        "beat_silph_co_rival": true,
+        "badges_raw": 31,
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 37,
+            "hp": 56,
+            "max_hp": 177,
+            "exp": 66666,
+            "status": 64,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 63,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              16,
+              30,
+              20
+            ]
+          }
+        ],
+        "money": 46096
+      }
+    },
+    {
+      "path": "outputs/videos/silph-rival-20261024/08-closed-ui.png",
+      "sha256": "78754603a0098c067b0616442faa8965207023f168af65f70a2c5c3f31681320",
+      "width": 480,
+      "height": 432,
+      "source_segment": 55,
+      "source_frame_zero_based": 4899,
+      "source_emulator_frame": 1068856,
+      "observation_offset_frames": -1,
+      "raw_rgb_sha256": "afd0787fc01f14f2caf082c005f980ddb74f7f746838d2cb9c2855037b7f8e31",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 18941,
+        "action_recorded_at_utc": "2026-10-24T00:16:34.951957+00:00",
+        "action_recorded_at_taipei": "2026-10-24T08:16:34.951957+08:00",
+        "observation_frame": 1068857,
+        "visible_text": [],
+        "phase": "overworld",
+        "action": "right",
+        "battle_kind": "none",
+        "location": {
+          "map_id": 212,
+          "x": 3,
+          "y": 3
+        },
+        "beat_silph_co_rival": true,
+        "badges_raw": 31,
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 37,
+            "hp": 56,
+            "max_hp": 177,
+            "exp": 66666,
+            "status": 64,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 63,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              16,
+              30,
+              20
+            ]
+          }
+        ],
+        "money": 46096
+      }
+    }
+  ],
+  "qa": {
+    "contactsheet": "outputs/videos/silph-rival-20261024/qa-contactsheet.png",
+    "visual_review": "passed",
+    "all_source_and_output_frames_strictly_decoded": true,
+    "all_4x_frames_retained": true,
+    "all_output_yuv420p_frames_identical": true,
+    "all_png_rgb_channels_identical": true,
+    "selected_frame_hash_sequence_sha256": "14726c8a801297a78f03ef42ef817c4294be4c393473c4f3531c177082c6dfbf",
+    "visual_review_method": "view_image original-resolution 1920x916 contact sheet; eight source screenshots reviewed",
+    "visual_review_notes": [
+      "PIDGEOT37 vs SNORLAX36 173/173完整",
+      "SNORLAX正常升37",
+      "GYARADOS35／卡比獸PAR159/177保留",
+      "正常隊伍SWITCH選FEAROW，原卡比獸56/177 PAR可見",
+      "CHARIZARD40／FEAROW DRILL PECK完整",
+      "KEVIN defeated BLUE完整，FEAROW63/111",
+      "Smell ya告別完整",
+      "第七層對話關閉野外格局，非黑頁"
+    ],
+    "contactsheet_sha256": "d29f7ec18d4b2100ccd3ee422887538b0176beb300b336a3770b0d007d91671c"
+  },
+  "claims_limits": [
+    "不是第六道館或新增徽章",
+    "影片為模擬錄影時間而非牆鐘",
+    "工程review停等沒有模擬幀，未編入影片",
+    "4x僅後製提速，全部影格保留",
+    "step UTC為動作記錄時間，人工停檢後落盤可能晚於實際觀測時間",
+    "沒有重演、AI生成或修飾戰鬥畫面，原影片與截圖留本機"
+  ]
+}

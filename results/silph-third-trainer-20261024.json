@@ -1,0 +1,981 @@
+{
+  "schema": "laya-pokemon-campaign-receipt/v1",
+  "language": "zh-Hant-TW",
+  "title": "希魯夫3F ROCKET正常勝利、半血換人與回中心補給",
+  "status": "trainer_won_and_party_recovered",
+  "scope": {
+    "run": "league-campaign-20261024-23",
+    "trainer": {
+      "name": "3F ROCKET戰鬥與接近路線；含兩次中途工程停檢",
+      "before_at_utc": "2026-10-23T23:49:43.596962+00:00",
+      "before_at_taipei": "2026-10-24T07:49:43.596962+08:00",
+      "closed_at_utc": "2026-10-24T00:11:52.207892+00:00",
+      "closed_at_taipei": "2026-10-24T08:11:52.207892+08:00",
+      "frame_interval_half_open": [
+        1030105,
+        1040009
+      ],
+      "steps_inclusive": [
+        18432,
+        18540
+      ],
+      "before_location": {
+        "map_id": 208,
+        "x": 26,
+        "y": 1
+      },
+      "closed_location": {
+        "map_id": 208,
+        "x": 18,
+        "y": 7
+      },
+      "runner_timer_delta_seconds": {
+        "wall_seconds": 1328.609,
+        "model_wait_seconds": 1.327,
+        "review_pause_seconds": 1322.625,
+        "non_review_session_seconds": 5.984,
+        "emulated_seconds": 165.067
+      },
+      "iso_review_boundary_wall_seconds": 1328.61093,
+      "emulated_frames": 9904,
+      "emulated_seconds_exact": "165.0666666666666666666666667",
+      "execution_counts": {
+        "actions": 109,
+        "laya_actions": 105,
+        "new_laya_predictions": 2,
+        "laya_cache_hits": 103,
+        "controller_passive_waits": 4,
+        "controller_passive_steps": [
+          18510,
+          18511,
+          18512,
+          18513
+        ],
+        "semantic_laya_wait_actions": 6,
+        "action_counts": {
+          "left": 8,
+          "down": 15,
+          "wait": 10,
+          "a": 73,
+          "b": 2,
+          "right": 1
+        },
+        "new_model_ms_sum": 1236.3797999569215,
+        "new_predictions": [
+          {
+            "step": 18472,
+            "model_ms": 644.557099964004,
+            "input_tokens": 215,
+            "output_tokens": 0
+          },
+          {
+            "step": 18528,
+            "model_ms": 591.8226999929175,
+            "input_tokens": 214,
+            "output_tokens": 0
+          }
+        ],
+        "warning": "不能直接將prediction_cache_hit=False算成新模型呼叫；本場4筆False的raw.backend其實是controller_passive_wait。"
+      }
+    },
+    "recovery": {
+      "name": "戰後正常回金黃中心補給；獨立區間",
+      "before_at_utc": "2026-10-24T00:11:52.207892+00:00",
+      "before_at_taipei": "2026-10-24T08:11:52.207892+08:00",
+      "closed_at_utc": "2026-10-24T00:12:22.647295+00:00",
+      "closed_at_taipei": "2026-10-24T08:12:22.647295+08:00",
+      "frame_interval_half_open": [
+        1040009,
+        1045057
+      ],
+      "steps_inclusive": [
+        18541,
+        18642
+      ],
+      "before_location": {
+        "map_id": 208,
+        "x": 18,
+        "y": 7
+      },
+      "closed_location": {
+        "map_id": 182,
+        "x": 3,
+        "y": 3
+      },
+      "runner_timer_delta_seconds": {
+        "wall_seconds": 30.438,
+        "model_wait_seconds": 1.282,
+        "review_pause_seconds": 26.297,
+        "non_review_session_seconds": 4.141,
+        "emulated_seconds": 84.133
+      },
+      "iso_review_boundary_wall_seconds": 30.439403,
+      "emulated_frames": 5048,
+      "emulated_seconds_exact": "84.13333333333333333333333333",
+      "execution_counts": {
+        "actions": 102,
+        "laya_actions": 102,
+        "new_laya_predictions": 2,
+        "laya_cache_hits": 100,
+        "controller_passive_waits": 0,
+        "controller_passive_steps": [],
+        "semantic_laya_wait_actions": 2,
+        "action_counts": {
+          "up": 13,
+          "right": 14,
+          "down": 28,
+          "left": 33,
+          "wait": 2,
+          "a": 12
+        },
+        "new_model_ms_sum": 1205.335200065747,
+        "new_predictions": [
+          {
+            "step": 18595,
+            "model_ms": 600.5423000315204,
+            "input_tokens": 170,
+            "output_tokens": 0
+          },
+          {
+            "step": 18631,
+            "model_ms": 604.7929000342265,
+            "input_tokens": 176,
+            "output_tokens": 0
+          }
+        ],
+        "warning": "不能直接將prediction_cache_hit=False算成新模型呼叫；本場4筆False的raw.backend其實是controller_passive_wait。"
+      }
+    },
+    "excluded": "僅此3F普通ROCKET與補給；未在此範圍驗收Card Key開門、希魯夫勁敵／坂木、第六館、聯盟或網站發布。"
+  },
+  "battle": {
+    "trainer": "ROCKET",
+    "map_id": 208,
+    "position": [
+      18,
+      7
+    ],
+    "intro": {
+      "step": 18454,
+      "pre_action_frame": 1031337,
+      "recorded_at_utc": "2026-10-23T23:51:16.598210+00:00",
+      "recorded_at_taipei": "2026-10-24T07:51:16.598210+08:00",
+      "time_semantics": "JSONL動作記錄時刻；state為按鍵前，並非畫面首次出現精確UTC。",
+      "location": {
+        "map_id": 208,
+        "x": 18,
+        "y": 7
+      },
+      "phase": "battle_dialogue",
+      "battle_kind": "trainer",
+      "visible_text": [
+        " ROCKET wants",
+        " to fight!"
+      ],
+      "action": "a",
+      "emulated_frames": 128
+    },
+    "first_active_step": 18452,
+    "opponents": [
+      {
+        "order": 1,
+        "species": "RATICATE",
+        "level": 28,
+        "sent_out_step": 18455,
+        "full_hud_step": 18457,
+        "fainted_step": 18468,
+        "observed_named_enemy_moves": [
+          {
+            "move": "FOCUS ENERGY",
+            "step": 18463
+          }
+        ],
+        "player_move": "BODY SLAM",
+        "player_move_receipt_step": 18466,
+        "exp_awards": [
+          {
+            "species": 132,
+            "amount": 696,
+            "step": 18469
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "species": "HYPNO",
+        "level": 28,
+        "sent_out_step": 18474,
+        "full_hud_step": 18475,
+        "fainted_step": 18521,
+        "observed_named_enemy_moves": [
+          {
+            "move": "HEADBUTT",
+            "steps": [
+              18478,
+              18500
+            ]
+          },
+          {
+            "move": "DISABLE",
+            "step": 18513,
+            "visible_result": "But, it failed!",
+            "result_step": 18514
+          }
+        ],
+        "enemy_move_name_gaps": [
+          {
+            "partial_used_step": 18483,
+            "next_effect_steps": [
+              18485,
+              18486
+            ],
+            "description": "敵方used之後23HP區間及became confused，未取樣到完整招式名稱，不能猜CONFUSION。"
+          },
+          {
+            "partial_used_step": 18492,
+            "next_effect_step": 18493,
+            "description": "完整It didn't affect SNORLAX!，未取樣到完整招式名，不猜催眠等招式。"
+          }
+        ],
+        "player_moves": [
+          {
+            "species": 132,
+            "move": "BODY SLAM",
+            "receipt_step": 18479
+          },
+          {
+            "species": 35,
+            "move": "DRILL PECK",
+            "receipt_step": 18519
+          }
+        ],
+        "exp_awards": [
+          {
+            "species": 132,
+            "amount": 492,
+            "step": 18522
+          },
+          {
+            "species": 35,
+            "amount": 492,
+            "step": 18523
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "species": "RATICATE",
+        "level": 28,
+        "about_to_use_step": 18527,
+        "full_hud_step": 18530,
+        "sent_out_text_complete": false,
+        "sent_out_note": "18529只取樣到ROCKET s；身份採前一完整about-to-use、全HUD及後續fainted核對。",
+        "fainted_step": 18535,
+        "observed_named_enemy_moves": [],
+        "enemy_move_visibility_note": "未觀測到完整敵方出招文字，不將未見等同從未出招。",
+        "player_move": "DRILL PECK",
+        "player_move_receipt_step": 18533,
+        "exp_awards": [
+          {
+            "species": 35,
+            "amount": 696,
+            "step": 18536
+          }
+        ]
+      }
+    ],
+    "native_victory": {
+      "step": 18537,
+      "pre_action_frame": 1039497,
+      "recorded_at_utc": "2026-10-24T00:11:52.033285+00:00",
+      "recorded_at_taipei": "2026-10-24T08:11:52.033285+08:00",
+      "time_semantics": "JSONL動作記錄時刻；state為按鍵前，並非畫面首次出現精確UTC。",
+      "location": {
+        "map_id": 208,
+        "x": 18,
+        "y": 7
+      },
+      "phase": "battle_dialogue",
+      "battle_kind": "trainer",
+      "visible_text": [
+        "          FEAROW",
+        "               36",
+        "           111/111",
+        " KEVIN defeated",
+        " ROCKET!"
+      ],
+      "action": "a",
+      "emulated_frames": 128
+    },
+    "prize": {
+      "amount": 840,
+      "receipt": {
+        "step": 18540,
+        "pre_action_frame": 1039881,
+        "recorded_at_utc": "2026-10-24T00:11:52.181621+00:00",
+        "recorded_at_taipei": "2026-10-24T08:11:52.181621+08:00",
+        "time_semantics": "JSONL動作記錄時刻；state為按鍵前，並非畫面首次出現精確UTC。",
+        "location": {
+          "map_id": 208,
+          "x": 18,
+          "y": 7
+        },
+        "phase": "battle_dialogue",
+        "battle_kind": "trainer",
+        "visible_text": [
+          "          FEAROW",
+          "               36",
+          "           111/111",
+          " KEVIN got ¥840",
+          " for winning!     ▼"
+        ],
+        "action": "a",
+        "emulated_frames": 128
+      }
+    },
+    "closed_review": {
+      "at_utc": "2026-10-24T00:11:52.207892+00:00",
+      "at_taipei": "2026-10-24T08:11:52.207892+08:00",
+      "frame": 1040009,
+      "location": {
+        "map_id": 208,
+        "x": 18,
+        "y": 7
+      },
+      "reason": "party_attrition_requires_center",
+      "battle_kind": "none",
+      "visible_text": []
+    },
+    "player_faint_or_loss_observed": false,
+    "observed_safety_limit": "所有211筆觀測及三端點玩家HP>0，並有完整ROCKET勝利及戰後none；有限取樣不等於每模擬幀的隱藏狀態證明。"
+  },
+  "normal_switch_and_reviews": {
+    "trigger": {
+      "step": 18502,
+      "frame": 1036249,
+      "hp": 82,
+      "max_hp": 173,
+      "hp_fraction": 0.47398843930635837,
+      "objective": "Move RIGHT.",
+      "target_species": 35
+    },
+    "native_steps": {
+      "pkmn_confirm": 18503,
+      "party_scroll": [
+        18504,
+        18505,
+        18506,
+        18507
+      ],
+      "select_fearow": 18508,
+      "switch_confirm": 18509,
+      "native_getm_passive": [
+        18511,
+        18512
+      ],
+      "disable_handoff_passive": 18513,
+      "first_target_command": 18515
+    },
+    "party_order_unchanged": true,
+    "note": "這是戰鬥中的正常換人，不是將party資料重排或改寫HP；卡比獸仍保留在原party[0]。",
+    "fearow_levelup": {
+      "step": 18524,
+      "pre_action_frame": 1038097,
+      "recorded_at_utc": "2026-10-24T00:11:50.813577+00:00",
+      "recorded_at_taipei": "2026-10-24T08:11:50.813577+08:00",
+      "time_semantics": "JSONL動作記錄時刻；state為按鍵前，並非畫面首次出現精確UTC。",
+      "location": {
+        "map_id": 208,
+        "x": 18,
+        "y": 7
+      },
+      "phase": "battle_dialogue",
+      "battle_kind": "trainer",
+      "visible_text": [
+        "          FEAROW",
+        "               36",
+        "           111/111",
+        " FEAROW grew",
+        " to level 36!"
+      ],
+      "action": "a",
+      "emulated_frames": 128
+    },
+    "review_stops": [
+      {
+        "reason": "trainer_half_hp_pending_observation_or_enemy_changed",
+        "at_utc": "2026-10-23T23:51:19.454709+00:00",
+        "at_taipei": "2026-10-24T07:51:19.454709+08:00",
+        "frame": 1036697,
+        "keyframe": "outputs/league-campaign-20261024-23/game/keyframes/00162-review-trainer_half_hp_pending_observation_or_enemy_changed.png",
+        "sha256": "a575f4524df57926d870ab8b4dc3f14164176a5491bbc885193710ccddf9763f",
+        "visual_read": "原PNG實際右HUD仍SNORLAX36／82/173，下方Getm FEAROW；該筆capture text讀值已是FEAROW35／108/108。保留兩者不同，不拿文字候選冒充原像素。",
+        "fix": "bbf版只接受精確E5格並WAIT，未重建party或重送SWITCH。"
+      },
+      {
+        "reason": "trainer_half_hp_pending_ui_unverified",
+        "at_utc": "2026-10-24T00:07:01.532110+00:00",
+        "at_taipei": "2026-10-24T08:07:01.532110+08:00",
+        "frame": 1036953,
+        "keyframe": "outputs/league-campaign-20261024-23/game/keyframes/00163-review-trainer_half_hp_pending_ui_unverified.png",
+        "sha256": "2946b43e1c8ac2a8df1aad457730df6d9c1aaa6d933da63dd399384ae429199a",
+        "visual_read": "原PNG已為FEAROW35／108/108與完整Enemy HYPNO used DISABLE!。",
+        "fix": "faf5版確認新目標HUD的精確Getm或當前DISABLE頁可清pending，但當call仍只WAIT；正常SWITCH後敵方先行回合，不要求先等command。"
+      }
+    ],
+    "review_counter_components_seconds": {
+      "initial_review_before_first_action_seconds": 92.203,
+      "getm_decoder_review_pause_seconds": 941.813,
+      "enemy_retaliation_handoff_review_pause_seconds": 288.609
+    },
+    "retained_fight_progress": "兩次工程停檢前後EXP與PP不倒退；卡比獸61711EXP／82HP／BodySlam13PP及大嘴雀46405EXP／108HP在18510–18513保持，沒有讀回戰前洗結果。"
+  },
+  "party": {
+    "before": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 36,
+        "hp": 173,
+        "max_hp": 173,
+        "exp": 61015,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "battle_closed": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 36,
+        "hp": 82,
+        "max_hp": 173,
+        "exp": 62203,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          13
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 47593,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          18,
+          30,
+          20
+        ]
+      }
+    ],
+    "recovery_closed": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 36,
+        "hp": 173,
+        "max_hp": 173,
+        "exp": 62203,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 47593,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "unchanged_species": [
+      7,
+      102,
+      154
+    ],
+    "unchanged_three_in_all_selected_observations": true,
+    "party_species_order": [
+      132,
+      7,
+      102,
+      154,
+      35
+    ],
+    "snorlax_exp_gain": 1188,
+    "fearow_exp_gain": 1188,
+    "total_exp_gain": 2376,
+    "snorlax_body_slam_pp_consumed": 2,
+    "fearow_drill_peck_pp_consumed": 2,
+    "persistent_status_byte_zero_in_all_selected_observations": true,
+    "volatile_status_note": "status byte0不否認原生文字顯示的混亂／畏縮；這些暫時狀態另以文字紀錄。",
+    "damage_observations": [
+      {
+        "from_hp": 173,
+        "to_hp": 161,
+        "evidence_steps": [
+          18478,
+          18481
+        ],
+        "description": "完整Enemy HYPNO used HEADBUTT，HUD倒數後正常同步。"
+      },
+      {
+        "from_hp": 161,
+        "to_hp": 138,
+        "evidence_steps": [
+          18483,
+          18485,
+          18486
+        ],
+        "description": "完整敵招名未保留；隨後became confused，不能補猜CONFUSION。"
+      },
+      {
+        "from_hp": 138,
+        "to_hp": 117,
+        "evidence_steps": [
+          18489,
+          18490
+        ],
+        "description": "完整自傷文字後下一command同步。"
+      },
+      {
+        "from_hp": 117,
+        "to_hp": 96,
+        "evidence_steps": [
+          18496,
+          18497
+        ],
+        "description": "第二次完整混亂自傷文字後同步。"
+      },
+      {
+        "from_hp": 96,
+        "to_hp": 82,
+        "evidence_steps": [
+          18500,
+          18501,
+          18502
+        ],
+        "description": "完整HEADBUTT，之後flinched；半血閘門選正常換人。"
+      }
+    ]
+  },
+  "economy": {
+    "money_before": 42656,
+    "money_battle_closed": 43496,
+    "money_recovery_closed": 43496,
+    "delta": 840,
+    "native_prize": 840,
+    "inventory_unchanged_in_all_selected_observations": true,
+    "card_key_item48_quantity": 1,
+    "great_ball_item3_quantity": 9
+  },
+  "recovery": {
+    "nurse_heal_selection": {
+      "step": 18636,
+      "pre_action_frame": 1044161,
+      "recorded_at_utc": "2026-10-24T00:12:22.332055+00:00",
+      "recorded_at_taipei": "2026-10-24T08:12:22.332055+08:00",
+      "time_semantics": "JSONL動作記錄時刻；state為按鍵前，並非畫面首次出現精確UTC。",
+      "location": {
+        "map_id": 182,
+        "x": 3,
+        "y": 3
+      },
+      "phase": "dialogue",
+      "battle_kind": "none",
+      "visible_text": [
+        "            ▶HEAL",
+        "             CANCEL",
+        " POKéMON back to",
+        " perfect health!"
+      ],
+      "action": "a",
+      "emulated_frames": 128
+    },
+    "first_full_hp_pp_in_step_log": {
+      "step": 18637,
+      "frame": 1044289,
+      "snorlax_hp": [
+        173,
+        173
+      ],
+      "snorlax_body_slam_pp": 15,
+      "fearow_drill_peck_pp": 20
+    },
+    "closed_at_utc": "2026-10-24T00:12:22.647295+00:00",
+    "closed_at_taipei": "2026-10-24T08:12:22.647295+08:00",
+    "closed_frame": 1045057,
+    "location": {
+      "map_id": 182,
+      "x": 3,
+      "y": 3
+    },
+    "reason": "route_extension_required",
+    "battle_kind": "none",
+    "visible_text": [],
+    "all_five_hp_status_pp_restored": true,
+    "exp_moves_inventory_money_preserved": true,
+    "source_review_sha256": "85e294c9f6f5670a2b04ef85ddbc4a2299352d4b1d9f0cf971a7ebf9ad826f43"
+  },
+  "timing_interpretation": "兩個固定scope分開；runner wall/review/non-review為端點差，ISO review時間另列。模擬秒不可當牆鐘／全程通關時間；影片未讀取、未新增。",
+  "validation": {
+    "bounded_new_version_tests": {
+      "tests_passed": 202,
+      "warnings": 1,
+      "independent_seconds": 1.86,
+      "source_sha256": "faf5fbf422bfa9ae60b78752b943445112267cabef3bef7f3b94c05aecf6c31e",
+      "test_file_sha256": "5f6243a8b5b6b21d52dc8953c712bfc118ece3d0e69e6eeca0f57bbf9012cd8e",
+      "evidence": "前一個有界獨立工程審查已親跑的固定收據；本成果任務不重讀src/tests。",
+      "independent_review_sha256": "e9dbe06f72e34e8ac13728eb36a16044d96e0f73179b47eaa285419bebebac04"
+    },
+    "historical_full_suite_note": "5272項為較早完整測試快照，不能宣稱已涵蓋後續faf5；此收據只引用新版202項target與真實續戰成果。",
+    "gameplay_routing_contract": {
+      "new_strata_calls": 0,
+      "gpt_gameplay_classification_calls": 0,
+      "cloud_gameplay_fallback_calls": 0,
+      "evidence": "父層本次執行契約，非本成果工作獨立網路封包查核。",
+      "engineering_cost": "Codex工程、研究、審查與撰文額度另計，不併入本機遊戲分類。"
+    }
+  },
+  "evidence": {
+    "review_snapshot_sha256": {
+      "before": "851d265c194c25fa14562faecac2678e011435f493a033260e85ca3eab154fb6",
+      "trainer_closed": "4fa4be8330e3809a53642148ac2b1b60cfb1f6edf3ead257a5dc6184a09f259f",
+      "recovery_closed": "85e294c9f6f5670a2b04ef85ddbc4a2299352d4b1d9f0cf971a7ebf9ad826f43"
+    },
+    "closed_step_sources": [
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-050.jsonl",
+        "bytes": 643480,
+        "sha256": "8b2b9d783719b54756c321e6bbb74069c77713ff83688178e4d17bc312721b72",
+        "selected_lines": 1,
+        "selected_raw_lines_sha256": "4957ce77dc0ada74a20f76c61927ebd85be15e5591db5b8c1112669851604528",
+        "trainer_lines": 1,
+        "trainer_raw_lines_sha256": "4957ce77dc0ada74a20f76c61927ebd85be15e5591db5b8c1112669851604528",
+        "recovery_lines": 0,
+        "recovery_raw_lines_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-051.jsonl",
+        "bytes": 612583,
+        "sha256": "780a9ea82b1493524587d2b65a89a7a436034840457db11a5d05de39535ede4e",
+        "selected_lines": 79,
+        "selected_raw_lines_sha256": "780a9ea82b1493524587d2b65a89a7a436034840457db11a5d05de39535ede4e",
+        "trainer_lines": 79,
+        "trainer_raw_lines_sha256": "780a9ea82b1493524587d2b65a89a7a436034840457db11a5d05de39535ede4e",
+        "recovery_lines": 0,
+        "recovery_raw_lines_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-052.jsonl",
+        "bytes": 14335,
+        "sha256": "b69503a3f377cffc5ea83f7d83e264110239d346899194c6d96a5bb3bb2c896e",
+        "selected_lines": 2,
+        "selected_raw_lines_sha256": "b69503a3f377cffc5ea83f7d83e264110239d346899194c6d96a5bb3bb2c896e",
+        "trainer_lines": 2,
+        "trainer_raw_lines_sha256": "b69503a3f377cffc5ea83f7d83e264110239d346899194c6d96a5bb3bb2c896e",
+        "recovery_lines": 0,
+        "recovery_raw_lines_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-053.jsonl",
+        "bytes": 1067446,
+        "sha256": "e989a1fd68649db1b1cce1819c86edf410e8ff42eb4650be3b91aa0ecc5e62a6",
+        "selected_lines": 129,
+        "selected_raw_lines_sha256": "47b3bb49645a80d73eb0333f1c3b193856c959dccb5a1e3f13b64868e5c91fa2",
+        "trainer_lines": 27,
+        "trainer_raw_lines_sha256": "7c335181767d6ed81f113ef36d20456dcb2543be7c9c373b52f726a908a18446",
+        "recovery_lines": 102,
+        "recovery_raw_lines_sha256": "26b4102c81c910661180ab434870d82592cf663dcabb10b83810b0811742ac30"
+      }
+    ],
+    "captures_hashed": 11,
+    "visually_inspected_existing_keyframes": [
+      "outputs/league-campaign-20261024-23/game/keyframes/00162-review-trainer_half_hp_pending_observation_or_enemy_changed.png",
+      "outputs/league-campaign-20261024-23/game/keyframes/00163-review-trainer_half_hp_pending_ui_unverified.png",
+      "outputs/league-campaign-20261024-23/game/keyframes/00166-trainer-defeated.png"
+    ],
+    "source_images_note": "只讀既有同段capture引用PNG並重算SHA，未新剪片、未另產圖片或上傳。",
+    "private_audit": "outputs/research/silph-third-trainer-audit-20261024.json",
+    "selected_raw_lines_sha256": {
+      "all": "d239a21a9fb6b89c40e7c3ae992f92561d36090dcba86272412aa5d4e6e66093",
+      "trainer": "ddf6bd395fc2f43e285099c6c2514d3ce27ed5572e599f489a6509debec5652d",
+      "recovery": "26b4102c81c910661180ab434870d82592cf663dcabb10b83810b0811742ac30"
+    },
+    "selected_closed_segments": [
+      50,
+      51,
+      52,
+      53
+    ]
+  },
+  "limits": [
+    "普通3F ROCKET不是希魯夫勁敵或坂木；仍五枚徽章。",
+    "原生出招文字沒有取樣完整的地方明列未知，不由隊伍learnset、HP差或屬性猜招。",
+    "狀態影格與文字候選在第一Getm停點有先後差，原PNG／讀值差異保留。",
+    "本成果稽核沒有啟模型、送遊戲按鍵、讀ROM/state、改source/tests/plan、操作Git或網站。"
+  ]
+}
