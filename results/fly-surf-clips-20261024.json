@@ -1,0 +1,693 @@
+{
+  "schema": "fly-surf-media-audit-v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "title": "正常飛回真新鎮，再由尼多王衝浪下水",
+  "source_run": "league-campaign-20261024-24",
+  "source_ledger": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-066.jsonl",
+      "selected_steps": [
+        24412
+      ],
+      "selected_original_bytes_sha256": "21075e5ea4489456c09f85b5808fc21e8a19d1e13c35b762f81eb46c3845fa4e"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-067.jsonl",
+      "selected_steps": [
+        24413,
+        24414,
+        24415,
+        24416,
+        24417,
+        24418
+      ],
+      "selected_original_bytes_sha256": "4ebcb88bf31bb576758203dfa734b8fe36576511d9ce9dd7b38038d40e620cc7"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-068.jsonl",
+      "selected_steps": [
+        24419,
+        24420,
+        24421,
+        24422,
+        24423,
+        24424,
+        24425,
+        24426,
+        24427,
+        24428,
+        24429,
+        24430
+      ],
+      "selected_original_bytes_sha256": "f8ce237d65e831577712b23db8b174d12774f4ed8e2ca6d368777a7c28ed2851"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-069.jsonl",
+      "selected_steps": [
+        24474,
+        24475,
+        24476,
+        24477,
+        24478,
+        24479,
+        24480,
+        24481,
+        24482,
+        24483,
+        24484,
+        24485,
+        24486,
+        24487
+      ],
+      "selected_original_bytes_sha256": "1d16050493c7979b695caca384861a4b004181b5cbcfc52b3f19da47cbaa0270"
+    }
+  ],
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-066.mp4",
+      "sha256": "2b154c56e50c2b9949bdef8d08b91023cdfed76af0c7b7c0d62e127b728de58d",
+      "bytes": 154583,
+      "closure": {
+        "at": "2026-10-24T04:17:07.338659+00:00",
+        "segment": 66,
+        "timing": {
+          "wall_seconds": 14074.75,
+          "model_wait_seconds": 146.72,
+          "review_pause_seconds": 12896.289,
+          "non_review_session_seconds": 1178.461,
+          "emulated_seconds": 24039.2
+        },
+        "video": {
+          "filename": "video-066.mp4",
+          "fps": 15,
+          "frames": 70,
+          "playback_seconds": 4.666666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "7f8323f77dad7125cd8e449e2b0437648a3e1bc19a2effd255e0f4d1f4495ff8",
+      "global_prior_recorded_frames": 360518,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "4.666667",
+          "nb_frames": "70",
+          "nb_read_frames": "70"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-067.mp4",
+      "sha256": "138d4747ad14556a46b530725bf115c6e2958cacd91c2ff421f56786302d9843",
+      "bytes": 100313,
+      "closure": {
+        "at": "2026-10-24T04:19:44.163392+00:00",
+        "segment": 67,
+        "timing": {
+          "wall_seconds": 14231.578,
+          "model_wait_seconds": 147.346,
+          "review_pause_seconds": 13051.976,
+          "non_review_session_seconds": 1179.602,
+          "emulated_seconds": 24043.2
+        },
+        "video": {
+          "filename": "video-067.mp4",
+          "fps": 15,
+          "frames": 60,
+          "playback_seconds": 4.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "32712033e8c0fc2b51eee6f869b73f8f20b4c06bb9302c83336fdf7cc0f541ae",
+      "global_prior_recorded_frames": 360588,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "4.000000",
+          "nb_frames": "60",
+          "nb_read_frames": "60"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-068.mp4",
+      "sha256": "90787f71c49a048c3b2c193d499a8bc8128f4c0690b995af630dd73c5ae48229",
+      "bytes": 171239,
+      "closure": {
+        "at": "2026-10-24T04:21:02.543423+00:00",
+        "segment": 68,
+        "timing": {
+          "wall_seconds": 14309.953,
+          "model_wait_seconds": 147.361,
+          "review_pause_seconds": 13129.694,
+          "non_review_session_seconds": 1180.259,
+          "emulated_seconds": 24051.2
+        },
+        "video": {
+          "filename": "video-068.mp4",
+          "fps": 15,
+          "frames": 120,
+          "playback_seconds": 8.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "6aa10fcd29618a4326c4bbcf862f9dd9459ae607061eb061ccfb111ca0438d85",
+      "global_prior_recorded_frames": 360648,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "8.000000",
+          "nb_frames": "120",
+          "nb_read_frames": "120"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-069.mp4",
+      "sha256": "88fbd714e93fb28eb340f6f7ec3d3bb60e38ace0fdd3e42aecd806e9684a1864",
+      "bytes": 550155,
+      "closure": {
+        "at": "2026-10-24T04:24:41.942451+00:00",
+        "segment": 69,
+        "timing": {
+          "wall_seconds": 14529.344,
+          "model_wait_seconds": 148.469,
+          "review_pause_seconds": 13345.974,
+          "non_review_session_seconds": 1183.37,
+          "emulated_seconds": 24089.2
+        },
+        "video": {
+          "filename": "video-069.mp4",
+          "fps": 15,
+          "frames": 570,
+          "playback_seconds": 38.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "24cd39b2bc245f1e89cc15756df0854b24b07b15e4ca01fc3bbae215e44418d0",
+      "global_prior_recorded_frames": 360768,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "38.000000",
+          "nb_frames": "570",
+          "nb_read_frames": "570"
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "fly-pallet",
+      "title": "大嘴雀正常飛回真新鎮",
+      "steps_included": [
+        24412,
+        24429
+      ],
+      "boundary_observation_step": 24430,
+      "campaign_frame_range": [
+        1442313,
+        1443033
+      ],
+      "emulated_frames": 720,
+      "recorded_frames": 180,
+      "action_counts": {
+        "actions": 18,
+        "new_laya": 3,
+        "cache": 3,
+        "passive": 12,
+        "keys": {
+          "start": 1,
+          "up": 1,
+          "a": 4,
+          "wait": 12
+        }
+      },
+      "source_ranges": [
+        {
+          "segment": 66,
+          "frames_zero_based_half_open": [
+            60,
+            70
+          ],
+          "source_seconds": [
+            4.0,
+            4.666666666666667
+          ]
+        },
+        {
+          "segment": 67,
+          "frames_zero_based_half_open": [
+            0,
+            60
+          ],
+          "source_seconds": [
+            0.0,
+            4.0
+          ]
+        },
+        {
+          "segment": 68,
+          "frames_zero_based_half_open": [
+            0,
+            110
+          ],
+          "source_seconds": [
+            0.0,
+            7.333333333333333
+          ]
+        }
+      ],
+      "completion_receipt": {
+        "path": "outputs/league-campaign-20261024-24/game/field-moves.jsonl",
+        "selected_line_sha256": "580b2a85c7fb7902150bf4e337ee2d6167571b188d4f72849e27b907d2d5c084",
+        "at": "2026-10-24T04:19:44.615217+00:00",
+        "context": {
+          "phase": "fly_pallet_complete",
+          "objective": "Wait.",
+          "available_actions": [
+            "wait"
+          ],
+          "fly_pallet_tactic": "verified_pallet_landing",
+          "fly_pallet_stage": "complete",
+          "fly_pallet_complete": true,
+          "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+          "controller_menu_verified": false,
+          "field_move_complete": true,
+          "field_move_kind": "fly-pallet"
+        },
+        "timing": {
+          "wall_seconds": 14232.031,
+          "model_wait_seconds": 147.361,
+          "review_pause_seconds": 13051.976,
+          "non_review_session_seconds": 1180.055,
+          "emulated_seconds": 24050.533
+        }
+      },
+      "engineering_pause_count": 1,
+      "pause_count_basis": "父層實況人工稽核；不是由片長推算。",
+      "party_bag_money_unchanged": true,
+      "clips": [
+        {
+          "path": "outputs/videos/fly-surf-20261024/fly-pallet-1x.mp4",
+          "sha256": "406e9169ec49d232f8879c0004d24cee400f7e60f73288323b18384fd93783b2",
+          "bytes": 639924,
+          "frames": 180,
+          "width": 480,
+          "height": 432,
+          "fps": 15,
+          "duration_seconds": 12.0,
+          "speed": 1,
+          "audio": false,
+          "speed_basis": "emulated_time",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "15/1",
+              "duration": "12.000000",
+              "nb_frames": "180",
+              "nb_read_frames": "180"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        },
+        {
+          "path": "outputs/videos/fly-surf-20261024/fly-pallet-4x.mp4",
+          "sha256": "29398227e6541770c619f47ce75de25502aa2e3ae123c4580fbab2cf1f52ae05",
+          "bytes": 639931,
+          "frames": 180,
+          "width": 480,
+          "height": 432,
+          "fps": 60,
+          "duration_seconds": 3.0,
+          "speed": 4,
+          "audio": false,
+          "speed_basis": "post_production_4x",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "60/1",
+              "duration": "3.000000",
+              "nb_frames": "180",
+              "nb_read_frames": "180"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "outputs/videos/fly-surf-20261024/01-fearow-fly-menu.png",
+          "sha256": "ec94770bc20b4f6bb7ada5898c099f2f1625c027cae3c811a65b5638a464a595",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24416,
+          "observation_campaign_frame": 1442473,
+          "clip_frame": 39,
+          "source_segment": 67,
+          "source_frame": 29,
+          "relative_1x_seconds": 2.6,
+          "rgb24_sha256": "303b6e7532c45489f112ebf11a98623ed22103252ff499db12d3f1f06d1b75a1",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "   NIDOKING   36",
+            "             121/121",
+            "   SNORLAX    41",
+            "             198/198",
+            "   EEVEE      35",
+            "              90/ 90",
+            "   VENUSAUR   35",
+            "             111/111",
+            "   FEAROW",
+            "   LAPRAS   ▶FLY",
+            "             STATS",
+            " Choose a P  SWITCH"
+          ]
+        },
+        {
+          "path": "outputs/videos/fly-surf-20261024/02-native-map-pallet-selected.png",
+          "sha256": "7e9e0b79dce915890d97972bacb7a72c25b1bdcb3b8077d9b197f72ddc41768f",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24420,
+          "observation_campaign_frame": 1442633,
+          "clip_frame": 79,
+          "source_segment": 68,
+          "source_frame": 9,
+          "relative_1x_seconds": 5.266666666666667,
+          "rgb24_sha256": "02deff4a0be959f5889f28957278428a7e378d262fc38a84a60dbac4d73549f4",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "To PALLET TOWN    ▶▼"
+          ]
+        },
+        {
+          "path": "outputs/videos/fly-surf-20261024/03-native-flight-animation.png",
+          "sha256": "ce0923d74cea458f9927f0d6c8e952dffe30d5454f5fe519ca67345b8f48486c",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24424,
+          "observation_campaign_frame": 1442793,
+          "clip_frame": 119,
+          "source_segment": 68,
+          "source_frame": 49,
+          "relative_1x_seconds": 7.933333333333334,
+          "rgb24_sha256": "c4990e7512d4818c70824af4b7dff193fe13270e336967c1eb2c7ae14f686d98",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": []
+        },
+        {
+          "path": "outputs/videos/fly-surf-20261024/04-pallet-closed-landing.png",
+          "sha256": "4b6287c620948c64dfdaa0ed3e95d5c55f6a1e63b01911bf9a96cbc6375ae0e8",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24430,
+          "observation_campaign_frame": 1443033,
+          "clip_frame": 179,
+          "source_segment": 68,
+          "source_frame": 109,
+          "relative_1x_seconds": 11.933333333333334,
+          "rgb24_sha256": "cbf71ece271ae4dc808fcc75c5b2e2a5d0c780fc9430af7bbf8dfd46b13c11ed",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": []
+        }
+      ]
+    },
+    {
+      "id": "pallet-surf",
+      "title": "尼多王正常衝浪下水",
+      "steps_included": [
+        24474,
+        24486
+      ],
+      "boundary_observation_step": 24487,
+      "campaign_frame_range": [
+        1444793,
+        1445313
+      ],
+      "emulated_frames": 520,
+      "recorded_frames": 130,
+      "action_counts": {
+        "actions": 13,
+        "new_laya": 3,
+        "cache": 6,
+        "passive": 4,
+        "keys": {
+          "start": 1,
+          "a": 4,
+          "up": 4,
+          "wait": 4
+        }
+      },
+      "source_ranges": [
+        {
+          "segment": 69,
+          "frames_zero_based_half_open": [
+            430,
+            560
+          ],
+          "source_seconds": [
+            28.666666666666668,
+            37.333333333333336
+          ]
+        }
+      ],
+      "completion_receipt": {
+        "path": "outputs/league-campaign-20261024-24/game/field-moves.jsonl",
+        "selected_line_sha256": "d2f43f43b15d1bcdb6e4d18a91cfaafdb254669e86c4e1ae52cfe8987bc50270",
+        "at": "2026-10-24T04:21:53.410882+00:00",
+        "context": {
+          "phase": "pallet_surf_complete",
+          "objective": "Wait.",
+          "available_actions": [
+            "wait"
+          ],
+          "controller_menu_verified": false,
+          "pallet_surf_stage": "complete",
+          "pallet_surf_tactic": "verified_native_pallet_surf",
+          "pallet_surf_complete": true,
+          "surf_entry_complete": true,
+          "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+          "field_move_complete": true,
+          "field_move_kind": "pallet-surf"
+        },
+        "timing": {
+          "wall_seconds": 14360.828,
+          "model_wait_seconds": 148.469,
+          "review_pause_seconds": 13177.662,
+          "non_review_session_seconds": 1183.166,
+          "emulated_seconds": 24088.533
+        }
+      },
+      "engineering_pause_count": 0,
+      "pause_count_basis": "父層實況人工稽核；不是由片長推算。",
+      "party_bag_money_unchanged": true,
+      "clips": [
+        {
+          "path": "outputs/videos/fly-surf-20261024/pallet-surf-1x.mp4",
+          "sha256": "9e90e6a3d772f98fda3c5d0304dd091269cab999efb60ecc6e26a97e96e12060",
+          "bytes": 401566,
+          "frames": 130,
+          "width": 480,
+          "height": 432,
+          "fps": 15,
+          "duration_seconds": 8.666666666666666,
+          "speed": 1,
+          "audio": false,
+          "speed_basis": "emulated_time",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "15/1",
+              "duration": "8.666667",
+              "nb_frames": "130",
+              "nb_read_frames": "130"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        },
+        {
+          "path": "outputs/videos/fly-surf-20261024/pallet-surf-4x.mp4",
+          "sha256": "785687beb546659b65ee9a92557fa51aed24f7ec0bf608af2f276226c055407c",
+          "bytes": 401374,
+          "frames": 130,
+          "width": 480,
+          "height": 432,
+          "fps": 60,
+          "duration_seconds": 2.1666666666666665,
+          "speed": 4,
+          "audio": false,
+          "speed_basis": "post_production_4x",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "60/1",
+              "duration": "2.166667",
+              "nb_frames": "130",
+              "nb_read_frames": "130"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "outputs/videos/fly-surf-20261024/05-nidoking-surf-menu.png",
+          "sha256": "53c6bcd5616b99d33b7ddb858948ce5b6497c400a178067bfe14acac635322ab",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24481,
+          "observation_campaign_frame": 1445073,
+          "clip_frame": 69,
+          "source_segment": 69,
+          "source_frame": 499,
+          "relative_1x_seconds": 4.6,
+          "rgb24_sha256": "f65b691825115fa8e94829d1b143685d2ce7be059aa34eafa8e9438aa830a3a0",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "   NIDOKING   36",
+            "▷            121/121",
+            "   SNORLAX    41",
+            "             198/198",
+            "   EEVEE      35",
+            "              90/ 90",
+            "   VENUSAUR   35",
+            "             111/111",
+            "   FEAROW",
+            "   LAPRAS   ▶SURF",
+            "             STATS",
+            " Choose a P  SWITCH"
+          ]
+        },
+        {
+          "path": "outputs/videos/fly-surf-20261024/06-nidoking-got-on-native-text.png",
+          "sha256": "64c959d765589f0dfdb63a5137e8b07d4f82916ec64a6f39c88ae4979ec75652",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24484,
+          "observation_campaign_frame": 1445193,
+          "clip_frame": 99,
+          "source_segment": 69,
+          "source_frame": 529,
+          "relative_1x_seconds": 6.6,
+          "rgb24_sha256": "4247e3a77d7b9598a4a20efeef1fec6abc15e61e0ae23d65fc56db623a7343d8",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "   NIDOKING   36",
+            "▷            121/121",
+            "   SNORLAX    41",
+            "             198/198",
+            "   EEVEE      35",
+            "              90/ 90",
+            "   VENUSAUR   35",
+            "             111/111",
+            "   FEAROW     37",
+            "             114/114",
+            "   LAPRAS     30",
+            "             124/124"
+          ]
+        },
+        {
+          "path": "outputs/videos/fly-surf-20261024/07-native-surf-step.png",
+          "sha256": "511916777872a3fe35201d371432e792b8bc0e79f795c7b8b567c422e83aa883",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24485,
+          "observation_campaign_frame": 1445233,
+          "clip_frame": 109,
+          "source_segment": 69,
+          "source_frame": 539,
+          "relative_1x_seconds": 7.266666666666667,
+          "rgb24_sha256": "ff235eb5c3f94196da84de99bebb97798e12e028c4e69a792c473ff833d6b857",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": []
+        },
+        {
+          "path": "outputs/videos/fly-surf-20261024/08-surf-closed-water-landing.png",
+          "sha256": "defc04bb2834d1d8a7eb488410cc89d9936af8d068f4f0d8ecec5c4afd3b9194",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24487,
+          "observation_campaign_frame": 1445313,
+          "clip_frame": 129,
+          "source_segment": 69,
+          "source_frame": 559,
+          "relative_1x_seconds": 8.6,
+          "rgb24_sha256": "cd6e2c09b4355d29b6407d94daa79a331ec03b36fcc0fa8eb075cf1ea6d60e31",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": []
+        }
+      ]
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/fly-surf-20261024/qa-contact-sheet.png",
+    "sha256": "563bd46ecd85efec7c832f16394b303911f928e62501cc6f0c60521585c57fee",
+    "width": 1920,
+    "height": 948
+  },
+  "editing": "每4個模擬幀取樣一次；1x15fps及後製4x60fps使用完全相同的真幀，不插幀／重演／補畫。",
+  "parent_review": "passed_visual_review",
+  "published": false,
+  "builder_validation_note": "首次帳目assert攔下Fly初稿2新／4cache假設；按原18行重算修正為3新／3cache／12passive，未更動任何遊戲或來源資料。",
+  "limitations": [
+    "片長是模擬時間或後製4x播放時間，不能當牆鐘、Laya／Strata判斷速度或全程通關時間。",
+    "Fly保留一次地圖Window工程停檢的前後真幀，暫停沒有模擬取樣；Surf此交易沒有中途停檢。",
+    "排除離屋、岸邊NPC繞行與Fly抵達後導航、Surf後第一水路方向；本素材不證明已到紅蓮或打贏第七館。",
+    "六人選單背景使ledger可見文字12列截斷，got on下方文字只由原影片真像素確認，不補造文字。",
+    "只讀已封裝066–069；沒有讀open070、ROM、state或操作遊戲。"
+  ],
+  "frame_mapping_audit": {
+    "path": "outputs/research/fly-surf-clips-audit-20261024.json",
+    "sha256": "09891f1adeaf478c4644e316cdea699357d55701a14f98709fa15da0f9f2e604"
+  },
+  "agent_visual_review": {
+    "qa_viewed": true,
+    "got_on_screenshot": "outputs/videos/fly-surf-20261024/06-nidoking-got-on-native-text.png",
+    "observed_native_text": "KEVIN got on / NIDOKING!",
+    "basis": "直接目視原取樣PNG與QA，不從ledger補造文字；父層親看仍pending。"
+  },
+  "parent_visual_review_note": "父層親看1920×948 QA：Fly選單／PALLET地圖／動畫／落地，Surf選單／KEVIN got on NIDOKING!與▼／正常下水／水上閉合，均為原生像素；非文字重建。",
+  "visibility": "local_media_only_not_published"
+}

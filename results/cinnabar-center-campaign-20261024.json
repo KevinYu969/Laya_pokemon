@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_normal_center_recovery_and_closed",
+  "at": "2026-10-24T04:26:10.400994+00:00",
+  "frame": 1453377,
+  "location": {
+    "map_id": 171,
+    "x": 3,
+    "y": 4
+  },
+  "actions": 29,
+  "all_cached": true,
+  "full_six_hp_status_pp": true,
+  "only_progress_change": "NIDOKING HORN ATTACK PP24→25",
+  "source_evidence": [
+    {
+      "path": ".local/cinnabar-center-fixed-review-20261024.json",
+      "sha256": "ccf38a6eb37a9540e5293062b81b6a5209187f830dd4068a42fc7afe549fba0e",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-center-fixed-summary-20261024.json",
+      "sha256": "556d5addda0ef30a50b0813ab27f6a6579fb483f019457625c247317f47b80e5",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-center-fixed-steps-20261024.jsonl",
+      "sha256": "da257a6fd33a3e066166d56c7eb890310d36d62310ed25bb314b5371905c1147",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "未取得洋館Secret Key，未挑戰夏伯，仍六徽章。"
+  ]
+}

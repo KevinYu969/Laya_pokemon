@@ -8,13 +8,13 @@
 
 ## 目前進度
 
-**六枚徽章；已取得HM02，大嘴雀已正常學會飛翔。** 2026-10-24台北10:54:31完成娜姿徽章與TM46；11:34:17正常PC存物騰出兩格；11:45:02妙蛙花正常Cut開路，11:47:16領HM02、11:47:50以瞪眼換飛翔並完整關頁。11:51:58已正常走出秘密屋，六人全滿。第七館與聯盟尚未完成。
+**六枚徽章，已正常取得祕密鑰匙，返回紅蓮中心補滿隊伍。** 2026-10-24台北14:00:52，完成PC存物、背包空出一格，準備第七館暖場戰。夏伯與聯盟尚未完成。
 
-- 隊伍：尼多王36、卡比獸41、伊布35、妙蛙花35、大嘴雀37、拉普拉斯30。大嘴雀保留啄／鑽啄／亂擊，新增飛翔；背包19格，HM02與大師球仍在。
-- 娜姿戰保留卡比獸中毒後遭胡地幻象光線會心擊倒、大嘴雀接勝的教訓，已回中心恢復。[第六館收據](results/sixth-gym-campaign-20261024.json)、[逐館檢討](docs/sabrina-gym-review.md)
-- [兩TM正常存物](results/player-pc-two-tm-20261024.json)、[原生Cut與抵達秘密屋](results/route16-cut-and-flyhouse-arrival-20261024.json)、[HM02領取](results/hm02-gift-campaign-20261024.json)、[飛翔教學](results/fly-fearow-teaching-campaign-20261024.json)皆有固定端點與守恆核對。[最新5983項回歸](results/code-validation-cut-fly-20261024.json)通過；野外Fly目的地與Surf水路仍待接線，不能把學會招式當成已飛抵真新鎮或紅蓮島。
-- 遊戲逐鍵分類由本機離線Laya與快取執行，工程開發／審查另計；Strata配置維持。新的換人策略候選有31項測試，但尚未接入實戰，沒有宣稱已避免後續KO或模型權重自行學習。
-- [本機即時畫面](http://127.0.0.1:8767/)直接來自PyBoy。素材40片、140張精選PNG含QA；新增[PC兩TM存物影片](results/player-pc-clips-20261024.json)39.333秒／後製4倍速9.833秒，三次工程停檢如實保留。媒體留本機、網站尚未發布，原生SDL視窗問題仍在處理。
+- 隊伍：尼多王36、卡比獸41、伊布35、妙蛙花35、大嘴雀37、拉普拉斯31，全員HP／狀態／PP已恢復。拉普拉斯正常學會衝浪，31級只忘白霧學奇異之光，保留唱歌的捕獲用途。
+- [正常取Key](results/mansion-secret-key-campaign-20261024.json)6步、[31級學招與返程](results/lapras31-mansion-return-campaign-20261024.json)、[正常回中心](results/mansion-return-center-campaign-20261024.json)與[PC存TM46](results/cinnabar-tm46-campaign-20261024.json)均有固定驗收。Key、HM與大師球保持，袋19格。Weezing37一戰帶傷正常逃跑，沒有冒稱勝利；回程座標失誤也如實保留。
+- [最新6843項完整回歸](results/code-validation-cinnabar-pc-20261024.json)31.16秒通過，src/tests SHA穩定。[Key來源索引更正](results/mansion-secret-key-source-correction-20261024.json)保留原計數失誤與修正證據。
+- 逐鍵分類使用本機離線Laya及快取，工程開發／審查另計，Strata配置未改。娜姿戰的中毒卡比獸遭擊倒教訓保留於[逐館檢討](docs/sabrina-gym-review.md)；換人策略候選仍未接入，不冒稱模型權重自行學習。
+- [本機即時畫面](http://127.0.0.1:8767/)直接來自PyBoy。素材52片、171張PNG含QA；[六支洋館影片](results/mansion-progress-clips-20261024.json)包含學Surf、正常換首位打瓦斯彈與第一雕像，各有原速及後製四倍速。媒體留本機、網站尚未發布，原生SDL視窗問題仍在處理。
 
 通關耗時以[里程碑時間軸](docs/campaign-timeline.md)記錄；牆鐘、工程停檢、模擬遊戲時間與後製倍速分開，尚未公布全程通關時間。[第七館前置與問題紀錄](docs/seventh-gym-progress.md)持續更新。
 

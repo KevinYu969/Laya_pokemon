@@ -2,6 +2,8 @@
 import importlib
 import json
 import time
+from . import team_strategy
+importlib.reload(team_strategy)
 from . import party_control,balanced_training
 if 'waypoint' in globals():
     importlib.reload(party_control)
@@ -44,6 +46,20 @@ from . import lapras_bridge
 importlib.reload(lapras_bridge)
 from . import player_pc_bridge
 importlib.reload(player_pc_bridge)
+from . import fly_pallet_bridge
+importlib.reload(fly_pallet_bridge)
+from . import pallet_surf_bridge
+importlib.reload(pallet_surf_bridge)
+from . import route21_water_bridge
+importlib.reload(route21_water_bridge)
+from . import mansion_native_landing
+importlib.reload(mansion_native_landing)
+from . import mansion_transition_ready
+importlib.reload(mansion_transition_ready)
+from . import mansion_statue_bridge
+importlib.reload(mansion_statue_bridge)
+from . import mansion_secret_key_bridge
+importlib.reload(mansion_secret_key_bridge)
 importlib.reload(campaign_safety)
 importlib.reload(capture_closing_gate)
 for controller in _GYM_CONTROLLERS.values():controller._last_now=None
@@ -51,6 +67,77 @@ for controller in _GYM_CONTROLLERS.values():controller._last_now=None
 
 def switch_context(pyboy,state,plan,step_id,previous):
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if mansion_secret_key_bridge.applies(step_id,step):
+        bridges=(mansion_statue_bridge,mansion_transition_ready,mansion_native_landing,
+                 route21_water_bridge,pallet_surf_bridge,fly_pallet_bridge,safari_entry,
+                 hm_teaching_bridge,vending_bridge,saffron_guard_bridge,silph_card_bridge,
+                 lapras_bridge,player_pc_bridge,campaign_transactions)
+        if (any(set(m._BINDINGS)-m._COMPLETED for m in bridges)
+                or safari_entry._RUN_CONTROLLER is not None
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'mansion_secret_key_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return mansion_secret_key_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                                read_world_grid(pyboy,state['location']),previous)
+    if mansion_statue_bridge.applies(step_id,step):
+        bridges=(mansion_secret_key_bridge,mansion_transition_ready,mansion_native_landing,route21_water_bridge,pallet_surf_bridge,
+                 fly_pallet_bridge,safari_entry,hm_teaching_bridge,vending_bridge,
+                 saffron_guard_bridge,silph_card_bridge,lapras_bridge,player_pc_bridge,
+                 campaign_transactions)
+        if (any(set(m._BINDINGS)-m._COMPLETED for m in bridges)
+                or safari_entry._RUN_CONTROLLER is not None
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'mansion_statue_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return mansion_statue_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                               read_world_grid(pyboy,state['location']),previous)
+    if route21_water_bridge.applies(step_id,step):
+        bridges=(pallet_surf_bridge,fly_pallet_bridge,safari_entry,hm_teaching_bridge,
+                 vending_bridge,saffron_guard_bridge,silph_card_bridge,lapras_bridge,
+                 player_pc_bridge,campaign_transactions)
+        if (any(set(m._BINDINGS)-m._COMPLETED for m in bridges)
+                or safari_entry._RUN_CONTROLLER is not None
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'route21_water_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return route21_water_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                            read_world_grid(pyboy,state['location']),previous)
+    if pallet_surf_bridge.applies(step_id,step):
+        if (set(fly_pallet_bridge._BINDINGS)-fly_pallet_bridge._COMPLETED
+                or set(safari_entry._BINDINGS)-safari_entry._COMPLETED
+                or safari_entry._RUN_CONTROLLER is not None
+                or set(hm_teaching_bridge._BINDINGS)-hm_teaching_bridge._COMPLETED
+                or set(vending_bridge._BINDINGS)-vending_bridge._COMPLETED
+                or set(saffron_guard_bridge._BINDINGS)-saffron_guard_bridge._COMPLETED
+                or set(silph_card_bridge._BINDINGS)-silph_card_bridge._COMPLETED
+                or set(lapras_bridge._BINDINGS)-lapras_bridge._COMPLETED
+                or set(player_pc_bridge._BINDINGS)-player_pc_bridge._COMPLETED
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())
+                or set(campaign_transactions._BINDINGS)-campaign_transactions._COMPLETED):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'pallet_surf_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return pallet_surf_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                          read_world_grid(pyboy,state['location']),previous)
+    if fly_pallet_bridge.applies(step_id,step):
+        if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
+                or safari_entry._RUN_CONTROLLER is not None
+                or set(hm_teaching_bridge._BINDINGS)-hm_teaching_bridge._COMPLETED
+                or set(vending_bridge._BINDINGS)-vending_bridge._COMPLETED
+                or set(saffron_guard_bridge._BINDINGS)-saffron_guard_bridge._COMPLETED
+                or set(silph_card_bridge._BINDINGS)-silph_card_bridge._COMPLETED
+                or set(lapras_bridge._BINDINGS)-lapras_bridge._COMPLETED
+                or set(player_pc_bridge._BINDINGS)-player_pc_bridge._COMPLETED
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())
+                or set(campaign_transactions._BINDINGS)-campaign_transactions._COMPLETED):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'fly_pallet_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return fly_pallet_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                         read_world_grid(pyboy,state['location']),previous)
     if player_pc_bridge.applies(step_id,step):
         if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
                 or safari_entry._RUN_CONTROLLER is not None
@@ -101,6 +188,45 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if mansion_secret_key_bridge.applies(step_id,step):
+        return None  # 祕密鑰匙只由switch_context接主runner真previous。
+    if mansion_transition_ready.applies(step_id,step):
+        bridges=(mansion_secret_key_bridge,mansion_native_landing,mansion_statue_bridge,route21_water_bridge,
+                 pallet_surf_bridge,fly_pallet_bridge,safari_entry,hm_teaching_bridge,
+                 vending_bridge,saffron_guard_bridge,silph_card_bridge,lapras_bridge,
+                 player_pc_bridge,campaign_transactions)
+        if (any(set(m._BINDINGS)-m._COMPLETED for m in bridges)
+                or safari_entry._RUN_CONTROLLER is not None
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'mansion_transition_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        text=read_visible_text(pyboy);grid=read_world_grid(pyboy,state['location'])
+        reviewed=_review_mansion_standing_warp(pyboy,state,plan,step,text,grid)
+        if reviewed is not None:
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':reviewed},step_id)
+        return mansion_transition_ready.context(pyboy,state,plan,step_id,text,grid)
+    if mansion_native_landing.applies(step_id,step):
+        bridges=(mansion_secret_key_bridge,mansion_transition_ready,mansion_statue_bridge,route21_water_bridge,pallet_surf_bridge,fly_pallet_bridge,safari_entry,
+                 hm_teaching_bridge,vending_bridge,saffron_guard_bridge,silph_card_bridge,
+                 lapras_bridge,player_pc_bridge,campaign_transactions)
+        if (any(set(m._BINDINGS)-m._COMPLETED for m in bridges)
+                or safari_entry._RUN_CONTROLLER is not None
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'mansion_landing_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return mansion_native_landing.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                               read_world_grid(pyboy,state['location']))
+    if mansion_statue_bridge.applies(step_id,step):
+        return None  # 原生雕像提示必由switch_context接真previous。
+    if route21_water_bridge.applies(step_id,step):
+        return None  # 第一個野戰觀測也先接真previous，水步收據後才交battle。
+    if pallet_surf_bridge.applies(step_id,step):
+        return None  # 下水全程由switch_context接真previous。
+    if fly_pallet_bridge.applies(step_id,step):
+        return None  # 由switch_context接真previous，攔截完整飛行直到落地閉合。
     if player_pc_bridge.applies(step_id,step):
         return None  # switch_context收到主runner真previous後才可推進PC交易。
     if lapras_bridge.applies(step_id,step):
@@ -234,6 +360,45 @@ def _review_cut_six_party(controller,step,state):
             or controller.start_location!={'map_id':27,'x':34,'y':10,'facing':'up'}):
         return 'cut_six_party_named_review_unverified'
     controller.error=None;controller._reviewed_cut_six_party_revision=revision
+    return None
+
+
+def _review_mansion_standing_warp(pyboy,state,plan,step,text,grid):
+    """只扣除已固定工程停檢的牆鐘；保留原交易與已耗用的全部預算。"""
+    revision=step.get('reviewed_standing_warp_revision')
+    if revision is None:return None
+    module=mansion_transition_ready;r=module._CONTROLLERS.get(step.get('id'))
+    if r is not None and r.get('reviewed_standing_warp_revision')==revision:return None
+    reason='mansion_standing_warp_named_review_unverified'
+    expected_binding=((216,23,22),165,(21,23),json.dumps('mansion-basement-approach-20261024',sort_keys=True,allow_nan=False))
+    if (type(revision) is not int or revision!=1 or step.get('id')!='mansion-basement-stairs-ready-20261024'
+            or plan.get('training_job')!='mansion-basement-approach-20261024'
+            or step.get('map_id')!=216 or step.get('target')!=[23,22]
+            or state.get('frame')!=1466785 or state.get('location')!={'map_id':216,'x':23,'y':22}
+            or r is None or r.get('error') is not None or r.get('last_frame')!=1466785
+            or r.get('waits')!=26 or r.get('calls')!=26 or r.get('closed_frame') is not None
+            or module._BINDINGS.get(step['id'])!=expected_binding
+            or set(module._BINDINGS)-module._COMPLETED!={step['id']}):return reason
+    from pyboy.plugins import game_wrapper_pokemon_gen1_constants as constants
+    signal=module.read_transition_movement(pyboy,observation_frame=state['frame'],constants=constants)
+    p=state.get('progress');battle=state.get('battle_state',{})
+    if (not isinstance(p,dict) or module._party(p) is None
+            or (module._party(p),module._inventory(p.get('inventory')),p.get('money'))!=r['baseline']
+            or signal.get('read_valid') is not True or signal.get('switch_on') is not True
+            or signal.get('location')!=state['location'] or signal.get('movement_flags')!=4
+            or any(signal.get(k)!=0 for k in ('simulated_remaining','joy_ignore','walk_counter'))
+            or battle.get('active') is not False or battle.get('kind')!='none' or battle.get('raw')!=0
+            or battle.get('observation_frame')!=state['frame']
+            or module._text_status(text) is not True
+            or module._grid_status(grid,state['frame'],state['location'],0x13) is not True):return reason
+    now=time.monotonic();started,last=r.get('started'),r.get('last_now')
+    if (any(type(v) not in (int,float) for v in (started,last,now))
+            or not 0<=started<=last<=now or last-started>module.MAX_SECONDS):return reason
+    excluded=now-last
+    r['started']+=excluded;r['last_now']=now
+    r['review_excluded_seconds']=r.get('review_excluded_seconds',0)+excluded
+    r['review_elapsed_preserved']=last-started
+    r['reviewed_standing_warp_revision']=revision
     return None
 
 

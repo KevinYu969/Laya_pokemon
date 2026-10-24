@@ -74,5 +74,36 @@
   "limits": [
     "文字候選日誌最多12列，六人ABLE頁會截掉下方學會文字；不可把日誌不存在的LEARNED全文捏造出來。控制器原cell核完整提示，原始影片另可親看。",
     "只驗收正常教學與關頁；野外Fly目的地及動畫尚未操作。"
-  ]
+  ],
+  "native_learned_visual_evidence": {
+    "path": "outputs/videos/hm02-fly-20261024/07-fearow-learned-fly.png",
+    "sha256": "efbd3459e664676781b20a349364ad53fa901b348b0c431bcae4565bc54f6385",
+    "width": 480,
+    "height": 432,
+    "observation_step": 24399,
+    "observation_campaign_frame": 1441793,
+    "clip_frame": 833,
+    "source_segment": 65,
+    "source_frame": 823,
+    "relative_1x_seconds": 55.53333333333333,
+    "rgb24_sha256": "dc95f4defd5df328fa562bd4cf0bfebd7a0ce82e1f1ce081346af1dcaf3aa89b",
+    "source_and_both_clips_rgb_exact": true,
+    "ledger_text_is_truncated_at_12_rows": true,
+    "ledger_visible_text": [
+      "   NIDOKING   36",
+      "            NOT ABLE",
+      "   SNORLAX    41",
+      "            NOT ABLE",
+      "   EEVEE      35",
+      "            NOT ABLE",
+      "   VENUSAUR   35",
+      "            NOT ABLE",
+      "   FEAROW     37",
+      "▷           ABLE",
+      "   LAPRAS     30",
+      "            NOT ABLE"
+    ],
+    "local_only": true,
+    "parent_visually_verified": true
+  }
 }

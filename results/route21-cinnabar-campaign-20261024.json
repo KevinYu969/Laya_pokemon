@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_route21_native_water_and_cinnabar_landfall",
+  "at": "2026-10-24T04:24:45.636737+00:00",
+  "frame": 1451161,
+  "location": {
+    "map_id": 8,
+    "x": 4,
+    "y": 10
+  },
+  "actions": 122,
+  "source_edges": 106,
+  "normal_wild_battles": 1,
+  "enemy": "TENTACOOL",
+  "enemy_level": 10,
+  "attack": "HORN ATTACK",
+  "nidoking_experience_gained": 150,
+  "nidoking_horn_attack_pp_used": 1,
+  "all_six_hp_and_status_unchanged": true,
+  "other_five_full_party_unchanged": true,
+  "inventory_money_unchanged": true,
+  "engineering_interruptions": 0,
+  "source_evidence": [
+    {
+      "path": ".local/route21-water-fixed-review-20261024.json",
+      "sha256": "64d3ab1d5de17cca29a4d1cade2013d381faeeaf3f4331510e895129762ac6de",
+      "local_only": true
+    },
+    {
+      "path": ".local/route21-water-fixed-summary-20261024.json",
+      "sha256": "7428e5ce1079eefda727fe7771916be3065f194bc0a2fe5b121a5808fad9294f",
+      "local_only": true
+    },
+    {
+      "path": ".local/route21-water-fixed-steps-20261024.jsonl",
+      "sha256": "43bdcdf5ce384113db42efc7b90f09f5722d65664ce1b2e6cd0509d57b282892",
+      "local_only": true
+    },
+    {
+      "path": ".local/route21-water-fixed-field-20261024.json",
+      "sha256": "2ca2661a47ea4ca09481dd6aa1447f50010853c9b41dba5795d98423204acdc3",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/route21-cinnabar-closed-proof-20261024.json",
+      "sha256": "cbc471b6b298430e68ed9ada845cdda0504b7a2ddc81d2ce462e5d792cf55d67",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "真水路／兩次connection／正常上岸已完成；紅蓮中心與鑰匙及第七館尚未完成。",
+    "一次野戰未抓非目標低等瑪瑙水母，不宣稱隊伍新增或升等。"
+  ]
+}

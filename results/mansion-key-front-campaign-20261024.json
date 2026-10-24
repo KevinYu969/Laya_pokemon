@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_two_basement_statues_and_secret_key_front",
+  "at": "2026-10-24T05:28:46.136614+00:00",
+  "frame": 1476097,
+  "location": {
+    "map_id": 216,
+    "x": 5,
+    "y": 12
+  },
+  "actions": 140,
+  "new_laya": 0,
+  "cache": 131,
+  "passive_waits": 9,
+  "engineering_interruptions": 0,
+  "normal_statues": [
+    {
+      "player": [
+        18,
+        26
+      ],
+      "before": true,
+      "after": false,
+      "actions": 9
+    },
+    {
+      "player": [
+        20,
+        4
+      ],
+      "before": false,
+      "after": true,
+      "actions": 9
+    }
+  ],
+  "wild_battles": [
+    {
+      "species": "KOFFING",
+      "level": 31,
+      "experience": 504
+    },
+    {
+      "species": "KOFFING",
+      "level": 33,
+      "experience": 537
+    }
+  ],
+  "lapras_exp_gained": 1041,
+  "surf_pp_used": 3,
+  "all_six_hp_status_unchanged": true,
+  "other_five_party_inventory_money_unchanged": true,
+  "source_evidence": [
+    {
+      "path": ".local/mansion-key-front-fixed-review-20261024.json",
+      "sha256": "1a91798e1a79ad3f0f13a34e70d231c82fc9029db0f4b7ab348f37c9d23b57fb",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-key-front-fixed-summary-20261024.json",
+      "sha256": "c5bbad2d1ae5c762396160678ecb31139e2bdd2f8027646f092b71723dba0c87",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-key-front-fixed-steps-20261024.jsonl",
+      "sha256": "16ec4408a3b0a5d59e8a5ad4493960df6e349a2f3f0d782a19b1e803617a7089",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-key-front-fixed-fields-20261024.json",
+      "sha256": "ebc04b6d7760d5ef36af4882afb798d9f9476ab85eebbd5e95aa983b93bda65c",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "仍六徽章，Key尚未拾取、夏伯尚未挑戰。"
+  ]
+}

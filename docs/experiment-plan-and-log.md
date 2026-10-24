@@ -1034,3 +1034,61 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 - PC新1x39.333333/4x9.833333同590幀，選54末10f＋55/56/57/58至第二閉合，排除下一LEFT。5來源與雙成品全解碼、逐幀YUV同源同序，6正式PNG逐張RGB同來源/雙片；1440x948 QA父層親看6頁通過。素材40片140精選PNG含QA，另存站位原圖；三工程停檢明記，片長非922.843牆鐘。影片/原輸出/ROM/state不納Git，網站未發布。
 - 聚合重算131個固定檔SHA通過、兩舊summary維持歷史標示；原game23→24 continuity仍核同源。README/時間軸已更新Fly教學與Route16端點，第二大腦本節為主筆記，公開版由白名單匯出。下一步先安全FF備份/核遠端與CI，再接源限定Fly目的地PALLET與Route21正常Surf，不改Strata配置。逐鍵一直本機離線Laya／快取，工程工具與審查另計，沒有新增GPT遊戲分類。
 
+## 56. 2026-10-24 原生Fly回真新鎮、Surf與21號水道真抵紅蓮
+
+- 續用同一game24／原PyBoy主程序與已用狀態；沒有再啟遊戲、重讀洗結果、寫RAM或事件。1442313 Route16(7,6)六人全滿開始，保留六徽章、隊伍36/41/35/35/37/30、袋19與55372。逐鍵仍本機離線Laya與快取，未新增GPT分類，Strata配置不改；工程開發與審查另外計。
+- Fly getter依固定a536711公開TownMap RLE／RAM來源建360格完整模板、同frame兩遍讀144scanline對齊／signed tile IDs。Fly selector其實在CPU HL，沒有拿普通wWhichTownMapLocation scratch當目的地。必須完整PALLET TOWN＋原生ED/EE箭頭、兩個新觀測後才單A；沒有用next_map假完成。背景空格原tile67在PyBoy是0x167，不把decoder空白反推成7F。
+- 初始無輸入clone檢查曾由父層fixture漏battle observation_frame而保守拒；換用真read_battle_state才唯一候選START。這是預檢腳本缺欄，未送遊戲鍵。首次6步後1442553停fly_pallet_not_exact_initial_pallet_destination；完整raw360與模板零差、rows及signed mapping皆相符，真LCDC E3/windowTrue，而作者誤強制windowFalse。49純測試補真窗口與反例；父層10具名恢復測試只准固定frame/error/stage/pending已執行A/原baseline/full360/rows，保留calls/waits/pending與原60秒已花額度，只扣真正工程停檢elapsed，不重建交易。
+- 12:19:44.647080／1443033，原生飛翔落地真新鎮0(5,6)，18步＝3新Laya／3cache／12passive，所有六人全欄／原袋／錢保持；field-moves真complete收據與另外兩fresh noinput閉合對照。接往南岸的source最短12邊受真NPC碰撞，多次繞行後共44個cache按鍵，12:21:03.819919／1444793抵0(4,13)面下；不可把source BFS12寫成實機12步。
+- Surf getter由兩SDK錨交叉推D700 mode，明示source-derived未全ROM校準。PalletSurfController正常START→六人首格尼多王→SURF，完整native提示其實是KEVIN got on NIDOKING!，不是used SURF。需真▼才A；mode2可能先於實際前進，仍4,13時只WAIT，直到真4,14／水tile32、mode2、idle與兩fresh閉合才完成。
+- 12:21:53.453716／1445313正常Surf下水成功，13步＝3新／6cache／4passive；途中零工程停檢，全部六人HP/PP/EXP/招式、袋19與錢保持。父層預檢腳本另曾只比對錯的英文字句Press START而assert失敗，實際唯一actions=[start,wait]與正常signal皆正確，改核語意按鍵再排主迴圈，未把此誤判成遊戲錯誤。
+- field_context先defer，switch_context才拿主runner真正previous。Fly／Surf／water各綁原instance與明確意圖，Surf/water再綁training_job，跨reload不清基線或預算；未知owner／active其它交易保守停。water完整text封包放state副本，不把截到12列的候選當原畫面；第一個野戰先消化前一次真方向及預期格／mode，即使battle grid未知也能交回既有battle，不能吞掉水步回執。
+- Route21只開固定107節點／106邊水路，不把water加入全域陸地walkable。每格60秒／30WAIT只在真到新格才重算，全路900秒／1500calls；僅連續有效新frame activewild區間排除戰鬥耗時，reload與工程停檢不自清。兩source connection0(4,17)→32(4,0)、32(3,89)→8(3,0)，最後8(3,10)RIGHT才自然mode0上岸4,10。每步同frame grid／mode／visible格重核，未知trainer與逆水恢復仍保守停，未宣稱通用全水域插件。
+- 12:24:45.636737／1451161真上岸紅蓮8(4,10)/mode0，122實際動作涵106方向與一次野戰。32(3,55)遇10級瑪瑙水母，正常角撞擊倒得150EXP，尼多王42254→42404、角撞PP25→24，全六人HP/status、其它五人全欄、袋19與錢保持。低等非目標野怪沒有抓，不宣稱新增稀有或升級。水路途中零工程停檢，121cache／1passive，沒有新Laya請求；field complete及兩fresh端點已核。
+- 12:26:10.400994／1453377，正常走紅蓮中心171(3,4)並回復關頁，29步全cache，僅尼多王角撞PP24→25；六人HP/status/PP全滿，袋與錢保持。洋館Secret Key／夏伯第七徽章／四天王尚未完成。下一教乘龍Surf與洋館來源路線仍待實際執行，不把研究候選當進度。
+- 最新固定source完整回歸6213 passed／28.78秒／1既有SDL提示，所有src/tests SHA前後相同；含三橋接及caller真previous整合，真遊戲另外固定fly-pallet、pallet-surf、route21-cinnabar、cinnabar-center收據。5983是前一切點；31免費換人候選仍未整合，尚不能宣稱實戰已套用新防KO規則。紅版夏伯真四隻42/40/42/47已核官方來源，Lapras水冰受火是中性，不能誤當抗火。
+- 新HM02/Fly教學894幀1x59.6／後製4x14.9已QA親看，07完整FEAROW learned FLY!原像素補足候選日誌12列截斷限制。另Fly180幀12／3秒、Surf130幀8.666667／2.166667共4片、8正式PNG與1QA，來源全decode／逐幀YUV／PTS／PNG RGB均核；父層親看1920x948 QA第06張確有KEVIN got on NIDOKING!及▼。不能捏造候選日誌有全文；原圖是真證據。新素材合計46片／158張PNG含QA，Fly1工程停檢／Surf0標清；片長不是牆鐘、推論速度或全程通關耗時。
+- README／里程碑／問題紀錄已更新至紅蓮中心、6213與真Fly/Surf。影片／ROM／存檔／原始輸出留本機；網站未發布，原生SDL視窗未修，8767直接串流真PyBoy影格。先前e2d1f37／332公開白名單檔已核遠端及CI40060325447成功，新章與field source尚待下一安全FF備份，不能預宣稱已推。
+
+## 57. 2026-10-24 乘龍正常學Surf、換首位並在洋館實戰
+
+- 乘龍30原水槍55威力40，改用正常HM03教Surf57，固定replace_index0、原四招55/34/47/54→57/34/47/54，保泰山壓頂／唱歌／白霧與HM03原數原序。只擴充HMTeachingController資料registry與bridge明確171(3,4)站位，parser／正規化／原三意圖不改。新47反例與原HM相關262測試通過5.73秒；HM既有API無previous，沿用fresh frame／完整cells／語意去重，不能誤稱新增真按鍵回執。
+- 12:31:04.221782／1456017在紅蓮中心正常Surf教學並完整關頁，66步＝0新Laya／41cache／25passive，途中無工程中斷。僅乘龍第一槽move55→57與PP25→15，其它五人全欄／袋19含HM03／55372／其他三招保持。候選12列仍截掉LEARNED全文，控制器核完整cells，原像素待另驗；沒有憑日誌捏造學會整句。
+- 來源固定a536711獨核紅蓮中心出口至島8 warp4(11,11)、正常出門11,12；洋館門島6,3／南側6,4→165 warp2(5,27)，原生進門到5,26。無Key時鎖道館觸發格18,4正常文字及自動DOWN，暫加該格blocked，沒有當成可通行道館。12:32:48.625766／1457417真到165(5,26)，35步全cache，六人／袋／錢保持。
+- 1F固定FACILITY22關門OFF走廊x5 y26→10，唯讀clone核完整tile/walk，正常真圖逐步核可行路線；未直接改門。設定lead_species19讓既有正常六人SWITCH選單把乘龍與尼多王互換，保其它四人順序，乘龍真站首位；沒有用記憶體重排。1F梯5,10正常到2F214(5,10)，12:34:11.556782／1460313固定驗收。
+- 這46步全cache含一場32級瓦斯彈。乘龍正常選SURF，原生Critical hit!急所一擊KO，得521EXP（33943→34464）、Surf PP15→14，HP124/124無掉血；其它五人完整資料、袋19及55372保持。仍30級，不能稱已31級或全隊平均35。第六館至此主要主線推進；較低成員已能正常換首位獨立作戰，後續繼續訓練，不只升主力。
+- 新固定完整回歸6260 passed／29.17秒／1既有SDL提示，src/tests SHA前後一致；6213是前一field切點。研究後續洋館時，2F不應先按雕像，會封往3F梯6,1路線；首個必要OFF→ON在3F玩家10,6朝上對hidden10,5，source Press it?／YES／Who wouldn't?最後確認後才翻旗。此時仍只研究，尚未3F操作或取得鑰匙。
+- 父層入館固定收據腳本曾把proof dict誤當Path.relative_to而停止，只有三份fixed raw已寫、遊戲plan未改；修變數並逐檔核既存bytes相同後續記錄，不刪原始資料。先前預檢字句assert與腳本錯誤均分開於遊戲戰敗，不回讀洗結果。
+- 已固定lapras-surf-teaching／mansion-first-entry／mansion-second-arrival三份公開結果，只程式與整理結果可備份。網站未發布、影片留本機；ROM/state/模型/憑證/私人原輸出不推Git。當前六徽章、全隊HP/status正常，乘龍Surf14PP；洋館Key／第七館／四天王仍未完成，下一先走已核2F→3F，再正常雕像。
+
+## 58. 2026-10-24 洋館原生樓梯、第一雕像與落穴實測
+
+- 初次到2F的1460313只是落點，原生door仍會自動DOWN；父層太早交普通導航，RIGHT兩次被忽略，隨後BFS踩回梯而退回1F1460433。這是轉場交接錯誤，不是戰敗；三個真按鍵與原存檔保留。正常走離再回梯，不讀舊檔洗結果。
+- 新地圖ID會早於畫面/碰撞換圖：2F先保有舊1F完整840格，3F則已有FC/door控制但畫面對齊未知。補固定來源的WAIT-only樓梯退出控制，未知始終不算完成；只有完整新圖、真idle與兩fresh closed才交普通導航。初次父層預檢只assert WAIT、漏拒phase_review，主程序0新動作安全停；改成必須非review。父層另有一次未正確啟動修復派工造成空等，已改用會啟動新回合的followup_task，不把協調等待算模型推論時間。
+- 13:06:15.034377／1461953，兩個原生門退出已實測，正常到3F(10,6)。35動作=30cache/5passive，無新Laya；六人/袋/錢保持。新增只讀mansion_switch_on固定SDK事件0x278→D796 bit0，未知不得當False。bridge初版測試假constructor漏驗intent schema，獨審改成真constructor及player_x/y，不再接受錯player list。
+- 13:08:00.674078／1462313，3F第一雕像正常OFF→ON完成。實際9動作=2新Laya/3cache/4passive，交易中無工程中斷；A SECRET SWITCH!／PRESS IT?正常YES／WHO WOULDN't?最後確認，再以真事件與門格ON、兩fresh closed雙核。全隊/袋/錢保持；最後action的complete=False是第一closed，下一無鍵field收據才完成，不能修改ledger冒稱最後按鍵完成。
+- 13:17:12.671620／1462833正常到3F落穴前(16,13)，13步全cache且全資料保持。此後完整程式固定切點6614 tests passed／31.10秒／1既有SDL提示，src/tests SHA前後相同；該切點不含後來standing-warp4修補。唯讀clone預檢須排除跨程序原frame綁定的shared-training膠囊；只在clone副本略過，正式訓練設定不變，沒有偽造clone frame為主程序frame。
+- 13:20:47.936662／1466785，已真走左落穴215(16,14)→1F165(16,14)，全ON目的圖與兩fresh closed後正常走東梯→B1F216(23,22)。68動作=1新Laya/38cache/29passive。途中野生小火馬32先STOMP，拉普拉斯124→107HP，再正常SURF屬性克制KO，+694EXP至35158、Surf14→13PP；仍30級，其他五人/袋19/錢55372保持。未捕獲小火馬，未取得鑰匙。
+- 地下室最後25WAIT遇外層navigation_stall。真兩fresh clone核840格ON矩陣、完整空白、三移動byte0均已ready，僅D736=4常駐：固定來源bit2 STANDING_ON_WARP在傳送格保留，正常走離才清，不是仍在走路。最窄修只B1(23,22)/tile13允4，其它目的仍0；相關88測試通過。一次明確review只扣這次工程停檢牆鐘，保原elapsed、calls25/waits25、owner/baseline及全部錯誤，不清原交易。該修尚待實機resume驗收，不能先稱南雕像完成。
+- 媒體新增學Surf、正常換首位打瓦斯彈、第一雕像，各原速/4倍速共6片與12張正式PNG+QA；解碼、逐幀、PTS與像素核對通過，父層視覺審閱仍待完成。網站未發布、原生SDL未修；8767是真PyBoy畫面。逐鍵本機Laya/快取，cloud_fallback=false，Strata設定未變；工程審查使用雲端代理另計，沒有把工程額度說成零。
+
+## 59. 2026-10-24 地下室兩雕像完成、Key前來源更正
+
+- 13:27:49.624396／1467945已實測修復standing-warp，正常走到B1南雕像前。第58節先按ledger25描述counter不完整：固定paused review在1466785其實已產生第26個WAIT候選，尚未按就被外層navigation_stall停下，原calls/waits26、last_frame1466785才正確；具名review第一次用25門檻安全拒絕，0新動作。修成真26後保留原counter/elapsed/owner，不清原交易；獨審也補強binding值與唯一active owner，19針對測試通過。這些是父層校驗失誤，沒有遊戲戰敗或回讀。
+- 南雕像216(18,26)正常ON→OFF、北雕像216(20,4)OFF→ON，各9動作，原生完整正文/YES/Who wouldn't?、旗標與門格雙核並關頁。13:28:46.136614／1476097真到Key前216(5,12)，140動作=0新Laya/131cache/9passive，途中無工程中斷。
+- 兩場野生瓦斯彈31/33級正常SURF KO，分得504/537EXP；乘龍35158→36199EXP仍30級，Surf13→10PP，HP107/124與status0保持；其餘五員完整資料、袋19與55372保持。尚未Key、夏伯、聯盟；沒有宣稱捕獲稀有怪。
+- Key球拾取前getter回unknown而未送按鍵，追查發現原研究全域索引193/bit1錯誤：regex只數識別字，漏掉UNUSED_MAP_F4的$02 ON列(index186)。整份228列含字面值重算，加constants註C2與實機table slot8→194一致；正確zero-based194、D5BE bit2/mask4，不是runtime一基。原研究JSON4989與MDf214保持不覆寫，另建公開更正收據，舊193欄撤銷。固定來源pick_up_item→text_script證明FoundItemText無prompt且跳過等按鍵，因此收據只WAIT，不額外補A。85純測試通過，修後真兩fresh no-input getter已valid、hiddenFalse；純controller初offerA，無actualprevious則次fresh只WAIT。這仍是候選預檢，未當成已拾取。
+- 新6片媒體與12PNG+QA父層已親看完整QA，正常LAPRAS learned SURF!、六人換首位、KOFFING32/SURF/521EXP及秘密開關完整頁均可讀。新增後52片/171張PNG含QA，原速/4倍速各自保留；影片只證像素，開關旗/門格ON另引用固定雙fresh訊號。全239個固定來源SHA核對通過，兩份歷史mutable summary另標，不冒稱持續更新檔仍同SHA。
+- GitHub仍上一e2d1f37，Key helper/bridge開發中，待凍結回歸再安全備份。README與時間軸已更新到Key前，網站尚未發布、原生SDL仍未修；8767真PyBoy影格。後續從同一原存檔正常拾球，不重置遊戲狀態。
+
+## 60. 2026-10-24 真取祕密鑰匙、升31學奇異之光、回中心與存TM46
+
+- 13:38:29.480279／1476337，Key正常拾取並關頁。一次A檢查球、其後5WAIT，共6步=1新Laya/5passive，途中無工程中斷；完整KEVIN found/SECRET KEY!原生收據、袋19→20只append43×1、slot8真hidden194/D5BE bit2，以及兩fresh閉合均核實。全六人/錢/其他袋項保持，32旗標中只對應bit2改變。沒有補不存在的prompt A。getter第二讀False/0.0會被Python等值判相同的P2亦在上線前窄補，兩遍逐byte真型別檢查，91純測試與獨審通過。
+- 正常返程經兩次雕像與B1梯返1F。返1F門墊21,23 tile1B會原生DOWN到21,24，因此從21,24先繞20,24→20,23→20,22，避免踩回門墊；沒有沿原source候選從21,23向北而倒退。
+- 拉普拉斯升31時遇natural_learning_replacement_plan_mismatch，真review仍是舊策略slot2忘SING。相依熱載只reload levelup而from-import仍抓舊team_strategy函式，並非本次有新session/pending待清。修campaign_route先reload strategy，既有pause再reload battle→levelup；純重播證原session/error/waits同物件保持，不造migration清狀態。同場13:46:14.228614 step25303完整LAPRAS learned CONFUSE RAY!，只以109/PP10替54MIST槽3，保SURF/BODYSLAM/SING及HM。SING僅在Lapras學招評分給低量1分捕獲用途，高於MIST0，未改出招傷害排序。
+- 1F遇Weezing37，乘龍兩次SURF未KO、受兩次SLUDGE各33HP後正常RUN並Got away safely!，該場沒有EXP，不能說是勝利。回非戰鬥HP37/128被損耗閘門停下；無隊員倒下，沒有讀檔洗結果。原275動作=0新/251cache/24passive固定留存，現31級37657EXP、Surf2PP。
+- 正常換健康且抗毒的尼多王領隊回中心。父層誤把1F26,27門內墊當已出圖，25次停滯後補正常map_exit DOWN26,28；又誤填中心門11,3，改回既有已實測11,11，護士3,3亦在操作前修正。兩段繞行沒有新野戰。13:52:14.670755／1502857真到紅蓮中心171(3,4)，六人HP/status/PP全補，原EXP/招式/袋20/55372/Key保持；拉普拉斯128/128、Surf15PP。190動作2新/188cache，父層座標錯誤與預檢assert錯誤如實留存。
+- 13:59:21正常走13,5→13,4UP到PC，15cache保持全資料。原PC真三項POTION/TM34/TM21；新增唯一紅蓮171/13,4UP/TM46×1可逆存物意圖，保原金黃234/221及parser/具名修復流程。新舊128測試與獨審、真getter預檢通過。14:00:52.283807／1505137正常存TM46(item246)，袋20→19、PC3→4只append246×1，42步31cache/11passive、無新Laya/途中工程中斷；全隊/其他袋/錢與Key/HM/大師球保持。完整原生收據與兩fresh閉合另固定驗收。
+- 完整程式回歸：Key切點6786／30.32秒；Lapras31相依修正6810／30.61秒；PC擴充後6843／31.16秒，皆1既有SDL提示且src/tests SHA前後一致，不能將後版本回填到前交易。媒體52片171PNG含QA已核，網站未發布，原生SDL未修，8767真串流；逐鍵本機Laya/快取、cloud_fallback=false、Strata設定不變。
+- 夏伯前策略：來源確認NIDOKING在此紅版不能學TM28 DIG，已在規劃階段否決，未浪費TM或造不合法教招。Blaine四敵42/40/42/47，Lapras水冰火傷相抵1倍，Nido也非火抗；先逐館員暖場補練並回中心，再評估boss，不把31/36級直接視為穩贏。七名館員與六道門必分清；進館路線已排，尚未宣稱館員/第七徽章。
+

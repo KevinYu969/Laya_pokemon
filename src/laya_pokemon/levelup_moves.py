@@ -1,4 +1,4 @@
-"""自然學招候選：妙蛙草30級、大嘴雀25／34級與拉普拉斯25級。
+"""自然學招候選：妙蛙草30級、大嘴雀25／34級與拉普拉斯25／31級。
 
 純文字／唯讀進度輸入，只回傳 Laya 子目標；不啟動模擬器、不執行按鍵。
 其他已知候選只提供策略並要求檢討；尚未宣稱實機校準成功。
@@ -27,6 +27,7 @@ _CASES = {
     (35, 25): (119, (64, 45, 43, 31), True),
     (35, 34): (65, (64, 45, 43, 31), True),
     (19, 25): (34, (55, 45, 47, 54), True),
+    (19, 31): (109, (57, 34, 47, 54), True),
 }
 _INTRO = ('IVYSAURISTRYINGTOLEARNRAZORLEAF', 'TRYINGTOLEARNRAZORLEAF', 'RAZORLEAF',
           'LEAF', 'BUTIVYSAURCANTLEARNMORETHAN4MOVES', 'IVYSAURCANTLEARNMORETHAN4MOVES',
@@ -39,7 +40,7 @@ _FORGOT = ('IVYSAURFORGOTPOISONPOWDER', 'FORGOTPOISONPOWDER', 'POISONPOWDER')
 _LEARNED = ('IVYSAURLEARNEDRAZORLEAF', 'LEARNEDRAZORLEAF', 'RAZORLEAF')
 _DID_NOT = ('IVYSAURDIDNOTLEARNRAZORLEAF', 'DIDNOTLEARNRAZORLEAF', 'LEARNRAZORLEAF')
 
-# 只有這三個精確自然案例能共用既有正常忘招流程；不接受任意名字／招式。
+# 只有這些精確自然案例能共用既有正常忘招流程；不接受任意名字／招式。
 _REPLACEMENTS = {
     (9, 30): {
         'before': (77, 15, 73, 22), 'after': (75, 15, 73, 22), 'slot': 0,
@@ -73,6 +74,19 @@ _REPLACEMENTS = {
         'forgot': ('LAPRASFORGOTGROWL', 'FORGOTGROWL', 'GROWL'),
         'learned': ('LAPRASLEARNEDBODYSLAM', 'LEARNEDBODYSLAM', 'BODYSLAM'),
         'did_not': ('LAPRASDIDNOTLEARNBODYSLAM', 'DIDNOTLEARNBODYSLAM', 'LEARNBODYSLAM'),
+    },
+    (19, 31): {
+        'before': (57, 34, 47, 54), 'after': (57, 34, 47, 109), 'slot': 3,
+        'old': 'MIST', 'new': 'CONFUSE_RAY', 'old_id': 54,
+        'old_tactic': 'mist', 'new_tactic': 'confuse_ray',
+        'intro': ('LAPRASISTRYINGTOLEARNCONFUSERAY', 'TRYINGTOLEARNCONFUSERAY',
+                  'CONFUSERAY', 'BUTLAPRASCANTLEARNMORETHAN4MOVES',
+                  'LAPRASCANTLEARNMORETHAN4MOVES', 'CANTLEARNMORETHAN4MOVES', 'THAN4MOVES'),
+        'delete': ('DELETEANOLDERMOVETOMAKEROOMFORCONFUSERAY', 'MOVETOMAKEROOMFORCONFUSERAY', 'FORCONFUSERAY'),
+        'abandon': ('ABANDONLEARNINGCONFUSERAY', 'STOPLEARNINGCONFUSERAY', 'LEARNINGCONFUSERAY', 'CONFUSERAY'),
+        'forgot': ('LAPRASFORGOTMIST', 'FORGOTMIST', 'MIST'),
+        'learned': ('LAPRASLEARNEDCONFUSERAY', 'LEARNEDCONFUSERAY', 'CONFUSERAY'),
+        'did_not': ('LAPRASDIDNOTLEARNCONFUSERAY', 'DIDNOTLEARNCONFUSERAY', 'LEARNCONFUSERAY'),
     },
 }
 

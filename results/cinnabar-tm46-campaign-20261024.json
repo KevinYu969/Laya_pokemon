@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_cinnabar_tm46_deposit_and_closed",
+  "at": "2026-10-24T06:00:52.283807+00:00",
+  "frame": 1505137,
+  "location": {
+    "map_id": 171,
+    "x": 13,
+    "y": 4
+  },
+  "actions": 42,
+  "new_laya": 0,
+  "cache": 31,
+  "passive_waits": 11,
+  "engineering_interruptions": 0,
+  "item_id": 246,
+  "quantity": 1,
+  "bag_before": 20,
+  "bag_after": 19,
+  "pc_before": [
+    {
+      "item": 20,
+      "quantity": 1
+    },
+    {
+      "item": 234,
+      "quantity": 1
+    },
+    {
+      "item": 221,
+      "quantity": 1
+    }
+  ],
+  "pc_after": [
+    {
+      "item": 20,
+      "quantity": 1
+    },
+    {
+      "item": 234,
+      "quantity": 1
+    },
+    {
+      "item": 221,
+      "quantity": 1
+    },
+    {
+      "item": 246,
+      "quantity": 1
+    }
+  ],
+  "all_six_party_money_other_inventory_unchanged": true,
+  "secret_key_master_ball_hms_preserved": true,
+  "source_evidence": [
+    {
+      "path": ".local/cinnabar-tm46-fixed-review-20261024.json",
+      "sha256": "1f74f875e7eb43c7bf93f3a3b7102112959a9dce3d35e50c92785ee5d8e530ab",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-tm46-fixed-summary-20261024.json",
+      "sha256": "d2fee9ca785acbb8af2ad11199272c39116b3ef1bd1724f26d889eb27cd20011",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-tm46-fixed-steps-20261024.jsonl",
+      "sha256": "6e2b6b0eb2e0529e42dea018ee448faad4834af9db673c47f4dbd7654d3f7590",
+      "local_only": true
+    },
+    {
+      "path": ".local/cinnabar-tm46-fixed-field-20261024.json",
+      "sha256": "c7c2f4a0eae7cc8b7446365aab612fb439445d96436431ae3762c989a5c55560",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/cinnabar-tm46-closed-proof-20261024.json",
+      "sha256": "d4b64a470f3dd977d1e8afee816baf0c9fea0880ffcad8455787d071c045496c",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "只正常可逆存TM46；未挑戰夏伯、仍六徽章。"
+  ]
+}

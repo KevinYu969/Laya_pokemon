@@ -137,6 +137,10 @@ def learn_move_plan(species, current, new_move, *, level):
     def utility(move):
         if move in preferred:
             return 300 - preferred.index(move) * 10
+        # Lapras的SING保留低量捕獲用途；優先於MIST等0分狀態招，
+        # 仍低於傷害招與既有preferred，僅影響學招取捨、不影響出招。
+        if key == "LAPRAS" and move == "SING":
+            return 1.0
         if move in {"VINE_WHIP", "CONFUSION", "PSYBEAM", "DOUBLE_KICK", "HORN_ATTACK"}:
             return 100 + effective_power(move, key) / 10
         return effective_power(move, key) / 10

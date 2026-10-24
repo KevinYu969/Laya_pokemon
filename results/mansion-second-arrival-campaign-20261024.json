@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_lapras_lead_and_first_mansion_stairs",
+  "at": "2026-10-24T04:34:11.556782+00:00",
+  "frame": 1460313,
+  "location": {
+    "map_id": 214,
+    "x": 5,
+    "y": 10
+  },
+  "actions": 46,
+  "all_cached": true,
+  "lead_species": 19,
+  "opponent": "KOFFING",
+  "opponent_level": 32,
+  "move": "SURF",
+  "critical_hit": true,
+  "lapras_experience_gained": 521,
+  "surf_pp_used": 1,
+  "all_six_hp_status_unchanged": true,
+  "other_five_full_party_unchanged": true,
+  "inventory_money_unchanged": true,
+  "source_evidence": [
+    {
+      "path": ".local/mansion-second-arrival-fixed-review-20261024.json",
+      "sha256": "5b8342a4ca9fb9b1883cd3605c273171380a92b3509ccd3cb5659c95e49dc505",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-second-arrival-fixed-summary-20261024.json",
+      "sha256": "8c11fe69f5684e2ae585e070eaadb5bb7a3b85e9d82954bb85e7b14aaea4a847",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-second-arrival-fixed-steps-20261024.jsonl",
+      "sha256": "1857ccc5c0258fe356ec915b43d9a2f962a1d6a13063ab87e7928145a4f3d0a2",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "乘龍仍30級，未稱已升31。只到洋館2F，尚未雕像/Key。"
+  ]
+}

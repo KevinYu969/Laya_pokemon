@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-24",
+  "status": "engineering_pause_preserved_not_game_loss",
+  "at": "2026-10-24T04:38:57.495756+00:00",
+  "frame": 1460433,
+  "location": {
+    "map_id": 165,
+    "x": 5,
+    "y": 10
+  },
+  "reason": "unexpected_map",
+  "actions": 3,
+  "all_cached": true,
+  "party_inventory_money_unchanged": true,
+  "root_cause": "generic next_map在2F來源落點就停；忽略30frame及原生DOWN未完成，RIGHT被忽略後，BFS為了舊via往上踩回樓梯。",
+  "fix": "來源門1B先等模擬DOWN，2F起點5,11/3F6,2，排除返回pad；另新增有限WAIT護欄。",
+  "source_evidence": [
+    {
+      "path": ".local/mansion-stair-early-handoff-fixed-review-20261024.json",
+      "sha256": "2d72492f130c0107aa5184cf8710ae8735b5964692eea938a3903cab6b927517",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-stair-early-handoff-fixed-plan-20261024.json",
+      "sha256": "caa07534050d0834c3607a203e45b33f21ad1932f4ca5d75030c1ded798de0a4",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-stair-early-handoff-fixed-steps-20261024.jsonl",
+      "sha256": "436f43081c979332bfa53b60b94e77961642f1e0a52e379794654d6b05c6b1be",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "非戰鬥失敗，沒有讀回舊存檔、損血或翻開關。"
+  ]
+}

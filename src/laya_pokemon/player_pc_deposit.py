@@ -1,4 +1,4 @@
-"""單件 TM34／TM21 正常存入玩家 PC 的純候選；不執行按鍵或寫 RAM。
+"""固定單件 TM34／TM21／TM46 正常存入玩家 PC 的純候選；不執行按鍵或寫 RAM。
 
 地址由固定公開 WRAM 的 PC 表與既有 D5A6 toggle 表差 108 bytes 推導；
 SDK 沒有直接 PC item 常數。reader 的 SDK 指紋／雙讀不能冒充 ROM 身分或
@@ -21,6 +21,21 @@ PROFILE = 'red-en-player-pc-items-source-v1-unvalidated'
 INTENT_BASE = {'kind': 'player_pc_deposit', 'map_id': 182, 'player_x': 13,
                'player_y': 4, 'facing': 'up', 'quantity': 1}
 LOCATION = {'map_id': 182, 'x': 13, 'y': 4}
+# a536711 hidden_events.asm327–330:PC front13,3/UP → 玩家13,4；
+# map_constants.asm275 $AB=171。舊金黃意圖與位置常數保留相容。
+CINNABAR_TM46_INTENT = {**INTENT_BASE, 'map_id': 171, 'item': 246}
+INTENTS = {(182,234): {**INTENT_BASE, 'item':234},
+           (182,221): {**INTENT_BASE, 'item':221},
+           (171,246): CINNABAR_TM46_INTENT}
+LOCATIONS = {182: LOCATION, 171: {'map_id':171,'x':13,'y':4}}
+MAP_NAMES = {182:'saffron_pokecenter',171:'cinnabar_pokecenter'}
+
+
+def _intent(intent):
+    return (type(intent) is dict and any(intent == fixed and set(intent) == set(fixed)
+            and all(type(intent.get(k)) is type(v) for k,v in fixed.items())
+            for fixed in INTENTS.values()))
+
 SDK_ANCHORS = {'BAG_ITEM_COUNT_ADDRESS': 0xD31D, 'BAG_ITEMS_ADDRESS': 0xD31E,
                'BAG_ITEM_CAPACITY': 20, 'STATUS_FLAGS3_ADDRESS': 0xD72D,
                'OBTAINED_BADGES_ADDRESS': 0xD356, 'EVENT_FLAGS_ADDRESS': 0xD747}
@@ -60,13 +75,13 @@ def read_player_pc(pyboy, *, observation_frame, expected_location, constants, pr
               'read_error': 'pc_source_anchor_or_observation_unverified', 'items': None,
               'count': None, 'live_calibrated': False}
     if (profile != PROFILE or not _int(observation_frame)
-            or type(expected_location) is not dict or expected_location != LOCATION
+            or type(expected_location) is not dict or expected_location not in LOCATIONS.values()
             or any(type(v) is not int for v in expected_location.values())
             or any(type(getattr(constants, k, None)) is not int or getattr(constants, k) != v
                    for k, v in SDK_ANCHORS.items())
             or not isinstance(getattr(constants, 'MAPS', None), dict)
-            or type(constants.MAPS.get('saffron_pokecenter')) is not int
-            or constants.MAPS['saffron_pokecenter'] != 182):
+            or type(constants.MAPS.get(MAP_NAMES[expected_location['map_id']])) is not int
+            or constants.MAPS[MAP_NAMES[expected_location['map_id']]] != expected_location['map_id']):
         return result
     addresses = (0xD35E, 0xD361, 0xD362, 0xC109, *range(PC_COUNT, PC_ITEMS + 101))
     try:
@@ -194,11 +209,8 @@ def _bag_matches(rows, expected):
 class PlayerPCDepositController:
     """固定 TM 單件存物；所有候選須真 previous／新幀回執才轉階。"""
     def __init__(self, intent):
-        if (type(intent) is not dict or intent.get('item') not in (234, 221)
-                or type(intent.get('item')) is not int
-                or intent != {**INTENT_BASE, 'item': intent['item']}
-                or any(type(intent[k]) is not int for k in ('map_id', 'player_x', 'player_y', 'quantity'))):
-            raise ValueError('只允許金黃中心13,4朝UP、TM34或TM21的單件存物')
+        if not _intent(intent):
+            raise ValueError('僅金黃中心TM34/TM21或紅蓮中心TM46，13,4朝UP單件存物')
         self.intent = deepcopy(intent); self.contract = deepcopy(intent)
         self.stage = 'initial'; self.error = None; self.baseline = None
         self.started = None; self.last_now = None; self.last_frame = -1; self.last_packet = None
@@ -264,7 +276,7 @@ class PlayerPCDepositController:
         if self.started is None: self.started = now
         self.last_now = now; self.calls += 1
         if self.calls > 240 or now - self.started > 60: return self._fail('budget_exhausted')
-        if (type(overworld_ready) is not bool or type(location) is not dict or location != LOCATION
+        if (type(overworld_ready) is not bool or type(location) is not dict or location != LOCATIONS.get(self.contract['map_id'])
                 or any(type(v) is not int for v in location.values())
                 or type(previous) not in (list, tuple) or any(a not in ('a', 'b', 'up', 'down', 'left', 'right', 'start', 'wait')
                                                            or type(a) is not str for a in previous)):

@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_surf_entry_and_closed_water",
+  "at": "2026-10-24T04:21:53.453716+00:00",
+  "frame": 1445313,
+  "location": {
+    "map_id": 0,
+    "x": 4,
+    "y": 14
+  },
+  "species": 7,
+  "move": 57,
+  "actions": 13,
+  "party_bag_money_pp_unchanged": true,
+  "engineering_interruptions_during_surf": 0,
+  "source_evidence": [
+    {
+      "path": ".local/pallet-surf-fixed-review-20261024.json",
+      "sha256": "208a8b208eea85ac51e60d11b2ddea73b5a6984b189b1d184e774130da5967e9",
+      "local_only": true
+    },
+    {
+      "path": ".local/pallet-surf-fixed-summary-20261024.json",
+      "sha256": "04e23d87b28524f5068308b79f33007caefe05585e2c3d64ce8cac3a07a7dc91",
+      "local_only": true
+    },
+    {
+      "path": ".local/pallet-surf-fixed-steps-20261024.jsonl",
+      "sha256": "6b342a7524b67d02e3988dd1038f0175c60138bc49e7e932800757e2c14be31c",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/route21-water-pre-input-proof-20261024.json",
+      "sha256": "f8a4718fbf71ed5c72536ce2afd39963655672402a40fe9d92dce4da6384fcfc",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "已核實原生選單got on、mode2及實際水格(4,14)。21號水道與紅蓮尚未完成。",
+    "六人背景佔文字候選12列，因此got on全文未出現在候選日誌；offer_moving前控制器核完整cells。原影片需另做視覺驗證，不能把候選日誌誤當全文。"
+  ],
+  "native_got_on_visual_evidence": {
+    "path": "outputs/videos/fly-surf-20261024/06-nidoking-got-on-native-text.png",
+    "sha256": "64c959d765589f0dfdb63a5137e8b07d4f82916ec64a6f39c88ae4979ec75652",
+    "width": 480,
+    "height": 432,
+    "observation_step": 24484,
+    "observation_campaign_frame": 1445193,
+    "clip_frame": 99,
+    "source_segment": 69,
+    "source_frame": 529,
+    "relative_1x_seconds": 6.6,
+    "rgb24_sha256": "4247e3a77d7b9598a4a20efeef1fec6abc15e61e0ae23d65fc56db623a7343d8",
+    "source_and_both_clips_rgb_exact": true,
+    "ledger_visible_text": [
+      "   NIDOKING   36",
+      "▷            121/121",
+      "   SNORLAX    41",
+      "             198/198",
+      "   EEVEE      35",
+      "              90/ 90",
+      "   VENUSAUR   35",
+      "             111/111",
+      "   FEAROW     37",
+      "             114/114",
+      "   LAPRAS     30",
+      "             124/124"
+    ],
+    "parent_visually_verified": true
+  }
+}

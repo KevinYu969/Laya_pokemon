@@ -1,0 +1,1110 @@
+{
+  "schema": "mansion-progress-media-audit-v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "title": "拉普拉斯學衝浪、正常換首位野戰與洋館第一雕像",
+  "source_run": "league-campaign-20261024-24",
+  "utility_dependency": {
+    "path": ".local/build-fly-surf-clips-20261024.py",
+    "sha256": "af5445f4eac0e359bdd1b9522bf223cd6b487faafbaed1854f8ba91fe6a03b7b"
+  },
+  "source_ledger": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-071.jsonl",
+      "selected_steps": [
+        24638
+      ],
+      "selected_original_bytes_sha256": "9e01a90063d36eb7d9823ac32ed19e90a90038d6a5bb7f3b87f670cc6bca4ef7"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-072.jsonl",
+      "selected_steps": [
+        24639,
+        24640,
+        24641,
+        24642,
+        24643,
+        24644,
+        24645,
+        24646,
+        24647,
+        24648,
+        24649,
+        24650,
+        24651,
+        24652,
+        24653,
+        24654,
+        24655,
+        24656,
+        24657,
+        24658,
+        24659,
+        24660,
+        24661,
+        24662,
+        24663,
+        24664,
+        24665,
+        24666,
+        24667,
+        24668,
+        24669,
+        24670,
+        24671,
+        24672,
+        24673,
+        24674,
+        24675,
+        24676,
+        24677,
+        24678,
+        24679,
+        24680,
+        24681,
+        24682,
+        24683,
+        24684,
+        24685,
+        24686,
+        24687,
+        24688,
+        24689,
+        24690,
+        24691,
+        24692,
+        24693,
+        24694,
+        24695,
+        24696,
+        24697,
+        24698,
+        24699,
+        24700,
+        24701,
+        24702,
+        24703,
+        24704
+      ],
+      "selected_original_bytes_sha256": "71aa596582423d186ab4a3cdf98af5eeabac1abb94a51c0b93cfc2e69295fbdd"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-073.jsonl",
+      "selected_steps": [
+        24739
+      ],
+      "selected_original_bytes_sha256": "b9c3b7e5d8b7d6a3158748ce0e8be50d1963a4d61bcef09212cf57b4246ddd19"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-074.jsonl",
+      "selected_steps": [
+        24740,
+        24741,
+        24742,
+        24743,
+        24744,
+        24745,
+        24746,
+        24747,
+        24748,
+        24749,
+        24750,
+        24751,
+        24752,
+        24753,
+        24754,
+        24755,
+        24756,
+        24757,
+        24758,
+        24759,
+        24760,
+        24761,
+        24762,
+        24763,
+        24764,
+        24765,
+        24766,
+        24767,
+        24768,
+        24769,
+        24770,
+        24771,
+        24772,
+        24773,
+        24774,
+        24775,
+        24776
+      ],
+      "selected_original_bytes_sha256": "49c4859b95ad7c18933cdd9700fad45db3e33fb2ac1782529eda39ed0969ff72"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-078.jsonl",
+      "selected_steps": [
+        24826
+      ],
+      "selected_original_bytes_sha256": "bc95bc096821b9eba500617ae5325e46dd5f9b65cb4d71d8f3c9cb5a2b388cd8"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-079.jsonl",
+      "selected_steps": [
+        24827,
+        24828,
+        24829,
+        24830,
+        24831,
+        24832,
+        24833,
+        24834,
+        24835
+      ],
+      "selected_original_bytes_sha256": "4896ba1a32ec301b314085f36a1d2dfd17b8f24569020a3ca2b9600c9095566e"
+    }
+  ],
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-071.mp4",
+      "sha256": "34a14483df90270958ad85bf9a7ee44f1a0748910e9e31a7b7684cda88402d7a",
+      "bytes": 379663,
+      "closure": {
+        "at": "2026-10-24T04:31:02.440209+00:00",
+        "segment": 71,
+        "timing": {
+          "wall_seconds": 14909.844,
+          "model_wait_seconds": 148.595,
+          "review_pause_seconds": 13721.209,
+          "non_review_session_seconds": 1188.635,
+          "emulated_seconds": 24223.6
+        },
+        "video": {
+          "filename": "video-071.mp4",
+          "fps": 15,
+          "frames": 554,
+          "playback_seconds": 36.93333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "ee7dc5b89ae93bdcf4fc05ea9ba8f5402da1559657b9d00f9c6c143f2bf4d763",
+      "global_prior_recorded_frames": 362800,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "36.933333",
+          "nb_frames": "554",
+          "nb_read_frames": "554"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-072.mp4",
+      "sha256": "4ef6a02dd1bbf57acb0c32ead8b97948a19aabc7d9e71fa0fde4c3da9b2159f0",
+      "bytes": 290839,
+      "closure": {
+        "at": "2026-10-24T04:32:47.453380+00:00",
+        "segment": 72,
+        "timing": {
+          "wall_seconds": 15014.859,
+          "model_wait_seconds": 148.626,
+          "review_pause_seconds": 13824.24,
+          "non_review_session_seconds": 1190.619,
+          "emulated_seconds": 24267.6
+        },
+        "video": {
+          "filename": "video-072.mp4",
+          "fps": 15,
+          "frames": 660,
+          "playback_seconds": 44.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "cab892c7cebdb75d4d20765e8780ffa810724c21f94ed889ac36a17e3276a907",
+      "global_prior_recorded_frames": 363354,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "44.000000",
+          "nb_frames": "660",
+          "nb_read_frames": "660"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-073.mp4",
+      "sha256": "cebed9db8e765bdb9d4a8b1947408f46ffeae07b487afe1a5dda657e87e468b4",
+      "bytes": 527846,
+      "closure": {
+        "at": "2026-10-24T04:34:10.134394+00:00",
+        "segment": 73,
+        "timing": {
+          "wall_seconds": 15097.531,
+          "model_wait_seconds": 148.626,
+          "review_pause_seconds": 13905.584,
+          "non_review_session_seconds": 1191.947,
+          "emulated_seconds": 24290.933
+        },
+        "video": {
+          "filename": "video-073.mp4",
+          "fps": 15,
+          "frames": 350,
+          "playback_seconds": 23.333333333333332,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "830d65b837fd2f3ab650d9e7efec11cb5c0b21339a13429d3cf7d4862d4c831a",
+      "global_prior_recorded_frames": 364014,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "23.333333",
+          "nb_frames": "350",
+          "nb_read_frames": "350"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-074.mp4",
+      "sha256": "511f46056cec7096df13282d141541e13ec4b87d04d6f5d503b05de5cf288870",
+      "bytes": 580546,
+      "closure": {
+        "at": "2026-10-24T04:38:57.389044+00:00",
+        "segment": 74,
+        "timing": {
+          "wall_seconds": 15384.781,
+          "model_wait_seconds": 148.688,
+          "review_pause_seconds": 14191.241,
+          "non_review_session_seconds": 1193.54,
+          "emulated_seconds": 24339.2
+        },
+        "video": {
+          "filename": "video-074.mp4",
+          "fps": 15,
+          "frames": 724,
+          "playback_seconds": 48.266666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "2f70c692d06875f13ad6dfe222c51806f6561742561b4ed13266446c2d70123c",
+      "global_prior_recorded_frames": 364364,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "48.266667",
+          "nb_frames": "724",
+          "nb_read_frames": "724"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-078.mp4",
+      "sha256": "bd80bb20bd0bea5eab1a737be87d7d29b4fedccd249e6888b2dc95b0a6736574",
+      "bytes": 64563,
+      "closure": {
+        "at": "2026-10-24T05:08:00.036080+00:00",
+        "segment": 78,
+        "timing": {
+          "wall_seconds": 17127.406,
+          "model_wait_seconds": 148.969,
+          "review_pause_seconds": 15931.476,
+          "non_review_session_seconds": 1195.93,
+          "emulated_seconds": 24366.533
+        },
+        "video": {
+          "filename": "video-078.mp4",
+          "fps": 15,
+          "frames": 120,
+          "playback_seconds": 8.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "046b922a712f49f2046f9cef6e9850b93641f7f50c9fe684d3364cc032014fab",
+      "global_prior_recorded_frames": 365378,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "8.000000",
+          "nb_frames": "120",
+          "nb_read_frames": "120"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-079.mp4",
+      "sha256": "087f7185889b8ca881d73f48b1370ec6c3f346fbc24ecf88cb6a2c0f6195fb7d",
+      "bytes": 47679,
+      "closure": {
+        "at": "2026-10-24T05:17:12.304270+00:00",
+        "segment": 79,
+        "timing": {
+          "wall_seconds": 17679.672,
+          "model_wait_seconds": 149.266,
+          "review_pause_seconds": 16482.914,
+          "non_review_session_seconds": 1196.758,
+          "emulated_seconds": 24372.533
+        },
+        "video": {
+          "filename": "video-079.mp4",
+          "fps": 15,
+          "frames": 90,
+          "playback_seconds": 6.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "2dbcf2a1061d19a18ce2cc81df384546b7fac9d1237637f41481f6ea6b6a2724",
+      "global_prior_recorded_frames": 365498,
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "6.000000",
+          "nb_frames": "90",
+          "nb_read_frames": "90"
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": "mansion-first-statue",
+      "title": "寶可夢屋3F第一雕像正常OFF轉ON",
+      "steps_included": [
+        24826,
+        24834
+      ],
+      "boundary_observation_step": 24835,
+      "campaign_frame_range": [
+        1461953,
+        1462313
+      ],
+      "emulated_frames": 360,
+      "recorded_frames": 90,
+      "action_counts": {
+        "actions": 9,
+        "new_laya": 2,
+        "cache": 3,
+        "passive": 4,
+        "keys": {
+          "up": 1,
+          "a": 4,
+          "wait": 4
+        }
+      },
+      "observed_result": {
+        "party_bag_money_unchanged": true,
+        "switch_before": false,
+        "switch_after": true,
+        "completion_receipt": {
+          "path": "outputs/league-campaign-20261024-24/game/field-moves.jsonl",
+          "selected_line_sha256": "8a873a66a7a0962e9ba668fcd32567a8142cd0d8f27b0ce06e8319b6bf83dfd3",
+          "at": "2026-10-24T05:08:00.644037+00:00",
+          "context": {
+            "phase": "mansion_statue",
+            "objective": "Wait.",
+            "available_actions": [
+              "wait"
+            ],
+            "mansion_statue_tactic": "verified_toggle_closed",
+            "mansion_statue_complete": true,
+            "field_move_complete": true,
+            "field_move_kind": "mansion-statue"
+          }
+        },
+        "switch_evidence_basis": "OFF→ON引用父層固定成果收據；兩個clone新幀ON另由父層無輸入proof提供。本代理只讀檔，不冒稱親自讀RAM。"
+      },
+      "clips": [
+        {
+          "path": "outputs/videos/mansion-progress-20261024/mansion-first-statue-1x.mp4",
+          "sha256": "500e288e789aa0de9f3abb1f432fedf1547d783769dc8e1d0e8e9e26c29b918b",
+          "bytes": 148826,
+          "frames": 90,
+          "width": 480,
+          "height": 432,
+          "fps": 15,
+          "duration_seconds": 6.0,
+          "speed": 1,
+          "audio": false,
+          "speed_basis": "emulated_time",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "15/1",
+              "duration": "6.000000",
+              "nb_frames": "90",
+              "nb_read_frames": "90"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/mansion-first-statue-4x.mp4",
+          "sha256": "bcaf70dd2ab8644b4e6c7573f99db9dec96232f427d841b8e679b8c83091267e",
+          "bytes": 148826,
+          "frames": 90,
+          "width": 480,
+          "height": 432,
+          "fps": 60,
+          "duration_seconds": 1.5,
+          "speed": 4,
+          "audio": false,
+          "speed_basis": "post_production_4x",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "60/1",
+              "duration": "1.500000",
+              "nb_frames": "90",
+              "nb_read_frames": "90"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "outputs/videos/mansion-progress-20261024/01-secret-switch-native-page.png",
+          "sha256": "60d6e103cca4b0cae2e4196941231a81485cf23af3067b144cfb6140fb288426",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24829,
+          "observation_campaign_frame": 1462073,
+          "clip_frame": 29,
+          "source_segment": 79,
+          "source_frame": 19,
+          "relative_1x_seconds": 1.9333333333333333,
+          "rgb24_sha256": "5f4dc6f2d4c14c2ff26d5351f593d56e0977594e933a6ebc3f764406f066a18d",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            " A secret switch!"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/02-press-it-yes.png",
+          "sha256": "433d3692338b297bb931ea973486a6d04820e2bb8831b78a1fd5873d724f1806",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24831,
+          "observation_campaign_frame": 1462153,
+          "clip_frame": 49,
+          "source_segment": 79,
+          "source_frame": 39,
+          "relative_1x_seconds": 3.2666666666666666,
+          "rgb24_sha256": "b146ec6a05bf6a7165131a9c0252348fcdc831a417cc20e4bef5625e88b1a1b0",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "               ▶YES",
+            "                NO",
+            " Press it?"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/03-who-wouldnt-native-page.png",
+          "sha256": "9552b2cc4f82822371762bb939cecdcdcf533c9752c75bba49e790cc62887717",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24833,
+          "observation_campaign_frame": 1462233,
+          "clip_frame": 69,
+          "source_segment": 79,
+          "source_frame": 59,
+          "relative_1x_seconds": 4.6,
+          "rgb24_sha256": "037ec34171ca3ca85b2ac289817c9bc14b1739590ea5447edc5a2082e11a7626",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            " Who wouldn't?"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/04-statue-closed-world.png",
+          "sha256": "42d7d80730de902f621dc8645396f43de1c0b46496c8ce0eb16fc3bdb97ddf69",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24835,
+          "observation_campaign_frame": 1462313,
+          "clip_frame": 89,
+          "source_segment": 79,
+          "source_frame": 79,
+          "relative_1x_seconds": 5.933333333333334,
+          "rgb24_sha256": "1a5b0b91f7e58d401638fdb548c102e985ae7ff214c802349b3aaefac463361c",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": []
+        }
+      ],
+      "source_ranges": [
+        {
+          "segment": 78,
+          "frames_zero_based_half_open": [
+            110,
+            120
+          ],
+          "source_seconds": [
+            7.333333333333333,
+            8.0
+          ]
+        },
+        {
+          "segment": 79,
+          "frames_zero_based_half_open": [
+            0,
+            80
+          ],
+          "source_seconds": [
+            0.0,
+            5.333333333333333
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lapras-teach-surf",
+      "title": "拉普拉斯正常學衝浪，只替換水槍",
+      "steps_included": [
+        24638,
+        24703
+      ],
+      "boundary_observation_step": 24704,
+      "campaign_frame_range": [
+        1453377,
+        1456017
+      ],
+      "emulated_frames": 2640,
+      "recorded_frames": 660,
+      "action_counts": {
+        "actions": 66,
+        "new_laya": 0,
+        "cache": 41,
+        "passive": 25,
+        "keys": {
+          "start": 1,
+          "down": 20,
+          "a": 18,
+          "wait": 25,
+          "b": 2
+        }
+      },
+      "observed_result": {
+        "learner": 19,
+        "level": 30,
+        "before_moves": [
+          55,
+          34,
+          47,
+          54
+        ],
+        "after_moves": [
+          57,
+          34,
+          47,
+          54
+        ],
+        "replaced_slot_zero_based": 0,
+        "new_pp": 15,
+        "other_five_unchanged": true,
+        "hm03_item198_preserved": true
+      },
+      "clips": [
+        {
+          "path": "outputs/videos/mansion-progress-20261024/lapras-teach-surf-1x.mp4",
+          "sha256": "70fa172c198eb3994dca51852ddc545fd3da657a987224b879ec2236b83318ac",
+          "bytes": 674397,
+          "frames": 660,
+          "width": 480,
+          "height": 432,
+          "fps": 15,
+          "duration_seconds": 44.0,
+          "speed": 1,
+          "audio": false,
+          "speed_basis": "emulated_time",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "15/1",
+              "duration": "44.000000",
+              "nb_frames": "660",
+              "nb_read_frames": "660"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/lapras-teach-surf-4x.mp4",
+          "sha256": "013e3be2efb34467b2a2cdf325dfd53de5d3b6dc7ea9fe3574b8f592f24b8a2f",
+          "bytes": 674397,
+          "frames": 660,
+          "width": 480,
+          "height": 432,
+          "fps": 60,
+          "duration_seconds": 11.0,
+          "speed": 4,
+          "audio": false,
+          "speed_basis": "post_production_4x",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "60/1",
+              "duration": "11.000000",
+              "nb_frames": "660",
+              "nb_read_frames": "660"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "outputs/videos/mansion-progress-20261024/05-teach-surf-yes.png",
+          "sha256": "16b93039fb208b1c2ebc5a16bc31b222e475e386e632352b8d3c878f2b6f0f15",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24663,
+          "observation_campaign_frame": 1454377,
+          "clip_frame": 249,
+          "source_segment": 72,
+          "source_frame": 239,
+          "relative_1x_seconds": 16.6,
+          "rgb24_sha256": "5fa52b4de57b04e3b82de1891ba05d2c0a544b8c17f03a238f050df9fe9cbc1b",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "      GREAT BALL",
+            "      TM06",
+            "     ▷HM03     ▶YES",
+            "      HM04      NO",
+            " Teach SURF",
+            " to a POKéMON?"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/06-replace-only-water-gun.png",
+          "sha256": "dd48a8f330b924f4e5c2e6fdff2c7718451635adfb0d0cef79ed3bbc7bf1a871",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24684,
+          "observation_campaign_frame": 1455217,
+          "clip_frame": 459,
+          "source_segment": 72,
+          "source_frame": 449,
+          "relative_1x_seconds": 30.6,
+          "rgb24_sha256": "0a8cd3b52dd7775b9f24fc2e29d15572404df1c03e5e9bf79b4511efcdefc2eb",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "   NIDOKING   36",
+            "            ABLE",
+            "   SNORLAX    41",
+            "            ABLE",
+            "   EEVEE      35",
+            "            NOT ABLE",
+            "   VENUSAUR   35",
+            "   F ▶WATER GUN",
+            "      BODY SLAM",
+            "   L  SING",
+            "▷     MIST",
+            " Which move should"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/07-lapras-learned-surf.png",
+          "sha256": "21b5cac216ae7490af4138a51225d013460b6038b7f4f808451f5b779d54eb6e",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24698,
+          "observation_campaign_frame": 1455777,
+          "clip_frame": 599,
+          "source_segment": 72,
+          "source_frame": 589,
+          "relative_1x_seconds": 39.93333333333333,
+          "rgb24_sha256": "d4031c61c1f125eec189d0cd7ecf2ba2be2f23dcd5634e588bac47f4c949b505",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "   NIDOKING   36",
+            "            ABLE",
+            "   SNORLAX    41",
+            "            ABLE",
+            "   EEVEE      35",
+            "            NOT ABLE",
+            "   VENUSAUR   35",
+            "            NOT ABLE",
+            "   FEAROW     37",
+            "            NOT ABLE",
+            "   LAPRAS     30",
+            "▷           ABLE"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/08-surf-teaching-closed-world.png",
+          "sha256": "edff17b97f2e6176ea7ea83500adec26c61891bd7dc7826552ed1a9537a09752",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24704,
+          "observation_campaign_frame": 1456017,
+          "clip_frame": 659,
+          "source_segment": 72,
+          "source_frame": 649,
+          "relative_1x_seconds": 43.93333333333333,
+          "rgb24_sha256": "afcca66a7b24d9d15580f3cb7c542fc2c46ac50a04f570aa0392ad9dc9f21e60",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": []
+        }
+      ],
+      "source_ranges": [
+        {
+          "segment": 71,
+          "frames_zero_based_half_open": [
+            544,
+            554
+          ],
+          "source_seconds": [
+            36.266666666666666,
+            36.93333333333333
+          ]
+        },
+        {
+          "segment": 72,
+          "frames_zero_based_half_open": [
+            0,
+            650
+          ],
+          "source_seconds": [
+            0.0,
+            43.333333333333336
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lapras-lead-koffing32",
+      "title": "正常將拉普拉斯換首位，再用衝浪打倒32級瓦斯彈",
+      "steps_included": [
+        24739,
+        24775
+      ],
+      "boundary_observation_step": 24776,
+      "campaign_frame_range": [
+        1457417,
+        1459953
+      ],
+      "emulated_frames": 2536,
+      "recorded_frames": 634,
+      "action_counts": {
+        "actions": 37,
+        "new_laya": 0,
+        "cache": 37,
+        "passive": 0,
+        "keys": {
+          "start": 1,
+          "up": 13,
+          "a": 15,
+          "down": 2,
+          "b": 3,
+          "wait": 3
+        }
+      },
+      "observed_result": {
+        "before_order": [
+          7,
+          132,
+          102,
+          154,
+          35,
+          19
+        ],
+        "after_order": [
+          19,
+          132,
+          102,
+          154,
+          35,
+          7
+        ],
+        "lapras_exp_gain": 521,
+        "surf_pp_used": 1,
+        "all_party_hp_status_unchanged": true,
+        "opponent": "KOFFING",
+        "opponent_level": 32,
+        "critical_hit_observed": true,
+        "no_capture": true
+      },
+      "clips": [
+        {
+          "path": "outputs/videos/mansion-progress-20261024/lapras-lead-koffing32-1x.mp4",
+          "sha256": "787d46f7e1e1fa385db0738c99e4450fc6d684f24adec7aa26fb69decc9351b4",
+          "bytes": 1782232,
+          "frames": 634,
+          "width": 480,
+          "height": 432,
+          "fps": 15,
+          "duration_seconds": 42.266666666666666,
+          "speed": 1,
+          "audio": false,
+          "speed_basis": "emulated_time",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "15/1",
+              "duration": "42.266667",
+              "nb_frames": "634",
+              "nb_read_frames": "634"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/lapras-lead-koffing32-4x.mp4",
+          "sha256": "c16c1c99e4fb0c5310d1ffd678231ee11812e9516f629fe7933a23f4cac107d4",
+          "bytes": 1736717,
+          "frames": 634,
+          "width": 480,
+          "height": 432,
+          "fps": 60,
+          "duration_seconds": 10.566666666666666,
+          "speed": 4,
+          "audio": false,
+          "speed_basis": "post_production_4x",
+          "full_decode": {
+            "xerror_full_decode": true,
+            "ffprobe": {
+              "width": 480,
+              "height": 432,
+              "pix_fmt": "yuv420p",
+              "r_frame_rate": "60/1",
+              "duration": "10.566667",
+              "nb_frames": "634",
+              "nb_read_frames": "634"
+            }
+          },
+          "every_decoded_frame_matches_source": true,
+          "consecutive_pts": true,
+          "all_original_frames_in_order": true
+        }
+      ],
+      "screenshots": [
+        {
+          "path": "outputs/videos/mansion-progress-20261024/09-lapras-first-party-order.png",
+          "sha256": "317582d449c48af02b2ff66f3c5fa4bb4c7062c082ce1beff9a8d818054f93c1",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24752,
+          "observation_campaign_frame": 1457937,
+          "clip_frame": 129,
+          "source_segment": 74,
+          "source_frame": 119,
+          "relative_1x_seconds": 8.6,
+          "rgb24_sha256": "458a762520680d5601c85cd26ab306ccf1197beb7904d8c9c9065838c4f78b67",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "   LAPRAS     30",
+            "             124/124",
+            "   SNORLAX    41",
+            "             198/198",
+            "   EEVEE      35",
+            "              90/ 90",
+            "   VENUSAUR   35",
+            "             111/111",
+            "   FEAROW     37",
+            "             114/114",
+            "   NIDOKING   36",
+            "             121/121"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/10-wild-koffing32-lapras30.png",
+          "sha256": "9b595984c01e579f02981e778a965f8f02265da346455a0c70d4a4aaedc620cf",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24766,
+          "observation_campaign_frame": 1458849,
+          "clip_frame": 357,
+          "source_segment": 74,
+          "source_frame": 347,
+          "relative_1x_seconds": 23.8,
+          "rgb24_sha256": "18d6cdd7cd4b0172056d79116555f1bb040690a92352b5b42c0abc8452f3589e",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            " KOFFING",
+            "     32",
+            "          LAPRAS",
+            "               30",
+            "           124/124",
+            " Go! LAPRAS!"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/11-lapras-used-surf.png",
+          "sha256": "f5eff906954e0ccdd7a28a15343b5acae4df17e30ea155e9a93926fd93cf3c60",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24770,
+          "observation_campaign_frame": 1459185,
+          "clip_frame": 441,
+          "source_segment": 74,
+          "source_frame": 431,
+          "relative_1x_seconds": 29.4,
+          "rgb24_sha256": "b01ba8da24b2c56a39d688e9ab0dce44d02fe3bb71eae28a6a529e208424f251",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            " KOFFING",
+            "     32",
+            "          LAPRAS",
+            "               30",
+            "           124/124",
+            " LAPRAS",
+            " used SURF!"
+          ]
+        },
+        {
+          "path": "outputs/videos/mansion-progress-20261024/12-lapras-521-exp.png",
+          "sha256": "3ab58647c92dd29e003f32f131bc942ddc2a454af9497a729649e2ac5e961574",
+          "width": 480,
+          "height": 432,
+          "observation_step": 24775,
+          "observation_campaign_frame": 1459825,
+          "clip_frame": 601,
+          "source_segment": 74,
+          "source_frame": 591,
+          "relative_1x_seconds": 40.06666666666667,
+          "rgb24_sha256": "d9c3ba54a30b0f95380b5d1a305afbbd32ef79ea0cfe937a0107168c36246c3e",
+          "source_and_both_clips_rgb_exact": true,
+          "ledger_visible_text": [
+            "          LAPRAS",
+            "               30",
+            "           124/124",
+            " LAPRAS gained",
+            " 521 EXP. Points!"
+          ]
+        }
+      ],
+      "source_ranges": [
+        {
+          "segment": 73,
+          "frames_zero_based_half_open": [
+            340,
+            350
+          ],
+          "source_seconds": [
+            22.666666666666668,
+            23.333333333333332
+          ]
+        },
+        {
+          "segment": 74,
+          "frames_zero_based_half_open": [
+            0,
+            624
+          ],
+          "source_seconds": [
+            0.0,
+            41.6
+          ]
+        }
+      ]
+    }
+  ],
+  "referenced_parent_evidence": [
+    {
+      "path": "outputs/research/mansion-first-statue-closed-proof-20261024.json",
+      "sha256": "99be90a4040a56921991e508f44e1c83272b1f5a2969bf9f866ff8593665fb44"
+    },
+    {
+      "path": "results/mansion-first-statue-campaign-20261024.json",
+      "sha256": "3497bf53f2eb22d3cfa3fd2337ef2457cea98ab1973b35ff55d25f0469c9419b"
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/mansion-progress-20261024/qa-contact-sheet.png",
+    "sha256": "e2092d781849db22bbc58744c0742cacb3bf1b03b858ef9784ecf7c36de71f30",
+    "width": 1920,
+    "height": 1422
+  },
+  "parent_review": "passed",
+  "published": false,
+  "builder_validation_note": "首輪assert指出24834僅第一閉合幀complete=False；完整完成發生於下一次無按鍵context並寫field-moves收據，已改用該真完成收據，不改寫原ledger。",
+  "limitations": [
+    "每4模擬幀取樣，原速15fps與後製4x60fps保留相同真幀，不插幀／補畫／重演；片長不能當wall或模型效能。",
+    "三主題各自連續來源；主題之間未剪接成一段，也不宣稱省略的導航／工程等待連續可見。",
+    "雕像OFF→ON與門片核對引用父層固定收據／唯讀cloneproof；clone1/2不是main1462313，未拿clone圖片冒充影片。",
+    "本代理只讀已closed071/072/073/074/078/079，不讀之後未封口錄影，不結束錄影器或操作遊戲。",
+    "六人ABLE背景使ledger的12行文字截斷；learned原文只用真影片像素確認，不重建字串。",
+    "沒有取得鑰匙、完成洋館、挑戰夏伯或新增捕捉的宣稱。"
+  ],
+  "frame_mapping_audit": {
+    "path": "outputs/research/mansion-media-audit-20261024.json",
+    "sha256": "f92761f8d9bb999b7ff1ae0101e5da4fd8732534751e382bc42acc5e63b4a7a6"
+  },
+  "agent_visual_review": {
+    "qa_viewed": true,
+    "native_text_confirmed": [
+      "A secret switch!",
+      "Press it? + YES cursor",
+      "Who wouldn't?",
+      "LAPRAS learned / SURF!",
+      "LAPRAS used SURF!",
+      "LAPRAS gained / 521 EXP. Points!"
+    ],
+    "limits": "只對本次原錄影取樣PNG目視；RAM開關與門片依父層固定證據，父層素材親看仍pending。"
+  },
+  "parent_visual_review": {
+    "date": "2026-10-24",
+    "reviewer": "codex-parent",
+    "qa": "outputs/videos/mansion-progress-20261024/qa-contact-sheet.png",
+    "observed": [
+      "完整A secret switch!/Press it?真YES/Who wouldn't?與關頁",
+      "正常只忘WATER GUN並LAPRAS learned SURF!",
+      "真六人Lapras首位、Koffing32與SURF、521EXP"
+    ],
+    "limits": [
+      "OFF→ON事件/門格引用另外固定雙fresh訊號驗收；影片目視本身不冒稱讀到RAM。",
+      "未含Key與夏伯；影片留本機，尚未發布。"
+    ]
+  }
+}

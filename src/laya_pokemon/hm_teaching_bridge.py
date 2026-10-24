@@ -1,4 +1,4 @@
-"""園長家兩個明確HM教學意圖的正常選單橋接，不讀寫遊戲RAM。"""
+"""明確HM教學意圖與固定站位的正常選單橋接，不讀寫遊戲RAM。"""
 import importlib
 import time
 from . import hm_teaching
@@ -11,6 +11,7 @@ _INTENT_LOCATIONS={
     'teach_surf_nidoking':(hm_teaching.SURF_INTENT,155,(4,5)),
     'teach_strength_snorlax':(hm_teaching.STRENGTH_INTENT,155,(4,5)),
     'teach_fly_fearow':(hm_teaching.FLY_INTENT,188,(1,3)),
+    'teach_surf_lapras':(hm_teaching.LAPRAS_SURF_INTENT,171,(3,4)),
 }
 MECHANICS=set(_INTENT_LOCATIONS)
 

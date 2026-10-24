@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_left_hole_and_basement_stairs_then_south_statue_approach",
+  "at": "2026-10-24T05:27:49.624396+00:00",
+  "frame": 1467945,
+  "location": {
+    "map_id": 216,
+    "x": 18,
+    "y": 26
+  },
+  "actions": 97,
+  "new_laya": 1,
+  "cache": 65,
+  "passive_waits": 31,
+  "wild_battle": {
+    "opponent": "PONYTA",
+    "level": 32,
+    "attack": "SURF",
+    "super_effective": true,
+    "experience_gained": 694,
+    "hp_lost": 17,
+    "pp_used": 1
+  },
+  "other_five_party_inventory_money_unchanged": true,
+  "engineering_issues": [
+    "站樓梯常駐STANDING_ON_WARP4不是移動忙碌，只B1固定落點可ready。",
+    "原25個WAIT已執行；第26個WAIT候選在pause前產生但未按，原calls/waits26完整保留。",
+    "第一次named review門檻誤用ledger25而安全拒絕，0新動作；改用固定paused review26，保留全部counter與原elapsed。"
+  ],
+  "source_evidence": [
+    {
+      "path": ".local/mansion-basement-approach-fixed-review-20261024.json",
+      "sha256": "acd919042ec8220bc4cb86e87ebf5a64d223203b7f6d7edf6dc5db9db78db840",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-basement-approach-fixed-summary-20261024.json",
+      "sha256": "40cc18819e7059c06d9eb5e088d7238b154f2911b8b161ba33a4d1624a522e0e",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-basement-approach-fixed-steps-20261024.jsonl",
+      "sha256": "371a9fd3fb0314f3e461f39465b9b7e89dde8ad76ba029f9b0bacfd0d60a5966",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-basement-approach-fixed-fields-20261024.json",
+      "sha256": "9186b97f19a296bd82714590bc80a794359e32ccfdf40c0eb93d8b299837ac78",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "南/北雕像與Key尚未完成，六徽章。"
+  ]
+}

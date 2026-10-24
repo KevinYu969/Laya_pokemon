@@ -1,7 +1,8 @@
-"""兩個固定紅版 HM 教學意圖的純子目標候選；不操作模擬器或橋接。
+"""固定紅版 HM 教學意圖的純子目標候選；不操作模擬器或橋接。
 固定 pret/pokered a53671100ec22e5394ff26ec028d0812a238dae2。
 僅 NIDOKING7 HM03/SURF57 取代槽1 TACKLE33、SNORLAX132
-HM04/STRENGTH70 取代槽0 HEADBUTT29。HM原量原序保留。
+HM04/STRENGTH70 取代槽0 HEADBUTT29；FEAROW的FLY及LAPRAS的SURF
+也由固定資料契約限定。HM原量原序保留。
 context只用呼叫端同次完整觀測；來源字頁白名單不等於實機校準。
 """
 from copy import deepcopy
@@ -21,10 +22,13 @@ STRENGTH_INTENT = dict(kind="teach_strength_snorlax", species=132, item=199,
                        move=70, replace_move=29, replace_index=0)
 FLY_INTENT = dict(kind="teach_fly_fearow", species=35, item=197,
                   move=19, replace_move=43, replace_index=2)
+LAPRAS_SURF_INTENT = dict(kind="teach_surf_lapras", species=19, item=198,
+                         move=57, replace_move=55, replace_index=0)
 _CONTRACTS = {
     "teach_surf_nidoking": (SURF_INTENT, (61, 33, 30, 40), "NIDOKING", "SURF"),
     "teach_strength_snorlax": (STRENGTH_INTENT, (29, 133, 156, 34), "SNORLAX", "STRENGTH"),
     "teach_fly_fearow": (FLY_INTENT, (64, 65, 43, 31), "FEAROW", "FLY"),
+    "teach_surf_lapras": (LAPRAS_SURF_INTENT, (55, 34, 47, 54), "LAPRAS", "SURF"),
 }
 SOURCES = [f"https://github.com/pret/pokered/blob/{SOURCE_COMMIT}/{p}" for p in (
     "engine/items/item_effects.asm#L2154", "engine/pokemon/learn_move.asm",
@@ -154,7 +158,7 @@ class HMTeachingController:
                 or intent != _CONTRACTS[intent["kind"]][0]
                 or any(type(intent.get(k)) is not int for k in
                        ("species", "item", "move", "replace_move", "replace_index"))):
-            raise ValueError("只允許兩個固定HM03/04教學意圖")
+            raise ValueError("只允許已列冊的固定HM教學意圖")
         self.intent = deepcopy(intent)
         _, before, self.name, self.move = _CONTRACTS[intent["kind"]]
         self.before_moves = list(before)

@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_two_native_door_exits_and_third_floor_approach",
+  "at": "2026-10-24T05:06:15.034377+00:00",
+  "frame": 1461953,
+  "location": {
+    "map_id": 215,
+    "x": 10,
+    "y": 6
+  },
+  "actions": 35,
+  "cache": 30,
+  "passive_waits": 5,
+  "new_laya": 0,
+  "party_inventory_money_unchanged": true,
+  "mansion_switch_on": false,
+  "engineering_pause_count": 2,
+  "source_evidence": [
+    {
+      "path": ".local/mansion-native-landings-fixed-review-20261024.json",
+      "sha256": "0e9fe589c71b3c2fb343a4bda63ed9f58f2eeb535a150dfba85d750515933348",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-native-landings-fixed-summary-20261024.json",
+      "sha256": "6e6fa19ec2651c74a89822e901d4dd1c41821fad7c47b1ffc64e6d071d12f00c",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-native-landings-fixed-steps-20261024.jsonl",
+      "sha256": "c1a4a7b86d389255a47454427a535131c605761e9e3438f4531f1cbd01a0c73d",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-native-landings-fixed-fields-20261024.json",
+      "sha256": "8061ce699527e6d445f90a28a76623409b77167baf5096355bdadbcd3ce261c4",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/mansion-first-statue-pre-input-proof-20261024.json",
+      "sha256": "8e7e12f28c0b14b03111af053714fe4d9f3cfe7ff67cc5a8a886fd28c02caa46",
+      "local_only": true
+    }
+  ],
+  "issues": [
+    "2F mapID先變但舊1F完整840格未換；只能精確source前圖作有界WAIT，不能完成。",
+    "3F處FC/exitingDoor與walk2原生控制，畫面對齊未知；限定來源前序214(6,1)及有效FC原生狀態才有界WAIT，仍新exit兩fresh閉合才完成。",
+    "父層第一預檢只核WAIT未拒phase_review曾誤排；主循環0新動作安全停，修預檢必非review。"
+  ],
+  "limits": [
+    "兩次guard成功與普通到3F已實測；雕像尚未按。"
+  ]
+}

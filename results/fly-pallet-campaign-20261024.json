@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_fly_and_closed_pallet_landing",
+  "at": "2026-10-24T04:19:44.647080+00:00",
+  "frame": 1443033,
+  "location": {
+    "map_id": 0,
+    "x": 5,
+    "y": 6
+  },
+  "from_location": {
+    "map_id": 27,
+    "x": 7,
+    "y": 6
+  },
+  "actions": 18,
+  "new_laya": 3,
+  "party_bag_money_pp_unchanged": true,
+  "engineering_pause_count": 1,
+  "issue": "目的地完整360格與真新鎮相符；原實作誤強制window不可見，真封包LCDC E3/windowTrue。窄修後具名續接原實例，保留原used60秒/calls/waits/基線及pending。",
+  "source_evidence": [
+    {
+      "path": ".local/fly-pallet-fixed-review-20261024.json",
+      "sha256": "ac4e7d772ddb435f17d04ed12542d4ee7445521e4e957144cef9be414cc27370",
+      "local_only": true
+    },
+    {
+      "path": ".local/fly-pallet-fixed-summary-20261024.json",
+      "sha256": "93e1f95f3671f314e1c170a0f5f5e90966c8afab21bbdfc910d77db3b8cec74b",
+      "local_only": true
+    },
+    {
+      "path": ".local/fly-pallet-fixed-steps-20261024.jsonl",
+      "sha256": "98f211a5a83b1ded7ac21e12c7b5aa9bc99f7a5f701711674e7df1d264e555c7",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/fly-pallet-closed-proof-20261024.json",
+      "sha256": "246b82c6b858a44684fef5b9b2f526b26ee69692587920953939ed787a5a7324",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "只確認正常Fly至真新鎮及兩新閉合觀測；Surf/紅蓮/第七道館尚未完成。"
+  ]
+}

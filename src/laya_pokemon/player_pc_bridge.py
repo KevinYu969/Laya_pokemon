@@ -1,4 +1,4 @@
-"""將明確、可逆的兩種TM存物意圖接到原生PC；保留owner及原基線。"""
+"""將明確、可逆的三種TM存物意圖接到原生PC；保留owner及原基線。"""
 import importlib
 import time
 from . import player_pc_deposit
@@ -27,19 +27,19 @@ def context(pyboy,state,plan,step_id,text,grid,previous):
     if not isinstance(step,dict) or step.get('mechanic')!=MECHANIC:
         return (_review('player_pc_intent_changed'),step_id) if active else None
     intent=step.get('pc_intent')
-    expected={**player_pc_deposit.INTENT_BASE,'item':intent.get('item') if isinstance(intent,dict) else None}
-    if (type(intent) is not dict or intent!=expected
+    expected=player_pc_deposit.INTENTS.get((intent.get('map_id'),intent.get('item'))) if (
+        type(intent) is dict and type(intent.get('map_id')) is int and type(intent.get('item')) is int) else None
+    if (type(intent) is not dict or expected is None or intent!=expected
             or any(type(intent.get(k)) is not type(v) for k,v in expected.items())
-            or type(intent.get('item')) is not int or intent['item'] not in (234,221)
             or step.get('kind')!='interact' or type(step.get('map_id')) is not int
-            or step['map_id']!=182 or step.get('target')!=[13,4] or step.get('face')!='up'
+            or step['map_id']!=expected['map_id'] or step.get('target')!=[13,4] or step.get('face')!='up'
             or any(k in step for k in ('next_map','terminal','event','item','badge','await_script_event'))):
         return _review('player_pc_explicit_intent_unverified'),step_id
-    binding=(MECHANIC,182,(13,4),'up',tuple(sorted(intent.items())))
+    binding=(MECHANIC,intent['map_id'],(13,4),'up',tuple(sorted(intent.items())))
     if step_id in _BINDINGS and _BINDINGS[step_id]!=binding:
         return _review('player_pc_intent_changed'),step_id
     loc=state.get('location')
-    if loc!={'map_id':182,'x':13,'y':4}:
+    if loc!=player_pc_deposit.LOCATIONS[intent['map_id']]:
         return (_review('player_pc_location_changed'),step_id) if active else None
     from .campaign_transactions import ui_overworld_ready,verified_blank_transaction_world
     from pyboy.plugins import game_wrapper_pokemon_gen1_constants as constants

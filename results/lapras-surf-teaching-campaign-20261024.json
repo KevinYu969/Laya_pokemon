@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_lapras_surf_teaching_and_closed",
+  "at": "2026-10-24T04:31:04.221782+00:00",
+  "frame": 1456017,
+  "location": {
+    "map_id": 171,
+    "x": 3,
+    "y": 4
+  },
+  "species": 19,
+  "level": 30,
+  "forgotten_move": 55,
+  "learned_move": 57,
+  "moves_before": [
+    55,
+    34,
+    47,
+    54
+  ],
+  "moves_after": [
+    57,
+    34,
+    47,
+    54
+  ],
+  "pp_before": [
+    25,
+    15,
+    15,
+    30
+  ],
+  "pp_after": [
+    15,
+    15,
+    15,
+    30
+  ],
+  "actions": 66,
+  "new_laya": 0,
+  "cache": 41,
+  "passive": 25,
+  "engineering_interruptions_during_teaching": 0,
+  "other_five_party_and_all_inventory_money_unchanged": true,
+  "hm03_preserved": true,
+  "source_evidence": [
+    {
+      "path": ".local/lapras-surf-teaching-fixed-review-20261024.json",
+      "sha256": "e07a7a9f06dae082fd3871ae185ac53f71fc5ad9a674b833669ca8adbf6757ed",
+      "local_only": true
+    },
+    {
+      "path": ".local/lapras-surf-teaching-fixed-summary-20261024.json",
+      "sha256": "54b684aa761760246e39a65c8f55adb8e80df5e5f67885d64658b759c64af20f",
+      "local_only": true
+    },
+    {
+      "path": ".local/lapras-surf-teaching-fixed-steps-20261024.jsonl",
+      "sha256": "3027ef1cb9f63c3c9c2dfaf3c17404d43153f4aefa89cc68b37deff7324e6bb0",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/lapras-surf-teaching-closed-proof-20261024.json",
+      "sha256": "bc8e5107198b54b1b67c01b9eea5f46264e7f01ee217a422191eb76994808cbc",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "六人ABLE背景使候選12列截掉LEARNED全文；controller使用完整cells，原像素待另做視覺驗證，不捏造候選日誌。",
+    "HM既有API無previous；此項資料擴充沿用freshframe／完整UI／語意去重，不冒稱已有新增實按回執。"
+  ]
+}

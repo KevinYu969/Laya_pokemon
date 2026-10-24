@@ -31,7 +31,7 @@ STORY_EVENT_NAMES = (
     "met_bill", "bill_said_use_cell_separator", "used_cell_separator_on_bill", "got_ss_ticket", "left_bills_house_after_helping",
     "beat_mt_moon_exit_super_nerd", "got_dome_fossil", "got_helix_fossil", "got_master_ball",
     "first_lock_opened", "second_lock_opened", "ss_anne_left", "beat_silph_co_rival",
-    "silph_co_11_unlocked_door",
+    "silph_co_11_unlocked_door", "mansion_switch_on",
 )
 EVENT_FLAG_ALIASES={'first_lock_opened':'1st_lock_opened','second_lock_opened':'2nd_lock_opened'}
 
@@ -94,6 +94,17 @@ def _silph_11_door_event_supported(constants) -> bool:
     events = getattr(constants, "EVENT_FLAGS", None)
     value = events.get("silph_co_11_unlocked_door") if isinstance(events, Mapping) else None
     return type(base) is int and base == 0xD747 and type(value) is int and value == 0x788
+
+
+def _mansion_switch_event_supported(constants) -> bool:
+    """固定a536711 event_constants:164–165；0x278=D796 bit0，只新增此欄。"""
+    try:
+        base = getattr(constants, "EVENT_FLAGS_ADDRESS", None)
+        events = getattr(constants, "EVENT_FLAGS", None)
+        value = events.get("mansion_switch_on") if isinstance(events, Mapping) else None
+        return type(base) is int and base == 0xD747 and type(value) is int and value == 0x278
+    except Exception:
+        return False  # 僅這個新欄的來源錨失效；不重解釋legacy事件。
 
 
 def read_progress(pyboy, constants=None) -> dict:
@@ -194,7 +205,15 @@ def read_progress(pyboy, constants=None) -> dict:
     sabrina_supported = _sabrina_events_supported(constants)
     silph_rival_supported = _silph_rival_event_supported(constants)
     silph_11_door_supported = _silph_11_door_event_supported(constants)
+    mansion_switch_supported = _mansion_switch_event_supported(constants)
     for name in STORY_EVENT_NAMES:
+        if name == "mansion_switch_on":
+            try:
+                value = read_byte(0xD796) if mansion_switch_supported else None
+            except Exception:
+                value = None  # 新欄getter異常保持unknown，不改舊generic的例外語意。
+            result["story_event_bits"][name] = None if value is None else bool(value & 1)
+            continue
         if name in _SABRINA_EVENT_IDS and name != "beat_sabrina":
             event_id = _SABRINA_EVENT_IDS[name]
             value = read_byte(0xD747 + event_id // 8) if sabrina_supported else None

@@ -1,0 +1,552 @@
+{
+  "schema": "hm02-fly-media-audit-v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "title": "正常取得HM02，讓大嘴雀以飛翔取代第三槽瞪眼",
+  "source_run": "league-campaign-20261024-24",
+  "source_ledger": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-064.jsonl",
+      "selected_steps": [
+        24331
+      ],
+      "selected_original_line_bytes_sha256": "837d2535e2134cb8f9a3ab715ca27c60ea056738eb8b874f07ff007655a17c9e"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-065.jsonl",
+      "selected_steps": [
+        24332,
+        24333,
+        24334,
+        24335,
+        24336,
+        24337,
+        24338,
+        24339,
+        24340,
+        24341,
+        24342,
+        24343,
+        24344,
+        24345,
+        24346,
+        24347,
+        24348,
+        24349,
+        24350,
+        24351,
+        24352,
+        24353,
+        24354,
+        24355,
+        24356,
+        24357,
+        24358,
+        24359,
+        24360,
+        24361,
+        24362,
+        24363,
+        24364,
+        24365,
+        24366,
+        24367,
+        24368,
+        24369,
+        24370,
+        24371,
+        24372,
+        24373,
+        24374,
+        24375,
+        24376,
+        24377,
+        24378,
+        24379,
+        24380,
+        24381,
+        24382,
+        24383,
+        24384,
+        24385,
+        24386,
+        24387,
+        24388,
+        24389,
+        24390,
+        24391,
+        24392,
+        24393,
+        24394,
+        24395,
+        24396,
+        24397,
+        24398,
+        24399,
+        24400,
+        24401,
+        24402,
+        24403,
+        24404,
+        24405
+      ],
+      "selected_original_line_bytes_sha256": "a5fd50ef6ec4a8df227a6fefaece49a2214a88dc15d3fb1b88d4bbfbcdb57bab"
+    }
+  ],
+  "range": {
+    "steps_included": [
+      24331,
+      24404
+    ],
+    "boundary_observation_step": 24405,
+    "campaign_frame_start": 1438457,
+    "campaign_frame_end": 1442033,
+    "emulated_frames": 3576,
+    "recorded_frames": 894,
+    "sample_every_emulated_frames": 4,
+    "excluded": "下一離屋動作及其後所有影片影格"
+  },
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-064.mp4",
+      "sha256": "1f3dfed36bf059c929f624f82b47032a6b74b7b70b03d08a4ac8aaf35a5e8f29",
+      "bytes": 521868,
+      "closure": {
+        "at": "2026-10-24T03:47:14.992622+00:00",
+        "segment": 64,
+        "timing": {
+          "wall_seconds": 12282.437,
+          "model_wait_seconds": 144.392,
+          "review_pause_seconds": 11109.491,
+          "non_review_session_seconds": 1172.946,
+          "emulated_seconds": 23974.933
+        },
+        "video": {
+          "filename": "video-064.mp4",
+          "fps": 15,
+          "frames": 470,
+          "playback_seconds": 31.333333333333332,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "7706551f0a26bcc93c5621820a424ca5398d8d19d9a53c9c8d64515c4f4d9a44",
+      "global_prior_recorded_frames": 359154,
+      "selected_frame_range_zero_based_half_open": [
+        460,
+        470
+      ],
+      "selected_time_range_seconds": [
+        30.666666666666668,
+        31.333333333333332
+      ],
+      "selected_count": 10,
+      "full_decode": {
+        "frames": 470,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "31.333333",
+          "nb_frames": "470",
+          "nb_read_frames": "470"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-065.mp4",
+      "sha256": "a5b9b92b0118c4cfa9a66aefb910bdd5e5c1a04805004af55f4e3a1f940d7c59",
+      "bytes": 394652,
+      "closure": {
+        "at": "2026-10-24T03:51:58.098542+00:00",
+        "segment": 65,
+        "timing": {
+          "wall_seconds": 12565.547,
+          "model_wait_seconds": 146.408,
+          "review_pause_seconds": 11387.82,
+          "non_review_session_seconds": 1177.727,
+          "emulated_seconds": 24034.533
+        },
+        "video": {
+          "filename": "video-065.mp4",
+          "fps": 15,
+          "frames": 894,
+          "playback_seconds": 59.6,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "ac8dceaa499043029ae5c02ad513415f37b03c7484f1961fcffc05810e108776",
+      "global_prior_recorded_frames": 359624,
+      "selected_frame_range_zero_based_half_open": [
+        0,
+        884
+      ],
+      "selected_time_range_seconds": [
+        0.0,
+        58.93333333333333
+      ],
+      "selected_count": 884,
+      "full_decode": {
+        "frames": 894,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "59.600000",
+          "nb_frames": "894",
+          "nb_read_frames": "894"
+        }
+      }
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/hm02-fly-20261024/hm02-fearow-fly-1x.mp4",
+      "sha256": "8e2c55d2fa32f0b2f07c94982c307ec32333bd8f7963d2f7cc733c06326cadca",
+      "bytes": 853775,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "frames": 894,
+      "duration_seconds": 59.6,
+      "speed": 1,
+      "speed_basis": "emulated_time",
+      "audio": false,
+      "full_decode": {
+        "frames": 894,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "59.600000",
+          "nb_frames": "894",
+          "nb_read_frames": "894"
+        }
+      },
+      "every_decoded_frame_matches_source": true,
+      "all_frames_retained_in_source_order": true,
+      "consecutive_pts_verified": true
+    },
+    {
+      "path": "outputs/videos/hm02-fly-20261024/hm02-fearow-fly-4x.mp4",
+      "sha256": "5fa94f054b704d1a15465536c35189ee5bff182a0d049fe0842da155f6860c61",
+      "bytes": 853885,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "frames": 894,
+      "duration_seconds": 14.9,
+      "speed": 4,
+      "speed_basis": "post_production_4x",
+      "audio": false,
+      "full_decode": {
+        "frames": 894,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "14.900000",
+          "nb_frames": "894",
+          "nb_read_frames": "894"
+        }
+      },
+      "every_decoded_frame_matches_source": true,
+      "all_frames_retained_in_source_order": true,
+      "consecutive_pts_verified": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/hm02-fly-20261024/01-hm02-received.png",
+      "sha256": "6d61d600929a1372e33fb028b48e37912325a43e385d310d72004f8c2495d446",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24338,
+      "observation_campaign_frame": 1439177,
+      "clip_frame": 179,
+      "source_segment": 65,
+      "source_frame": 169,
+      "relative_1x_seconds": 11.933333333333334,
+      "rgb24_sha256": "de0d09562ad261854d4c4f4a94abb33515cead0fcc7762047794b08bb98d83ee",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_text_is_truncated_at_12_rows": false,
+      "ledger_visible_text": [
+        " KEVIN received",
+        " HM02!"
+      ]
+    },
+    {
+      "path": "outputs/videos/hm02-fly-20261024/02-hm02-use.png",
+      "sha256": "83437b450eeb888b7be588193c662d9d92f3dafd933a4184d8543985c80c17f7",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24362,
+      "observation_campaign_frame": 1440313,
+      "clip_frame": 463,
+      "source_segment": 65,
+      "source_frame": 453,
+      "relative_1x_seconds": 30.866666666666667,
+      "rgb24_sha256": "f8124947e3c903e2d312795f8f338746070301c9fb8b12715aaa1f5f7c101a2b",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_text_is_truncated_at_12_rows": false,
+      "ledger_visible_text": [
+        "      MASTER BALL",
+        "      TM46",
+        "     ▷HM02",
+        "      CANCEL",
+        "              ▶USE",
+        "               TOSS"
+      ]
+    },
+    {
+      "path": "outputs/videos/hm02-fly-20261024/03-teach-fly-yes.png",
+      "sha256": "6186ca82e86db4df03a2870cb704d03a5f07cbd171a697eaa2e492add2a570e0",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24369,
+      "observation_campaign_frame": 1440593,
+      "clip_frame": 533,
+      "source_segment": 65,
+      "source_frame": 523,
+      "relative_1x_seconds": 35.53333333333333,
+      "rgb24_sha256": "836db2d0dc2b2de28b7d7ec6b9b8967bbc1ec8a56f59d558da0127483346baa2",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_text_is_truncated_at_12_rows": false,
+      "ledger_visible_text": [
+        "      MASTER BALL",
+        "      TM46",
+        "     ▷HM02     ▶YES",
+        "      CANCEL    NO",
+        " Teach FLY",
+        " to a POKéMON?"
+      ]
+    },
+    {
+      "path": "outputs/videos/hm02-fly-20261024/04-fearow-able.png",
+      "sha256": "c3b3214a2caaaec2c01ffc966fa96756bc53aef013212de33b64e0fadda3f869",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24371,
+      "observation_campaign_frame": 1440673,
+      "clip_frame": 553,
+      "source_segment": 65,
+      "source_frame": 543,
+      "relative_1x_seconds": 36.86666666666667,
+      "rgb24_sha256": "9d06b30d906a0571e042e80cdf960987e8603e93279b8a1925c6c4da6245334a",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_text_is_truncated_at_12_rows": true,
+      "ledger_visible_text": [
+        "   NIDOKING   36",
+        "            NOT ABLE",
+        "   SNORLAX    41",
+        "            NOT ABLE",
+        "   EEVEE      35",
+        "            NOT ABLE",
+        "   VENUSAUR   35",
+        "            NOT ABLE",
+        "   FEAROW     37",
+        "▶           ABLE",
+        "   LAPRAS     30",
+        "            NOT ABLE"
+      ]
+    },
+    {
+      "path": "outputs/videos/hm02-fly-20261024/05-replace-third-slot-leer.png",
+      "sha256": "11ba6993299d2b7c143d41165243372d9f80412e7252b38ce3338bd16bbb2e11",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24388,
+      "observation_campaign_frame": 1441353,
+      "clip_frame": 723,
+      "source_segment": 65,
+      "source_frame": 713,
+      "relative_1x_seconds": 48.2,
+      "rgb24_sha256": "e5b200fb89894076f67b55a822512030d69abb1e1ced344de0f1ba30e8812ae1",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_text_is_truncated_at_12_rows": true,
+      "ledger_visible_text": [
+        "   NIDOKING   36",
+        "            NOT ABLE",
+        "   SNORLAX    41",
+        "            NOT ABLE",
+        "   EEVEE      35",
+        "            NOT ABLE",
+        "   VENUSAUR   35",
+        "   F  PECK",
+        "▷     DRILL PECK",
+        "   L ▶LEER",
+        "      FURY ATTACK",
+        " Which move should"
+      ]
+    },
+    {
+      "path": "outputs/videos/hm02-fly-20261024/06-fearow-forgot-leer.png",
+      "sha256": "a6388485a6e05532023795ea201493668235e9edddf2acf7dc5822c4872c80dd",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24393,
+      "observation_campaign_frame": 1441553,
+      "clip_frame": 773,
+      "source_segment": 65,
+      "source_frame": 763,
+      "relative_1x_seconds": 51.53333333333333,
+      "rgb24_sha256": "4a544f9d210f10a0fc5903d198a79fdfe26d2a7acad75eef7d51ea2d2149c6c6",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_text_is_truncated_at_12_rows": true,
+      "ledger_visible_text": [
+        "   NIDOKING   36",
+        "            NOT ABLE",
+        "   SNORLAX    41",
+        "            NOT ABLE",
+        "   EEVEE      35",
+        "            NOT ABLE",
+        "   VENUSAUR   35",
+        "            NOT ABLE",
+        "   FEAROW     37",
+        "▷           ABLE",
+        "   LAPRAS     30",
+        "            NOT ABLE"
+      ]
+    },
+    {
+      "path": "outputs/videos/hm02-fly-20261024/07-fearow-learned-fly.png",
+      "sha256": "efbd3459e664676781b20a349364ad53fa901b348b0c431bcae4565bc54f6385",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24399,
+      "observation_campaign_frame": 1441793,
+      "clip_frame": 833,
+      "source_segment": 65,
+      "source_frame": 823,
+      "relative_1x_seconds": 55.53333333333333,
+      "rgb24_sha256": "dc95f4defd5df328fa562bd4cf0bfebd7a0ce82e1f1ce081346af1dcaf3aa89b",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_text_is_truncated_at_12_rows": true,
+      "ledger_visible_text": [
+        "   NIDOKING   36",
+        "            NOT ABLE",
+        "   SNORLAX    41",
+        "            NOT ABLE",
+        "   EEVEE      35",
+        "            NOT ABLE",
+        "   VENUSAUR   35",
+        "            NOT ABLE",
+        "   FEAROW     37",
+        "▷           ABLE",
+        "   LAPRAS     30",
+        "            NOT ABLE"
+      ]
+    },
+    {
+      "path": "outputs/videos/hm02-fly-20261024/08-normal-closed-world.png",
+      "sha256": "55dbdad554944baca8e311681ca652f3f54a985a9ba48b9d356ca4dd62c6a4af",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24405,
+      "observation_campaign_frame": 1442033,
+      "clip_frame": 893,
+      "source_segment": 65,
+      "source_frame": 883,
+      "relative_1x_seconds": 59.53333333333333,
+      "rgb24_sha256": "efcd0ca191abe6cbefbe4b3a2b1e3985d30fe44d27f8f2672d608eeb6c1385ff",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_text_is_truncated_at_12_rows": false,
+      "ledger_visible_text": []
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/hm02-fly-20261024/qa-contact-sheet.png",
+    "sha256": "2f8bb7290a9c91de59fa3848d64098a3fc5709d7a2bd7f672aa2855d74daedbe",
+    "width": 1920,
+    "height": 948
+  },
+  "action_counts": {
+    "gift_including_orientation": {
+      "actions": 9,
+      "new_laya": 2,
+      "cache": 7,
+      "passive": 0,
+      "keys": {
+        "right": 1,
+        "a": 8
+      }
+    },
+    "fly_teaching": {
+      "actions": 65,
+      "new_laya": 4,
+      "cache": 39,
+      "passive": 22,
+      "keys": {
+        "start": 1,
+        "down": 22,
+        "a": 18,
+        "wait": 22,
+        "b": 2
+      }
+    }
+  },
+  "observed_result": {
+    "hm02_item": 197,
+    "quantity": 1,
+    "bag_slots_before": 18,
+    "bag_slots_after": 19,
+    "hm_consumed": false,
+    "learner": 35,
+    "before_moves": [
+      64,
+      65,
+      43,
+      31
+    ],
+    "after_moves": [
+      64,
+      65,
+      19,
+      31
+    ],
+    "replaced_slot_zero_based": 2,
+    "new_move_pp": 15,
+    "other_five_party_dicts_unchanged": true,
+    "party_order_health_status_exp_and_money_preserved": true,
+    "badge_count": 6,
+    "field_fly_executed_in_this_clip": false
+  },
+  "learned_message_evidence": {
+    "path": "outputs/videos/hm02-fly-20261024/07-fearow-learned-fly.png",
+    "basis": "直接取原錄影下方真像素；ledger被六人ABLE背景的12列上限截斷，不補造文字或畫面。",
+    "visual_confirmation_by_parent": "pending"
+  },
+  "editing": "跨兩段已自然封裝錄影，以連續campaign取樣原順序剪接；1x15fps與4x60fps保留相同894真幀，無補畫／重演／插幀。",
+  "parent_review": {
+    "status": "passed",
+    "date": "2026-10-24",
+    "method": "父層親看1920x948原尺寸QA，HM02 received、第三槽LEER、forgot LEER、FEAROW learned/FLY!與關頁完整可辨。"
+  },
+  "published": false,
+  "limitations": [
+    "1x59.6秒是模擬時間；4x14.9秒是後製速度，都不是牆鐘或模型效能。",
+    "實際main frame與錄影取樣可交叉；沒有使用cloneframe作遊戲成果。",
+    "只到正常關頁，不包含其後離屋動作；本片尚未實際使用野外飛翔，沒有第七館成果宣稱。"
+  ],
+  "frame_mapping_audit": {
+    "path": "outputs/research/hm02-fly-clips-audit-20261024.json",
+    "sha256": "104caea2e4235f22b16316b275ed5306d4b2d072c3e7af41865874c433e431ff"
+  },
+  "visibility": {
+    "receipt": "public_project_backup",
+    "videos_and_screenshots": "local_only"
+  }
+}

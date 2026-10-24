@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_normal_mansion_first_entry",
+  "at": "2026-10-24T04:32:48.625766+00:00",
+  "frame": 1457417,
+  "location": {
+    "map_id": 165,
+    "x": 5,
+    "y": 26
+  },
+  "actions": 35,
+  "all_cached": true,
+  "party_bag_money_unchanged": true,
+  "source_evidence": [
+    {
+      "path": ".local/mansion-first-entry-fixed-review-20261024.json",
+      "sha256": "dfca5684b418a265e37e8e0fcb12a8b48d98cd6afb5961f8cbf448da2707c1a3",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-first-entry-fixed-summary-20261024.json",
+      "sha256": "f088060e203ac82f584c871eb90773441eb9b5c3348e9dce51becb9ffaab611e",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-first-entry-fixed-steps-20261024.jsonl",
+      "sha256": "184d58c3e530cef9034ad283f0eb60100d11c580f4dd95bbc01d3f0e5e0f9a82",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/mansion-first-floor-pre-input-proof-20261024.json",
+      "sha256": "f5583268b199bb1fd9902aa8a25de8c9d43ad79f26475ad15e13469e5a463079",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "只正常進洋館1F，未操作雕像或取得Secret Key。"
+  ]
+}

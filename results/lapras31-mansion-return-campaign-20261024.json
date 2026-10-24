@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_lapras31_confuse_ray_and_return_to_first_floor_then_low_hp_review",
+  "at": "2026-10-24T05:46:16.523275+00:00",
+  "frame": 1494201,
+  "location": {
+    "map_id": 165,
+    "x": 23,
+    "y": 16
+  },
+  "actions": 275,
+  "new_laya": 0,
+  "cache": 251,
+  "passive_waits": 24,
+  "learned_move": 109,
+  "forgotten_move": 54,
+  "replace_index": 3,
+  "final_moves": [
+    57,
+    34,
+    47,
+    109
+  ],
+  "final_pp": [
+    2,
+    15,
+    15,
+    10
+  ],
+  "lapras_level": 31,
+  "lapras_experience": 37657,
+  "lapras_hp": 37,
+  "lapras_max_hp": 128,
+  "all_six_alive": true,
+  "wild_escape": {
+    "species": "WEEZING",
+    "level": 37,
+    "incoming_move": "SLUDGE",
+    "damage_per_hit": 33,
+    "hits": 2,
+    "exp_gained": 0,
+    "escaped_safely": true
+  },
+  "source_evidence": [
+    {
+      "path": ".local/lapras31-mansion-return-fixed-review-20261024.json",
+      "sha256": "badd8e4c6ee2ad719e5be2df6576cffcce17d2dff8ce37597e6f24c4312b0dce",
+      "local_only": true
+    },
+    {
+      "path": ".local/lapras31-mansion-return-fixed-summary-20261024.json",
+      "sha256": "979112e2e9b21c2739463f4c1eb82ad90e4e311893643e73ea9bb04e2219f056",
+      "local_only": true
+    },
+    {
+      "path": ".local/lapras31-mansion-return-fixed-steps-20261024.jsonl",
+      "sha256": "4ed1461c562ab58612adadc136dc821377544599b79ff2ffd21f8db8d7146eed",
+      "local_only": true
+    }
+  ],
+  "issues": [
+    "自然學招抓到舊策略函式仍指向忘Sing；相依熱載修正，同場續行，原session不清。",
+    "低等Lapras對Weezing37兩次Surf未KO，受兩次Sludge後正常逃跑；這場不是勝利、沒有EXP。"
+  ],
+  "limits": [
+    "Key保持，仍六徽章；回中心尚未完成。",
+    "本程式新增31資料及相依熱載的完整固定回歸另見6810收據。"
+  ]
+}

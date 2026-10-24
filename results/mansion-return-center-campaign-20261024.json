@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_normal_mansion_return_and_all_six_center_recovery",
+  "at": "2026-10-24T05:52:14.670755+00:00",
+  "frame": 1502857,
+  "location": {
+    "map_id": 171,
+    "x": 3,
+    "y": 4
+  },
+  "actions": 190,
+  "new_laya": 2,
+  "cache": 188,
+  "passive_waits": 0,
+  "lead_species": 7,
+  "party_levels": [
+    36,
+    41,
+    35,
+    35,
+    37,
+    31
+  ],
+  "all_six_full_hp_status_pp": true,
+  "party_experience_moves_inventory_money_preserved": true,
+  "secret_key_preserved": true,
+  "bag_count": 20,
+  "mansion_switch_normally_reset_on_island": true,
+  "engineering_issues": [
+    "父層把26,27門內最後一格誤當已退出，25停滯；補正常map_exit DOWN26,28。",
+    "父層誤填中心門11,3；改回已實測11,11，護士亦在操作前改回已核3,3；兩段繞行沒有新野戰。",
+    "初map_exit唯讀預檢誤要求fallback標記，實際更強的world_path_hint map_exit使assert停止；未改plan/未送鍵，修斷言後續。"
+  ],
+  "source_evidence": [
+    {
+      "path": ".local/mansion-return-center-fixed-review-20261024.json",
+      "sha256": "bfb39476001d5fb0637c72a823b1c2a5417321e4224bf48b494b330992ac94a6",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-return-center-fixed-summary-20261024.json",
+      "sha256": "e8da956cb5c20f4bcd4f553ccfedbbfb2bb86ab0fdef078526bbbc4696207805",
+      "local_only": true
+    },
+    {
+      "path": ".local/mansion-return-center-fixed-steps-20261024.jsonl",
+      "sha256": "e829c91b60689c922ac9a13370f90e91c6c11c95fbd2a6e159be736c9ca2d78f",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "仍六徽章；夏伯/四天王未完成。",
+    "袋20需正常存物空出TM38位置。"
+  ]
+}
