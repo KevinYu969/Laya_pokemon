@@ -267,3 +267,96 @@ def test_pending_inactive_submenu_and_known_blank_wait_are_bounded():
 @pytest.mark.parametrize('text',[None,{}, {'cells':None},{'cells':[None]*18}])
 def test_opted_malformed_text_packet_is_reviewed(text):
     assert_review(battle.battle_context(text,state(),deepcopy(PARTY)))
+
+
+def native_getm_pending(*,old_hud=False):
+    """Literal physical cells from the no-input clone, not an ASCII fixture."""
+    party=[deepcopy(PARTY[i]) for i in (1,0,2,3,4)]
+    party[0].update(level=36,hp=82,max_hp=173)
+    party[1].update(hp=121,pp=[20,15,25,35],moves=[61,57,30,40])
+    battle._no_pp_switch={'reason':battle._TRAINER_HALF_REASON,'species':35,
+        'active_species':132,'enemy_species':'HYPNO',
+        'party_species':tuple(m['species'] for m in party),
+        'party_open_requested':True,'member_selected':True,
+        'confirm_requested':True,'switch_requested':True}
+    mon=party[0 if old_hud else 4]
+    from laya_pokemon.team_strategy import species_key
+    text=text_at((1,0,'HYPNO'),(5,1,'28'),(10,7,species_key(mon['species'])),
+                 (15,8,str(mon['level'])),(11,10,f"{mon['hp']:3}/{mon['max_hp']:3}"))
+    for x,value in ((1,'G'),(2,'e'),(3,'t'),(4,"'m"),(5,'!')):text['cells'][14][x]=value
+    text['cells'][14][7:14]=list('FEAROW!')
+    return party,verified(text)
+
+
+@pytest.mark.parametrize('old_hud',[False,True])
+def test_exact_native_getm_waits_with_target_or_old_hud_and_keeps_pending(old_hud):
+    party,text=native_getm_pending(old_hud=old_hud);before=deepcopy(party)
+    record=battle._no_pp_switch
+    assert battle._fixed_damage_rows(text) is None
+    assert battle._trainer_half_rows(text) is None  # no unbound/new-start expansion
+    result=battle.battle_context(text,state(opponent_species='HYPNO'),party)
+    assert result['available_actions']==['wait'] and result['phase']=='battle_animation'
+    assert battle._no_pp_switch is record and party==before
+    result=battle.battle_context(command(party,active=4,enemy='HYPNO'),state(opponent_species='HYPNO'),party)
+    assert result['battle_tactic']=='damage' and battle._no_pp_switch is None
+
+
+@pytest.mark.parametrize('change',[
+    lambda t:t['cells'][14].__setitem__(4,"'r"),
+    lambda t:t['cells'][14].__setitem__(4,"'M"),
+    lambda t:t['cells'][14].__setitem__(3,"'m"),
+    lambda t:t['cells'][14].__setitem__(8,'X'),
+    lambda t:t['cells'][14].__setitem__(13,' '),
+    lambda t:t['cells'][16].__setitem__(18,'▼'),
+    lambda t:t['cells'][13].__setitem__(1,'X'),
+    lambda t:t['cells'][0].__setitem__(2,'X'),
+    lambda t:t['cells'][7].__setitem__(11,'X'),
+    lambda t:t['cells'][10].__setitem__(13,'7'),
+    lambda t:t['cells'][8].__setitem__(16,'4'),
+    lambda t:t['cells'][4].__setitem__(4,"'m"),
+])
+def test_native_getm_wrong_cell_character_hud_or_pollution_never_sends_a(change):
+    party,text=native_getm_pending();change(text);text=verified(text)
+    assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
+    assert battle._no_pp_switch is not None
+
+
+@pytest.mark.parametrize('change',[
+    lambda t:t.update(profile='unknown'),lambda t:t.update(read_valid=False),
+    lambda t:t.update(alignment_verified=False),lambda t:t.update(read_error='unknown'),
+    lambda t:t.update(window_visible=None),lambda t:t.update(lines=['Getm! FEAROW!']),
+    lambda t:t.update(line_rows=[14]),
+])
+def test_native_getm_requires_original_decoder_and_raw_summary_proofs(change):
+    party,text=native_getm_pending();change(text)
+    assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
+
+
+@pytest.mark.parametrize('change,old_hud',[
+    (lambda r:r.update(reason='switch_low_hp_support'),False),
+    (lambda r:r.update(switch_requested=False),False),
+    (lambda r:r.update(switch_requested=1),False),
+    (lambda r:r.update(species=132),False),
+    (lambda r:r.update(active_species=102),True),
+    (lambda r:r.update(enemy_species='KOFFING'),False),
+])
+def test_native_getm_requires_exact_existing_owner_and_target(change,old_hud):
+    party,text=native_getm_pending(old_hud=old_hud);change(battle._no_pp_switch)
+    # The half helper cannot expand this cell in any other controller/intent.
+    assert battle._trainer_half_rows(text,party=party) is None
+
+
+def test_native_getm_unknown_enemy_or_target_party_change_reviews():
+    party,text=native_getm_pending()
+    assert_review(battle.battle_context(text,state(opponent_species='KOFFING'),party))
+    party[4]['status']=8
+    assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
+
+
+def test_native_getm_wait_uses_existing_25_call_budget_without_clearing_pending():
+    party,text=native_getm_pending();record=battle._no_pp_switch
+    for _ in range(25):
+        result=battle.battle_context(text,state(opponent_species='HYPNO'),party)
+        assert result['phase']=='battle_animation' and result['available_actions']==['wait']
+    assert_review(battle.battle_context(text,state(opponent_species='HYPNO'),party))
+    assert battle._no_pp_switch is record and record['waits']==26

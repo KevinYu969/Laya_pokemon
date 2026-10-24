@@ -330,6 +330,227 @@
         255
       ],
       "source_only_not_snapshot": true
+    },
+    "10": {
+      "map_name": "SaffronCity",
+      "source_object_count": 15,
+      "objects": [
+        {
+          "slot": 1,
+          "index": 10,
+          "source_object": "SAFFRONCITY_ROCKET1",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_1",
+          "source_initial_state": "ON",
+          "source_position": [
+            7,
+            6
+          ],
+          "flag_address": 54695,
+          "flag_bit": 2,
+          "flag_mask": 4
+        },
+        {
+          "slot": 2,
+          "index": 11,
+          "source_object": "SAFFRONCITY_ROCKET2",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_2",
+          "source_initial_state": "ON",
+          "source_position": [
+            20,
+            8
+          ],
+          "flag_address": 54695,
+          "flag_bit": 3,
+          "flag_mask": 8
+        },
+        {
+          "slot": 3,
+          "index": 12,
+          "source_object": "SAFFRONCITY_ROCKET3",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_3",
+          "source_initial_state": "ON",
+          "source_position": [
+            34,
+            4
+          ],
+          "flag_address": 54695,
+          "flag_bit": 4,
+          "flag_mask": 16
+        },
+        {
+          "slot": 4,
+          "index": 13,
+          "source_object": "SAFFRONCITY_ROCKET4",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_4",
+          "source_initial_state": "ON",
+          "source_position": [
+            13,
+            12
+          ],
+          "flag_address": 54695,
+          "flag_bit": 5,
+          "flag_mask": 32
+        },
+        {
+          "slot": 5,
+          "index": 14,
+          "source_object": "SAFFRONCITY_ROCKET5",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_5",
+          "source_initial_state": "ON",
+          "source_position": [
+            11,
+            25
+          ],
+          "flag_address": 54695,
+          "flag_bit": 6,
+          "flag_mask": 64
+        },
+        {
+          "slot": 6,
+          "index": 15,
+          "source_object": "SAFFRONCITY_ROCKET6",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_6",
+          "source_initial_state": "ON",
+          "source_position": [
+            32,
+            13
+          ],
+          "flag_address": 54695,
+          "flag_bit": 7,
+          "flag_mask": 128
+        },
+        {
+          "slot": 7,
+          "index": 16,
+          "source_object": "SAFFRONCITY_ROCKET7",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_7",
+          "source_initial_state": "ON",
+          "source_position": [
+            18,
+            30
+          ],
+          "flag_address": 54696,
+          "flag_bit": 0,
+          "flag_mask": 1
+        },
+        {
+          "slot": 8,
+          "index": 17,
+          "source_object": "SAFFRONCITY_SCIENTIST",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_8",
+          "source_initial_state": "OFF",
+          "source_position": [
+            8,
+            14
+          ],
+          "flag_address": 54696,
+          "flag_bit": 1,
+          "flag_mask": 2
+        },
+        {
+          "slot": 9,
+          "index": 18,
+          "source_object": "SAFFRONCITY_SILPH_WORKER_M",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_9",
+          "source_initial_state": "OFF",
+          "source_position": [
+            23,
+            23
+          ],
+          "flag_address": 54696,
+          "flag_bit": 2,
+          "flag_mask": 4
+        },
+        {
+          "slot": 10,
+          "index": 19,
+          "source_object": "SAFFRONCITY_SILPH_WORKER_F",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_A",
+          "source_initial_state": "OFF",
+          "source_position": [
+            17,
+            30
+          ],
+          "flag_address": 54696,
+          "flag_bit": 3,
+          "flag_mask": 8
+        },
+        {
+          "slot": 11,
+          "index": 20,
+          "source_object": "SAFFRONCITY_GENTLEMAN",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_B",
+          "source_initial_state": "OFF",
+          "source_position": [
+            30,
+            12
+          ],
+          "flag_address": 54696,
+          "flag_bit": 4,
+          "flag_mask": 16
+        },
+        {
+          "slot": 12,
+          "index": 21,
+          "source_object": "SAFFRONCITY_PIDGEOT",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_C",
+          "source_initial_state": "OFF",
+          "source_position": [
+            31,
+            12
+          ],
+          "flag_address": 54696,
+          "flag_bit": 5,
+          "flag_mask": 32
+        },
+        {
+          "slot": 13,
+          "index": 22,
+          "source_object": "SAFFRONCITY_ROCKER",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_D",
+          "source_initial_state": "OFF",
+          "source_position": [
+            18,
+            8
+          ],
+          "flag_address": 54696,
+          "flag_bit": 6,
+          "flag_mask": 64
+        },
+        {
+          "slot": 14,
+          "index": 23,
+          "source_object": "SAFFRONCITY_ROCKET8",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_E",
+          "source_initial_state": "ON",
+          "source_position": [
+            18,
+            22
+          ],
+          "flag_address": 54696,
+          "flag_bit": 7,
+          "flag_mask": 128
+        },
+        {
+          "slot": 15,
+          "index": 24,
+          "source_object": "SAFFRONCITY_ROCKET9",
+          "source_toggle": "TOGGLE_SAFFRON_CITY_F",
+          "source_initial_state": "OFF",
+          "source_position": [
+            19,
+            22
+          ],
+          "flag_address": 54697,
+          "flag_bit": 0,
+          "flag_mask": 1
+        }
+      ],
+      "sources": [
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/SaffronCity.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm"
+      ]
     }
   },
   "source_files": [

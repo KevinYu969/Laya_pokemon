@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-24",
+  "title": "Route7守衛收水真實操作影片",
+  "campaign_receipt": "results/route7-guard-water-20261024.json",
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "source_steps": [
+    17897,
+    17932
+  ],
+  "campaign_frame_range": [
+    1000785,
+    1002225
+  ],
+  "source_sampling": {
+    "every_emulated_frames": 4,
+    "fps": 15,
+    "scale": 3,
+    "native_resolution": [
+      160,
+      144
+    ],
+    "recorded_resolution": [
+      480,
+      432
+    ],
+    "selected_samples": 360,
+    "game_emulated_seconds": 24.0
+  },
+  "editing": {
+    "source_segments": [
+      42,
+      43,
+      44,
+      45
+    ],
+    "source_ranges_end_exclusive": true,
+    "source_order_preserved": true,
+    "no_game_frames_omitted_within_selected_action_range": true,
+    "engineering_wall_waits_not_encoded": true,
+    "note": "四個已關閉來源的相鄰模擬時間範圍依序接合。1x為15fps遊戲模擬時間，非真牆鐘速度；4x只後製加速，保留全部360張幀並以60fps播放。無補畫、重演、遮蓋或改寫遊戲畫面。"
+  },
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-042.mp4",
+      "sha256": "cee339a5e2ff5c5644bd996a25f18201e0a75e6187c6c8d83e70a02e11c7d54d",
+      "closure_at_utc": "2026-10-23T23:25:45.951833+00:00",
+      "closed_source_frames": 40,
+      "closed_source_duration_seconds": 2.6666666666666665,
+      "selected_source_sample_range": [
+        30,
+        40
+      ],
+      "range_end_exclusive": true,
+      "selected_source_seconds": [
+        2.0,
+        2.6666666666666665
+      ],
+      "selected_campaign_frame_range": [
+        1000785,
+        1000825
+      ],
+      "source_steps": [
+        17897,
+        17897
+      ],
+      "output_sample_range_1x": [
+        0,
+        10
+      ],
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "15/1",
+            "avg_frame_rate": "15/1",
+            "duration": "2.666667",
+            "nb_frames": "40",
+            "nb_read_frames": "40"
+          }
+        ],
+        "format": {
+          "duration": "2.666667"
+        }
+      },
+      "full_decode_passed": true
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-043.mp4",
+      "sha256": "0a8dd034ee5ec664fa7388da65645f55a6ff3c4efeb68c228b0d65da663401da",
+      "closure_at_utc": "2026-10-23T23:29:40.183292+00:00",
+      "closed_source_frames": 20,
+      "closed_source_duration_seconds": 1.3333333333333333,
+      "selected_source_sample_range": [
+        0,
+        20
+      ],
+      "range_end_exclusive": true,
+      "selected_source_seconds": [
+        0.0,
+        1.3333333333333333
+      ],
+      "selected_campaign_frame_range": [
+        1000825,
+        1000905
+      ],
+      "source_steps": [
+        17898,
+        17899
+      ],
+      "output_sample_range_1x": [
+        10,
+        30
+      ],
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "15/1",
+            "avg_frame_rate": "15/1",
+            "duration": "1.333333",
+            "nb_frames": "20",
+            "nb_read_frames": "20"
+          }
+        ],
+        "format": {
+          "duration": "1.333333"
+        }
+      },
+      "full_decode_passed": true
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-044.mp4",
+      "sha256": "af3b4f5b854c6f602bad0887a652fcd5cb8a899c66e88c06bb567d77c9866222",
+      "closure_at_utc": "2026-10-23T23:32:51.613347+00:00",
+      "closed_source_frames": 200,
+      "closed_source_duration_seconds": 13.333333333333334,
+      "selected_source_sample_range": [
+        0,
+        200
+      ],
+      "range_end_exclusive": true,
+      "selected_source_seconds": [
+        0.0,
+        13.333333333333334
+      ],
+      "selected_campaign_frame_range": [
+        1000905,
+        1001705
+      ],
+      "source_steps": [
+        17900,
+        17919
+      ],
+      "output_sample_range_1x": [
+        30,
+        230
+      ],
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "15/1",
+            "avg_frame_rate": "15/1",
+            "duration": "13.333333",
+            "nb_frames": "200",
+            "nb_read_frames": "200"
+          }
+        ],
+        "format": {
+          "duration": "13.333333"
+        }
+      },
+      "full_decode_passed": true
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-045.mp4",
+      "sha256": "7f1baf68e0f6eaa88a03dc029f0890546e1f5140d2f27528b0a3dc3032a648bb",
+      "closure_at_utc": "2026-10-23T23:34:15.721556+00:00",
+      "closed_source_frames": 140,
+      "closed_source_duration_seconds": 9.333333333333334,
+      "selected_source_sample_range": [
+        0,
+        130
+      ],
+      "range_end_exclusive": true,
+      "selected_source_seconds": [
+        0.0,
+        8.666666666666666
+      ],
+      "selected_campaign_frame_range": [
+        1001705,
+        1002225
+      ],
+      "source_steps": [
+        17920,
+        17932
+      ],
+      "output_sample_range_1x": [
+        230,
+        360
+      ],
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "15/1",
+            "avg_frame_rate": "15/1",
+            "duration": "9.333333",
+            "nb_frames": "140",
+            "nb_read_frames": "140"
+          }
+        ],
+        "format": {
+          "duration": "9.333333"
+        }
+      },
+      "full_decode_passed": true
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/route7-guard-20261024/route7-guard-water-1x-emulated.mp4",
+      "sha256": "6178b27936ae03ba765960bfcdb100232e060ac8b79981c55b857b896befc801",
+      "bytes": 344142,
+      "postproduction_speed": 1,
+      "fps": 15,
+      "frames": 360,
+      "duration_seconds": 24.0,
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "15/1",
+            "avg_frame_rate": "15/1",
+            "duration": "24.000000",
+            "nb_frames": "360",
+            "nb_read_frames": "360"
+          }
+        ],
+        "format": {
+          "duration": "24.000000"
+        }
+      },
+      "full_decode_passed": true,
+      "all_frames_pixel_identical_to_selected_source": true
+    },
+    {
+      "path": "outputs/videos/route7-guard-20261024/route7-guard-water-post4x.mp4",
+      "sha256": "04aa3a00fc0e28eb4debea4935ea42e5e7e67fc867a651dbce8c3b22b0c1e0df",
+      "bytes": 344142,
+      "postproduction_speed": 4,
+      "fps": 60,
+      "frames": 360,
+      "duration_seconds": 6.0,
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 480,
+            "height": 432,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "60/1",
+            "avg_frame_rate": "60/1",
+            "duration": "6.000000",
+            "nb_frames": "360",
+            "nb_read_frames": "360"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      },
+      "full_decode_passed": true,
+      "all_frames_pixel_identical_to_selected_source": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/route7-guard-20261024/01-parched.png",
+      "sha256": "23d41d19ea886f81305a0589cdcee42b97248ad4140885ba3a1605e4cc5392d7",
+      "label": "守衛口渴完整原生提示",
+      "output_1x_sample": 29,
+      "sample_time_seconds": 1.9333333333333333,
+      "rgb_sha256": "8f835707a32fbddff061e8cb335a50acbf905ea36e7389886744ff276fe3711a",
+      "width": 480,
+      "height": 432,
+      "unaltered_source_pixels": true
+    },
+    {
+      "path": "outputs/videos/route7-guard-20261024/02-have-drink.png",
+      "sha256": "e070a3abc9c8ed62e96292e01bc91e50d307f852349b4abb19edd6195409c519",
+      "label": "守衛詢問拿取飲料完整頁",
+      "output_1x_sample": 79,
+      "sample_time_seconds": 5.266666666666667,
+      "rgb_sha256": "712c903f1d8a9e58118cb353456a403a9bd2e35e0996b631e63db9c7779553ff",
+      "width": 480,
+      "height": 432,
+      "unaltered_source_pixels": true
+    },
+    {
+      "path": "outputs/videos/route7-guard-20261024/03-share-guards.png",
+      "sha256": "b721d05d5c218c86c142db5d4536e641ed0ac6f8adc197d1c465233b1b56d61e",
+      "label": "分享給其他守衛的完整末頁",
+      "output_1x_sample": 329,
+      "sample_time_seconds": 21.933333333333334,
+      "rgb_sha256": "036c00417449fcc4bb282c9c90b247a55483b5ac3fbe6809251772f84d4cac20",
+      "width": 480,
+      "height": 432,
+      "unaltered_source_pixels": true
+    },
+    {
+      "path": "outputs/videos/route7-guard-20261024/04-closed.png",
+      "sha256": "159bdbd8314fdf40c5731fe915ed70ed00e2b56f88e1401b31ac2615d932c8b2",
+      "label": "完成兩個閉合觀測後的門廳畫面",
+      "output_1x_sample": 359,
+      "sample_time_seconds": 23.933333333333334,
+      "rgb_sha256": "cb703ffcedede412c75a3429c5d0ccb3968c58b92c29b52defe2c862feeda7c1",
+      "width": 480,
+      "height": 432,
+      "unaltered_source_pixels": true
+    }
+  ],
+  "qa_contact_sheet": {
+    "path": "outputs/videos/route7-guard-20261024/qa-contact-sheet.png",
+    "sha256": "707dd8d099fbcb5853bcc3cca8827bddb3268d6da0549304a0e1a12991eb24c4",
+    "samples": [
+      0,
+      19,
+      29,
+      79,
+      129,
+      199,
+      219,
+      259,
+      329,
+      359
+    ],
+    "annotation_outside_source_frames": true
+  },
+  "frame_verification": {
+    "path": "outputs/videos/route7-guard-20261024/frame-verification.json",
+    "sha256": "ed81a43379ef1386a2cc95545e02a60661d86af75710bf5ac43a5d09b99df5db",
+    "full_source_and_output_decode": true,
+    "all_360_output_frames_rgb_pixel_identical_in_order": true
+  },
+  "limitations": [
+    "不使用未封閉046或更後面的影片。",
+    "片長不是實測推理速度或全程通關時間。",
+    "工程停檢沒有繼續tick，故影片不含那些牆鐘空等；兩次校準仍記在成果收據。"
+  ]
+}

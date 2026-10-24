@@ -1,0 +1,398 @@
+{
+  "schema": "laya-celadon-single-water-purchase-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "completed": true,
+  "title": "玉虹百貨販賣機正常購買單瓶清水",
+  "scope": {
+    "campaign_frames": [
+      994585,
+      995105
+    ],
+    "source_steps": [
+      17742,
+      17754
+    ],
+    "before_review_at_utc": "2026-10-23T23:12:11.191117+00:00",
+    "after_closed_review_at_utc": "2026-10-23T23:19:03.899242+00:00",
+    "location": {
+      "map_id": 126,
+      "x": 11,
+      "y": 2
+    }
+  },
+  "money_ledger": {
+    "before": 40566,
+    "after": 40366,
+    "delta": -200,
+    "changes": [
+      {
+        "step": 17752,
+        "at_utc": "2026-10-23T23:19:03.830576+00:00",
+        "before": 40566,
+        "after": 40366
+      }
+    ]
+  },
+  "inventory_ledger": {
+    "before_ordered": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      }
+    ],
+    "after_ordered": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 60,
+        "quantity": 1
+      }
+    ],
+    "first_water_presence_step": 17748,
+    "money_at_first_water_presence": 40566,
+    "intermediate_delivery_before_charge_steps": [
+      17748,
+      17749,
+      17750,
+      17751
+    ],
+    "only_append": {
+      "item": 60,
+      "quantity": 1
+    },
+    "all_other_order_and_quantities_unchanged": true
+  },
+  "party_ledger": {
+    "before_ordered": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 56987,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "after_identical": true,
+    "all_13_action_observations_identical": true
+  },
+  "action_counts": {
+    "records": 13,
+    "a": 4,
+    "a_steps": [
+      17742,
+      17746,
+      17747,
+      17752
+    ],
+    "passive_wait": 9,
+    "cache_hits": 3,
+    "uncached_local_laya": 1,
+    "raw_uncached_model_ms": 284.1816999716684,
+    "emulated_frames": 520
+  },
+  "normal_completion": {
+    "native_receipt_step": 17752,
+    "native_receipt": [
+      "FRESH WATER",
+      "popped out!"
+    ],
+    "first_closed_step": 17753,
+    "complete_step": 17754,
+    "complete_context_at_utc": "2026-10-23T23:19:03.869403+00:00",
+    "complete_context_frame": 995065,
+    "closed_review_frame": 995105,
+    "two_new_closed_observations": true
+  },
+  "review_boundary_timing_delta": {
+    "wall_seconds": 412.704,
+    "model_wait_seconds": 0.297,
+    "review_pause_seconds": 411.969,
+    "non_review_session_seconds": 0.735,
+    "emulated_seconds": 8.667
+  },
+  "mid_transaction_review_count": 0,
+  "timing_note_zh_tw": "412.704秒review端點牆鐘包含開始前411.969秒暫停；非review差0.735秒，模擬時間8.667秒；不是影片倍速或全遊戲時間。",
+  "classification": {
+    "raw_model": "laya-rl-agent",
+    "backend": "local_offline_laya",
+    "new_classifications": 1,
+    "cache_hits": 3,
+    "passive_waits": 9,
+    "audit_model_api_calls": 0
+  },
+  "evidence": {
+    "before": {
+      "path": ".local/gym-reviewed-history/buy-one-water-20261024-review.json",
+      "sha256": "a2f5ebc03f59cbae1c2bd7fe3e4980ffc92378b2badadc338dcac3daac7ebf9c"
+    },
+    "after": {
+      "path": ".local/one-water-final-review-20261024.json",
+      "sha256": "10879fc5b4b8aba551e4c88bfde02fb0f6700bed41ba38efe7af18f94ad57ed8"
+    },
+    "selected_step_logs": [
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-040.jsonl",
+        "selected_records": 1,
+        "selected_jsonl_bytes_sha256": "151a121fab17b89823b7ee8adcddf054f9167899564276a08ad5d5ebeea2a515",
+        "hash_scope": "only original lines with994585<=state.frame<995105 and steps17742..17754"
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-041.jsonl",
+        "selected_records": 12,
+        "selected_jsonl_bytes_sha256": "fc741b1bd5e3b52ad34ea7dfb5e780d411da68735d3cfcb44d7e2b7aa36c1a18",
+        "hash_scope": "only original lines with994585<=state.frame<995105 and steps17742..17754"
+      }
+    ]
+  },
+  "validation": {
+    "json_parse": true,
+    "single_water_and_200_only": true,
+    "full_party_and_bag_preserved": true,
+    "four_a_actions_verified": true,
+    "two_closed_and_complete_context": true,
+    "parent_reported_predeployment_baseline": {
+      "passed": 4764,
+      "seconds": 18.57,
+      "scope": "parent report before this deployment; later guard changes excluded"
+    }
+  },
+  "new_capture": false,
+  "saffron_guard_completed": false,
+  "league_completed": false,
+  "website_published": false,
+  "limits_zh_tw": [
+    "只整理一瓶水購買，不含後續守衛收水／金黃通行。",
+    "13筆首尾frame完整連續，每筆40模擬幀；沒有中途review。",
+    "17748–17751袋已有水而progress money仍40566，17752完整popped out才扣200；依實際分段交付記錄，不把中間狀態當完成。",
+    "未讀live／open042影片／ROM／state／vault或模型API；公共證據僅本專案相對路徑與SHA。"
+  ]
+}

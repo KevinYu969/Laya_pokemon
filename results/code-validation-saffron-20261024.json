@@ -1,0 +1,64 @@
+{
+  "schema": "laya-code-validation-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "command": "python -m pytest -q --tb=short --basetemp outputs/<unique-test-directory>",
+  "passed": 5272,
+  "failed": 0,
+  "warnings": 1,
+  "seconds": 20.39,
+  "warning": "既有pysdl2-dll版本提示；無新增測試警告",
+  "earlier_failure": "首跑5271通過、1失敗：完整NPC來源對照fixture未收新增map10；依固定公開來源補足15項，不刪測試或放寬來源核對。",
+  "environment_fix": "使用專案outputs下唯一basetemp，避免預設sandbox暫存目錄無法建立。",
+  "verified_files": [
+    {
+      "path": "src/laya_pokemon/battle.py",
+      "sha256": "bbf07347ad15f8facfbc0cb6554e758708127e95fa439a103d2c9a32eac6173e"
+    },
+    {
+      "path": "src/laya_pokemon/campaign_route.py",
+      "sha256": "e03359372342dc2825cac3a916614a67ae8bd3a34f9f54f684d2992473706ef7"
+    },
+    {
+      "path": "src/laya_pokemon/progress.py",
+      "sha256": "aa4609029483f93074afa8f2e2ecc04594c689a309170c3345c89963a0b59a7e"
+    },
+    {
+      "path": "src/laya_pokemon/world_map.py",
+      "sha256": "98c703315e9ea944a7f001636555b1169deb853ee93e1af4b4220d67881558d7"
+    },
+    {
+      "path": "src/laya_pokemon/silph_card_door.py",
+      "sha256": "c96e753625e0d29e6f51da03be5a14cf1291f2610be25bec4af46358a1cdfa3c"
+    },
+    {
+      "path": "src/laya_pokemon/silph_card_bridge.py",
+      "sha256": "6597d79629f1ddb0d89f89f39a63460abbba653f8e6a01ce72172ffebec10bc8"
+    },
+    {
+      "path": "src/laya_pokemon/silph_rival_wait.py",
+      "sha256": "30d5f40283199cc55832c4e479def613c84d99dabbcc7d21dd31736763f118d1"
+    },
+    {
+      "path": "src/laya_pokemon/lapras_gift.py",
+      "sha256": "1f0befdca7c54772bc69fa29acafdf41eaa2627623421aee5de5832a7055f819"
+    },
+    {
+      "path": "src/laya_pokemon/saffron_guard.py",
+      "sha256": "a822f1ff1a2d156ce00c787e31e2b27f23f30c6e5eb017ace29bb1b52d33831c"
+    },
+    {
+      "path": "src/laya_pokemon/saffron_guard_bridge.py",
+      "sha256": "f49434a1001acc8de556a2713b28c0357489049fe16c3578064a85e076037951"
+    },
+    {
+      "path": "tests/data/toggleable-source-fixture.json",
+      "sha256": "1939e11ba6fe693e9a2b527640b6e3e8f6dfa8e5543824857e0dede244019c17"
+    }
+  ],
+  "limits": [
+    "測試是工程驗證，不能取代遊戲勝利、門已開、Lapras贈送或聯盟通關。",
+    "此快照包含Lapras純候選；尚不包含後續Lapras runtime bridge或runner接線。",
+    "本機測試結果不代表新提交的遠端CI已完成。"
+  ]
+}

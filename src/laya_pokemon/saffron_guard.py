@@ -13,6 +13,7 @@ INTENT = {'kind':'saffron_guard_fresh_water','map_id':76,'trigger_from':[2,4],
           'trigger_at':[3,4],'drink_item':60}
 SDK_ANCHORS = {'STATUS_FLAGS3_ADDRESS':0xD72D,'OBTAINED_BADGES_ADDRESS':0xD356}
 _L = '\ue000'
+_M = '\ue001'
 # cont會把舊底列捲到上列；para則清框。頁面保持來源順序，不是通用對話。
 PAGES = (
     ('Whoa, boy!',"I'm parched!"), ("I'm parched!",'...'),
@@ -76,16 +77,17 @@ def _rows(text):
         if not isinstance(row,(list,tuple,str)) or len(row)!=20:return None
         line=[]
         for x,c in enumerate(row):
-            if not isinstance(c,str) or c==_L:return None
+            if not isinstance(c,str) or c in {_L,_M}:return None
             if len(c)==1:line.append(c.upper())
             elif c=="'l" and y in (14,16) and 1<=x<=18:line.append(_L)
+            elif c=="'m" and y in (14,16) and x==2 and row[1]=='I':line.append(_M)
             else:return None
         rows.append(''.join(line))
     return tuple(rows)
 
 
 def _line(value):
-    return value.replace("'l",_L).upper()
+    return value.replace("'l",_L).replace("'m",_M).upper()
 
 
 def _body(rows):
@@ -101,6 +103,9 @@ def _body(rows):
 
 def _full(body,index):
     a,b,arrow=body;first,second=map(_line,PAGES[index])
+    # 第9頁底列長18字；▼覆蓋最後一點，_ContText先清▼再向上捲，
+    # 第10頁上列因此只剩來源前17格。僅此確切來源頁，不放寬任意截字。
+    if index==10:first=first[:17]
     # 第18字會被▼及其閃爍空白遮蓋；不能把任意其它字丟掉。
     expected=second[:17] if arrow and len(second)==18 else second
     return a==first and (b==expected or not arrow and len(second)==18 and b==second[:17])
@@ -108,6 +113,7 @@ def _full(body,index):
 
 def _prefix(body,index):
     a,b,arrow=body;first,second=map(_line,PAGES[index])
+    if index==10:first=first[:17]
     return not arrow and first.startswith(a) and (not b or a==first and second.startswith(b))
 
 
@@ -147,6 +153,11 @@ class SaffronGuardController:
         if (type(frame) is not int or frame<0 or type(now) not in (int,float)
                 or not math.isfinite(now) or now<0 or self.last_now is not None and now<self.last_now):
             return self.fail('saffron_guard_clock_or_frame_unverified')
+        if (type(overworld_ready) is not bool or any(
+                isinstance(packet,dict) and 'observation_frame' in packet
+                and (type(packet['observation_frame']) is not int or packet['observation_frame']!=frame)
+                for packet in (text,progress,location,battle_state,guard_signal))):
+            return self.fail('saffron_guard_observation_frame_or_ready_unverified')
         self.started=now if self.started is None else self.started;self.last_now=now;self.calls+=1
         if self.calls>240 or now-self.started>60:return self.fail('saffron_guard_budget_exhausted')
         signal=guard_signal
@@ -191,6 +202,7 @@ class SaffronGuardController:
             return self.fail('saffron_guard_flag_before_final_confirmation')
         if rows is None:
             self.closed_frames.clear()
+            self.final_seen_frame=None
             if (isinstance(text,dict) and text.get('profile')==TEXT_PROFILE
                     and text.get('read_error') in ('visible_display_disabled','visible_tile_alignment_incomplete')):
                 return self.wait('known_native_transition_unreadable')
@@ -213,7 +225,9 @@ class SaffronGuardController:
             self.stage='complete'
             return {**result,'saffron_guard_complete':True,'drink_consumed':60,'quantity_used':1}
         self.closed_frames.clear()
-        if blank:return self.wait('native_blank_transition')
+        if blank:
+            self.final_seen_frame=None
+            return self.wait('native_blank_transition')
         if text['window_visible'] is not True or not self.consumed:
             return self.fail('saffron_guard_dialogue_before_drink_removal')
         if self.pending is not None and _full(body,self.pending):
@@ -226,7 +240,8 @@ class SaffronGuardController:
                 return self.action('a','advance_exact_source_page')
             if body[2]:return self.fail('saffron_guard_unexpected_final_arrow')
             if self.final_seen_frame is None:self.final_seen_frame=frame
-            if frame-self.final_seen_frame<8:return self.wait('stable_done_page_before_outer_prompt')
+            # PrintLetterDelay最多使用wOptions低4bits(15幀)，再留一幀邊界。
+            if frame-self.final_seen_frame<16:return self.wait('stable_done_page_before_outer_prompt')
             self.pending=self.page;self.page+=1;self.stage='closing'
             return self.action('a','close_exact_done_outer_prompt')
         if _prefix(body,self.page):return self.wait('known_source_text_typing')

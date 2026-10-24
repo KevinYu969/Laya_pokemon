@@ -30,6 +30,12 @@ from . import hm_teaching_bridge
 importlib.reload(hm_teaching_bridge)
 from . import vending_bridge
 importlib.reload(vending_bridge)
+from . import saffron_guard_bridge
+importlib.reload(saffron_guard_bridge)
+from . import silph_card_bridge
+importlib.reload(silph_card_bridge)
+from . import silph_rival_wait
+importlib.reload(silph_rival_wait)
 importlib.reload(campaign_safety)
 importlib.reload(capture_closing_gate)
 for controller in _GYM_CONTROLLERS.values():controller._last_now=None
@@ -61,6 +67,31 @@ def switch_context(pyboy,state,plan,step_id,previous):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if silph_card_bridge.applies(step_id,step):
+        if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
+                or safari_entry._RUN_CONTROLLER is not None
+                or set(saffron_guard_bridge._BINDINGS)-saffron_guard_bridge._COMPLETED
+                or set(vending_bridge._BINDINGS)-vending_bridge._COMPLETED
+                or set(hm_teaching_bridge._BINDINGS)-hm_teaching_bridge._COMPLETED
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())
+                or set(campaign_transactions._BINDINGS)-campaign_transactions._COMPLETED):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'silph_card_bridge_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return silph_card_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                        read_world_grid(pyboy,state['location']))
+    if saffron_guard_bridge.applies(step_id,step):
+        if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
+                or safari_entry._RUN_CONTROLLER is not None
+                or set(vending_bridge._BINDINGS)-vending_bridge._COMPLETED
+                or set(hm_teaching_bridge._BINDINGS)-hm_teaching_bridge._COMPLETED
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())
+                or set(campaign_transactions._BINDINGS)-campaign_transactions._COMPLETED):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'saffron_guard_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return saffron_guard_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                            read_world_grid(pyboy,state['location']))
     if vending_bridge.applies(step_id,step):
         if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
                 or safari_entry._RUN_CONTROLLER is not None
@@ -162,7 +193,9 @@ def healthy(progress, *, require_full_pp=False):
 
 
 def coordinate_script_wait(state, step):
-    """只在固定紅版嘎啦嘎啦座標等遊戲自己的腳本；絕不輸出按鍵。"""
+    """僅固定來源的嘎啦嘎啦／Silph勁敵座標等待；不輸出方向或A。"""
+    if step.get('map_id') == 212 or step.get('event') == 'beat_silph_co_rival':
+        return silph_rival_wait.silph_rival_script_wait(state,step)
     def review(reason):
         return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
                 'review_reason':reason,'route_step':step['id']}

@@ -15,9 +15,10 @@ def text(words=None, *, arrow=False, window=True):
     cells=[[' ']*20 for _ in range(18)]
     if words:
         for y,value in zip((14,16),words):
+            if y==14 and value=='to SAFFRON CITY...':value=value[:17]
             # 模擬真字型'l兩字共用單一tile，不把觀測改造成普通字串。
-            chars=list(value.replace("'l",'\ue100'))
-            cells[y][1:1+len(chars)]=["'l" if c=='\ue100' else c for c in chars]
+            chars=list(value.replace("'l",'\ue100').replace("'m",'\ue101'))
+            cells[y][1:1+len(chars)]=["'l" if c=='\ue100' else "'m" if c=='\ue101' else c for c in chars]
     if arrow:cells[16][18]='▼'
     return {'profile':sg.TEXT_PROFILE,'read_valid':True,'alignment_verified':True,
             'read_error':None,'window_visible':window,'cells':cells}
@@ -90,6 +91,47 @@ def test_source_contraction_and_arrow_mask_on_eighteenth_character():
         assert s.call(text(page,arrow=True))['available_actions']==['a','wait'],i
     assert "'l" in [c for row in text(sg.PAGES[12])['cells'] for c in row]
     assert len(sg.PAGES[9][1])==18
+
+
+def test_real_first_dialogue_compressed_im_keeps_physical_cells_and_waits_for_prompt():
+    s=Session();s.start();s.arrive()
+    partial=text(('Whoa, boy!',"I'm p"))
+    assert partial['cells'][16][2]=="'m" and len(partial['cells'][16])==20
+    assert s.call(partial)['available_actions']==['wait']
+    assert s.c.page==0 and s.c.actions==1
+    assert s.call(text(sg.PAGES[0],arrow=True))['available_actions']==['a','wait']
+    assert s.c.page==1 and s.c.actions==2
+
+
+@pytest.mark.parametrize('location,token',[(3,"'m"),(2,"'M"),(2,'\ue001')])
+def test_compressed_im_wrong_cell_unknown_case_or_injected_internal_token_rejected(location,token):
+    s=Session();s.start();s.arrive();t=text(sg.PAGES[0],arrow=True)
+    t['cells'][16][2]=' ';t['cells'][16][location]=token
+    reviewed(s.call(t));assert s.c.actions==1
+
+
+def test_compressed_im_requires_exact_i_prefix_and_native_row():
+    s=Session();s.start();s.arrive();t=text(sg.PAGES[0],arrow=True)
+    t['cells'][16][1]='X';reviewed(s.call(t));assert s.c.actions==1
+
+
+def test_eighteenth_character_erased_by_prompt_then_scrolled_preserves_source_page():
+    s=Session();s.start();s.arrive()
+    for page in sg.PAGES[:10]:s.call(text(page,arrow=True))
+    native=text(sg.PAGES[10],arrow=True)
+    assert ''.join(native['cells'][14]).strip()=='to SAFFRON CITY..'
+    assert native['cells'][14][18]==' '
+    assert s.call(native)['available_actions']==['a','wait'] and s.c.page==11
+    assert s.call(native)['available_actions']==['wait'] and s.c.actions==12
+
+
+def test_scrolled_line_does_not_accept_other_truncations_or_ordinary_extra_characters():
+    for changes in ({17:' '},{18:'.'},{17:'X'}):
+        s=Session();s.start();s.arrive()
+        for page in sg.PAGES[:10]:s.call(text(page,arrow=True))
+        packet=text(sg.PAGES[10],arrow=True)
+        for x,value in changes.items():packet['cells'][14][x]=value
+        reviewed(s.call(packet));assert s.c.actions==11
 
 
 def test_full_without_arrow_partial_and_blank_never_accelerate_typing():
@@ -170,6 +212,21 @@ def test_same_frame_conflict_and_monotonic_clock_never_resend():
     s=Session();s.start();reviewed(s.call(now=0.))
 
 
+@pytest.mark.parametrize('target',['text','progress','ready'])
+@pytest.mark.parametrize('bound',[False,True])
+def test_all_explicit_observation_frames_and_ready_are_verified_before_any_action(target,bound):
+    for invalid in (999,True):
+        s=Session()
+        if bound:s.start();s.arrive()
+        t=text(sg.PAGES[0],arrow=True) if bound else text(window=False)
+        kw={'overworld_ready':not bound}
+        if target=='text':t['observation_frame']=invalid
+        elif target=='progress':s.p['observation_frame']=invalid
+        else:kw['overworld_ready']=1
+        reviewed(s.call(t,**kw));assert s.c.actions==(1 if bound else 0)
+        assert (s.c.baseline is not None)==bound
+
+
 def test_final_requires_stability_flag_and_consecutive_closed_proof():
     s=Session();s.start();s.arrive()
     for page in sg.PAGES[:-1]:s.call(text(page,arrow=True))
@@ -182,6 +239,21 @@ def test_final_requires_stability_flag_and_consecutive_closed_proof():
     assert s.call(unreadable)['available_actions']==['wait']
     assert not s.call(overworld_ready=True).get('saffron_guard_complete')
     assert s.call(overworld_ready=True)['saffron_guard_complete']
+
+
+@pytest.mark.parametrize('transition',['blank','decode'])
+def test_final_stability_needs_sixteen_frames_and_restarts_after_transition(transition):
+    s=Session();s.start();s.arrive()
+    for page in sg.PAGES[:-1]:s.call(text(page,arrow=True))
+    assert s.call(text(sg.PAGES[-1]))['available_actions']==['wait'];first=s.frame
+    assert s.call(text(sg.PAGES[-1]),frame=first+8)['available_actions']==['wait']
+    t=text()
+    if transition=='decode':t.update(read_valid=False,alignment_verified=False,read_error='visible_display_disabled')
+    assert s.call(t,frame=first+16)['available_actions']==['wait']
+    assert s.c.final_seen_frame is None
+    assert s.call(text(sg.PAGES[-1]),frame=first+40)['available_actions']==['wait']
+    assert s.call(text(sg.PAGES[-1]),frame=first+48)['available_actions']==['wait']
+    assert s.call(text(sg.PAGES[-1]),frame=first+56)['available_actions']==['a','wait']
 
 
 @pytest.mark.parametrize('kind',['wait','clock','calls','final_wait'])

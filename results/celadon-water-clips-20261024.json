@@ -1,0 +1,652 @@
+{
+  "schema": "laya-celadon-water-clips-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "purchase_receipt": {
+    "path": "results/celadon-water-purchase-20261024.json",
+    "sha256": "843fb8c6677c9b8405a454b186573c06f5082e432e477426349c899c7e7da0e1"
+  },
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-040.mp4",
+      "sha256": "7285e7fb68e0671d3e0ab2687acd21ef06a9577e01035e51186abf5d03a4cff8",
+      "closure": {
+        "at": "2026-10-23T23:19:03.577966+00:00",
+        "segment": 40,
+        "timing": {
+          "wall_seconds": 8415.078,
+          "model_wait_seconds": 82.58,
+          "review_pause_seconds": 7780.644,
+          "non_review_session_seconds": 634.434,
+          "emulated_seconds": 16577.067
+        },
+        "video": {
+          "filename": "video-040.mp4",
+          "fps": 15,
+          "frames": 900,
+          "playback_seconds": 60.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "60.000000",
+          "nb_frames": "900",
+          "nb_read_frames": "900"
+        },
+        "duration_seconds": 60.0
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 900,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/celadon-water-20261024/qa-source-040.framemd5",
+        "sha256": "5c8531ebf2d43646d50f2c73e1ae6da6ed5659187570e854dde402a5611654ec"
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/video-041.mp4",
+      "sha256": "29d3ad9a3e432dfb64724f9ab58e1c2386e1b0f88b85deb00ca0070c968e138c",
+      "closure": {
+        "at": "2026-10-23T23:21:08.137888+00:00",
+        "segment": 41,
+        "timing": {
+          "wall_seconds": 8539.641,
+          "model_wait_seconds": 82.612,
+          "review_pause_seconds": 7901.144,
+          "non_review_session_seconds": 638.497,
+          "emulated_seconds": 16677.733
+        },
+        "video": {
+          "filename": "video-041.mp4",
+          "fps": 15,
+          "frames": 1510,
+          "playback_seconds": 100.66666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "100.666667",
+          "nb_frames": "1510",
+          "nb_read_frames": "1510"
+        },
+        "duration_seconds": 100.666667
+      },
+      "full_decode_verified": true,
+      "decoded_frames": 1510,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/celadon-water-20261024/qa-source-041.framemd5",
+        "sha256": "a399f5fc7e141f181e14b2d9312fd1f9f0634c40ac85fb85a760e0341d761c64"
+      }
+    }
+  ],
+  "ledger": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-040.jsonl",
+      "selected_records": 1,
+      "selected_jsonl_bytes_sha256": "151a121fab17b89823b7ee8adcddf054f9167899564276a08ad5d5ebeea2a515",
+      "hash_scope": "only original lines with994585<=state.frame<995105 and steps17742..17754"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-041.jsonl",
+      "selected_records": 12,
+      "selected_jsonl_bytes_sha256": "fc741b1bd5e3b52ad34ea7dfb5e780d411da68735d3cfcb44d7e2b7aa36c1a18",
+      "hash_scope": "only original lines with994585<=state.frame<995105 and steps17742..17754"
+    }
+  ],
+  "source_spans": [
+    {
+      "source_segment": 40,
+      "source_frame_start_inclusive": 890,
+      "source_frame_end_exclusive": 900,
+      "source_seconds": [
+        59.333333333333336,
+        60.0
+      ],
+      "relative_emulated_frame_interval": [
+        3560,
+        3600
+      ],
+      "source_steps": [
+        17742,
+        17742
+      ]
+    },
+    {
+      "source_segment": 41,
+      "source_frame_start_inclusive": 0,
+      "source_frame_end_exclusive": 120,
+      "source_seconds": [
+        0.0,
+        8.0
+      ],
+      "relative_emulated_frame_interval": [
+        0,
+        480
+      ],
+      "source_steps": [
+        17743,
+        17754
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/celadon-water-20261024/fresh-water-emulated-1x.mp4",
+      "sha256": "5b9e8b0b1913ba4cb7cba0876f84f890b1fd0dc47d6522ed4ce4076a25c2c122",
+      "speed": 1,
+      "frames": 130,
+      "playback_seconds": 8.666667,
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "avg_frame_rate": "15/1",
+          "duration": "8.666667",
+          "nb_frames": "130",
+          "nb_read_frames": "130"
+        },
+        "duration_seconds": 8.666667
+      },
+      "full_decode_verified": true,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/celadon-water-20261024/qa-1x.framemd5",
+        "sha256": "9a3a43a0373186654b179c9dddb33be4149dd11143b966f8efd1eff78e6d4355"
+      },
+      "source_spans": [
+        {
+          "source_segment": 40,
+          "source_frame_start_inclusive": 890,
+          "source_frame_end_exclusive": 900,
+          "source_seconds": [
+            59.333333333333336,
+            60.0
+          ],
+          "relative_emulated_frame_interval": [
+            3560,
+            3600
+          ],
+          "source_steps": [
+            17742,
+            17742
+          ]
+        },
+        {
+          "source_segment": 41,
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 120,
+          "source_seconds": [
+            0.0,
+            8.0
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            480
+          ],
+          "source_steps": [
+            17743,
+            17754
+          ]
+        }
+      ],
+      "speed_label": "1x original emulated-time recording"
+    },
+    {
+      "path": "outputs/videos/celadon-water-20261024/fresh-water-post4x.mp4",
+      "sha256": "b5b483e6730db43e6a44fabd6f3ea4c58b99198e6ca02f0055b197f851c31a2b",
+      "speed": 4,
+      "frames": 130,
+      "playback_seconds": 2.166667,
+      "probe": {
+        "stream": {
+          "codec_name": "h264",
+          "profile": "High",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "avg_frame_rate": "60/1",
+          "duration": "2.166667",
+          "nb_frames": "130",
+          "nb_read_frames": "130"
+        },
+        "duration_seconds": 2.166667
+      },
+      "full_decode_verified": true,
+      "frame_md5_evidence": {
+        "path": "outputs/videos/celadon-water-20261024/qa-4x.framemd5",
+        "sha256": "15b2392b5ef555a567078dae3c2be965fc5c323f9a6b1da1e56cc8cb787be770"
+      },
+      "source_spans": [
+        {
+          "source_segment": 40,
+          "source_frame_start_inclusive": 890,
+          "source_frame_end_exclusive": 900,
+          "source_seconds": [
+            59.333333333333336,
+            60.0
+          ],
+          "relative_emulated_frame_interval": [
+            3560,
+            3600
+          ],
+          "source_steps": [
+            17742,
+            17742
+          ]
+        },
+        {
+          "source_segment": 41,
+          "source_frame_start_inclusive": 0,
+          "source_frame_end_exclusive": 120,
+          "source_seconds": [
+            0.0,
+            8.0
+          ],
+          "relative_emulated_frame_interval": [
+            0,
+            480
+          ],
+          "source_steps": [
+            17743,
+            17754
+          ]
+        }
+      ],
+      "speed_label": "post-production4x; same packets at quarter timestamps/durations"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/celadon-water-20261024/01-vending-intro.png",
+      "sha256": "23835eeafd2d6582f4f58b87ecb3e60caffaea00c9265655a8f40e8eee7d2f88",
+      "caption_zh_tw": "完整販賣機說明與prompt",
+      "source_segment": 41,
+      "source_frame": 29,
+      "source_seconds": 1.9333333333333333,
+      "relative_emulated_frame_interval": [
+        116,
+        120
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "1367a260c61f0da42e8f14795519ce40ffaf45c09edbd22fb28041b1cfdfabd8"
+    },
+    {
+      "path": "outputs/videos/celadon-water-20261024/02-select-fresh-water-200.png",
+      "sha256": "7968d3b58f25dd81883ba077ff3bd2d4f32b54e1d8ac9841c7fc9694fb119b1e",
+      "caption_zh_tw": "只選FRESH WATER，價格200",
+      "source_segment": 41,
+      "source_frame": 39,
+      "source_seconds": 2.6,
+      "relative_emulated_frame_interval": [
+        156,
+        160
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "b7fa592abbe534d5572ffbade2de6aef120d064555add43b53cda3f839786822"
+    },
+    {
+      "path": "outputs/videos/celadon-water-20261024/03-fresh-water-popped-out.png",
+      "sha256": "a5225ff3eea6d00c4a60c5807bcd7a88a4f9848124aa85d19ed82ffef9da59f8",
+      "caption_zh_tw": "原生FRESH WATER popped out!與40366餘額",
+      "source_segment": 41,
+      "source_frame": 89,
+      "source_seconds": 5.933333333333334,
+      "relative_emulated_frame_interval": [
+        356,
+        360
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "fd40fe463d6bed0177192bebf1603d8fd7de5d1c8be0b566534059e88baee529"
+    },
+    {
+      "path": "outputs/videos/celadon-water-20261024/04-purchase-closed-world.png",
+      "sha256": "df0ba2f10002e88d140e4f2ff51bb5d96b11f2670a1f20d99a006654b30cdaf3",
+      "caption_zh_tw": "交易完成後正常閉合野外",
+      "source_segment": 41,
+      "source_frame": 119,
+      "source_seconds": 7.933333333333334,
+      "relative_emulated_frame_interval": [
+        476,
+        480
+      ],
+      "width": 480,
+      "height": 432,
+      "all_rgb_channels_equal_to_source": 622080,
+      "rgb_sha256": "be81667a8d93d21f6bad4a70018bda1a457b620acf4416475ccbfa93c2a9edef"
+    }
+  ],
+  "qa_contactsheet": {
+    "path": "outputs/videos/celadon-water-20261024/qa-contactsheet.png",
+    "sha256": "7df293305c3e01309b6ef8ea221b62f4c5e2b6270ef9189e31e0b577ecfe59e1"
+  },
+  "timeline": [
+    {
+      "step": 17742,
+      "at_utc": "2026-10-23T23:19:03.506306+00:00",
+      "campaign_frame": 994585,
+      "emulated_frames": 40,
+      "action": "a",
+      "tactic": "inspect_verified_vending_bg",
+      "complete": false,
+      "source_segment": 40,
+      "source_frame_interval": [
+        890,
+        900
+      ],
+      "visible_text": []
+    },
+    {
+      "step": 17743,
+      "at_utc": "2026-10-23T23:19:03.638959+00:00",
+      "campaign_frame": 994625,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": "source_partial_no_input",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        0,
+        10
+      ],
+      "visible_text": [
+        " A ven"
+      ]
+    },
+    {
+      "step": 17744,
+      "at_utc": "2026-10-23T23:19:03.662330+00:00",
+      "campaign_frame": 994665,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": "source_partial_no_input",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        10,
+        20
+      ],
+      "visible_text": [
+        " A vending machine!"
+      ]
+    },
+    {
+      "step": 17745,
+      "at_utc": "2026-10-23T23:19:03.686104+00:00",
+      "campaign_frame": 994705,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": "source_partial_no_input",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        20,
+        30
+      ],
+      "visible_text": [
+        " A vending machine!",
+        " Here's the menu"
+      ]
+    },
+    {
+      "step": 17746,
+      "at_utc": "2026-10-23T23:19:03.706797+00:00",
+      "campaign_frame": 994745,
+      "emulated_frames": 40,
+      "action": "a",
+      "tactic": "advance_full_vending_intro_once",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        30,
+        40
+      ],
+      "visible_text": [
+        " A vending machine!",
+        " Here's the menu!  ▼"
+      ]
+    },
+    {
+      "step": 17747,
+      "at_utc": "2026-10-23T23:19:03.724299+00:00",
+      "campaign_frame": 994785,
+      "emulated_frames": 40,
+      "action": "a",
+      "tactic": "purchase_single_fresh_water_once",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        40,
+        50
+      ],
+      "visible_text": [
+        "             MONEY",
+        "             ¥40566",
+        " ▶FRESH WATER",
+        "         ¥200",
+        "  SODA POP",
+        "         ¥300",
+        "  LEMONADE",
+        "         ¥350",
+        "  CANCEL",
+        " A vending machine!",
+        " Here's the menu!"
+      ]
+    },
+    {
+      "step": 17748,
+      "at_utc": "2026-10-23T23:19:03.747884+00:00",
+      "campaign_frame": 994825,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": "single_purchase_delivery_no_resend",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        50,
+        60
+      ],
+      "visible_text": [
+        "             MONEY",
+        "             ¥40566",
+        " ▶FRESH WATER",
+        "         ¥200",
+        "  SODA POP",
+        "         ¥300",
+        "  LEMONADE",
+        "         ¥350",
+        "  CANCEL",
+        " A vending machine!",
+        " Here's the menu!"
+      ]
+    },
+    {
+      "step": 17749,
+      "at_utc": "2026-10-23T23:19:03.765670+00:00",
+      "campaign_frame": 994865,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": "single_purchase_delivery_no_resend",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        60,
+        70
+      ],
+      "visible_text": [
+        "             MONEY",
+        "             ¥40566",
+        " ▶FRESH WATER",
+        "         ¥200",
+        "  SODA POP",
+        "         ¥300",
+        "  LEMONADE",
+        "         ¥350",
+        "  CANCEL",
+        " A vending machine!",
+        " Here's the menu!"
+      ]
+    },
+    {
+      "step": 17750,
+      "at_utc": "2026-10-23T23:19:03.787357+00:00",
+      "campaign_frame": 994905,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": "single_purchase_delivery_no_resend",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        70,
+        80
+      ],
+      "visible_text": [
+        "             MONEY",
+        "             ¥40566",
+        " ▶FRESH WATER",
+        "         ¥200",
+        "  SODA POP",
+        "         ¥300",
+        "  LEMONADE",
+        "         ¥350",
+        "  CANCEL",
+        " A vending machine!",
+        " Here's the menu!"
+      ]
+    },
+    {
+      "step": 17751,
+      "at_utc": "2026-10-23T23:19:03.809872+00:00",
+      "campaign_frame": 994945,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": "source_partial_no_input",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        80,
+        90
+      ],
+      "visible_text": [
+        "             MONEY",
+        "             ¥40566",
+        " ▶FRESH WATER",
+        "         ¥200",
+        "  SODA POP",
+        "         ¥300",
+        "  LEMONADE",
+        "         ¥350",
+        "  CANCEL",
+        " FRESH WATER",
+        " po"
+      ]
+    },
+    {
+      "step": 17752,
+      "at_utc": "2026-10-23T23:19:03.830576+00:00",
+      "campaign_frame": 994985,
+      "emulated_frames": 40,
+      "action": "a",
+      "tactic": "close_paid_full_popped_out_once",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        90,
+        100
+      ],
+      "visible_text": [
+        "             MONEY",
+        "             ¥40366",
+        " ▶FRESH WATER",
+        "         ¥200",
+        "  SODA POP",
+        "         ¥300",
+        "  LEMONADE",
+        "         ¥350",
+        "  CANCEL",
+        " FRESH WATER",
+        " popped out!"
+      ]
+    },
+    {
+      "step": 17753,
+      "at_utc": "2026-10-23T23:19:03.847680+00:00",
+      "campaign_frame": 995025,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": "first_closed_world_frame",
+      "complete": false,
+      "source_segment": 41,
+      "source_frame_interval": [
+        100,
+        110
+      ],
+      "visible_text": []
+    },
+    {
+      "step": 17754,
+      "at_utc": "2026-10-23T23:19:03.869403+00:00",
+      "campaign_frame": 995065,
+      "emulated_frames": 40,
+      "action": "wait",
+      "tactic": null,
+      "complete": true,
+      "source_segment": 41,
+      "source_frame_interval": [
+        110,
+        120
+      ],
+      "visible_text": []
+    }
+  ],
+  "verification": {
+    "raw_selected_concat_frame_md5_exactly_matches_source": 130,
+    "source_selection_frame_md5": {
+      "path": "outputs/videos/celadon-water-20261024/qa-source-concat.framemd5",
+      "sha256": "fe818e2f34f9b19842bb8274b647995f1c5d920b43b79a161a4c25dfd9741b9c"
+    },
+    "one_x_source_ssim": {
+      "compared_frames": 130,
+      "minimum": 0.999589,
+      "mean": 0.9998334769230773,
+      "evidence": {
+        "path": "outputs/videos/celadon-water-20261024/qa-1x-ssim.log",
+        "sha256": "13c4442226aaf6c1a8cfcbc6a23ea02da6663428a93d60c072f35f41a49d013b"
+      }
+    },
+    "post4x_all_decoded_frames_exactly_equal_to_1x": true,
+    "formal_png_all_rgb_channels_equal": true
+  },
+  "limits_zh_tw": [
+    "1x為每4模擬幀取樣／15fps的原錄影模擬時間（130幀8.666667秒），非牆鐘實際操作速度。",
+    "4x只改相同壓縮幀的timestamp與duration，130幀2.166667秒，不是模型加速成效。",
+    "040尾890–899接041前0–119按ledger原序，沒有省略13筆動作模擬幀；工程暫停不在原始錄影內，不宣稱牆鐘連續。",
+    "只讀segments已封閉040/041，未讀042內容；沒有重演、生成／修補畫面或後續守衛成果宣稱。"
+  ]
+}

@@ -247,3 +247,46 @@ def test_fuchsia_empty_party_preserves_only_raw_bits_without_confirming_mission(
     assert result["party_read_valid"] is True and result["initialization_candidate"] is False
     assert result["badge_count"] is None and result["champion_observed"] is None
     assert result["hall_of_fame_confirmed"] is None
+
+
+# 只補固定Silph勁敵新欄；原事件／alias測試不改。
+def test_silph_rival_fixed_source_sdk_id_and_address():
+    constants=fuchsia_constants()
+    assert constants.EVENT_FLAGS['beat_silph_co_rival']==1856==0x740
+    assert constants.EVENT_FLAGS_ADDRESS+1856//8==0xD82F and 1856%8==0
+    assert 'beat_silph_co_rival' in STORY_EVENT_NAMES
+
+
+@pytest.mark.parametrize('bit',range(8))
+def test_silph_rival_reads_only_correct_bit_once_without_writes_or_mission_claim(bit):
+    constants=fuchsia_constants();game=fuchsia_game(constants,0)
+    game.memory.data[0xD82F]=1<<bit
+    before=dict(game.memory.data);result=read_progress(game,constants)
+    assert result['story_event_bits']['beat_silph_co_rival'] is (bit==0)
+    assert game.memory.reads[0xD82F]==1 and game.memory.data==before
+    assert result['champion_observed'] is False and result['hall_of_fame_confirmed'] is None
+    assert result['story_event_bits']['beat_koga'] is False
+
+
+@pytest.mark.parametrize('change',['missing','shifted','boolean','float','base','bool_base','synthetic'])
+def test_silph_rival_missing_or_mismatched_sdk_contract_is_unknown_only_for_new_field(change):
+    constants=fuchsia_constants();constants.EVENT_FLAGS=dict(constants.EVENT_FLAGS)
+    if change=='missing':constants.EVENT_FLAGS.pop('beat_silph_co_rival')
+    elif change=='shifted':constants.EVENT_FLAGS['beat_silph_co_rival']=0x741
+    elif change=='boolean':constants.EVENT_FLAGS['beat_silph_co_rival']=True
+    elif change=='float':constants.EVENT_FLAGS['beat_silph_co_rival']=1856.0
+    elif change=='base':constants.EVENT_FLAGS_ADDRESS=0xD748
+    elif change=='bool_base':constants.EVENT_FLAGS_ADDRESS=True
+    else:constants=synthetic_constants()
+    game=fuchsia_game(constants,0);game.memory.data[0xD82F]=255
+    result=read_progress(game,constants)
+    assert result['story_event_bits']['beat_silph_co_rival'] is None
+    assert game.memory.reads[0xD82F]==0
+
+
+@pytest.mark.parametrize('value',[None,True,False,-1,256,1.0,'1',ValueError('unknown'),KeyError(0xD82F),RuntimeError('unknown')])
+def test_silph_rival_unknown_byte_keeps_new_event_unknown(value):
+    constants=fuchsia_constants();game=fuchsia_game(constants,0);game.memory.data[0xD82F]=value
+    result=read_progress(game,constants)
+    assert result['story_event_bits']['beat_silph_co_rival'] is None
+    assert result['story_event_bits']['beat_koga'] is False

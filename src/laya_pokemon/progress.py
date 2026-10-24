@@ -27,7 +27,7 @@ STORY_EVENT_NAMES = (
     "hall_of_fame_dex_rating", "beat_cerulean_rival", "beat_cerulean_rocket_thief", "got_nugget", "beat_route24_rocket", "got_hm02", "got_hm05",
     "met_bill", "bill_said_use_cell_separator", "used_cell_separator_on_bill", "got_ss_ticket", "left_bills_house_after_helping",
     "beat_mt_moon_exit_super_nerd", "got_dome_fossil", "got_helix_fossil", "got_master_ball",
-    "first_lock_opened", "second_lock_opened", "ss_anne_left",
+    "first_lock_opened", "second_lock_opened", "ss_anne_left", "beat_silph_co_rival",
 )
 EVENT_FLAG_ALIASES={'first_lock_opened':'1st_lock_opened','second_lock_opened':'2nd_lock_opened'}
 
@@ -54,6 +54,14 @@ def _fuchsia_events_supported(constants) -> bool:
     return (_integer(base) and base == 0xD747 and isinstance(events, Mapping)
             and all(_integer(events.get(name)) and events[name] == event_id
                     for name, event_id in _FUCHSIA_EVENT_IDS.items()))
+
+
+def _silph_rival_event_supported(constants) -> bool:
+    """固定a536711 event_constants:656，0x740=D82F bit0；只啟用這個新欄。"""
+    base = getattr(constants, "EVENT_FLAGS_ADDRESS", None)
+    events = getattr(constants, "EVENT_FLAGS", None)
+    value = events.get("beat_silph_co_rival") if isinstance(events, Mapping) else None
+    return type(base) is int and base == 0xD747 and type(value) is int and value == 0x740
 
 
 def read_progress(pyboy, constants=None) -> dict:
@@ -151,7 +159,16 @@ def read_progress(pyboy, constants=None) -> dict:
     badges = read_byte(constants.OBTAINED_BADGES_ADDRESS)
     result["badges_raw"] = badges
     fuchsia_supported = _fuchsia_events_supported(constants)
+    silph_rival_supported = _silph_rival_event_supported(constants)
     for name in STORY_EVENT_NAMES:
+        if name == "beat_silph_co_rival":
+            # 已核SDK錨後只讀固定來源地址，不再以第二次SDK查表解釋成其他事件。
+            try:
+                value = read_byte(0xD82F) if silph_rival_supported else None
+            except RuntimeError:
+                value = None  # 只包含新欄位的getter錯誤，不改其他事件舊語意。
+            result["story_event_bits"][name] = None if value is None else bool(value & 1)
+            continue
         if name in _FUCHSIA_EVENT_IDS and name != "beat_koga" and not fuchsia_supported:
             result["story_event_bits"][name] = None
             continue

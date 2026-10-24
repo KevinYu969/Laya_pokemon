@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-24",
+  "title": "Route7守衛正常收下一瓶水，開放金黃市通行",
+  "scope": "只到守衛對話閉合；不包含之後入城、捕捉、戰鬥、HM操作或網站發布。",
+  "status": "completed_with_two_in_transaction_reviews",
+  "started_at_utc": "2026-10-23T23:21:08.272304+00:00",
+  "completed_at_utc": "2026-10-23T23:32:51.943747+00:00",
+  "completed_at_taipei": "2026-10-24T07:32:51.943747+08:00",
+  "campaign_frame_range": [
+    1000785,
+    1002225
+  ],
+  "range_end_exclusive": true,
+  "step_range": [
+    17897,
+    17932
+  ],
+  "actions": 36,
+  "action_counts": {
+    "right": 1,
+    "wait": 20,
+    "a": 15
+  },
+  "classification": {
+    "model": "offline local Laya",
+    "uncached_predictions": 2,
+    "prediction_cache_hits": 14,
+    "passive_wait_actions": 20,
+    "new_strata_calls": 0,
+    "cloud_fallback": false,
+    "evidence_limit": "範圍內按鍵ledger只含laya-rl-agent與passive；非Codex工程協作額度統計。"
+  },
+  "ledger": {
+    "money_before": 40366,
+    "money_after": 40366,
+    "money_delta": 0,
+    "item60_before_quantity": 1,
+    "item60_after_quantity": 0,
+    "exactly_one_water_removed": true,
+    "other_inventory_order_and_quantities_unchanged": true,
+    "party_all_fields_and_order_unchanged": true,
+    "party_count": 5,
+    "party": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108
+      }
+    ],
+    "badges_raw_before_and_after": 31
+  },
+  "guard_evidence": {
+    "initial_gave_drink_false": "runtime controller precondition only",
+    "independent_raw_before": null,
+    "final_raw_D728": 64,
+    "final_gave_drink": true,
+    "independent_proof_local_frame": 1,
+    "campaign_frame": 1002225,
+    "location": {
+      "map_id": 76,
+      "x": 3,
+      "y": 4
+    },
+    "overworld_ready": true,
+    "proof_text_read_valid": true,
+    "proof_text_alignment_verified": true,
+    "proof_window_visible": false,
+    "two_controller_closed_frames": [
+      1002145,
+      1002185
+    ],
+    "complete_context_step": 17932
+  },
+  "timing": {
+    "endpoint_counter_deltas_seconds": {
+      "wall_seconds": 703.671,
+      "model_wait_seconds": 0.563,
+      "review_pause_seconds": 701.749,
+      "non_review_session_seconds": 1.922,
+      "emulated_seconds": 24.0
+    },
+    "wall_timestamp_delta_seconds": 703.671443,
+    "game_emulated_frames": 1440,
+    "game_emulated_seconds": 24.0,
+    "in_transaction_reviews": 2,
+    "pause_breakdown": [
+      {
+        "kind": "initial_review_before_first_action",
+        "seconds": 277.281
+      },
+      {
+        "kind": "in_transaction_font_tile_e5_review",
+        "campaign_frame": 1000865,
+        "seconds": 233.968,
+        "detail": "單tile apostrophe-m 字碼；保留原baseline，以WAIT續接，未重送RIGHT。",
+        "issue_provenance": "父層實機停檢摘要；時長由範圍內ledger review_pause差核對"
+      },
+      {
+        "kind": "in_transaction_arrow_erased_eighteenth_glyph_review",
+        "campaign_frame": 1001665,
+        "seconds": 190.5,
+        "detail": "第18字被▼擦除後的scroll頁；原交易WAIT續接，未重消耗。",
+        "issue_provenance": "父層實機停檢摘要；時長由範圍內ledger review_pause差核對"
+      }
+    ],
+    "model_ms_sum": 547.7543,
+    "note": "兩固定review端點差；非全程通關耗時。非review1.922秒是該口徑的執行時間，影片1x是模擬遊戲24秒。model_ms加總與model_wait牆鐘counter不同口徑。"
+  },
+  "review_notes": "初次實作有兩次實況校準；同一交易baseline接續，只有一次RIGHT及一次消耗，不能稱第一趟無停檢。",
+  "action_ledger": [
+    {
+      "step": 17897,
+      "at_utc": "2026-10-23T23:25:45.858063+00:00",
+      "campaign_frame": 1000785,
+      "emulated_frames": 40,
+      "action": "right",
+      "stage": "trigger_only_once",
+      "passive_wait": false,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17898,
+      "at_utc": "2026-10-23T23:25:46.004840+00:00",
+      "campaign_frame": 1000825,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17899,
+      "at_utc": "2026-10-23T23:29:40.094492+00:00",
+      "campaign_frame": 1000865,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "same_observation_no_resend",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17900,
+      "at_utc": "2026-10-23T23:29:40.544988+00:00",
+      "campaign_frame": 1000905,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17901,
+      "at_utc": "2026-10-23T23:29:40.567881+00:00",
+      "campaign_frame": 1000945,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17902,
+      "at_utc": "2026-10-23T23:29:40.588093+00:00",
+      "campaign_frame": 1000985,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17903,
+      "at_utc": "2026-10-23T23:29:40.612889+00:00",
+      "campaign_frame": 1001025,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17904,
+      "at_utc": "2026-10-23T23:29:40.640854+00:00",
+      "campaign_frame": 1001065,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17905,
+      "at_utc": "2026-10-23T23:29:40.661288+00:00",
+      "campaign_frame": 1001105,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17906,
+      "at_utc": "2026-10-23T23:29:40.683433+00:00",
+      "campaign_frame": 1001145,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17907,
+      "at_utc": "2026-10-23T23:29:40.710561+00:00",
+      "campaign_frame": 1001185,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "await_complete_native_prompt",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17908,
+      "at_utc": "2026-10-23T23:29:40.733150+00:00",
+      "campaign_frame": 1001225,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "await_complete_native_prompt",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17909,
+      "at_utc": "2026-10-23T23:29:40.757594+00:00",
+      "campaign_frame": 1001265,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "await_complete_native_prompt",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17910,
+      "at_utc": "2026-10-23T23:29:40.779313+00:00",
+      "campaign_frame": 1001305,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17911,
+      "at_utc": "2026-10-23T23:29:40.800959+00:00",
+      "campaign_frame": 1001345,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17912,
+      "at_utc": "2026-10-23T23:29:40.820275+00:00",
+      "campaign_frame": 1001385,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17913,
+      "at_utc": "2026-10-23T23:29:40.840965+00:00",
+      "campaign_frame": 1001425,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17914,
+      "at_utc": "2026-10-23T23:29:40.866051+00:00",
+      "campaign_frame": 1001465,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17915,
+      "at_utc": "2026-10-23T23:29:40.888698+00:00",
+      "campaign_frame": 1001505,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17916,
+      "at_utc": "2026-10-23T23:29:40.909872+00:00",
+      "campaign_frame": 1001545,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17917,
+      "at_utc": "2026-10-23T23:29:40.935766+00:00",
+      "campaign_frame": 1001585,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17918,
+      "at_utc": "2026-10-23T23:29:40.959763+00:00",
+      "campaign_frame": 1001625,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17919,
+      "at_utc": "2026-10-23T23:32:51.543946+00:00",
+      "campaign_frame": 1001665,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "same_observation_no_resend",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17920,
+      "at_utc": "2026-10-23T23:32:51.660200+00:00",
+      "campaign_frame": 1001705,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "await_complete_native_prompt",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17921,
+      "at_utc": "2026-10-23T23:32:51.678675+00:00",
+      "campaign_frame": 1001745,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17922,
+      "at_utc": "2026-10-23T23:32:51.703883+00:00",
+      "campaign_frame": 1001785,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17923,
+      "at_utc": "2026-10-23T23:32:51.724911+00:00",
+      "campaign_frame": 1001825,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17924,
+      "at_utc": "2026-10-23T23:32:51.746402+00:00",
+      "campaign_frame": 1001865,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17925,
+      "at_utc": "2026-10-23T23:32:51.770029+00:00",
+      "campaign_frame": 1001905,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17926,
+      "at_utc": "2026-10-23T23:32:51.789895+00:00",
+      "campaign_frame": 1001945,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17927,
+      "at_utc": "2026-10-23T23:32:51.810286+00:00",
+      "campaign_frame": 1001985,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "advance_exact_source_page",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17928,
+      "at_utc": "2026-10-23T23:32:51.832176+00:00",
+      "campaign_frame": 1002025,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "known_source_text_typing",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17929,
+      "at_utc": "2026-10-23T23:32:51.851861+00:00",
+      "campaign_frame": 1002065,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "stable_done_page_before_outer_prompt",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17930,
+      "at_utc": "2026-10-23T23:32:51.874101+00:00",
+      "campaign_frame": 1002105,
+      "emulated_frames": 40,
+      "action": "a",
+      "stage": "close_exact_done_outer_prompt",
+      "passive_wait": false,
+      "prediction_cache_hit": true
+    },
+    {
+      "step": 17931,
+      "at_utc": "2026-10-23T23:32:51.894191+00:00",
+      "campaign_frame": 1002145,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "first_closed_overworld_frame",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    },
+    {
+      "step": 17932,
+      "at_utc": "2026-10-23T23:32:51.915823+00:00",
+      "campaign_frame": 1002185,
+      "emulated_frames": 40,
+      "action": "wait",
+      "stage": "complete",
+      "passive_wait": true,
+      "prediction_cache_hit": false
+    }
+  ],
+  "source_ledgers": [
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-042.jsonl",
+      "sha256": "8f20b5a2f338b23739dfbb5af09b90bcd31d87a1bbb59dc9f64bf4ec80b86aaf",
+      "selected_step_range": [
+        17897,
+        17897
+      ],
+      "selected_rows": 1,
+      "selected_canonical_rows_sha256": "c5f7d26b205227028959c78359949da491d7547e3f95b39ac089fd8f5f52847b"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-043.jsonl",
+      "sha256": "dc104754b16159f13da6014a33d6806f3568acda4977cf730a008d58c9d47e4c",
+      "selected_step_range": [
+        17898,
+        17899
+      ],
+      "selected_rows": 2,
+      "selected_canonical_rows_sha256": "c9c4769be23a73c2a1887e6c8aff318c8540d2d815a816e7daa9fb9c6db5c731"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-044.jsonl",
+      "sha256": "5cb6b3c7df536b4c83c59b969d6dbe4df7d8535154a9b6b5d40be9502a6ce22e",
+      "selected_step_range": [
+        17900,
+        17919
+      ],
+      "selected_rows": 20,
+      "selected_canonical_rows_sha256": "0baf00ce20c85b069c8b38347cd5f9b46612e81ce31c4550af419908420b9316"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-23/game/steps-045.jsonl",
+      "sha256": "8c3e26e88676320f805b2416825cc5c4e2b4aad9ac203acb6e8913e41895faf2",
+      "selected_step_range": [
+        17920,
+        17932
+      ],
+      "selected_rows": 13,
+      "selected_canonical_rows_sha256": "b83498a0a771dff61eb8b57d0f8f00ca85519b1d847278615c855aba81891c63"
+    }
+  ],
+  "evidence": [
+    {
+      "path": ".local/gym-reviewed-history/route7-guard-water-20261024-review.json",
+      "sha256": "24119e66638c912baf5042e8055cf0a1ef68ec5bb807eeb7662b1782afb1343d"
+    },
+    {
+      "path": ".local/route7-guard-final-review-20261024.json",
+      "sha256": "520bf853f428d601d58dc26d42e965b57b320fbf46c76812f2d23005a1dda4aa"
+    },
+    {
+      "path": "outputs/research/route7-guard-closed-proof-20261024.json",
+      "sha256": "29fda178919ab42256024eb524e9961485174ad989a8462b630843942e294448"
+    }
+  ],
+  "clips_receipt": "results/route7-guard-clips-20261024.json",
+  "limitations": [
+    "初始D728=false只有runtime契約，未取得獨立初始raw快照；不捏造raw0。",
+    "末端無鍵proof為獨立複本local frame1，不是campaign frame1。",
+    "本收據未宣稱西爾佛、道館或聯盟完成。"
+  ]
+}

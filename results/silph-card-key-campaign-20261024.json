@@ -1,0 +1,1167 @@
+{
+  "schema": "laya-pokemon-campaign-receipt/v1",
+  "language": "zh-Hant-TW",
+  "title": "Silph Co. 5F 正常取得 Card Key 與兩場訓練家勝利",
+  "status": "card_key_obtained_and_overworld_closed",
+  "scope": {
+    "run": "league-campaign-20261024-23",
+    "before_at_utc": "2026-10-23T23:37:05.345091+00:00",
+    "before_at_taipei": "2026-10-24T07:37:05.345091+08:00",
+    "closed_at_utc": "2026-10-23T23:39:27.349706+00:00",
+    "closed_at_taipei": "2026-10-24T07:39:27.349706+08:00",
+    "observation_frame_interval_half_open": [
+      1006865,
+      1020297
+    ],
+    "steps_inclusive": [
+      18049,
+      18210
+    ],
+    "start_location": {
+      "map_id": 210,
+      "x": 26,
+      "y": 1
+    },
+    "closed_location": {
+      "map_id": 210,
+      "x": 20,
+      "y": 16
+    },
+    "excluded": "後續回中心與任何新進度均不在本收據範圍。"
+  },
+  "achievement": {
+    "item_id": 48,
+    "item_name": "CARD KEY",
+    "quantity_before": 0,
+    "quantity_after": 1,
+    "first_inventory_observation": {
+      "step": 18208,
+      "pre_action_frame": 1020089
+    },
+    "normal_interaction_steps": [
+      18207,
+      18208
+    ],
+    "normal_closure_steps": [
+      18209,
+      18210
+    ],
+    "closed_walk_positions": [
+      [
+        20,
+        16
+      ],
+      [
+        19,
+        16
+      ],
+      [
+        20,
+        16
+      ]
+    ],
+    "native_full_receipt_verified": true,
+    "native_full_receipt_png": {
+      "path": "outputs/research/silph-card-key-native-receipt-20261024.png",
+      "source_frame_zero_based": 3316,
+      "approx_video_pts_seconds": 221.06666666666666,
+      "aligned_observation_frame_boundary": 1020173,
+      "bytes": 16325,
+      "sha256": "ef414f4f2a4d01c9a090e1babbe7ce10c89bb0038dc250dfdef98b0707336be7",
+      "rgb24_sha256": "ada32015d9c6d8f8ba04cfcb023cf20440e045c6bd9629a21910c5b44a4f1c9f",
+      "source_pixel_equality": true
+    },
+    "event_claim": "不設got_card_key milestone；本段以正常取物文字、袋中48+1、其他道具保持、物件消失與關頁步行核對。"
+  },
+  "route_evidence": [
+    {
+      "step": 18158,
+      "map_id": 233,
+      "position": [
+        17,
+        15
+      ],
+      "meaning": "9F傳送格穩定觀測"
+    },
+    {
+      "step": 18160,
+      "map_id": 233,
+      "position": [
+        17,
+        14
+      ],
+      "meaning": "正常UP離開傳送格，再DOWN返回"
+    },
+    {
+      "step": 18162,
+      "map_id": 210,
+      "position": [
+        9,
+        15
+      ],
+      "meaning": "回到5F傳送格穩定觀測"
+    }
+  ],
+  "battles": [
+    {
+      "trainer": "SCIENTIST",
+      "map_id": 210,
+      "stance": [
+        9,
+        3
+      ],
+      "first_active_step": 18074,
+      "intro_step": 18076,
+      "opponents": [
+        {
+          "species": "MAGNETON",
+          "level": 26,
+          "sent_step": 18077,
+          "hud_step": 18080,
+          "fainted_step": 18097,
+          "exp": 897
+        },
+        {
+          "species": "KOFFING",
+          "level": 26,
+          "sent_step": 18103,
+          "hud_step": 18104,
+          "fainted_step": 18109,
+          "exp": 634
+        },
+        {
+          "species": "WEEZING",
+          "level": 26,
+          "sent_step": 18117,
+          "hud_step": 18118,
+          "fainted_step": 18127,
+          "exp": 963
+        },
+        {
+          "species": "MAGNEMITE",
+          "level": 26,
+          "sent_step": 18133,
+          "hud_step": 18134,
+          "fainted_step": 18139,
+          "exp": 495
+        }
+      ],
+      "native_victory": {
+        "step": 18141,
+        "pre_action_frame": 1015121,
+        "recorded_at_utc": "2026-10-23T23:39:23.833395+00:00",
+        "recorded_at_taipei": "2026-10-24T07:39:23.833395+08:00",
+        "at_semantics": "action記錄時間；state為送鍵前觀測，不能當成該畫面首次出現的精確牆鐘時間",
+        "location": {
+          "map_id": 210,
+          "x": 9,
+          "y": 3
+        },
+        "phase": "battle_dialogue",
+        "battle_kind": "trainer",
+        "visible_text": [
+          "          SNORLAX",
+          "               36",
+          "           125/173",
+          " KEVIN defeated",
+          " SCIENTIST!       ▼"
+        ],
+        "action": "a",
+        "emulated_frames": 128,
+        "money": 40366,
+        "snorlax": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 36,
+          "hp": 125,
+          "max_hp": 173,
+          "exp": 59976,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            9
+          ]
+        }
+      },
+      "prize": {
+        "step": 18144,
+        "amount": 1300,
+        "text": [
+          "KEVIN got ¥1300",
+          "for winning!"
+        ]
+      },
+      "first_closed_overworld": {
+        "step": 18145,
+        "pre_action_frame": 1015633,
+        "recorded_at_utc": "2026-10-23T23:39:24.007290+00:00",
+        "recorded_at_taipei": "2026-10-24T07:39:24.007290+08:00",
+        "at_semantics": "action記錄時間；state為送鍵前觀測，不能當成該畫面首次出現的精確牆鐘時間",
+        "location": {
+          "map_id": 210,
+          "x": 9,
+          "y": 3
+        },
+        "phase": "overworld",
+        "battle_kind": "none",
+        "visible_text": [],
+        "action": "down",
+        "emulated_frames": 40,
+        "money": 41666,
+        "snorlax": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 36,
+          "hp": 125,
+          "max_hp": 173,
+          "exp": 59976,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            9
+          ]
+        }
+      },
+      "exp_gain": 2989,
+      "body_slam_uses": 6,
+      "body_slam_pp": [
+        15,
+        9
+      ],
+      "damage_evidence": "MAGNETON完整SONICBOOM兩次；同步HP168→148→128，WEEZING完整TACKLE後133→125。35→36自然升級時HP128/168→133/173，淨HP少43不等於總受傷43。",
+      "level_up": {
+        "step": 18111,
+        "pre_action_frame": 1011985,
+        "recorded_at_utc": "2026-10-23T23:39:21.267914+00:00",
+        "recorded_at_taipei": "2026-10-24T07:39:21.267914+08:00",
+        "at_semantics": "action記錄時間；state為送鍵前觀測，不能當成該畫面首次出現的精確牆鐘時間",
+        "location": {
+          "map_id": 210,
+          "x": 9,
+          "y": 3
+        },
+        "phase": "battle_dialogue",
+        "battle_kind": "trainer",
+        "visible_text": [
+          "          SNORLAX",
+          "               36",
+          "           133/173",
+          " SNORLAX grew",
+          " to level 36!"
+        ],
+        "action": "a",
+        "emulated_frames": 128,
+        "money": 40366,
+        "snorlax": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 36,
+          "hp": 133,
+          "max_hp": 173,
+          "exp": 58518,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            12
+          ]
+        }
+      }
+    },
+    {
+      "trainer": "ROCKET",
+      "map_id": 210,
+      "stance": [
+        9,
+        16
+      ],
+      "first_active_step": 18169,
+      "intro_step": 18171,
+      "opponents": [
+        {
+          "species": "ARBOK",
+          "level": 33,
+          "sent_step": 18172,
+          "hud_step": 18175,
+          "fainted_step": 18190,
+          "exp": 1039
+        }
+      ],
+      "native_victory": {
+        "step": 18192,
+        "pre_action_frame": 1019097,
+        "recorded_at_utc": "2026-10-23T23:39:26.228231+00:00",
+        "recorded_at_taipei": "2026-10-24T07:39:26.228231+08:00",
+        "at_semantics": "action記錄時間；state為送鍵前觀測，不能當成該畫面首次出現的精確牆鐘時間",
+        "location": {
+          "map_id": 210,
+          "x": 9,
+          "y": 16
+        },
+        "phase": "battle_dialogue",
+        "battle_kind": "trainer",
+        "visible_text": [
+          "          SNORLAX",
+          "               36",
+          "           125/173",
+          " KEVIN defeated",
+          " ROCKET!"
+        ],
+        "action": "a",
+        "emulated_frames": 128,
+        "money": 41666,
+        "snorlax": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 36,
+          "hp": 125,
+          "max_hp": 173,
+          "exp": 61015,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            7
+          ]
+        }
+      },
+      "prize": {
+        "step": 18195,
+        "amount": 990,
+        "text": [
+          "KEVIN got ¥990",
+          "for winning!"
+        ]
+      },
+      "first_closed_overworld": {
+        "step": 18196,
+        "pre_action_frame": 1019609,
+        "recorded_at_utc": "2026-10-23T23:39:26.385657+00:00",
+        "recorded_at_taipei": "2026-10-24T07:39:26.385657+08:00",
+        "at_semantics": "action記錄時間；state為送鍵前觀測，不能當成該畫面首次出現的精確牆鐘時間",
+        "location": {
+          "map_id": 210,
+          "x": 9,
+          "y": 16
+        },
+        "phase": "overworld",
+        "battle_kind": "none",
+        "visible_text": [],
+        "action": "right",
+        "emulated_frames": 40,
+        "money": 42656,
+        "snorlax": {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 36,
+          "hp": 125,
+          "max_hp": 173,
+          "exp": 61015,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            7
+          ]
+        }
+      },
+      "exp_gain": 1039,
+      "body_slam_uses": 2,
+      "body_slam_pp": [
+        9,
+        7
+      ],
+      "damage_evidence": "卡比獸維持125/173；兩次可見DEFENSE fell!，取樣未保留完整敵方招式名，不猜LEER。"
+    }
+  ],
+  "party": {
+    "before": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 35,
+        "hp": 168,
+        "max_hp": 168,
+        "exp": 56987,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "after": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 36,
+        "hp": 125,
+        "max_hp": 173,
+        "exp": 61015,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          7
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 35,
+        "hp": 108,
+        "max_hp": 108,
+        "exp": 46405,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      }
+    ],
+    "other_four_exactly_unchanged_in_all_selected_observations": true,
+    "snorlax_exp_gain": 4028,
+    "snorlax_body_slam_pp_consumed": 8,
+    "player_faint_or_loss_observed": false,
+    "observed_safety_limit": "162筆所涵蓋觀測無玩家0HP、全敗或敗北轉場，並有兩場完整原生勝利收據；不是每模擬幀的隱藏狀態證明。"
+  },
+  "economy": {
+    "money_before": 40366,
+    "money_after": 42656,
+    "money_delta": 2290,
+    "trainer_prizes": [
+      1300,
+      990
+    ],
+    "inventory_before": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      }
+    ],
+    "inventory_after": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 48,
+        "quantity": 1
+      }
+    ],
+    "original_inventory_order_and_quantities_unchanged": true,
+    "pickup_itself_changed_party_or_money": false
+  },
+  "timing": {
+    "runner_timer_delta_seconds": {
+      "wall_seconds": 142.0,
+      "model_wait_seconds": 3.093,
+      "review_pause_seconds": 132.781,
+      "non_review_session_seconds": 9.219,
+      "emulated_seconds": 223.866
+    },
+    "iso_review_boundary_wall_seconds": 142.004615,
+    "emulated_frames": 13432,
+    "emulated_seconds_exact": "223.8666666666666666666666667",
+    "interpretation": "runner wall142.000秒包含132.781秒工程停檢，non-review9.219秒；ISO review時間差142.004615秒為另一口徑。影片與模擬時間不可當成牆鐘或整體破關時間。",
+    "separate_scopes": [
+      {
+        "name": "5F行走與第一場戰前；含開始恢復前工程等待",
+        "steps_inclusive": [
+          18049,
+          18073
+        ],
+        "observed_frame_interval": [
+          1006865,
+          1008129
+        ],
+        "actions": 25,
+        "new_laya_predictions": 0,
+        "laya_cache_hits": 25,
+        "passive_controller_actions": 0,
+        "action_counts": {
+          "left": 17,
+          "down": 3,
+          "wait": 2,
+          "a": 3
+        },
+        "emulated_frames": 1264,
+        "emulated_seconds_exact": "21.06666666666666666666666667",
+        "runner_timer_delta_seconds": {
+          "wall_seconds": 133.609,
+          "model_wait_seconds": 0.03,
+          "review_pause_seconds": 132.781,
+          "non_review_session_seconds": 0.828,
+          "emulated_seconds": 21.066
+        }
+      },
+      {
+        "name": "SCIENTIST戰鬥至第一個戰後野外觀測前",
+        "steps_inclusive": [
+          18074,
+          18144
+        ],
+        "observed_frame_interval": [
+          1008129,
+          1015633
+        ],
+        "actions": 71,
+        "new_laya_predictions": 3,
+        "laya_cache_hits": 68,
+        "passive_controller_actions": 0,
+        "action_counts": {
+          "wait": 2,
+          "a": 63,
+          "down": 3,
+          "b": 3
+        },
+        "emulated_frames": 7504,
+        "emulated_seconds_exact": "125.0666666666666666666666667",
+        "runner_timer_delta_seconds": {
+          "wall_seconds": 5.031,
+          "model_wait_seconds": 1.907,
+          "review_pause_seconds": 0.0,
+          "non_review_session_seconds": 5.031,
+          "emulated_seconds": 125.067
+        }
+      },
+      {
+        "name": "5F傳送至9F、離開傳送格再返回5F與ROCKET戰前",
+        "steps_inclusive": [
+          18145,
+          18168
+        ],
+        "observed_frame_interval": [
+          1015633,
+          1016769
+        ],
+        "actions": 24,
+        "new_laya_predictions": 1,
+        "laya_cache_hits": 23,
+        "passive_controller_actions": 0,
+        "action_counts": {
+          "down": 14,
+          "wait": 7,
+          "up": 1,
+          "a": 2
+        },
+        "emulated_frames": 1136,
+        "emulated_seconds_exact": "18.93333333333333333333333333",
+        "runner_timer_delta_seconds": {
+          "wall_seconds": 1.203,
+          "model_wait_seconds": 0.563,
+          "review_pause_seconds": 0.0,
+          "non_review_session_seconds": 1.203,
+          "emulated_seconds": 18.933
+        }
+      },
+      {
+        "name": "ROCKET戰鬥至第一個戰後野外觀測前",
+        "steps_inclusive": [
+          18169,
+          18195
+        ],
+        "observed_frame_interval": [
+          1016769,
+          1019609
+        ],
+        "actions": 27,
+        "new_laya_predictions": 0,
+        "laya_cache_hits": 27,
+        "passive_controller_actions": 0,
+        "action_counts": {
+          "wait": 2,
+          "a": 22,
+          "down": 3
+        },
+        "emulated_frames": 2840,
+        "emulated_seconds_exact": "47.33333333333333333333333333",
+        "runner_timer_delta_seconds": {
+          "wall_seconds": 1.172,
+          "model_wait_seconds": 0.031,
+          "review_pause_seconds": 0.0,
+          "non_review_session_seconds": 1.172,
+          "emulated_seconds": 47.334
+        }
+      },
+      {
+        "name": "戰後走到Card Key、正常取物、關頁與兩次地板步行",
+        "steps_inclusive": [
+          18196,
+          18210
+        ],
+        "observed_frame_interval": [
+          1019609,
+          1020297
+        ],
+        "actions": 15,
+        "new_laya_predictions": 1,
+        "laya_cache_hits": 14,
+        "passive_controller_actions": 0,
+        "action_counts": {
+          "right": 12,
+          "a": 2,
+          "left": 1
+        },
+        "emulated_frames": 688,
+        "emulated_seconds_exact": "11.46666666666666666666666667",
+        "runner_timer_delta_seconds": {
+          "wall_seconds": 0.985,
+          "model_wait_seconds": 0.562,
+          "review_pause_seconds": 0.0,
+          "non_review_session_seconds": 0.985,
+          "emulated_seconds": 11.466
+        }
+      }
+    ],
+    "nested_pickup_and_closure_scopes": [
+      {
+        "name": "取物互動本身；不含戰鬥",
+        "steps_inclusive": [
+          18207,
+          18208
+        ],
+        "observed_frame_interval": [
+          1020049,
+          1020217
+        ],
+        "actions": 2,
+        "new_laya_predictions": 1,
+        "laya_cache_hits": 1,
+        "passive_controller_actions": 0,
+        "action_counts": {
+          "a": 2
+        },
+        "emulated_frames": 168,
+        "emulated_seconds_exact": "2.8",
+        "runner_timer_delta_seconds": {
+          "wall_seconds": 0.641,
+          "model_wait_seconds": 0.562,
+          "review_pause_seconds": 0.0,
+          "non_review_session_seconds": 0.641,
+          "emulated_seconds": 2.8
+        }
+      },
+      {
+        "name": "關頁後兩個地板步行與閉合review",
+        "steps_inclusive": [
+          18209,
+          18210
+        ],
+        "observed_frame_interval": [
+          1020217,
+          1020297
+        ],
+        "actions": 2,
+        "new_laya_predictions": 0,
+        "laya_cache_hits": 2,
+        "passive_controller_actions": 0,
+        "action_counts": {
+          "left": 1,
+          "right": 1
+        },
+        "emulated_frames": 80,
+        "emulated_seconds_exact": "1.333333333333333333333333333",
+        "runner_timer_delta_seconds": {
+          "wall_seconds": 0.078,
+          "model_wait_seconds": 0.0,
+          "review_pause_seconds": 0.0,
+          "non_review_session_seconds": 0.078,
+          "emulated_seconds": 1.333
+        }
+      }
+    ]
+  },
+  "execution_counts": {
+    "actions": 162,
+    "new_laya_predictions": 5,
+    "laya_cache_hits": 157,
+    "passive_controller_actions": 0,
+    "semantic_wait_actions": 13,
+    "semantic_wait_note": "13筆wait均有laya-rl-agent的選擇/快取收據，不能當成controller passive。",
+    "action_counts": {
+      "left": 18,
+      "down": 23,
+      "wait": 13,
+      "a": 92,
+      "b": 3,
+      "up": 1,
+      "right": 12
+    },
+    "raw_models": {
+      "laya-rl-agent": 162
+    },
+    "new_model_ms_sum": 2930.6598999537528,
+    "new_prediction_records": [
+      {
+        "step": 18101,
+        "model_ms": 602.3021999862976,
+        "input_tokens": 215,
+        "output_tokens": 0
+      },
+      {
+        "step": 18115,
+        "model_ms": 589.0536000370048,
+        "input_tokens": 215,
+        "output_tokens": 0
+      },
+      {
+        "step": 18131,
+        "model_ms": 644.548499956727,
+        "input_tokens": 215,
+        "output_tokens": 0
+      },
+      {
+        "step": 18157,
+        "model_ms": 547.268099966459,
+        "input_tokens": 170,
+        "output_tokens": 0
+      },
+      {
+        "step": 18207,
+        "model_ms": 547.4875000072643,
+        "input_tokens": 176,
+        "output_tokens": 0
+      }
+    ],
+    "strata_calls": {
+      "count": 0,
+      "evidence": "父層本次執行契約；本收據未獨立攔截網路流量。"
+    },
+    "cloud_gameplay_fallback_calls": {
+      "count": 0,
+      "evidence": "父層本次執行契約；工程查核與撰寫不計入遊戲分類成本。"
+    }
+  },
+  "evidence": {
+    "review_snapshot_sha256": {
+      "before": "52aede45b8e676e19b13336c8b154f3a0792ade125840070d834aed123351ab5",
+      "closed": "84e201ac751a18ec9b0037d8543ab8d2cbaa72e2f1d42b267499afbf7d4f6401"
+    },
+    "closed_step_files": [
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-047.jsonl",
+        "bytes": 709329,
+        "sha256": "ec572325c8ea49566c23b2f38eb381bdd5b7864f3cd89972e1f66ffc3765a061",
+        "selected_lines": 1,
+        "selected_raw_lines_sha256": "2d2834e5894fe9173080b533d91d7163d71b2e42562d2a7dfdb23c1c9c8fc473"
+      },
+      {
+        "path": "outputs/league-campaign-20261024-23/game/steps-048.jsonl",
+        "bytes": 1261563,
+        "sha256": "c8d27520babbdfa053f691550396b4c35b2cdf69e1175f333e85e645a73c92bb",
+        "selected_lines": 161,
+        "selected_raw_lines_sha256": "0ad12d8c4898f162f380aa0d6a8c805afbcaa3aedcc5106b4dce4ccfa5cc2a85"
+      }
+    ],
+    "selected_line_sha256_concatenation": "4af5d8e0d3577d99dc0b4abe1c55308248686325eb53c44fd5722bc0ac939672",
+    "selected_line_hash_note": "此值為依步序串接各行SHA256二進位digest後再SHA256；逐行raw原文與換行的hash另留本機audit。",
+    "native_video": {
+      "source": "outputs/league-campaign-20261024-23/game/video-048.mp4",
+      "closed_segment": 48,
+      "closed_receipt_at_utc": "2026-10-23T23:42:03.695740+00:00",
+      "closure_basis": "segments.jsonl已列出48的封片收據；父層確認current open>=049。未讀open影片。",
+      "highest_closed_at_read": 50,
+      "parent_reported_current_open_minimum": 49,
+      "bytes": 1198724,
+      "sha256": "8a480d0a0ad978ec4302712e6e6df9911574aefc7a35fca6392aab747ee7be31",
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "frames": 3358,
+      "duration_seconds": 223.86666666666667,
+      "timing": "emulated_time；不是牆鐘或通關時長",
+      "full_ffmpeg_xerror_decode": {
+        "returncode": 0,
+        "decoded_frames": 3358,
+        "stderr": "",
+        "threads": 1
+      },
+      "visual_inspection_source_frames_inclusive": [
+        3285,
+        3347
+      ],
+      "selected_raw_rgb_sha256": "78543bc30c6d9b0a8fb1dc219f78fa0e06263b283af2c8045903232b518afe26",
+      "native_full_receipt_observed_frames_inclusive": [
+        3303,
+        3321
+      ],
+      "receipt_text": [
+        "KEVIN found",
+        "CARD KEY!"
+      ],
+      "formal_png": {
+        "path": "outputs/research/silph-card-key-native-receipt-20261024.png",
+        "source_frame_zero_based": 3316,
+        "approx_video_pts_seconds": 221.06666666666666,
+        "aligned_observation_frame_boundary": 1020173,
+        "bytes": 16325,
+        "sha256": "ef414f4f2a4d01c9a090e1babbe7ce10c89bb0038dc250dfdef98b0707336be7",
+        "rgb24_sha256": "ada32015d9c6d8f8ba04cfcb023cf20440e045c6bd9629a21910c5b44a4f1c9f",
+        "source_pixel_equality": true
+      },
+      "qa_png": {
+        "path": "outputs/research/silph-card-key-native-receipt-20261024-qa.png",
+        "source_frames_zero_based": [
+          3285,
+          3296,
+          3303,
+          3316,
+          3321,
+          3322,
+          3331,
+          3347
+        ],
+        "bytes": 84315,
+        "sha256": "272c7b9d8b6fcafbb0b630bb75d1accc76a6dff15d731543a10fe10b6cd6f899",
+        "note": "原影格480x432不縮放，標籤位於影格外；QA拼版不是遊戲畫面。"
+      },
+      "mapping": "video048開始於steps18050 pre-action frame1006905；每4模擬幀取1影格，local index n對齊觀測frame界線1006905+4*(n+1)。完整文字的牆鐘時間只能夾在18207與18208記錄之間，不從影片反推精確UTC。",
+      "object_visibility": "QA3285可見玩家右側原道具球；3322及後續閉合地板畫面已不見該球。只作可見物件交叉證據，不宣稱讀到不存在的got_card_key event。"
+    },
+    "private_audit": "outputs/research/silph-card-key-audit-20261024.json",
+    "private_audit_note": "原始私有輸出與影像僅留本機；GitHub只備份白名單整理成果。",
+    "selected_raw_lines_sha256": "5b79a027aadb867604b53bcd9078b44f3663e8d81ca73766449a525d9f1cbb99"
+  },
+  "limits": [
+    "不是Silph勁敵或Giovanni勝利，不代表第六館、聯盟或網站發布完成。",
+    "戰鬥初始opponent_species可殘留舊值；此處陣容採完整sent out文字與可見HUD核對。",
+    "關閉時獨立review無專屬Key-end checkpoint proof；未拿後來中心checkpoint冒充取物時點。",
+    "工程與模型分類額度分開記錄；未獨立做網路封包稽核。"
+  ]
+}

@@ -44,9 +44,51 @@ def _trainer_half_review(reason):
             'review_reason': 'trainer_half_hp_' + reason}
 
 
-def _trainer_half_rows(text):
+def _trainer_half_rows(text, *, party=None):
     rows=_fixed_damage_rows(text)
-    if rows is None:return None
+    if rows is None:
+        # a536711 common_text.asm:GetmText -> PlayerMon1Text(done): native
+        # $e5 is ONE physical cell "'m". Only this already-requested switch
+        # may read it; the general fixed-damage decoder remains unchanged.
+        record=_no_pp_switch
+        if (not isinstance(text,dict) or not isinstance(record,dict)
+                or record.get('reason')!=_TRAINER_HALF_REASON
+                or record.get('switch_requested') is not True
+                or not _trainer_half_party_valid(party)
+                or tuple(m['species'] for m in party)!=record.get('party_species')):
+            return None
+        cells=text.get('cells')
+        if (not isinstance(cells,(list,tuple)) or len(cells)!=18
+                or any(not isinstance(row,(list,tuple)) or len(row)!=20 for row in cells)
+                or any(not isinstance(c,str) or (len(c)!=1 and (x,y,c)!=(4,14,"'m"))
+                       for y,row in enumerate(cells) for x,c in enumerate(row))
+                or cells[14][4]!="'m"):
+            return None
+        from .team_strategy import species_key
+        target=species_key(record.get('species')); enemy=species_key(record.get('enemy_species'))
+        if not target or not enemy:return None
+        expected=[' ']*20
+        for x,value in ((1,'Get'),(4,"'m"),(5,'!'),(7,target+'!')):
+            expected[x:x+(1 if x==4 else len(value))]=[value] if x==4 else list(value)
+        if [c.upper() for c in cells[14]]!=[c.upper() for c in expected]:return None
+        native=[list(row) for row in cells];native[14][4]='m'
+        rows=_fixed_damage_rows({**text,'cells':native})
+        if rows is None:return None
+        allowed=[m for m in party if m['species'] in (record.get('active_species'),record.get('species'))
+                 and rows[7]==(' '*10+species_key(m['species'])).ljust(20)]
+        if len(allowed)!=1:return None
+        mon=allowed[0]
+        if (mon['status']!=0 or mon['hp']<=0
+                or rows[0]!=(' '+enemy).ljust(20)
+                or rows[1][:5]!=' '*5 or rows[1][8:]!=' '*12
+                or not rows[1][5:8].strip().isdigit()
+                or not 1<=int(rows[1][5:8])<=100
+                or rows[8][:14]!=' '*14 or rows[8][18:]!=' '*2
+                or rows[8][14:18].strip()!=str(mon['level'])
+                or rows[10]!=(' '*11+f"{mon['hp']:3}/{mon['max_hp']:3}").ljust(20)
+                or any(rows[y]!=' '*20 for y in range(18) if y not in (0,1,7,8,10,14))):
+            return None
+        rows[14]=f" GET'M! {target}!".ljust(20)
     if 'lines' in text or 'line_rows' in text:
         raw=[''.join(row) for row in text['cells']]
         selected=[(i,row.rstrip()) for i,row in enumerate(raw) if re.search(r'[A-Za-z0-9]{2,}',row)][:12]
@@ -146,7 +188,7 @@ def _trainer_half_pending(text, battle_state, party):
     from .team_strategy import species_key, normalize
     from .party_control import party_choice, selection
     record = _no_pp_switch
-    rows = _trainer_half_rows(text)
+    rows = _trainer_half_rows(text,party=party)
     if (rows is None or not _trainer_half_party_valid(party)
             or tuple(m['species'] for m in party) != record['party_species']
             or species_key(battle_state.get('opponent_species')) != record['enemy_species']):
@@ -155,6 +197,14 @@ def _trainer_half_pending(text, battle_state, party):
     if len(target) != 1:
         return _trainer_half_review('pending_target_ambiguous')
     target = target[0]
+    if text['cells'][14][4]=="'m":
+        # SendOutMon immediately draws the new HUD/animation after this done
+        # text; there is no outer prompt. Keep even the old HUD pending, never
+        # send an early A, and finish only on the later complete command page.
+        record['waits']=record.get('waits',0)+1
+        if record['waits']>25:return _trainer_half_review('pending_transition_wait_exhausted')
+        return {'phase':'battle_animation','objective':'Wait.','available_actions':['wait'],
+                'battle_tactic':'wait_trainer_half_hp_switch'}
     party_view = all(normalize(rows[i*2][3:13]) == normalize(species_key(m['species']))
                      for i,m in enumerate(party))
     lower = ' '.join(' '.join(rows[12:]).split())
