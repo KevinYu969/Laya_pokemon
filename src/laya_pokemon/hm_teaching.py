@@ -19,9 +19,12 @@ SURF_INTENT = dict(kind="teach_surf_nidoking", species=7, item=198,
                    move=57, replace_move=33, replace_index=1)
 STRENGTH_INTENT = dict(kind="teach_strength_snorlax", species=132, item=199,
                        move=70, replace_move=29, replace_index=0)
+FLY_INTENT = dict(kind="teach_fly_fearow", species=35, item=197,
+                  move=19, replace_move=43, replace_index=2)
 _CONTRACTS = {
     "teach_surf_nidoking": (SURF_INTENT, (61, 33, 30, 40), "NIDOKING", "SURF"),
     "teach_strength_snorlax": (STRENGTH_INTENT, (29, 133, 156, 34), "SNORLAX", "STRENGTH"),
+    "teach_fly_fearow": (FLY_INTENT, (64, 65, 43, 31), "FEAROW", "FLY"),
 }
 SOURCES = [f"https://github.com/pret/pokered/blob/{SOURCE_COMMIT}/{p}" for p in (
     "engine/items/item_effects.asm#L2154", "engine/pokemon/learn_move.asm",

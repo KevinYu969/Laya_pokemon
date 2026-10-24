@@ -1,0 +1,51 @@
+{
+  "schema": "laya-silph-master-ball-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "status": "verified_native_gift",
+  "closed_at_utc": "2026-10-24T02:31:58.686634+00:00",
+  "closed_at_taipei": "2026-10-24T10:31:58.686634+08:00",
+  "source_campaign_frame": 1389873,
+  "original_rows": 13,
+  "original_rows_sha256": "d16ee209ccf42f33c6b11d6e8db71d532faa14b7aca02b76a9aa8bbec4739561",
+  "receipt_steps": [
+    23429,
+    23430
+  ],
+  "item_append": {
+    "item": 1,
+    "quantity": 1
+  },
+  "native_gift_not_capture": true,
+  "party_money_and_previous_inventory_unchanged": true,
+  "got_master_ball": true,
+  "beat_silph_co_giovanni": true,
+  "badges_raw": 31,
+  "keyframes_note": "正常總裁對話及收到MASTER BALL原生文字；未重演或直接寫RAM。",
+  "evidence": [
+    {
+      "file": "outputs/research/silph-master-ball-baseline-proof-20261024.json",
+      "sha256": "8f25685789e91f8432f67f875f126afc7fc3dc4e0b8355c145ac83280f092cda",
+      "local_only": true
+    },
+    {
+      "file": "outputs/research/silph-master-ball-closed-proof-20261024.json",
+      "sha256": "e4c163e483f8338d94080ab3f909faf67a95aace338912fbc218241fd39365c0",
+      "local_only": true
+    },
+    {
+      "file": ".local/silph-master-ball-fixed-review-20261024.json",
+      "sha256": "1917891baf2e4b9efac48e00c94f7798a8b733ab2525e9dcdcb154b603cebffc",
+      "local_only": true
+    },
+    {
+      "file": ".local/silph-master-ball-fixed-steps-20261024.jsonl",
+      "sha256": "d16ee209ccf42f33c6b11d6e8db71d532faa14b7aca02b76a9aa8bbec4739561",
+      "local_only": true
+    }
+  ],
+  "constraints": [
+    "兩個關窗fresh frame來自無鍵唯讀clone1/2，不能當成主流程時間或幀。",
+    "五徽章；第六館與聯盟尚未達成。"
+  ]
+}

@@ -7,7 +7,12 @@ importlib.reload(hm_teaching)
 _CONTROLLERS=globals().get('_CONTROLLERS',{})
 _BINDINGS=globals().get('_BINDINGS',{})
 _COMPLETED=globals().get('_COMPLETED',set())
-MECHANICS={'teach_surf_nidoking','teach_strength_snorlax'}
+_INTENT_LOCATIONS={
+    'teach_surf_nidoking':(hm_teaching.SURF_INTENT,155,(4,5)),
+    'teach_strength_snorlax':(hm_teaching.STRENGTH_INTENT,155,(4,5)),
+    'teach_fly_fearow':(hm_teaching.FLY_INTENT,188,(1,3)),
+}
+MECHANICS=set(_INTENT_LOCATIONS)
 
 def _review(reason):
     return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
@@ -23,8 +28,10 @@ def context(state,plan,step_id,text,grid):
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
     if not step or step.get('mechanic') not in MECHANICS:
         return (_review('hm_teaching_intent_changed'),step_id) if step_id in _BINDINGS else None
-    expected=hm_teaching.SURF_INTENT if step['mechanic']=='teach_surf_nidoking' else hm_teaching.STRENGTH_INTENT
-    if (step.get('kind')!='interact' or step.get('map_id')!=155 or step.get('target')!=[4,5]
+    expected,map_id,target=_INTENT_LOCATIONS[step['mechanic']]
+    if (step.get('kind')!='interact' or step.get('map_id')!=map_id or step.get('target')!=list(target)
+            or type(step.get('map_id')) is not int
+            or any(type(v) is not int for v in step['target'])
             or step.get('hm_intent')!=expected or any(type(step['hm_intent'].get(k)) is not type(v)
                                                     for k,v in expected.items())):
         return _review('hm_teaching_explicit_intent_unverified'),step_id
@@ -33,7 +40,7 @@ def context(state,plan,step_id,text,grid):
         return _review('hm_teaching_intent_changed'),step_id
     controller=_CONTROLLERS.get(step_id)
     if controller is None:
-        if state.get('location')!={'map_id':155,'x':4,'y':5}:return None
+        if state.get('location')!={'map_id':map_id,'x':target[0],'y':target[1]}:return None
         controller=hm_teaching.HMTeachingController(expected)
         _CONTROLLERS[step_id]=controller;_BINDINGS[step_id]=binding
     controller.__class__=hm_teaching.HMTeachingController

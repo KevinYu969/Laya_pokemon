@@ -36,8 +36,14 @@ from . import silph_card_bridge
 importlib.reload(silph_card_bridge)
 from . import silph_rival_wait
 importlib.reload(silph_rival_wait)
+from . import silph_giovanni_wait
+importlib.reload(silph_giovanni_wait)
+from . import sabrina_native_warp
+importlib.reload(sabrina_native_warp)
 from . import lapras_bridge
 importlib.reload(lapras_bridge)
+from . import player_pc_bridge
+importlib.reload(player_pc_bridge)
 importlib.reload(campaign_safety)
 importlib.reload(capture_closing_gate)
 for controller in _GYM_CONTROLLERS.values():controller._last_now=None
@@ -45,6 +51,21 @@ for controller in _GYM_CONTROLLERS.values():controller._last_now=None
 
 def switch_context(pyboy,state,plan,step_id,previous):
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if player_pc_bridge.applies(step_id,step):
+        if (set(safari_entry._BINDINGS)-safari_entry._COMPLETED
+                or safari_entry._RUN_CONTROLLER is not None
+                or set(hm_teaching_bridge._BINDINGS)-hm_teaching_bridge._COMPLETED
+                or set(vending_bridge._BINDINGS)-vending_bridge._COMPLETED
+                or set(saffron_guard_bridge._BINDINGS)-saffron_guard_bridge._COMPLETED
+                or set(silph_card_bridge._BINDINGS)-silph_card_bridge._COMPLETED
+                or set(lapras_bridge._BINDINGS)-lapras_bridge._COMPLETED
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())
+                or set(campaign_transactions._BINDINGS)-campaign_transactions._COMPLETED):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'player_pc_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return player_pc_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                        read_world_grid(pyboy,state['location']),previous)
     if not step or step['kind']!='gym_switches':return None
     GymSwitchController=gym_switches_module.GymSwitchController
     from .observation import read_visible_text
@@ -80,6 +101,8 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if player_pc_bridge.applies(step_id,step):
+        return None  # switch_context收到主runner真previous後才可推進PC交易。
     if lapras_bridge.applies(step_id,step):
         from .observation import read_visible_text
         return lapras_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
@@ -138,6 +161,14 @@ def field_context(pyboy,state,plan,step_id):
         closing=capture_closing_gate.eligible(state,plan,step_id)
         result=capture_transaction.context(pyboy,state,plan,step_id,read_visible_text(pyboy),read_world_grid(pyboy,state['location']))
         return capture_closing_gate.restrict(result) if closing else result
+    if step and step.get('mechanic')=='sabrina_native_warp':
+        if (set(campaign_transactions._BINDINGS)-campaign_transactions._COMPLETED
+                or set(hm_teaching_bridge._BINDINGS)-hm_teaching_bridge._COMPLETED
+                or set(silph_card_bridge._BINDINGS)-silph_card_bridge._COMPLETED
+                or set(lapras_bridge._BINDINGS)-lapras_bridge._COMPLETED):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'sabrina_native_warp_other_transaction_active'},step_id)
+        return None  # 原生傳送由waypoint拿真previous動作序列；不交泛用interact交易。
     if campaign_transactions.applies(step_id,step):
         from .observation import read_visible_text
         return campaign_transactions.context(pyboy,state,plan,step_id,read_visible_text(pyboy),read_world_grid(pyboy,state['location']))
@@ -174,12 +205,36 @@ def field_context(pyboy,state,plan,step_id):
         intent={'kind':step['kind'],'species':candidates[0],'replace_move':45}
         if step['kind']=='use_cut':intent.update(map_id=step['map_id'],tree_x=step['tree'][0],tree_y=step['tree'][1],tileset_id=step.get('tileset_id',0))
         controller=CutController(intent);_FIELD_CONTROLLERS[step_id]=controller
+    reviewed_cut=_review_cut_six_party(controller,step,state)
+    if reviewed_cut is not None:
+        return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                 'review_reason':reviewed_cut},step_id)
     context=controller.context(read_visible_text(pyboy),state['progress'],location=loc,grid=grid,overworld_ready=grid is not None,battle_active=False)
     next_id=step_id
     if context.get('field_move_complete'):
         index=plan['steps'].index(step)+1
         next_id=plan['steps'][index]['id'] if index<len(plan['steps']) else 'complete'
     return context,next_id
+
+
+def _review_cut_six_party(controller,step,state):
+    """僅續接16號路已選妙蛙花的六人背景誤拒；不重建Cut基線或等待額度。"""
+    revision=step.get('reviewed_cut_six_party_revision')
+    if revision is None or getattr(controller,'_reviewed_cut_six_party_revision',None)==revision:return None
+    party=state.get('progress',{}).get('party',[])
+    baseline=[(m.get('species'),list(m.get('moves',[]))) for m in party]
+    if (type(revision) is not int or revision!=1 or state.get('frame')!=1436457
+            or state.get('location')!={'map_id':27,'x':34,'y':10}
+            or step.get('id')!='route16-native-cut' or step.get('kind')!='use_cut'
+            or step.get('tree')!=[34,9] or step.get('map_id')!=27
+            or controller.error!='cut_field_submenu_cursor_unverified'
+            or controller.stage!='choose_user' or controller.field_user_confirmed is not True
+            or controller.target_index!=3 or len(party)!=6 or party[3].get('species')!=154
+            or controller.baseline!=baseline
+            or controller.start_location!={'map_id':27,'x':34,'y':10,'facing':'up'}):
+        return 'cut_six_party_named_review_unverified'
+    controller.error=None;controller._reviewed_cut_six_party_revision=revision
+    return None
 
 
 def satisfied(step,progress):
@@ -214,7 +269,9 @@ def healthy(progress, *, require_full_pp=False):
 
 
 def coordinate_script_wait(state, step):
-    """僅固定來源的嘎啦嘎啦／Silph勁敵座標等待；不輸出方向或A。"""
+    """固定來源嘎啦嘎啦／Silph勁敵與坂木座標等待；不輸出方向或A。"""
+    if step.get('map_id') == 235 or step.get('event') == 'beat_silph_co_giovanni':
+        return silph_giovanni_wait.silph_giovanni_script_wait(state,step)
     if step.get('map_id') == 212 or step.get('event') == 'beat_silph_co_rival':
         return silph_rival_wait.silph_rival_script_wait(state,step)
     def review(reason):
@@ -247,7 +304,8 @@ def _via_target(plan,step,position):
     if not via:return step.get('target',list(position))
     # 工程解除的resume_revision與blocked修正不是新旅程；幾何或job改變才另建進度。
     fields=('id','kind','map_id','target','via','next_map','terminal',
-            'event','item','badge','await_script_event','face','require_full_pp')
+            'event','item','badge','await_script_event','face','require_full_pp',
+            'mechanic','landing','offpad')
     geometry=[{key:s[key] for key in fields if key in s} for s in plan['steps']]
     canonical=lambda value:json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=True)
     job=plan.get('training_job')
@@ -260,10 +318,24 @@ def _via_target(plan,step,position):
     return via[following] if following<len(via) else step.get('target',list(position))
 
 
+def native_warp_context(pyboy,state,step,previous):
+    """全部getter在原模擬器同一frame；controller只給候選，不自行按鍵。"""
+    from .observation import read_visible_text
+    from .rocket_movement import read_rocket_movement
+    grid=read_world_grid(pyboy,state['location'])
+    return sabrina_native_warp.context(state,step,read_visible_text(pyboy),grid,
+        read_rocket_movement(pyboy,observation_frame=state['frame']),previous)
+
+
 def waypoint(pyboy,state,plan,step_id,previous):
     global _LAST_ATTEMPT
     steps=plan['steps'];ids=[s['id'] for s in steps]
     if len(ids)!=len(set(ids)):raise ValueError('路線ID重複')
+    invalid=next((s for s in steps if s.get('mechanic')=='sabrina_native_warp'
+                  and any(k in s for k in ('next_map','terminal','event','item','badge','await_script_event'))),None)
+    if invalid is not None:
+        return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                'review_reason':'sabrina_native_warp_generic_completion_forbidden','route_step':invalid['id']},invalid['id']
     index=len(steps) if step_id=='complete' else ids.index(step_id) if step_id in ids else 0
     loc=state['location'];progress=state['progress'];mid=loc['map_id'];x,y=loc['x'],loc['y']
     # 先承認已完成的轉場，再判斷補血繞路，避免「進中心→繞路出門→再進中心」循環。
@@ -300,6 +372,12 @@ def waypoint(pyboy,state,plan,step_id,previous):
         if satisfied(step,progress) or ('next_map' in step and mid==step['next_map']):index+=1;continue
         if mid!=step['map_id']:
             return {'phase':'campaign_review','review_reason':'unexpected_map','expected_map':step['map_id'],'route_step':step['id']},step['id']
+        if step.get('mechanic')=='sabrina_native_warp':
+            context=native_warp_context(pyboy,state,step,previous)
+            if context is not None:
+                if context.get('native_warp_complete') is True:
+                    index+=1;continue
+                return context,step['id']
         target=_via_target(plan,step,(x,y))
         target={'x':target[0],'y':target[1]}
         if 'await_script_event' in step and [x,y]==list(target.values()):

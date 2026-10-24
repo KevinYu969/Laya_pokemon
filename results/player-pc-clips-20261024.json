@@ -1,0 +1,622 @@
+{
+  "schema": "player-pc-media-audit-v1",
+  "language": "zh-Hant",
+  "date": "2026-10-24",
+  "source_run": "league-campaign-20261024-24",
+  "source_ledger": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-054.jsonl",
+      "selected_steps": [
+        24037
+      ],
+      "selected_original_line_bytes_sha256": "649fd73366e17d5c65b2d2661e79544b1f37b1075297e5f0ce0d1eb1e8f51e7f"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-055.jsonl",
+      "selected_steps": [
+        24038,
+        24039,
+        24040,
+        24041,
+        24042,
+        24043,
+        24044,
+        24045,
+        24046,
+        24047,
+        24048,
+        24049,
+        24050,
+        24051,
+        24052,
+        24053,
+        24054,
+        24055,
+        24056
+      ],
+      "selected_original_line_bytes_sha256": "ccf6a00be4a70b227e7cf694a5d8aadfcd89e77505e667931dc5ab4e477735a2"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-056.jsonl",
+      "selected_steps": [
+        24057,
+        24058
+      ],
+      "selected_original_line_bytes_sha256": "677e390f5ad45ede0bbc69bad2c6d4e837c3ab48a6da819902633040fd56c3da"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-057.jsonl",
+      "selected_steps": [
+        24059,
+        24060
+      ],
+      "selected_original_line_bytes_sha256": "0465477fe94f9d4a2e7a286057400c70339297989df16c41297184689bb6ca2c"
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/steps-058.jsonl",
+      "selected_steps": [
+        24061,
+        24062,
+        24063,
+        24064,
+        24065,
+        24066,
+        24067,
+        24068,
+        24069,
+        24070,
+        24071,
+        24072,
+        24073,
+        24074,
+        24075,
+        24076,
+        24077,
+        24078,
+        24079,
+        24080,
+        24081,
+        24082,
+        24083,
+        24084,
+        24085,
+        24086,
+        24087,
+        24088,
+        24089,
+        24090,
+        24091,
+        24092,
+        24093,
+        24094,
+        24095,
+        24096
+      ],
+      "selected_original_line_bytes_sha256": "05ddd33d15733b130cd453619e22d2413ca6230c73e5056913fc40640fde4e02"
+    }
+  ],
+  "range": {
+    "steps_included": [
+      24037,
+      24095
+    ],
+    "boundary_observation_step": 24096,
+    "campaign_frame_start_inclusive": 1426697,
+    "campaign_frame_end_inclusive_sample": 1429057,
+    "emulated_frames": 2360,
+    "recorded_frames": 590,
+    "sample_every_emulated_frames": 4,
+    "excluded_boundary_action": "step24096 LEFT與其後所有影片影格"
+  },
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-054.mp4",
+      "sha256": "ac7307b50d407e4cdb99ca5e945d344a4bbf4a8076006116e4232153507e6fee",
+      "bytes": 30591,
+      "closure": {
+        "at": "2026-10-24T03:25:40.411745+00:00",
+        "segment": 54,
+        "timing": {
+          "wall_seconds": 10987.89,
+          "model_wait_seconds": 141.533,
+          "review_pause_seconds": 9828.24,
+          "non_review_session_seconds": 1159.65,
+          "emulated_seconds": 23778.933
+        },
+        "video": {
+          "filename": "video-054.mp4",
+          "fps": 15,
+          "frames": 20,
+          "playback_seconds": 1.3333333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "2eb4aa766228750163c85758bbe6e88833dbd10e89a9c8bce54f078db1255c52",
+      "global_prior_recorded_frames": 356664,
+      "selected_frame_range_zero_based_half_open": [
+        10,
+        20
+      ],
+      "selected_time_range_seconds": [
+        0.6666666666666666,
+        1.3333333333333333
+      ],
+      "selected_count": 10,
+      "first_selected_campaign_sample": 1426701,
+      "last_selected_campaign_sample": 1426737,
+      "full_decode": {
+        "frames": 20,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "1.333333",
+          "nb_frames": "20",
+          "nb_read_frames": "20"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-055.mp4",
+      "sha256": "9bdcec7f3d728ed8ffa11f42b313ed64c51e6c88a41390f123ba20056b0d5046",
+      "bytes": 88576,
+      "closure": {
+        "at": "2026-10-24T03:29:34.416952+00:00",
+        "segment": 55,
+        "timing": {
+          "wall_seconds": 11221.89,
+          "model_wait_seconds": 141.83,
+          "review_pause_seconds": 10061.256,
+          "non_review_session_seconds": 1160.634,
+          "emulated_seconds": 23791.6
+        },
+        "video": {
+          "filename": "video-055.mp4",
+          "fps": 15,
+          "frames": 190,
+          "playback_seconds": 12.666666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "a9d9426e22fdec376620e2e8efbd3f89165b01785a4c66eeb7ce2acb86514b0a",
+      "global_prior_recorded_frames": 356684,
+      "selected_frame_range_zero_based_half_open": [
+        0,
+        190
+      ],
+      "selected_time_range_seconds": [
+        0.0,
+        12.666666666666666
+      ],
+      "selected_count": 190,
+      "first_selected_campaign_sample": 1426741,
+      "last_selected_campaign_sample": 1427497,
+      "full_decode": {
+        "frames": 190,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "12.666667",
+          "nb_frames": "190",
+          "nb_read_frames": "190"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-056.mp4",
+      "sha256": "51f64605b55f5e5b2ac5bcaf7388981c47e9b2511a6eb9243095942150203163",
+      "bytes": 22025,
+      "closure": {
+        "at": "2026-10-24T03:32:09.240845+00:00",
+        "segment": 56,
+        "timing": {
+          "wall_seconds": 11376.703,
+          "model_wait_seconds": 141.83,
+          "review_pause_seconds": 10215.803,
+          "non_review_session_seconds": 1160.9,
+          "emulated_seconds": 23792.933
+        },
+        "video": {
+          "filename": "video-056.mp4",
+          "fps": 15,
+          "frames": 20,
+          "playback_seconds": 1.3333333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "d701597bdde41ee4783028b46e2f420670b4ecb8beba6b462209280e8010fc56",
+      "global_prior_recorded_frames": 356874,
+      "selected_frame_range_zero_based_half_open": [
+        0,
+        20
+      ],
+      "selected_time_range_seconds": [
+        0.0,
+        1.3333333333333333
+      ],
+      "selected_count": 20,
+      "first_selected_campaign_sample": 1427501,
+      "last_selected_campaign_sample": 1427577,
+      "full_decode": {
+        "frames": 20,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "1.333333",
+          "nb_frames": "20",
+          "nb_read_frames": "20"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-057.mp4",
+      "sha256": "ad5f8714f72658398f74259d3a671c7852dbae3d97285e1a9b78503875c3298f",
+      "bytes": 16532,
+      "closure": {
+        "at": "2026-10-24T03:34:16.312206+00:00",
+        "segment": 57,
+        "timing": {
+          "wall_seconds": 11503.781,
+          "model_wait_seconds": 142.111,
+          "review_pause_seconds": 10342.318,
+          "non_review_session_seconds": 1161.463,
+          "emulated_seconds": 23794.267
+        },
+        "video": {
+          "filename": "video-057.mp4",
+          "fps": 15,
+          "frames": 20,
+          "playback_seconds": 1.3333333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "abfaab2461d9d97cb59ff14b2b756319156c3e9949da39237a8b60f8f771762f",
+      "global_prior_recorded_frames": 356894,
+      "selected_frame_range_zero_based_half_open": [
+        0,
+        20
+      ],
+      "selected_time_range_seconds": [
+        0.0,
+        1.3333333333333333
+      ],
+      "selected_count": 20,
+      "first_selected_campaign_sample": 1427581,
+      "last_selected_campaign_sample": 1427657,
+      "full_decode": {
+        "frames": 20,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "1.333333",
+          "nb_frames": "20",
+          "nb_read_frames": "20"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-058.mp4",
+      "sha256": "5b1c1abd34ac65e6fab73d2d22961cf83fc1a38ca6bc9a58034ace7b74462fc7",
+      "bytes": 192608,
+      "closure": {
+        "at": "2026-10-24T03:36:11.444593+00:00",
+        "segment": 58,
+        "timing": {
+          "wall_seconds": 11618.906,
+          "model_wait_seconds": 142.158,
+          "review_pause_seconds": 10456.271,
+          "non_review_session_seconds": 1162.635,
+          "emulated_seconds": 23818.267
+        },
+        "video": {
+          "filename": "video-058.mp4",
+          "fps": 15,
+          "frames": 360,
+          "playback_seconds": 24.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "278ae4c5dbb5ea8c2e7fd7d13ebf1c2ae0601ca3c1ef50a1ebf64abe9022dc22",
+      "global_prior_recorded_frames": 356914,
+      "selected_frame_range_zero_based_half_open": [
+        0,
+        350
+      ],
+      "selected_time_range_seconds": [
+        0.0,
+        23.333333333333332
+      ],
+      "selected_count": 350,
+      "first_selected_campaign_sample": 1427661,
+      "last_selected_campaign_sample": 1429057,
+      "full_decode": {
+        "frames": 360,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "24.000000",
+          "nb_frames": "360",
+          "nb_read_frames": "360"
+        }
+      }
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/player-pc-20261024/player-pc-tm34-tm21-1x.mp4",
+      "sha256": "8792f3705ecd6cf3543263577cd1e239ac1e323b16cc12f1b2a25dac35f23896",
+      "bytes": 847648,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "frames": 590,
+      "duration_seconds": 39.333333333333336,
+      "speed": 1,
+      "speed_basis": "emulated_time",
+      "audio": false,
+      "full_decode": {
+        "frames": 590,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "39.333333",
+          "nb_frames": "590",
+          "nb_read_frames": "590"
+        }
+      },
+      "every_decoded_frame_matches_source": true,
+      "same_source_order_all_590_frames": true,
+      "consecutive_pts_verified": true
+    },
+    {
+      "path": "outputs/videos/player-pc-20261024/player-pc-tm34-tm21-4x.mp4",
+      "sha256": "9ad8f04d588f23e5d077d4fb760e4cca64e4dc697139d2b7567fd78afeee0caf",
+      "bytes": 847648,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "frames": 590,
+      "duration_seconds": 9.833333333333334,
+      "speed": 4,
+      "speed_basis": "post_production_4x",
+      "audio": false,
+      "full_decode": {
+        "frames": 590,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "9.833333",
+          "nb_frames": "590",
+          "nb_read_frames": "590"
+        }
+      },
+      "every_decoded_frame_matches_source": true,
+      "same_source_order_all_590_frames": true,
+      "consecutive_pts_verified": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/player-pc-20261024/01-kevins-pc.png",
+      "sha256": "3107d7cc765d13b20f6f605dd15b47245fea046b19a7bed7d7b9e56e14fa7ef7",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24042,
+      "observation_campaign_frame": 1426897,
+      "source_segment": 55,
+      "source_frame": 39,
+      "clip_frame": 49,
+      "relative_1x_seconds": 3.2666666666666666,
+      "source_and_both_clips_rgb_exact": true,
+      "rgb24_sha256": "7c558005317f5c2ad130bc5a0d45ae50614238097b10ffadd06a58f208b1249c",
+      "visible_text": [
+        "  BILL's PC",
+        " ▶KEVIN's PC",
+        "  PROF.OAK's PC",
+        "  LOG OFF"
+      ]
+    },
+    {
+      "path": "outputs/videos/player-pc-20261024/02-tm34-quantity01.png",
+      "sha256": "f1ab5eef169f3840b9cefb6d0dd534ab0d5667607056734916df1a1792259065",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24052,
+      "observation_campaign_frame": 1427297,
+      "source_segment": 55,
+      "source_frame": 139,
+      "clip_frame": 149,
+      "relative_1x_seconds": 9.933333333333334,
+      "source_and_both_clips_rgb_exact": true,
+      "rgb24_sha256": "3095a26dc01de8f63dc8d96255e91106e7a7aab8ae075494f4e53756c9736648",
+      "visible_text": [
+        "  WI",
+        " ▷DE  POKé BALL",
+        "  TO ▷TM34",
+        "  LO  HELIX FOSSIL",
+        "      NUGGET    ×01",
+        " How many?"
+      ]
+    },
+    {
+      "path": "outputs/videos/player-pc-20261024/03-tm34-stored.png",
+      "sha256": "f8901ce0d205727dfc16c22e05fd359f4aeb6a380ec23d8694058a0f9e0f72c4",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24055,
+      "observation_campaign_frame": 1427417,
+      "source_segment": 55,
+      "source_frame": 169,
+      "clip_frame": 179,
+      "relative_1x_seconds": 11.933333333333334,
+      "source_and_both_clips_rgb_exact": true,
+      "rgb24_sha256": "4366cb68ce91e9366ec5ad321c82233b6a3bd11a1962e9903b14b9b6aa9ff352",
+      "visible_text": [
+        "  WI",
+        " ▷DE  POKé BALL",
+        "  TO ▷TM34",
+        "  LO  HELIX FOSSIL",
+        "      NUGGET    ×01",
+        " TM34 was",
+        " stored via PC.   ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/player-pc-20261024/04-tm21-quantity01.png",
+      "sha256": "d03f6e2881fb925a2510df056979195d548478101ec4043c2e04c9a64120926c",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24085,
+      "observation_campaign_frame": 1428617,
+      "source_segment": 58,
+      "source_frame": 239,
+      "clip_frame": 479,
+      "relative_1x_seconds": 31.933333333333334,
+      "source_and_both_clips_rgb_exact": true,
+      "rgb24_sha256": "c63414585e73a32fab1d5c52a40d3f44166c71c3191517c89aba9b26a72868ef",
+      "visible_text": [
+        "  WI",
+        " ▷DE  HM01",
+        "  TO  TM24",
+        "  LO ▷TM21",
+        "      LIFT KEY  ×01",
+        " How many?"
+      ]
+    },
+    {
+      "path": "outputs/videos/player-pc-20261024/05-tm21-stored.png",
+      "sha256": "b8e8d33eaa0c6a8d4dc558096cce249ea1beec946c16f683a95e44db2787a378",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24088,
+      "observation_campaign_frame": 1428737,
+      "source_segment": 58,
+      "source_frame": 269,
+      "clip_frame": 509,
+      "relative_1x_seconds": 33.93333333333333,
+      "source_and_both_clips_rgb_exact": true,
+      "rgb24_sha256": "012cc69f8d13e4a487319f3a30af360b5fe2ab913059fc2c6b512e04ee49b6c4",
+      "visible_text": [
+        "  WI",
+        " ▷DE  HM01",
+        "  TO  TM24",
+        "  LO ▷TM21",
+        "      LIFT KEY  ×01",
+        " TM21 was",
+        " stored via PC.   ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/player-pc-20261024/06-normal-closed-world.png",
+      "sha256": "81f3e9ae4fce7222938b213d4ce947e43745b7fb51f05c333d9a51358f6f69c4",
+      "width": 480,
+      "height": 432,
+      "observation_step": 24096,
+      "observation_campaign_frame": 1429057,
+      "source_segment": 58,
+      "source_frame": 349,
+      "clip_frame": 589,
+      "relative_1x_seconds": 39.266666666666666,
+      "source_and_both_clips_rgb_exact": true,
+      "rgb24_sha256": "eef61a9740d90fc8cdf128527d73202e6ebaf1857477cd49807e5db717db2a67",
+      "visible_text": []
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/player-pc-20261024/qa-contact-sheet.png",
+    "sha256": "e10805fb99252be5ad854886cf23067feebae1ab87a130de7fe1301bb85b13ff",
+    "width": 1440,
+    "height": 948
+  },
+  "actions": {
+    "actions": 59,
+    "new_laya": 3,
+    "cache": 33,
+    "passive": 23,
+    "keys": {
+      "a": 18,
+      "wait": 23,
+      "down": 12,
+      "b": 6
+    }
+  },
+  "engineering_reviews": [
+    {
+      "campaign_frame": 1427457,
+      "native_issue": "stored後footer先印、舊清單與quantity01尚留",
+      "result": "同原交易基線校準後繼續，未重存"
+    },
+    {
+      "campaign_frame": 1427537,
+      "native_issue": "清單scroll提示18,11閃爍為空白",
+      "result": "同原交易基線校準後繼續，未重存"
+    },
+    {
+      "campaign_frame": 1427617,
+      "native_issue": "離清單後四label先畫、footer逐字且activecursor未畫",
+      "result": "同原交易基線校準後繼續，未重存"
+    }
+  ],
+  "timing_limit": {
+    "parent_supplied_review_endpoint_wall_seconds": 922.843,
+    "review_endpoints_independently_recomputed_in_this_media_task": false,
+    "reason": "此任務限定影片與59筆動作；不冒充另份完整review端點收據。",
+    "video_1x_seconds": 39.333333333333336,
+    "video_4x_seconds": 9.833333333333334
+  },
+  "editing": "只按既有連續campaign取樣順序串接已封片；1x15fps/4x60fps保留相同590幀，沒有補畫、重演、插幀或工程pause定格。",
+  "scope": "僅PC兩次存物與正常退出；無捕捉、HM取得／教學／野外使用或第七館宣稱。",
+  "parent_review": {
+    "status": "passed",
+    "method": "父層親看1440x948原尺寸QA，六頁清楚；另有固定59步與兩項PC轉移獨審。",
+    "date": "2026-10-24"
+  },
+  "published": false,
+  "title": "Laya 正常使用玩家 PC 存放 TM34／TM21，再正常退出",
+  "source_frame_mapping_audit": {
+    "path": "outputs/research/player-pc-clips-audit-20261024.json",
+    "sha256": "05ee5d11f366cf874f9fa00bbdf040cdc3e9942d899055b1b605f113e96530fb"
+  },
+  "limits": [
+    "1x為模擬時間，不是牆鐘速度；4x為後製播放速度，不代表Strata推論加速。",
+    "三次工程停檢仍如實列出；暫停不增加遊戲錄影影格，未偽裝首次無校準。",
+    "590幀跨5個已正常封裝來源段，campaign取樣連續，並非單一原始MP4；其後離站LEFT已排除。",
+    "PNG只取原片真影格，QA接觸表另加標籤；父層視覺審查尚待完成。"
+  ],
+  "visibility": {
+    "receipt": "public_project_backup",
+    "videos_and_screenshots": "local_only"
+  }
+}

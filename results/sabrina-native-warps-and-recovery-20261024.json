@@ -1,0 +1,359 @@
+{
+  "schema": "laya-sabrina-native-recovery-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "closed_at_utc": "2026-10-24T03:04:10.169227+00:00",
+  "closed_at_taipei": "2026-10-24T11:04:10.169227+08:00",
+  "source_campaign_frame": 1425177,
+  "party_before": [
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 41,
+      "hp": 0,
+      "max_hp": 198,
+      "exp": 91196,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        11
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 42254,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 37,
+      "hp": 55,
+      "max_hp": 114,
+      "exp": 51794,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        17,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 30,
+      "hp": 124,
+      "max_hp": 124,
+      "exp": 33943,
+      "status": 0,
+      "moves": [
+        55,
+        34,
+        47,
+        54
+      ],
+      "pp": [
+        25,
+        15,
+        15,
+        30
+      ]
+    }
+  ],
+  "party_after": [
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 42254,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 41,
+      "hp": 198,
+      "max_hp": 198,
+      "exp": 91196,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 37,
+      "hp": 114,
+      "max_hp": 114,
+      "exp": 51794,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 30,
+      "hp": 124,
+      "max_hp": 124,
+      "exp": 33943,
+      "status": 0,
+      "moves": [
+        55,
+        34,
+        47,
+        54
+      ],
+      "pp": [
+        25,
+        15,
+        15,
+        30
+      ]
+    }
+  ],
+  "normal_nurse_revival": true,
+  "no_exp_or_move_change": true,
+  "inventory_and_money_unchanged": true,
+  "actions": 130,
+  "new_laya": 3,
+  "cache_hits": 115,
+  "passive_waits": 12,
+  "reverse_warps": [
+    {
+      "step_id": "sabrina-recovery-pad19-20261024",
+      "actions": 5,
+      "first_frame": 1419561,
+      "last_frame": 1419721,
+      "tactics": [
+        "step_onto_source",
+        "await_native_transition",
+        "await_native_transition",
+        "verify_second_fresh_landing",
+        "step_off_landing"
+      ]
+    },
+    {
+      "step_id": "sabrina-recovery-pad3-20261024",
+      "actions": 5,
+      "first_frame": 1419761,
+      "last_frame": 1419921,
+      "tactics": [
+        "step_onto_source",
+        "await_native_transition",
+        "await_native_transition",
+        "verify_second_fresh_landing",
+        "step_off_landing"
+      ]
+    },
+    {
+      "step_id": "sabrina-recovery-pad22-20261024",
+      "actions": 5,
+      "first_frame": 1420121,
+      "last_frame": 1420281,
+      "tactics": [
+        "step_onto_source",
+        "await_native_transition",
+        "await_native_transition",
+        "verify_second_fresh_landing",
+        "step_off_landing"
+      ]
+    },
+    {
+      "step_id": "sabrina-recovery-pad32-20261024",
+      "actions": 5,
+      "first_frame": 1420481,
+      "last_frame": 1420641,
+      "tactics": [
+        "step_onto_source",
+        "await_native_transition",
+        "await_native_transition",
+        "verify_second_fresh_landing",
+        "step_off_landing"
+      ]
+    }
+  ],
+  "forward_four_warps": {
+    "actions": 31,
+    "file": ".local/sabrina-four-warps-fixed-steps-20261024.jsonl",
+    "sha256": "3dfb671c4a6c63284405073c5c95359ed3c0bbf4c02fbb69f83a31b090d5d638",
+    "local_only": true
+  },
+  "timing_delta": {
+    "wall_seconds": 579.032,
+    "model_wait_seconds": 1.564,
+    "review_pause_seconds": 573.281,
+    "non_review_session_seconds": 5.751,
+    "emulated_seconds": 104.266
+  },
+  "evidence": [
+    {
+      "file": ".local/sabrina-gym-fixed-review-20261024.json",
+      "sha256": "dc3552204cd61e09bdad910dd7e5bb49f79a99d3f87dcb3a8d60341ab1200be5",
+      "local_only": true
+    },
+    {
+      "file": ".local/sabrina-recovery-fixed-review-20261024.json",
+      "sha256": "e92e273a151cdf5f72c1ce1e8db85b4642a6ce84375f7099ac6dcb1b144c9301",
+      "local_only": true
+    },
+    {
+      "file": ".local/sabrina-recovery-fixed-steps-20261024.jsonl",
+      "sha256": "fd1db1eb7b533ab7e96360257ba3d4189e34e3637455ccd7495b95904112acd6",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "return以健康尼多王護送，隊伍次序正常交換首兩員。",
+    "只核正常逆向傳送與護士全補，未新增戰鬥策略或宣稱第七館。"
+  ]
+}

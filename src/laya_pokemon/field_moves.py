@@ -565,10 +565,10 @@ class CutController:
         active = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == "▶"]
         inactive = [(x, y) for y, row in enumerate(rows) for x, char in enumerate(row) if char == "▷"]
         positions = {(12, y) for y in labels.values()}
-        # 四人隊野外子選單會保留已選隊員HP列的靜態▷；不是第二個活動游標。
-        # 只接受已在真隊伍頁確認過的使用者與全部四個來源名字，其他位置仍拒絕。
-        party_background = (self.field_user_confirmed and self.baseline is not None
-            and len(self.baseline)==4 and inactive==[(0,2*self.target_index+1)]
+        # 四／六人隊子選單保留已選隊員HP列的靜態▷；六人後兩列的等級/HP被覆蓋。
+        # 只接受已在真隊伍頁確認過的使用者與全部來源名字，其他游標位置仍拒絕。
+        party_background = (self.field_user_confirmed is True and self.baseline is not None
+            and len(self.baseline) in (4,6) and inactive==[(0,2*self.target_index+1)]
             and all(normalize(rows[2*i][3:13])==normalize(species_key(mon[0]))
                     for i,mon in enumerate(self.baseline)))
         if party_background and len(active)==1 and active[0] in positions:

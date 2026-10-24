@@ -1,0 +1,1347 @@
+{
+  "schema": "laya-lapras25-body-slam-clips-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "title": "拉普拉斯25級：正常忘記叫聲、學會泰山壓頂",
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-024.mp4",
+      "sha256": "a41f94438ecd0fb87dde2c75c314b6bd2fc290644a5c8df74d5f1aa0b1527168",
+      "segment": 24,
+      "closure": {
+        "at": "2026-10-24T01:28:10.481209+00:00",
+        "segment": 24,
+        "timing": {
+          "wall_seconds": 3938.312,
+          "model_wait_seconds": 79.545,
+          "review_pause_seconds": 3163.514,
+          "non_review_session_seconds": 774.798,
+          "emulated_seconds": 15890.267
+        },
+        "video": {
+          "filename": "video-024.mp4",
+          "fps": 15,
+          "frames": 10186,
+          "playback_seconds": 679.0666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closed_before_read": true,
+      "prior_sample_frames": 228168,
+      "full_decode": {
+        "expected_frames": 10186,
+        "decoded_frames": 10186,
+        "ffmpeg_xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "679.066667",
+          "nb_frames": "10186",
+          "nb_read_frames": "10186"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-025.mp4",
+      "sha256": "869e688fa839c8b5ffe1c12bcb6e7b55653cc9c2ede16e1e824574f37adfd0f2",
+      "segment": 25,
+      "closure": {
+        "at": "2026-10-24T01:29:10.570171+00:00",
+        "segment": 25,
+        "timing": {
+          "wall_seconds": 3998.39,
+          "model_wait_seconds": 84.706,
+          "review_pause_seconds": 3196.045,
+          "non_review_session_seconds": 802.345,
+          "emulated_seconds": 16475.467
+        },
+        "video": {
+          "filename": "video-025.mp4",
+          "fps": 15,
+          "frames": 8778,
+          "playback_seconds": 585.2,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closed_before_read": true,
+      "prior_sample_frames": 238354,
+      "full_decode": {
+        "expected_frames": 8778,
+        "decoded_frames": 8778,
+        "ffmpeg_xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "585.200000",
+          "nb_frames": "8778",
+          "nb_read_frames": "8778"
+        }
+      }
+    }
+  ],
+  "fixed_ledger_sha256": "b9a0daaced1e5430f1576c406fb5bf8fa903405a5fc3ec6fecf5472e26d90ee6",
+  "review_receipt_sha256": "b30a8313a754c18649f49d04471361ab28ab2ebaa5c6b08a3e0ee9a40c0bf707",
+  "selection": {
+    "observation_start_frame": 953377,
+    "observation_end_frame": 954457,
+    "first_step": 15724,
+    "last_step": 15751,
+    "first_sample_emulator_frame": 953380,
+    "last_sample_emulator_frame": 954456,
+    "source_frame_count": 270,
+    "continuous": true,
+    "source_ranges": [
+      {
+        "segment": 24,
+        "start_inclusive": 10176,
+        "end_exclusive": 10186,
+        "frames": 10
+      },
+      {
+        "segment": 25,
+        "start_inclusive": 0,
+        "end_exclusive": 260,
+        "frames": 260
+      }
+    ],
+    "note": "相鄰已封片024最後10影格接025最初260影格；順序完全保留，無新增定格或刪除遊戲影格。每4模擬幀取樣1影格。",
+    "engineering_wait_excluded": true,
+    "wall_clock_duration_not_claimed": true
+  },
+  "actual_outcome": {
+    "species": 19,
+    "level": 25,
+    "moves_before": [
+      55,
+      45,
+      47,
+      54
+    ],
+    "moves_after": [
+      55,
+      34,
+      47,
+      54
+    ],
+    "pp_before": [
+      25,
+      40,
+      15,
+      30
+    ],
+    "pp_after": [
+      25,
+      15,
+      15,
+      30
+    ],
+    "forgotten_move": 45,
+    "learned_move": 34,
+    "replacement_slot_one_based": 2,
+    "preserved_moves": [
+      55,
+      47,
+      54
+    ],
+    "party_order_preserved": true,
+    "other_five_party_members_unchanged": true,
+    "inventory_unchanged": true,
+    "money_unchanged": true,
+    "no_party_faint_observed": true,
+    "badges_raw": 31,
+    "sixth_gym_not_completed": true,
+    "learned_receipt": {
+      "step": 15747,
+      "observation_frame": 954297,
+      "action_recorded_at_utc": "2026-10-24T01:28:11.431777+00:00",
+      "phase": "learning_menu",
+      "action": "a",
+      "visible_text": [
+        "          SNORLAX",
+        "               40",
+        "           135/193",
+        " LAPRAS learned",
+        " BODY SLAM!"
+      ],
+      "learning_tactic": "verified_body_slam_learned",
+      "learning_complete": true,
+      "party": [
+        {
+          "species": 19,
+          "level": 25,
+          "exp": 19595,
+          "hp": 104,
+          "max_hp": 104,
+          "status": 0,
+          "moves": [
+            55,
+            34,
+            47,
+            54
+          ],
+          "pp": [
+            25,
+            15,
+            15,
+            30
+          ]
+        },
+        {
+          "species": 7,
+          "level": 36,
+          "exp": 40019,
+          "hp": 121,
+          "max_hp": 121,
+          "status": 0,
+          "moves": [
+            61,
+            57,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            15,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "level": 35,
+          "exp": 43317,
+          "hp": 90,
+          "max_hp": 90,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "level": 35,
+          "exp": 36804,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "level": 36,
+          "exp": 50081,
+          "hp": 111,
+          "max_hp": 111,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            20,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 132,
+          "level": 40,
+          "exp": 82402,
+          "hp": 135,
+          "max_hp": 193,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            6
+          ]
+        }
+      ],
+      "badges_raw": 31,
+      "location": {
+        "map_id": 26,
+        "x": 19,
+        "y": 8
+      }
+    }
+  },
+  "videos": [
+    {
+      "path": "outputs/videos/lapras25-body-slam-20261024/lapras25-body-slam-1x.mp4",
+      "sha256": "17d7f6e54e1b38d33ac097bcc1379ed28d9637fca1317b0969392e10306580b9",
+      "bytes": 159491,
+      "frames": 270,
+      "fps": 15,
+      "duration_seconds": 18.0,
+      "speed": 1,
+      "width": 480,
+      "height": 432,
+      "audio": false,
+      "full_decode": {
+        "expected_frames": 270,
+        "decoded_frames": 270,
+        "ffmpeg_xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "18.000000",
+          "nb_frames": "270",
+          "nb_read_frames": "270"
+        }
+      },
+      "all_source_frames_retained": true,
+      "each_decoded_yuv420p_frame_equals_source": true,
+      "source_order_verified": true,
+      "decoded_pts_and_duration_verified": true
+    },
+    {
+      "path": "outputs/videos/lapras25-body-slam-20261024/lapras25-body-slam-4x.mp4",
+      "sha256": "42196bb333cc0db4c7089d6634cd1d505efe0d0e992b366bfae346b696c182ae",
+      "bytes": 159491,
+      "frames": 270,
+      "fps": 60,
+      "duration_seconds": 4.5,
+      "speed": 4,
+      "width": 480,
+      "height": 432,
+      "audio": false,
+      "full_decode": {
+        "expected_frames": 270,
+        "decoded_frames": 270,
+        "ffmpeg_xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "4.500000",
+          "nb_frames": "270",
+          "nb_read_frames": "270"
+        }
+      },
+      "all_source_frames_retained": true,
+      "each_decoded_yuv420p_frame_equals_source": true,
+      "source_order_verified": true,
+      "decoded_pts_and_duration_verified": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/lapras25-body-slam-20261024/01-body-slam-intro.png",
+      "sha256": "a722301ab871226f12984d94174fc612f92f6f82a14b4176d88748d06e6d2115",
+      "segment": 24,
+      "source_frame_zero_based": 10185,
+      "clip_frame_zero_based": 9,
+      "source_emulator_frame": 953416,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "73409578948c6f3f573df892d49048a437a8710d60965d1bcb63738a27c37e70",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 15725,
+        "observation_frame": 953417,
+        "action_recorded_at_utc": "2026-10-24T01:28:10.539109+00:00",
+        "phase": "learning_menu",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " trying to learn",
+          " BODY SLAM!"
+        ],
+        "learning_tactic": "advance_verified_natural_learning_intro",
+        "learning_complete": false,
+        "party": [
+          {
+            "species": 19,
+            "level": 25,
+            "exp": 19595,
+            "hp": 104,
+            "max_hp": 104,
+            "status": 0,
+            "moves": [
+              55,
+              45,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 132,
+            "level": 40,
+            "exp": 82402,
+            "hp": 135,
+            "max_hp": 193,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "badges_raw": 31,
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    },
+    {
+      "path": "outputs/videos/lapras25-body-slam-20261024/02-delete-yes.png",
+      "sha256": "f4f58a58b924604943fa2c797e2e84d95ef7d7d9b03892d69faed6670899a3ad",
+      "segment": 25,
+      "source_frame_zero_based": 99,
+      "clip_frame_zero_based": 109,
+      "source_emulator_frame": 953816,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "dd7afdca870b80c045c0507978ba47efae8f03af7bd2e1739d695128a600ed75",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 15735,
+        "observation_frame": 953817,
+        "action_recorded_at_utc": "2026-10-24T01:28:10.769430+00:00",
+        "phase": "learning_menu",
+        "action": "a",
+        "visible_text": [
+          "          SNOR",
+          "               ▶YES",
+          "           135  NO",
+          " move to make room",
+          " for BODY SLAM?"
+        ],
+        "learning_tactic": "accept_verified_growl_replacement",
+        "learning_complete": false,
+        "party": [
+          {
+            "species": 19,
+            "level": 25,
+            "exp": 19595,
+            "hp": 104,
+            "max_hp": 104,
+            "status": 0,
+            "moves": [
+              55,
+              45,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 132,
+            "level": 40,
+            "exp": 82402,
+            "hp": 135,
+            "max_hp": 193,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "badges_raw": 31,
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    },
+    {
+      "path": "outputs/videos/lapras25-body-slam-20261024/03-growl-cursor.png",
+      "sha256": "74344f77a57cf50951b3aa4a63ed0d10270fa5e5bca3372199bb6b893eae56cb",
+      "segment": 25,
+      "source_frame_zero_based": 139,
+      "clip_frame_zero_based": 149,
+      "source_emulator_frame": 953976,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "58433632b9c042e233703c54fb627bb9913d51eaa32a356c414fb492f6029e48",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 15739,
+        "observation_frame": 953977,
+        "action_recorded_at_utc": "2026-10-24T01:28:11.208777+00:00",
+        "phase": "learning_menu",
+        "action": "a",
+        "visible_text": [
+          "      WATER GUN",
+          "     ▶GROWL",
+          "      SING",
+          "      MIST",
+          " Which move should",
+          " be forgotten?"
+        ],
+        "learning_tactic": "forget_only_verified_growl",
+        "learning_complete": false,
+        "party": [
+          {
+            "species": 19,
+            "level": 25,
+            "exp": 19595,
+            "hp": 104,
+            "max_hp": 104,
+            "status": 0,
+            "moves": [
+              55,
+              45,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 132,
+            "level": 40,
+            "exp": 82402,
+            "hp": 135,
+            "max_hp": 193,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "badges_raw": 31,
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    },
+    {
+      "path": "outputs/videos/lapras25-body-slam-20261024/04-one-two-poof.png",
+      "sha256": "0ff35d3f7492c717cd86ea9251b901f7551e12529abdaac7a0646b7acf5e1e35",
+      "segment": 25,
+      "source_frame_zero_based": 159,
+      "clip_frame_zero_based": 169,
+      "source_emulator_frame": 954056,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "0135ca6196aefe5efa95664021cfa4939ec4cc9f0389eb123d7f1039946ce3f6",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 15741,
+        "observation_frame": 954057,
+        "action_recorded_at_utc": "2026-10-24T01:28:11.263775+00:00",
+        "phase": "learning_menu",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " 1, 2 and... Poof!"
+        ],
+        "learning_tactic": "advance_verified_growl_poof",
+        "learning_complete": false,
+        "party": [
+          {
+            "species": 19,
+            "level": 25,
+            "exp": 19595,
+            "hp": 104,
+            "max_hp": 104,
+            "status": 0,
+            "moves": [
+              55,
+              45,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 132,
+            "level": 40,
+            "exp": 82402,
+            "hp": 135,
+            "max_hp": 193,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "badges_raw": 31,
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    },
+    {
+      "path": "outputs/videos/lapras25-body-slam-20261024/05-forgot-growl.png",
+      "sha256": "3f028d9ca7844977f61fb5dfebac04fe155b5c4d1e972ee76da0372f62d2faf0",
+      "segment": 25,
+      "source_frame_zero_based": 189,
+      "clip_frame_zero_based": 199,
+      "source_emulator_frame": 954176,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "0f65d38d2cd7f0e8fc3d3b622d0fb863d8556939b017b60d157c29d7a6d74893",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 15744,
+        "observation_frame": 954177,
+        "action_recorded_at_utc": "2026-10-24T01:28:11.335554+00:00",
+        "phase": "learning_menu",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " LAPRAS forgot",
+          " GROWL!           ▼"
+        ],
+        "learning_tactic": "advance_verified_growl_forgot",
+        "learning_complete": false,
+        "party": [
+          {
+            "species": 19,
+            "level": 25,
+            "exp": 19595,
+            "hp": 104,
+            "max_hp": 104,
+            "status": 0,
+            "moves": [
+              55,
+              45,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 132,
+            "level": 40,
+            "exp": 82402,
+            "hp": 135,
+            "max_hp": 193,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "badges_raw": 31,
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    },
+    {
+      "path": "outputs/videos/lapras25-body-slam-20261024/06-learned-body-slam.png",
+      "sha256": "354c56840df28a9bef648e9462a6cb2c43567171725c45b642526736e212553d",
+      "segment": 25,
+      "source_frame_zero_based": 219,
+      "clip_frame_zero_based": 229,
+      "source_emulator_frame": 954296,
+      "observation_offset_frames": -1,
+      "width": 480,
+      "height": 432,
+      "source_rgb_sha256": "32e5dd69d3f99a18d1bfc06194daa8ded99fd6cb5969db2b76b18504bd2f48d3",
+      "unchanged_source_pixels": true,
+      "evidence": {
+        "step": 15747,
+        "observation_frame": 954297,
+        "action_recorded_at_utc": "2026-10-24T01:28:11.431777+00:00",
+        "phase": "learning_menu",
+        "action": "a",
+        "visible_text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " LAPRAS learned",
+          " BODY SLAM!"
+        ],
+        "learning_tactic": "verified_body_slam_learned",
+        "learning_complete": true,
+        "party": [
+          {
+            "species": 19,
+            "level": 25,
+            "exp": 19595,
+            "hp": 104,
+            "max_hp": 104,
+            "status": 0,
+            "moves": [
+              55,
+              34,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              15,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 7,
+            "level": 36,
+            "exp": 40019,
+            "hp": 121,
+            "max_hp": 121,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "level": 35,
+            "exp": 43317,
+            "hp": 90,
+            "max_hp": 90,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "level": 35,
+            "exp": 36804,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "level": 36,
+            "exp": 50081,
+            "hp": 111,
+            "max_hp": 111,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 132,
+            "level": 40,
+            "exp": 82402,
+            "hp": 135,
+            "max_hp": 193,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "badges_raw": 31,
+        "location": {
+          "map_id": 26,
+          "x": 19,
+          "y": 8
+        }
+      }
+    }
+  ],
+  "qa": {
+    "contactsheet": "outputs/videos/lapras25-body-slam-20261024/qa-contactsheet.png",
+    "sha256": "ed7a41b8a60b2f80edc13cf139cee150ba481ff6e21cab9fd999320b41bb242c",
+    "visual_review": "passed_by_worker_and_parent",
+    "source_and_outputs_full_decode": true,
+    "all_4x_frames_retained": true,
+    "all_output_frame_hashes_equal_source": true,
+    "all_png_rgb_channels_equal_source": true,
+    "concat_boundary_source_hashes": [
+      "0a8675cf578f52dfa4c335623906a508",
+      "a5e3dc5e8b1ca71d5a2fa95b94829eb9"
+    ],
+    "source_frame_sequence_sha256": "562d81c798f5588e67d8599da5a9463f270642c4858be6964e9c15b8d64b679b",
+    "visual_review_method": "view_image(original)完整檢視960x1374 QA，六張來源480x432畫面清楚、文字完整、無黑片或虛構覆蓋",
+    "parent_visual_review": "passed_by_parent_view_image_original_2026-10-24",
+    "rejected_conversion": "初次4x CFR輸出273幀而非270，驗證拒絕；改輸入60fps重定時後270幀/4.5秒且全部同源。曾嘗試非CFR passthrough搭配輸出-r60被ffmpeg拒絕，未當成成品。"
+  },
+  "limits": [
+    "1x為模擬影格時間，4x只後製；片長不是模型判斷、工程等待或通關牆鐘耗時",
+    "本片Lapras25，不代表六人全隊35或第六館已完成",
+    "學招時HUD仍是支援者Snorlax40，不把HUD誤稱正在學招的Lapras",
+    "沒有補畫、生成、裁切、覆蓋正式遊戲像素；影片與PNG僅留本機，未發布網站"
+  ],
+  "asset_inventory": {
+    "before_videos": 34,
+    "before_pngs": 119,
+    "added_videos": 2,
+    "added_formal_pngs": 6,
+    "added_qa_pngs": 1,
+    "after_videos": 36,
+    "after_pngs": 126,
+    "baseline_supplied_by_parent": true
+  }
+}

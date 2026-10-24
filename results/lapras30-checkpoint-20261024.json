@@ -1,0 +1,339 @@
+{
+  "schema": "laya-lapras30-checkpoint-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "title": "拉普拉斯以正常直接戰鬥達30級並回中心全補",
+  "closed_at_utc": "2026-10-24T01:34:08.310437+00:00",
+  "closed_at_taipei": "2026-10-24T09:34:08.310437+08:00",
+  "frame_interval_half_open": [
+    961049,
+    1326905
+  ],
+  "original_rows": 6370,
+  "location": {
+    "map_id": 154,
+    "x": 3,
+    "y": 3
+  },
+  "party_before": [
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 40019,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 25,
+      "hp": 104,
+      "max_hp": 104,
+      "exp": 19595,
+      "status": 0,
+      "moves": [
+        55,
+        34,
+        47,
+        54
+      ],
+      "pp": [
+        25,
+        15,
+        15,
+        30
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 36,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 50081,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 40,
+      "hp": 193,
+      "max_hp": 193,
+      "exp": 82490,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    }
+  ],
+  "party_after": [
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 40,
+      "hp": 193,
+      "max_hp": 193,
+      "exp": 82490,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 40019,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 36,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 50081,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 30,
+      "hp": 124,
+      "max_hp": 124,
+      "exp": 33943,
+      "status": 0,
+      "moves": [
+        55,
+        34,
+        47,
+        54
+      ],
+      "pp": [
+        25,
+        15,
+        15,
+        30
+      ]
+    }
+  ],
+  "lapras_exp_gain": 14348,
+  "other_five_members_unchanged_every_row": true,
+  "all_observed_party_hp_positive": true,
+  "all_six_full_hp_status_pp_at_center": true,
+  "money_unchanged": 46096,
+  "badge_count": 5,
+  "operations": {
+    "actions": 6370,
+    "new_laya_predictions": 54,
+    "cache_hits": 6311,
+    "passive_waits": 5
+  },
+  "timing": {
+    "runner_endpoint_delta_seconds": {
+      "wall_seconds": 349.61,
+      "model_wait_seconds": 42.455,
+      "review_pause_seconds": 56.226,
+      "non_review_session_seconds": 293.384,
+      "emulated_seconds": 6097.6
+    },
+    "supervisor_elapsed_seconds": 319.594,
+    "supervisor_started_at_utc": "2026-10-24T01:28:48.886795+00:00",
+    "appends": 103,
+    "job_max_seconds": 900,
+    "job_max_appends": 650,
+    "timing_scope": "端點差含起跑前等待；319.594是新job單調時計。模擬秒、影片秒與全程通關時間不同。"
+  },
+  "classification": {
+    "cloud_fallback": false,
+    "strata_configuration_changed": false,
+    "gpt_gameplay_classification_calls": 0,
+    "note": "本機offline Laya契約；工程/審查額度另計。"
+  },
+  "code_validation": {
+    "file": "results/code-validation-lapras25-20261024.json",
+    "passed": 5476
+  },
+  "evidence": [
+    {
+      "file": ".local/lapras25-final-review-20261024.json",
+      "sha256": "879852af7c93497212c655fdde085012b589fcc49c4d737326b8bc5705228906"
+    },
+    {
+      "file": ".local/lapras30-final-review-20261024.json",
+      "sha256": "3c65ca6b4cfd794922c87359449eb490e0983b9bdba02c86300627870b902b27"
+    },
+    {
+      "file": ".local/lapras25-final-summary-20261024.json",
+      "sha256": "546f37b416c2c0db78cba06b03c3215ba798ed7b2b368725d2b7da6e697df34c"
+    },
+    {
+      "file": ".local/lapras30-final-summary-20261024.json",
+      "sha256": "d3a9aa6b744908926406bf9635179e14c1801bbfee27b91f23624ee841b01a12"
+    },
+    {
+      "file": ".local/lapras30-fixed-steps-20261024.jsonl",
+      "sha256": "7188c10f3b671e2763d87bdb9cb7d0b4bfa3c1c76e4b702a1a5568ff200004f1"
+    }
+  ],
+  "limits": [
+    "本收據按固定ledger及端點核數值，不額外以EXP差推定精確戰勝場數。",
+    "目標是這次30級檢查點，全六人35級未完成；仍五徽章、未希魯夫坂木／第六館／聯盟。",
+    "沒有讀舊state洗結果；所有回城/換首位/補給由正常遊戲輸入進行。",
+    "25級學招影片是前一階段素材，不冒充本次升30畫面；網站未發布。"
+  ]
+}

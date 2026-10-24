@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_cut_and_flyhouse_arrival",
+  "cut_at": "2026-10-24T03:45:02.463906+00:00",
+  "cut_frame": 1436577,
+  "cut_location": {
+    "map_id": 27,
+    "x": 34,
+    "y": 10
+  },
+  "tree": [
+    34,
+    9
+  ],
+  "before_tile": 61,
+  "after_tile": 44,
+  "before_walkable": 0,
+  "after_walkable": 1,
+  "user_species": 154,
+  "party_and_all_inventory_money_unchanged": true,
+  "cut_actions": 10,
+  "cut_new_laya": 4,
+  "cut_cache_hits": 5,
+  "cut_passive_waits": 1,
+  "cut_engineering_review": "六人靜態隊伍箭頭被舊四人白名單誤拒，保持原已選妙蛙花與原基線/等待額度具名續接。",
+  "house_arrival_at": "2026-10-24T03:46:07.103276+00:00",
+  "house_frame": 1438457,
+  "house_location": {
+    "map_id": 188,
+    "x": 1,
+    "y": 3
+  },
+  "house_actions": 47,
+  "house_new_laya": 0,
+  "house_cache_hits": 47,
+  "house_passive_waits": 0,
+  "hm02_received_at_this_cutoff": false,
+  "sources": [
+    {
+      "path": ".local/route16-fixed-cut-review-20261024.json",
+      "sha256": "dd4c7ef517a5ac5883bc172e37a10c759ee31f36e67c1239ae4fa85f8a258186",
+      "local_only": true
+    },
+    {
+      "path": ".local/route16-fixed-house-review-20261024.json",
+      "sha256": "5e1ddb41c54a9a9ace097623dc5c44cee8a86faaba5c11b5080dbd329e7fa5e1",
+      "local_only": true
+    },
+    {
+      "path": ".local/route16-fixed-cut-steps-20261024.json",
+      "sha256": "77d0f384fca8099b303356a907e39799863731ed081b6d1b706624c91a2583f4",
+      "local_only": true
+    },
+    {
+      "path": ".local/route16-fixed-house-steps-20261024.json",
+      "sha256": "f09d3e9d96496097b3595ac70d39b0e2661cee8d5e882eab0a9d49c71e172df2",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/route16-cut-pre-input-proof-20261024.json",
+      "sha256": "e3a1882d64728e1fef35c8d5e8f3e57cf73547116a5f281b9bc86953ba0fef6d",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/route16-cut-closed-proof-20261024.json",
+      "sha256": "ce02d57dee14b84c9f6dae23b626e9a3dd97743d6b429fed905ea07fec4bd5c8",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/hm02-gift-pre-input-proof-20261024.json",
+      "sha256": "fd6a3cd3d0c6bfd4b65cb2a3a73aa217478157bb12ecc22fed125c37bf1992ac",
+      "local_only": true
+    }
+  ]
+}

@@ -968,3 +968,69 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 - 首場真正PIDGEY23分EXP另剪2片：1x46.266667秒／後製4x11.566667秒，694幀完整保留；六人slot6 SWITCH與Lapras／Snor各88EXP四張正式PNG＋1QA。前一ODDISH RUN及後來兩場／吹飛不混入。父層親看QA與36唯一固定檔SHA核通過；本素材階段34片119PNG含QA，影片／raw留本機，僅公開收據。命令多行錯用literal\n導致一次驗證腳本SyntaxError，改為正式檔執行後核通過，未改證據資料。
 - 真framebuffer服務改用隱藏背景程序，HTTP200／當前六人核通過。舊IAB tab3網路錯誤頁是data URL，reload/goto/close被URL政策擋；不繞政策，依支援方式開新正常tab4至同一8767，頁面真實可見並保留。原生SDL視窗仍未修，網站未發布。逐鍵仍離線Laya，Strata配置不改；分類無GPT／雲端fallback，工程額度另計。五徽章，希魯夫坂木／第六館／聯盟未完。
 
+## 52. 2026-10-24 拉普拉斯正常學泰山壓頂、獨立升30後返回11F主線
+
+- 09:28:18.687818／game24 frame961049正常回淺紅154(3,3)六人HP/status/PP全補。固定16→25 ledger13526行，SHA b9a0daaced1e5430f1576c406fb5bf8fa903405a5fc3ec6fecf5472e26d90ee6，72新Laya／13420cache／34passive。LP5190→19595、Snor68085→82490各+14405；完整EXP頁去重各120筆、sum14405且有此前同場完整fainted。四原員每筆完整dict保持、所選觀測皆正HP，23次正常HEAL／耗損恢復／fighting fit及closed證據。父層與Bill獨算吻合，不把稀疏觀測當每幀絕無傷害。
+- 09:23:01.799018／953377 PIDGEY野戰升25學招intro因尚無候選先停檢。僅新增精確Lapras25原55/45/47/54→55/34/47/54、第二槽GROWL→BODY_SLAM，保水槍／唱歌／白霧。固定來源自然level25、策略slot1、唯一learner、完整YES／active四招游標／Poof／Forgot／And／Learned與全隊moves保持；未知仍停。原生step15739選Growl、15744 Forgot GROWL、15746已真安裝與PP25/15/15/30、15747完整learned。HUD是支援Snorlax40，不能誤當Lapras正在前線。
+- 作者首輪無來源SLAM分頁假設測試不符，移除單獨SLAM並改拒絕反例。26新測試，作者179 targeted、獨審187及reload／重複learner等邊界通過；父層完整5476項通過26.52秒／1SDL既有提示，另存code-validation-lapras25-20261024.json／19檔SHA，不覆蓋5450歷史。完整測試最初預設pytest暫存無法建立numbered directory，已單例重現setup OSError；未刪資料，改專案內全新basetemp後全過。一次測試檔名誤拼未執行，改正test_backup.py後6項通過。
+- 父層無鍵clone source953377→local1核正常學招子目標、stop(save=False)，原checkpoint及review bytes保持；clone1不當campaign幀。之後同一PyBoy與同場PIDGEY正常續招、收卡比獸+88後正常回城。沒有直接寫RAM／回讀戰前洗結果。原all35工作352批、900秒期限保留，因25頁停檢退出，不重設成新預算或假稱35達標。
+- 09:28:48.886795另開明示30級檢查點900秒／650批，25起正常直接接戰；09:34:08.310437／frame1326905六人正常回154(3,3)全補，event明示target30。103批／job319.594秒，LP25 EXP19595→30 EXP33943(+14348)，HP104→124；其他五員逐6370行完整保持。6370＝54新／6311cache／5passive；端點wall349.610含起跑前等待，review56.226／非review293.384，模擬6097.6秒分開。這不是全程通關時間，仍未全六人35。固定results/lapras30-checkpoint-20261024.json保存此結果。
+- 改回主線的理由：先把贈送15級成員補到可獨立接戰的30級，避免只練主力；接著用正常主線經驗推進，下一關前再檢健康與等級。09:35:38.139929到紫苑141(3,4)六人全補；09:39:25.384598到金黃182(3,4)六人全補。沿路Snor+406，未新徽章。09:41:05.120647返7F212(4,3)，09:42:42.930045正常經5,7warp到11F235(3,3)離pad核對，六人仍全滿；不重打勁敵／不重領Lapras。後續11F守衛目前另排正常進視線，這個切點未宣稱勝。
+- Route7新路線第一次誤讀不存在story_event_bits.gave_saffron_guards_drink，KeyError在改plan前停止；固定來源實際是D728 bit6，改最新checkpoint無鍵clone唯讀核raw_flags bit64，原state SHA保持。不得虛構progress已有此flag。
+- 另一可避免錯誤：重新拷來源候選11,10時漏套先前已校準碰撞入口12,10，09:37:35.240506／1360033 navigation_stall。已核當前空頁／grid前方tile0F，沿既有CheckWarpsCollision來源正常RIGHT進76，再通過已給水守衛到金黃；沒有越牆／傳送。準備腳本白名單也先擋235，按既有固定mainline map235及全5NPC/4warp錨點明確加入，才發短段landing，不刪NPC。
+- 證據維護失誤：首次本次Route7無鍵檢查重用了舊通用proof輸出名，覆寫歷史暫存；發現後把新資料移到唯一route7-west-gate-stall-run24-20261024.json，不拿它當game23的舊proof。舊原位元組未另保留，不聲稱重建同SHA；只有一支已結束oneshot helper引用舊名，沒有公開結果依賴它。已改後續inspect執行前檢查目標不存在。舊正式guard closed proof及原行／存檔皆未改。
+- 新學招片原速18秒／後製4倍4.5秒，同270幀：closed024尾10＋025首260連續。六張正式圖顯示BODY SLAM intro、YES、Growl游標、Poof、Forgot Growl、Learned BodySlam，父層親看960×1374 QA通過。初輪CFR4倍曾自補3幀，被全幀檢查拒；改輸入60fps重定時，正式兩片270同源幀，整來源18964＋成品540全解碼與RGB核過。素材階段36片126PNG含QA，影片／ROM／state／weights／raw留本機，不上GitHub；網站未發布。25結果proof的local_only標記亦由父層改為true，outputs不在備份白名單。
+- 本輪已核GitHub 53b04cc6cdb91513a28f34423ab0790c9fef5718／284檔，遠端SHA一致，CI40049407470成功；那是較早5450與16級資料切點，新25/30及影片收據待本輪下一次安全備份。8767真framebuffer可用，原生SDL／GLFW仍未修；逐鍵分類持續離線Laya CPU4／cache，Strata配置保留，沒有新增Strata或GPT遊戲分類呼叫；工程與審查額度另計。五徽章、希魯夫坂木／第六館／聯盟仍未完成。
+
+## 53. 2026-10-24 希魯夫坂木勝利、大師球與金黃道館入館
+
+- 09:43:51.917524／game24 frame1372761，11F守衛32級卡拉卡拉／催眠貘／嘎啦嘎啦真勝利後閉合。卡比獸+2143EXP、全77筆HP193，金錢+960；其他五員及背包保持。09:50:32.115944／1373361正常Card Key開11F門，10步、1新分類／2cache／7等待，5E→1F／walk1、D838 bit0真，鑰匙仍一份。兩份公開results固定原行及唯讀clone證據，clone1不當主流程幀。
+- 10:29:53.629265／1387897，真實擊敗希魯夫坂木並完成告別／原生離場／關窗。150步固定23258..23407；真四對手、fainted與EXP、KEVIN defeated GIOVANNI和獎金均核。Snor40→41、85039→87816(+2777)，尼多王36 EXP40019→42254(+2235)、HP121→108、Surf PP15→11；卡比獸HP193→187/198，泰山壓頂10→7。六人無FNT，其他四員全欄與原18項袋保持；錢47056→51115(+4059)。原生toggle slot3/4/5確實hidden，只保留總裁及秘書，沒有手動刪NPC。
+- 固定150步2次新Laya／132快取／16被動等待；wall2361.344秒，工程review2352.001、非review9.343、模擬242.266667。四段HARDEN停檢增量666.344／930.422／473.750／211.766秒，起步前69.719另列。這是本段口徑，不是全遊戲通關時間；summary.recorded_at仍是session建立時間，不能當破關時刻。逐鍵持續離線Laya／快取，沒有新增Strata或GPT遊戲分類，工程程式審查額度另計。
+- 41級自然學HARDEN採策略保留Strength/Amnesia/Rest/BodySlam，完整正常Delete NO→Abandon YES→DidNotLearn→HARDEN!，全六人保持。四個工程停點如實保存：1379337未支援自然略過；1379497單tile合法't被一般rows拒絕；1380137學招完成後誤要求先關窗；1380177又漏原生battle-shift的AboutToUse前置。原場戰鬥從未回讀戰前重洗，也無戰敗。
+- 第一修僅此控制器正文展開合法't，不改共用reader；後續親審補decoder metadata矛盾與來源外▷拒絕。5640全測後仍發現真實時序缺口，保留為歷史快照，不拿綠測試假稱實機成功。再核core1375–1384／text_2 912–922：『GIOVANNI is / about to use▼』在完整SendOut之前；精確partial只WAIT，完整來源cont才None交還原battle，自身不A。不採任意未知文字handoff，因既有battle955有generic A/wait。兩次具名migration保留原wait、party及舊稽核；真正同session正常續跑後才達坂木勝利。
+- 父層真無鍵clone分別核1379497／1380137／1380177，主流程來源SHA保持、local frame另起1，controller seed明示合成重建，不冒稱讀出live Python session。初版about測試281pass/1fail揭露原生▼未從行文字排除，改原位驗箭頭後才strip，最終103案例及原局部回歸過；完整5705 passed／25.88秒／1 SDL提示，29檔當時SHA固定。Sabrina同圖傳送仍另開發，5705不替它背書。
+- 11F overlay只補固定五NPC圖中3個toggle來源183/184/185常數，不改getter／演算法；42新案例與相關387通過，真false/unknown/mismatch保留障礙、移動Gio位置清除而總裁秘書保留。父層親核source與真closed clone的三hidden。
+- 10:31:04.052387到5,5，10:31:58.686634／1389873於6,5正常向右與總裁對話，真『KEVIN got a / MASTER BALL!』step23429/23430後關窗。13步，袋只在尾端新增item1×1，其他18項、全隊及金錢51115保持，got_master_ball真；兩次同收據取樣不是兩顆球。首次記錄腳本誤算14行被assert擋在寫檔前，實讀更正13後才固化。此項用既有Laya正常interact，非新增注入道具功能。
+- 10:34:07.363115／1397009正常走11F→7F→3F→2F→1F→金黃中心，六人HP/status/PP補滿。大師球保留；卡比獸41、尼多王36、伊布35、妙蛙花35、大嘴雀36、拉普拉斯30。原始5,5來源warp其實是內部plain floor，先核固定引擎門檻、再單格實測5,5與6,5，沒有瞬移或穿桌。
+- 10:35:38.536084／1400889金黃市34,4導航停檢是父層錯把34,5未核可走格設停點；真grid該格walk0，34,4已抵達且slot3/global12守衛確實hidden。保留錯誤，核真門34,3再正常UP進館。10:37:19.333242／1401009已在娜姿道館map178(8,16)，六人全滿、仍五徽章。這不是娜姿已勝；四個同圖原生傳送控制器尚在開發，不能套next_map178當完成。
+- 研究曾誤說world_map沒有金黃市overlay，父層發現它07:33就已存在且git無diff；研究者已更正為既有完整15物件來源＋仍需fresh hidden核對，不能宣稱本輪新增。後續11F overlay是另一項真新增，兩者分開。
+- 最新已核遠端仍是53b04cc6／284檔與CI40049407470；本節、25/30、坂木／大師球與後續程式待本輪安全備份。影片持續整理，既有36片126PNG留本機；網站登入尚未核完成，沒有部署宣稱。8767仍是真PyBoy framebuffer，原生SDL/GLFW視窗問題仍未修。
+
+## 54. 2026-10-24 第六館娜姿、四組原生傳送與單員KO後正常回城
+
+- 10:54:29.573022／step23846完整KEVIN defeated SABRINA，10:54:31.111303／game24 frame1418921完成領徽章/TM46與空UI檢討端點。徽章31→63、六枚，got_tm46與beat_sabrina真，袋原19項只append246×1，錢51115→55372(+4257)。七個館員flag是原生SetEventRange統一設置，不冒稱打過七場。
+- 實際四對手勇基拉38、魔牆人偶37、摩魯蛾38、胡地43；卡比獸得1180+1077+1123=3380EXP，87816→91196、仍41；大嘴雀正常接戰得1713、50081→51794，36→37。其餘四員逐152行完整保持，全隊順序保持；原背包道具序量保持。原行step23717..23868、16552幀＝275.866667模擬秒，8新Laya／144cache／0passive；9個WAIT是cached Laya，不是被動控制器。
+- 起點使用送首動作前的固定leader review1402369，完整端點wall117.515秒，其中起跑前工程review103.188、非review14.327、modelcounter6.341；逐8次新推論model_ms合計6.198377是另一口徑。先前首行動作後13.546不能稱含首動作的整場時間；所有值不當全遊戲通關時間。
+- 卡比獸單員倒下並保留損失：摩魯蛾後111/198、PSN；23800完整換怪提示卻B／keep_active，23803完整command仍FIGHT，因111/198約56.06%高於現半血條件。23806真招是PSYBEAM，不是PSYCHIC；23808 HUD29、23809會心HUD0而Party仍111滯後，23810才完整fainted與Party0。大嘴雀正常四DOWN選中，三次DRILL PECK擊倒胡地，55/114戰後HP。沒有全隊敗北或回讀洗結果。
+- 每館停檢已執行，docs/sabrina-gym-review.md及battle-lessons保存原因、換人時機與待驗策略。改善應在換怪提示評估中毒／血量／速度／新敵傷害，不一律B或只等50%；替補須避毒/草的超能力弱點。沒有宣稱健忘可阻擋Gen1會心，亦未悄悄部署新戰鬥策略或說權重自我訓練。本次先只正常回中心。
+- 正向四native warp真31步，11,15→19,17、15,15→19,3、15,5→1,3、1,5→11,11，各真新frame/方向回執、兩次idle落地、正常離墊才完成；同圖178不當完成依據。初版新模組7fail因共用command缺LEFT，改模組自給四方向候選，不改共享控制。
+- 5762完整回歸通過後，有限獨審重現next_map178會在caller前置跳過；父層加全plan native completion-key禁用。真首次派送亦被generic transaction判unsupported_explicit_transaction，當時frame1401129未送任何鍵；父層加field_context專屬defer並保留active交易阻擋。原反例轉綠，46獨審通過、5769完整23.63秒通過，再由真無鍵clone核相鄰UP候選後實踩。綠測試不能替未接通caller背書。
+- 娜姿新增八個只讀事件以九個真SDK錨D747/0x360..368核對，D7B3/D7B4快取，未知None。首跑浮點boss ID反例發現舊generic TypeError；只對beat_sabrina無效型別／負值加None guard，正常boss讀法保持，不改其他舊事件。20新與既有293通過。
+- 返程只新增來源互逆四組recovery配對，正向仍拒FNT。reverse明示recovery_route=True，允許既有倒下者，但須健康status0、HP>2/3且有效攻擊PP至少3的escort；全六人袋錢基線與owner、30WAIT/60秒跨reload保持。49cases＋相關160通過，完整5785 passed／24.19秒／1既有SDL提示，33檔當時SHA固定。未注入復活或座標。
+- 11:04:10.169227／1425177，已正常由尼多王護送、四逆向傳送走出館，回金黃中心182(3,3)，護士真正HEAL及fighting fit後六人HP/status/PP全滿。130步＝3新／115cache／12passive，沒有新EXP/招式/金錢/袋變動；首兩員正常交換，尼多王36、卡比獸41、伊布35、妙蛙花35、大嘴雀37、拉普拉斯30。公開返程收據固定原行及角色守恆，KO只由正常護士恢復。
+- 父層檢討返程腳本一處把三份檔案list與單份review bytes比較，assert在寫proof/改plan之前擋住；改比較raw[2]後原來源SHA與review保持再執行。另目標測試誤填不存在test_campaign_route而未執行，先rg定位實檔再正確跑局部及完整回歸。這些工程失誤不抹除或算遊戲戰敗。
+- 新坂木後半兩片118.8秒1x／29.7秒4x，同1782幀，正常選尼多王/SURF/效果絕佳/勝利/告別/空UI六正式圖＋QA；父層親看原尺寸通過，來源1930＋成品3564全解碼與每幀同源同序。素材38片133PNG，影片留本機，不上Git／網站未發布。結果JSON可公開備份，原始證據local_only分開標示。父層聚合88份固定檔SHA通過，兩份舊summary仍明示歷史快照。
+- 本節寫入時仍需執行本輪安全GitHub備份，最後既知53b04cc6切點為較早5450；後續CI及遠端SHA以新CLI結果核對，不預先宣稱推送成功。README目前狀態已收斂、歷史折疊，逐鍵一直是離線Laya/快取，Strata配置未改，沒有新增GPT/Strata遊戲分類；工程審查另計。
+- 下一段第七館前背包20格已滿、未拿HM02。唯讀研究正常PC存放物品空位、Route16領Fly及紅蓮路線，尚未存物／拿Fly／教學／飛翔，不把研究當實機完成。四天王／冠軍／名人堂尚未達。
+
+## 55. 2026-10-24 PC正常存物、六人Cut與HM02／大嘴雀Fly教學
+
+- 延續第54節六徽章與金黃全補。首次把hidden_event13,3當玩家站位，真格tile52不可走；25個WAIT後11:15:09／1426177停檢且隊伍／包／錢未動。固定CheckIfCoordsInFrontOfPlayerMatch面上使用playerY−1，所以玩家應13,4UP；正常走13步含先下13,5再上13,4（kind=move的face欄不自動轉向），11:18:54.431682／1426697到位。工程腳本曾把checkpoint誤稱final及PowerShell單行quote／預設cp1252讀取失敗，均在送遊戲鍵前停止，改真checkpoint／stdin與UTF8，不當遊戲戰敗。
+- PC新helper僅允許234/TM34與221/TM21各1件正常DEPOSIT，禁止TOSS。獨審固定WRAM算D53A count、D53B完整101byte表至D59F、下一D5A0不讀；SDK只有周邊六錨與map182，沒有直接PC地址，因此保留source-derived/unvalidated聲明，不拿合理POTION數值冒充ROM身分證明。0/1/49/50容量、terminator、同幀雙讀、torn/frame/unknown反例驗過。OSError getter原外拋已窄補unknown；合法duplicate stack仍保守拒，未假稱通用PC全支援。
+- 父層caller以field_context先defer、switch_context拿主runner真previous再分派，避免只看候選當已按。綁同一controller/owner、六人全字典/原袋/PC/55372、來源menu/cursor/quantity01、AddPC成功再RemoveBag、完整stored、兩fresh關頁才完成。一般generic completion keys禁止繞過。每件完整退出再獨立新基線，不沿用舊袋索引。
+- 11:34:17.304260／1429057兩TM各一次真存入且關閉。固定24037..24095共59步、2360emu幀＝39.333333秒，3新Laya／33cache／23passive；A18/DOWN12/B6/WAIT23。袋20→19在24053只移234，19→18在24086只移221；PC原POTION保持並追加兩TM。六人全欄/順序/錢55372逐行保持，正常stored文字在24055與24088各A，不是兩次讀到就領兩份。獨審固定receipt與四sourceSHA均通過。
+- PC保留三個真工程停點：1427457成功回執後.loop先印footer、舊quantity/清單未刷新；1427537新袋全格只差18,11的▼正在閃成空白；1427617 B返回玩家PC後四label已完整、footer仍印且尚無activecursor。窄修只已轉移與receipt_seen的已知重畫WAIT、固定唯一scroll格▼空白變體、已知exit_player無游標prefix WAIT。全部其它字格／活游標仍嚴查，沒有重存、TOSS或回讀。
+- 三次具名review只對234、固定frame、指定error/stage、前次revision、同原party/bag_after/pc_after/money與原基線；保留calls/waits/actions及60秒已用額度，只扣真工程暫停elapsed。未使用泛用重置逃過安全上限。新PC bridge單獨測試曾因內部首次import重載覆蓋monkeypatch而失敗，改module層先import，沒有放寬runtime。部分測試fixture漏NUGGET數量/é大小寫/同幀previous自改造成失敗，修fixture並留真packet。
+- PC端點wall922.843＝review919.484＋非review3.359；不能將3.359稱全場牆鐘或全遊戲時間。源gameframe與noinput clone1/2時間域分開；兩fresh關頁只佐證端點，不當原主流程幀。正常站位與移動另立38步收據，未混進59步存物。
+- 16號路途中Route7額外LEFT候選17,10先被父層當遠距目標而因牆停；改真18,10到位仍未切圖，遂明確via18,10後才鄰接LEFT17,10，實際入76、出西門經玉虹。兩次停檢保留，沒有把門座標當切圖成功。11:38:40.993798／1436177抵34,10樹前，隊伍／包18／錢保持。
+- Cut正常選第四格妙蛙花，1436457遇舊field_cut_choice只接受四人靜態▷背景而停。原native完整四label、唯一active12,10與selected靜態0,7都正確，六名字仍完整；窄修只准已確認四／六人背景，保全名字、位置與其他箭頭拒絕。23新＋舊137、父層具名9共146相關通過；父層具名清這個固定frame/error/已選Venu，保原Cut基線與safe_wait_count。不直接改RAM或樹圖。
+- 11:45:02.463906／1436577真正Cut完成且關頁：34,9 tile3D/walk0→2C/walk1，10步4新／5cache／1passive。全六人HP/EXP/PP/招式、原袋18、錢55372保持。其後47步全cache，經北側閘門與7,5屋門於11:46:07.103276／1438457抵秘密屋188(1,3)。來源NPC2,3，3,3是家具不可站；未碰另一隻卡比獸、不需自行車。
+- 11:47:16.347740／1439433正常面右交談領HM02：9步2新／7cache，KEVIN received/HM02!真出現、got_hm02 true，袋18→19僅新增197×1；六人、其他袋與錢保持，兩noinput closed核。沿既有正常NPC互動，不注入item/event。
+- 僅資料擴充HMTeachingController的FLY_INTENT/_CONTRACTS：Fearow35、HM02/197、FLY19、LEER43第三槽替換；原Surf/Strength維持155(4,5)，新bridge明確三項查表，Fly只188(1,3)，不把else當Strength。新40cases、相關215通過，頁面parser不改。
+- 11:47:50.461069／1442033 Fly教學真完成且關頁：大嘴雀37四招64/65/19/31，PP35/20/15/20，保啄／鑽啄／亂擊，只忘瞪眼；其他五人全欄、原袋19與HM02、55372逐65行保持，目標只原/新兩個精確狀態。4新Laya／39cache／22passive，教學途中無新工程中斷；34.109端點秒含30.875起跑前review，非review3.234，2600emu幀43.333333秒。
+- 六人ABLE背景已佔日誌12列，visible_text_candidates截掉下方學會全文；不捏造日誌LEARNED。真controller用未截的cells核忘招/學會prompt才單A，收據明示此證據限制，原影片留存可親看。11:51:58.323188／1442313已正常7步走出秘密屋至Route16(7,6)，六人全滿且原袋/錢保持。尚未實際野外Fly、Surf、抵達紅蓮或第七館勝利。
+- 凍結source完整回歸最新5983 passed／24.66秒／1既有SDL提示；先前5858/23.38、5951/24.76各自歷史source切點保留，不能回填後續修改。31項新免費換人候選測試已過但未整合battle.py，未宣稱娜姿教訓已由實戰新策略防住，沒有模型權重自我訓練。
+- PC新1x39.333333/4x9.833333同590幀，選54末10f＋55/56/57/58至第二閉合，排除下一LEFT。5來源與雙成品全解碼、逐幀YUV同源同序，6正式PNG逐張RGB同來源/雙片；1440x948 QA父層親看6頁通過。素材40片140精選PNG含QA，另存站位原圖；三工程停檢明記，片長非922.843牆鐘。影片/原輸出/ROM/state不納Git，網站未發布。
+- 聚合重算131個固定檔SHA通過、兩舊summary維持歷史標示；原game23→24 continuity仍核同源。README/時間軸已更新Fly教學與Route16端點，第二大腦本節為主筆記，公開版由白名單匯出。下一步先安全FF備份/核遠端與CI，再接源限定Fly目的地PALLET與Route21正常Surf，不改Strata配置。逐鍵一直本機離線Laya／快取，工程工具與審查另計，沒有新增GPT遊戲分類。
+

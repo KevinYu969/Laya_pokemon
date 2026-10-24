@@ -551,6 +551,148 @@
         "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
         "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm"
       ]
+    },
+    "235": {
+      "map_name": "SilphCo11F",
+      "source_object_count": 5,
+      "objects": [
+        {
+          "slot": 3,
+          "index": 183,
+          "source_object": "SILPHCO11F_GIOVANNI",
+          "source_toggle": "TOGGLE_SILPH_CO_11F_1",
+          "source_initial_state": "ON",
+          "source_position": [
+            6,
+            9
+          ],
+          "flag_address": 54716,
+          "flag_bit": 7,
+          "flag_mask": 128
+        },
+        {
+          "slot": 4,
+          "index": 184,
+          "source_object": "SILPHCO11F_ROCKET1",
+          "source_toggle": "TOGGLE_SILPH_CO_11F_2",
+          "source_initial_state": "ON",
+          "source_position": [
+            3,
+            16
+          ],
+          "flag_address": 54717,
+          "flag_bit": 0,
+          "flag_mask": 1
+        },
+        {
+          "slot": 5,
+          "index": 185,
+          "source_object": "SILPHCO11F_ROCKET2",
+          "source_toggle": "TOGGLE_SILPH_CO_11F_3",
+          "source_initial_state": "ON",
+          "source_position": [
+            15,
+            9
+          ],
+          "flag_address": 54717,
+          "flag_bit": 1,
+          "flag_mask": 2
+        }
+      ],
+      "all_source_objects": [
+        {
+          "slot": 1,
+          "source_object": "SILPHCO11F_SILPH_PRESIDENT",
+          "source_position": [
+            7,
+            5
+          ],
+          "sprite": "SPRITE_SILPH_PRESIDENT",
+          "source_line": 20
+        },
+        {
+          "slot": 2,
+          "source_object": "SILPHCO11F_BEAUTY",
+          "source_position": [
+            10,
+            5
+          ],
+          "sprite": "SPRITE_BEAUTY",
+          "source_line": 21
+        },
+        {
+          "slot": 3,
+          "source_object": "SILPHCO11F_GIOVANNI",
+          "source_position": [
+            6,
+            9
+          ],
+          "sprite": "SPRITE_GIOVANNI",
+          "source_line": 22
+        },
+        {
+          "slot": 4,
+          "source_object": "SILPHCO11F_ROCKET1",
+          "source_position": [
+            3,
+            16
+          ],
+          "sprite": "SPRITE_ROCKET",
+          "source_line": 23
+        },
+        {
+          "slot": 5,
+          "source_object": "SILPHCO11F_ROCKET2",
+          "source_position": [
+            15,
+            9
+          ],
+          "sprite": "SPRITE_ROCKET",
+          "source_line": 24
+        }
+      ],
+      "expected_list_prefix": [
+        3,
+        183,
+        4,
+        184,
+        5,
+        185,
+        255
+      ],
+      "source_only_not_snapshot": true,
+      "source_proof": {
+        "objects": {
+          "path": "data/maps/objects/SilphCo11F.asm",
+          "sha256": "8c1b9dfaaf8644b973cc02a2f9c91437eeb8fdc1e3af4e4d3df59d7ffcfb0438",
+          "git_blob_sha1": "b1f5a9f09062c438c56666a9304a7dbf7f699055",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/SilphCo11F.asm",
+          "text": "\tobject_const_def\n\tconst_export SILPHCO11F_SILPH_PRESIDENT\n\tconst_export SILPHCO11F_BEAUTY\n\tconst_export SILPHCO11F_GIOVANNI\n\tconst_export SILPHCO11F_ROCKET1\n\tconst_export SILPHCO11F_ROCKET2\n\nSilphCo11F_Object:\n\tdb $d ; border block\n\n\tdef_warp_events\n\twarp_event  9,  0, SILPH_CO_10F, 2\n\twarp_event 13,  0, SILPH_CO_ELEVATOR, 1\n\twarp_event  5,  5, LAST_MAP, 10 ; inaccessible\n\twarp_event  3,  2, SILPH_CO_7F, 4\n\n\tdef_bg_events\n\n\tdef_object_events\n\tobject_event  7,  5, SPRITE_SILPH_PRESIDENT, STAY, DOWN, TEXT_SILPHCO11F_SILPH_PRESIDENT\n\tobject_event 10,  5, SPRITE_BEAUTY, STAY, DOWN, TEXT_SILPHCO11F_BEAUTY\n\tobject_event  6,  9, SPRITE_GIOVANNI, STAY, DOWN, TEXT_SILPHCO11F_GIOVANNI, OPP_GIOVANNI, 2\n\tobject_event  3, 16, SPRITE_ROCKET, STAY, UP, TEXT_SILPHCO11F_ROCKET1, OPP_ROCKET, 41\n\tobject_event 15,  9, SPRITE_ROCKET, STAY, UP, TEXT_SILPHCO11F_ROCKET2, OPP_ROCKET, 40\n\n\tdef_warps_to SILPH_CO_11F\n"
+        },
+        "toggle_table": {
+          "path": "data/maps/toggleable_objects.asm",
+          "sha256": "8dc2fafaebe2ee98c83eca34d486d861117ce95b6c6f94da7760b7b1c88f8cf4",
+          "git_blob_sha1": "90f9e6892ba779ebaa6bdfead00335cf72a8fb8b",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
+          "line_start": 340,
+          "line_end": 343,
+          "excerpt": "\ttoggleable_objects_for SILPH_CO_11F\n\ttoggle_object_state SILPHCO11F_GIOVANNI, ON\n\ttoggle_object_state SILPHCO11F_ROCKET1,  ON\n\ttoggle_object_state SILPHCO11F_ROCKET2,  ON\n"
+        },
+        "toggle_constants": {
+          "path": "constants/toggle_constants.asm",
+          "sha256": "b028dd3cbcc2e6ef0135ab282d7fbf5ed41213f83555466d5d96b4c9d5e3812b",
+          "git_blob_sha1": "64712306d6b47395c000ce73ee27d5a469fd07f2",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm",
+          "line_start": 313,
+          "line_end": 316,
+          "excerpt": "\ttoggle_consts_for SILPH_CO_11F\n\tconst TOGGLE_SILPH_CO_11F_1                ; B7\n\tconst TOGGLE_SILPH_CO_11F_2                ; B8\n\tconst TOGGLE_SILPH_CO_11F_3                ; B9\n"
+        }
+      },
+      "sources": [
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/SilphCo11F.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm"
+      ]
     }
   },
   "source_files": [
@@ -693,6 +835,11 @@
       "path": "data/maps/headers/Route12.asm",
       "sha256": "f46853f8bd264cfde6367df51b613eedaf1017920557de2af51dc4cddbc8f466",
       "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/headers/Route12.asm"
+    },
+    {
+      "path": "data/maps/objects/SilphCo11F.asm",
+      "sha256": "8c1b9dfaaf8644b973cc02a2f9c91437eeb8fdc1e3af4e4d3df59d7ffcfb0438",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/SilphCo11F.asm"
     }
   ]
 }

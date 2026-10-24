@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_pc_stance_only",
+  "at": "2026-10-24T03:18:54.431682+00:00",
+  "frame": 1426697,
+  "location": {
+    "map_id": 182,
+    "x": 13,
+    "y": 4
+  },
+  "facing": "up",
+  "actions": 38,
+  "stalled_wait_actions": 25,
+  "corrected_navigation_and_facing_actions": 13,
+  "party_inventory_money_unchanged": true,
+  "badges_raw": 63,
+  "bag_slots": 20,
+  "pc_items_observed": [
+    {
+      "item": 20,
+      "quantity": 1
+    }
+  ],
+  "pc_reader_live_calibrated": false,
+  "native_deposit_completed": false,
+  "hm02_obtained": false,
+  "source_checkpoint_unchanged_by_readonly_proof": true,
+  "evidence": [
+    {
+      "path": ".local/saffron-pc-stance-fixed-review-20261024.json",
+      "sha256": "53d5f360313df342c98a5c78c3ae23a08793dd492d3e80640704c804eef7fd13",
+      "local_only": true
+    },
+    {
+      "path": ".local/saffron-pc-stance-fixed-summary-20261024.json",
+      "sha256": "26c18c7c9caa5c557f3573ba8302ddf48107c7ac4b305e4c287b5526e830e1a3",
+      "local_only": true
+    },
+    {
+      "path": ".local/saffron-pc-stance-fixed-steps-20261024.jsonl",
+      "sha256": "343ba7d17010a22175cc69950040e77dbd5d30f291118122e8746b75622798d0",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/player-pc-no-input-baseline-20261024.json",
+      "sha256": "9bf84f78da07dd97099bf14996e6e8f23989e6c9a30d5fcfa805fc0b60e651a9",
+      "local_only": true
+    }
+  ],
+  "timing_delta": {
+    "wall_seconds": 884.25,
+    "review_pause_seconds": 881.89,
+    "non_review_session_seconds": 2.36,
+    "note": "端點差含工程等待，非純導航秒數。"
+  }
+}

@@ -1,0 +1,872 @@
+{
+  "schema": "laya-silph11-card-key-door-evidence-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "local_only": false,
+  "title": "希魯夫11F：正常Card Key開門與閉合驗證",
+  "status": "verified_from_fixed_artifacts_not_new_gameplay",
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "preflight": {
+    "both_new_files_absent": true,
+    "pyboy_started": false,
+    "network_used": false,
+    "runtime_or_plan_modified": false,
+    "source_files_unchanged": true
+  },
+  "sources": [
+    {
+      "role": "final_review",
+      "relative_path": ".local/silph11-door-final-review-20261024.json",
+      "sha256": "75576dedfc7423ef4726acdf1529c4c18a821b39ed0bd0681555d6fe141c0c74",
+      "bytes": 11550
+    },
+    {
+      "role": "final_summary",
+      "relative_path": ".local/silph11-door-final-summary-20261024.json",
+      "sha256": "c0fda416a5a88d7247990ec3fb1a98ac52a533563c2aed70a4cd313cf2121d17",
+      "bytes": 915
+    },
+    {
+      "role": "fixed_steps",
+      "relative_path": ".local/silph11-door-fixed-steps-20261024.jsonl",
+      "sha256": "d2fa150dbe0285090c55b80cc84543d0af5e5eb667d104fe33bb76bb8b9cf0d1",
+      "bytes": 83723
+    },
+    {
+      "role": "stance_proof",
+      "relative_path": "outputs/research/silph11-door-stance-proof-20261024.json",
+      "sha256": "aab35705a79b21632ab152e4bded2fc1ff2ab42639a036905f41ba7c9ff582c1",
+      "bytes": 27544
+    },
+    {
+      "role": "closed_proof",
+      "relative_path": "outputs/research/silph11-door-closed-proof-20261024.json",
+      "sha256": "6fca3206cefd1772c89491be23244d24f5f581c58990ac0cf80ea779a08edc67",
+      "bytes": 27542
+    }
+  ],
+  "campaign_window": {
+    "first_step": 23248,
+    "last_step": 23257,
+    "step_count": 10,
+    "first_observation_frame": 1372961,
+    "last_step_observation_frame": 1373321,
+    "final_review_frame": 1373361,
+    "emulated_frames": 400,
+    "emulated_seconds": 6.666666666666667,
+    "location": {
+      "map_id": 235,
+      "x": 6,
+      "y": 14
+    },
+    "first_closed_frame": 1373281,
+    "second_closed_frame": 1373321,
+    "controller_complete": true,
+    "final_review_reason": "route_extension_required",
+    "final_battle_kind": "none",
+    "final_visible_text": []
+  },
+  "decisions": {
+    "new_model_choices": 1,
+    "cache_hits": 2,
+    "passive_waits": 7,
+    "a_actions": 3,
+    "wait_actions": 7,
+    "total": 10,
+    "new_model_latency_ms": 315.8851999905892,
+    "classifier_observed": "laya-rl-agent",
+    "cache_raw_usage_not_new_inference": true
+  },
+  "timing": {
+    "first_action_recorded_at_utc": "2026-10-24T01:50:31.779893+00:00",
+    "first_action_recorded_at_taipei": "2026-10-24T09:50:31.779893+08:00",
+    "controller_complete_recorded_at_utc": "2026-10-24T01:50:32.083354+00:00",
+    "controller_complete_recorded_at_taipei": "2026-10-24T09:50:32.083354+08:00",
+    "final_review_recorded_at_utc": "2026-10-24T01:50:32.115944+00:00",
+    "final_review_recorded_at_taipei": "2026-10-24T09:50:32.115944+08:00",
+    "first_post_action_record_to_final_review_seconds": 0.336051,
+    "first_to_last_action_record_seconds": 0.303461,
+    "first_post_action_wall_counter": 5279.531,
+    "final_review_wall_counter": 5279.875,
+    "post_first_action_counter_delta_seconds": 0.344,
+    "full_transaction_wall_seconds": null,
+    "limit": "首筆at/timing已在首動作/分類之後，缺首次動作前基線；0.336051與0.344秒不代表完整交易耗時。"
+  },
+  "door": {
+    "before": {
+      "proof_frame": 1,
+      "frame_domain": "independent_proof_not_campaign_frame",
+      "location": {
+        "map_id": 235,
+        "x": 6,
+        "y": 14
+      },
+      "facing_raw": 4,
+      "overworld_ready": true,
+      "tileset_id": 16,
+      "screen_cells_verified": 80,
+      "door_cells": [
+        {
+          "x": 6,
+          "y": 13,
+          "tile": 94,
+          "walkable": 0,
+          "in_visible_verified_cells": true
+        },
+        {
+          "x": 7,
+          "y": 13,
+          "tile": 94,
+          "walkable": 0,
+          "in_visible_verified_cells": true
+        }
+      ],
+      "event_snapshot": {
+        "profile": "red-en-silph-card-door-source-v1-unvalidated",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "read_valid": true,
+        "unknown_reason": null,
+        "live_calibrated": false,
+        "observation_frame": 1,
+        "location": {
+          "map_id": 235,
+          "x": 6,
+          "y": 14
+        },
+        "event_name": "silph_co_11_unlocked_door",
+        "event_id": 1928,
+        "address": 55352,
+        "bit": 0,
+        "raw_flags": 0,
+        "unlocked": false
+      },
+      "text_read_valid": true,
+      "alignment_verified": true,
+      "window_visible": false,
+      "blank_text_verified": true,
+      "movement": {
+        "read_valid": true,
+        "profile": "gen1-arrow-movement-source-v1",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "observation_frame": 1,
+        "spinning": false,
+        "simulated_remaining": 0,
+        "joy_ignore": 0,
+        "walk_counter": 0,
+        "movement_flags": 0
+      }
+    },
+    "after": {
+      "proof_frame": 1,
+      "frame_domain": "independent_proof_not_campaign_frame",
+      "location": {
+        "map_id": 235,
+        "x": 6,
+        "y": 14
+      },
+      "facing_raw": 4,
+      "overworld_ready": true,
+      "tileset_id": 16,
+      "screen_cells_verified": 80,
+      "door_cells": [
+        {
+          "x": 6,
+          "y": 13,
+          "tile": 31,
+          "walkable": 1,
+          "in_visible_verified_cells": true
+        },
+        {
+          "x": 7,
+          "y": 13,
+          "tile": 31,
+          "walkable": 1,
+          "in_visible_verified_cells": true
+        }
+      ],
+      "event_snapshot": {
+        "profile": "red-en-silph-card-door-source-v1-unvalidated",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "read_valid": true,
+        "unknown_reason": null,
+        "live_calibrated": false,
+        "observation_frame": 1,
+        "location": {
+          "map_id": 235,
+          "x": 6,
+          "y": 14
+        },
+        "event_name": "silph_co_11_unlocked_door",
+        "event_id": 1928,
+        "address": 55352,
+        "bit": 0,
+        "raw_flags": 1,
+        "unlocked": true
+      },
+      "text_read_valid": true,
+      "alignment_verified": true,
+      "window_visible": false,
+      "blank_text_verified": true,
+      "movement": {
+        "read_valid": true,
+        "profile": "gen1-arrow-movement-source-v1",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "observation_frame": 1,
+        "spinning": false,
+        "simulated_remaining": 0,
+        "joy_ignore": 0,
+        "walk_counter": 0,
+        "movement_flags": 0
+      }
+    },
+    "tile_transition_hex": [
+      "0x5e",
+      "0x1f"
+    ],
+    "walkable_transition": [
+      0,
+      1
+    ],
+    "event_name": "silph_co_11_unlocked_door",
+    "event_id": 1928,
+    "event_address_hex": "0xd838",
+    "event_bit": 0,
+    "raw_byte_before": 0,
+    "raw_byte_after": 1,
+    "first_event_true_step": 23256,
+    "first_event_true_frame": 1373281,
+    "proof_live_calibrated_flag": false
+  },
+  "protected_state": {
+    "party_before": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 40,
+        "hp": 193,
+        "max_hp": 193,
+        "exp": 85039,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 30,
+        "hp": 124,
+        "max_hp": 124,
+        "exp": 33943,
+        "status": 0,
+        "moves": [
+          55,
+          34,
+          47,
+          54
+        ],
+        "pp": [
+          25,
+          15,
+          15,
+          30
+        ]
+      }
+    ],
+    "party_after": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 40,
+        "hp": 193,
+        "max_hp": 193,
+        "exp": 85039,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 30,
+        "hp": 124,
+        "max_hp": 124,
+        "exp": 33943,
+        "status": 0,
+        "moves": [
+          55,
+          34,
+          47,
+          54
+        ],
+        "pp": [
+          25,
+          15,
+          15,
+          30
+        ]
+      }
+    ],
+    "full_party_unchanged_in_all_10_steps_proofs_and_review": true,
+    "party_order": [
+      132,
+      7,
+      102,
+      154,
+      35,
+      19
+    ],
+    "inventory_before": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 48,
+        "quantity": 1
+      }
+    ],
+    "inventory_after": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 48,
+        "quantity": 1
+      }
+    ],
+    "inventory_order_quantities_unchanged": true,
+    "card_key": {
+      "item": 48,
+      "before": 1,
+      "after": 1,
+      "consumed": false
+    },
+    "money_before": 47056,
+    "money_after": 47056,
+    "hp_status_exp_level_moves_pp_unchanged": true,
+    "no_faint_observed": true,
+    "badges_raw": 31,
+    "beat_silph_co_giovanni": false,
+    "got_master_ball": false
+  },
+  "steps": [
+    {
+      "step": 23248,
+      "frame": 1372961,
+      "recorded_at_utc": "2026-10-24T01:50:31.779893+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:31.779893+08:00",
+      "phase": "silph_card_door",
+      "action": "a",
+      "decision_class": "new_model_choice",
+      "model_ms": 315.8851999905892,
+      "emulated_frames": 40,
+      "visible_text": [],
+      "tactic": "face_door_interact_once",
+      "door_event": false,
+      "screen_sha256": "52de1df6dd235d3159430312b21632528cd6c2711e563862ccc162d0a3467f32"
+    },
+    {
+      "step": 23249,
+      "frame": 1373001,
+      "recorded_at_utc": "2026-10-24T01:50:31.835059+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:31.835059+08:00",
+      "phase": "silph_card_door",
+      "action": "wait",
+      "decision_class": "passive_wait",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [
+        " Bingo!"
+      ],
+      "tactic": "exact_source_partial_or_scroll_no_input",
+      "door_event": false,
+      "screen_sha256": "57c0662f24ec074f457f6e5c56fb58e1f58e99ff1068b7c8342a59bad1d0bbc7"
+    },
+    {
+      "step": 23250,
+      "frame": 1373041,
+      "recorded_at_utc": "2026-10-24T01:50:31.863598+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:31.863598+08:00",
+      "phase": "silph_card_door",
+      "action": "wait",
+      "decision_class": "passive_wait",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [
+        " Bingo!"
+      ],
+      "tactic": "exact_source_partial_or_scroll_no_input",
+      "door_event": false,
+      "screen_sha256": "57c0662f24ec074f457f6e5c56fb58e1f58e99ff1068b7c8342a59bad1d0bbc7"
+    },
+    {
+      "step": 23251,
+      "frame": 1373081,
+      "recorded_at_utc": "2026-10-24T01:50:31.893681+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:31.893681+08:00",
+      "phase": "silph_card_door",
+      "action": "wait",
+      "decision_class": "passive_wait",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [
+        " Bingo!",
+        " Th"
+      ],
+      "tactic": "exact_source_partial_or_scroll_no_input",
+      "door_event": false,
+      "screen_sha256": "5aa8f1c3edd4ab5943c028c6fb6f6d0e6e61598d6037dd1ca2e27e5873eefa9a"
+    },
+    {
+      "step": 23252,
+      "frame": 1373121,
+      "recorded_at_utc": "2026-10-24T01:50:31.920245+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:31.920245+08:00",
+      "phase": "silph_card_door",
+      "action": "a",
+      "decision_class": "cache_hit",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [
+        " Bingo!",
+        " The CARD KEY     ▼"
+      ],
+      "tactic": "advance_card_key_cont_once",
+      "door_event": false,
+      "screen_sha256": "37c28e33a009d3797f20e9101160b4f80a4191e7b0a104f8c1b0b6429d0568d3"
+    },
+    {
+      "step": 23253,
+      "frame": 1373161,
+      "recorded_at_utc": "2026-10-24T01:50:31.946958+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:31.946958+08:00",
+      "phase": "silph_card_door",
+      "action": "wait",
+      "decision_class": "passive_wait",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [
+        " The CARD KEY",
+        " opened the"
+      ],
+      "tactic": "exact_source_partial_or_scroll_no_input",
+      "door_event": false,
+      "screen_sha256": "cf6df27e8146776f2307d021fa7c1b19aaae2a8ad849574d6ec88aa2087468a1"
+    },
+    {
+      "step": 23254,
+      "frame": 1373201,
+      "recorded_at_utc": "2026-10-24T01:50:31.971448+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:31.971448+08:00",
+      "phase": "silph_card_door",
+      "action": "wait",
+      "decision_class": "passive_wait",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [
+        " The CARD KEY",
+        " opened the door!"
+      ],
+      "tactic": "full_done_text_stability_before_outer_wait",
+      "door_event": false,
+      "screen_sha256": "8631baf117a945024e90aecd051bab81a86bea7b841824b45af4f9776d2dc8a0"
+    },
+    {
+      "step": 23255,
+      "frame": 1373241,
+      "recorded_at_utc": "2026-10-24T01:50:31.996370+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:31.996370+08:00",
+      "phase": "silph_card_door",
+      "action": "a",
+      "decision_class": "cache_hit",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [
+        " The CARD KEY",
+        " opened the door!"
+      ],
+      "tactic": "close_complete_opened_door_done_once",
+      "door_event": false,
+      "screen_sha256": "8631baf117a945024e90aecd051bab81a86bea7b841824b45af4f9776d2dc8a0"
+    },
+    {
+      "step": 23256,
+      "frame": 1373281,
+      "recorded_at_utc": "2026-10-24T01:50:32.061368+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:32.061368+08:00",
+      "phase": "silph_card_door",
+      "action": "wait",
+      "decision_class": "passive_wait",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [],
+      "tactic": "first_closed_world_receipt",
+      "door_event": true,
+      "screen_sha256": "ca7ffb407c69c7376c24029599b76cfbd68698f9bb14d7534146d8324b85f7f6"
+    },
+    {
+      "step": 23257,
+      "frame": 1373321,
+      "recorded_at_utc": "2026-10-24T01:50:32.083354+00:00",
+      "recorded_at_taipei": "2026-10-24T09:50:32.083354+08:00",
+      "phase": "silph_card_door_complete",
+      "action": "wait",
+      "decision_class": "passive_wait",
+      "model_ms": 0.0,
+      "emulated_frames": 40,
+      "visible_text": [],
+      "tactic": null,
+      "door_event": true,
+      "screen_sha256": "ca7ffb407c69c7376c24029599b76cfbd68698f9bb14d7534146d8324b85f7f6"
+    }
+  ],
+  "session_cumulative_not_door_only": {
+    "status": "paused_for_review",
+    "actions": 23257,
+    "uncached_choices": 162,
+    "cache_hits": 23017,
+    "passive_waits": 78,
+    "model_load_count": 1,
+    "model_load_seconds": 4.379108799970709,
+    "cloud_fallback": false,
+    "strata_configuration_changed": false,
+    "emulated_frames": 1373360,
+    "timing": {
+      "wall_seconds": 5279.875,
+      "model_wait_seconds": 127.893,
+      "review_pause_seconds": 4167.084,
+      "non_review_session_seconds": 1112.791,
+      "emulated_seconds": 22889.333
+    }
+  },
+  "limits": [
+    "本輪僅整理五份固定輸出，沒有啟動模擬器、重演按鍵或讀ROM/state",
+    "兩份proof均frame1，屬獨立時間域，不能拼成主遊戲1372961/1373361的同幀封包",
+    "保留reader live_calibrated=false；只驗本次門格、事件及閉合，不宣稱所有門或整個ROM校準",
+    "閉合仍在門前235(6,14)，沒有證明走穿門或觸發/打贏坂木",
+    "五徽章/無Master Ball，不冒稱新館或全程劇情完成",
+    "模擬秒數與後段日誌record span不是完整牆鐘，不作硬體/模型速度對照",
+    "local_only=true，未發布上傳，不匯出私人絕對路徑、主機、端點或計畫"
+  ],
+  "visibility": {
+    "receipt": "public_project_backup",
+    "raw_evidence": "local_only"
+  }
+}

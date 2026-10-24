@@ -22,12 +22,16 @@ STORY_EVENT_NAMES = (
     "got_tm06", "beat_fuchsia_gym_trainer_0", "beat_fuchsia_gym_trainer_1",
     "beat_fuchsia_gym_trainer_2", "beat_fuchsia_gym_trainer_3",
     "beat_fuchsia_gym_trainer_4", "beat_fuchsia_gym_trainer_5",
-    "beat_sabrina", "beat_blaine", "beat_viridian_gym_giovanni", "beat_loreleis_room_trainer_0",
+    "beat_sabrina", "got_tm46", "beat_saffron_gym_trainer_0", "beat_saffron_gym_trainer_1",
+    "beat_saffron_gym_trainer_2", "beat_saffron_gym_trainer_3", "beat_saffron_gym_trainer_4",
+    "beat_saffron_gym_trainer_5", "beat_saffron_gym_trainer_6",
+    "beat_blaine", "beat_viridian_gym_giovanni", "beat_loreleis_room_trainer_0",
     "beat_brunos_room_trainer_0", "beat_agathas_room_trainer_0", "beat_lance", "beat_champion_rival",
     "hall_of_fame_dex_rating", "beat_cerulean_rival", "beat_cerulean_rocket_thief", "got_nugget", "beat_route24_rocket", "got_hm02", "got_hm05",
     "met_bill", "bill_said_use_cell_separator", "used_cell_separator_on_bill", "got_ss_ticket", "left_bills_house_after_helping",
     "beat_mt_moon_exit_super_nerd", "got_dome_fossil", "got_helix_fossil", "got_master_ball",
     "first_lock_opened", "second_lock_opened", "ss_anne_left", "beat_silph_co_rival",
+    "silph_co_11_unlocked_door",
 )
 EVENT_FLAG_ALIASES={'first_lock_opened':'1st_lock_opened','second_lock_opened':'2nd_lock_opened'}
 
@@ -40,6 +44,17 @@ _FUCHSIA_EVENT_IDS = {
     "beat_fuchsia_gym_trainer_0": 0x25A, "beat_fuchsia_gym_trainer_1": 0x25B,
     "beat_fuchsia_gym_trainer_2": 0x25C, "beat_fuchsia_gym_trainer_3": 0x25D,
     "beat_fuchsia_gym_trainer_4": 0x25E, "beat_fuchsia_gym_trainer_5": 0x25F,
+}
+
+# 固定 a536711 event_constants.asm:207-215；D747 + 0x360//8 = D7B3。
+# TM46 bit0、Sabrina bit1、館員0..5 bit2..7；館員6跨到D7B4 bit0。
+# beat_sabrina只參與新欄位SDK契約，不改它原本的generic讀取語意。
+_SABRINA_EVENT_IDS = {
+    "got_tm46": 0x360, "beat_sabrina": 0x361,
+    "beat_saffron_gym_trainer_0": 0x362, "beat_saffron_gym_trainer_1": 0x363,
+    "beat_saffron_gym_trainer_2": 0x364, "beat_saffron_gym_trainer_3": 0x365,
+    "beat_saffron_gym_trainer_4": 0x366, "beat_saffron_gym_trainer_5": 0x367,
+    "beat_saffron_gym_trainer_6": 0x368,
 }
 
 
@@ -62,6 +77,23 @@ def _silph_rival_event_supported(constants) -> bool:
     events = getattr(constants, "EVENT_FLAGS", None)
     value = events.get("beat_silph_co_rival") if isinstance(events, Mapping) else None
     return type(base) is int and base == 0xD747 and type(value) is int and value == 0x740
+
+
+def _sabrina_events_supported(constants) -> bool:
+    """九個SDK錨須全為固定真int，才可啟用八個新只讀事件。"""
+    base = getattr(constants, "EVENT_FLAGS_ADDRESS", None)
+    events = getattr(constants, "EVENT_FLAGS", None)
+    return (type(base) is int and base == 0xD747 and isinstance(events, Mapping)
+            and all(type(events.get(name)) is int and events[name] == event_id
+                    for name, event_id in _SABRINA_EVENT_IDS.items()))
+
+
+def _silph_11_door_event_supported(constants) -> bool:
+    """只新增固定Card Key門0x788=D838 bit0；不改既有Giovanni bit7。"""
+    base = getattr(constants, "EVENT_FLAGS_ADDRESS", None)
+    events = getattr(constants, "EVENT_FLAGS", None)
+    value = events.get("silph_co_11_unlocked_door") if isinstance(events, Mapping) else None
+    return type(base) is int and base == 0xD747 and type(value) is int and value == 0x788
 
 
 def read_progress(pyboy, constants=None) -> dict:
@@ -159,8 +191,19 @@ def read_progress(pyboy, constants=None) -> dict:
     badges = read_byte(constants.OBTAINED_BADGES_ADDRESS)
     result["badges_raw"] = badges
     fuchsia_supported = _fuchsia_events_supported(constants)
+    sabrina_supported = _sabrina_events_supported(constants)
     silph_rival_supported = _silph_rival_event_supported(constants)
+    silph_11_door_supported = _silph_11_door_event_supported(constants)
     for name in STORY_EVENT_NAMES:
+        if name in _SABRINA_EVENT_IDS and name != "beat_sabrina":
+            event_id = _SABRINA_EVENT_IDS[name]
+            value = read_byte(0xD747 + event_id // 8) if sabrina_supported else None
+            result["story_event_bits"][name] = None if value is None else bool(value & (1 << (event_id % 8)))
+            continue
+        if name == "silph_co_11_unlocked_door":
+            value = read_byte(0xD838) if silph_11_door_supported else None
+            result["story_event_bits"][name] = None if value is None else bool(value & 1)
+            continue
         if name == "beat_silph_co_rival":
             # 已核SDK錨後只讀固定來源地址，不再以第二次SDK查表解釋成其他事件。
             try:
@@ -173,6 +216,10 @@ def read_progress(pyboy, constants=None) -> dict:
             result["story_event_bits"][name] = None
             continue
         event_id = constants.EVENT_FLAGS.get(EVENT_FLAG_ALIASES.get(name,name))
+        if name == "beat_sabrina" and (not _integer(event_id) or event_id < 0):
+            # 只攔本次發現的舊boss無效SDK型別；正常generic映射／位元讀法不變。
+            result["story_event_bits"][name] = None
+            continue
         if event_id is None:
             result["story_event_bits"][name] = None
             continue

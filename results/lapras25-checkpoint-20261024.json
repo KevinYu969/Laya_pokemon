@@ -1,0 +1,5748 @@
+{
+  "schema": "laya-lapras25-checkpoint-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "title": "拉普拉斯正常升25、只忘叫聲學泰山壓頂並六人中心全補",
+  "scope": {
+    "run": "league-campaign-20261024-24",
+    "before_at_utc": "2026-10-24T01:08:24.734183+00:00",
+    "closed_at_utc": "2026-10-24T01:28:18.687818+00:00",
+    "closed_at_taipei": "2026-10-24T09:28:18.687818+08:00",
+    "frame_interval_half_open": [
+      121073,
+      961049
+    ],
+    "steps_inclusive": [
+      2359,
+      15884
+    ],
+    "original_rows": 13526,
+    "location": {
+      "map_id": 154,
+      "x": 3,
+      "y": 3
+    },
+    "badge_count": 5,
+    "badge_raw": 31
+  },
+  "party": {
+    "before": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 16,
+        "hp": 68,
+        "max_hp": 68,
+        "exp": 5190,
+        "status": 0,
+        "moves": [
+          55,
+          45,
+          47,
+          0
+        ],
+        "pp": [
+          25,
+          40,
+          15,
+          0
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 37,
+        "hp": 177,
+        "max_hp": 177,
+        "exp": 68085,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      }
+    ],
+    "after": [
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 25,
+        "hp": 104,
+        "max_hp": 104,
+        "exp": 19595,
+        "status": 0,
+        "moves": [
+          55,
+          34,
+          47,
+          54
+        ],
+        "pp": [
+          25,
+          15,
+          15,
+          30
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 40,
+        "hp": 193,
+        "max_hp": 193,
+        "exp": 82490,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      }
+    ],
+    "lapras_exp_gain": 14405,
+    "snorlax_exp_gain": 14405,
+    "unchanged_members": [
+      7,
+      102,
+      154,
+      35
+    ],
+    "four_members_unchanged_every_selected_observation": true,
+    "all_logged_player_hp_positive": true,
+    "minimum_observed_hp": {
+      "7": 121,
+      "19": 68,
+      "102": 90,
+      "154": 111,
+      "35": 111,
+      "132": 81
+    },
+    "full_hp_status_and_pp_at_center": true,
+    "pp_validation": "逐招以兩個已全補端點的實際原PP交叉；新泰山壓頂15，白霧30。",
+    "endpoint_order_matches": true
+  },
+  "experience": {
+    "complete_native_exp_receipts": 240,
+    "native_award_sums": {
+      "19": 14405,
+      "132": 14405
+    },
+    "receipts": [
+      {
+        "step": 2522,
+        "frame": 129793,
+        "at_utc": "2026-10-24T01:10:24.842564+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           131/177",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 5301
+      },
+      {
+        "step": 2523,
+        "frame": 129921,
+        "at_utc": "2026-10-24T01:10:24.894254+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           131/177",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 68196
+      },
+      {
+        "step": 2579,
+        "frame": 134185,
+        "at_utc": "2026-10-24T01:10:27.953649+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           131/177",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 5412
+      },
+      {
+        "step": 2580,
+        "frame": 134313,
+        "at_utc": "2026-10-24T01:10:27.998881+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           131/177",
+          " SNORLAX gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 68307
+      },
+      {
+        "step": 2639,
+        "frame": 138345,
+        "at_utc": "2026-10-24T01:10:31.220397+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           131/177",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 5523
+      },
+      {
+        "step": 2640,
+        "frame": 138473,
+        "at_utc": "2026-10-24T01:10:31.270670+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           131/177",
+          " SNORLAX gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 68418
+      },
+      {
+        "step": 3025,
+        "frame": 159593,
+        "at_utc": "2026-10-24T01:10:48.635533+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           171/177",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 5611
+      },
+      {
+        "step": 3026,
+        "frame": 159721,
+        "at_utc": "2026-10-24T01:10:48.687443+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           171/177",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 68506
+      },
+      {
+        "step": 3081,
+        "frame": 164297,
+        "at_utc": "2026-10-24T01:10:51.329804+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           131/177",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 5722
+      },
+      {
+        "step": 3082,
+        "frame": 164425,
+        "at_utc": "2026-10-24T01:10:51.380793+00:00",
+        "text": [
+          "          SNORLAX",
+          "               37",
+          "           131/177",
+          " SNORLAX gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 68617
+      },
+      {
+        "step": 3133,
+        "frame": 168841,
+        "at_utc": "2026-10-24T01:10:53.705690+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           114/182",
+          " LAPRAS gained",
+          " 240 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 240,
+        "observed_exp": 5962
+      },
+      {
+        "step": 3134,
+        "frame": 168969,
+        "at_utc": "2026-10-24T01:10:53.757184+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           114/182",
+          " SNORLAX gained",
+          " 240 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 240,
+        "observed_exp": 68857
+      },
+      {
+        "step": 3421,
+        "frame": 183353,
+        "at_utc": "2026-10-24T01:11:06.360066+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 6073
+      },
+      {
+        "step": 3422,
+        "frame": 183481,
+        "at_utc": "2026-10-24T01:11:06.411131+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 68968
+      },
+      {
+        "step": 3498,
+        "frame": 188985,
+        "at_utc": "2026-10-24T01:11:10.969354+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 6161
+      },
+      {
+        "step": 3501,
+        "frame": 189369,
+        "at_utc": "2026-10-24T01:11:11.182439+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 69056
+      },
+      {
+        "step": 3541,
+        "frame": 192729,
+        "at_utc": "2026-10-24T01:11:13.251375+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           134/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 6272
+      },
+      {
+        "step": 3542,
+        "frame": 192857,
+        "at_utc": "2026-10-24T01:11:13.305624+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           134/182",
+          " SNORLAX gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 69167
+      },
+      {
+        "step": 3576,
+        "frame": 195449,
+        "at_utc": "2026-10-24T01:11:14.756552+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           129/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 6409
+      },
+      {
+        "step": 3577,
+        "frame": 195577,
+        "at_utc": "2026-10-24T01:11:14.809341+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           129/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 69304
+      },
+      {
+        "step": 3645,
+        "frame": 200937,
+        "at_utc": "2026-10-24T01:11:18.533903+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           129/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 6520
+      },
+      {
+        "step": 3646,
+        "frame": 201065,
+        "at_utc": "2026-10-24T01:11:18.585653+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           129/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 69415
+      },
+      {
+        "step": 3727,
+        "frame": 206945,
+        "at_utc": "2026-10-24T01:11:23.147171+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           129/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 6631
+      },
+      {
+        "step": 3728,
+        "frame": 207073,
+        "at_utc": "2026-10-24T01:11:23.198034+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           129/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 69526
+      },
+      {
+        "step": 4056,
+        "frame": 224065,
+        "at_utc": "2026-10-24T01:11:39.685793+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 6719
+      },
+      {
+        "step": 4057,
+        "frame": 224193,
+        "at_utc": "2026-10-24T01:11:39.738810+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 69614
+      },
+      {
+        "step": 4114,
+        "frame": 227793,
+        "at_utc": "2026-10-24T01:11:43.306926+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 6856
+      },
+      {
+        "step": 4115,
+        "frame": 227921,
+        "at_utc": "2026-10-24T01:11:43.360501+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 69751
+      },
+      {
+        "step": 4211,
+        "frame": 234665,
+        "at_utc": "2026-10-24T01:11:48.759360+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           170/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 6944
+      },
+      {
+        "step": 4212,
+        "frame": 234793,
+        "at_utc": "2026-10-24T01:11:48.809648+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           170/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 69839
+      },
+      {
+        "step": 4250,
+        "frame": 237633,
+        "at_utc": "2026-10-24T01:11:50.678399+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           170/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 7081
+      },
+      {
+        "step": 4251,
+        "frame": 237761,
+        "at_utc": "2026-10-24T01:11:50.729959+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           170/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 69976
+      },
+      {
+        "step": 4542,
+        "frame": 251689,
+        "at_utc": "2026-10-24T01:12:04.641299+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           177/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 7218
+      },
+      {
+        "step": 4543,
+        "frame": 251817,
+        "at_utc": "2026-10-24T01:12:04.698689+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           177/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 70113
+      },
+      {
+        "step": 4603,
+        "frame": 256857,
+        "at_utc": "2026-10-24T01:12:07.825493+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "            86/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 7329
+      },
+      {
+        "step": 4606,
+        "frame": 257241,
+        "at_utc": "2026-10-24T01:12:08.009707+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "            86/182",
+          " SNORLAX gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 70224
+      },
+      {
+        "step": 4895,
+        "frame": 271265,
+        "at_utc": "2026-10-24T01:12:21.373264+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           182/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 7466
+      },
+      {
+        "step": 4896,
+        "frame": 271393,
+        "at_utc": "2026-10-24T01:12:21.425259+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           182/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 70361
+      },
+      {
+        "step": 5191,
+        "frame": 286097,
+        "at_utc": "2026-10-24T01:12:35.450840+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 7577
+      },
+      {
+        "step": 5192,
+        "frame": 286225,
+        "at_utc": "2026-10-24T01:12:35.498730+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 70472
+      },
+      {
+        "step": 5230,
+        "frame": 289153,
+        "at_utc": "2026-10-24T01:12:37.322668+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 7665
+      },
+      {
+        "step": 5231,
+        "frame": 289281,
+        "at_utc": "2026-10-24T01:12:37.380607+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 70560
+      },
+      {
+        "step": 5281,
+        "frame": 293393,
+        "at_utc": "2026-10-24T01:12:39.945040+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           166/182",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 7813
+      },
+      {
+        "step": 5282,
+        "frame": 293521,
+        "at_utc": "2026-10-24T01:12:40.014846+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           166/182",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 70708
+      },
+      {
+        "step": 5325,
+        "frame": 296561,
+        "at_utc": "2026-10-24T01:12:42.395213+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           166/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 7950
+      },
+      {
+        "step": 5326,
+        "frame": 296689,
+        "at_utc": "2026-10-24T01:12:42.463178+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           166/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 70845
+      },
+      {
+        "step": 5360,
+        "frame": 299545,
+        "at_utc": "2026-10-24T01:12:44.338984+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           166/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 8061
+      },
+      {
+        "step": 5361,
+        "frame": 299673,
+        "at_utc": "2026-10-24T01:12:44.397796+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           166/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 70956
+      },
+      {
+        "step": 5396,
+        "frame": 302305,
+        "at_utc": "2026-10-24T01:12:46.199696+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           160/182",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 8209
+      },
+      {
+        "step": 5397,
+        "frame": 302433,
+        "at_utc": "2026-10-24T01:12:46.254771+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           160/182",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 71104
+      },
+      {
+        "step": 5560,
+        "frame": 313001,
+        "at_utc": "2026-10-24T01:12:56.109919+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           154/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 8297
+      },
+      {
+        "step": 5561,
+        "frame": 313129,
+        "at_utc": "2026-10-24T01:12:56.157518+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           154/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 71192
+      },
+      {
+        "step": 5666,
+        "frame": 319881,
+        "at_utc": "2026-10-24T01:13:02.692055+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           148/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 8385
+      },
+      {
+        "step": 5667,
+        "frame": 320009,
+        "at_utc": "2026-10-24T01:13:02.746696+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           148/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 71280
+      },
+      {
+        "step": 5750,
+        "frame": 326145,
+        "at_utc": "2026-10-24T01:13:07.046186+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           128/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 8522
+      },
+      {
+        "step": 5751,
+        "frame": 326273,
+        "at_utc": "2026-10-24T01:13:07.107257+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           128/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 71417
+      },
+      {
+        "step": 5796,
+        "frame": 329745,
+        "at_utc": "2026-10-24T01:13:09.870683+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           128/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 8633
+      },
+      {
+        "step": 5799,
+        "frame": 330129,
+        "at_utc": "2026-10-24T01:13:10.062211+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           128/182",
+          " SNORLAX gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 71528
+      },
+      {
+        "step": 5883,
+        "frame": 336041,
+        "at_utc": "2026-10-24T01:13:15.010088+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           128/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 8744
+      },
+      {
+        "step": 5884,
+        "frame": 336169,
+        "at_utc": "2026-10-24T01:13:15.070414+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           128/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 71639
+      },
+      {
+        "step": 6241,
+        "frame": 355289,
+        "at_utc": "2026-10-24T01:13:33.090459+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 8892
+      },
+      {
+        "step": 6242,
+        "frame": 355417,
+        "at_utc": "2026-10-24T01:13:33.150025+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 71787
+      },
+      {
+        "step": 6289,
+        "frame": 358705,
+        "at_utc": "2026-10-24T01:13:35.864742+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 9003
+      },
+      {
+        "step": 6290,
+        "frame": 358833,
+        "at_utc": "2026-10-24T01:13:35.915888+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 71898
+      },
+      {
+        "step": 6341,
+        "frame": 363073,
+        "at_utc": "2026-10-24T01:13:38.613800+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           139/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 9114
+      },
+      {
+        "step": 6342,
+        "frame": 363201,
+        "at_utc": "2026-10-24T01:13:38.675385+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           139/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 72009
+      },
+      {
+        "step": 6375,
+        "frame": 365753,
+        "at_utc": "2026-10-24T01:13:40.457497+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           139/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 9202
+      },
+      {
+        "step": 6376,
+        "frame": 365881,
+        "at_utc": "2026-10-24T01:13:40.514067+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           139/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 72097
+      },
+      {
+        "step": 6420,
+        "frame": 368961,
+        "at_utc": "2026-10-24T01:13:42.735132+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           139/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 9339
+      },
+      {
+        "step": 6421,
+        "frame": 369089,
+        "at_utc": "2026-10-24T01:13:42.802248+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           139/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 72234
+      },
+      {
+        "step": 6739,
+        "frame": 385857,
+        "at_utc": "2026-10-24T01:13:56.393116+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           182/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 9476
+      },
+      {
+        "step": 6740,
+        "frame": 385985,
+        "at_utc": "2026-10-24T01:13:56.451375+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           182/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 72371
+      },
+      {
+        "step": 7020,
+        "frame": 399561,
+        "at_utc": "2026-10-24T01:14:09.681375+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 9613
+      },
+      {
+        "step": 7021,
+        "frame": 399689,
+        "at_utc": "2026-10-24T01:14:09.739771+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 72508
+      },
+      {
+        "step": 7098,
+        "frame": 405673,
+        "at_utc": "2026-10-24T01:14:14.118802+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 9724
+      },
+      {
+        "step": 7099,
+        "frame": 405801,
+        "at_utc": "2026-10-24T01:14:14.174547+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 72619
+      },
+      {
+        "step": 7154,
+        "frame": 409937,
+        "at_utc": "2026-10-24T01:14:17.594895+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 9872
+      },
+      {
+        "step": 7155,
+        "frame": 410065,
+        "at_utc": "2026-10-24T01:14:17.657582+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 72767
+      },
+      {
+        "step": 7349,
+        "frame": 423545,
+        "at_utc": "2026-10-24T01:14:30.745981+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           136/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 9983
+      },
+      {
+        "step": 7350,
+        "frame": 423673,
+        "at_utc": "2026-10-24T01:14:30.811328+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           136/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 72878
+      },
+      {
+        "step": 7404,
+        "frame": 427681,
+        "at_utc": "2026-10-24T01:14:34.265821+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           130/182",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 10131
+      },
+      {
+        "step": 7409,
+        "frame": 428321,
+        "at_utc": "2026-10-24T01:14:34.644548+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           130/182",
+          " SNORLAX gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 73026
+      },
+      {
+        "step": 7451,
+        "frame": 431233,
+        "at_utc": "2026-10-24T01:14:37.240741+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           125/182",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 10279
+      },
+      {
+        "step": 7452,
+        "frame": 431361,
+        "at_utc": "2026-10-24T01:14:37.313790+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           125/182",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 73174
+      },
+      {
+        "step": 7494,
+        "frame": 434889,
+        "at_utc": "2026-10-24T01:14:40.207409+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           125/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 10390
+      },
+      {
+        "step": 7495,
+        "frame": 435017,
+        "at_utc": "2026-10-24T01:14:40.271522+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           125/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 73285
+      },
+      {
+        "step": 7615,
+        "frame": 443337,
+        "at_utc": "2026-10-24T01:14:49.003152+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           107/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 10478
+      },
+      {
+        "step": 7616,
+        "frame": 443465,
+        "at_utc": "2026-10-24T01:14:49.090049+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           107/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 73373
+      },
+      {
+        "step": 7911,
+        "frame": 458257,
+        "at_utc": "2026-10-24T01:15:04.385213+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 10566
+      },
+      {
+        "step": 7912,
+        "frame": 458385,
+        "at_utc": "2026-10-24T01:15:04.437747+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 73461
+      },
+      {
+        "step": 7959,
+        "frame": 461585,
+        "at_utc": "2026-10-24T01:15:07.702800+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           182/182",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 10714
+      },
+      {
+        "step": 7960,
+        "frame": 461713,
+        "at_utc": "2026-10-24T01:15:07.771776+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           182/182",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 73609
+      },
+      {
+        "step": 8243,
+        "frame": 475497,
+        "at_utc": "2026-10-24T01:15:22.572034+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 10851
+      },
+      {
+        "step": 8244,
+        "frame": 475625,
+        "at_utc": "2026-10-24T01:15:22.635519+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 73746
+      },
+      {
+        "step": 8277,
+        "frame": 478353,
+        "at_utc": "2026-10-24T01:15:24.362411+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 10962
+      },
+      {
+        "step": 8278,
+        "frame": 478481,
+        "at_utc": "2026-10-24T01:15:24.414408+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 73857
+      },
+      {
+        "step": 8335,
+        "frame": 482169,
+        "at_utc": "2026-10-24T01:15:28.097265+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 11099
+      },
+      {
+        "step": 8336,
+        "frame": 482297,
+        "at_utc": "2026-10-24T01:15:28.160649+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           182/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 73994
+      },
+      {
+        "step": 8385,
+        "frame": 486105,
+        "at_utc": "2026-10-24T01:15:30.749971+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 11187
+      },
+      {
+        "step": 8386,
+        "frame": 486233,
+        "at_utc": "2026-10-24T01:15:30.801525+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 74082
+      },
+      {
+        "step": 8422,
+        "frame": 488905,
+        "at_utc": "2026-10-24T01:15:32.865541+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           171/182",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 11324
+      },
+      {
+        "step": 8423,
+        "frame": 489033,
+        "at_utc": "2026-10-24T01:15:32.931981+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           171/182",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 74219
+      },
+      {
+        "step": 8473,
+        "frame": 493585,
+        "at_utc": "2026-10-24T01:15:35.877316+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           177/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 11435
+      },
+      {
+        "step": 8474,
+        "frame": 493713,
+        "at_utc": "2026-10-24T01:15:35.928407+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           177/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 74330
+      },
+      {
+        "step": 8579,
+        "frame": 502137,
+        "at_utc": "2026-10-24T01:15:41.666808+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           177/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 11546
+      },
+      {
+        "step": 8580,
+        "frame": 502265,
+        "at_utc": "2026-10-24T01:15:41.722569+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           177/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 74441
+      },
+      {
+        "step": 8617,
+        "frame": 504977,
+        "at_utc": "2026-10-24T01:15:43.825466+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           172/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 11683
+      },
+      {
+        "step": 8620,
+        "frame": 505361,
+        "at_utc": "2026-10-24T01:15:44.069544+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           172/188",
+          " SNORLAX gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 74578
+      },
+      {
+        "step": 8662,
+        "frame": 508801,
+        "at_utc": "2026-10-24T01:15:46.575961+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           133/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 11794
+      },
+      {
+        "step": 8663,
+        "frame": 508929,
+        "at_utc": "2026-10-24T01:15:46.628936+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           133/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 74689
+      },
+      {
+        "step": 8776,
+        "frame": 516617,
+        "at_utc": "2026-10-24T01:15:54.040001+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           121/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 11882
+      },
+      {
+        "step": 8777,
+        "frame": 516745,
+        "at_utc": "2026-10-24T01:15:54.092756+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           121/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 74777
+      },
+      {
+        "step": 9076,
+        "frame": 531257,
+        "at_utc": "2026-10-24T01:16:09.468335+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 11993
+      },
+      {
+        "step": 9077,
+        "frame": 531385,
+        "at_utc": "2026-10-24T01:16:09.523806+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 74888
+      },
+      {
+        "step": 9132,
+        "frame": 535521,
+        "at_utc": "2026-10-24T01:16:12.714135+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           179/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 12130
+      },
+      {
+        "step": 9133,
+        "frame": 535649,
+        "at_utc": "2026-10-24T01:16:12.780595+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           179/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 75025
+      },
+      {
+        "step": 9182,
+        "frame": 538929,
+        "at_utc": "2026-10-24T01:16:15.503169+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           179/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 12267
+      },
+      {
+        "step": 9183,
+        "frame": 539057,
+        "at_utc": "2026-10-24T01:16:15.565474+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           179/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 75162
+      },
+      {
+        "step": 9512,
+        "frame": 556265,
+        "at_utc": "2026-10-24T01:16:33.447080+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 12415
+      },
+      {
+        "step": 9513,
+        "frame": 556393,
+        "at_utc": "2026-10-24T01:16:33.516082+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 75310
+      },
+      {
+        "step": 9546,
+        "frame": 559033,
+        "at_utc": "2026-10-24T01:16:35.304136+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 12552
+      },
+      {
+        "step": 9547,
+        "frame": 559161,
+        "at_utc": "2026-10-24T01:16:35.362206+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 75447
+      },
+      {
+        "step": 9586,
+        "frame": 562217,
+        "at_utc": "2026-10-24T01:16:37.619384+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           183/188",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 12700
+      },
+      {
+        "step": 9587,
+        "frame": 562345,
+        "at_utc": "2026-10-24T01:16:37.680753+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           183/188",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 75595
+      },
+      {
+        "step": 9781,
+        "frame": 575561,
+        "at_utc": "2026-10-24T01:16:50.018215+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           177/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 12788
+      },
+      {
+        "step": 9782,
+        "frame": 575689,
+        "at_utc": "2026-10-24T01:16:50.064311+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           177/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 75683
+      },
+      {
+        "step": 9878,
+        "frame": 582609,
+        "at_utc": "2026-10-24T01:16:55.878184+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 12876
+      },
+      {
+        "step": 9879,
+        "frame": 582737,
+        "at_utc": "2026-10-24T01:16:55.946348+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 75771
+      },
+      {
+        "step": 9923,
+        "frame": 585905,
+        "at_utc": "2026-10-24T01:16:58.592173+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 13013
+      },
+      {
+        "step": 9924,
+        "frame": 586033,
+        "at_utc": "2026-10-24T01:16:58.651852+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 75908
+      },
+      {
+        "step": 10039,
+        "frame": 594329,
+        "at_utc": "2026-10-24T01:17:06.172130+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 13124
+      },
+      {
+        "step": 10040,
+        "frame": 594457,
+        "at_utc": "2026-10-24T01:17:06.231318+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 76019
+      },
+      {
+        "step": 10093,
+        "frame": 598513,
+        "at_utc": "2026-10-24T01:17:09.374101+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           124/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 13235
+      },
+      {
+        "step": 10094,
+        "frame": 598641,
+        "at_utc": "2026-10-24T01:17:09.426760+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           124/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 76130
+      },
+      {
+        "step": 10387,
+        "frame": 613265,
+        "at_utc": "2026-10-24T01:17:23.947841+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           183/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 13323
+      },
+      {
+        "step": 10390,
+        "frame": 613649,
+        "at_utc": "2026-10-24T01:17:24.157448+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           183/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 76218
+      },
+      {
+        "step": 10432,
+        "frame": 616737,
+        "at_utc": "2026-10-24T01:17:26.771820+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           183/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 13460
+      },
+      {
+        "step": 10433,
+        "frame": 616865,
+        "at_utc": "2026-10-24T01:17:26.840318+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           183/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 76355
+      },
+      {
+        "step": 10503,
+        "frame": 622569,
+        "at_utc": "2026-10-24T01:17:30.809206+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           178/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 13548
+      },
+      {
+        "step": 10504,
+        "frame": 622697,
+        "at_utc": "2026-10-24T01:17:30.867599+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           178/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 76443
+      },
+      {
+        "step": 10554,
+        "frame": 626105,
+        "at_utc": "2026-10-24T01:17:34.135861+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           178/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 13685
+      },
+      {
+        "step": 10555,
+        "frame": 626233,
+        "at_utc": "2026-10-24T01:17:34.203308+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           178/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 76580
+      },
+      {
+        "step": 10645,
+        "frame": 632385,
+        "at_utc": "2026-10-24T01:17:39.911874+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           167/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 13773
+      },
+      {
+        "step": 10646,
+        "frame": 632513,
+        "at_utc": "2026-10-24T01:17:39.973003+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           167/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 76668
+      },
+      {
+        "step": 10680,
+        "frame": 635281,
+        "at_utc": "2026-10-24T01:17:42.144753+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           167/188",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 13921
+      },
+      {
+        "step": 10681,
+        "frame": 635409,
+        "at_utc": "2026-10-24T01:17:42.204050+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           167/188",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 76816
+      },
+      {
+        "step": 10713,
+        "frame": 638009,
+        "at_utc": "2026-10-24T01:17:43.936929+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           167/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 14009
+      },
+      {
+        "step": 10714,
+        "frame": 638137,
+        "at_utc": "2026-10-24T01:17:44.005686+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           167/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 76904
+      },
+      {
+        "step": 10773,
+        "frame": 642961,
+        "at_utc": "2026-10-24T01:17:47.709949+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           167/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 14120
+      },
+      {
+        "step": 10774,
+        "frame": 643089,
+        "at_utc": "2026-10-24T01:17:47.779243+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           167/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 77015
+      },
+      {
+        "step": 10890,
+        "frame": 651337,
+        "at_utc": "2026-10-24T01:17:55.376181+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           125/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 14231
+      },
+      {
+        "step": 10891,
+        "frame": 651465,
+        "at_utc": "2026-10-24T01:17:55.429910+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           125/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 77126
+      },
+      {
+        "step": 11190,
+        "frame": 666505,
+        "at_utc": "2026-10-24T01:18:11.223434+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 14379
+      },
+      {
+        "step": 11191,
+        "frame": 666633,
+        "at_utc": "2026-10-24T01:18:11.298431+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 77274
+      },
+      {
+        "step": 11223,
+        "frame": 669145,
+        "at_utc": "2026-10-24T01:18:12.962174+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           182/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 14467
+      },
+      {
+        "step": 11224,
+        "frame": 669273,
+        "at_utc": "2026-10-24T01:18:13.029870+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           182/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 77362
+      },
+      {
+        "step": 11258,
+        "frame": 671865,
+        "at_utc": "2026-10-24T01:18:15.109457+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           177/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 14604
+      },
+      {
+        "step": 11259,
+        "frame": 671993,
+        "at_utc": "2026-10-24T01:18:15.167172+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           177/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 77499
+      },
+      {
+        "step": 11296,
+        "frame": 674793,
+        "at_utc": "2026-10-24T01:18:17.534474+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           177/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 14741
+      },
+      {
+        "step": 11297,
+        "frame": 674921,
+        "at_utc": "2026-10-24T01:18:17.594238+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           177/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 77636
+      },
+      {
+        "step": 11653,
+        "frame": 692769,
+        "at_utc": "2026-10-24T01:18:39.407601+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 14829
+      },
+      {
+        "step": 11654,
+        "frame": 692897,
+        "at_utc": "2026-10-24T01:18:39.467911+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 77724
+      },
+      {
+        "step": 11763,
+        "frame": 700601,
+        "at_utc": "2026-10-24T01:18:46.829959+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 14940
+      },
+      {
+        "step": 11764,
+        "frame": 700729,
+        "at_utc": "2026-10-24T01:18:46.881765+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 77835
+      },
+      {
+        "step": 11798,
+        "frame": 703409,
+        "at_utc": "2026-10-24T01:18:49.061286+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           176/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 15028
+      },
+      {
+        "step": 11799,
+        "frame": 703537,
+        "at_utc": "2026-10-24T01:18:49.125951+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           176/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 77923
+      },
+      {
+        "step": 11838,
+        "frame": 706593,
+        "at_utc": "2026-10-24T01:18:51.880854+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 15176
+      },
+      {
+        "step": 11839,
+        "frame": 706721,
+        "at_utc": "2026-10-24T01:18:51.938179+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 78071
+      },
+      {
+        "step": 11885,
+        "frame": 709969,
+        "at_utc": "2026-10-24T01:18:54.460406+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 15287
+      },
+      {
+        "step": 11888,
+        "frame": 710353,
+        "at_utc": "2026-10-24T01:18:54.666195+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " SNORLAX gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 78182
+      },
+      {
+        "step": 11994,
+        "frame": 718025,
+        "at_utc": "2026-10-24T01:19:01.642396+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           166/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 15375
+      },
+      {
+        "step": 11995,
+        "frame": 718153,
+        "at_utc": "2026-10-24T01:19:01.691156+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           166/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 78270
+      },
+      {
+        "step": 12076,
+        "frame": 724473,
+        "at_utc": "2026-10-24T01:19:06.810993+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           157/188",
+          " LAPRAS gained",
+          " 224 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 224,
+        "observed_exp": 15599
+      },
+      {
+        "step": 12077,
+        "frame": 724601,
+        "at_utc": "2026-10-24T01:19:06.870631+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           157/188",
+          " SNORLAX gained",
+          " 224 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 224,
+        "observed_exp": 78494
+      },
+      {
+        "step": 12117,
+        "frame": 727609,
+        "at_utc": "2026-10-24T01:19:09.214726+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           157/188",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 15747
+      },
+      {
+        "step": 12118,
+        "frame": 727737,
+        "at_utc": "2026-10-24T01:19:09.283225+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           157/188",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 78642
+      },
+      {
+        "step": 12171,
+        "frame": 731705,
+        "at_utc": "2026-10-24T01:19:12.472819+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           157/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 15858
+      },
+      {
+        "step": 12172,
+        "frame": 731833,
+        "at_utc": "2026-10-24T01:19:12.533948+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           157/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 78753
+      },
+      {
+        "step": 12283,
+        "frame": 740761,
+        "at_utc": "2026-10-24T01:19:20.072458+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           115/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 15969
+      },
+      {
+        "step": 12284,
+        "frame": 740889,
+        "at_utc": "2026-10-24T01:19:20.127986+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           115/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 78864
+      },
+      {
+        "step": 12622,
+        "frame": 758545,
+        "at_utc": "2026-10-24T01:19:39.408309+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 16080
+      },
+      {
+        "step": 12623,
+        "frame": 758673,
+        "at_utc": "2026-10-24T01:19:39.467679+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 78975
+      },
+      {
+        "step": 12747,
+        "frame": 767593,
+        "at_utc": "2026-10-24T01:19:47.687925+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 16168
+      },
+      {
+        "step": 12748,
+        "frame": 767721,
+        "at_utc": "2026-10-24T01:19:47.745170+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 79063
+      },
+      {
+        "step": 12795,
+        "frame": 771361,
+        "at_utc": "2026-10-24T01:19:50.727098+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           142/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 16279
+      },
+      {
+        "step": 12796,
+        "frame": 771489,
+        "at_utc": "2026-10-24T01:19:50.790944+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           142/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 79174
+      },
+      {
+        "step": 12850,
+        "frame": 775497,
+        "at_utc": "2026-10-24T01:19:53.800220+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           137/188",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 16416
+      },
+      {
+        "step": 12851,
+        "frame": 775625,
+        "at_utc": "2026-10-24T01:19:53.856540+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           137/188",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 79311
+      },
+      {
+        "step": 12916,
+        "frame": 780337,
+        "at_utc": "2026-10-24T01:19:58.272020+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           131/188",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 16504
+      },
+      {
+        "step": 12917,
+        "frame": 780465,
+        "at_utc": "2026-10-24T01:19:58.334591+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           131/188",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 79399
+      },
+      {
+        "step": 12952,
+        "frame": 783449,
+        "at_utc": "2026-10-24T01:20:00.394255+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "            98/188",
+          " LAPRAS gained",
+          " 240 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 240,
+        "observed_exp": 16744
+      },
+      {
+        "step": 12953,
+        "frame": 783577,
+        "at_utc": "2026-10-24T01:20:00.464034+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "            98/188",
+          " SNORLAX gained",
+          " 240 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 240,
+        "observed_exp": 79639
+      },
+      {
+        "step": 13302,
+        "frame": 802377,
+        "at_utc": "2026-10-24T01:20:21.743957+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "            98/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 16855
+      },
+      {
+        "step": 13303,
+        "frame": 802505,
+        "at_utc": "2026-10-24T01:20:21.817902+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "            98/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 79750
+      },
+      {
+        "step": 13583,
+        "frame": 816081,
+        "at_utc": "2026-10-24T01:20:35.223103+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 17003
+      },
+      {
+        "step": 13584,
+        "frame": 816209,
+        "at_utc": "2026-10-24T01:20:35.290734+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           188/188",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 79898
+      },
+      {
+        "step": 13655,
+        "frame": 821513,
+        "at_utc": "2026-10-24T01:20:40.184221+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           138/188",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 17114
+      },
+      {
+        "step": 13656,
+        "frame": 821641,
+        "at_utc": "2026-10-24T01:20:40.245408+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           138/188",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 80009
+      },
+      {
+        "step": 13731,
+        "frame": 827545,
+        "at_utc": "2026-10-24T01:20:45.561722+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           138/193",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 17251
+      },
+      {
+        "step": 13732,
+        "frame": 827673,
+        "at_utc": "2026-10-24T01:20:45.618334+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           138/193",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 80146
+      },
+      {
+        "step": 13787,
+        "frame": 831897,
+        "at_utc": "2026-10-24T01:20:49.699416+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           138/193",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 17388
+      },
+      {
+        "step": 13790,
+        "frame": 832281,
+        "at_utc": "2026-10-24T01:20:49.952048+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           138/193",
+          " SNORLAX gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 80283
+      },
+      {
+        "step": 13832,
+        "frame": 835369,
+        "at_utc": "2026-10-24T01:20:52.951568+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           133/193",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 17536
+      },
+      {
+        "step": 13833,
+        "frame": 835497,
+        "at_utc": "2026-10-24T01:20:53.018973+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           133/193",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 80431
+      },
+      {
+        "step": 13874,
+        "frame": 838457,
+        "at_utc": "2026-10-24T01:20:56.049314+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           133/193",
+          " LAPRAS gained",
+          " 137 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 137,
+        "observed_exp": 17673
+      },
+      {
+        "step": 13875,
+        "frame": 838585,
+        "at_utc": "2026-10-24T01:20:56.135766+00:00",
+        "text": [
+          "          SNORLAX",
+          "               PSN",
+          "           133/193",
+          " SNORLAX gained",
+          " 137 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 137,
+        "observed_exp": 80568
+      },
+      {
+        "step": 14154,
+        "frame": 852209,
+        "at_utc": "2026-10-24T01:21:16.849690+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           172/193",
+          " LAPRAS gained",
+          " 224 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 224,
+        "observed_exp": 17897
+      },
+      {
+        "step": 14155,
+        "frame": 852337,
+        "at_utc": "2026-10-24T01:21:16.924751+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           172/193",
+          " SNORLAX gained",
+          " 224 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 224,
+        "observed_exp": 80792
+      },
+      {
+        "step": 14227,
+        "frame": 857329,
+        "at_utc": "2026-10-24T01:21:22.447592+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           166/193",
+          " LAPRAS gained",
+          " 148 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 148,
+        "observed_exp": 18045
+      },
+      {
+        "step": 14228,
+        "frame": 857457,
+        "at_utc": "2026-10-24T01:21:22.509504+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           166/193",
+          " SNORLAX gained",
+          " 148 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 148,
+        "observed_exp": 80940
+      },
+      {
+        "step": 14263,
+        "frame": 860177,
+        "at_utc": "2026-10-24T01:21:24.447133+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           166/193",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 18133
+      },
+      {
+        "step": 14264,
+        "frame": 860305,
+        "at_utc": "2026-10-24T01:21:24.511308+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           166/193",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 81028
+      },
+      {
+        "step": 14314,
+        "frame": 864241,
+        "at_utc": "2026-10-24T01:21:27.789417+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           156/193",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 18221
+      },
+      {
+        "step": 14315,
+        "frame": 864369,
+        "at_utc": "2026-10-24T01:21:27.851994+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           156/193",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 81116
+      },
+      {
+        "step": 14365,
+        "frame": 868305,
+        "at_utc": "2026-10-24T01:21:31.536482+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           113/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 18332
+      },
+      {
+        "step": 14366,
+        "frame": 868433,
+        "at_utc": "2026-10-24T01:21:31.593594+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           113/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 81227
+      },
+      {
+        "step": 14697,
+        "frame": 886337,
+        "at_utc": "2026-10-24T01:21:50.784404+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           193/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 18443
+      },
+      {
+        "step": 14698,
+        "frame": 886465,
+        "at_utc": "2026-10-24T01:21:50.841457+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           193/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 81338
+      },
+      {
+        "step": 14739,
+        "frame": 889777,
+        "at_utc": "2026-10-24T01:21:53.448892+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           153/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 18554
+      },
+      {
+        "step": 14740,
+        "frame": 889905,
+        "at_utc": "2026-10-24T01:21:53.504170+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           153/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 81449
+      },
+      {
+        "step": 14783,
+        "frame": 893473,
+        "at_utc": "2026-10-24T01:21:55.805678+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           153/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 18665
+      },
+      {
+        "step": 14784,
+        "frame": 893601,
+        "at_utc": "2026-10-24T01:21:55.856195+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           153/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 81560
+      },
+      {
+        "step": 14852,
+        "frame": 898257,
+        "at_utc": "2026-10-24T01:22:00.806045+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           114/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 18776
+      },
+      {
+        "step": 14853,
+        "frame": 898385,
+        "at_utc": "2026-10-24T01:22:00.860613+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           114/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 81671
+      },
+      {
+        "step": 15200,
+        "frame": 916225,
+        "at_utc": "2026-10-24T01:22:23.290897+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           193/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 18887
+      },
+      {
+        "step": 15201,
+        "frame": 916353,
+        "at_utc": "2026-10-24T01:22:23.360219+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           193/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 81782
+      },
+      {
+        "step": 15235,
+        "frame": 919033,
+        "at_utc": "2026-10-24T01:22:25.542991+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           193/193",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 18975
+      },
+      {
+        "step": 15236,
+        "frame": 919161,
+        "at_utc": "2026-10-24T01:22:25.599431+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           193/193",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 81870
+      },
+      {
+        "step": 15320,
+        "frame": 924369,
+        "at_utc": "2026-10-24T01:22:31.587077+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           187/193",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 19063
+      },
+      {
+        "step": 15321,
+        "frame": 924497,
+        "at_utc": "2026-10-24T01:22:31.661482+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           187/193",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 81958
+      },
+      {
+        "step": 15414,
+        "frame": 932177,
+        "at_utc": "2026-10-24T01:22:38.045913+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           187/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 19174
+      },
+      {
+        "step": 15415,
+        "frame": 932305,
+        "at_utc": "2026-10-24T01:22:38.113176+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           187/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 82069
+      },
+      {
+        "step": 15486,
+        "frame": 937785,
+        "at_utc": "2026-10-24T01:22:42.851903+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           187/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 19285
+      },
+      {
+        "step": 15487,
+        "frame": 937913,
+        "at_utc": "2026-10-24T01:22:42.991457+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           187/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 82180
+      },
+      {
+        "step": 15567,
+        "frame": 942521,
+        "at_utc": "2026-10-24T01:22:49.798615+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           187/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 19396
+      },
+      {
+        "step": 15568,
+        "frame": 942649,
+        "at_utc": "2026-10-24T01:22:49.858674+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           187/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 82291
+      },
+      {
+        "step": 15678,
+        "frame": 949953,
+        "at_utc": "2026-10-24T01:22:58.589592+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           141/193",
+          " LAPRAS gained",
+          " 111 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 111,
+        "observed_exp": 19507
+      },
+      {
+        "step": 15679,
+        "frame": 950081,
+        "at_utc": "2026-10-24T01:22:58.644652+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           141/193",
+          " SNORLAX gained",
+          " 111 EXP. Points! ▼"
+        ],
+        "species": 132,
+        "award": 111,
+        "observed_exp": 82402
+      },
+      {
+        "step": 15721,
+        "frame": 952993,
+        "at_utc": "2026-10-24T01:23:01.601491+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " LAPRAS gained",
+          " 88 EXP. Points!"
+        ],
+        "species": 19,
+        "award": 88,
+        "observed_exp": 19595
+      },
+      {
+        "step": 15752,
+        "frame": 954585,
+        "at_utc": "2026-10-24T01:28:11.609978+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " SNORLAX gained",
+          " 88 EXP. Points!  ▼"
+        ],
+        "species": 132,
+        "award": 88,
+        "observed_exp": 82490
+      }
+    ],
+    "level_up_receipts": [
+      {
+        "step": 3499,
+        "frame": 189113,
+        "at_utc": "2026-10-24T01:11:11.051854+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           176/182",
+          " LAPRAS grew",
+          " to level 17!"
+        ],
+        "level": 17
+      },
+      {
+        "step": 4604,
+        "frame": 256985,
+        "at_utc": "2026-10-24T01:12:07.890691+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "            86/182",
+          " LAPRAS grew",
+          " to level 18!"
+        ],
+        "level": 18
+      },
+      {
+        "step": 5797,
+        "frame": 329873,
+        "at_utc": "2026-10-24T01:13:09.935063+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           128/182",
+          " LAPRAS grew",
+          " to level 19!"
+        ],
+        "level": 19
+      },
+      {
+        "step": 7405,
+        "frame": 427809,
+        "at_utc": "2026-10-24T01:14:34.345034+00:00",
+        "text": [
+          "          SNORLAX",
+          "               38",
+          "           130/182",
+          " LAPRAS grew",
+          " to level 20!"
+        ],
+        "level": 20
+      },
+      {
+        "step": 8618,
+        "frame": 505105,
+        "at_utc": "2026-10-24T01:15:43.911185+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           172/188",
+          " LAPRAS grew",
+          " to level 21!"
+        ],
+        "level": 21
+      },
+      {
+        "step": 10388,
+        "frame": 613393,
+        "at_utc": "2026-10-24T01:17:24.029118+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           183/188",
+          " LAPRAS grew",
+          " to level 22!"
+        ],
+        "level": 22
+      },
+      {
+        "step": 11886,
+        "frame": 710097,
+        "at_utc": "2026-10-24T01:18:54.540375+00:00",
+        "text": [
+          "          SNORLAX",
+          "               39",
+          "           171/188",
+          " LAPRAS grew",
+          " to level 23!"
+        ],
+        "level": 23
+      },
+      {
+        "step": 13788,
+        "frame": 832025,
+        "at_utc": "2026-10-24T01:20:49.779736+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           138/193",
+          " LAPRAS grew",
+          " to level 24!"
+        ],
+        "level": 24
+      },
+      {
+        "step": 15722,
+        "frame": 953121,
+        "at_utc": "2026-10-24T01:23:01.682117+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " LAPRAS grew",
+          " to level 25!"
+        ],
+        "level": 25
+      }
+    ]
+  },
+  "learned_moves": {
+    "mist_level20": {
+      "step": 7407,
+      "frame": 428065,
+      "at_utc": "2026-10-24T01:14:34.516736+00:00",
+      "text": [
+        "          SNORLAX",
+        "               38",
+        "           130/182",
+        " LAPRAS learned",
+        " MIST!"
+      ]
+    },
+    "body_slam_level25": {
+      "species": 19,
+      "level": 25,
+      "new_move_id": 34,
+      "new_pp": 15,
+      "slot_one_based": 2,
+      "forgot_move_id": 45,
+      "before_moves": [
+        55,
+        45,
+        47,
+        54
+      ],
+      "after_moves": [
+        55,
+        34,
+        47,
+        54
+      ],
+      "protected_moves": [
+        55,
+        47,
+        54
+      ],
+      "forgot_receipt": {
+        "step": 15744,
+        "frame": 954177,
+        "at_utc": "2026-10-24T01:28:11.335554+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " LAPRAS forgot",
+          " GROWL!           ▼"
+        ]
+      },
+      "learned_receipt": {
+        "step": 15747,
+        "frame": 954297,
+        "at_utc": "2026-10-24T01:28:11.431777+00:00",
+        "text": [
+          "          SNORLAX",
+          "               40",
+          "           135/193",
+          " LAPRAS learned",
+          " BODY SLAM!"
+        ]
+      },
+      "review_at_utc": "2026-10-24T01:23:01.799018+00:00",
+      "review_frame": 953377,
+      "review_reason": "forget_move_menu_requires_live_calibration",
+      "same_encounter_continued": true,
+      "proof_no_input": true,
+      "proof_local_clone_frame": 1,
+      "proof_campaign_frame": 953377,
+      "proof_not_campaign_same_frame": true
+    }
+  },
+  "normal_center_healing": {
+    "verified_visits": 23,
+    "episodes": [
+      {
+        "heal_menu": {
+          "step": 2854,
+          "frame": 150289,
+          "at_utc": "2026-10-24T01:10:41.513891+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 2855,
+          "frame": 150417,
+          "at_utc": "2026-10-24T01:10:41.558330+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 2854,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 68,
+            "max_hp": 68,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 86,
+            "max_hp": 177,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 2860,
+          "frame": 151057,
+          "at_utc": "2026-10-24T01:10:41.846587+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 2862,
+          "frame": 151313,
+          "at_utc": "2026-10-24T01:10:42.326890+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 3258,
+          "frame": 174369,
+          "at_utc": "2026-10-24T01:10:59.444765+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 3259,
+          "frame": 174497,
+          "at_utc": "2026-10-24T01:10:59.489995+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 3258,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 68,
+            "max_hp": 68,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 114,
+            "max_hp": 182,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              9
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 3264,
+          "frame": 175137,
+          "at_utc": "2026-10-24T01:10:59.759155+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 3266,
+          "frame": 175393,
+          "at_utc": "2026-10-24T01:11:00.242773+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 3900,
+          "frame": 215977,
+          "at_utc": "2026-10-24T01:11:32.974813+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 3901,
+          "frame": 216105,
+          "at_utc": "2026-10-24T01:11:33.035085+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 3900,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 72,
+            "max_hp": 72,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 81,
+            "max_hp": 182,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 3906,
+          "frame": 216745,
+          "at_utc": "2026-10-24T01:11:33.327451+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 3908,
+          "frame": 217001,
+          "at_utc": "2026-10-24T01:11:33.704012+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 4375,
+          "frame": 243161,
+          "at_utc": "2026-10-24T01:11:57.176844+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 4376,
+          "frame": 243289,
+          "at_utc": "2026-10-24T01:11:57.228335+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 4375,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 72,
+            "max_hp": 72,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 146,
+            "max_hp": 182,
+            "status": 8,
+            "pp": [
+              15,
+              20,
+              10,
+              11
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 4381,
+          "frame": 243929,
+          "at_utc": "2026-10-24T01:11:57.528129+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 4383,
+          "frame": 244185,
+          "at_utc": "2026-10-24T01:11:58.007904+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 4733,
+          "frame": 262849,
+          "at_utc": "2026-10-24T01:12:14.010104+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 4734,
+          "frame": 262977,
+          "at_utc": "2026-10-24T01:12:14.058787+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 4733,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 76,
+            "max_hp": 76,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 86,
+            "max_hp": 182,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              12
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 4739,
+          "frame": 263617,
+          "at_utc": "2026-10-24T01:12:14.370687+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 4741,
+          "frame": 263873,
+          "at_utc": "2026-10-24T01:12:14.753344+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 5022,
+          "frame": 276961,
+          "at_utc": "2026-10-24T01:12:28.627903+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 5023,
+          "frame": 277089,
+          "at_utc": "2026-10-24T01:12:28.667046+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 5022,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 76,
+            "max_hp": 76,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 158,
+            "max_hp": 182,
+            "status": 8,
+            "pp": [
+              15,
+              20,
+              10,
+              14
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 5028,
+          "frame": 277729,
+          "at_utc": "2026-10-24T01:12:28.957343+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 5030,
+          "frame": 277985,
+          "at_utc": "2026-10-24T01:12:29.247451+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 6079,
+          "frame": 346785,
+          "at_utc": "2026-10-24T01:13:25.438757+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 6080,
+          "frame": 346913,
+          "at_utc": "2026-10-24T01:13:25.496950+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 6079,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 80,
+            "max_hp": 80,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 87,
+            "max_hp": 182,
+            "status": 0,
+            "pp": [
+              14,
+              20,
+              10,
+              0
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 6085,
+          "frame": 347553,
+          "at_utc": "2026-10-24T01:13:25.909310+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 6087,
+          "frame": 347809,
+          "at_utc": "2026-10-24T01:13:26.385872+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 6586,
+          "frame": 377801,
+          "at_utc": "2026-10-24T01:13:49.578988+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 6587,
+          "frame": 377929,
+          "at_utc": "2026-10-24T01:13:49.647857+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 6586,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 80,
+            "max_hp": 80,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 87,
+            "max_hp": 182,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              8
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 6592,
+          "frame": 378569,
+          "at_utc": "2026-10-24T01:13:49.993094+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 6594,
+          "frame": 378825,
+          "at_utc": "2026-10-24T01:13:50.479283+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 6864,
+          "frame": 391385,
+          "at_utc": "2026-10-24T01:14:03.161751+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 6865,
+          "frame": 391513,
+          "at_utc": "2026-10-24T01:14:03.212875+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 6864,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 80,
+            "max_hp": 80,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              0
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 158,
+            "max_hp": 182,
+            "status": 8,
+            "pp": [
+              15,
+              20,
+              10,
+              14
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 6870,
+          "frame": 392153,
+          "at_utc": "2026-10-24T01:14:03.595291+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 6872,
+          "frame": 392409,
+          "at_utc": "2026-10-24T01:14:03.972452+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 7741,
+          "frame": 448905,
+          "at_utc": "2026-10-24T01:14:56.104204+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 7742,
+          "frame": 449033,
+          "at_utc": "2026-10-24T01:14:56.172339+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 7741,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 84,
+            "max_hp": 84,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 107,
+            "max_hp": 182,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              5
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 7747,
+          "frame": 449673,
+          "at_utc": "2026-10-24T01:14:56.536409+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 7749,
+          "frame": 449929,
+          "at_utc": "2026-10-24T01:14:56.826555+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 8087,
+          "frame": 467321,
+          "at_utc": "2026-10-24T01:15:15.487281+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 8088,
+          "frame": 467449,
+          "at_utc": "2026-10-24T01:15:15.551846+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 8087,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 84,
+            "max_hp": 84,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 158,
+            "max_hp": 182,
+            "status": 8,
+            "pp": [
+              15,
+              20,
+              10,
+              13
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 8093,
+          "frame": 468089,
+          "at_utc": "2026-10-24T01:15:15.851310+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 8095,
+          "frame": 468345,
+          "at_utc": "2026-10-24T01:15:16.335993+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 8904,
+          "frame": 522353,
+          "at_utc": "2026-10-24T01:16:00.388832+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 8905,
+          "frame": 522481,
+          "at_utc": "2026-10-24T01:16:00.448029+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 8904,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 88,
+            "max_hp": 88,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 121,
+            "max_hp": 188,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              1
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 8910,
+          "frame": 523121,
+          "at_utc": "2026-10-24T01:16:00.767033+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 8912,
+          "frame": 523377,
+          "at_utc": "2026-10-24T01:16:01.158101+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 9310,
+          "frame": 544665,
+          "at_utc": "2026-10-24T01:16:23.505528+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 9311,
+          "frame": 544793,
+          "at_utc": "2026-10-24T01:16:23.561437+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 9310,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 88,
+            "max_hp": 88,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 155,
+            "max_hp": 188,
+            "status": 8,
+            "pp": [
+              15,
+              20,
+              10,
+              12
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 9316,
+          "frame": 545433,
+          "at_utc": "2026-10-24T01:16:23.852455+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 9318,
+          "frame": 545689,
+          "at_utc": "2026-10-24T01:16:24.353295+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 10221,
+          "frame": 604249,
+          "at_utc": "2026-10-24T01:17:15.980316+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 10222,
+          "frame": 604377,
+          "at_utc": "2026-10-24T01:17:16.048064+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 10221,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 88,
+            "max_hp": 88,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 124,
+            "max_hp": 188,
+            "status": 0,
+            "pp": [
+              14,
+              20,
+              10,
+              5
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 10227,
+          "frame": 605017,
+          "at_utc": "2026-10-24T01:17:16.362022+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 10229,
+          "frame": 605273,
+          "at_utc": "2026-10-24T01:17:16.762112+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 11017,
+          "frame": 657033,
+          "at_utc": "2026-10-24T01:18:01.886793+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 11018,
+          "frame": 657161,
+          "at_utc": "2026-10-24T01:18:01.942021+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 11017,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 92,
+            "max_hp": 92,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 125,
+            "max_hp": 188,
+            "status": 0,
+            "pp": [
+              14,
+              20,
+              10,
+              3
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 11023,
+          "frame": 657801,
+          "at_utc": "2026-10-24T01:18:02.268058+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 11025,
+          "frame": 658057,
+          "at_utc": "2026-10-24T01:18:02.756782+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 11421,
+          "frame": 680321,
+          "at_utc": "2026-10-24T01:18:25.998760+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 11422,
+          "frame": 680449,
+          "at_utc": "2026-10-24T01:18:26.060975+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 11421,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 92,
+            "max_hp": 92,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 153,
+            "max_hp": 188,
+            "status": 8,
+            "pp": [
+              15,
+              20,
+              10,
+              11
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 11427,
+          "frame": 681089,
+          "at_utc": "2026-10-24T01:18:26.380954+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 11429,
+          "frame": 681345,
+          "at_utc": "2026-10-24T01:18:26.767493+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 12409,
+          "frame": 746329,
+          "at_utc": "2026-10-24T01:19:26.975386+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 12410,
+          "frame": 746457,
+          "at_utc": "2026-10-24T01:19:27.039383+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 12409,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 96,
+            "max_hp": 96,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 115,
+            "max_hp": 188,
+            "status": 0,
+            "pp": [
+              13,
+              20,
+              10,
+              0
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 12415,
+          "frame": 747097,
+          "at_utc": "2026-10-24T01:19:27.443458+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 12417,
+          "frame": 747353,
+          "at_utc": "2026-10-24T01:19:27.860265+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 13078,
+          "frame": 789017,
+          "at_utc": "2026-10-24T01:20:08.391741+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 13079,
+          "frame": 789145,
+          "at_utc": "2026-10-24T01:20:08.450731+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 13078,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 96,
+            "max_hp": 96,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 98,
+            "max_hp": 188,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 13084,
+          "frame": 789785,
+          "at_utc": "2026-10-24T01:20:08.961130+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 13086,
+          "frame": 790041,
+          "at_utc": "2026-10-24T01:20:09.392356+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 13428,
+          "frame": 807945,
+          "at_utc": "2026-10-24T01:20:27.275444+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 13429,
+          "frame": 808073,
+          "at_utc": "2026-10-24T01:20:27.331762+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 13428,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 96,
+            "max_hp": 96,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 98,
+            "max_hp": 188,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              13
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 13434,
+          "frame": 808713,
+          "at_utc": "2026-10-24T01:20:27.663103+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 13436,
+          "frame": 808969,
+          "at_utc": "2026-10-24T01:20:28.167025+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 13999,
+          "frame": 843985,
+          "at_utc": "2026-10-24T01:21:07.355990+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 14000,
+          "frame": 844113,
+          "at_utc": "2026-10-24T01:21:07.413056+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 13999,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 100,
+            "max_hp": 100,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 109,
+            "max_hp": 193,
+            "status": 8,
+            "pp": [
+              14,
+              20,
+              10,
+              9
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 14005,
+          "frame": 844753,
+          "at_utc": "2026-10-24T01:21:07.759252+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 14007,
+          "frame": 845009,
+          "at_utc": "2026-10-24T01:21:08.287462+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 14492,
+          "frame": 874001,
+          "at_utc": "2026-10-24T01:21:38.750519+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 14493,
+          "frame": 874129,
+          "at_utc": "2026-10-24T01:21:38.817788+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 14492,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 100,
+            "max_hp": 100,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 113,
+            "max_hp": 193,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              9
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 14498,
+          "frame": 874769,
+          "at_utc": "2026-10-24T01:21:39.159566+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 14500,
+          "frame": 875025,
+          "at_utc": "2026-10-24T01:21:39.675731+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 14977,
+          "frame": 903785,
+          "at_utc": "2026-10-24T01:22:08.956137+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 14978,
+          "frame": 903913,
+          "at_utc": "2026-10-24T01:22:09.012816+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 14977,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 100,
+            "max_hp": 100,
+            "status": 0,
+            "pp": [
+              25,
+              40,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 114,
+            "max_hp": 193,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              9
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 14983,
+          "frame": 904553,
+          "at_utc": "2026-10-24T01:22:09.376156+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "step": 14985,
+          "frame": 904809,
+          "at_utc": "2026-10-24T01:22:09.790350+00:00",
+          "text": []
+        }
+      },
+      {
+        "heal_menu": {
+          "step": 15877,
+          "frame": 960025,
+          "at_utc": "2026-10-24T01:28:18.257236+00:00",
+          "text": [
+            "            ▶HEAL",
+            "             CANCEL",
+            " POKéMON back to",
+            " perfect health!"
+          ]
+        },
+        "restored_observation": {
+          "step": 15878,
+          "frame": 960153,
+          "at_utc": "2026-10-24T01:28:18.312566+00:00",
+          "text": [
+            " OK. We'll need",
+            " your POKéMON."
+          ]
+        },
+        "previous_step": 15877,
+        "previous_training_members": [
+          {
+            "species": 19,
+            "hp": 104,
+            "max_hp": 104,
+            "status": 0,
+            "pp": [
+              25,
+              15,
+              15,
+              30
+            ]
+          },
+          {
+            "species": 132,
+            "hp": 135,
+            "max_hp": 193,
+            "status": 0,
+            "pp": [
+              15,
+              20,
+              10,
+              6
+            ]
+          }
+        ],
+        "native_fighting_fit": {
+          "step": 15883,
+          "frame": 960793,
+          "at_utc": "2026-10-24T01:28:18.596284+00:00",
+          "text": [
+            " Your POKéMON are",
+            " fighting fit!"
+          ]
+        },
+        "closed_world": {
+          "frame": 961049,
+          "at_utc": "2026-10-24T01:28:18.687818+00:00",
+          "evidence_file": ".local/lapras25-final-review-20261024.json",
+          "fixed_review_endpoint": true
+        }
+      }
+    ],
+    "method": "每次均有HEAL/CANCEL原生頁、耗損至全隊滿HP/零狀態/原PP轉變、fighting fit全文與正常閉合。"
+  },
+  "economy": {
+    "money_before_after": [
+      46096,
+      46096
+    ],
+    "inventory_order_and_quantities_unchanged_every_row": true,
+    "story_flags_and_badges_unchanged_every_row": true,
+    "no_new_party_member": true
+  },
+  "operations": {
+    "actions": 13526,
+    "action_counts": {
+      "start": 46,
+      "a": 3761,
+      "down": 1843,
+      "up": 624,
+      "b": 147,
+      "wait": 849,
+      "left": 3012,
+      "right": 3244
+    },
+    "laya_cache_hits": 13420,
+    "new_laya_predictions": 72,
+    "controller_passive_waits": 34,
+    "semantic_laya_waits": 815,
+    "emulated_frames": 839976,
+    "emulated_seconds": 13999.6,
+    "new_model_ms_sum": 50520.86160029285,
+    "phase_counts": {
+      "party_menu": 555,
+      "overworld": 7304,
+      "battle_animation": 707,
+      "battle_dialogue": 2405,
+      "battle_menu": 2237,
+      "dialogue": 285,
+      "menu": 6,
+      "learning_menu": 27
+    }
+  },
+  "timing": {
+    "runner_counter_delta_seconds": {
+      "wall_seconds": 1193.953,
+      "model_wait_seconds": 59.355,
+      "review_pause_seconds": 514.179,
+      "non_review_session_seconds": 679.774,
+      "emulated_seconds": 13999.6
+    },
+    "iso_review_boundary_seconds": 1193.953635,
+    "note": "固定16中心端點到25中心；含準備與工程停檢。model_ms原行加總與runner model_wait口徑不同，不相加；非review也非純戰鬥或全程通關耗時。"
+  },
+  "budget_contract": {
+    "source": "父層執行契約；本次未讀執行中plan或supervisor",
+    "all35_job_appends_used": 352,
+    "all35_job_original_seconds": 900,
+    "original_deadline_and_count_not_reset": true,
+    "all_six_level35_reached": false,
+    "next_target30_job": "另立新工作，不納入本收據"
+  },
+  "classification": {
+    "ledger_model": "laya-rl-agent",
+    "cloud_fallback": false,
+    "strata_configuration_changed": false,
+    "gpt_gameplay_classification_calls": 0,
+    "new_strata_calls": 0,
+    "zero_external_calls_source": "父層離線執行契約與固定summary，非網路流量審計；工程助理雲端額度另計。"
+  },
+  "code_validation": {
+    "file": "results/code-validation-lapras25-20261024.json",
+    "sha256": "bf436e4be29bba9717b0c1d7b083c4c2517d1be4065776753ccc003fd1a9a37b",
+    "provided_by_parent": true,
+    "command": ".venv/Scripts/python.exe -B -X utf8 -m pytest -q -x --tb=short --basetemp outputs/<unique-test-directory> -p no:cacheprovider",
+    "passed": 5476,
+    "failed": 0,
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 26.52,
+    "warning": "既有pysdl2-dll 2.32.10二進位提示"
+  },
+  "previous_code_validation": {
+    "file": "results/code-validation-six-party-20261024.json",
+    "passed": 5450,
+    "status": "16級歷史切點，未回填新25案例"
+  },
+  "backup": {
+    "previous_verified_commit": "53b04cc6",
+    "previous_files": 284,
+    "previous_ci_run": 40049407470,
+    "previous_ci_status": "success",
+    "source": "父層已核歷史5450切點；本次不執行Git或連網再驗",
+    "lapras25_changes_pushed_at_receipt_creation": false
+  },
+  "media": {
+    "phase_videos": 34,
+    "phase_pngs_including_qa": 119,
+    "new_lapras25_videos": 0,
+    "website_published": false
+  },
+  "independent_ledger_crosscheck": {
+    "agent": "bill_route",
+    "same_23_healing_steps_and_four_members_unchanged": true,
+    "same_120_pairs_of_native_exp_awards_and_positive_hp": true,
+    "same_new_cache_passive_counts": true,
+    "scope": "獨立stream固定原行及端點；未先讀本摘要，不包含本次另看像素或批准部署。"
+  },
+  "evidence": [
+    {
+      "file": ".local/lapras16-final-review-20261024.json",
+      "sha256": "83f5104bbbe56eac3fdb6ee556324ac15de6e4cb51a2220163819eb6add3c233",
+      "local_only": true
+    },
+    {
+      "file": ".local/lapras25-final-review-20261024.json",
+      "sha256": "879852af7c93497212c655fdde085012b589fcc49c4d737326b8bc5705228906",
+      "local_only": true
+    },
+    {
+      "file": ".local/lapras16-final-summary-20261024.json",
+      "sha256": "c5a71ae7e6c96ca23ea36ac9fa41a494d0991c5525c828955fb19bc79665f12e",
+      "local_only": true
+    },
+    {
+      "file": ".local/lapras25-final-summary-20261024.json",
+      "sha256": "546f37b416c2c0db78cba06b03c3215ba798ed7b2b368725d2b7da6e697df34c",
+      "local_only": true
+    },
+    {
+      "file": ".local/lapras25-fixed-steps-20261024.jsonl",
+      "sha256": "b9a0daaced1e5430f1576c406fb5bf8fa903405a5fc3ec6fecf5472e26d90ee6",
+      "local_only": true
+    },
+    {
+      "file": ".local/gym-reviewed-history/lapras25-learning-review-20261024.json",
+      "sha256": "b30a8313a754c18649f49d04471361ab28ab2ebaa5c6b08a3e0ee9a40c0bf707",
+      "local_only": true
+    },
+    {
+      "file": "outputs/research/lapras25-intro-no-input-proof-20261024.json",
+      "sha256": "6130e32e44ccd2a7200a8922789811acff71a942f827feae2f2f0cf4b53c2ffd",
+      "local_only": true
+    },
+    {
+      "file": "src/laya_pokemon/levelup_moves.py",
+      "sha256": "f1100cf8bc6dad8bcef8cf9c5bd4ec11f6197580dde6ffdda4b41763785721f4",
+      "local_only": false,
+      "historical_source_snapshot": {
+        "file": ".local/code-snapshots/levelup_moves-lapras25-f1100cf8.py",
+        "sha256": "f1100cf8bc6dad8bcef8cf9c5bd4ec11f6197580dde6ffdda4b41763785721f4",
+        "local_only": true
+      }
+    },
+    {
+      "file": "tests/test_lapras25_learning.py",
+      "sha256": "99d80a6481c5d248f0cd2069cae7264363ac84a399fe3d7c52f0df7e01b1acdb",
+      "local_only": false
+    }
+  ],
+  "limits": [
+    "原行文字候選與進度交叉，不冒稱本次重新逐幀親看像素。",
+    "只核選定觀測皆正HP，沒有用稀疏觀測證明每個模擬幀絕無損傷。",
+    "無鍵clone local1不是campaign953377；clone沒有遊戲按鍵或寫回。",
+    "全隊仍36/25/35/35/36/40、五徽章，未完成全六人35、希魯夫坂木、第六館或聯盟。",
+    "不涵蓋後續30級job、Body Slam獨戰、影片製作、網站發布或新的GitHub備份。",
+    "Windows原生SDL/GLFW事件問題仍未修；8767提供真PyBoy framebuffer。"
+  ]
+}

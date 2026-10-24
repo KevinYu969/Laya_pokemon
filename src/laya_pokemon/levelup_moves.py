@@ -1,11 +1,15 @@
-"""自然學招候選：妙蛙草30級飛葉快刀、大嘴雀25級略過／34級換啄鑽。
+"""自然學招候選：妙蛙草30級、大嘴雀25／34級與拉普拉斯25級。
 
 純文字／唯讀進度輸入，只回傳 Laya 子目標；不啟動模擬器、不執行按鍵。
 其他已知候選只提供策略並要求檢討；尚未宣稱實機校準成功。
 """
 from __future__ import annotations
 
+import importlib
 import re
+
+from . import snorlax_harden_skip
+importlib.reload(snorlax_harden_skip)
 
 from .party_control import command
 from .team_strategy import learn_move_plan, move_key, normalize, reference, species_key
@@ -22,6 +26,7 @@ _CASES = {
     (167, 32): (31, (43, 33, 30, 40), False),
     (35, 25): (119, (64, 45, 43, 31), True),
     (35, 34): (65, (64, 45, 43, 31), True),
+    (19, 25): (34, (55, 45, 47, 54), True),
 }
 _INTRO = ('IVYSAURISTRYINGTOLEARNRAZORLEAF', 'TRYINGTOLEARNRAZORLEAF', 'RAZORLEAF',
           'LEAF', 'BUTIVYSAURCANTLEARNMORETHAN4MOVES', 'IVYSAURCANTLEARNMORETHAN4MOVES',
@@ -34,7 +39,7 @@ _FORGOT = ('IVYSAURFORGOTPOISONPOWDER', 'FORGOTPOISONPOWDER', 'POISONPOWDER')
 _LEARNED = ('IVYSAURLEARNEDRAZORLEAF', 'LEARNEDRAZORLEAF', 'RAZORLEAF')
 _DID_NOT = ('IVYSAURDIDNOTLEARNRAZORLEAF', 'DIDNOTLEARNRAZORLEAF', 'LEARNRAZORLEAF')
 
-# 只有這兩個精確自然案例能共用既有正常忘招流程；不接受任意名字／招式。
+# 只有這三個精確自然案例能共用既有正常忘招流程；不接受任意名字／招式。
 _REPLACEMENTS = {
     (9, 30): {
         'before': (77, 15, 73, 22), 'after': (75, 15, 73, 22), 'slot': 0,
@@ -55,6 +60,19 @@ _REPLACEMENTS = {
         'forgot': ('FEAROWFORGOTGROWL', 'FORGOTGROWL', 'GROWL'),
         'learned': ('FEAROWLEARNEDDRILLPECK', 'LEARNEDDRILLPECK', 'DRILLPECK'),
         'did_not': ('FEAROWDIDNOTLEARNDRILLPECK', 'DIDNOTLEARNDRILLPECK', 'LEARNDRILLPECK'),
+    },
+    (19, 25): {
+        'before': (55, 45, 47, 54), 'after': (55, 34, 47, 54), 'slot': 1,
+        'old': 'GROWL', 'new': 'BODY_SLAM', 'old_id': 45,
+        'old_tactic': 'growl', 'new_tactic': 'body_slam',
+        'intro': ('LAPRASISTRYINGTOLEARNBODYSLAM', 'TRYINGTOLEARNBODYSLAM',
+                  'BODYSLAM', 'BUTLAPRASCANTLEARNMORETHAN4MOVES',
+                  'LAPRASCANTLEARNMORETHAN4MOVES', 'CANTLEARNMORETHAN4MOVES', 'THAN4MOVES'),
+        'delete': ('DELETEANOLDERMOVETOMAKEROOMFORBODYSLAM', 'MOVETOMAKEROOMFORBODYSLAM', 'FORBODYSLAM'),
+        'abandon': ('ABANDONLEARNINGBODYSLAM', 'STOPLEARNINGBODYSLAM', 'LEARNINGBODYSLAM', 'BODYSLAM'),
+        'forgot': ('LAPRASFORGOTGROWL', 'FORGOTGROWL', 'GROWL'),
+        'learned': ('LAPRASLEARNEDBODYSLAM', 'LEARNEDBODYSLAM', 'BODYSLAM'),
+        'did_not': ('LAPRASDIDNOTLEARNBODYSLAM', 'DIDNOTLEARNBODYSLAM', 'LEARNBODYSLAM'),
     },
 }
 
@@ -289,6 +307,9 @@ def _fearow_skip(rows, progress):
 def context(text, progress):
     """接受可見20×18文字與唯讀progress；未知自然個案不接管。"""
     global _SESSION
+    specific = snorlax_harden_skip.context(text, progress)
+    if specific is not None:
+        return specific
     cells = text.get('cells', [])
     if len(cells) != 18 or any(len(row) != 20 for row in cells):
         return _fail('natural_learning_text_unreadable') if _SESSION is not None else None

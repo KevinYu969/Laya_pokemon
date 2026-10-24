@@ -1,0 +1,1627 @@
+{
+  "schema": "laya_pokemon_silph_giovanni_campaign_v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "local_only": false,
+  "status": "actual_silph_giovanni_defeat_and_native_farewell_closed_verified_from_fixed_receipts",
+  "scope": "希魯夫公司11樓坂木；不是常青道館、不是第六道館、不是全遊戲通關。僅本機固定結果整理，未操作遊戲。",
+  "evidence_mode": "固定150筆前動作觀測ledger＋起終review＋父層既存no-input閉合proof；本整理沒有啟動PyBoy或讀取ROM／存檔",
+  "closed_at_utc": "2026-10-24T02:29:53.629265+00:00",
+  "closed_at_taipei": "2026-10-24T10:29:53.629265+08:00",
+  "closed_campaign_frame": 1387897,
+  "start": {
+    "recorded_at_utc": "2026-10-24T01:50:32.115944+00:00",
+    "recorded_at_taipei": "2026-10-24T09:50:32.115944+08:00",
+    "observation_frame": 1373361,
+    "location": {
+      "map_id": 235,
+      "x": 6,
+      "y": 14
+    },
+    "beat_silph_co_giovanni": false
+  },
+  "ledger": {
+    "first_step": 23258,
+    "last_step": 23407,
+    "records": 150,
+    "contiguous_steps": true,
+    "contiguous_emulated_frames": true,
+    "first_observation_frame": 1373361,
+    "last_observation_frame": 1387769,
+    "final_review_frame": 1387897,
+    "advanced_frames": 14536,
+    "action_counts": {
+      "up": 1,
+      "wait": 18,
+      "a": 121,
+      "down": 6,
+      "b": 3,
+      "right": 1
+    },
+    "time_semantics": "state/frame為送本筆動作前的觀測；at是ledger記錄時間，不是逐幀絕對牆鐘時標"
+  },
+  "actual_opponents": [
+    {
+      "actual_hud_name": "NIDORINO",
+      "actual_hud_level": 37,
+      "hud_receipt": {
+        "step": 23276,
+        "observation_frame": 1375225,
+        "recorded_at_utc": "2026-10-24T01:51:42.883539+00:00",
+        "recorded_at_taipei": "2026-10-24T09:51:42.883539+08:00",
+        "visible_text": [
+          " NIDORINO",
+          "     37",
+          " GIOVANNI sent",
+          " out NIDORINO!"
+        ],
+        "action_after_observation": "a"
+      },
+      "fainted_receipt": {
+        "step": 23288,
+        "observation_frame": 1376321,
+        "recorded_at_utc": "2026-10-24T01:51:43.433227+00:00",
+        "recorded_at_taipei": "2026-10-24T09:51:43.433227+08:00",
+        "visible_text": [
+          "          SNORLAX",
+          "               40",
+          "           193/193",
+          " Enemy NIDORINO",
+          " fainted!         ▼"
+        ],
+        "action_after_observation": "a"
+      },
+      "exp_awards": [
+        {
+          "species": 132,
+          "exp_delta": 934,
+          "receipt": {
+            "step": 23289,
+            "observation_frame": 1376449,
+            "recorded_at_utc": "2026-10-24T01:51:43.480613+00:00",
+            "recorded_at_taipei": "2026-10-24T09:51:43.480613+08:00",
+            "visible_text": [
+              "          SNORLAX",
+              "               40",
+              "           193/193",
+              " SNORLAX gained",
+              " 934 EXP. Points!"
+            ],
+            "action_after_observation": "a"
+          }
+        }
+      ],
+      "attacking_species": 132,
+      "used_move_id": 34,
+      "uses_supported_by_pp_decrease_and_text": 1
+    },
+    {
+      "actual_hud_name": "KANGASKHAN",
+      "actual_hud_level": 35,
+      "hud_receipt": {
+        "step": 23295,
+        "observation_frame": 1377129,
+        "recorded_at_utc": "2026-10-24T01:51:43.759972+00:00",
+        "recorded_at_taipei": "2026-10-24T09:51:43.759972+08:00",
+        "visible_text": [
+          " KANGASKHAN",
+          "     35",
+          "          SNORLAX",
+          "               40",
+          "           193/193",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "action_after_observation": "a"
+      },
+      "fainted_receipt": {
+        "step": 23311,
+        "observation_frame": 1378825,
+        "recorded_at_utc": "2026-10-24T01:51:44.564929+00:00",
+        "recorded_at_taipei": "2026-10-24T09:51:44.564929+08:00",
+        "visible_text": [
+          "          SNORLAX",
+          "               40",
+          "           182/193",
+          " Enemy KANGASKHAN",
+          " fainted!         ▼"
+        ],
+        "action_after_observation": "a"
+      },
+      "exp_awards": [
+        {
+          "species": 132,
+          "exp_delta": 1312,
+          "receipt": {
+            "step": 23312,
+            "observation_frame": 1378953,
+            "recorded_at_utc": "2026-10-24T01:51:44.627054+00:00",
+            "recorded_at_taipei": "2026-10-24T09:51:44.627054+08:00",
+            "visible_text": [
+              "          SNORLAX",
+              "               40",
+              "           182/193",
+              " SNORLAX gained",
+              " 1312 EXP. Points!"
+            ],
+            "action_after_observation": "a"
+          }
+        }
+      ],
+      "attacking_species": 132,
+      "used_move_id": 34,
+      "uses_supported_by_pp_decrease_and_text": 2
+    },
+    {
+      "actual_hud_name": "RHYHORN",
+      "actual_hud_level": 37,
+      "hud_receipt": {
+        "step": 23342,
+        "observation_frame": 1380769,
+        "recorded_at_utc": "2026-10-24T02:29:49.584822+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:49.584822+08:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "action_after_observation": "right"
+      },
+      "fainted_receipt": {
+        "step": 23361,
+        "observation_frame": 1382497,
+        "recorded_at_utc": "2026-10-24T02:29:50.453484+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:50.453484+08:00",
+        "visible_text": [
+          "          NIDOKING",
+          "               36",
+          "           121/121",
+          " Enemy RHYHORN",
+          " fainted!         ▼"
+        ],
+        "action_after_observation": "a"
+      },
+      "exp_awards": [
+        {
+          "species": 132,
+          "exp_delta": 531,
+          "receipt": {
+            "step": 23362,
+            "observation_frame": 1382625,
+            "recorded_at_utc": "2026-10-24T02:29:50.511653+00:00",
+            "recorded_at_taipei": "2026-10-24T10:29:50.511653+08:00",
+            "visible_text": [
+              "          NIDOKING",
+              "               36",
+              "           121/121",
+              " SNORLAX gained",
+              " 531 EXP. Points!"
+            ],
+            "action_after_observation": "a"
+          }
+        },
+        {
+          "species": 7,
+          "exp_delta": 531,
+          "receipt": {
+            "step": 23363,
+            "observation_frame": 1382753,
+            "recorded_at_utc": "2026-10-24T02:29:50.561599+00:00",
+            "recorded_at_taipei": "2026-10-24T10:29:50.561599+08:00",
+            "visible_text": [
+              "          NIDOKING",
+              "               36",
+              "           121/121",
+              " NIDOKING gained",
+              " 531 EXP. Points! ▼"
+            ],
+            "action_after_observation": "a"
+          }
+        }
+      ],
+      "attacking_species": 7,
+      "used_move_id": 57,
+      "uses_supported_by_pp_decrease_and_text": 1
+    },
+    {
+      "actual_hud_name": "NIDOQUEEN",
+      "actual_hud_level": 41,
+      "hud_receipt": {
+        "step": 23369,
+        "observation_frame": 1383433,
+        "recorded_at_utc": "2026-10-24T02:29:51.650560+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:51.650560+08:00",
+        "visible_text": [
+          " NIDOQUEEN",
+          "     41",
+          "          NIDOKING",
+          "               36",
+          "           121/121",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "action_after_observation": "a"
+      },
+      "fainted_receipt": {
+        "step": 23393,
+        "observation_frame": 1385977,
+        "recorded_at_utc": "2026-10-24T02:29:52.784064+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:52.784064+08:00",
+        "visible_text": [
+          "          NIDOKING",
+          "               36",
+          "           108/121",
+          " Enemy NIDOQUEEN",
+          " fainted!"
+        ],
+        "action_after_observation": "a"
+      },
+      "exp_awards": [
+        {
+          "species": 7,
+          "exp_delta": 1704,
+          "receipt": {
+            "step": 23395,
+            "observation_frame": 1386233,
+            "recorded_at_utc": "2026-10-24T02:29:52.879050+00:00",
+            "recorded_at_taipei": "2026-10-24T10:29:52.879050+08:00",
+            "visible_text": [
+              "          NIDOKING",
+              "               36",
+              "           108/121",
+              " NIDOKING gained",
+              " 1704 EXP. Points!▼"
+            ],
+            "action_after_observation": "a"
+          }
+        }
+      ],
+      "attacking_species": 7,
+      "used_move_id": 57,
+      "uses_supported_by_pp_decrease_and_text": 3
+    }
+  ],
+  "normal_switch_and_attack": {
+    "reason_observed": "RHYHORN37在場時，從卡比獸正常PKMN→第二格NIDOKING→SWITCH，原party順序未改",
+    "receipts": [
+      {
+        "step": 23342,
+        "observation_frame": 1380769,
+        "recorded_at_utc": "2026-10-24T02:29:49.584822+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:49.584822+08:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "action_after_observation": "right"
+      },
+      {
+        "step": 23343,
+        "observation_frame": 1380809,
+        "recorded_at_utc": "2026-10-24T02:29:49.603723+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:49.603723+08:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          "          FIGHT▶",
+          "          ITEM  RUN"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23344,
+        "observation_frame": 1380849,
+        "recorded_at_utc": "2026-10-24T02:29:49.632795+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:49.632795+08:00",
+        "visible_text": [
+          "   SNORLAX    41",
+          "▶            187/198",
+          "   NIDOKING   36",
+          "             121/121",
+          "   EEVEE      35",
+          "              90/ 90",
+          "   VENUSAUR   35",
+          "             111/111",
+          "   FEAROW     36",
+          "             111/111",
+          "   LAPRAS     30",
+          "             124/124"
+        ],
+        "action_after_observation": "down"
+      },
+      {
+        "step": 23345,
+        "observation_frame": 1380889,
+        "recorded_at_utc": "2026-10-24T02:29:49.662074+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:49.662074+08:00",
+        "visible_text": [
+          "   SNORLAX    41",
+          "             187/198",
+          "   NIDOKING   36",
+          "▶            121/121",
+          "   EEVEE      35",
+          "              90/ 90",
+          "   VENUSAUR   35",
+          "             111/111",
+          "   FEAROW     36",
+          "             111/111",
+          "   LAPRAS     30",
+          "             124/124"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23346,
+        "observation_frame": 1380929,
+        "recorded_at_utc": "2026-10-24T02:29:49.685135+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:49.685135+08:00",
+        "visible_text": [
+          "   SNORLAX    41",
+          "             187/198",
+          "   NIDOKING   36",
+          "▷            121/121",
+          "   EEVEE      35",
+          "              90/ 90",
+          "   VENUSAUR   35",
+          "             111/111",
+          "   FEAROW     36",
+          "             111/111",
+          "   LAPRAS     30",
+          "            ▶SWITCH"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23348,
+        "observation_frame": 1381097,
+        "recorded_at_utc": "2026-10-24T02:29:49.800603+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:49.800603+08:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          NIDOKING",
+          "               36",
+          "           121/121",
+          " Go! NIDOKING!"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23352,
+        "observation_frame": 1381609,
+        "recorded_at_utc": "2026-10-24T02:29:49.999318+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:49.999318+08:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          NIDOKING",
+          "               36",
+          "           121/121",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23354,
+        "observation_frame": 1381689,
+        "recorded_at_utc": "2026-10-24T02:29:50.044690+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:50.044690+08:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          NIDOKING",
+          "               36",
+          " TYPE/",
+          "  WATER    121/121",
+          "     15/15",
+          "      BUBBLEBEAM",
+          "     ▶SURF",
+          "      HORN ATTACK",
+          "      POISON STING"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23356,
+        "observation_frame": 1381857,
+        "recorded_at_utc": "2026-10-24T02:29:50.153308+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:50.153308+08:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          NIDOKING",
+          "               36",
+          "           121/121",
+          " NIDOKING",
+          " used SURF!"
+        ],
+        "action_after_observation": "a"
+      }
+    ],
+    "surf_id": 57,
+    "surf_pp_before": 15,
+    "surf_pp_after": 11,
+    "surf_uses": 4,
+    "body_slam_id": 34,
+    "body_slam_pp_before": 10,
+    "body_slam_pp_after": 7,
+    "body_slam_uses": 3,
+    "super_effective_receipts": [
+      {
+        "step": 23360,
+        "observation_frame": 1382369,
+        "recorded_at_utc": "2026-10-24T02:29:50.385042+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:50.385042+08:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          NIDOKING",
+          "               36",
+          "           121/121",
+          " It's super",
+          " effective!"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23375,
+        "observation_frame": 1384025,
+        "recorded_at_utc": "2026-10-24T02:29:51.923580+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:51.923580+08:00",
+        "visible_text": [
+          " NIDOQUEEN",
+          "     41",
+          "          NIDOKING",
+          "               36",
+          "           121/121",
+          " It's super",
+          " effective!       ▼"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23383,
+        "observation_frame": 1384873,
+        "recorded_at_utc": "2026-10-24T02:29:52.307432+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:52.307432+08:00",
+        "visible_text": [
+          " NIDOQUEEN",
+          "     41",
+          "          NIDOKING",
+          "               36",
+          "           108/121",
+          " It's super",
+          " effective!       ▼"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23392,
+        "observation_frame": 1385849,
+        "recorded_at_utc": "2026-10-24T02:29:52.727882+00:00",
+        "recorded_at_taipei": "2026-10-24T10:29:52.727882+08:00",
+        "visible_text": [
+          " NIDOQUEEN",
+          "     41",
+          "          NIDOKING",
+          "               36",
+          "           108/121",
+          " It's super",
+          " effective!       ▼"
+        ],
+        "action_after_observation": "a"
+      }
+    ],
+    "party_order_unchanged": true
+  },
+  "snorlax41_harden": {
+    "level_receipt": {
+      "step": 23313,
+      "observation_frame": 1379081,
+      "recorded_at_utc": "2026-10-24T01:51:44.700549+00:00",
+      "recorded_at_taipei": "2026-10-24T09:51:44.700549+08:00",
+      "visible_text": [
+        "          SNORLAX",
+        "               41",
+        "           187/198",
+        " SNORLAX grew",
+        " to level 41!"
+      ],
+      "action_after_observation": "a"
+    },
+    "move_id_not_learned": 106,
+    "protected_moves": [
+      70,
+      133,
+      156,
+      34
+    ],
+    "normal_decline_then_abandon_receipts": [
+      {
+        "step": 23327,
+        "observation_frame": 1379817,
+        "recorded_at_utc": "2026-10-24T02:18:22.382481+00:00",
+        "recorded_at_taipei": "2026-10-24T10:18:22.382481+08:00",
+        "visible_text": [
+          "          SNOR",
+          "               ▶YES",
+          "           187  NO",
+          " move to make room",
+          " for HARDEN?"
+        ],
+        "action_after_observation": "down"
+      },
+      {
+        "step": 23328,
+        "observation_frame": 1379857,
+        "recorded_at_utc": "2026-10-24T02:18:22.400702+00:00",
+        "recorded_at_taipei": "2026-10-24T10:18:22.400702+08:00",
+        "visible_text": [
+          "          SNOR",
+          "                YES",
+          "           187 ▶NO",
+          " move to make room",
+          " for HARDEN?"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23331,
+        "observation_frame": 1379977,
+        "recorded_at_utc": "2026-10-24T02:18:22.460859+00:00",
+        "recorded_at_taipei": "2026-10-24T10:18:22.460859+08:00",
+        "visible_text": [
+          "          SNOR",
+          "               ▶YES",
+          "           187  NO",
+          " Abandon learning",
+          " HARDEN?"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23333,
+        "observation_frame": 1380057,
+        "recorded_at_utc": "2026-10-24T02:18:22.510066+00:00",
+        "recorded_at_taipei": "2026-10-24T10:18:22.510066+08:00",
+        "visible_text": [
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          " SNORLAX",
+          " did not learn    ▼"
+        ],
+        "action_after_observation": "a"
+      },
+      {
+        "step": 23334,
+        "observation_frame": 1380097,
+        "recorded_at_utc": "2026-10-24T02:18:22.533862+00:00",
+        "recorded_at_taipei": "2026-10-24T10:18:22.533862+08:00",
+        "visible_text": [
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          " did not learn",
+          " HARDEN!          ▼"
+        ],
+        "action_after_observation": "a"
+      }
+    ],
+    "learning_result": "skipped_unchanged",
+    "full_six_party_unchanged_through_observed_learning_segment": true,
+    "engineering_reviews_count": 4,
+    "engineering_reviews": [
+      {
+        "review_source": ".local/gym-reviewed-history/snorlax41-skip-20261024-review.json",
+        "review_reason": "forget_move_menu_requires_live_calibration",
+        "review_observation_frame": 1379337,
+        "review_recorded_at_utc": "2026-10-24T01:51:44.789030+00:00",
+        "review_recorded_at_taipei": "2026-10-24T09:51:44.789030+08:00",
+        "review_visible_text": [
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          " SNORLAX is",
+          " trying to learn"
+        ],
+        "resume_receipt": {
+          "step": 23315,
+          "observation_frame": 1379337,
+          "recorded_at_utc": "2026-10-24T02:02:51.319726+00:00",
+          "recorded_at_taipei": "2026-10-24T10:02:51.319726+08:00",
+          "visible_text": [
+            "          SNORLAX",
+            "               41",
+            "           187/198",
+            " SNORLAX is",
+            " trying to learn"
+          ],
+          "action_after_observation": "wait"
+        },
+        "review_pause_counter_delta_seconds": 666.344,
+        "cause": "新增只略過HARDEN、保留原四招的正常學招控制，原停點尚未支援",
+        "battle_loss": false
+      },
+      {
+        "review_source": ".local/gym-reviewed-history/snorlax41-ligature-20261024-review.json",
+        "review_reason": "snorlax_harden_skip_text_unreadable",
+        "review_observation_frame": 1379497,
+        "review_recorded_at_utc": "2026-10-24T02:02:51.564355+00:00",
+        "review_recorded_at_taipei": "2026-10-24T10:02:51.564355+08:00",
+        "review_visible_text": [
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          " But, SNORLAX",
+          " can't lea"
+        ],
+        "resume_receipt": {
+          "step": 23319,
+          "observation_frame": 1379497,
+          "recorded_at_utc": "2026-10-24T02:18:22.123413+00:00",
+          "recorded_at_taipei": "2026-10-24T10:18:22.123413+08:00",
+          "visible_text": [
+            "          SNORLAX",
+            "               41",
+            "           187/198",
+            " But, SNORLAX",
+            " can't lea"
+          ],
+          "action_after_observation": "wait"
+        },
+        "review_pause_counter_delta_seconds": 930.422,
+        "cause": "正文can't的原生單格't解碼校準",
+        "battle_loss": false
+      },
+      {
+        "review_source": ".local/gym-reviewed-history/snorlax41-handoff-20261024-review.json",
+        "review_reason": "snorlax_harden_skip_closed_after_skip_unverified",
+        "review_observation_frame": 1380137,
+        "review_recorded_at_utc": "2026-10-24T02:18:22.556960+00:00",
+        "review_recorded_at_taipei": "2026-10-24T10:18:22.556960+08:00",
+        "review_visible_text": [
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          " GIOVA"
+        ],
+        "resume_receipt": {
+          "step": 23335,
+          "observation_frame": 1380137,
+          "recorded_at_utc": "2026-10-24T02:26:16.420737+00:00",
+          "recorded_at_taipei": "2026-10-24T10:26:16.420737+08:00",
+          "visible_text": [
+            "          SNORLAX",
+            "               41",
+            "           187/198",
+            " GIOVA"
+          ],
+          "action_after_observation": "wait"
+        },
+        "review_pause_counter_delta_seconds": 473.75,
+        "cause": "已略過HARDEN後仍要求閉窗，實際下一對手前置文字正在接續",
+        "battle_loss": false
+      },
+      {
+        "review_source": ".local/gym-reviewed-history/snorlax41-about-handoff-20261024-review.json",
+        "review_reason": "snorlax_harden_skip_closed_after_skip_unverified",
+        "review_observation_frame": 1380177,
+        "review_recorded_at_utc": "2026-10-24T02:26:16.517230+00:00",
+        "review_recorded_at_taipei": "2026-10-24T10:26:16.517230+08:00",
+        "review_visible_text": [
+          "          SNORLAX",
+          "               41",
+          "           187/198",
+          " GIOVANNI is",
+          " about to"
+        ],
+        "resume_receipt": {
+          "step": 23336,
+          "observation_frame": 1380177,
+          "recorded_at_utc": "2026-10-24T02:29:48.404815+00:00",
+          "recorded_at_taipei": "2026-10-24T10:29:48.404815+08:00",
+          "visible_text": [
+            "          SNORLAX",
+            "               41",
+            "           187/198",
+            " GIOVANNI is",
+            " about to"
+          ],
+          "action_after_observation": "wait"
+        },
+        "review_pause_counter_delta_seconds": 211.766,
+        "cause": "補齊GIOVANNI is/about to的原生AboutToUse前置續接",
+        "battle_loss": false
+      }
+    ],
+    "ligature_evidence": {
+      "source_campaign_frame": 1379497,
+      "local_clone_frame": 1,
+      "physical_cell": [
+        4,
+        16
+      ],
+      "glyph": "'t",
+      "no_input": true,
+      "synthetic_controller_seed": true,
+      "limitation": "此proof是無按鍵的合成controller續接驗證，不當作實際學招按鍵或主campaign同幀。正常略過由後續ledger證明。"
+    },
+    "review_note": "四次工程停檢分開保留；沒有把它們寫成三次，也沒有當成戰敗或回溯。固定artifact未讀寫任何存檔。"
+  },
+  "victory": {
+    "defeat_receipt": {
+      "step": 23396,
+      "observation_frame": 1386361,
+      "recorded_at_utc": "2026-10-24T02:29:52.949350+00:00",
+      "recorded_at_taipei": "2026-10-24T10:29:52.949350+08:00",
+      "visible_text": [
+        "          NIDOKING",
+        "               36",
+        "           108/121",
+        " KEVIN defeated",
+        " GIOVANNI!"
+      ],
+      "action_after_observation": "a"
+    },
+    "loss_dialogue_receipt": {
+      "step": 23398,
+      "observation_frame": 1386617,
+      "recorded_at_utc": "2026-10-24T02:29:53.056013+00:00",
+      "recorded_at_taipei": "2026-10-24T10:29:53.056013+08:00",
+      "visible_text": [
+        "          NIDOKING",
+        "               36",
+        "           108/121",
+        " GIOVANNI: Arrgh!!",
+        " I lost again!?   ▼"
+      ],
+      "action_after_observation": "a"
+    },
+    "prize_receipt": {
+      "step": 23399,
+      "observation_frame": 1386745,
+      "recorded_at_utc": "2026-10-24T02:29:53.107724+00:00",
+      "recorded_at_taipei": "2026-10-24T10:29:53.107724+08:00",
+      "visible_text": [
+        "          NIDOKING",
+        "               36",
+        "           108/121",
+        " KEVIN got ¥4059",
+        " for winning!     ▼"
+      ],
+      "action_after_observation": "a"
+    },
+    "money_before": 47056,
+    "money_after": 51115,
+    "prize_delta": 4059,
+    "money_first_updated_receipt": {
+      "step": 23400,
+      "observation_frame": 1386873,
+      "recorded_at_utc": "2026-10-24T02:29:53.179376+00:00",
+      "recorded_at_taipei": "2026-10-24T10:29:53.179376+08:00",
+      "visible_text": [
+        " Blast it all!",
+        " You ru"
+      ],
+      "action_after_observation": "a"
+    },
+    "farewell_receipt": {
+      "step": 23407,
+      "observation_frame": 1387769,
+      "recorded_at_utc": "2026-10-24T02:29:53.598238+00:00",
+      "recorded_at_taipei": "2026-10-24T10:29:53.598238+08:00",
+      "visible_text": [
+        " I must go, but I",
+        " shall return!"
+      ],
+      "action_after_observation": "a"
+    },
+    "beat_silph_co_giovanni_before": false,
+    "beat_silph_co_giovanni_after": true,
+    "event_true_first_verified_in": "final_review_and_closed_proof",
+    "event_in_all_pre_action_ledger_rows": false,
+    "note": "150筆最後一頁仍是離場對話且event False；最後A後才在終review交叉驗False→True，不提前把獎金頁當閉合。"
+  },
+  "party": {
+    "before": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 40,
+        "hp": 193,
+        "max_hp": 193,
+        "exp": 85039,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 40019,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 30,
+        "hp": 124,
+        "max_hp": 124,
+        "exp": 33943,
+        "status": 0,
+        "moves": [
+          55,
+          34,
+          47,
+          54
+        ],
+        "pp": [
+          25,
+          15,
+          15,
+          30
+        ]
+      }
+    ],
+    "after": [
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 41,
+        "hp": 187,
+        "max_hp": 198,
+        "exp": 87816,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          7
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 108,
+        "max_hp": 121,
+        "exp": 42254,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          11,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 36,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 50081,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          43,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          30,
+          20
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 30,
+        "hp": 124,
+        "max_hp": 124,
+        "exp": 33943,
+        "status": 0,
+        "moves": [
+          55,
+          34,
+          47,
+          54
+        ],
+        "pp": [
+          25,
+          15,
+          15,
+          30
+        ]
+      }
+    ],
+    "deltas": [
+      {
+        "species": 132,
+        "level_before": 40,
+        "level_after": 41,
+        "hp_before": 193,
+        "hp_after": 187,
+        "max_hp_before": 193,
+        "max_hp_after": 198,
+        "exp_delta": 2777,
+        "pp_before": [
+          15,
+          20,
+          10,
+          10
+        ],
+        "pp_after": [
+          15,
+          20,
+          10,
+          7
+        ],
+        "moves_unchanged": true,
+        "all_observed_fields_unchanged": false
+      },
+      {
+        "species": 7,
+        "level_before": 36,
+        "level_after": 36,
+        "hp_before": 121,
+        "hp_after": 108,
+        "max_hp_before": 121,
+        "max_hp_after": 121,
+        "exp_delta": 2235,
+        "pp_before": [
+          20,
+          15,
+          25,
+          35
+        ],
+        "pp_after": [
+          20,
+          11,
+          25,
+          35
+        ],
+        "moves_unchanged": true,
+        "all_observed_fields_unchanged": false
+      },
+      {
+        "species": 102,
+        "level_before": 35,
+        "level_after": 35,
+        "hp_before": 90,
+        "hp_after": 90,
+        "max_hp_before": 90,
+        "max_hp_after": 90,
+        "exp_delta": 0,
+        "pp_before": [
+          35,
+          15,
+          30,
+          30
+        ],
+        "pp_after": [
+          35,
+          15,
+          30,
+          30
+        ],
+        "moves_unchanged": true,
+        "all_observed_fields_unchanged": true
+      },
+      {
+        "species": 154,
+        "level_before": 35,
+        "level_after": 35,
+        "hp_before": 111,
+        "hp_after": 111,
+        "max_hp_before": 111,
+        "max_hp_after": 111,
+        "exp_delta": 0,
+        "pp_before": [
+          25,
+          30,
+          10,
+          10
+        ],
+        "pp_after": [
+          25,
+          30,
+          10,
+          10
+        ],
+        "moves_unchanged": true,
+        "all_observed_fields_unchanged": true
+      },
+      {
+        "species": 35,
+        "level_before": 36,
+        "level_after": 36,
+        "hp_before": 111,
+        "hp_after": 111,
+        "max_hp_before": 111,
+        "max_hp_after": 111,
+        "exp_delta": 0,
+        "pp_before": [
+          35,
+          20,
+          30,
+          20
+        ],
+        "pp_after": [
+          35,
+          20,
+          30,
+          20
+        ],
+        "moves_unchanged": true,
+        "all_observed_fields_unchanged": true
+      },
+      {
+        "species": 19,
+        "level_before": 30,
+        "level_after": 30,
+        "hp_before": 124,
+        "hp_after": 124,
+        "max_hp_before": 124,
+        "max_hp_after": 124,
+        "exp_delta": 0,
+        "pp_before": [
+          25,
+          15,
+          15,
+          30
+        ],
+        "pp_after": [
+          25,
+          15,
+          15,
+          30
+        ],
+        "moves_unchanged": true,
+        "all_observed_fields_unchanged": true
+      }
+    ],
+    "all_150_party_snapshots_read_valid": true,
+    "count_six_in_all_snapshots": true,
+    "all_recorded_party_hp_positive": true,
+    "all_recorded_status_zero": true,
+    "own_faint_text_observed": false,
+    "four_other_members_all_observed_fields_unchanged": true,
+    "hp_sequence_notes": [
+      "卡比獸RAGE後193→182，升41後187/198；+5來自升級最大HP變化，不是道具補血。",
+      "尼多王受到SCRATCH後121→108/121；其他四人固定欄位全程不變。",
+      "沒有逐幀讀取BattleMon全史；無倒下結論依完整固定ledger的有效party／敵方四次faint及終點證據，不宣稱每幀HP皆已留存。"
+    ]
+  },
+  "inventory": {
+    "before": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 48,
+        "quantity": 1
+      }
+    ],
+    "after": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 48,
+        "quantity": 1
+      }
+    ],
+    "order_and_quantities_unchanged_in_all_150_rows_and_after": true,
+    "card_key_item48_quantity": 1,
+    "master_ball_acquired": false
+  },
+  "closed_world_evidence": {
+    "source_campaign_frame": 1387897,
+    "independent_clone_frame": 1,
+    "no_input_as_reported": true,
+    "same_campaign_frame_claimed_for_clone": false,
+    "location": {
+      "map_id": 235,
+      "x": 6,
+      "y": 13
+    },
+    "text_lines": [],
+    "text_read_valid": true,
+    "alignment_verified": true,
+    "window_visible": false,
+    "text_read_error": null,
+    "overworld_ready": true,
+    "battle_raw": 0,
+    "battle_active": false,
+    "battle_kind": "none",
+    "tileset_id": 16,
+    "verified_visible_cells": 90,
+    "movement": {
+      "read_valid": true,
+      "profile": "gen1-arrow-movement-source-v1",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "observation_frame": 1,
+      "spinning": false,
+      "simulated_remaining": 0,
+      "joy_ignore": 0,
+      "walk_counter": 0,
+      "movement_flags": 0
+    },
+    "toggle_snapshot": {
+      "read_valid": true,
+      "observed_frame": 1,
+      "map": 235,
+      "sprite_count": 5,
+      "objects": [
+        {
+          "slot": 3,
+          "index": 183,
+          "hidden": true
+        },
+        {
+          "slot": 4,
+          "index": 184,
+          "hidden": true
+        },
+        {
+          "slot": 5,
+          "index": 185,
+          "hidden": true
+        }
+      ],
+      "error": null,
+      "profile": "fixed-red-toggleable-object-snapshot-v1",
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2"
+    },
+    "npc_positions_remaining": [
+      [
+        7,
+        5
+      ],
+      [
+        10,
+        5
+      ]
+    ],
+    "hidden_source_positions": [
+      [
+        6,
+        9
+      ],
+      [
+        3,
+        16
+      ],
+      [
+        15,
+        9
+      ]
+    ],
+    "toggle_source_calibrated": true,
+    "president_and_secretary_preserved": true,
+    "warning": [
+      "文字候選依 tilemap 字碼推測，尚未完全校準；未核對字型外觀或 sprite 遮罩。"
+    ],
+    "limitation": "既存獨立clone frame1證據對應source_campaign_frame1387897；不是在主campaign同幀重新讀取。此整理只讀JSON，未自行重跑clone。"
+  },
+  "timing": {
+    "basis": "起點開門後review→坂木離場閉合review；包含起步、引戰、整場、41級學招、工程停檢及告別，不是純四對手戰鬥秒數。",
+    "utc_receipt_elapsed_seconds": 2361.513321,
+    "session_counter_deltas": {
+      "wall_seconds": 2361.344,
+      "review_pause_seconds": 2352.001,
+      "non_review_session_seconds": 9.343,
+      "model_wait_seconds": 1.655
+    },
+    "initial_pre_gameplay_review_pause_counter_seconds": 69.719,
+    "harden_engineering_review_pause_counter_seconds": 2282.282,
+    "emulated_frames": 14536,
+    "emulated_seconds_at_60fps": 242.26666666666668,
+    "uncached_classifications": 2,
+    "cached_classifications": 132,
+    "passive_waits": 16,
+    "uncached_model_ms": [
+      {
+        "step": 23339,
+        "milliseconds": 787.0619999594055,
+        "model": "laya-rl-agent"
+      },
+      {
+        "step": 23366,
+        "milliseconds": 792.0822000014596,
+        "model": "laya-rl-agent"
+      }
+    ],
+    "uncached_model_ms_sum": 1579.144199960865,
+    "uncached_p50_ms_nearest_rank": 787.0619999594055,
+    "uncached_p95_ms_nearest_rank": 792.0822000014596,
+    "latency_limit": "僅2筆未快取樣本；model_ms總和與session模型等待計數器是不同量測，不強行等同，也不是硬體對照。",
+    "final_cumulative_run_summary": {
+      "actions": 23407,
+      "uncached_choices": 164,
+      "cache_hits": 23149,
+      "passive_waits": 94,
+      "model_load_count": 1,
+      "model_load_seconds": 4.379108799970709,
+      "cloud_fallback": false,
+      "strata_configuration_changed": false
+    },
+    "summary_recorded_at_metadata": "2026-10-24T00:22:32.167367+00:00",
+    "summary_recorded_at_used_as_completion_time": false,
+    "summary_timestamp_warning": "recorded_at早於本場起點，不能當這次完成時間或新的checkpoint時間；採終review.at。",
+    "whole_game_start_or_champion_elapsed_claimed": false
+  },
+  "progress_after": {
+    "badges_raw": 31,
+    "badge_count": 5,
+    "new_gym_badge": false,
+    "beat_silph_co_giovanni": true,
+    "got_master_ball": false,
+    "beat_sabrina": false,
+    "champion_observed": false,
+    "hall_of_fame_confirmed": null
+  },
+  "source_receipts": [
+    {
+      "role": "before",
+      "path": ".local/gym-reviewed-history/silph-giovanni-run24-20261024-review.json",
+      "bytes": 11550,
+      "sha256": "75576dedfc7423ef4726acdf1529c4c18a821b39ed0bd0681555d6fe141c0c74"
+    },
+    {
+      "role": "after",
+      "path": ".local/silph-giovanni-final-review-20261024.json",
+      "bytes": 11546,
+      "sha256": "70cbaf0a79621979f6e476423255264d4966eed5cef373c356f02e59bf19ac42"
+    },
+    {
+      "role": "summary",
+      "path": ".local/silph-giovanni-final-summary-20261024.json",
+      "bytes": 913,
+      "sha256": "8f560876893c696ffdfa0e1a718bb2523b9de3c5ad94712d6034d2ab1028d35e"
+    },
+    {
+      "role": "steps",
+      "path": ".local/silph-giovanni-fixed-steps-20261024.jsonl",
+      "bytes": 1184189,
+      "sha256": "7badacb498172d0ada985fa06c6a27719a9459de592e2d83777a43f1f1409acf"
+    },
+    {
+      "role": "closed_proof",
+      "path": "outputs/research/silph-giovanni-closed-proof-20261024.json",
+      "bytes": 29262,
+      "sha256": "9034aa0522dd3c778c2de5a028ecc0a83060a9a9b47b01368bfebb6fe48707e2"
+    },
+    {
+      "role": "harden_initial_review",
+      "path": ".local/gym-reviewed-history/snorlax41-skip-20261024-review.json",
+      "bytes": 11481,
+      "sha256": "6312568fc11ee8a0965e437029d5a1df045a50f6d8b7c5f96727cf089b3b7cad"
+    },
+    {
+      "role": "harden_ligature_review",
+      "path": ".local/gym-reviewed-history/snorlax41-ligature-20261024-review.json",
+      "bytes": 11392,
+      "sha256": "471468721b2fb35522c2035a1de1f2240e9fdeaa7dad1849546d41c73032afc8"
+    },
+    {
+      "role": "harden_close_handoff_review",
+      "path": ".local/gym-reviewed-history/snorlax41-handoff-20261024-review.json",
+      "bytes": 11390,
+      "sha256": "7bf3ededcec2096cb92de5d40235af198b4f779bef3652ee4d717482921cf813"
+    },
+    {
+      "role": "harden_about_handoff_review",
+      "path": ".local/gym-reviewed-history/snorlax41-about-handoff-20261024-review.json",
+      "bytes": 11416,
+      "sha256": "a1a31a1ca2714e69af879f49764906f82281eb2144edef086cce9b51ece69f5e"
+    },
+    {
+      "role": "harden_ligature_proof",
+      "path": "outputs/research/snorlax41-ligature-reviewed-no-input-proof-20261024.json",
+      "bytes": 9375,
+      "sha256": "23b8e3035b5ef164d2f00d726c10163478a172e31b994e90d1a58c90c6a013e4"
+    }
+  ],
+  "validation": {
+    "new_files_only_no_overwrite": true,
+    "all_source_hashes_rechecked_unchanged": true,
+    "steps_and_frame_arithmetic_verified": true,
+    "actual_hud_faint_exp_prize_crosschecked": true,
+    "no_game_rom_state_plan_vault_network_git_access": true,
+    "parent_review_required": true
+  },
+  "visibility": {
+    "receipt": "public_project_backup",
+    "raw_evidence": "local_only"
+  }
+}

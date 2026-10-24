@@ -1,0 +1,72 @@
+{
+  "schema": "laya-sabrina-recovery-code-validation-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "status": "source_validated_eight_warps_and_nurse_recovery_live_verified",
+  "validation": {
+    "command": ".venv/Scripts/python.exe -B -X utf8 -m pytest -q -x --tb=short --basetemp outputs/pytest-sabrina-recovery-final-20261024 -p no:cacheprovider",
+    "passed": 5785,
+    "failed": 0,
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 24.19,
+    "warning": "既有pysdl2-dll 2.32.10提示"
+  },
+  "source_sha256": {
+    "src/laya_pokemon/balanced_training.py": "de29fb0a206f2ded7d6f29a0f44f9a48b2deca757333c98f7c84cbbca4c44ec0",
+    "src/laya_pokemon/battle.py": "75d8033f406a43f270532eb6479cf57e7675301bdae24b5bf975609d44b64256",
+    "src/laya_pokemon/campaign.py": "b03aa0dd6b600d86debe17e96fd3774e1cece4dfdde9e8b7541e2ccc24ddfb95",
+    "src/laya_pokemon/campaign_route.py": "7fc8778850464a13f2e4127c94b5c86b6d6bfcb7a376f6c0883763f540213fc5",
+    "src/laya_pokemon/campaign_safety.py": "d77b5322dbc58b8ef5cd2dc376e7f4302cbaa18d021726532dff3828a775c32c",
+    "src/laya_pokemon/lapras_bridge.py": "70e1f1176bbbdac53ebc92de76aa853f20ab2c8bf61e8e128d17fd8629334192",
+    "tests/test_shared_experience_training.py": "f4ed91a85576f19624c8e07dd167b3a80087dd028f9defd413d9196a19757544",
+    "tests/test_shared_exp_campaign_integration.py": "bf0a2204d2869aad9d3599e97c0c7b9f90f5ca6bacae1f051cde7e9fe408ac93",
+    "tests/test_shared_exp_independent.py": "dc5df800774fdef8e7ecd437b8363b812a78ce5495a9a28fc3725224756f5b54",
+    "tests/test_shared_exp_completion.py": "1b1f26a62042e6f6cc34e32d293a85f8ac7a56a103276dfa22e686e8ce176588",
+    "tests/test_shared_exp_target_status.py": "dee83ea6139b1981292af63949a468b8e781a780fb9dfa749539f0ba223a0821",
+    "tests/test_shared_exp_ditto.py": "c0b27f2cf3e59e1962c21f63bfd946dcbe87ecf749df97688763aadb2e2af58e",
+    "tests/test_shared_training_attrition.py": "d55d53f84369c8f44cc2c6405b4864c7937cf2664f39fe499926c22721749a31",
+    "tests/test_ditto_shared_exp_learning.py": "cf6575b4dee2519369cd28f22bcbf73fe60bd6d34303e9e7edf77653930fc16f",
+    "tests/test_ditto_transform.py": "2eae72aa0bff10196c54752b9a784adb4b2285d75d8025c8689235a4e635797d",
+    "tests/test_lapras_bridge.py": "d11cabb37f712ced2b560b2915ec5cd65d25e97ed5d5695f68cd5c7d34cfa2c3",
+    "tests/test_campaign_lapras_integration.py": "a645b9844a9eebb8641e8cd65c54d569ba4426401782dc732541fb1db35224e5",
+    "src/laya_pokemon/levelup_moves.py": "ea8f606341d4d06d3ba0ca74cb120bf18c0f52c3a25c266cc3ec9afc68b174aa",
+    "tests/test_lapras25_learning.py": "99d80a6481c5d248f0cd2069cae7264363ac84a399fe3d7c52f0df7e01b1acdb",
+    "src/laya_pokemon/silph_giovanni_wait.py": "5d3ce2a67953a58d14cd09be05bd7dfa258d21571fbe229010d6db83e0f1fb6c",
+    "src/laya_pokemon/progress.py": "edc1739b5516abdf06f0ea6158041a029ff0eb1751860b1b60b5204435b10b93",
+    "tests/test_silph_giovanni_wait.py": "fd30f64cb5e9b5f0ad96f361014f834d1d0a33e9109992ceb709d494fa63ab31",
+    "tests/test_silph11_progress_and_route.py": "d93a5ef7daf8286dbe1cd221abbcc86965d2e867a0213ea35c374c01f4f36016",
+    "tests/test_progress.py": "356ac16bb21f54afc4fb18faf18a7a9ba050c0c0eabb43fcc0053f0af3ceb553",
+    "src/laya_pokemon/snorlax_harden_skip.py": "81c09fa2b1d1c7aede9fb1b630f873a53e2856453ce1f1472eb98c8d18a087ef",
+    "tests/test_snorlax_harden_skip.py": "22d26a12388063a8350f5edad0943eb8cfb429bfc4bd08de3ffaf0a1c70a26ca",
+    "src/laya_pokemon/world_map.py": "0e71f8e82706d9c6b44ec9ddf18b750bec8d09fdc0f29f8037b9e395e9c2a15f",
+    "tests/data/toggleable-source-fixture.json": "80e77e412f2bc724a9bb1a61438d1d8b7dd125a3315845d9f276690ef8fe071c",
+    "tests/test_silph11_npc_toggles.py": "aaccb980581965dbbcca9c3c11eb5c1e30cbe1f47d4ac9fa90c118a7906197f7",
+    "src/laya_pokemon/sabrina_native_warp.py": "7ea35f4e1c0be2cdd2ead82b79c681ea61cb620f617b9b4a949047c71d8e0e57",
+    "tests/test_sabrina_native_warp.py": "bd559f747d47aebc36c66fe2cbbc2df3677a158dd79b09d161c4e4bca76cc803",
+    "tests/test_sabrina_route_integration.py": "3614bb55733ee398c77a214be2154eda21d39c0f9ff838b8bb63b88b113ef80b",
+    "tests/test_sabrina_progress.py": "d34d3abdc29e5d544a3e551b50858d3f22be61c1e4f5b72b1264df391e303a77"
+  },
+  "previous_snapshot": {
+    "file": "results/code-validation-sabrina-warp-20261024.json",
+    "sha256": "3fdd84c56af76ad49ac370c6bfc594923da2baf7d9d04c19c7d544eebe20bf82",
+    "passed": 5769
+  },
+  "coverage": [
+    "四組固定map178/tileset22原生傳送，實際previous方向＋新frame才arm，不以候選當實按。",
+    "目的兩個fresh idle格網，再正常離墊驗0x01才complete；30次累積WAIT/60秒、sticky/reload不重置。",
+    "waypoint拒所有generic completion key，不可next_map178或在來源墊普通move跳完成；field_context先defer而非泛用interact交易。",
+    "八個新增娜姿事件以九個真SDK錨核source D7B3/D7B4，未知None；舊娜姿正常讀法保持。",
+    "四組來源互逆的recovery_route專用配對；只有返程准帶既有FNT，仍須健康、有攻擊PP的escort。",
+    "正向仍拒FNT/返程key，owner/budget/newframe與全隊袋錢基線保持。"
+  ],
+  "retained_findings": [
+    "初版33測試首跑7fail因共用command不支援LEFT，改本模組直接方向候選，不改共享source。",
+    "SDK boss ID浮點反例揭露舊generic TypeError，僅對beat_sabrina無效ID加None guard。",
+    "5762完整通過後，獨審發現caller next_map178提前跳過；真實首次派送亦被generic unsupported_explicit_transaction擋住，當時未送按鍵。兩處補窄接線及7整合反例後5769通過。"
+  ],
+  "constraints": [
+    "測試時間不是遊戲時間或全程通關耗時。",
+    "實戰勝利／徽章／TM46由後續獨立gameplay收據驗收，不能從本快照推定。"
+  ]
+}

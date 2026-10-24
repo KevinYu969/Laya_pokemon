@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_hm02_gift_and_closed",
+  "at": "2026-10-24T03:47:16.347740+00:00",
+  "frame": 1439433,
+  "location": {
+    "map_id": 188,
+    "x": 1,
+    "y": 3
+  },
+  "actions": 9,
+  "new_laya": 2,
+  "cache_hits": 7,
+  "passive_waits": 0,
+  "bag_slots_before": 18,
+  "bag_slots_after": 19,
+  "added_item": {
+    "item": 197,
+    "quantity": 1
+  },
+  "got_hm02": true,
+  "party_money_other_inventory_unchanged": true,
+  "fly_taught": false,
+  "source_evidence": [
+    {
+      "path": ".local/hm02-gift-fixed-review-20261024.json",
+      "sha256": "c7f6bc7a7779e37c26551a80af0205496647f48aede21cdd5e6ac47e9ee47e3a",
+      "local_only": true
+    },
+    {
+      "path": ".local/hm02-gift-fixed-summary-20261024.json",
+      "sha256": "ddd98a5872fd5eccce4789f40fc9992dc80f2d87b3741bc99f0b0bcbe846f4e2",
+      "local_only": true
+    },
+    {
+      "path": ".local/hm02-gift-fixed-steps-20261024.jsonl",
+      "sha256": "390232bc557fba768d7559a1a991ae6ee1e9d241cc5556195fa0642406ff4440",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/hm02-gift-closed-and-teach-preflight-20261024.json",
+      "sha256": "d64f6eba7e428dfebd7ab49ea312b9b8308441ba7b942a20b050adbf93ed1d10",
+      "local_only": true
+    }
+  ]
+}

@@ -1,0 +1,1073 @@
+{
+  "schema": "laya-pokemon-campaign-receipt-v1",
+  "language": "zh-TW",
+  "title": "第六館娜姿：卡比獸倒下，大嘴雀接手獲勝",
+  "date": "2026-10-24",
+  "outcome": {
+    "sabrina_defeated": true,
+    "whole_party_defeat": false,
+    "party_faint_count": 1,
+    "fainted_species": [
+      "SNORLAX"
+    ],
+    "badge_count": 6,
+    "badges_raw_before": 31,
+    "badges_raw_after": 63,
+    "beat_sabrina": true,
+    "got_tm46": true,
+    "tm46_item_id": 246,
+    "tm46_quantity_added": 1,
+    "money_before": 51115,
+    "money_after": 55372,
+    "money_delta": 4257,
+    "win_text_recorded_at_taipei": "2026-10-24T10:54:29.573022+08:00",
+    "final_review_at_taipei": "2026-10-24T10:54:31.111303+08:00",
+    "final_frame": 1418921,
+    "final_location": {
+      "map_id": 178,
+      "x": 9,
+      "y": 9
+    },
+    "champion_observed": false,
+    "hall_of_fame_confirmed": null
+  },
+  "scope": {
+    "first_step": 23717,
+    "last_step": 23868,
+    "rows": 152,
+    "first_state_frame": 1402369,
+    "final_review_frame": 1418921,
+    "first_row_recorded_at_taipei": "2026-10-24T10:54:17.563924+08:00",
+    "final_review_at_taipei": "2026-10-24T10:54:31.111303+08:00",
+    "limits_zh_TW": [
+      "只涵蓋館主站位、娜姿戰、徽章與TM46領取至館內檢討端點；不含進館傳送路線或戰後補給。",
+      "日誌中的state是發出該行動作前的觀測；at與timing為該行記錄時間，非原生文字首個像素出現時刻。",
+      "文字為tile解碼候選；本次沒有另看影片或PNG，不將文字日誌稱為逐像素驗證。"
+    ],
+    "pre_action_review_at_utc": "2026-10-24T02:52:33.589309+00:00",
+    "pre_action_review_at_taipei": "2026-10-24T10:52:33.589309+08:00",
+    "complete_endpoint_interval_known": true
+  },
+  "sources": [
+    {
+      "role": "pre_action_leader_review",
+      "sha256": "47eb57f711c6e70b77f3ff259ad761582ebdec886e23f12fb0237a1bbea1e8b8",
+      "frame": 1402369,
+      "baseline_matches_stance_proof_and_first_ledger_progress": true
+    },
+    {
+      "role": "fixed_steps",
+      "sha256": "b4e5a1d33659e25d8426b14edd604a0f6f30b48db19d8cafd25bf9e21fa658f0",
+      "raw_rows": 152
+    },
+    {
+      "role": "fixed_review",
+      "sha256": "dc3552204cd61e09bdad910dd7e5bb49f79a99d3f87dcb3a8d60341ab1200be5"
+    },
+    {
+      "role": "fixed_session_summary",
+      "sha256": "8837ede973fc73fe385fbd0b9d422167571c52b15ed1ce88de25d7afc8176fdc"
+    },
+    {
+      "role": "leader_stance_no_input_proof",
+      "sha256": "91a275dd91aca7aed4388d60292ca344dee03cffe6fdbd39ece668c3068c74bc",
+      "source_campaign_frame": 1402369,
+      "local_clone_frame": 1,
+      "note_zh_TW": "local frame 1只用於同來源站位/初始隊伍交叉核對，不當成新的實況全域frame或計時起點。"
+    },
+    {
+      "role": "fixed_public_saffron_gym_script",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/scripts/SaffronGym.asm#L46-L70",
+      "git_blob_sha": "6ee24b1d10369b050a7e567aa489e256800e5e6a",
+      "sha256": "c7b674f94dc1733fdaf672843826f5ba3e97d753150c0fac54d9d7f589ad192d"
+    },
+    {
+      "role": "reviewed_battle_strategy_source",
+      "path": "src/laya_pokemon/battle.py",
+      "sha256": "75d8033f406a43f270532eb6479cf57e7675301bdae24b5bf975609d44b64256",
+      "relevant_lines": [
+        153,
+        177,
+        753,
+        756,
+        882,
+        896
+      ]
+    },
+    {
+      "role": "post_battle_closed_no_input_proof",
+      "sha256": "ecad6021fe920ea631130aca05d0266b613c4a59d98d8215292d0b84f12ed0dd",
+      "source_campaign_frame": 1418921,
+      "local_clone_frame": 1,
+      "no_input": true,
+      "progress_matches_final_review": true,
+      "note_zh_TW": "同來源無輸入clone的local1，只交叉驗證此端點關窗/隊伍；不是多出一個實況全域frame。"
+    }
+  ],
+  "observed_opponents": [
+    {
+      "order": 1,
+      "species_name": "KADABRA",
+      "level": 38,
+      "hud_step": 23734,
+      "fainted_step": 23757,
+      "exp_recipient": "SNORLAX",
+      "exp": 1180,
+      "exp_step": 23758,
+      "complete_enemy_moves_observed": [
+        "PSYBEAM"
+      ],
+      "note_zh_TW": "另見But, it failed!，但前一招名未完整留在固定樣本，不能補猜。"
+    },
+    {
+      "order": 2,
+      "species_name": "MR.MIME",
+      "level": 37,
+      "hud_step": 23764,
+      "fainted_step": 23774,
+      "exp_recipient": "SNORLAX",
+      "exp": 1077,
+      "exp_step": 23775,
+      "complete_enemy_moves_observed": [
+        "DOUBLESLAP"
+      ],
+      "note_zh_TW": "原生Hit 3 times；HUD132→129→126→123。"
+    },
+    {
+      "order": 3,
+      "species_name": "VENOMOTH",
+      "level": 38,
+      "hud_step": 23781,
+      "fainted_step": 23796,
+      "exp_recipient": "SNORLAX",
+      "exp": 1123,
+      "exp_step": 23797,
+      "complete_enemy_moves_observed": [],
+      "note_zh_TW": "可見卡比獸was poisoned及hurt by poison；致毒招名在固定樣本未完整出現，不能補成POISONPOWDER。"
+    },
+    {
+      "order": 4,
+      "species_name": "ALAKAZAM",
+      "level": 43,
+      "hud_step": 23803,
+      "fainted_step": 23842,
+      "exp_recipient": "FEAROW",
+      "exp": 1713,
+      "exp_step": 23843,
+      "complete_enemy_moves_observed": [
+        "PSYBEAM",
+        "PSYWAVE",
+        "REFLECT"
+      ],
+      "player_move": "DRILL PECK",
+      "player_move_used_steps": [
+        23825,
+        23833,
+        23840
+      ],
+      "player_move_pp_before": 20,
+      "player_move_pp_after": 17
+    }
+  ],
+  "party_before": [
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 41,
+      "hp": 198,
+      "max_hp": 198,
+      "exp": 87816,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 42254,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 36,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 50081,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 30,
+      "hp": 124,
+      "max_hp": 124,
+      "exp": 33943,
+      "status": 0,
+      "moves": [
+        55,
+        34,
+        47,
+        54
+      ],
+      "pp": [
+        25,
+        15,
+        15,
+        30
+      ]
+    }
+  ],
+  "party_after": [
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 41,
+      "hp": 0,
+      "max_hp": 198,
+      "exp": 91196,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        11
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 42254,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 37,
+      "hp": 55,
+      "max_hp": 114,
+      "exp": 51794,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        43,
+        31
+      ],
+      "pp": [
+        35,
+        17,
+        30,
+        20
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 30,
+      "hp": 124,
+      "max_hp": 124,
+      "exp": 33943,
+      "status": 0,
+      "moves": [
+        55,
+        34,
+        47,
+        54
+      ],
+      "pp": [
+        25,
+        15,
+        15,
+        30
+      ]
+    }
+  ],
+  "party_checks": {
+    "order_unchanged_every_row_and_final": true,
+    "four_nonparticipants_unchanged_every_row_and_final": [
+      "NIDOKING",
+      "EEVEE",
+      "VENUSAUR",
+      "LAPRAS"
+    ],
+    "other_five_no_faint": true,
+    "snorlax_exp_gain": 3380,
+    "fearow_exp_gain": 1713,
+    "total_exp_gain": 5093,
+    "all_exp_awards_sum": 5093,
+    "snorlax_hp_path_party": [
+      198,
+      132,
+      123,
+      111,
+      0
+    ],
+    "snorlax_status_path_party": [
+      0,
+      8,
+      0
+    ],
+    "snorlax_status_note_zh_TW": "status8為PSN；倒下後status0不代表恢復健康，HP仍0。",
+    "fearow_hp_path_party": [
+      111,
+      71,
+      52,
+      55
+    ],
+    "fearow_level_before": 36,
+    "fearow_level_after": 37,
+    "fearow_final_hp": 55,
+    "fearow_final_max_hp": 114
+  },
+  "inventory": {
+    "before": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 48,
+        "quantity": 1
+      },
+      {
+        "item": 1,
+        "quantity": 1
+      }
+    ],
+    "after": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 234,
+        "quantity": 1
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 228,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 221,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 206,
+        "quantity": 1
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 48,
+        "quantity": 1
+      },
+      {
+        "item": 1,
+        "quantity": 1
+      },
+      {
+        "item": 246,
+        "quantity": 1
+      }
+    ],
+    "unchanged_original_entries_in_original_order_every_row_and_final": true,
+    "only_allowed_delta": {
+      "item": 246,
+      "quantity": 1,
+      "position": "append"
+    },
+    "first_added_step": 23864,
+    "native_receipt_step": 23864
+  },
+  "causal_review": {
+    "replacement_prompt": {
+      "step": 23800,
+      "frame": 1411321,
+      "recorded_at_utc": "2026-10-24T02:54:27.004355+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:27.004355+08:00",
+      "meaning_zh_TW": "卡比獸PSN且111/198；Will KEVIN change POKéMON?送B，keep_active留場。",
+      "visible_text_candidates": [
+        "          SNORLAX",
+        " ▶YES          PSN",
+        "  NO       111/198",
+        " Will KEVIN",
+        " change POKéMON?"
+      ],
+      "action": "b",
+      "tactic": "keep_active",
+      "snorlax_party_hp": 111,
+      "snorlax_party_status": 8,
+      "fearow_party_hp": 111,
+      "raw_line_sha256": "7ea57bcdb47ce16ba781bc6d477a6500d8c65321667e3b90511308124b5d0c8f"
+    },
+    "threshold": {
+      "hp": 111,
+      "max_hp": 198,
+      "ratio": 0.5606060606060606,
+      "trainer_half_hp_trigger": "hp * 2 <= max_hp",
+      "triggered": false,
+      "note_zh_TW": "半血機制已由reader明示啟用，但111×2>198。換人提示另有先於command判斷的無條件keep_active/B分支，沒有依PSN重新評估。"
+    },
+    "fatal_sequence": [
+      {
+        "step": 23803,
+        "frame": 1411617,
+        "recorded_at_utc": "2026-10-24T02:54:27.161244+00:00",
+        "recorded_at_taipei": "2026-10-24T10:54:27.161244+08:00",
+        "meaning_zh_TW": "完整command仍選FIGHT。",
+        "visible_text_candidates": [
+          " ALAKAZAM",
+          "     43",
+          "          SNORLAX",
+          "               PSN",
+          "           111/198",
+          "         ▶FIGHT",
+          "          ITEM  RUN"
+        ],
+        "action": "a",
+        "tactic": "damage",
+        "snorlax_party_hp": 111,
+        "snorlax_party_status": 8,
+        "fearow_party_hp": 111,
+        "raw_line_sha256": "75cde32aa3c0426f28090c4a4ac9d92a4310c51f27248ede5d6d9d9494209e81"
+      },
+      {
+        "step": 23804,
+        "frame": 1411657,
+        "recorded_at_utc": "2026-10-24T02:54:27.180125+00:00",
+        "recorded_at_taipei": "2026-10-24T10:54:27.180125+08:00",
+        "meaning_zh_TW": "BODY SLAM已選，送A承諾本回合。",
+        "visible_text_candidates": [
+          " ALAKAZAM",
+          "     43",
+          "          SNORLAX",
+          "               PSN",
+          " TYPE/",
+          "  NORMAL   111/198",
+          "     11/15",
+          "      STRENGTH",
+          "      AMNESIA",
+          "      REST",
+          "     ▶BODY SLAM"
+        ],
+        "action": "a",
+        "tactic": null,
+        "snorlax_party_hp": 111,
+        "snorlax_party_status": 8,
+        "fearow_party_hp": 111,
+        "raw_line_sha256": "144b4537f26032f69159bb48de7568601b74c2872f1eada4abca9d07209a101d"
+      },
+      {
+        "step": 23806,
+        "frame": 1411825,
+        "recorded_at_utc": "2026-10-24T02:54:27.280794+00:00",
+        "recorded_at_taipei": "2026-10-24T10:54:27.280794+08:00",
+        "meaning_zh_TW": "完整Enemy ALAKAZAM used PSYBEAM!；非PSYCHIC。",
+        "visible_text_candidates": [
+          " ALAKAZAM",
+          "     43",
+          "          SNORLAX",
+          "               PSN",
+          "           111/198",
+          " Enemy ALAKAZAM",
+          " used PSYBEAM!"
+        ],
+        "action": "a",
+        "tactic": null,
+        "snorlax_party_hp": 111,
+        "snorlax_party_status": 8,
+        "fearow_party_hp": 111,
+        "raw_line_sha256": "471779564eea197a340df58460274c21e1bd217d497985db3bffcbebb23bee20"
+      },
+      {
+        "step": 23808,
+        "frame": 1412081,
+        "recorded_at_utc": "2026-10-24T02:54:27.384364+00:00",
+        "recorded_at_taipei": "2026-10-24T10:54:27.384364+08:00",
+        "meaning_zh_TW": "同一PSYBEAM頁HUD29/198，party仍111。",
+        "visible_text_candidates": [
+          " ALAKAZAM",
+          "     43",
+          "          SNORLAX",
+          "               PSN",
+          "            29/198",
+          " Enemy ALAKAZAM",
+          " used PSYBEAM!"
+        ],
+        "action": "a",
+        "tactic": null,
+        "snorlax_party_hp": 111,
+        "snorlax_party_status": 8,
+        "fearow_party_hp": 111,
+        "raw_line_sha256": "4c26dbc96250ceb0955d535ae81b6ff0f2e7a887bd3e01fdae85de280bd86d24"
+      },
+      {
+        "step": 23809,
+        "frame": 1412209,
+        "recorded_at_utc": "2026-10-24T02:54:27.436124+00:00",
+        "recorded_at_taipei": "2026-10-24T10:54:27.436124+08:00",
+        "meaning_zh_TW": "Critical hit!；HUD0/198，party仍111，屬暫存回寫滯後。",
+        "visible_text_candidates": [
+          " ALAKAZAM",
+          "     43",
+          "          SNORLAX",
+          "               PSN",
+          "             0/198",
+          " Critical hit!"
+        ],
+        "action": "a",
+        "tactic": null,
+        "snorlax_party_hp": 111,
+        "snorlax_party_status": 8,
+        "fearow_party_hp": 111,
+        "raw_line_sha256": "707b9dd8f22968cf8366f1dd3a568af41be10e3edb6675946d5976c5bee25b25"
+      },
+      {
+        "step": 23810,
+        "frame": 1412337,
+        "recorded_at_utc": "2026-10-24T02:54:27.493573+00:00",
+        "recorded_at_taipei": "2026-10-24T10:54:27.493573+08:00",
+        "meaning_zh_TW": "SNORLAX fainted!；party終於0，僅單員倒下。",
+        "visible_text_candidates": [
+          " ALAKAZAM",
+          "     43",
+          " SNORLAX",
+          " fainted!         ▼"
+        ],
+        "action": "a",
+        "tactic": null,
+        "snorlax_party_hp": 0,
+        "snorlax_party_status": 0,
+        "fearow_party_hp": 111,
+        "raw_line_sha256": "597bfe0485b35f9c6bb221713952663225c19c51f85edd08cb9a5ae34142853b"
+      }
+    ],
+    "fatal_move": "PSYBEAM",
+    "critical_hit_observed": true,
+    "snorlax_body_slam_executed_after_fatal_choice": false,
+    "fatal_move_uncapped_damage": null,
+    "recommendations_zh_TW": [
+      "先在訓練家換怪提示檢查已知異常狀態與現有HP；以本次PSN、111/198及健康支援的真實封包建立回歸，避免一律B留隊。這是待父層設計的策略建議，尚未修改或實測。",
+      "將本場已觀測的高傷回合、敵等級與殘血/異常組合列入保守風險檢討；不能只靠50%門檻推定可承受下一擊，也不能從單次急所反推固定傷害。",
+      "保留HUD與party分開的時序證據：新command/換人決策要求同步，傷害動畫期只等待已知頁；回歸23809 HUD0但party111，以及23810真FNT，避免以過期HP繼續攻擊。"
+    ],
+    "amnesia_claim_zh_TW": "本次沒有使用AMNESIA，也未在本任務核完Gen1急所公式；不主張AMNESIA能防此次急所，亦不由本樣本推算理論傷害。"
+  },
+  "milestones": [
+    {
+      "step": 23796,
+      "frame": 1410809,
+      "recorded_at_utc": "2026-10-24T02:54:25.984021+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:25.984021+08:00",
+      "meaning_zh_TW": "VENOMOTH倒下，卡比獸111/198 PSN。",
+      "visible_text_candidates": [
+        "          SNORLAX",
+        "               PSN",
+        "           111/198",
+        " Enemy VENOMOTH",
+        " fainted!         ▼"
+      ],
+      "action": "a",
+      "tactic": null,
+      "snorlax_party_hp": 111,
+      "snorlax_party_status": 8,
+      "fearow_party_hp": 111,
+      "raw_line_sha256": "68ac99bb935ff2e579a446efb1b92abdd38c0c6898cb083963b26667463075f3"
+    },
+    {
+      "step": 23815,
+      "frame": 1412625,
+      "recorded_at_utc": "2026-10-24T02:54:28.003585+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:28.003585+08:00",
+      "meaning_zh_TW": "四次DOWN正常選到第五格健康FEAROW，再送A。",
+      "visible_text_candidates": [
+        "   SNORLAX    41 FNT",
+        "               0/198",
+        "   NIDOKING   36",
+        "             121/121",
+        "   EEVEE      35",
+        "              90/ 90",
+        "   VENUSAUR   35",
+        "             111/111",
+        "   FEAROW     36",
+        "▶            111/111",
+        "   LAPRAS     30",
+        "             124/124"
+      ],
+      "action": "a",
+      "tactic": "select_healthy_party",
+      "snorlax_party_hp": 0,
+      "snorlax_party_status": 0,
+      "fearow_party_hp": 111,
+      "raw_line_sha256": "475fd5b3022c04abe9a97937a15be5e5258f85854502017f89b25dbf4e6c03a6"
+    },
+    {
+      "step": 23820,
+      "frame": 1413001,
+      "recorded_at_utc": "2026-10-24T02:54:28.183873+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:28.183873+08:00",
+      "meaning_zh_TW": "正常招式游標選DRILL PECK並送A。",
+      "visible_text_candidates": [
+        " ALAKAZAM",
+        "     43",
+        "          FEAROW",
+        "               36",
+        " TYPE/",
+        "  FLYING   111/111",
+        "     20/20",
+        "      PECK",
+        "     ▶DRILL PECK",
+        "      LEER",
+        "      FURY ATTACK"
+      ],
+      "action": "a",
+      "tactic": null,
+      "snorlax_party_hp": 0,
+      "snorlax_party_status": 0,
+      "fearow_party_hp": 111,
+      "raw_line_sha256": "8652e9d9aedebb0f7dbbcc2fc6540e8becd93636e79e9fdb2319b8f1db38675b"
+    },
+    {
+      "step": 23842,
+      "frame": 1415465,
+      "recorded_at_utc": "2026-10-24T02:54:29.303161+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:29.303161+08:00",
+      "meaning_zh_TW": "ALAKAZAM fainted。",
+      "visible_text_candidates": [
+        "          FEAROW",
+        "               36",
+        "            52/111",
+        " Enemy ALAKAZAM",
+        " fainted!         ▼"
+      ],
+      "action": "a",
+      "tactic": null,
+      "snorlax_party_hp": 0,
+      "snorlax_party_status": 0,
+      "fearow_party_hp": 52,
+      "raw_line_sha256": "ef7ece231d738622dc24ac43e8c0ee08266f9106ad233c4580de7cf77bd9a322"
+    },
+    {
+      "step": 23844,
+      "frame": 1415721,
+      "recorded_at_utc": "2026-10-24T02:54:29.429305+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:29.429305+08:00",
+      "meaning_zh_TW": "FEAROW grew to level37，HP52/111→55/114。",
+      "visible_text_candidates": [
+        "          FEAROW",
+        "               37",
+        "            55/114",
+        " FEAROW grew",
+        " to level 37!"
+      ],
+      "action": "a",
+      "tactic": null,
+      "snorlax_party_hp": 0,
+      "snorlax_party_status": 0,
+      "fearow_party_hp": 55,
+      "raw_line_sha256": "c6fbb1a46c37faa85a244306081a818d26d91c0c9a84bea2cc1638b7bfc38f1b"
+    },
+    {
+      "step": 23846,
+      "frame": 1415977,
+      "recorded_at_utc": "2026-10-24T02:54:29.573022+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:29.573022+08:00",
+      "meaning_zh_TW": "完整KEVIN defeated SABRINA。",
+      "visible_text_candidates": [
+        "          FEAROW",
+        "               37",
+        "            55/114",
+        " KEVIN defeated",
+        " SABRINA!"
+      ],
+      "action": "a",
+      "tactic": null,
+      "snorlax_party_hp": 0,
+      "snorlax_party_status": 0,
+      "fearow_party_hp": 55,
+      "raw_line_sha256": "1604ac44a6b26bb2f5ad1991b91c35446f70f0dde755c6ffbe3d635435f1be6d"
+    },
+    {
+      "step": 23854,
+      "frame": 1417001,
+      "recorded_at_utc": "2026-10-24T02:54:30.066260+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:30.066260+08:00",
+      "meaning_zh_TW": "完整獎金¥4257頁；金錢下一行才同步。",
+      "visible_text_candidates": [
+        "          FEAROW",
+        "               37",
+        "            55/114",
+        " KEVIN got ¥4257",
+        " for winning!     ▼"
+      ],
+      "action": "a",
+      "tactic": null,
+      "snorlax_party_hp": 0,
+      "snorlax_party_status": 0,
+      "fearow_party_hp": 55,
+      "raw_line_sha256": "3ba61d26ad75ba80a23699737180f1eb741d3ecb4110d3b7ddfa4008fabf1fc6"
+    },
+    {
+      "step": 23864,
+      "frame": 1418281,
+      "recorded_at_utc": "2026-10-24T02:54:30.748225+00:00",
+      "recorded_at_taipei": "2026-10-24T10:54:30.748225+08:00",
+      "meaning_zh_TW": "完整KEVIN received TM46；袋已新增item246。",
+      "visible_text_candidates": [
+        " KEVIN received",
+        " TM46!"
+      ],
+      "action": "a",
+      "tactic": null,
+      "snorlax_party_hp": 0,
+      "snorlax_party_status": 0,
+      "fearow_party_hp": 55,
+      "raw_line_sha256": "a708c6226c0a75f59f118f85da477574921db9820d4a546b8c2dbd0f016f6564"
+    }
+  ],
+  "closure": {
+    "final_review_reason": "gym_review",
+    "battle_raw": 0,
+    "battle_active": false,
+    "battle_kind": "none",
+    "visible_text_candidates": [],
+    "window_visible": false,
+    "overworld_ready": true,
+    "note_zh_TW": "最終固定review為raw0/none、六徽章與TM事件真；另由同來源無輸入clone local1交叉確認完整decoder文字全空、windowFalse、overworld_readyTrue，progress完整一致。不延伸到後續中心補給。",
+    "decoder_read_valid": true,
+    "decoder_alignment_verified": true,
+    "decoder_read_error": null,
+    "all_18x20_cells_blank": true,
+    "closed_proof_source_campaign_frame": 1418921,
+    "closed_proof_local_clone_frame": 1
+  },
+  "event_semantics": {
+    "got_tm46_before": false,
+    "got_tm46_after": true,
+    "beat_sabrina_before": false,
+    "beat_sabrina_after": true,
+    "all_seven_saffron_trainer_flags_before": false,
+    "all_seven_saffron_trainer_flags_after": true,
+    "seven_flags_do_not_prove_seven_battles": true,
+    "source_zh_TW": "固定SaffronGym腳本在領TM流程後SetEventRange一次設置館員0..6，停用剩餘館員；本範圍只驗一場娜姿、四對手。"
+  },
+  "accounting": {
+    "actions": 152,
+    "actions_by_input": {
+      "a": 130,
+      "up": 2,
+      "wait": 9,
+      "down": 8,
+      "b": 3
+    },
+    "new_laya_inferences": 8,
+    "prediction_cache_hits": 144,
+    "controller_passive_waits": 0,
+    "wait_actions": 9,
+    "wait_actions_note_zh_TW": "9個WAIT全是cached Laya選擇，不等於controller_passive_wait。",
+    "new_laya_model_ms_sum": 6198.3765,
+    "emulated_frames": 16552,
+    "emulated_seconds_at_60fps": 275.8666666666667,
+    "timing_marker_start": {
+      "wall_seconds": 9105.094,
+      "model_wait_seconds": 133.316,
+      "review_pause_seconds": 7967.663,
+      "non_review_session_seconds": 1137.431,
+      "emulated_seconds": 23373.467
+    },
+    "timing_marker_end": {
+      "wall_seconds": 9118.64,
+      "model_wait_seconds": 138.954,
+      "review_pause_seconds": 7967.663,
+      "non_review_session_seconds": 1150.977,
+      "emulated_seconds": 23648.667
+    },
+    "marker_interval_seconds": {
+      "wall": 13.546,
+      "review_pause": 0.0,
+      "non_review": 13.546,
+      "model_wait_counter": 5.638
+    },
+    "complete_scope_wall_seconds": 117.515,
+    "timing_limit_zh_TW": "完整館前review到館後review的累計計時器差為wall117.515秒、review103.188秒、nonreview14.327秒；含恢復前工程等待，不稱117.515秒為純戰鬥。ISO端點差117.521994秒另列。首行timing是首動作後，13.546秒僅另一取樣區間。模型計時器差6.341秒與8次逐行model_ms合計6.198377秒口徑不同；模擬16552幀/60=275.866667秒不能當牆鐘。",
+    "summary_snapshot_cumulative_counts": {
+      "actions": 23868,
+      "uncached_choices": 178,
+      "cache_hits": 23584,
+      "passive_waits": 106
+    },
+    "summary_recorded_at_utc": "2026-10-24T00:22:32.167367+00:00",
+    "summary_timestamp_note_zh_TW": "summary.recorded_at是較早的可變session記號，不能取代本次勝利或最終檢討時間。",
+    "external_model_contract_zh_TW": "這152行raw.model均為laya-rl-agent。父層執行契約為本機Laya分類、零新增Strata及無雲端遊戲分類fallback；本收據不等同網路封包稽核，工程分析額度另計。",
+    "complete_scope_review_pause_seconds": 103.188,
+    "complete_scope_non_review_seconds": 14.327,
+    "complete_scope_model_wait_counter_seconds": 6.341,
+    "complete_scope_emulated_counter_seconds": 275.867,
+    "complete_scope_endpoint_timing_start": {
+      "wall_seconds": 9001.125,
+      "model_wait_seconds": 132.613,
+      "review_pause_seconds": 7864.475,
+      "non_review_session_seconds": 1136.65,
+      "emulated_seconds": 23372.8
+    },
+    "complete_scope_endpoint_iso_seconds": 117.521994
+  },
+  "not_claimed_zh_TW": [
+    "沒有全隊敗北或重讀存檔洗戰的證據；此收據不讀ROM/state。",
+    "未宣稱戰後已回中心、全員健康、七館八館、聯盟或網站發布完成。",
+    "未用來源隊伍清單替代四隻實際HUD/倒下/EXP證據；未將急所的理論傷害與狀態公式補猜。"
+  ]
+}

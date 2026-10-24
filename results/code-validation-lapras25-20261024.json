@@ -1,0 +1,62 @@
+{
+  "schema": "laya-lapras25-code-validation-v1",
+  "date": "2026-10-24",
+  "language": "zh-TW",
+  "validation": {
+    "command": ".venv/Scripts/python.exe -B -X utf8 -m pytest -q -x --tb=short --basetemp outputs/<unique-test-directory> -p no:cacheprovider",
+    "passed": 5476,
+    "failed": 0,
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 26.52,
+    "warning": "既有pysdl2-dll 2.32.10二進位提示"
+  },
+  "source_sha256": {
+    "src/laya_pokemon/balanced_training.py": "de29fb0a206f2ded7d6f29a0f44f9a48b2deca757333c98f7c84cbbca4c44ec0",
+    "src/laya_pokemon/battle.py": "75d8033f406a43f270532eb6479cf57e7675301bdae24b5bf975609d44b64256",
+    "src/laya_pokemon/campaign.py": "b03aa0dd6b600d86debe17e96fd3774e1cece4dfdde9e8b7541e2ccc24ddfb95",
+    "src/laya_pokemon/campaign_route.py": "3ae5e4761f372a9fa64847f75856a85d119def4740208c67deed63f4562945db",
+    "src/laya_pokemon/campaign_safety.py": "d77b5322dbc58b8ef5cd2dc376e7f4302cbaa18d021726532dff3828a775c32c",
+    "src/laya_pokemon/lapras_bridge.py": "70e1f1176bbbdac53ebc92de76aa853f20ab2c8bf61e8e128d17fd8629334192",
+    "tests/test_shared_experience_training.py": "f4ed91a85576f19624c8e07dd167b3a80087dd028f9defd413d9196a19757544",
+    "tests/test_shared_exp_campaign_integration.py": "bf0a2204d2869aad9d3599e97c0c7b9f90f5ca6bacae1f051cde7e9fe408ac93",
+    "tests/test_shared_exp_independent.py": "dc5df800774fdef8e7ecd437b8363b812a78ce5495a9a28fc3725224756f5b54",
+    "tests/test_shared_exp_completion.py": "1b1f26a62042e6f6cc34e32d293a85f8ac7a56a103276dfa22e686e8ce176588",
+    "tests/test_shared_exp_target_status.py": "dee83ea6139b1981292af63949a468b8e781a780fb9dfa749539f0ba223a0821",
+    "tests/test_shared_exp_ditto.py": "c0b27f2cf3e59e1962c21f63bfd946dcbe87ecf749df97688763aadb2e2af58e",
+    "tests/test_shared_training_attrition.py": "d55d53f84369c8f44cc2c6405b4864c7937cf2664f39fe499926c22721749a31",
+    "tests/test_ditto_shared_exp_learning.py": "cf6575b4dee2519369cd28f22bcbf73fe60bd6d34303e9e7edf77653930fc16f",
+    "tests/test_ditto_transform.py": "2eae72aa0bff10196c54752b9a784adb4b2285d75d8025c8689235a4e635797d",
+    "tests/test_lapras_bridge.py": "d11cabb37f712ced2b560b2915ec5cd65d25e97ed5d5695f68cd5c7d34cfa2c3",
+    "tests/test_campaign_lapras_integration.py": "a645b9844a9eebb8641e8cd65c54d569ba4426401782dc732541fb1db35224e5",
+    "src/laya_pokemon/levelup_moves.py": "f1100cf8bc6dad8bcef8cf9c5bd4ec11f6197580dde6ffdda4b41763785721f4",
+    "tests/test_lapras25_learning.py": "99d80a6481c5d248f0cd2069cae7264363ac84a399fe3d7c52f0df7e01b1acdb"
+  },
+  "previous_snapshot": {
+    "file": "results/code-validation-six-party-20261024.json",
+    "passed": 5450,
+    "sha256": "3c9e985f91f61cae69896c2d212125b7cab7198c32ee803099ea572fccfd7e5a"
+  },
+  "coverage": [
+    "只新增Lapras25／原四招55,45,47,54，固定來源BODY_SLAM34替第二槽GROWL45",
+    "完整正常intro／YES／active游標四招／Poof／Forgot／And／Learned，其他隊員與保護招式保持",
+    "六人game.observe學招優先於戰鬥解析，未知頁與SLAM尾詞仍停檢"
+  ],
+  "retained_issues": [
+    {
+      "issue": "預設pytest暫存目錄無法建立numbered directory，原完整測試中止",
+      "verification": "單獨原失敗測試重現setup OSError；使用專案內新的basetemp後完整5476通過",
+      "no_data_deleted": true
+    },
+    {
+      "issue": "新測試最初假設SLAM單獨分頁可前進，缺少固定來源支持",
+      "correction": "移除無來源尾詞並改為拒絕反例，未放寬unknown頁"
+    }
+  ],
+  "constraints": [
+    "測試是程式切點，不代表第六館、聯盟或全程自主完成。",
+    "真953377無鍵clone的localframe1與campaignframe分開，實戰正常忘招與中心閉合另列25級收據。",
+    "26.52秒含同時工程工作；不當作遊戲通關時間、推論速度或硬體基準。",
+    "舊5450／5448收據保留，不回填為過往當時已測新案例。"
+  ]
+}

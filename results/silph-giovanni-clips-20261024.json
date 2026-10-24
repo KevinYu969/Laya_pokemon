@@ -1,0 +1,1658 @@
+{
+  "schema": "laya-silph-giovanni-clips-v1",
+  "date": "2026-10-24",
+  "language": "zh-Hant",
+  "local_only": false,
+  "title": "希魯夫坂木後半場：正常換尼多王、衝浪克制與勝利告別",
+  "sources": [
+    {
+      "path": "outputs/league-campaign-20261024-24/game/video-042.mp4",
+      "sha256": "9608a120b1ad6c6782869ecd861fa09cb14f826800c1cfc8294c52d52df4e54d",
+      "segment": 42,
+      "closed_before_read": true,
+      "closure": {
+        "at": "2026-10-24T02:31:03.726262+00:00",
+        "segment": 42,
+        "timing": {
+          "wall_seconds": 7711.312,
+          "model_wait_seconds": 129.548,
+          "review_pause_seconds": 6588.96,
+          "non_review_session_seconds": 1122.352,
+          "emulated_seconds": 23132.267
+        },
+        "video": {
+          "filename": "video-042.mp4",
+          "fps": 15,
+          "frames": 1930,
+          "playback_seconds": 128.66666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "prior_sample_frames_computed_from_segments": 345054,
+      "full_decode": {
+        "decoded_frames": 1930,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "128.666667",
+          "nb_frames": "1930",
+          "nb_read_frames": "1930"
+        }
+      }
+    }
+  ],
+  "mapping_receipts": {
+    "segments_index_snapshot_sha256": "c09004adc6bcd3a9953866d315aa57b5e2359eddf13988a8adbd83f0462cc9f3",
+    "closed_allowed_segments": [
+      {
+        "at": "2026-10-24T02:02:51.411921+00:00",
+        "segment": 38,
+        "timing": {
+          "wall_seconds": 6019.109,
+          "model_wait_seconds": 127.908,
+          "review_pause_seconds": 4903.147,
+          "non_review_session_seconds": 1115.962,
+          "emulated_seconds": 22989.6
+        },
+        "video": {
+          "filename": "video-038.mp4",
+          "fps": 15,
+          "frames": 1494,
+          "playback_seconds": 99.6,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      {
+        "at": "2026-10-24T02:18:22.201013+00:00",
+        "segment": 39,
+        "timing": {
+          "wall_seconds": 6949.828,
+          "model_wait_seconds": 127.908,
+          "review_pause_seconds": 5833.569,
+          "non_review_session_seconds": 1116.259,
+          "emulated_seconds": 22992.267
+        },
+        "video": {
+          "filename": "video-039.mp4",
+          "fps": 15,
+          "frames": 40,
+          "playback_seconds": 2.6666666666666665,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      {
+        "at": "2026-10-24T02:26:16.488710+00:00",
+        "segment": 40,
+        "timing": {
+          "wall_seconds": 7424.094,
+          "model_wait_seconds": 127.939,
+          "review_pause_seconds": 6307.319,
+          "non_review_session_seconds": 1116.775,
+          "emulated_seconds": 23002.933
+        },
+        "video": {
+          "filename": "video-040.mp4",
+          "fps": 15,
+          "frames": 160,
+          "playback_seconds": 10.666666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      {
+        "at": "2026-10-24T02:29:48.466017+00:00",
+        "segment": 41,
+        "timing": {
+          "wall_seconds": 7636.062,
+          "model_wait_seconds": 127.939,
+          "review_pause_seconds": 6519.085,
+          "non_review_session_seconds": 1116.977,
+          "emulated_seconds": 23003.6
+        },
+        "video": {
+          "filename": "video-041.mp4",
+          "fps": 15,
+          "frames": 10,
+          "playback_seconds": 0.6666666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      {
+        "at": "2026-10-24T02:31:03.726262+00:00",
+        "segment": 42,
+        "timing": {
+          "wall_seconds": 7711.312,
+          "model_wait_seconds": 129.548,
+          "review_pause_seconds": 6588.96,
+          "non_review_session_seconds": 1122.352,
+          "emulated_seconds": 23132.267
+        },
+        "video": {
+          "filename": "video-042.mp4",
+          "fps": 15,
+          "frames": 1930,
+          "playback_seconds": 128.66666666666666,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      {
+        "at": "2026-10-24T02:34:02.134577+00:00",
+        "segment": 43,
+        "timing": {
+          "wall_seconds": 7889.719,
+          "model_wait_seconds": 130.236,
+          "review_pause_seconds": 6765.179,
+          "non_review_session_seconds": 1124.54,
+          "emulated_seconds": 23165.2
+        },
+        "video": {
+          "filename": "video-043.mp4",
+          "fps": 15,
+          "frames": 494,
+          "playback_seconds": 32.93333333333333,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      {
+        "at": "2026-10-24T02:35:34.959109+00:00",
+        "segment": 44,
+        "timing": {
+          "wall_seconds": 7982.531,
+          "model_wait_seconds": 130.987,
+          "review_pause_seconds": 6852.585,
+          "non_review_session_seconds": 1129.946,
+          "emulated_seconds": 23284.133
+        },
+        "video": {
+          "filename": "video-044.mp4",
+          "fps": 15,
+          "frames": 1784,
+          "playback_seconds": 118.93333333333334,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      }
+    ],
+    "closed_steps_path": "outputs/league-campaign-20261024-24/game/steps-042.jsonl",
+    "closed_steps_sha256": "bff91f383c0fdcaa56218ba16af1739ce2db7b81a5deadfa28e32449ada686c0",
+    "fixed_ledger_path": ".local/silph-giovanni-fixed-steps-20261024.jsonl",
+    "fixed_ledger_sha256": "7badacb498172d0ada985fa06c6a27719a9459de592e2d83777a43f1f1409acf",
+    "closed_steps_match_fixed_rows_23337_to_23407": true,
+    "source_first_step": 23337,
+    "source_first_observation_frame": 1380217,
+    "source_last_step": 23408,
+    "source_last_observation_frame": 1387897,
+    "source_first_sample_frame": 1380220,
+    "source_last_sample_frame": 1387936,
+    "method": "15fps＝每4個模擬幀取樣1幀；closed segments累計樣本數與042真steps起終逐格相符，不預設042起始幀"
+  },
+  "selection": {
+    "start_observation_frame_inclusive": 1380769,
+    "end_observation_frame_exclusive": 1387897,
+    "first_included_step": 23342,
+    "last_included_action_step": 23407,
+    "final_closed_observation_step": 23408,
+    "final_closed_step_action_not_included": "up",
+    "source_ranges": [
+      {
+        "segment": 42,
+        "start_inclusive": 138,
+        "end_exclusive": 1920,
+        "frames": 1782
+      }
+    ],
+    "first_sample_emulator_frame": 1380772,
+    "last_sample_emulator_frame": 1387896,
+    "frames": 1782,
+    "continuous": true,
+    "source_tail_movement_frames_excluded": 10,
+    "engineering_review_wall_excluded": true,
+    "not_complete_four_opponent_battle": true,
+    "note": "只取RHYHORN在場的完整命令選單起；前NIDORINO／KANGASKHAN與HARDEN工程停頓不在本片。最後空頁樣本在23408向上動作前，後續移動／領球均不含。"
+  },
+  "observed_outcome": {
+    "opponents_in_clip": [
+      "RHYHORN37",
+      "NIDOQUEEN41"
+    ],
+    "normal_party_to_slot2_nidoking_then_switch": true,
+    "surf_id": 57,
+    "surf_pp_start": 15,
+    "surf_pp_end": 11,
+    "snorlax_exp_in_clip": 531,
+    "nidoking_exp_in_clip": 2235,
+    "snorlax_end_level": 41,
+    "nidoking_end_level": 36,
+    "nidoking_end_hp": 108,
+    "all_recorded_party_hp_positive_status_zero": true,
+    "inventory_unchanged": true,
+    "money_before": 47056,
+    "money_after": 51115,
+    "prize_delta": 4059,
+    "prize_receipt": {
+      "step": 23399,
+      "observation_frame": 1386745,
+      "recorded_at_utc": "2026-10-24T02:29:53.107724+00:00",
+      "visible_text": [
+        "          NIDOKING",
+        "               36",
+        "           108/121",
+        " KEVIN got ¥4059",
+        " for winning!     ▼"
+      ],
+      "phase": "battle_dialogue",
+      "action_after_observation": "a",
+      "battle": {
+        "raw": 2,
+        "active": true,
+        "kind": "trainer",
+        "opponent_species": "NIDOQUEEN"
+      },
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 41,
+          "hp": 187,
+          "max_hp": 198,
+          "exp": 87816,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            7
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 108,
+          "max_hp": 121,
+          "exp": 42254,
+          "status": 0,
+          "moves": [
+            61,
+            57,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            11,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 36,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 50081,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            20,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 19,
+          "species_name": "LAPRAS",
+          "level": 30,
+          "hp": 124,
+          "max_hp": 124,
+          "exp": 33943,
+          "status": 0,
+          "moves": [
+            55,
+            34,
+            47,
+            54
+          ],
+          "pp": [
+            25,
+            15,
+            15,
+            30
+          ]
+        }
+      ],
+      "money": 47056,
+      "badges_raw": 31,
+      "beat_silph_co_giovanni": false,
+      "got_master_ball": false,
+      "beat_sabrina": false
+    },
+    "closed_receipt": {
+      "step": 23408,
+      "observation_frame": 1387897,
+      "recorded_at_utc": "2026-10-24T02:31:03.603460+00:00",
+      "visible_text": [],
+      "phase": "overworld",
+      "action_after_observation": "up",
+      "battle": {
+        "raw": 0,
+        "active": false,
+        "kind": "none",
+        "opponent_species": null
+      },
+      "party": [
+        {
+          "species": 132,
+          "species_name": "SNORLAX",
+          "level": 41,
+          "hp": 187,
+          "max_hp": 198,
+          "exp": 87816,
+          "status": 0,
+          "moves": [
+            70,
+            133,
+            156,
+            34
+          ],
+          "pp": [
+            15,
+            20,
+            10,
+            7
+          ]
+        },
+        {
+          "species": 7,
+          "species_name": "NIDOKING",
+          "level": 36,
+          "hp": 108,
+          "max_hp": 121,
+          "exp": 42254,
+          "status": 0,
+          "moves": [
+            61,
+            57,
+            30,
+            40
+          ],
+          "pp": [
+            20,
+            11,
+            25,
+            35
+          ]
+        },
+        {
+          "species": 102,
+          "species_name": "EEVEE",
+          "level": 35,
+          "hp": 90,
+          "max_hp": 90,
+          "exp": 43317,
+          "status": 0,
+          "moves": [
+            33,
+            28,
+            98,
+            39
+          ],
+          "pp": [
+            35,
+            15,
+            30,
+            30
+          ]
+        },
+        {
+          "species": 154,
+          "species_name": "VENUSAUR",
+          "level": 35,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 36804,
+          "status": 0,
+          "moves": [
+            75,
+            15,
+            73,
+            22
+          ],
+          "pp": [
+            25,
+            30,
+            10,
+            10
+          ]
+        },
+        {
+          "species": 35,
+          "species_name": "FEAROW",
+          "level": 36,
+          "hp": 111,
+          "max_hp": 111,
+          "exp": 50081,
+          "status": 0,
+          "moves": [
+            64,
+            65,
+            43,
+            31
+          ],
+          "pp": [
+            35,
+            20,
+            30,
+            20
+          ]
+        },
+        {
+          "species": 19,
+          "species_name": "LAPRAS",
+          "level": 30,
+          "hp": 124,
+          "max_hp": 124,
+          "exp": 33943,
+          "status": 0,
+          "moves": [
+            55,
+            34,
+            47,
+            54
+          ],
+          "pp": [
+            25,
+            15,
+            15,
+            30
+          ]
+        }
+      ],
+      "money": 51115,
+      "badges_raw": 31,
+      "beat_silph_co_giovanni": true,
+      "got_master_ball": false,
+      "beat_sabrina": false
+    },
+    "badges_raw": 31,
+    "new_sixth_gym_claimed": false,
+    "master_ball_acquired_in_clip": false
+  },
+  "naming_and_inference": {
+    "raw_new_model_labels": [
+      "laya-rl-agent"
+    ],
+    "uncached_classifications_in_selected_ledger": 1,
+    "cached_rows_in_selected_ledger": 65,
+    "passive_wait_rows_in_selected_ledger": 0,
+    "new_inference_calls_for_media": 0,
+    "wording": "依真ledger稱Laya／原生控制器與快取共同操作；raw模型標籤為laya-rl-agent，不能據此稱Strata逐鍵操作或推測後端配置。"
+  },
+  "videos": [
+    {
+      "path": "outputs/videos/silph-giovanni-20261024/silph-giovanni-latter-half-1x.mp4",
+      "sha256": "7392c178233663897f6ce118748c82d093271a085fec7192c5e7ebc7d57123a3",
+      "bytes": 1770617,
+      "frames": 1782,
+      "fps": 15,
+      "duration_seconds": 118.8,
+      "speed": 1,
+      "width": 480,
+      "height": 432,
+      "audio": false,
+      "full_decode": {
+        "decoded_frames": 1782,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "118.800000",
+          "nb_frames": "1782",
+          "nb_read_frames": "1782"
+        }
+      },
+      "all_source_frames_retained_in_order": true,
+      "every_decoded_yuv420p_frame_matches_source": true,
+      "consecutive_pts_duration_verified": true
+    },
+    {
+      "path": "outputs/videos/silph-giovanni-20261024/silph-giovanni-latter-half-4x.mp4",
+      "sha256": "e6f7cad43fcab2f659e9758162230bba448f2dab683f54d1fd72f4e1c0f9eaac",
+      "bytes": 1770533,
+      "frames": 1782,
+      "fps": 60,
+      "duration_seconds": 29.7,
+      "speed": 4,
+      "width": 480,
+      "height": 432,
+      "audio": false,
+      "full_decode": {
+        "decoded_frames": 1782,
+        "xerror_passed": true,
+        "ffprobe": {
+          "codec_name": "h264",
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "29.700000",
+          "nb_frames": "1782",
+          "nb_read_frames": "1782"
+        }
+      },
+      "all_source_frames_retained_in_order": true,
+      "every_decoded_yuv420p_frame_matches_source": true,
+      "consecutive_pts_duration_verified": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/silph-giovanni-20261024/01-normal-nidoking-party-selection.png",
+      "sha256": "944dce34a4e9ae0f6d3aa631c4995bd5116d5b5e5a9fd0b02182d3577f1aa0e8",
+      "width": 480,
+      "height": 432,
+      "source_segment": 42,
+      "source_frame_zero_based": 167,
+      "clip_frame_zero_based": 29,
+      "source_emulator_sample_frame": 1380888,
+      "observation_frame": 1380889,
+      "observation_offset_frames": -1,
+      "source_rgb_sha256": "f49be84841f233cde00dcfc56a8c203a2c8221cf544faa24f9db74b1a91cd364",
+      "all_rgb_channels_equal_source_and_both_videos": true,
+      "evidence": {
+        "step": 23345,
+        "observation_frame": 1380889,
+        "recorded_at_utc": "2026-10-24T02:29:49.662074+00:00",
+        "visible_text": [
+          "   SNORLAX    41",
+          "             187/198",
+          "   NIDOKING   36",
+          "▶            121/121",
+          "   EEVEE      35",
+          "              90/ 90",
+          "   VENUSAUR   35",
+          "             111/111",
+          "   FEAROW     36",
+          "             111/111",
+          "   LAPRAS     30",
+          "             124/124"
+        ],
+        "phase": "battle_menu",
+        "action_after_observation": "a",
+        "battle": {
+          "raw": 2,
+          "active": true,
+          "kind": "trainer",
+          "opponent_species": "RHYHORN"
+        },
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 41,
+            "hp": 187,
+            "max_hp": 198,
+            "exp": 87285,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 19,
+            "species_name": "LAPRAS",
+            "level": 30,
+            "hp": 124,
+            "max_hp": 124,
+            "exp": 33943,
+            "status": 0,
+            "moves": [
+              55,
+              34,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              15,
+              15,
+              30
+            ]
+          }
+        ],
+        "money": 47056,
+        "badges_raw": 31,
+        "beat_silph_co_giovanni": false,
+        "got_master_ball": false,
+        "beat_sabrina": false
+      },
+      "post_observation_action_excluded": false
+    },
+    {
+      "path": "outputs/videos/silph-giovanni-20261024/02-surf-cursor.png",
+      "sha256": "52dbc455e59be56d6ea79acc59de227afa00fe1f2920df26c1833995726d0e11",
+      "width": 480,
+      "height": 432,
+      "source_segment": 42,
+      "source_frame_zero_based": 367,
+      "clip_frame_zero_based": 229,
+      "source_emulator_sample_frame": 1381688,
+      "observation_frame": 1381689,
+      "observation_offset_frames": -1,
+      "source_rgb_sha256": "7fdcd83ab2c332044570e9080b92a4298c7da7f26784e10eef103cc60f886926",
+      "all_rgb_channels_equal_source_and_both_videos": true,
+      "evidence": {
+        "step": 23354,
+        "observation_frame": 1381689,
+        "recorded_at_utc": "2026-10-24T02:29:50.044690+00:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          NIDOKING",
+          "               36",
+          " TYPE/",
+          "  WATER    121/121",
+          "     15/15",
+          "      BUBBLEBEAM",
+          "     ▶SURF",
+          "      HORN ATTACK",
+          "      POISON STING"
+        ],
+        "phase": "battle_menu",
+        "action_after_observation": "a",
+        "battle": {
+          "raw": 2,
+          "active": true,
+          "kind": "trainer",
+          "opponent_species": "RHYHORN"
+        },
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 41,
+            "hp": 187,
+            "max_hp": 198,
+            "exp": 87285,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              15,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 19,
+            "species_name": "LAPRAS",
+            "level": 30,
+            "hp": 124,
+            "max_hp": 124,
+            "exp": 33943,
+            "status": 0,
+            "moves": [
+              55,
+              34,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              15,
+              15,
+              30
+            ]
+          }
+        ],
+        "money": 47056,
+        "badges_raw": 31,
+        "beat_silph_co_giovanni": false,
+        "got_master_ball": false,
+        "beat_sabrina": false
+      },
+      "post_observation_action_excluded": false
+    },
+    {
+      "path": "outputs/videos/silph-giovanni-20261024/03-surf-super-effective.png",
+      "sha256": "05764943a0070e3a7bfe7adb5594bd01508edb429c1c3f250a00caa6201ae4f3",
+      "width": 480,
+      "height": 432,
+      "source_segment": 42,
+      "source_frame_zero_based": 537,
+      "clip_frame_zero_based": 399,
+      "source_emulator_sample_frame": 1382368,
+      "observation_frame": 1382369,
+      "observation_offset_frames": -1,
+      "source_rgb_sha256": "ab560fd8154dcc0646b348bbd9d759b32ef56f3925d8a14d2291f3b4ae3b774c",
+      "all_rgb_channels_equal_source_and_both_videos": true,
+      "evidence": {
+        "step": 23360,
+        "observation_frame": 1382369,
+        "recorded_at_utc": "2026-10-24T02:29:50.385042+00:00",
+        "visible_text": [
+          " RHYHORN",
+          "     37",
+          "          NIDOKING",
+          "               36",
+          "           121/121",
+          " It's super",
+          " effective!"
+        ],
+        "phase": "battle_dialogue",
+        "action_after_observation": "a",
+        "battle": {
+          "raw": 2,
+          "active": true,
+          "kind": "trainer",
+          "opponent_species": "RHYHORN"
+        },
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 41,
+            "hp": 187,
+            "max_hp": 198,
+            "exp": 87285,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 121,
+            "max_hp": 121,
+            "exp": 40019,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              14,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 19,
+            "species_name": "LAPRAS",
+            "level": 30,
+            "hp": 124,
+            "max_hp": 124,
+            "exp": 33943,
+            "status": 0,
+            "moves": [
+              55,
+              34,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              15,
+              15,
+              30
+            ]
+          }
+        ],
+        "money": 47056,
+        "badges_raw": 31,
+        "beat_silph_co_giovanni": false,
+        "got_master_ball": false,
+        "beat_sabrina": false
+      },
+      "post_observation_action_excluded": false
+    },
+    {
+      "path": "outputs/videos/silph-giovanni-20261024/04-giovanni-defeated.png",
+      "sha256": "f2066720594e18dda9538134ed63e5a525b17468df839730d96ebd8058edf70b",
+      "width": 480,
+      "height": 432,
+      "source_segment": 42,
+      "source_frame_zero_based": 1535,
+      "clip_frame_zero_based": 1397,
+      "source_emulator_sample_frame": 1386360,
+      "observation_frame": 1386361,
+      "observation_offset_frames": -1,
+      "source_rgb_sha256": "ea26a6e9e6139a5e5a1f3edb813b9f851f9f1aec8e03b4607fd15cc6ea5c03ff",
+      "all_rgb_channels_equal_source_and_both_videos": true,
+      "evidence": {
+        "step": 23396,
+        "observation_frame": 1386361,
+        "recorded_at_utc": "2026-10-24T02:29:52.949350+00:00",
+        "visible_text": [
+          "          NIDOKING",
+          "               36",
+          "           108/121",
+          " KEVIN defeated",
+          " GIOVANNI!"
+        ],
+        "phase": "battle_dialogue",
+        "action_after_observation": "a",
+        "battle": {
+          "raw": 2,
+          "active": true,
+          "kind": "trainer",
+          "opponent_species": "NIDOQUEEN"
+        },
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 41,
+            "hp": 187,
+            "max_hp": 198,
+            "exp": 87816,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 108,
+            "max_hp": 121,
+            "exp": 42254,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              11,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 19,
+            "species_name": "LAPRAS",
+            "level": 30,
+            "hp": 124,
+            "max_hp": 124,
+            "exp": 33943,
+            "status": 0,
+            "moves": [
+              55,
+              34,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              15,
+              15,
+              30
+            ]
+          }
+        ],
+        "money": 47056,
+        "badges_raw": 31,
+        "beat_silph_co_giovanni": false,
+        "got_master_ball": false,
+        "beat_sabrina": false
+      },
+      "post_observation_action_excluded": false
+    },
+    {
+      "path": "outputs/videos/silph-giovanni-20261024/05-native-farewell.png",
+      "sha256": "abf5619e19f30f37fae720e6e50d6c99b7121fc034a9d863363b378a38df41a2",
+      "width": 480,
+      "height": 432,
+      "source_segment": 42,
+      "source_frame_zero_based": 1887,
+      "clip_frame_zero_based": 1749,
+      "source_emulator_sample_frame": 1387768,
+      "observation_frame": 1387769,
+      "observation_offset_frames": -1,
+      "source_rgb_sha256": "55f76f859c05322c7a38c9a857ebefa6e1d945f46915998876d60f5a3bf4e99d",
+      "all_rgb_channels_equal_source_and_both_videos": true,
+      "evidence": {
+        "step": 23407,
+        "observation_frame": 1387769,
+        "recorded_at_utc": "2026-10-24T02:29:53.598238+00:00",
+        "visible_text": [
+          " I must go, but I",
+          " shall return!"
+        ],
+        "phase": "dialogue",
+        "action_after_observation": "a",
+        "battle": {
+          "raw": 0,
+          "active": false,
+          "kind": "none",
+          "opponent_species": null
+        },
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 41,
+            "hp": 187,
+            "max_hp": 198,
+            "exp": 87816,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 108,
+            "max_hp": 121,
+            "exp": 42254,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              11,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 19,
+            "species_name": "LAPRAS",
+            "level": 30,
+            "hp": 124,
+            "max_hp": 124,
+            "exp": 33943,
+            "status": 0,
+            "moves": [
+              55,
+              34,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              15,
+              15,
+              30
+            ]
+          }
+        ],
+        "money": 51115,
+        "badges_raw": 31,
+        "beat_silph_co_giovanni": false,
+        "got_master_ball": false,
+        "beat_sabrina": false
+      },
+      "post_observation_action_excluded": false
+    },
+    {
+      "path": "outputs/videos/silph-giovanni-20261024/06-closed-before-next-action.png",
+      "sha256": "945cd3c983a2c57bc61fcab025866ccc8bb77f112205573c3032f3c2a173a495",
+      "width": 480,
+      "height": 432,
+      "source_segment": 42,
+      "source_frame_zero_based": 1919,
+      "clip_frame_zero_based": 1781,
+      "source_emulator_sample_frame": 1387896,
+      "observation_frame": 1387897,
+      "observation_offset_frames": -1,
+      "source_rgb_sha256": "8b14092e444a2e7737045d40970fd4e4cf3ac0e73bb7fcba65be6640ef7ee339",
+      "all_rgb_channels_equal_source_and_both_videos": true,
+      "evidence": {
+        "step": 23408,
+        "observation_frame": 1387897,
+        "recorded_at_utc": "2026-10-24T02:31:03.603460+00:00",
+        "visible_text": [],
+        "phase": "overworld",
+        "action_after_observation": "up",
+        "battle": {
+          "raw": 0,
+          "active": false,
+          "kind": "none",
+          "opponent_species": null
+        },
+        "party": [
+          {
+            "species": 132,
+            "species_name": "SNORLAX",
+            "level": 41,
+            "hp": 187,
+            "max_hp": 198,
+            "exp": 87816,
+            "status": 0,
+            "moves": [
+              70,
+              133,
+              156,
+              34
+            ],
+            "pp": [
+              15,
+              20,
+              10,
+              7
+            ]
+          },
+          {
+            "species": 7,
+            "species_name": "NIDOKING",
+            "level": 36,
+            "hp": 108,
+            "max_hp": 121,
+            "exp": 42254,
+            "status": 0,
+            "moves": [
+              61,
+              57,
+              30,
+              40
+            ],
+            "pp": [
+              20,
+              11,
+              25,
+              35
+            ]
+          },
+          {
+            "species": 102,
+            "species_name": "EEVEE",
+            "level": 35,
+            "hp": 90,
+            "max_hp": 90,
+            "exp": 43317,
+            "status": 0,
+            "moves": [
+              33,
+              28,
+              98,
+              39
+            ],
+            "pp": [
+              35,
+              15,
+              30,
+              30
+            ]
+          },
+          {
+            "species": 154,
+            "species_name": "VENUSAUR",
+            "level": 35,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 36804,
+            "status": 0,
+            "moves": [
+              75,
+              15,
+              73,
+              22
+            ],
+            "pp": [
+              25,
+              30,
+              10,
+              10
+            ]
+          },
+          {
+            "species": 35,
+            "species_name": "FEAROW",
+            "level": 36,
+            "hp": 111,
+            "max_hp": 111,
+            "exp": 50081,
+            "status": 0,
+            "moves": [
+              64,
+              65,
+              43,
+              31
+            ],
+            "pp": [
+              35,
+              20,
+              30,
+              20
+            ]
+          },
+          {
+            "species": 19,
+            "species_name": "LAPRAS",
+            "level": 30,
+            "hp": 124,
+            "max_hp": 124,
+            "exp": 33943,
+            "status": 0,
+            "moves": [
+              55,
+              34,
+              47,
+              54
+            ],
+            "pp": [
+              25,
+              15,
+              15,
+              30
+            ]
+          }
+        ],
+        "money": 51115,
+        "badges_raw": 31,
+        "beat_silph_co_giovanni": true,
+        "got_master_ball": false,
+        "beat_sabrina": false
+      },
+      "post_observation_action_excluded": true
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/silph-giovanni-20261024/qa-contactsheet.png",
+    "sha256": "98eece83975907b5dba7cd66b459a5242654d4fb9c1e1cd97532cc18e91f049c",
+    "visual_review": "作者與父層均以view_image original親看六格：真六人選尼多王、SURF／效果絕佳、勝利、完整告別與空UI清晰，未補畫。",
+    "parent_review": "passed",
+    "all_source_and_output_frames_fully_decoded": true,
+    "all_1x_and_4x_frames_equal_source_in_order": true,
+    "all_6_pngs_rgb_equal_source_and_both_videos": true,
+    "frame_sequence_sha256": "218d7770120ab50132c9d149a821e7fdab92b8cb73aa53f23159c914d49cd462",
+    "visual_review_tool": "view_image(detail=original)"
+  },
+  "limits": [
+    "1x為模擬時間，4x僅後製；118.8／29.7秒不是牆鐘、推論或通關時間。",
+    "只含坂木後半場兩名對手，不能當作四對手全戰或第六館影片。",
+    "沒有補畫、裁切、疊字於正式遊戲畫面，QA標籤只在圖外。原有錄影已15fps取樣，未宣稱包含全部60fps模擬影格。",
+    "只保留來源區間每一個既有錄影影格，4x不抽幀；沒有重演、model API、遊戲輸入或發布網站。"
+  ],
+  "added_assets": {
+    "mp4": 2,
+    "formal_png": 6,
+    "qa_png": 1
+  },
+  "visibility": {
+    "receipt": "public_project_backup",
+    "raw_evidence": "local_only"
+  }
+}

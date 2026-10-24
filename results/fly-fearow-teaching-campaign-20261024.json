@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_fly_teaching_and_closed",
+  "at": "2026-10-24T03:47:50.461069+00:00",
+  "frame": 1442033,
+  "location": {
+    "map_id": 188,
+    "x": 1,
+    "y": 3
+  },
+  "species": 35,
+  "level": 37,
+  "forgotten_move": 43,
+  "learned_move": 19,
+  "moves_before": [
+    64,
+    65,
+    43,
+    31
+  ],
+  "moves_after": [
+    64,
+    65,
+    19,
+    31
+  ],
+  "pp_before": [
+    35,
+    20,
+    30,
+    20
+  ],
+  "pp_after": [
+    35,
+    20,
+    15,
+    20
+  ],
+  "hm02_preserved": true,
+  "other_five_party_and_all_inventory_money_unchanged": true,
+  "actions": 65,
+  "new_laya": 4,
+  "cache_hits": 39,
+  "passive_waits": 22,
+  "engineering_interruptions_during_teaching": 0,
+  "timing_delta": {
+    "wall_seconds": 34.109,
+    "review_pause_seconds": 30.875,
+    "non_review_session_seconds": 3.234,
+    "emulated_seconds": 43.333333
+  },
+  "source_evidence": [
+    {
+      "path": ".local/fly-fearow-teaching-fixed-review-20261024.json",
+      "sha256": "2718fec2840ed436f20a3d1d5e9700beeb35bf9be3f372de53af4fda450859de",
+      "local_only": true
+    },
+    {
+      "path": ".local/fly-fearow-teaching-fixed-summary-20261024.json",
+      "sha256": "be8957bb959f5c1ba284204ed402072cd3f7c8c9b8dc6206ce8ae2a695b3c499",
+      "local_only": true
+    },
+    {
+      "path": ".local/fly-fearow-teaching-fixed-steps-20261024.jsonl",
+      "sha256": "72756f574a1fba57abcf51c89ecdcf60da6917501328445bf04d02f2d47c3787",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/fly-fearow-teaching-closed-proof-20261024.json",
+      "sha256": "80554729a3828deb4f13318a330b18c0a8d78cda959c1b5a496948c98f08a078",
+      "local_only": true
+    }
+  ],
+  "limits": [
+    "文字候選日誌最多12列，六人ABLE頁會截掉下方學會文字；不可把日誌不存在的LEARNED全文捏造出來。控制器原cell核完整提示，原始影片另可親看。",
+    "只驗收正常教學與關頁；野外Fly目的地及動畫尚未操作。"
+  ]
+}

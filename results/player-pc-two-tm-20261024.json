@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-24",
+  "status": "verified_native_two_item_deposit_and_closed",
+  "at": "2026-10-24T03:34:17.304260+00:00",
+  "frame": 1429057,
+  "location": {
+    "map_id": 182,
+    "x": 13,
+    "y": 4
+  },
+  "bag_slots_before": 20,
+  "bag_slots_after": 18,
+  "pc_before": [
+    {
+      "item": 20,
+      "quantity": 1
+    }
+  ],
+  "pc_after": [
+    {
+      "item": 20,
+      "quantity": 1
+    },
+    {
+      "item": 234,
+      "quantity": 1
+    },
+    {
+      "item": 221,
+      "quantity": 1
+    }
+  ],
+  "deposited_items": [
+    {
+      "item": 234,
+      "quantity": 1
+    },
+    {
+      "item": 221,
+      "quantity": 1
+    }
+  ],
+  "party_and_money_unchanged": true,
+  "normal_buttons_only": true,
+  "no_state_rollback_or_ram_write": true,
+  "actions": 59,
+  "new_laya": 3,
+  "cache_hits": 33,
+  "passive_waits": 23,
+  "timing_delta": {
+    "wall_seconds": 922.843,
+    "review_pause_seconds": 919.484,
+    "non_review_session_seconds": 3.359,
+    "emulated_seconds": 39.333333
+  },
+  "engineering_reviews": [
+    "native_post_receipt_list_redraw",
+    "native_scroll_arrow_blink",
+    "native_player_menu_redraw"
+  ],
+  "sources": [
+    {
+      "path": ".local/player-pc-two-items-fixed-review-20261024.json",
+      "sha256": "6d6974896f4fc0d20fd40cbe346dbf962556eb9d7bc9fd978e78570a3a85ad58",
+      "local_only": true
+    },
+    {
+      "path": ".local/player-pc-two-items-fixed-summary-20261024.json",
+      "sha256": "27c89653d93c45a78f4467272f7218e3c023e899c0f8d67384fe7cbb1545bf10",
+      "local_only": true
+    },
+    {
+      "path": ".local/player-pc-two-items-fixed-steps-20261024.jsonl",
+      "sha256": "bfd92fd7ee8b1fd7fe3d48d76e85b0ff9a2b4718dd09eea93abfeed8db73a715",
+      "local_only": true
+    },
+    {
+      "path": "outputs/research/player-pc-two-items-closed-proof-20261024.json",
+      "sha256": "7511e2442ab895436380e93c5340a909775a15e5b47619b30458267e81e8aaf4",
+      "local_only": true
+    }
+  ],
+  "note": "PC來源推導reader仍明示未廣泛實機校準；本固定切點以正常遊戲回執、守恆與兩個no-input閉合觀測驗收。未拿HM02。"
+}
