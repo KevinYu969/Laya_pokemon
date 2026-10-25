@@ -1,8 +1,10 @@
 """Source candidate tests: exact staged module, pure fake reads; no emulator/ticks/inputs."""
 from copy import deepcopy
+from hashlib import sha1, sha256
 from pathlib import Path
 from types import SimpleNamespace
 import importlib.util
+import json
 import pytest
 
 TEST_DIR = Path(__file__).resolve().parent
@@ -252,27 +254,51 @@ def test_reader_boolean_visited_byte_stays_unknown():
     assert signal["read_valid"] is False and signal["visited"] is None
 
 
-def test_primary_rle_blob_and_full_destination_map_raw_proof():
-    from hashlib import sha1
-    raw=(REPO_ROOT/"outputs/research/source-fly-pallet-20261024/gfx__town_map__town_map.rle").read_bytes()
+@pytest.fixture(scope="module")
+def primary_source_files():
+    """Exact upstream bytes, independent of ignored research caches or network access."""
+    path = REPO_ROOT / "tests/data/fly-viridian-source-fixture.json"
+    fixture = json.loads(path.read_text(encoding="utf-8"))
+    assert fixture["commit"] == fly.SOURCE_COMMIT
+    blobs = {
+        "gfx/town_map/town_map.rle": "f9ede0ec78bf5e198a7fed8b1d1394e9837abaa8",
+        "data/maps/names.asm": "805c57c909801d1b1cc20762b18448769451b9c1",
+        "maps/CinnabarIsland.blk": "1a7922c905782dc4969357497530d973e06eeb11",
+        "maps/ViridianCity.blk": "af1bd6628d2e9e03e5ecaf00fbf747d06734ffff",
+        "gfx/blocksets/overworld.bst": "18ceef979e6e410f849a4880a453dccb792182a0",
+    }
+    assert fixture["files"].keys() == blobs.keys()
+    files = {}
+    for name, source in fixture["files"].items():
+        assert source["url"] == f"https://raw.githubusercontent.com/pret/pokered/{fly.SOURCE_COMMIT}/{name}"
+        raw = source["text"].encode("utf-8") if "text" in source else bytes.fromhex(source["hex"])
+        assert len(raw) == source["bytes"]
+        assert sha256(raw).hexdigest() == source["sha256"]
+        blob = sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
+        assert blob == source["git_blob_sha1"] == blobs[name]
+        files[name] = raw
+    return files
+
+
+def test_primary_rle_blob_and_full_destination_map_raw_proof(primary_source_files):
+    raw=primary_source_files["gfx/town_map/town_map.rle"]
     assert sha1(("blob "+str(len(raw))+"\0").encode()+raw).hexdigest()=="f9ede0ec78bf5e198a7fed8b1d1394e9837abaa8"
     expanded=[]
     for b in raw:
         if not b:break
         expanded.extend([0x60+(b>>4)]*(b&15))
     assert expanded==fly._BASE_MAP and len(expanded)==360
-    names=(REPO_ROOT/"outputs/research/source-fly-pallet-20261024/data__maps__names.asm").read_text(encoding="utf-8")
+    names=primary_source_files["data/maps/names.asm"].decode("utf-8")
     assert '"VIRIDIAN CITY@"' in names
     assert len(fly._MAP_ROWS)==18 and all(len(r)==20 for r in fly._MAP_ROWS)
     assert fly._MAP_ROWS[0]=="TO VIRIDIAN CITY  ▶▼"
     assert list(fly.VIRIDIAN_RAW)[20:]==expanded[20:]
 
 
-def test_primary_source_start_and_landing_lower_left_tile_are_39():
-    for sub,name,width,point in [("source-seventh-gym-20261024","CinnabarIsland",10,(18,4)),("league-source-20261025","ViridianCity",20,(23,26))]:
-        base=REPO_ROOT/"outputs/research"/sub
-        blocks=(base/("maps__"+name+".blk")).read_bytes()
-        blockset=(base/"gfx__blocksets__overworld.bst").read_bytes()
+def test_primary_source_start_and_landing_lower_left_tile_are_39(primary_source_files):
+    for name,width,point in [("CinnabarIsland",10,(18,4)),("ViridianCity",20,(23,26))]:
+        blocks=primary_source_files[f"maps/{name}.blk"]
+        blockset=primary_source_files["gfx/blocksets/overworld.bst"]
         x,y=point
         tile=blockset[blocks[(y//2)*width+x//2]*16+(y%2*2+1)*4+x%2*2]
         assert tile==0x39
