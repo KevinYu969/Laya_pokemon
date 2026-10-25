@@ -1,7 +1,7 @@
 <!-- 自動匯出的公開備份；請於私人主檔更新，再重新匯出。 -->
 ---
 type: note
-updated: 2026-10-24
+updated: 2026-10-25
 author: codex
 ---
 
@@ -1135,4 +1135,36 @@ ROM 尚未就緒時，先完成不依賴 ROM 的模型與介面驗證，遊戲�
 新增學招至中心107動作完整片：原速106.533333秒／後製4x26.633333秒、同1598真幀，7正式PNG+1QA，父層親看忘SING／learned ICE BEAM／新四招與中心，重算13固定檔SHA，另立較後parent-review，保留原pending製作freeze歷史。正式素材索引現56片／188PNG含QA；資料夾另有原片、試作、轉碼，不以全目錄130/523充作正式數。影片留本機，網站未發布。8767是真PyBoy串流，SDL原生仍未修。
 
 已核歷史安全備份4890568734246b41415e555f85b444bb1097afb2、408白名單檔，CI40072118734成功，涵蓋第61節/6931/七館員/54片180圖；本節與38級/PC／購藥／7226待下一備份。逐鍵Laya離線/快取，cloud_fallback=false、Strata配置不變、model只載1次；本輪工程開發／審查另計，不能宣稱整個工程不耗雲端額度。仍六徽章，夏伯與冠軍尚未完成。
+
+## 63. 2026-10-25 最新存檔接續與夏伯前三隻擊倒，補藥動畫校準中
+
+Kevin再次要求持續遊玩到四天王／冠軍。私人設備白名單確認後讀共享規則與最新專案狀態；前遊戲程序已結束，game24最後1738913存檔保留完整六人、六徽章、袋19／48332。從最新checkpoint正常接run25，沒有退回開戰前。game24的raw2剛進訓練家戰，EnemyMon尚是上一場KOFFING殘值；不代表夏伯派瓦斯彈。無輸入clone證明1/41影格空白silhouette的精確alignment error，161半段BLAINE wants／to figh，321完整wants／to fight!與真▼；原直接要求四隻來源物種太早而誤停。
+
+初修提供有界30WAIT／60秒、真raw2/type0／同幀／完整decoder與真owner。run25兩次WAIT後因只提供單一A，被LayaPolicy的至少兩候選契約拒絕（ValueError），正常存final；沒有A被送出或FNT。v2改A／wait並接主runner真previous，offer不當作已執行A，rolling8實際A收據才ack，保pending／原budget。從run25最新final原畫面接run26；冷啟動分開列，不回填成每步重載。run26第一個真A後，來源文字實際換行是「BLAINE sent／out GROWLITHE!」，原候選寫成「BLAINE sent out／GROWLITHE!」又安全停；已按真native頁更正，識別已完成的送出收據只WAIT，不再多按A。這些是控制器工程失誤，不算戰敗或遊戲通關。
+
+run26前三隻真擊倒／EXP（台北2026-10-25）：卡蒂狗42於17:57:32.892347／1361見fainted，17:57:32.982467／1617得819；小火馬40於17:57:35.304797／5393見fainted，17:57:35.352551／5521得1302；烈焰馬42於18:04:55.172768／12945見fainted，18:04:55.221733／13073得1728。乘龍EXP69199→73048(+3849)，仍38級，Surf15→11，其餘五人完整保持；夏伯與第七徽章尚未勝。
+
+烈焰馬剩5HP、乘龍77/156時，既有半血75%後備評分無人符合而停。父層核真BattleMon與敵29bytes：烈焰馬42 HP5/113、Atk96/Spc78、TailWhip/Stomp/Growl/FireSpin，乘龍Def88/Spc88。只對真父層標記、敵1..5HP／乘龍77..78HP、來源四招及完整command新增單次收尾判斷；未全域關閉半血／unknown／FNT保護。明列風速較快、踩到會心五次FireSpin最高80仍可能倒，這是正常實測取捨而非存活保證；本次正常Surf收尾成功，乘龍仍77，沒有回讀。新7個邊界案例與dispatch／policy／互斥合115通過。
+
+戰中補藥採新純UI／真player與trainer雙讀橋接、完整command才決策、同owner真previous，非命令頁不搶對話／EXP／SHIFT；策略只對風速狗47：無狀態HP<=150用Hyper，燒傷HP<=141先Hyper、其上FullHeal，風速狗大字爆正常最高73／會心141／燒傷9的實值前提分開。FullHeal在142..150若會心又重新燒傷可能倒，明列不保證；原逐幀FNT／戰敗停檢照常。318純與真reader/bridge合成聯測、60策略、17dispatch加既有回歸，7703完整測試30.99秒通過、1既有SDL提示，source SHA前後一致（早於上述收尾及後續動畫修補）。
+
+18:04:57.331121／14593第一次Hyper已正常消耗：10→9、真party與BattleMon已77→156，但畫面HPbar正在100/156，原模板只接受77或156而誤停medicine_receipt_unknown；沒有重吃藥或換新基線。無鍵clone1/41/81看見101／126／149，161之後完整「LAPRAS recovered by79!」。延伸到929影格皆無▼；固定home/window的HandleDownArrowBlinkTiming只閃爍原本已存在的箭頭，POTION_MSG的done沒有初始化▼，所以早先強制真▼假設也錯，正在按Redraw尾Delay3加外50frames的來源界線做完整收據穩定等待，再一次A。此刻只能宣稱藥效／減一已驗，敵回合與新command仍待驗收。
+
+逐鍵仍是本機Laya／快取；Strata配置hash與先前核准league階段相同、未新增API，game audit hook仍禁網路，工程代理另耗雲端額度。run26截至該停點147動作10新／137cache，model只載1次；15.172秒non-review含3.149秒冷載與8.609秒model wait，牆鐘1552.828秒含1537.656秒工程review，243.2秒為模擬時間，均不是紅版全程耗時。Laya權重本身温度值被函式庫clamp並警告confidence未校準，未改模型配置或把該confidence當通關正確率。8767顯示真run26 framebuffer，原生SDL未修；正式影片索引仍56／188含QA，新增夏伯片段待完整閉合後整理。網站未發布。
+
+後段路線113份固定官方來源已核SHA/Git blob：常磐館有38邊避箭頭路、Route23要正常Surf、冠軍之路要啟用怪力及逐石機關、四天王房內有原生走位。新的紅蓮→常磐Fly純54／橋接33與怪力啟用77案例只是候選，未當成已通關。名人堂原生流程會reset聯盟／冠軍事件，必先保存勝利與登錄收據，不能要求冠軍bit永久True。上一安全備份ea9523652a68dc110579dcff22d7854cfbe2ca2b／430白名單檔已核遠端，本節／今日新程式待下次安全備份，ROM／存檔／影片／私人原始輸出不進GitHub。
+
+## 64. 2026-10-25 同場補藥完成訊息與大字爆炎動畫校準
+
+先前固定14593的第一份高級傷藥已有真扣量10→9、Party/BattleMon77→156。父層無按鍵複本看到100、101、126、149到156的血條中間值；完整「LAPRAS / recovered by 79!」至929幀都沒有▼。固定pret/pokered a536711的Potion/FullHeal訊息是done；WaitForTextScrollButtonPress只閃爍既有箭頭，不會自行放入▼。舊版把完整文字等同一定有箭頭，是來源理解錯誤。
+
+新控制器只在實際效果／減一份已成立、其餘五人／原袋序／金錢／敵方資料守恆時，接受原生inactive party頁唯一的可見HP中間數字並WAIT。完整無箭頭藥品訊息須穩定54個fresh幀（RedrawPartyMenu尾Delay3＋外層Delay50＋fresh1）才一次A。敵方真正prompt仍要求真▼，不是全域取消箭頭檢查。父層明示原owner、frame14593、具名medicine_receipt_unknown的repair，只清該誤判，保持原instance、基線、pending、calls/waits/started/last_now；當次只WAIT。該owner後續以原last_now＋已執行模擬幀差/60計時，排除工程暫停而保留已耗預算，新交易不繼承此anchor。
+
+正式接線初驗保留三次測試整合問題：舊bridge案例仍期待藥品箭頭、候選自我檔案驗證錯把正式路徑認作stage、新Fly加入後舊peer清單少一員。父層逐項修正，先208與53針對性通過，再完整7,852項／33.75秒通過（1項既有SDL提示，全部source/tests SHA前後一致）。本切點results/code-validation-medicine-reviewed-20261025.json。不能把子代理164候選案例當正式全套已過。
+
+2026-10-25台北18:31:01附近正常接回run26，第一藥的同一owner、原扣量與156HP保留，完整done/A後實際進入敵方FIRE BLAST回合。18:31:02.102941、frame15073因visible_tile_alignment_incomplete停住：已真看到Enemy ARCANINE / used FIRE BLAST!，動畫開始2px橫移，文字讀器略過不完整tile，這不是game crash或新FNT。
+
+固定15073的另一次無按鍵診斷複本：+1/+21 read_valid=False/alignment=False/window=True，+41字格恢復；+81 BattleMon已35HP但Party仍156，畫面HP143→117→94→69→43，+321完整Critical hit!與真▼。這證明HPbar及Party延後同步要分別處理；35HP與會心提示在本段是診斷複本將發生的後續，主程序當前15073仍156，不能冒稱主程序已結算傷害或用藥交易全閉合。正新增只限已真觀測FireBlast的抖動／下降血條WAIT，以及第二個父層具名修復，保原frameclock與第一修復收據。
+
+紅蓮至常磐Fly的純控制器／橋接87項與最前route互斥接線已正式納入此7,852切點；實機尚未飛行。怪力啟用／冠軍之路推石仍為來源候選，夏伯／第七徽章／四天王均未完成。逐鍵是本機Laya／快取，Strata配置未改。另派地端Qwen唯讀整理兩份Fly程式，但fetch failed；未拿到模型輸出或token用量，沒有估算。工程審查使用雲端另計。
 

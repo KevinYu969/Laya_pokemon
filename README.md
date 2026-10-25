@@ -8,11 +8,11 @@
 
 ## 目前進度
 
-**六枚徽章，七名紅蓮館員已全勝；拉普拉斯38級，已補藥並到夏伯面前。** 2026-10-24台北15:37:57，六隻HP／狀態／全招PP滿。夏伯與聯盟尚未完成。
+**六枚徽章，夏伯前三隻已擊倒，正在對戰47級風速狗。** 2026-10-25台北18:31:02，首份高級傷藥已正常使用；目前停檢大字爆炎的畫面抖動判讀。夏伯與聯盟尚未完成。[同場續行與問題紀錄](docs/blaine-gym-review.md)
 
 - [最新學招、補給與問題紀錄](docs/cinnabar-supply-and-lapras38.md)：32隻野怪、拉普拉斯34→38，正常以冰凍光束替換唱歌；保衝浪／泰山壓頂／奇異之光。
-- 正常買高級傷藥與萬靈藥各10份，餘48,332，背包19格、保留獎品空位；[67動作實測收據](results/cinnabar-medicine-purchase-campaign-20261024.json)。戰鬥使用流程仍在接線，尚未對話開打夏伯。
-- [7,226項完整回歸](results/code-validation-cinnabar-purchase-20261024.json)33.78秒通過，來源SHA穩定；逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
+- 正常買兩種藥各10份，餘48,332，背包19格；[購買收據](results/cinnabar-medicine-purchase-campaign-20261024.json)。首份高級傷藥10→9、拉普拉斯77→156；保留原交易，未回讀戰前。
+- [7,852項完整回歸](results/code-validation-medicine-reviewed-20261025.json)33.75秒通過，涵蓋首輪補藥修正及Fly常磐接線；其後敵招動畫修補另驗。逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
 - [七名館員逐場勝利時刻](docs/cinnabar-gym-review.md)保留16隻KO與正常補給；[本機PyBoy即時畫面](http://127.0.0.1:8767/)可看真遊戲影格。
 - 正式素材索引56片／188PNG含QA。新增[38級原速／四倍速與7張圖](results/lapras38-ice-beam-clips-20261024.json)及[父層QA](results/lapras38-media-parent-review-20261024.json)，影片留本機，網站未發布，原生SDL問題尚未修復。
 

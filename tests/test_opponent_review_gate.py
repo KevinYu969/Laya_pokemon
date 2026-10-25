@@ -1,6 +1,11 @@
 from copy import deepcopy
 import pytest
+from laya_pokemon import opponent_review_gate as gate
 from laya_pokemon.opponent_review_gate import context,PROFILE
+
+@pytest.fixture(autouse=True)
+def isolated_intro(monkeypatch):
+    monkeypatch.setattr(gate,'_INTRO',None)
 
 def packet(species='ARCANINE'):
     return dict(frame=1737977,location=dict(map_id=166,x=3,y=4),
@@ -15,7 +20,12 @@ def test_first_arcanine_pauses_before_any_fight_or_keep_action_without_mutation(
 
 @pytest.mark.parametrize('species',['GROWLITHE','PONYTA','RAPIDASH'])
 def test_three_source_opponents_use_existing_battle_and_attrition_guards(species):
-    assert context(packet(species),step()) is None
+    owner=object();cells=[list(' '*20) for _ in range(18)];cells[0]=list((' '+species).ljust(20))
+    text=dict(profile=gate.VISIBLE_PROFILE,read_valid=True,alignment_verified=True,
+        read_error=None,window_visible=True,cells=cells,lines=[' '+species],line_rows=[0])
+    signal=dict(profile=gate.SIGNAL_PROFILE,read_valid=True,owner_id=id(owner),
+        frame_before=1737977,frame_after=1737977,raw=2,battle_type=0)
+    assert context(packet(species),step(),text,previous=[],signal=signal,owner=owner,now=0) is None
 
 def test_true_nonbattle_leaves_normal_talk_to_existing_controller():
     s=packet();s['battle_state'].update(raw=0,kind='none',active=False)

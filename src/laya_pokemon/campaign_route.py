@@ -50,8 +50,14 @@ from . import cinnabar_purchase_bridge
 importlib.reload(cinnabar_purchase_bridge)
 from . import opponent_review_gate
 importlib.reload(opponent_review_gate)
+from . import battle_medicine_bridge,blaine_supply_policy,blaine_supply_dispatch
+importlib.reload(battle_medicine_bridge)
+importlib.reload(blaine_supply_policy)
+importlib.reload(blaine_supply_dispatch)
 from . import fly_pallet_bridge
 importlib.reload(fly_pallet_bridge)
+from . import fly_viridian_bridge
+importlib.reload(fly_viridian_bridge)
 from . import pallet_surf_bridge
 importlib.reload(pallet_surf_bridge)
 from . import route21_water_bridge
@@ -71,6 +77,45 @@ for controller in _GYM_CONTROLLERS.values():controller._last_now=None
 
 def switch_context(pyboy,state,plan,step_id,previous):
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if fly_viridian_bridge.applies(step_id,step):
+        active_fly=set(fly_viridian_bridge._BINDINGS)-fly_viridian_bridge._COMPLETED
+        if active_fly and active_fly!={step_id}:
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'fly_viridian_owner_changed'},step_id)
+        bridges=(battle_medicine_bridge,mansion_secret_key_bridge,mansion_statue_bridge,
+                 mansion_transition_ready,mansion_native_landing,route21_water_bridge,
+                 pallet_surf_bridge,fly_pallet_bridge,safari_entry,hm_teaching_bridge,
+                 vending_bridge,saffron_guard_bridge,silph_card_bridge,lapras_bridge,
+                 player_pc_bridge,cinnabar_purchase_bridge,campaign_transactions)
+        if (any(set(m._BINDINGS)-m._COMPLETED for m in bridges)
+                or safari_entry._RUN_CONTROLLER is not None
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'fly_viridian_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return fly_viridian_bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+                                          read_world_grid(pyboy,state['location']),previous)
+    if battle_medicine_bridge.applies(step_id,step):
+        if battle_medicine_bridge._signature(step_id,step) is None:
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'blaine_supply_fixed_step_unverified'},step_id)
+        bridges=(mansion_secret_key_bridge,mansion_statue_bridge,mansion_transition_ready,
+                 mansion_native_landing,route21_water_bridge,pallet_surf_bridge,
+                 fly_pallet_bridge,safari_entry,hm_teaching_bridge,vending_bridge,
+                 saffron_guard_bridge,silph_card_bridge,lapras_bridge,player_pc_bridge,
+                 cinnabar_purchase_bridge,campaign_transactions)
+        if (any(set(m._BINDINGS)-m._COMPLETED for m in bridges)
+                or safari_entry._RUN_CONTROLLER is not None
+                or any(not s.get('done') for s in capture_transaction._SESSIONS.values())):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'blaine_supply_other_transaction_active'},step_id)
+        from .observation import read_visible_text
+        return blaine_supply_dispatch.context(pyboy,state,plan,step_id,read_visible_text(pyboy),previous)
+    if step and 'opponent_review' in step:
+        from .observation import read_visible_text
+        opponent_gate=opponent_review_gate.context(state,step,read_visible_text(pyboy),previous=previous,
+            signal=opponent_review_gate.read_intro_signal(pyboy),owner=pyboy)
+        if opponent_gate is not None:return opponent_gate,step_id
     if cinnabar_purchase_bridge.applies(step_id,step):
         bridges=(mansion_secret_key_bridge,mansion_statue_bridge,mansion_transition_ready,
                  mansion_native_landing,route21_water_bridge,pallet_surf_bridge,
@@ -206,8 +251,12 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
-    opponent_gate=opponent_review_gate.context(state,step)
-    if opponent_gate is not None:return opponent_gate,step_id
+    if fly_viridian_bridge.applies(step_id,step):
+        return None  # 同一飛行交易與真previous只交switch_context。
+    if battle_medicine_bridge.applies(step_id,step):
+        return None  # 真previous與所有補藥／敵回合頁面由switch_context接管。
+    if step and 'opponent_review' in step:
+        return None  # 對戰intro必須接switch_context的真實previous。
     if cinnabar_purchase_bridge.applies(step_id,step):
         return None  # 固定購藥交易只由switch_context接主runner真previous。
     if mansion_secret_key_bridge.applies(step_id,step):
