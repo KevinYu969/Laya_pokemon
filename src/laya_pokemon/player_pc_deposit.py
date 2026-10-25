@@ -29,9 +29,12 @@ INTENTS = {(182,234): {**INTENT_BASE, 'item':234},
            (171,246): CINNABAR_TM46_INTENT,
            (171,228): {**INTENT_BASE, 'map_id':171, 'item':228},
            (171,206): {**INTENT_BASE, 'map_id':171, 'item':206},
-           (171,238): {**INTENT_BASE, 'map_id':171, 'item':238}}
-LOCATIONS = {182: LOCATION, 171: {'map_id':171,'x':13,'y':4}}
-MAP_NAMES = {182:'saffron_pokecenter',171:'cinnabar_pokecenter'}
+           (171,238): {**INTENT_BASE, 'map_id':171, 'item':238},
+           (41,227): {**INTENT_BASE, 'map_id':41, 'item':227}}
+# a536711 data/events/hidden_events.asm154–157、map_constants.asm75：
+# VIRIDIAN_POKECENTER=$29，PC13,3/UP；玩家13,4正常存TM27騰背包。
+LOCATIONS = {182: LOCATION, 171: {'map_id':171,'x':13,'y':4},41:{'map_id':41,'x':13,'y':4}}
+MAP_NAMES = {182:'saffron_pokecenter',171:'cinnabar_pokecenter',41:'viridian_pokecenter'}
 
 
 def _intent(intent):

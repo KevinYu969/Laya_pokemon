@@ -12,7 +12,7 @@ from laya_pokemon.player_battle import decode_player_battle
 
 SOURCE_COMMIT=ui.SOURCE_COMMIT
 PROFILE='red-en-trainer-active-medicine-ui-v1-candidate'
-MAPS=frozenset((45,245,246,247,113,120))
+MAPS=frozenset((33,45,245,246,247,113,120))
 HYPER_POTION_INTENT=dict(kind='trainer_battle_medicine_active',target='active',item=18,quantity=1)
 FULL_HEAL_INTENT=dict(kind='trainer_battle_medicine_active',target='active',item=52,quantity=1)
 

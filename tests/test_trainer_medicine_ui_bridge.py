@@ -84,7 +84,7 @@ class Session(fx.Session):
     def __init__(self,b,active=0,item=18,map_id=45):
         super().__init__(active,item,map_id=map_id)
         self.b=b;self.c=None;self.game=Game();self.last_state=self.last_text=None
-        self.current_opponent={45:201,245:244,246:245,247:246,113:247,120:243}[map_id]
+        self.current_opponent={33:242,45:201,245:244,246:233,247:246,113:247,120:243}[map_id]
         target,face,event=b.TRAINERS[map_id];self.loc=dict(map_id=map_id,x=target[0],y=target[1])
         self.step=dict(id='trainer-'+str(map_id),kind='interact',map_id=map_id,target=list(target),
                        face=face,event=event,battle_supply=b.SUPPLY)
@@ -158,7 +158,7 @@ def test_two_medicines_six_active_members_use_true_pure_getters_and_sdk(env,acti
     assert s.call(start=False) is None
 
 
-@pytest.mark.parametrize('map_id',[45,245,246,247,113,120])
+@pytest.mark.parametrize('map_id',[33,45,245,246,247,113,120])
 def test_source_target_event_whitelist_with_real_nonfixed_current_opponent(env,map_id):
     s=env.make(map_id=map_id)
     assert s.call()['available_actions'][0]=='a'

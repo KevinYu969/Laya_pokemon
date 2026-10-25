@@ -8,13 +8,13 @@
 
 ## 目前進度
 
-**第七館夏伯已擊敗，已取得七枚徽章與TM38。** 2026-10-25台北19:09:06成立里程碑，拉普拉斯升39級；全隊其後正常補滿、整理背包、買回10份高級傷藥並Fly常磐，繼續第八館與聯盟。[第七館收據](results/seventh-gym-campaign-20261025.json)與[問題紀錄](docs/blaine-gym-review.md)保留耗藥與工程停檢。
+**八枚徽章已集齊。** 2026-10-25台北20:24:35正常戰勝坂木並取得TM27；拉普拉斯升41級，此館零補藥、零新增倒下。接續全隊補滿、冠軍之路與聯盟。[第八館收據](results/eighth-gym-campaign-20261025.json)保留速度、資源與逐館檢討；四天王、冠軍與名人堂尚未完成。
 
 - [最新學招、補給與問題紀錄](docs/cinnabar-supply-and-lapras38.md)：32隻野怪、拉普拉斯34→38，正常以冰凍光束替換唱歌；保衝浪／泰山壓頂／奇異之光。
 - 夏伯戰耗盡10份高級傷藥，其他五員逐370筆保持、沒有新增倒下。已檢討先補藥而未優先收尾的浪費，後續採半血門檻及有條件傷害判斷；不宣稱存活或一擊必勝。
-- [7,883項完整回歸](results/code-validation-medicine-ui-handoff-20261025.json)35.13秒通過；其後修補與新關卡另驗。最近備份的CI曾因兩案引用未上傳來源而失敗，已準備小份公開fixture修正，尚待新提交確認。逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
+- [8,075項完整回歸](results/code-validation-trainer-medicine-gym8-20261025.json)38.82秒通過，包含一般館主補藥與Fly公開fixture修正；CI依頁首連結確認。第八館未使用藥品，不能當成通用補藥實機驗收。逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
 - [七名館員逐場勝利時刻](docs/cinnabar-gym-review.md)保留16隻KO與正常補給；[本機PyBoy即時畫面](http://127.0.0.1:8767/)可看真遊戲影格。
-- 正式素材索引56片／188PNG含QA。新增[38級原速／四倍速與7張圖](results/lapras38-ice-beam-clips-20261024.json)及[父層QA](results/lapras38-media-parent-review-20261024.json)，影片留本機，網站未發布，原生SDL問題尚未修復。
+- 正式素材索引62片／199PNG含QA。新增[夏伯勝利／長背包／原生Fly三對影片與11圖](results/blaine-win-clips-20261025.json)，逐幀與畫面已核；影片留本機，網站未發布，原生SDL問題尚未修復。
 
 通關耗時以[里程碑時間軸](docs/campaign-timeline.md)記錄；牆鐘、工程停檢、模擬遊戲時間與後製倍速分開，尚未公布全程通關時間。[第七館前置與問題紀錄](docs/seventh-gym-progress.md)持續更新。
 

@@ -109,7 +109,7 @@ def complete(s):
 
 def test_exact_registry_and_source_tm_names(modules):
     pc,_=modules
-    assert set(pc.INTENTS)=={(182,234),(182,221),(171,246),(171,228),(171,206),(171,238)}
+    assert set(pc.INTENTS)=={(182,234),(182,221),(171,246),(171,228),(171,206),(171,238),(41,227)}
     assert pc._name(228)=='TM28' and pc._name(206)=='TM06' and pc._name(238)=='TM38'
     for mid,item in pc.INTENTS:
         assert pc.INTENTS[(mid,item)]=={**pc.INTENT_BASE,'map_id':mid,'item':item}
@@ -145,6 +145,18 @@ def test_post_blaine_tm38_deposit_preserves_six_mon_level39_and_frees_one_slot(m
     s.p['party']=progress()['party'];s.p['party'][2].update(level=39,hp=160,max_hp=160,exp=75193,status=0)
     complete(s)
     assert len(s.p['inventory'])==18 and s.items[-1]==dict(item=238,quantity=1)
+
+
+def test_viridian_tm27_native_deposit_preserves_full_party_and_frees_bag20(modules):
+    from tests.test_battle_medicine import progress
+    pc,_=modules
+    inventory=[deepcopy(v) for v in ACTUAL_BAG if v['item'] not in (228,206)]
+    inventory.extend([dict(item=52,quantity=10),dict(item=18,quantity=10),dict(item=227,quantity=1)])
+    assert len(inventory)==20
+    s=Session(pc,227,map_id=41,inventory=inventory,items=[dict(item=238,quantity=1)])
+    s.p['party']=progress()['party'];s.p['party'][2].update(level=41,hp=169,max_hp=169,exp=88096,status=0)
+    complete(s)
+    assert len(s.p['inventory'])==19 and s.items[-1]==dict(item=227,quantity=1)
 
 
 @pytest.mark.parametrize('changes',[dict(map_id=182),dict(map_id=170),dict(item=197),dict(item=43),

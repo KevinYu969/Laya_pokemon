@@ -32,6 +32,7 @@ STORY_EVENT_NAMES = (
     "beat_mt_moon_exit_super_nerd", "got_dome_fossil", "got_helix_fossil", "got_master_ball",
     "first_lock_opened", "second_lock_opened", "ss_anne_left", "beat_silph_co_rival",
     "silph_co_11_unlocked_door", "mansion_switch_on",
+    "got_tm27", "beat_route22_rival_2nd_battle", "route22_rival_wants_battle",
     "got_tm38", "beat_cinnabar_gym_trainer_0", "beat_cinnabar_gym_trainer_1",
     "beat_cinnabar_gym_trainer_2", "beat_cinnabar_gym_trainer_3",
     "beat_cinnabar_gym_trainer_4", "beat_cinnabar_gym_trainer_5", "beat_cinnabar_gym_trainer_6",

@@ -10,6 +10,7 @@ importlib.reload(medicine)
 SUPPLY='trainer-medicine-ui-v1'
 SOURCE_COMMIT='a53671100ec22e5394ff26ec028d0812a238dae2'
 TRAINERS={
+    33:((29,4),'left','beat_route22_rival_2nd_battle'),
     45:((2,2),'up','beat_viridian_gym_giovanni'),
     245:((5,3),'up','beat_loreleis_room_trainer_0'),
     246:((5,3),'up','beat_brunos_room_trainer_0'),

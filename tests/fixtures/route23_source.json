@@ -1,0 +1,365 @@
+{
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "map_id": 34,
+  "tileset_id": 23,
+  "map_dimensions_cells": [
+    20,
+    144
+  ],
+  "shore": [
+    34,
+    10,
+    104,
+    0,
+    44
+  ],
+  "water_path": [
+    [
+      34,
+      10,
+      103,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      102,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      101,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      100,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      99,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      98,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      97,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      96,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      95,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      94,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      93,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      92,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      91,
+      2,
+      50
+    ],
+    [
+      34,
+      10,
+      90,
+      2,
+      50
+    ],
+    [
+      34,
+      10,
+      89,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      88,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      87,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      86,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      85,
+      2,
+      20
+    ],
+    [
+      34,
+      10,
+      84,
+      2,
+      20
+    ],
+    [
+      34,
+      9,
+      84,
+      2,
+      20
+    ],
+    [
+      34,
+      8,
+      84,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      84,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      83,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      82,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      81,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      80,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      79,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      78,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      77,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      76,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      75,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      74,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      73,
+      2,
+      20
+    ],
+    [
+      34,
+      7,
+      72,
+      2,
+      20
+    ],
+    [
+      34,
+      8,
+      72,
+      2,
+      20
+    ],
+    [
+      34,
+      8,
+      71,
+      0,
+      44
+    ]
+  ],
+  "npc_positions": [
+    [
+      4,
+      35
+    ],
+    [
+      10,
+      56
+    ],
+    [
+      8,
+      85
+    ],
+    [
+      11,
+      96
+    ],
+    [
+      12,
+      105
+    ],
+    [
+      8,
+      119
+    ],
+    [
+      8,
+      136
+    ]
+  ],
+  "guard_rows_south_to_north": [
+    136,
+    119,
+    105,
+    96,
+    85,
+    56,
+    35
+  ],
+  "event_id_start": 1328,
+  "event_byte_address": 55277,
+  "route_script_address": 54887,
+  "surf_mode_address": 55040,
+  "script_reverse_offset_bytes": [
+    3,
+    78,
+    56,
+    14,
+    2
+  ],
+  "water_guard_nodes": [
+    [
+      10,
+      96,
+      3,
+      "SOULBADGE"
+    ],
+    [
+      10,
+      85,
+      4,
+      "MARSHBADGE"
+    ]
+  ],
+  "water_wild_encounter_rate": 0,
+  "live_calibrated": false,
+  "source_file_hashes": {
+    "constants/map_constants.asm": "4129ef4e6908267e554c0308254f2269f1fb8f75b5c529faad6fd14c92119271",
+    "constants/event_constants.asm": "691a373649740af5ea340d09e816b0966e9164d5f78ded57b1759e76ada57455",
+    "constants/tileset_constants.asm": "887387444a2be79ffb2b501fee60fc40f8b31668d0a142ea38fc842f90c96769",
+    "constants/item_constants.asm": "b5a1db015fbf0de637381eb39350f21f35a436a8088e2f6657f65c79f118f97f",
+    "ram/wram.asm": "00683cd430a9ef30794d2aeaee51f3a5440e4bb14dca13e9f9cb5fa88f130e34",
+    "data/maps/headers/Route23.asm": "373142771d4cd6f703132342e96dae4dc29cf78f26c3c15bf00e900f6de3f96a",
+    "data/maps/objects/Route23.asm": "54fb01cc43b60e9270c8ff545b68ae287139409ff4be0f817454669059a4c8fe",
+    "scripts/Route23.asm": "6c2d939f2bde229f1b30938739de967c0c79ff55ce5af4b326c8e3d2b672e2ca",
+    "text/Route23.asm": "0f446df03f30b8663bd3a59dee1acbb44983200e35aab9b5a1341daf524f3ded",
+    "maps/Route23.blk": "fd3160e062ff7c906721075c21d845bc1f67b62574dcfd93c078652a37f827c0",
+    "gfx/blocksets/plateau.bst": "4f7bd1ada8f50742b3c1bee69b33f77c4cbc9f7b9a8bccdcbdd3f0c6b2cb0ed9",
+    "data/tilesets/collision_tile_ids.asm": "15df9f5ad78dd176e91b78a85ef6ff9cf471d51a6222689d3d4902e58af4fc0a",
+    "data/tilesets/pair_collision_tile_ids.asm": "d7ed744bfa0fcaf8e7f69a23f9e3d44cdcf9f3c3f9931d93926f5084f1c4466b",
+    "data/tilesets/water_tilesets.asm": "c37911107dc60805a56c1fd8718dd1aa95c2ae5ccd99b6fcb2620617d9f48d09",
+    "home/overworld.asm": "04683d520f775876f8ec050cbc20e145ef4e596293393d0cb2e7ccd0657cc11a",
+    "engine/menus/start_sub_menus.asm": "cce764b4234f1f2a97c8062654061a7af759e5ed9567ddb9c980776166c0c8d5",
+    "engine/items/item_effects.asm": "76b570b5216bbbcf6d9528c4704d931744a3740cce88afdc4f4f8f700449dda1",
+    "engine/overworld/field_move_messages.asm": "2dfecbe4f37e901f9601beaa5f3d247fc6927ff77f1e1f6a5d9e2135aa6006f2",
+    "data/text/text_6.asm": "780a4113660b6ed4c3fa54ddd2a984e1dc7d6bea7f423a00d5a476dfaf5f80ec",
+    "data/wild/maps/Route23.asm": "15af31f8605fb755603f6417d641bbf296f6ae480e185779d941a9048229ae93"
+  }
+}

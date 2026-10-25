@@ -41,6 +41,8 @@ from . import silph_rival_wait
 importlib.reload(silph_rival_wait)
 from . import silph_giovanni_wait
 importlib.reload(silph_giovanni_wait)
+from . import league_native_wait
+importlib.reload(league_native_wait)
 from . import sabrina_native_warp
 importlib.reload(sabrina_native_warp)
 from . import lapras_bridge
@@ -91,6 +93,19 @@ def switch_context(pyboy,state,plan,step_id,previous):
                      'review_reason':'trainer_medicine_owner_changed'},step_id)
         from .observation import read_visible_text
         return trainer_medicine_dispatch.context(pyboy,state,plan,step_id,read_visible_text(pyboy),previous)
+    native_active=any(c.waiting for c in league_native_wait._WAITS.values())
+    native_signature=league_native_wait._signature(step)
+    native_location=state.get('location',{}) if isinstance(state,dict) else {}
+    native_ready=(native_signature is not None and native_location.get('map_id')==step['map_id']
+        and (step['map_id']!=33 or [native_location.get('x'),native_location.get('y')]==[29,4]
+             or step_id in league_native_wait._WAITS))
+    if native_active or native_ready:
+        from .observation import read_visible_text
+        native=league_native_wait.context(pyboy,state,step,read_visible_text(pyboy),previous)
+        if native is not None:
+            if native.get('phase')=='overworld' and native.get('available_actions')==['wait']:
+                native={**native,'phase':'league_native_wait'}
+            return native,step_id
     if fly_viridian_bridge.applies(step_id,step):
         active_fly=set(fly_viridian_bridge._BINDINGS)-fly_viridian_bridge._COMPLETED
         if active_fly and active_fly!={step_id}:
@@ -269,6 +284,9 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if (any(c.waiting for c in league_native_wait._WAITS.values())
+            or league_native_wait._signature(step) is not None):
+        return None  # 原生走位與intro只交有真previous的switch，不由field提早接管。
     if trainer_medicine_ui_bridge.applies(step_id,step):
         return None  # 真previous、補藥UI與後續既有battle只由switch_context接管。
     if fly_viridian_bridge.applies(step_id,step):
