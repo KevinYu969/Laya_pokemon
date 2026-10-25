@@ -17,6 +17,7 @@ _FIELD_CONTROLLERS=globals().get('_FIELD_CONTROLLERS',{})
 _GYM_CONTROLLERS=globals().get('_GYM_CONTROLLERS',{})
 _SCRIPT_WAITS=globals().get('_SCRIPT_WAITS',{})
 _VIA_PROGRESS=globals().get('_VIA_PROGRESS',{})
+_REVIEWED_NPC_EDGE_RETRIES=globals().get('_REVIEWED_NPC_EDGE_RETRIES',set())
 from . import field_moves as field_moves_module
 importlib.reload(field_moves_module)
 from . import gym_switches as gym_switches_module
@@ -54,6 +55,10 @@ from . import battle_medicine_bridge,blaine_supply_policy,blaine_supply_dispatch
 importlib.reload(battle_medicine_bridge)
 importlib.reload(blaine_supply_policy)
 importlib.reload(blaine_supply_dispatch)
+from . import trainer_medicine_ui_bridge,trainer_medicine_policy,trainer_medicine_dispatch
+importlib.reload(trainer_medicine_ui_bridge)
+importlib.reload(trainer_medicine_policy)
+importlib.reload(trainer_medicine_dispatch)
 from . import fly_pallet_bridge
 importlib.reload(fly_pallet_bridge)
 from . import fly_viridian_bridge
@@ -77,6 +82,15 @@ for controller in _GYM_CONTROLLERS.values():controller._last_now=None
 
 def switch_context(pyboy,state,plan,step_id,previous):
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    active_medicine=trainer_medicine_ui_bridge._active()
+    if active_medicine:
+        bindings=trainer_medicine_ui_bridge._BINDINGS
+        if (len(active_medicine)!=1 or any(type(bindings.get(owner)) is not dict
+                or bindings[owner].get('step_id')!=step_id for owner in active_medicine)):
+            return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                     'review_reason':'trainer_medicine_owner_changed'},step_id)
+        from .observation import read_visible_text
+        return trainer_medicine_dispatch.context(pyboy,state,plan,step_id,read_visible_text(pyboy),previous)
     if fly_viridian_bridge.applies(step_id,step):
         active_fly=set(fly_viridian_bridge._BINDINGS)-fly_viridian_bridge._COMPLETED
         if active_fly and active_fly!={step_id}:
@@ -116,6 +130,10 @@ def switch_context(pyboy,state,plan,step_id,previous):
         opponent_gate=opponent_review_gate.context(state,step,read_visible_text(pyboy),previous=previous,
             signal=opponent_review_gate.read_intro_signal(pyboy),owner=pyboy)
         if opponent_gate is not None:return opponent_gate,step_id
+    if trainer_medicine_ui_bridge.applies(step_id,step):
+        from .observation import read_visible_text
+        medicine=trainer_medicine_dispatch.context(pyboy,state,plan,step_id,read_visible_text(pyboy),previous)
+        if medicine is not None:return medicine
     if cinnabar_purchase_bridge.applies(step_id,step):
         bridges=(mansion_secret_key_bridge,mansion_statue_bridge,mansion_transition_ready,
                  mansion_native_landing,route21_water_bridge,pallet_surf_bridge,
@@ -251,6 +269,8 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition):
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if trainer_medicine_ui_bridge.applies(step_id,step):
+        return None  # 真previous、補藥UI與後續既有battle只由switch_context接管。
     if fly_viridian_bridge.applies(step_id,step):
         return None  # 同一飛行交易與真previous只交switch_context。
     if battle_medicine_bridge.applies(step_id,step):
@@ -563,6 +583,47 @@ def native_warp_context(pyboy,state,step,previous):
         read_rocket_movement(pyboy,observation_frame=state['frame']),previous)
 
 
+def _reviewed_npc_edge_retry(state,step,grid,npcs,ready):
+    """父層核正常出入館後，只撤銷該NPC曾擋住的一條導航快取。"""
+    global _LAST_ATTEMPT
+    marker=step.get('reviewed_npc_edge_retry')
+    if marker is None:return None
+    if (type(marker) is not dict or set(marker)!={'kind','frame','from','to'}
+            or marker.get('kind')!='trainer_reset_after_normal_exit_v1'
+            or type(marker.get('frame')) is not int or marker['frame']<0
+            or marker.get('from')!=[10,4] or marker.get('to')!=[10,3]
+            or any(type(v) is not int for k in ('from','to') for v in marker[k])):
+        return 'npc_edge_retry_marker_unverified'
+    key=(step['id'],json.dumps(marker,sort_keys=True))
+    if key in _REVIEWED_NPC_EDGE_RETRIES:return None
+    if (step.get('kind')!='move' or step.get('map_id')!=45
+            or state.get('frame')!=marker['frame'] or type(state.get('frame')) is not int
+            or state.get('location')!={'map_id':45,'x':10,'y':4} or ready is not True
+            or not isinstance(grid,dict) or grid.get('observation_frame')!=marker['frame']
+            or type(grid.get('observation_frame')) is not int
+            or grid.get('verified_location')!=[45,10,4] or type(grid.get('screen_cells_verified')) is not int
+            or grid['screen_cells_verified']<12 or not isinstance(npcs,dict)
+            or type(npcs.get('source_anchor_matches')) is not int or npcs['source_anchor_matches']<9):
+        return 'npc_edge_retry_closed_world_unverified'
+    raw_positions=npcs.get('positions')
+    if (not isinstance(raw_positions,(list,tuple))
+            or any(not isinstance(p,(list,tuple)) or len(p)!=2
+                   or any(type(v) is not int for v in p) for p in raw_positions)):
+        return 'npc_edge_retry_trainer_reset_unverified'
+    positions=set(map(tuple,raw_positions))
+    try:free=grid['walkable'][4][10]==1 and grid['walkable'][3][10]==1
+    except (KeyError,IndexError,TypeError):free=False
+    edge=((10,4),(10,3))
+    if not free or (10,3) in positions or not {(10,1),(13,5)}<=positions:
+        return 'npc_edge_retry_trainer_reset_unverified'
+    if edge not in _LEARNED_EDGES.get(45,set()):return 'npc_edge_retry_cached_edge_missing'
+    _LEARNED_EDGES[45].discard(edge)
+    if (_LAST_ATTEMPT and _LAST_ATTEMPT.get('key')==(45,10,4,step['id'])
+            and _LAST_ATTEMPT.get('direction')=='up'):_LAST_ATTEMPT=None
+    _REVIEWED_NPC_EDGE_RETRIES.add(key)
+    return None
+
+
 def waypoint(pyboy,state,plan,step_id,previous):
     global _LAST_ATTEMPT
     steps=plan['steps'];ids=[s['id'] for s in steps]
@@ -636,6 +697,10 @@ def waypoint(pyboy,state,plan,step_id,previous):
         if npcs:
             hidden=npcs.get('hidden_source_positions',[]) if npcs.get('toggle_source_calibrated') is True else []
             blocked=list((set(blocked)-set(map(tuple,hidden)))|set(npcs['positions']))
+        retry_error=_reviewed_npc_edge_retry(state,step,grid,npcs,ready)
+        if retry_error:
+            return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                    'review_reason':retry_error},step['id']
         cleared=[]
         if mid==3:
             if progress['story_event_bits'].get('got_ss_ticket'):cleared.append((27,12))

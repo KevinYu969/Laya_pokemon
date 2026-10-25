@@ -1,0 +1,696 @@
+{
+  "schema": "blaine-win-media-audit-v1",
+  "date": "2026-10-25",
+  "language": "zh-Hant",
+  "title": "夏伯第七館真實勝利、長背包操作與原生Fly素材",
+  "source_run": "league-campaign-20261025-26",
+  "parent_review": {
+    "status": "accepted",
+    "source_receipt_sha256": "a645e3743cb0122805535f5835032e085549b23b9c6f98c780cecb96d1a42bfd",
+    "hashes_rechecked": true,
+    "qa_contact_sheet_visually_reviewed": true,
+    "note": "父層真實檢視十格：烈焰馬克制、長背包、風速狗倒下、夏伯勝、徽章、TM38、Fly選單/地圖/飛行/落地；不宣稱第八館或聯盟已勝。"
+  },
+  "published": false,
+  "closed_video_sources": [
+    {
+      "path": "outputs/league-campaign-20261025-26/game/video-002.mp4",
+      "sha256": "d5a2c9e9a0a0163a57bc59ad30475e6c26a21522f5da13ff97b3887c5ffe94d7",
+      "bytes": 244997,
+      "closure": {
+        "at": "2026-10-25T10:31:01.811978+00:00",
+        "segment": 2,
+        "timing": {
+          "wall_seconds": 3117.313,
+          "model_wait_seconds": 8.609,
+          "review_pause_seconds": 3101.953,
+          "non_review_session_seconds": 15.36,
+          "emulated_seconds": 243.867
+        },
+        "video": {
+          "filename": "video-002.mp4",
+          "fps": 15,
+          "frames": 656,
+          "playback_seconds": 43.733333333333334,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "182600dc4975aa17eae95a4aa9555130d7d92631c41455ea46b1704c2a03acad",
+      "ledger": {
+        "path": "outputs/league-campaign-20261025-26/game/steps-002.jsonl",
+        "sha256": "70595cc989e7ad4bef113a5f84b305291cc0b9bd45df125c21df0a45552cc5b5",
+        "fixed_copy": ".local/staged-blaine-media-20261025/fixed-steps-002.jsonl"
+      },
+      "main_frame_span": [
+        12009,
+        14633
+      ],
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "43.733333",
+          "nb_frames": "656",
+          "nb_read_frames": "656"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261025-26/game/video-008.mp4",
+      "sha256": "0c0e3869f6f5137685e3055b5ac7c5dbb34c87510d61f99748507d80493284ad",
+      "bytes": 215780,
+      "closure": {
+        "at": "2026-10-25T11:18:14.920139+00:00",
+        "segment": 8,
+        "timing": {
+          "wall_seconds": 5950.407,
+          "model_wait_seconds": 9.719,
+          "review_pause_seconds": 5924.515,
+          "non_review_session_seconds": 25.892,
+          "emulated_seconds": 531.867
+        },
+        "video": {
+          "filename": "video-008.mp4",
+          "fps": 15,
+          "frames": 894,
+          "playback_seconds": 59.6,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "6c8fb62bfbc6c600f60ea523563c67b525b3479b2d075a6b246fd7cd6f2bfae7",
+      "ledger": {
+        "path": "outputs/league-campaign-20261025-26/game/steps-008.jsonl",
+        "sha256": "2a144c06897e1ad95b82714403a736d12c492552546a2696cdbf0e59a1e5b392",
+        "fixed_copy": ".local/staged-blaine-media-20261025/fixed-steps-008.jsonl"
+      },
+      "main_frame_span": [
+        28337,
+        31913
+      ],
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "59.600000",
+          "nb_frames": "894",
+          "nb_read_frames": "894"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261025-26/game/video-012.mp4",
+      "sha256": "b2591c650b8c2ca4f915f03b9afbd7a5d5866406ee2f14dae2a48410cfe170d0",
+      "bytes": 685230,
+      "closure": {
+        "at": "2026-10-25T11:46:34.007225+00:00",
+        "segment": 12,
+        "timing": {
+          "wall_seconds": 7649.422,
+          "model_wait_seconds": 14.941,
+          "review_pause_seconds": 7611.156,
+          "non_review_session_seconds": 38.266,
+          "emulated_seconds": 720.133
+        },
+        "video": {
+          "filename": "video-012.mp4",
+          "fps": 15,
+          "frames": 750,
+          "playback_seconds": 50.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "27f4ce5745a8f35db85b9b0354668fade7b7eb4c91bc949ccdd57c9c163b0b4a",
+      "ledger": {
+        "path": "outputs/league-campaign-20261025-26/game/steps-012.jsonl",
+        "sha256": "ba135798e7f7cca7f502ed28bb5fd13b07006a8b61cf7f3c21df66a8c3f4daff",
+        "fixed_copy": ".local/staged-blaine-media-20261025/fixed-steps-012.jsonl"
+      },
+      "main_frame_span": [
+        40209,
+        43209
+      ],
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "50.000000",
+          "nb_frames": "750",
+          "nb_read_frames": "750"
+        }
+      }
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/blaine-win-20261025/rapidash-and-bag-1x.mp4",
+      "sha256": "57a8ebb94f984cb653481516860e6928c77d1cd7708ad425dd5c29ba48b8b60d",
+      "bytes": 493729,
+      "title": "烈焰馬收尾與長背包補藥操作",
+      "source_segment": 2,
+      "source_frames_zero_based_half_open": [
+        0,
+        656
+      ],
+      "sampled_main_frame_range": [
+        12013,
+        14633
+      ],
+      "frames": 656,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "duration_seconds": 43.733333333333334,
+      "speed": 1.0,
+      "audio": false,
+      "speed_basis": "emulated_time",
+      "scope": "包含Surf對烈焰馬屬性克制、倒下、1728EXP、風速狗進場，以及背包捲動選Hyper Potion；結束於補血動畫中，並非完整補藥閉合。",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "43.733333",
+          "nb_frames": "656",
+          "nb_read_frames": "656"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/rapidash-and-bag-4x.mp4",
+      "sha256": "48e1855925fc85c736a523e85427512a6ea901ed3d089c773ccdf8ade8624eaf",
+      "bytes": 493729,
+      "title": "烈焰馬收尾與長背包補藥操作",
+      "source_segment": 2,
+      "source_frames_zero_based_half_open": [
+        0,
+        656
+      ],
+      "sampled_main_frame_range": [
+        12013,
+        14633
+      ],
+      "frames": 656,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "duration_seconds": 10.933333333333334,
+      "speed": 4.0,
+      "audio": false,
+      "speed_basis": "post_production_4x",
+      "scope": "包含Surf對烈焰馬屬性克制、倒下、1728EXP、風速狗進場，以及背包捲動選Hyper Potion；結束於補血動畫中，並非完整補藥閉合。",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "10.933333",
+          "nb_frames": "656",
+          "nb_read_frames": "656"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/blaine-win-and-reward-1x.mp4",
+      "sha256": "ced87ed9bda994fd655a7a1e4fbf520ca68eb68327ed73d0bafe22427ada5a25",
+      "bytes": 446106,
+      "title": "風速狗收尾、擊敗夏伯與第七枚徽章／TM38",
+      "source_segment": 8,
+      "source_frames_zero_based_half_open": [
+        0,
+        884
+      ],
+      "sampled_main_frame_range": [
+        28341,
+        31873
+      ],
+      "frames": 884,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "duration_seconds": 58.93333333333333,
+      "speed": 1.0,
+      "audio": false,
+      "speed_basis": "emulated_time",
+      "scope": "原生戰鬥結算、拉普拉斯39級、KEVIN defeated BLAINE、VOLCANOBADGE、TM38及FIRE BLAST說明；排除封口影片最後10幀的下一段離館操作。",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "58.933333",
+          "nb_frames": "884",
+          "nb_read_frames": "884"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/blaine-win-and-reward-4x.mp4",
+      "sha256": "e21f30169fad5a11db22a19dd615dcc8e1e616b1003a4ada4712fe88b5643700",
+      "bytes": 446106,
+      "title": "風速狗收尾、擊敗夏伯與第七枚徽章／TM38",
+      "source_segment": 8,
+      "source_frames_zero_based_half_open": [
+        0,
+        884
+      ],
+      "sampled_main_frame_range": [
+        28341,
+        31873
+      ],
+      "frames": 884,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "duration_seconds": 14.733333333333333,
+      "speed": 4.0,
+      "audio": false,
+      "speed_basis": "post_production_4x",
+      "scope": "原生戰鬥結算、拉普拉斯39級、KEVIN defeated BLAINE、VOLCANOBADGE、TM38及FIRE BLAST說明；排除封口影片最後10幀的下一段離館操作。",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "14.733333",
+          "nb_frames": "884",
+          "nb_read_frames": "884"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/native-fly-viridian-1x.mp4",
+      "sha256": "f857e64fa7436685b606b3e479d42cb283b9e758e91b0e668032234c6e2fd1fd",
+      "bytes": 727819,
+      "title": "原生Fly選單、飛行與常磐市落地",
+      "source_segment": 12,
+      "source_frames_zero_based_half_open": [
+        510,
+        740
+      ],
+      "sampled_main_frame_range": [
+        42253,
+        43169
+      ],
+      "frames": 230,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "duration_seconds": 15.333333333333334,
+      "speed": 1.0,
+      "audio": false,
+      "speed_basis": "emulated_time",
+      "scope": "從紅蓮島開START，選大嘴雀Fly、常磐市、原生飛行到落地；排除落地後LEFT的10幀，並非重播地圖或瞬移修改。",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "15.333333",
+          "nb_frames": "230",
+          "nb_read_frames": "230"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/native-fly-viridian-4x.mp4",
+      "sha256": "a5e4c6932495c17873afce8a7cce74bf54eaff80b215f8a3a36fbd9d9b047a28",
+      "bytes": 727904,
+      "title": "原生Fly選單、飛行與常磐市落地",
+      "source_segment": 12,
+      "source_frames_zero_based_half_open": [
+        510,
+        740
+      ],
+      "sampled_main_frame_range": [
+        42253,
+        43169
+      ],
+      "frames": 230,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "duration_seconds": 3.8333333333333335,
+      "speed": 4.0,
+      "audio": false,
+      "speed_basis": "post_production_4x",
+      "scope": "從紅蓮島開START，選大嘴雀Fly、常磐市、原生飛行到落地；排除落地後LEFT的10幀，並非重播地圖或瞬移修改。",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "3.833333",
+          "nb_frames": "230",
+          "nb_read_frames": "230"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/blaine-win-20261025/01-rapidash-super-effective.png",
+      "title": "Surf對烈焰馬效果絕佳",
+      "sha256": "6e08e28159c6833c602c22d2e9e74f38bfcdd7f71861acf534a9f04d0e544ad8",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 119,
+      "observation_campaign_frame": 12817,
+      "source_segment": 2,
+      "source_frame": 201,
+      "clip_frame": 201,
+      "relative_1x_seconds": 13.4,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "f1f8a61243c122462520d4cca94fe7f31e460316a70b134dae3485dcbccfe463",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " RAPIDASH",
+        "     42",
+        "          LAPRAS",
+        "               38",
+        "            77/156",
+        " It's super",
+        " effective!       ▼"
+      ],
+      "location": {
+        "map_id": 166,
+        "x": 3,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/02-hyper-potion-selected.png",
+      "title": "長背包正常捲動至Hyper Potion",
+      "sha256": "dbfd42bae9f7b34a71da2f7be0a22472759afe8a0167762d906c077736a91625",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 146,
+      "observation_campaign_frame": 14513,
+      "source_segment": 2,
+      "source_frame": 625,
+      "clip_frame": 625,
+      "relative_1x_seconds": 41.666666666666664,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "ff824fb32197a12067a964306b05741ece240428f61ca9d2b1b7c32168a4b4bc",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " ARCANINE",
+        "     47",
+        "      HM02",
+        "      SECRET KEY",
+        "     ▶HYPER POTION",
+        "              ×10",
+        "      FULL HEAL",
+        "              ×10"
+      ],
+      "location": {
+        "map_id": 166,
+        "x": 3,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/03-arcanine-fainted.png",
+      "title": "風速狗倒下",
+      "sha256": "8f5b8d3baa98e9886a36ef4793d1783d802497762876b9ac80971da58b1b102f",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 351,
+      "observation_campaign_frame": 29313,
+      "source_segment": 8,
+      "source_frame": 243,
+      "clip_frame": 243,
+      "relative_1x_seconds": 16.2,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "7f3826b4e8a3e92d9c12e8609639697f9b34caadc66571c7452e698535be3a25",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               BRN",
+        "           125/156",
+        " Enemy ARCANINE",
+        " fainted!         ▼"
+      ],
+      "location": {
+        "map_id": 166,
+        "x": 3,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/04-kevin-defeated-blaine.png",
+      "title": "KEVIN擊敗夏伯",
+      "sha256": "b84695e7a9fcc87ab1e760614484f3d3328e93373657b08f72eb0def83dbaf64",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 355,
+      "observation_campaign_frame": 29825,
+      "source_segment": 8,
+      "source_frame": 371,
+      "clip_frame": 371,
+      "relative_1x_seconds": 24.733333333333334,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "be5b2066493bb047c25d43662d847fc2ce1419a459cd564ede97348146a0eeda",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               BRN",
+        "           129/160",
+        " KEVIN defeated",
+        " BLAINE!"
+      ],
+      "location": {
+        "map_id": 166,
+        "x": 3,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/05-volcanobadge.png",
+      "title": "取得VOLCANOBADGE",
+      "sha256": "3390c5edddf077f3176c9248f3109d230d43b89ab5b411b49517966616356fe1",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 358,
+      "observation_campaign_frame": 30209,
+      "source_segment": 8,
+      "source_frame": 467,
+      "clip_frame": 467,
+      "relative_1x_seconds": 31.133333333333333,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "b22e02d1090eb43a534c82400c44bc269ebf086fd2b7d5d044b827ebf27cd7e6",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               BRN",
+        "           129/160",
+        " You have earned",
+        " the VOLCANOBADGE!"
+      ],
+      "location": {
+        "map_id": 166,
+        "x": 3,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/06-received-tm38.png",
+      "title": "取得TM38",
+      "sha256": "f1b0de971fbf2ebc4bf9d5775cbf6b61cfefd8dc43c40ba15835d4687dc02fab",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 365,
+      "observation_campaign_frame": 31105,
+      "source_segment": 8,
+      "source_frame": 691,
+      "clip_frame": 691,
+      "relative_1x_seconds": 46.06666666666667,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "cedbdba9e8690dbdee78902580e34370810e1585db87bec342448ff99fa8be41",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " KEVIN received",
+        " TM38!"
+      ],
+      "location": {
+        "map_id": 166,
+        "x": 3,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/07-fearow-fly-menu.png",
+      "title": "大嘴雀原生Fly選單",
+      "sha256": "171878cc38d2d54baff8f1c093938a89e54414039155ecdac921961c1454affe",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 612,
+      "observation_campaign_frame": 42569,
+      "source_segment": 12,
+      "source_frame": 589,
+      "clip_frame": 79,
+      "relative_1x_seconds": 5.266666666666667,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "f9bc8d453cae6b5431defdb990b9a66d641c8b397536412383c638f293fed7a7",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "   LAPRAS     39",
+        "             160/160",
+        "   SNORLAX    41",
+        "             198/198",
+        "   EEVEE      35",
+        "              90/ 90",
+        "   VENUSAUR   35",
+        "             111/111",
+        "   FEAROW",
+        "   NIDOKING ▶FLY",
+        "             STATS",
+        " Choose a P  SWITCH"
+      ],
+      "location": {
+        "map_id": 8,
+        "x": 18,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/08-fly-viridian-selected.png",
+      "title": "原生地圖選擇常磐市",
+      "sha256": "cb3bd8c68ee1d60b1a65f93115e18a883a73f1597507828bae1206c5811cadc3",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 617,
+      "observation_campaign_frame": 42769,
+      "source_segment": 12,
+      "source_frame": 639,
+      "clip_frame": 129,
+      "relative_1x_seconds": 8.6,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "af26e34d9b30cea4e7ea4d1a840323ad172733d6bb036f733c79b3d9121d16a1",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "To VIRIDIAN CITY  ▶▼"
+      ],
+      "location": {
+        "map_id": 8,
+        "x": 18,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/09-native-flight.png",
+      "title": "原生飛行動畫",
+      "sha256": "bcac346d46a54adbe08693581e1aa48346dc34dc370c99b806b72596a7dc8101",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 622,
+      "observation_campaign_frame": 42969,
+      "source_segment": 12,
+      "source_frame": 689,
+      "clip_frame": 179,
+      "relative_1x_seconds": 11.933333333333334,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "e9c3a74b4dfb257be9803aa07d172aada26319c7b0bfa94b6604c60f51b4fe8a",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [],
+      "location": {
+        "map_id": 8,
+        "x": 18,
+        "y": 4
+      }
+    },
+    {
+      "path": "outputs/videos/blaine-win-20261025/10-viridian-landed.png",
+      "title": "常磐市正常落地",
+      "sha256": "b8b6386a4b38f9778c3c301c9376a522659aa2ae9abbc738fb72c9e22fe3be16",
+      "observation_basis": "main_closed_ledger",
+      "observation_step": 627,
+      "observation_campaign_frame": 43169,
+      "source_segment": 12,
+      "source_frame": 739,
+      "clip_frame": 229,
+      "relative_1x_seconds": 15.266666666666667,
+      "width": 480,
+      "height": 432,
+      "rgb24_sha256": "375e959243f2c221e0a8c8893224c37794e70ff9aa8923a2f8b0c01ebaf312de",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [],
+      "location": {
+        "map_id": 1,
+        "x": 23,
+        "y": 26
+      }
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/blaine-win-20261025/qa-contact-sheet.png",
+    "sha256": "7940515ed8fea524f435a5ac41dd9b5477a67635d76314cf9a750bece9c4b63b",
+    "width": 1920,
+    "height": 1422
+  },
+  "editing": "每4模擬幀取1真幀；1x15fps與後製4x60fps保留同樣逐幀內容，不插幀、補畫、重演或重建文字。",
+  "limitations": [
+    "1x與4x時長分別是模擬時間與後製播放時間，不能當作模型推理延遲、牆鐘耗時或整個紅版通關時間。",
+    "只讀封口video002、008、012及對應完整ledger；未讀開啟中的MP4、ROM或存檔，未停止錄影或操作遊戲。",
+    "補藥片段以實際動畫中結束，不宣稱完成整筆藥品交易；夏伯勝利片不隱藏先前工程停檢與10瓶Hyper Potion消耗。",
+    "Fly片從開START後第一個取樣到落地閉合狀態，不含其後LEFT移動；不宣稱第八館、四大天王或冠軍已完成。",
+    "PNG由影片真像素擷取；ledger文字只作稽核註記，不重繪畫面，也不把RAM解碼資訊說成視覺模型辨識。",
+    "素材仍在私人本機；父層審查待辦，未上傳GitHub、網站或影音平台。"
+  ],
+  "frame_mapping_audit": {
+    "path": "outputs/research/blaine-win-media-audit-20261025.json",
+    "sha256": "c26afe6f66bb794ed5a98e59f394172a833baf662f651dd0fa9fa50adc08fab5"
+  },
+  "validation": {
+    "closed_sources_full_decode": true,
+    "outputs_full_decode": true,
+    "every_output_frame_yuv_matches_source": true,
+    "all_pts_consecutive": true,
+    "png_source_and_both_clips_rgb_exact": true,
+    "new_mp4_count": 6,
+    "new_formal_png_count": 10,
+    "new_qa_png_count": 1,
+    "all_audio_absent": true
+  }
+}

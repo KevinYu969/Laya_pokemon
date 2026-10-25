@@ -5,9 +5,11 @@ import math
 import time
 
 from laya_pokemon import battle_medicine as bm, trainer_opponent, player_battle
+from laya_pokemon import medicine_ui_handoff
 
 importlib.reload(bm)
 importlib.reload(trainer_opponent)
+importlib.reload(medicine_ui_handoff)
 
 SUPPLY = 'cinnabar-lapras38-hyper-fullheal-v1'
 SOURCE_COMMIT = 'a53671100ec22e5394ff26ec028d0812a238dae2'
@@ -66,6 +68,13 @@ def _repair_marker(value):
             and value['kind']=='native_hp_bar_animation_v1'
             and type(value['owner']) is str and 1 <= len(value['owner']) <= 128
             and _int(value['frame']) and value['error']=='medicine_receipt_unknown')
+
+
+def _retaliation_marker(value):
+    return (type(value) is dict and set(value)=={'kind','owner','frame','error'}
+            and value['kind']=='native_fire_blast_alignment_v1'
+            and type(value['owner']) is str and 1 <= len(value['owner']) <= 128
+            and _int(value['frame']) and value['error']=='native_decoder_not_verified')
 
 
 def _frame_clock(record,controller,owner,frame):
@@ -166,6 +175,40 @@ def context(pyboy, state, plan, step_id, text, previous, *, intent=None):
             return _review('reviewed_repair_owner_or_history_unverified',step_id,owner)
         else:
             needs_repair=True
+    retaliation_marker=matches[0].get('reviewed_retaliation_animation')
+    needs_retaliation_repair=False
+    if 'reviewed_retaliation_animation' in matches[0]:
+        if not _retaliation_marker(retaliation_marker):
+            return _review('retaliation_marker_invalid',step_id,owner)
+        prior=_BINDINGS.get(retaliation_marker['owner'])
+        receipt=prior.get('reviewed_retaliation_animation_repair') if type(prior) is dict else None
+        consumed=type(receipt) is dict and _exact(receipt.get('marker'),retaliation_marker)
+        if consumed and (retaliation_marker['owner']==owner or retaliation_marker['owner'] in _COMPLETED):
+            pass
+        elif (owner is None or retaliation_marker['owner']!=owner
+                or record.get('reviewed_retaliation_animation_repair') is not None):
+            return _review('retaliation_owner_or_history_unverified',step_id,owner)
+        else:
+            needs_retaliation_repair=True
+    if needs_repair and needs_retaliation_repair:
+        return _review('multiple_unconsumed_repairs',step_id,owner)
+    handoff_marker=matches[0].get('reviewed_medicine_ui_handoff')
+    reviewed_handoff=False
+    if 'reviewed_medicine_ui_handoff' in matches[0]:
+        if (type(handoff_marker) is not dict or set(handoff_marker)!={'kind','owner','frame','error'}
+                or (handoff_marker['kind'],handoff_marker['error']) not in (
+                    ('critical_to_effectiveness_v1','native_decoder_not_verified'),
+                    ('restored_hud_after_medicine_v1','bound_state_changed'))
+                or type(handoff_marker['owner']) is not str or not _int(handoff_marker['frame'])
+                ):
+            return _review('ui_handoff_marker_invalid',step_id,owner)
+        prior=_BINDINGS.get(handoff_marker['owner'])
+        if (type(prior) is dict and handoff_marker['owner'] in _COMPLETED
+                and _exact(prior.get('reviewed_ui_handoff_marker'),handoff_marker)):
+            pass
+        elif (owner is None or handoff_marker['owner']!=owner or needs_repair or needs_retaliation_repair):
+            return _review('ui_handoff_owner_unverified',step_id,owner)
+        else:reviewed_handoff=True
     requested = _fixed_intent(intent) if intent is not None else None
     if intent is not None and requested is None:
         return _review('explicit_intent_unverified', step_id, owner)
@@ -194,6 +237,11 @@ def context(pyboy, state, plan, step_id, text, previous, *, intent=None):
             or controller.last_frame!=frame or type(controller.last_frame) is not int
             or controller.error!=marker['error'] or controller.stage!='receipt'):
         return _review('reviewed_repair_state_unverified',step_id,owner)
+    if needs_retaliation_repair and (retaliation_marker['frame']!=frame or controller.owner!=owner
+            or type(controller.last_frame) is not int or controller.last_frame!=frame
+            or controller.error!=retaliation_marker['error'] or controller.stage!='retaliation'
+            or controller.enemy_action!='FIRE BLAST'):
+        return _review('retaliation_repair_state_unverified',step_id,owner)
     for packet in (text, progress):
         if 'observation_frame' in packet and (not _int(packet['observation_frame'])
                                               or packet['observation_frame'] != frame):
@@ -230,7 +278,7 @@ def context(pyboy, state, plan, step_id, text, previous, *, intent=None):
     if not _proof(enemy, trainer_opponent, frame, location, enemy=True):
         return _review('trainer_snapshot_unverified', step_id, owner if record is not None else None)
     now=None
-    if not needs_repair:
+    if not needs_repair and not needs_retaliation_repair:
         if record is not None and record.get('reviewed_frame_clock') is not None:
             now=_frame_clock(record,controller,owner,frame)
         else:
@@ -250,6 +298,47 @@ def context(pyboy, state, plan, step_id, text, previous, *, intent=None):
         controller.__class__ = bm.BattleMedicineController
     except Exception:
         return _review('controller_class_unverified',step_id,owner)
+    if reviewed_handoff:
+        matched=(medicine_ui_handoff.reviewed_effectiveness(bm,controller,text,progress,player,enemy,frame,previous)
+                 if handoff_marker['kind']=='critical_to_effectiveness_v1' else
+                 medicine_ui_handoff.after_acknowledged_done_hud(bm,controller,text,progress,player,enemy,frame,previous,reviewed=True))
+        if (matches[0].get('medicine_ui_handoff')!=medicine_ui_handoff.MODE
+                or handoff_marker['frame']!=frame or handoff_marker['error']!=controller.error
+                or not matched):
+            return _review('ui_handoff_review_not_matched',step_id,owner)
+        result=medicine_ui_handoff.receipt(controller,frame,reviewed=True)
+        record['receipt'],record['completed_frame']=deepcopy(result),frame
+        record['reviewed_ui_handoff_marker']=deepcopy(handoff_marker)
+        _COMPLETED.add(owner)
+        return result,step_id
+    if (matches[0].get('medicine_ui_handoff')==medicine_ui_handoff.MODE
+            and medicine_ui_handoff.after_acknowledged_done_hud(bm,controller,text,progress,player,enemy,frame,previous)):
+        result=medicine_ui_handoff.receipt(controller,frame)
+        record['receipt'],record['completed_frame']=deepcopy(result),frame
+        _COMPLETED.add(owner)
+        return result,step_id
+    if needs_retaliation_repair:
+        anchored_now=_frame_clock(record,controller,owner,frame)
+        if not _clock(anchored_now) or not _exact(anchored_now,controller.last_now):
+            return _review('retaliation_repair_clock_unverified',step_id,owner)
+        saved=deepcopy({k:v for k,v in controller.__dict__.items() if k!='error'})
+        try:
+            repaired=controller.reviewed_retaliation_animation_repair(text,progress,
+                player_snapshot=player,enemy_proof=enemy,frame=frame,owner=owner)
+        except Exception:
+            return _review('retaliation_repair_failed',step_id,owner)
+        if (repaired is not True or controller.error is not None
+                or not _exact(saved,{k:v for k,v in controller.__dict__.items() if k!='error'})):
+            return _review('retaliation_repair_failed',step_id,owner)
+        receipt=dict(marker=deepcopy(retaliation_marker),anchored_now=anchored_now,
+                     frame_clock=deepcopy(record['reviewed_frame_clock']),calls=controller.calls,
+                     waits=controller.waits,started=controller.started,last_now=controller.last_now,
+                     source_commit=SOURCE_COMMIT,error_cleared='native_decoder_not_verified')
+        record['reviewed_retaliation_animation_repair']=receipt
+        return {**controller._hint('wait','reviewed_retaliation_animation_repair_recorded'),
+                'battle_medicine_owner':owner,
+                'battle_medicine_reviewed_repair':deepcopy(record['reviewed_hp_animation_repair']),
+                'battle_medicine_reviewed_retaliation_repair':deepcopy(receipt)},step_id
     if needs_repair:
         anchor_now=controller.last_now
         if (not _clock(anchor_now) or not _clock(controller.started)
@@ -282,6 +371,12 @@ def context(pyboy, state, plan, step_id, text, previous, *, intent=None):
         return _review('controller_context_failed', step_id, owner)
     if type(result) is not dict:
         return _review('controller_result_unverified', step_id, owner)
+    if (matches[0].get('medicine_ui_handoff')==medicine_ui_handoff.MODE
+            and medicine_ui_handoff.after_verified_move(bm,controller,text,progress,player,enemy,frame)):
+        result=medicine_ui_handoff.receipt(controller,frame)
+        record['receipt'],record['completed_frame']=deepcopy(result),frame
+        _COMPLETED.add(owner)
+        return result,step_id
     if result.get('battle_medicine_complete') is True:
         record['receipt'], record['completed_frame'] = deepcopy(result), frame
         _COMPLETED.add(owner)
@@ -290,4 +385,6 @@ def context(pyboy, state, plan, step_id, text, previous, *, intent=None):
         return _review('controller_completion_unverified', step_id, owner)
     if record.get('reviewed_hp_animation_repair') is not None:
         result={**result,'battle_medicine_reviewed_repair':deepcopy(record['reviewed_hp_animation_repair'])}
+    if record.get('reviewed_retaliation_animation_repair') is not None:
+        result={**result,'battle_medicine_reviewed_retaliation_repair':deepcopy(record['reviewed_retaliation_animation_repair'])}
     return {**result, 'battle_medicine_owner': owner}, step_id

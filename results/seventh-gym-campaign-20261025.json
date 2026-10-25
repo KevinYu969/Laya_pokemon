@@ -1,0 +1,310 @@
+{
+  "date": "2026-10-25",
+  "status": "seventh_gym_verified_not_league_complete",
+  "completed_at_utc": "2026-10-25T11:09:06.601211+00:00",
+  "completed_at_taipei": "2026-10-25T19:09:06.601211+08:00",
+  "tm38_at_taipei": "2026-10-25T19:09:06.640037+08:00",
+  "checkpoint_sha256": "10ae8041b71ecb0a3a1823730fa38c74a05a1626167cc8aeb98d85f520aee647",
+  "source_run": "league-campaign-20261025-26",
+  "source_main_frame": 31873,
+  "badges_before": 63,
+  "badges_after": 127,
+  "party_before": [
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 38,
+      "hp": 156,
+      "max_hp": 156,
+      "exp": 69199,
+      "status": 0,
+      "moves": [
+        57,
+        34,
+        58,
+        109
+      ],
+      "pp": [
+        15,
+        15,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 41,
+      "hp": 198,
+      "max_hp": 198,
+      "exp": 91196,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 37,
+      "hp": 114,
+      "max_hp": 114,
+      "exp": 51794,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        19,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        15,
+        20
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 42404,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    }
+  ],
+  "party_after": [
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 39,
+      "hp": 129,
+      "max_hp": 160,
+      "exp": 75193,
+      "status": 16,
+      "moves": [
+        57,
+        34,
+        58,
+        109
+      ],
+      "pp": [
+        8,
+        15,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 41,
+      "hp": 198,
+      "max_hp": 198,
+      "exp": 91196,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 37,
+      "hp": 114,
+      "max_hp": 114,
+      "exp": 51794,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        19,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        15,
+        20
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 42404,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    }
+  ],
+  "other_five_unchanged_all_370": true,
+  "new_faint_or_loss_observed": false,
+  "exp_gain": 5994,
+  "surf_pp_before": 15,
+  "surf_pp_after": 8,
+  "hyper_potions_used": 10,
+  "full_heals_used": 0,
+  "money_before": 48332,
+  "money_after": 52985,
+  "tm38_quantity": 1,
+  "counts": {
+    "actions": 370,
+    "new_laya": 12,
+    "cache": 279,
+    "passive": 79
+  },
+  "session_timing_at_gym_review": {
+    "wall_seconds": 5402.188,
+    "model_wait_seconds": 9.313,
+    "review_pause_seconds": 5377.0,
+    "non_review_session_seconds": 25.188,
+    "emulated_seconds": 531.2
+  },
+  "model_load_count": 1,
+  "model_load_seconds": 3.148516599991126,
+  "cloud_fallback": false,
+  "strata_configuration_changed": false,
+  "timing_scope": "run26 only, includes intro/engineering review; excludes earlier run24/25 and is not whole-game completion time; emulated uses60fps",
+  "review": [
+    "補藥UI應在原生HUD恢復後交回battle，避免重複解敵招動畫與NPC補藥。",
+    "HP門檻補藥優先而未先檢查敵剩HP，造成10瓶耗盡；4HP時改明示正常Surf收尾，保留會心倒下風險。",
+    "下一館採UI-only補藥並檢視攻擊/收尾優先，先正常全補與背包整理。"
+  ],
+  "validation": {
+    "last_full": "code-validation-medicine-ui-handoff-20261025.json",
+    "last_full_count": 7883,
+    "latest_targeted": "code-validation-arcanine-finisher-20261025.json",
+    "latest_targeted_count": 313
+  },
+  "media_local_only": true,
+  "website_published": false,
+  "native_sdl_fixed": false
+}

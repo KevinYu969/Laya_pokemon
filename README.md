@@ -8,11 +8,11 @@
 
 ## 目前進度
 
-**六枚徽章，夏伯前三隻已擊倒，正在對戰47級風速狗。** 2026-10-25台北18:31:02，首份高級傷藥已正常使用；目前停檢大字爆炎的畫面抖動判讀。夏伯與聯盟尚未完成。[同場續行與問題紀錄](docs/blaine-gym-review.md)
+**第七館夏伯已擊敗，已取得七枚徽章與TM38。** 2026-10-25台北19:09:06成立里程碑，拉普拉斯升39級；全隊其後正常補滿、整理背包、買回10份高級傷藥並Fly常磐，繼續第八館與聯盟。[第七館收據](results/seventh-gym-campaign-20261025.json)與[問題紀錄](docs/blaine-gym-review.md)保留耗藥與工程停檢。
 
 - [最新學招、補給與問題紀錄](docs/cinnabar-supply-and-lapras38.md)：32隻野怪、拉普拉斯34→38，正常以冰凍光束替換唱歌；保衝浪／泰山壓頂／奇異之光。
-- 正常買兩種藥各10份，餘48,332，背包19格；[購買收據](results/cinnabar-medicine-purchase-campaign-20261024.json)。首份高級傷藥10→9、拉普拉斯77→156；保留原交易，未回讀戰前。
-- [7,852項完整回歸](results/code-validation-medicine-reviewed-20261025.json)33.75秒通過，涵蓋首輪補藥修正及Fly常磐接線；其後敵招動畫修補另驗。逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
+- 夏伯戰耗盡10份高級傷藥，其他五員逐370筆保持、沒有新增倒下。已檢討先補藥而未優先收尾的浪費，後續採半血門檻及有條件傷害判斷；不宣稱存活或一擊必勝。
+- [7,883項完整回歸](results/code-validation-medicine-ui-handoff-20261025.json)35.13秒通過；其後修補與新關卡另驗。最近備份的CI曾因兩案引用未上傳來源而失敗，已準備小份公開fixture修正，尚待新提交確認。逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
 - [七名館員逐場勝利時刻](docs/cinnabar-gym-review.md)保留16隻KO與正常補給；[本機PyBoy即時畫面](http://127.0.0.1:8767/)可看真遊戲影格。
 - 正式素材索引56片／188PNG含QA。新增[38級原速／四倍速與7張圖](results/lapras38-ice-beam-clips-20261024.json)及[父層QA](results/lapras38-media-parent-review-20261024.json)，影片留本機，網站未發布，原生SDL問題尚未修復。
 

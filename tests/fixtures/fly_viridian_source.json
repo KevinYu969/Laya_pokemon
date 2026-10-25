@@ -1,0 +1,90 @@
+{
+  "schema": "fly-viridian-primary-fragments-v1",
+  "source_repo": "pret/pokered",
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "town_map": {
+    "source": {
+      "path": "gfx/town_map/town_map.rle",
+      "bytes": 171,
+      "sha256": "d034ce912040a8ab68be68833e21b433bac6dfb35d7da8d0e672cce3d58d62d1",
+      "git_blob_sha1": "f9ede0ec78bf5e198a7fed8b1d1394e9837abaa8",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/town_map/town_map.rle"
+    },
+    "rle_hex": "7f756c7381446c7164814262516471c173517462416271615173647163c161b14162c161c167716371b1426271617161735172517351436271617161716571637143627161716171b1a16371637143627251617143a1617163714361b1a16171617161436151749142b14261716171b143a16471b142436151b1f14561744343a17141f142916371624444f141d1e172517361b1444391718142a16171b14843615171e1c1e2d1494f4500"
+  },
+  "destination_name": {
+    "source": {
+      "path": "data/maps/names.asm",
+      "bytes": 2024,
+      "sha256": "6aee8a1dfa1f627e24340df5b6a2645896c625a896ae81be7c5b2a079094b217",
+      "git_blob_sha1": "805c57c909801d1b1cc20762b18448769451b9c1",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/names.asm"
+    },
+    "line": 2,
+    "line_text": "ViridianCityName:    db \"VIRIDIAN CITY@\"",
+    "label": "VIRIDIAN CITY@",
+    "line_utf8_sha256": "f06b5b0e2cb8eb164db26171047cff451a1371d47f6fb09eb4bfc64e322f74ea"
+  },
+  "tile_points": [
+    {
+      "name": "CinnabarIsland",
+      "map_id": 8,
+      "point": [
+        18,
+        4
+      ],
+      "width_blocks": 10,
+      "map_source": {
+        "path": "maps/CinnabarIsland.blk",
+        "bytes": 90,
+        "sha256": "07b0004905f7e3b7122c930cb1160295ae268120fc2a5832c67642dc003d41be",
+        "git_blob_sha1": "1a7922c905782dc4969357497530d973e06eeb11",
+        "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/maps/CinnabarIsland.blk"
+      },
+      "block_index": 29,
+      "block_value": 123,
+      "blockset_source": {
+        "path": "gfx/blocksets/overworld.bst",
+        "bytes": 2048,
+        "sha256": "c4f6d88cc7dea8196aa51d3aa059c6d1da0ea45718dd12870fcddee9f9304d50",
+        "git_blob_sha1": "18ceef979e6e410f849a4880a453dccb792182a0",
+        "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/overworld.bst"
+      },
+      "fragment_offset": 1968,
+      "fragment_hex": "30393039393039303039303939303930",
+      "fragment_sha256": "b430d534a67f7c7cf5b08e8a46c0e0c9a9652d75d87a095cb3f56e2fa08326c9",
+      "lower_left_offset": 4,
+      "expected_tile": 57
+    },
+    {
+      "name": "ViridianCity",
+      "map_id": 1,
+      "point": [
+        23,
+        26
+      ],
+      "width_blocks": 20,
+      "map_source": {
+        "path": "maps/ViridianCity.blk",
+        "bytes": 360,
+        "sha256": "e5a3fb7713a3b75cf3ecba9ede35fe71fa4bff0c910fc10b6659ef7b0dc101ae",
+        "git_blob_sha1": "af1bd6628d2e9e03e5ecaf00fbf747d06734ffff",
+        "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/maps/ViridianCity.blk"
+      },
+      "block_index": 271,
+      "block_value": 26,
+      "blockset_source": {
+        "path": "gfx/blocksets/overworld.bst",
+        "bytes": 2048,
+        "sha256": "c4f6d88cc7dea8196aa51d3aa059c6d1da0ea45718dd12870fcddee9f9304d50",
+        "git_blob_sha1": "18ceef979e6e410f849a4880a453dccb792182a0",
+        "url": "https://raw.githubusercontent.com/pret/pokered/a53671100ec22e5394ff26ec028d0812a238dae2/gfx/blocksets/overworld.bst"
+      },
+      "fragment_offset": 416,
+      "fragment_hex": "39393939393939393939393936373737",
+      "fragment_sha256": "7844899045e72340f61d8ef89f1451542d270d6dfdc236b7d7a5e8e6095e2e7d",
+      "lower_left_offset": 6,
+      "expected_tile": 57
+    }
+  ]
+}

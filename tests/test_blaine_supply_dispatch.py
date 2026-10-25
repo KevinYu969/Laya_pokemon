@@ -98,6 +98,23 @@ def reset_inputs(e,hp=65,status=0,enemy_species=20):
     e.state['battle_state']['opponent_species']=e.kw['enemy_proof']['enemy']['species_name']
 
 
+@pytest.mark.parametrize('hp,enemy_hp,status,approved,allowed',[
+    (125,4,16,True,True),(156,1,0,True,True),(124,4,16,True,False),
+    (125,5,16,True,False),(125,4,16,False,False),(125,4,16,1,False),(125,4,8,True,False)])
+def test_arcanine_finisher_precedes_item_policy_only_in_reviewed_narrow_case(env,hp,enemy_hp,status,approved,allowed):
+    e=env;reset_inputs(e,hp,status);raw=e.kw['enemy_proof']['raw_record']
+    raw[1:3]=[0,enemy_hp]
+    for index,value in ((17,116),(19,87),(21,101),(23,87)):raw[index:index+2]=[0,value]
+    e.kw['enemy_proof']['enemy']=e.d.bm.decode_enemy_mon(raw)['enemy']
+    e.kw['text']=fx.native_text(e.d.bm._command_view(e.kw['player_snapshot']['player'],e.kw['enemy_proof']['enemy'],(9,16)))
+    e.plan['steps'][0]['reviewed_arcanine_finisher']=approved
+    result=e.call()
+    assert (result[0].get('battle_tactic')=='reviewed_arcanine_4hp_finisher') is allowed
+    if allowed:
+        assert not e.bridge_calls and not e.decisions
+        assert result[0]['survival_approved'] is False and result[0]['finisher_source_enemy_hp']==enemy_hp
+
+
 @pytest.mark.parametrize('hp,status,species,item',[(156,0,20,None),(65,0,20,18),(147,16,20,52),(65,0,83,None)])
 def test_complete_command_runs_true_policy_and_only_selected_medicine_claims_bridge(env,hp,status,species,item):
     e=env;reset_inputs(e,hp,status,species);r=e.call()

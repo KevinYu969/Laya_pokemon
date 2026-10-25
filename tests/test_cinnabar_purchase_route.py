@@ -27,7 +27,8 @@ PEERS = ('mansion_secret_key_bridge', 'mansion_statue_bridge', 'mansion_transiti
          'mansion_native_landing', 'route21_water_bridge', 'pallet_surf_bridge',
          'fly_pallet_bridge', 'safari_entry', 'hm_teaching_bridge', 'vending_bridge',
          'saffron_guard_bridge', 'silph_card_bridge', 'lapras_bridge', 'player_pc_bridge',
-         'campaign_transactions', 'battle_medicine_bridge', 'fly_viridian_bridge')
+         'campaign_transactions', 'battle_medicine_bridge', 'fly_viridian_bridge',
+         'trainer_medicine_ui_bridge')
 
 
 def forbidden(*args, **kwargs):
@@ -45,6 +46,7 @@ def env(monkeypatch):
     monkeypatch.setattr(route.safari_entry, '_RUN_CONTROLLER', None)
     monkeypatch.setattr(route.capture_transaction, '_SESSIONS', {})
     monkeypatch.setattr(route.battle_medicine_bridge, '_CONTROLLERS', {})
+    monkeypatch.setattr(route.trainer_medicine_ui_bridge, '_CONTROLLERS', {})
     monkeypatch.setattr(route, '_GYM_CONTROLLERS', {})
     for name, value in (('_CONTROLLER', {}), ('_BINDINGS', {}), ('_COMPLETED', set())):
         monkeypatch.setattr(bridge, name, value)
@@ -91,7 +93,7 @@ def test_peer_fixture_covers_every_other_imported_binding_registry(env):
     actual = {name for name, module in vars(route).items()
               if isinstance(module, ModuleType) and module is not env.bridge
               and hasattr(module, '_BINDINGS') and hasattr(module, '_COMPLETED')}
-    assert actual == set(PEERS) and len(actual) == 17
+    assert actual == set(PEERS) and len(actual) == 18
 
 
 @pytest.mark.parametrize('name', PEERS)
@@ -104,7 +106,10 @@ def test_each_active_peer_blocks_before_ui_or_purchase_dispatch(env, monkeypatch
     monkeypatch.setattr(env.bridge, 'context', forbidden)
     before = deepcopy(peer._BINDINGS)
     result=route.switch_context(env.game, env.state, env.plan, 'medicine', ['left', 'wait'])
-    if name=='battle_medicine_bridge':
+    if name=='trainer_medicine_ui_bridge':
+        assert result[0]['phase']=='campaign_review' and result[0]['available_actions']==['wait']
+        assert result[0]['review_reason']=='trainer_medicine_owner_changed'
+    elif name=='battle_medicine_bridge':
         assert result[0]['phase']=='campaign_review' and result[0]['available_actions']==['wait']
         assert result[0]['review_reason']=='blaine_supply_fixed_step_unverified'
     elif name=='fly_viridian_bridge':

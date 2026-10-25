@@ -385,7 +385,14 @@ class BattleMedicineController:
             return False
         expected = list(_party_view(self.healed,self.active,'▷'))
         expected[hp_row] = expected[hp_row][:13] + f'{visible_hp:3}' + expected[hp_row][16:]
-        return rows == tuple(expected)
+        if rows[:12]!=tuple(expected[:12]):
+            return False
+        # RedrawPartyMenu may retain the dim cursor while the item message
+        # replaces its old prompt. This is still autonomous UI, never an A.
+        delta=after-before
+        receipt=_party_view(self.healed,receipt=('LAPRAS',f'RECOVERED BY {delta}!'))
+        return (_partial(rows[12:],tuple(expected[12:]))
+                or _partial(rows[12:],receipt[12:]))
 
     def reviewed_hp_animation_repair(self, text, progress, *, player_snapshot,
                                      enemy_proof, frame, owner):
@@ -403,6 +410,96 @@ class BattleMedicineController:
                 frame=frame,owner=owner):
             return False
         self.error = None
+        return True
+
+    def _fire_blast_animation_bound(self, text, progress, *, player_snapshot,
+                                    enemy_proof, frame, owner):
+        """Read-only conservation proof for an already observed FIRE BLAST."""
+        if (owner != self.owner or not _exact(self.intent,self.contract) or not _intent(self.contract)
+                or self.stage != 'retaliation' or self.enemy_action != 'FIRE BLAST' or self.complete
+                or self.pending is not None or self.prompt_pages
+                or not _int(frame) or not _int(self.last_frame) or frame < self.last_frame
+                or not _int(self.active,0,5) or not isinstance(self.baseline,dict)
+                or not isinstance(self.healed,list) or len(self.healed)!=6
+                or not isinstance(progress,dict)):
+            return None
+        for packet in (text,progress):
+            if (not isinstance(packet,dict) or 'observation_frame' in packet
+                    and (not _int(packet['observation_frame']) or packet['observation_frame']!=frame)):
+                return None
+        b=self.baseline;h=self.healed[self.active];loc=b['location']
+        party,items=_party(progress),_inventory(progress.get('inventory'))
+        player,enemy=_player(player_snapshot,frame,loc),_enemy(enemy_proof,frame,loc)
+        if (party is None or player is None or enemy is None or items is None
+                or player_snapshot['active_party_index']!=self.active
+                or not _exact(items,self.after_items) or not _int(progress.get('money'),0,999999)
+                or progress['money']!=b['money'] or not self._party_allowed(party)
+                or not self._unchanged_player(player) or not _exact(enemy,b['enemy'])
+                or enemy['species_name']!='ARCANINE' or 126 not in enemy['moves']
+                or not 1 <= player['hp'] <= h['hp'] or player['status']!=h['status']
+                or party[self.active]['hp'] not in (h['hp'],player['hp'])):
+            return None
+        expected_party=deepcopy(self.healed)
+        expected_party[self.active]['hp']=party[self.active]['hp']
+        if not _exact(party,expected_party):
+            return None
+        if frame==self.last_frame and (not isinstance(self.last_packet,tuple)
+                or len(self.last_packet)!=6 or not _exact(
+                    (text,progress,player_snapshot,enemy_proof),
+                    (self.last_packet[0],self.last_packet[1],self.last_packet[4],self.last_packet[5]))):
+            return None
+        return player,party,enemy
+
+    def _known_fire_blast_alignment(self, text, progress, **proof):
+        bound=self._fire_blast_animation_bound(text,progress,**proof)
+        if bound is None:
+            return False
+        player,party,enemy=bound
+        if (not _exact(party,self.healed) or player['hp']!=self.healed[self.active]['hp']
+                or text.get('profile')!=TEXT_PROFILE or text.get('read_valid') is not False
+                or text.get('alignment_verified') is not False or text.get('window_visible') is not True
+                or text.get('read_error')!='visible_tile_alignment_incomplete'):
+            return False
+        cells=text.get('cells')
+        if (not isinstance(cells,(list,tuple)) or len(cells)!=18
+                or any(not isinstance(row,(list,tuple)) or len(row)!=20
+                       or any(not isinstance(ch,str) or len(ch)!=1 or ch==_S for ch in row)
+                       for row in cells)):
+            return False
+        expected=[(''.join(row).rstrip(),y) for y,row in enumerate(cells)
+                  if re.search(r'[A-Za-z0-9]{2,}',''.join(row).rstrip())][:12]
+        if text.get('lines')!=[s for s,y in expected] or text.get('line_rows')!=[y for s,y in expected]:
+            return False
+        rows=tuple(''.join(row).upper() for row in cells)
+        return _partial(rows,_dialog(player,enemy,'ENEMY ARCANINE','USED FIRE BLAST!'))
+
+    def _known_fire_blast_hp_bar(self, text, progress, **proof):
+        bound=self._fire_blast_animation_bound(text,progress,**proof)
+        if bound is None:
+            return False
+        player,party,enemy=bound;rows=_rows(text)
+        if rows is None:
+            return False
+        token=rows[10][11:14]
+        if not re.fullmatch(r' {0,2}[0-9]{1,3}',token):
+            return False
+        visible_hp=int(token)
+        if (token!=f'{visible_hp:3}' or visible_hp==player['hp']
+                or not player['hp'] <= visible_hp <= self.healed[self.active]['hp']):
+            return False
+        # Render-only copy: the true BattleMon/party packets are never altered.
+        rendered={**player,'hp':visible_hp}
+        return rows==_dialog(rendered,enemy,'ENEMY ARCANINE','USED FIRE BLAST!')
+
+    def reviewed_retaliation_animation_repair(self, text, progress, *, player_snapshot,
+                                               enemy_proof, frame, owner):
+        """Explicit reviewed marker only; preserve every field except this error."""
+        if self.error!='native_decoder_not_verified' or self.stage!='retaliation':
+            return False
+        if not self._known_fire_blast_alignment(text,progress,player_snapshot=player_snapshot,
+                enemy_proof=enemy_proof,frame=frame,owner=owner):
+            return False
+        self.error=None
         return True
 
     def context(self, text, progress, *, owner, location, battle_state,
@@ -440,6 +537,10 @@ class BattleMedicineController:
             return self._fail('location_or_verified_trainer_required')
         rows = _rows(text)
         if rows is None:
+            if self._known_fire_blast_alignment(text,progress,player_snapshot=player_snapshot,
+                    enemy_proof=enemy_proof,frame=frame,owner=owner):
+                self.final_frame=self.final_packet=None
+                return self._wait('known_fire_blast_alignment_animation')
             return self._fail('native_decoder_not_verified')
         rows = _clean_art(rows)
         for p in (text, progress):
@@ -608,6 +709,10 @@ class BattleMedicineController:
             if any(_partial(rows,t) for t in templates) or _partial(rows,_party_view(b['party'],active,'▷')):
                 return self._wait('known_effect_or_receipt_before_prompt')
             return self._fail('medicine_receipt_unknown')
+        if self._known_fire_blast_hp_bar(text,progress,player_snapshot=player_snapshot,
+                enemy_proof=enemy_proof,frame=frame,owner=owner):
+            self.final_frame=self.final_packet=None
+            return self._wait('known_fire_blast_damage_hp_bar')
         # Source used-move page is autonomous done; never A to attack.
         used = {name:_dialog(player,enemy,'ENEMY '+enemy['species_name'],'USED '+name+'!')
                 for name in ('EMBER','FIRE BLAST','ROAR')}

@@ -36,6 +36,31 @@ def _reviewed_rapidash_finisher(state,step,text,player_snapshot,enemy_proof,fram
         'finisher_source_enemy_hp':enemy['hp'],'survival_approved':False}
 
 
+def _reviewed_arcanine_finisher(state,step,text,player_snapshot,enemy_proof,frame):
+    """敵僅4HP時先收尾，避免補給優先造成空轉；保留會心倒下風險。"""
+    if step.get('reviewed_arcanine_finisher') is not True:return None
+    p=bm._player(player_snapshot,frame,policy.LOCATION);e=bm._enemy(enemy_proof,frame,policy.LOCATION)
+    party=bm._party(state.get('progress'))
+    if p is None or e is None or party is None:return None
+    active=player_snapshot['active_party_index']
+    if (e['species']!=20 or e['level']!=47 or not 1<=e['hp']<=4 or e['max_hp']!=149
+            or e['status']!=0 or e['moves']!=[46,52,126,36]
+            or (e['attack'],e['defense'],e['speed'],e['special'])!=(116,87,101,87)
+            or p['species']!=19 or p['level']!=38 or not 125<=p['hp']<=156
+            or p['max_hp']!=156 or p['status'] not in (0,16) or p['special']!=88
+            or p['moves']!=[57,34,58,109] or (p['pp'][0]&63)<1
+            or any(party[active][k]!=p[k] for k in ('species','level','hp','max_hp','status','moves','pp'))):return None
+    rows=bm._rows(text)
+    if rows is None:return None
+    rows=bm._clean_art(rows)
+    if not any(rows==bm._command_view(p,e,c) for c in bm._COMMAND):return None
+    from .battle import _selection_hint
+    return {**_selection_hint(rows,(10,14),'command'),
+        'battle_tactic':'reviewed_arcanine_4hp_finisher','finisher_source_enemy_hp':e['hp'],
+        'finisher_risk':'Faster Arcanine critical FireBlast plus burn can exceed125HP; normal gameplay risk accepted, FNT guard retained',
+        'survival_approved':False}
+
+
 def context(pyboy,state,plan,step_id,text,previous):
     steps=plan.get('steps') if isinstance(plan,dict) else None
     matches=[s for s in steps if isinstance(s,dict) and s.get('id')==step_id] if type(steps) is list else []
@@ -68,6 +93,8 @@ def context(pyboy,state,plan,step_id,text,previous):
         expected_location=loc,constants=constants,profile=trainer_opponent.PROFILE)
     if pyboy.frame_count!=frame:
         return _review('command_frame_changed',step_id)
+    finisher=_reviewed_arcanine_finisher(state,matches[0],text,player,enemy,frame)
+    if finisher is not None:return finisher,step_id
     decision=policy.decide(text,state.get('progress'),player,enemy,frame)
     if decision.get('action')=='review':return _review(decision['reason'],step_id)
     if decision.get('action')=='none':

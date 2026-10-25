@@ -130,7 +130,7 @@ def test_animation_allows_only_integer_hp_range_and_exact_other_cells():
         elif bad=='art_pollution':cells[5][1]='#'
         elif bad=='wrongmax':fx.at(cells,17,5,'155')
         elif bad=='wrongcursor':cells[5][0]='▶'
-        else:cells[14][1]=' '
+        else:cells[0][3]=' '
         kw['text']=fx.text(cells);before=deepcopy(s.c.__dict__)
         assert s.c.reviewed_hp_animation_repair(**kw) is False
         assert s.c.__dict__==before
@@ -167,3 +167,16 @@ def test_receipt_settle_restarts_after_partial_and_never_accepts_extra_arrow():
     assert s.call(receipt,advance=1)['available_actions'][0]=='a'
     bad=selected();receipt[16][18]='▼'
     assert bad.call(receipt)['phase']=='strategy_review'
+
+
+def test_healed_dim_cursor_and_replacing_known_message_wait_without_reuse():
+    s=selected();cells=animation(s,156)
+    for y in range(12,18):cells[y]=[' ']*20
+    fx.at(cells,1,14,'LAPRAS');fx.at(cells,1,16,'RECOVERED BY 79!')
+    assert s.call(cells)['available_actions']==['wait']
+    assert s.c.error is None and s.c.stage=='receipt' and s.c.pending is None
+    s.c.error='medicine_receipt_unknown';before=deepcopy(s.c.__dict__)
+    assert s.c.reviewed_hp_animation_repair(**args(s))
+    after=deepcopy(s.c.__dict__);after['error']=before['error'];assert after==before
+    cells[16][1]='X'
+    assert s.call(cells)['phase']=='strategy_review'
