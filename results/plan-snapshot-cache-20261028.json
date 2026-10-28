@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-28",
+  "status": "installed_in_original_live_campaign",
+  "installed_at_taipei": "2026-10-28T19:56:57.725818+08:00",
+  "source_frame": 1158201,
+  "scope": "validated campaign plan loading only",
+  "benchmark": {
+    "plan_steps": 11141,
+    "plan_bytes": 2050958,
+    "baseline_median_ms": 18.318,
+    "warm_median_ms": 8.759,
+    "cold_ms": 29.852,
+    "reduction_percent": 52.18,
+    "speedup": 2.091
+  },
+  "validation": {
+    "focused_cache_and_installer_tests": 9,
+    "integrated_related_tests": 98,
+    "seconds": 4.13
+  },
+  "source_sha256": "7ecc6b78c1da063a1dc48aa6768c38c8458317bc2b7ab1b85fcaee6e02e7d9c8",
+  "same_original_pyboy": true,
+  "model_configuration_changed": false,
+  "cloud_classification": false,
+  "limitations": [
+    "這是路線載入的隔離量測，不能宣稱整體遊戲或模型快2.091倍。",
+    "快取每次仍回傳新的dict，metadata異動、sharing lock或來源不穩定會失效或等待。",
+    "不包含ROM、存檔、權重或原始私人輸出。"
+  ]
+}

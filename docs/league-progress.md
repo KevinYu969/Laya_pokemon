@@ -142,3 +142,9 @@ frame10833上3F樓梯，地圖byte已198但XY仍前圖(25,14)、物件數13尚�
 19:11:11停770673的合字頁「The enemy's weak」：遊戲內已切Lapras19，舊Nidoking血條尚未重畫。依固定原始碼次序、真D014／CC2F與精確實體字格接入過渡WAIT；具名保留原錯誤／switch及field成本。19:29:56.646745真EOF772537、EXP708／PP2、無新倒下，已續正常回補與均衡訓練。[實機收據](../results/wild-switch-source-completed-20261028.json)。1708項相關與12subtests通過。
 
 [完整回歸12](../results/code-validation-league-regression12-20261028.json)為10311項、59subtests、382來源前後不變；該cut早於本次weak送出修正，沒有混稱全套已覆蓋新修正。
+
+### 路線載入快取已接入原行程
+
+19:56:57.725818、frame1158201，原PyBoy行程成功接入已驗證路線bytes快取。固定11141步／2050958bytes的路線，載入中位數18.318→8.759ms（52.18%減少），只代表路線載入，不是整體遊戲加速倍數。每次回新dict，原驗證／鎖／來源變更仍有界處理；9個快取與installer測試、98相關整合項通過。[驗證收據](../results/plan-snapshot-cache-20261028.json)。模型、按鍵策略與原訓練期限不變。
+
+GitHub兩邊更新已依Kevin同意無衝突整合，保留讀者入門與本機修復；[合併後10359項完整回歸](../results/code-validation-league-regression13-20261028.json)通過，388來源前後不變。該全套切點早於後續快取接線，後者另列9／98測試。

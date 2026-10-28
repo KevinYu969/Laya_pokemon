@@ -97,6 +97,8 @@ from . import owned_field_medicine
 importlib.reload(owned_field_medicine)
 from . import training_switch_review
 importlib.reload(training_switch_review)
+from . import plan_snapshot_cache_install
+importlib.reload(plan_snapshot_cache_install)
 from . import league_recovery
 importlib.reload(league_recovery)
 from . import recovery_field_medicine
@@ -644,6 +646,21 @@ def _league_field_context(pyboy,state,plan,step_id,step,previous):
         kwargs.update(source_layout=reviewed_hole_layout.LAYOUT,
             now=owned_field_medicine.frame_clock(bridge._CONTROLLERS[step_id],state.get('frame')))
     if bridge is league_training_batch_bridge:
+        if bridge._OWNERS.get(step_id) is pyboy:
+            cached=plan_snapshot_cache_install.install_for_owned_campaign(pyboy)
+            if cached is True:
+                from pathlib import Path
+                audit=Path(__file__).resolve().parents[2]/'.local/plan-cache-installed-game29-20261028.json'
+                if not audit.exists():
+                    record=dict(at=time.time(),frame=state.get('frame'),step_id=step_id,
+                        source_snapshot_sha256=plan_snapshot_cache_install.SNAPSHOT_SOURCE_SHA,
+                        cache_source_sha256=plan_snapshot_cache_install.CACHE_FILE_SHA,
+                        only_plan_loading_changed=True,cloud_classification=False)
+                    try:
+                        with audit.open('x',encoding='utf-8') as stream:
+                            stream.write(json.dumps(record,sort_keys=True,indent=2)+'\n')
+                    except OSError:
+                        pass  # Optional timing audit cannot interrupt real play.
         if training_switch_review.applies(state,step_id):
             hint,clock=training_switch_review.context(pyboy,state,plan,step_id,text,
                 bridge=bridge,peers=_field_medicine_peers())

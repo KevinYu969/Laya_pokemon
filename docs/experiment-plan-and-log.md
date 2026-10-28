@@ -1415,3 +1415,16 @@ GitHub備份另遇non-fast-forward：本機已保留a38db90，遠端c9c9731含�
 
 固定primary六檔另核：Venusaur43 Growth、Fearow43 Agility、Eevee45 TakeDown採正常Delete NO→Abandon YES→DidNotLearn，精確原四招與全資源不變才可完成，獨立module不動Bite fb5來源；6候選及244整合項通過，尚待各自然事件實機。石英正常商店Full Restore6/Revive4候選另stage，24primary吻合a536、20測試／獨立覆核通過，未接線、未購買，不宣稱已備貨。全隊仍訓練中，四天王／冠軍未完成；逐鍵本機Laya/cache，GPT僅工程審查，沒有GPT分類呼叫。GitHub分岔仍待Kevin既有問題回覆，未force或自行整合。
 
+
+## 87. 2026-10-28 Kevin同意後無衝突合併備份、常駐路線快取實裝
+
+Kevin明確回覆同意保留兩邊、只無衝突才整合。先以既有白名單腳本本機提交ddad4bf保護已驗證變更；fresh fetch仍是遠端c9c9731兩筆reader更新。merge-tree得到無衝突tree5ac4e922，且離線AST／舊code source位置實驗確認game.advance_action新舊都第166行、body與inspect SHA2abb完全不變，避免合併磁碟來源破壞常駐dispatcher驗證。正常merge db76832保留兩邊README與reader、headless live、訓練修復，沒有force或衝突處理。
+
+合併後完整reg13真10359項、59subtests、1既有SDL提示通過，pytest289.87秒／wrapper292.797秒，388來源前後不變；manifest cc90b42ab40eaca3c1976ff420acd7e14a565788dd8a79a9420651d7842091e1，stdout f9738a0b89d743cca7573c2435ecd20c15187065d633dd6550b2fcb451298244。此cut含weak sendout及遠端reader，不含隨後cache。原腳本--push驗627檔、正常推送876fb95ed591805e598704a793168460ada487b3並驗遠端SHA，先前non-fast-forward已解決。ROM／存檔／影片／私人raw／權重／憑證均未上傳。
+
+量測找到獨立瓶頸：每action重讀並驗整份累積路線。freeze11141steps／2050958bytes、5輪各30次交錯：baseline中位18.318ms、warm8.759ms，路線載入減52.18%／2.091倍，cold29.852ms。這不是整體遊戲或模型加速倍數。快取已驗candidate的ASCII JSON bytes／SHA／5欄stat，hit仍json.loads全新dict，cold／warm sharing lock、inplace／atomic replace、torn source、巢狀mutation與原例外傳播皆有測；只保一檔。installer僅從真main stack的emulator identity取得原globals，核原snapshot第43行／source SHA98aea、load_plan／core來源與cache7ecc固定bytes，改一個global callable，不reload running campaign；保原函式可明確rollback，失配不阻斷遊戲。
+
+19:56:57.725818、原game29 frame1158201實際成功安裝cache，私人audit已留；watch8凍結12份來源續原job。9個cache／installer與98相關整合項通過4.13秒。初次測試17個setup errors來自sandbox預設pytest temp不能建立，改專案內fresh basetemp；第一次也因父目錄尚未建立再遇FileNotFound，補建父目錄後98全過，未改產品guard或誤算成測試成功。Windows share=0測試在非Windows明確skip。模型／Strata配置／60秒分類timeout／逐鍵策略未改，分類仍本機Laya/cache無GPT。當時真隊伍Lapras45、Snorlax42、Fearow39、Nidoking38、Venusaur38、Eevee38；全隊輪訓中，四天王／冠軍仍未過，原20:45:10期限保留。
+
+cache程式與整理收據在上述876備份後才實裝，將由下一次白名單備份提交；最新成功SHA只在CURRENT-STATE／本機備份驗證中更新，避免把尚未推送的版本寫成已上線。本文與本機影片繼續累積，未另作網站發布。
+
