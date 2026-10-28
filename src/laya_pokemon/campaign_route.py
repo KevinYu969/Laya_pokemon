@@ -10,6 +10,10 @@ if 'waypoint' in globals():
     importlib.reload(balanced_training)
 from . import world_map
 importlib.reload(world_map)
+from . import victory_road_navigation
+importlib.reload(victory_road_navigation)
+from . import victory_ladder_settle
+importlib.reload(victory_ladder_settle)
 read_world_grid,world_direction=world_map.read_world_grid,world_map.world_direction
 _LEARNED_EDGES=globals().get('_LEARNED_EDGES',{})
 _LAST_ATTEMPT=globals().get('_LAST_ATTEMPT')
@@ -91,6 +95,43 @@ from . import owned_field_medicine
 importlib.reload(owned_field_medicine)
 from . import league_recovery
 importlib.reload(league_recovery)
+from . import recovery_field_medicine
+importlib.reload(recovery_field_medicine)
+from . import reviewed_hole_layout
+importlib.reload(reviewed_hole_layout)
+from . import reviewed_native_fall
+importlib.reload(reviewed_native_fall)
+_NATIVE_FALL_REVIEW_CAPSULE = {'evidence': {'preflight_sha256': '858dc6a8ed19b9f29aec39ce30cebcc95983451cac1fa8532ceb291e094af0a4',
+              'review_sha256': '40bcfe4dcd399cb837dc05821484da4aa0f9df07579174e078529bf77f39cd0a',
+              'state_sha256': 'a49b27c4868ca9da561bb9610553fd1a8afdc47d38d02685e75cb2e4c3e795ad'},
+ 'game_id': 'game29',
+ 'kind': 'reviewed_native_fall_198_194_20261028',
+ 'landing_location': {'map_id': 194, 'x': 22, 'y': 16},
+ 'original_step_id': 'league28-fnt-recovery-02',
+ 'original_step_sha256': '17e70cdf8a2fb1d9d964a1594ec3422d0c38b9068edc1623624227262ec5d1b9',
+ 'recovery_capsule_sha256': '8065ae7f61687c0f71e31cb5bd6d4f60721045bbabe25c9d1873741b0b7d15fd',
+ 'source_frame': 7513,
+ 'source_location': {'map_id': 198, 'x': 23, 'y': 15},
+ 'source_progress_sha256': '15bed7a5c90f0d9ec756e1c3a4428ef1f0c270fa9d8e78bdc276cae207bf1a0e',
+ 'steps_sha256': '7c526265631f16b037969d66773d0f9264ab37c5e5f67c1362335c4f276daefc',
+ 'training_job_sha256': '91fa844146ffb294fa0f089d91368b17c47ff9f0502adf0f1f946c7b9baebd2b'}
+_HOLE_LAYOUT_REVIEW_CAPSULE = {'evidence': {'preflight_sha256': '48b19783531d936ea9bbe505cd44a424ec09e7a1de6a0d2c4ba00871402b28dd',
+              'review_sha256': '1ca24415b4dd99a733047963b3b8df9f064d56f1bed5e7f293de1e275bb73abd',
+              'state_sha256': 'e2854324e82f59d2d8813712f2d759ce0ba9a4c2a22641785b31d79be23f0c75'},
+ 'game_id': 'game29',
+ 'kind': 'reviewed_3f_hole_aux8_layout_v1',
+ 'original_step_id': 'league28-fnt-recovery-01',
+ 'original_step_sha256': '6e0199a4813d2a132b71e201770bcdef76d259f112cf03fc0b7cb0cdd4109ab7',
+ 'recovery_capsule_sha256': '8065ae7f61687c0f71e31cb5bd6d4f60721045bbabe25c9d1873741b0b7d15fd',
+ 'source_frame': 7233,
+ 'source_layout': 'reviewed_3f_hole_aux8_13_13_20261028',
+ 'source_location': {'map_id': 198, 'x': 21, 'y': 15},
+ 'source_progress_sha256': '15bed7a5c90f0d9ec756e1c3a4428ef1f0c270fa9d8e78bdc276cae207bf1a0e',
+ 'steps_sha256': '7c526265631f16b037969d66773d0f9264ab37c5e5f67c1362335c4f276daefc',
+ 'training_job_sha256': '91fa844146ffb294fa0f089d91368b17c47ff9f0502adf0f1f946c7b9baebd2b'}
+_RECOVERY_FULL_HEAL_EVIDENCE={
+    'review_sha256':'042cc762cf2702d5bd72b064365caa3604f44f4aa2cf8b476ee7fce8335968d6',
+    'state_sha256':'5cc613d6aa9122030f54f8e114390ecee0d8ac6a50e68f445f0b5905b98b3809'}
 from . import league_training_supervisor,league_training_proof
 importlib.reload(league_training_supervisor)
 importlib.reload(league_training_proof)
@@ -109,6 +150,36 @@ def _native_wait_clock(step_id,frame):
             and league_native_wait._clock(last_now)):
         return last_now+(frame-last_frame)/60
     return float('nan')  # 交純controller拒絕；不得以新wall clock修復非法舊欄位。
+
+
+def _victory_ladder_settle_context(pyboy,state,plan,step_id):
+    """兩個固定樓梯先等待載圖穩定，之後仍由原導航驗目的地。"""
+    if not victory_ladder_settle.applies(step_id,state.get('location')):return None
+    kwargs=dict(shared=owned_field_medicine,recovery=league_recovery,
+        native_owner=pyboy,game_id='game29',peer_owners=_field_medicine_peers())
+    gate=victory_ladder_settle.preflight(pyboy,state,plan,step_id,**kwargs)
+    if gate is not None:return gate
+    from .observation import read_visible_text
+    text=read_visible_text(pyboy);grid=read_world_grid(pyboy,state['location'])
+    ready=campaign_transactions.verified_blank_transaction_world(text,grid)
+    npcs=victory_road_navigation.read_victory_road_npcs(pyboy,grid,state['location'],
+        world_map_module=world_map,boulder_module=victory_later_boulders_bridge.boulder,
+        overworld_ready=ready)
+    return victory_ladder_settle.context(pyboy,state,plan,step_id,text,grid,npcs,**kwargs)
+
+
+def _reviewed_native_fall_context(pyboy,state,plan,step_id):
+    """既定落洞僅WAIT；在換步與field UI前等待真落點閉合。"""
+    if not reviewed_native_fall.applies(plan,step_id):return None
+    kwargs=dict(bridge=victory_later_boulders_bridge,shared=owned_field_medicine,
+        recovery=league_recovery,native_owner=pyboy,game_id='game29',
+        review_capsule=_NATIVE_FALL_REVIEW_CAPSULE,source_evidence=reviewed_native_fall.EVIDENCE,
+        peer_owners=_field_medicine_peers())
+    gate=reviewed_native_fall.preflight(pyboy,state,plan,step_id,**kwargs)
+    if gate is not None:return gate
+    from .observation import read_visible_text
+    return reviewed_native_fall.context(pyboy,state,plan,step_id,
+        read_visible_text(pyboy),read_world_grid(pyboy,state['location']),**kwargs)
 
 
 def _league_field_context(pyboy,state,plan,step_id,step,previous):
@@ -153,10 +224,23 @@ def _league_field_context(pyboy,state,plan,step_id,step,previous):
         kwargs['reviewed_fainted_bench']=recovery_bench
     if bridge is victory_later_boulders_bridge:
         controller=bridge._CONTROLLERS.get(step_id)
-        if getattr(controller,'medical_interruption_history',None):
+        if (getattr(controller,'medical_interruption_history',None)
+                or getattr(controller,'source_layout_review_history',None)):
             kwargs['now']=owned_field_medicine.frame_clock(controller,state.get('frame'))
-    result=bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
-        read_world_grid(pyboy,state['location']),previous,**kwargs)
+    layout_kwargs=None
+    if bridge is victory_later_boulders_bridge and reviewed_hole_layout.applies(step_id,bridge=bridge):
+        layout_kwargs=dict(bridge=bridge,shared=owned_field_medicine,recovery=league_recovery,
+            native_owner=pyboy,game_id='game29',review_capsule=_HOLE_LAYOUT_REVIEW_CAPSULE,
+            source_evidence=reviewed_hole_layout.EVIDENCE,peer_owners=_field_medicine_peers())
+        gate=reviewed_hole_layout.preflight(pyboy,state,plan,step_id,**layout_kwargs)
+        if gate is not None:return gate
+    text=read_visible_text(pyboy);grid=read_world_grid(pyboy,state['location'])
+    if layout_kwargs is not None:
+        reviewed=reviewed_hole_layout.context(pyboy,state,plan,step_id,text,grid,previous,**layout_kwargs)
+        if reviewed is not None:return reviewed
+        kwargs.update(source_layout=reviewed_hole_layout.LAYOUT,
+            now=owned_field_medicine.frame_clock(bridge._CONTROLLERS[step_id],state.get('frame')))
+    result=bridge.context(pyboy,state,plan,step_id,text,grid,previous,**kwargs)
     return _retain_training_batch_proof(state,plan,result)
 
 
@@ -210,6 +294,15 @@ def _field_medicine_peers():
 
 
 def _owned_field_medicine_context(pyboy,state,plan,step_id,previous,attrition=None):
+    if recovery_field_medicine.applies(plan,step_id,shared=owned_field_medicine):
+        kwargs=dict(game_id='game29',native_owner=pyboy,source_evidence=_RECOVERY_FULL_HEAL_EVIDENCE,
+            shared=owned_field_medicine,hyper_bridge=overworld_hyper_bridge,recovery=league_recovery,
+            peer_owners=_field_medicine_peers(),attrition=attrition)
+        gate=recovery_field_medicine.preflight(pyboy,state,plan,step_id,**kwargs)
+        if gate is not None:return gate
+        from .observation import read_visible_text
+        return recovery_field_medicine.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+            read_world_grid(pyboy,state['location']),previous,**kwargs)
     if not owned_field_medicine.applies(plan,step_id):return None
     kwargs=dict(game_id='game28',native_owner=pyboy,later_bridge=victory_later_boulders_bridge,
         hyper_bridge=overworld_hyper_bridge,peer_owners=_field_medicine_peers(),attrition=attrition)
@@ -308,6 +401,10 @@ def _e4_coordinate_context(pyboy,state,step,text,previous):
 def switch_context(pyboy,state,plan,step_id,previous):
     proof_guard=_training_proof_owner_guard(pyboy,plan)
     if proof_guard is not None:return proof_guard
+    ladder=_victory_ladder_settle_context(pyboy,state,plan,step_id)
+    if ladder is not None:return ladder
+    native_fall=_reviewed_native_fall_context(pyboy,state,plan,step_id)
+    if native_fall is not None:return native_fall
     medicine=_owned_field_medicine_context(pyboy,state,plan,step_id,previous)
     if medicine is not None:return medicine
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
@@ -543,7 +640,12 @@ def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     proof_guard=_training_proof_owner_guard(pyboy,plan)
     if proof_guard is not None:return proof_guard
-    if owned_field_medicine.applies(plan,step_id):return None
+    ladder=_victory_ladder_settle_context(pyboy,state,plan,step_id)
+    if ladder is not None:return ladder
+    native_fall=_reviewed_native_fall_context(pyboy,state,plan,step_id)
+    if native_fall is not None:return native_fall
+    if (recovery_field_medicine.applies(plan,step_id,shared=owned_field_medicine)
+            or owned_field_medicine.applies(plan,step_id)):return None
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
     if any(b.applies(step_id,step) for b in _LEAGUE_FIELDS):return None
     if (any(c.waiting for c in league_native_wait._WAITS.values())
@@ -906,6 +1008,10 @@ def _reviewed_npc_edge_retry(state,step,grid,npcs,ready):
 
 def waypoint(pyboy,state,plan,step_id,previous):
     global _LAST_ATTEMPT
+    ladder=_victory_ladder_settle_context(pyboy,state,plan,step_id)
+    if ladder is not None:return ladder
+    native_fall=_reviewed_native_fall_context(pyboy,state,plan,step_id)
+    if native_fall is not None:return native_fall
     steps=plan['steps'];ids=[s['id'] for s in steps]
     if len(ids)!=len(set(ids)):raise ValueError('路線ID重複')
     invalid=next((s for s in steps if s.get('mechanic')=='sabrina_native_warp'
@@ -979,11 +1085,26 @@ def waypoint(pyboy,state,plan,step_id,previous):
         blocked=[tuple(p) for p in plan.get('blocked',{}).get(str(mid),[])]
         from .observation import read_visible_text
         ready=campaign_transactions.ui_overworld_ready(read_visible_text(pyboy),grid) if pyboy is not None and grid else False
-        npcs=(world_map.read_npc_obstacles(pyboy,grid,blocked,overworld_ready=True) if ready
-              else world_map.read_npc_obstacles(pyboy,grid,blocked)) if grid else None
-        if npcs:
-            hidden=npcs.get('hidden_source_positions',[]) if npcs.get('toggle_source_calibrated') is True else []
-            blocked=list((set(blocked)-set(map(tuple,hidden)))|set(npcs['positions']))
+        if victory_road_navigation.applies(mid):
+            npcs=victory_road_navigation.read_victory_road_npcs(pyboy,grid,loc,
+                world_map_module=world_map,boulder_module=victory_later_boulders_bridge.boulder,
+                overworld_ready=ready)
+            if not npcs or npcs.get('read_valid') is not True:
+                ladder=_victory_ladder_settle_context(pyboy,state,plan,step['id'])
+                if ladder is not None:return ladder
+                return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                        'review_reason':npcs.get('review_reason','victory_navigation_receipt_missing') if isinstance(npcs,dict)
+                                        else 'victory_navigation_receipt_missing'},step['id']
+            blocked=victory_road_navigation.blocked_for_move(blocked,npcs,location=loc,target=target)
+            if blocked is None:
+                return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                        'review_reason':'victory_navigation_current_object_at_target'},step['id']
+        else:
+            npcs=(world_map.read_npc_obstacles(pyboy,grid,blocked,overworld_ready=True) if ready
+                  else world_map.read_npc_obstacles(pyboy,grid,blocked)) if grid else None
+            if npcs:
+                hidden=npcs.get('hidden_source_positions',[]) if npcs.get('toggle_source_calibrated') is True else []
+                blocked=list((set(blocked)-set(map(tuple,hidden)))|set(npcs['positions']))
         retry_error=_reviewed_npc_edge_retry(state,step,grid,npcs,ready)
         if retry_error:
             return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],

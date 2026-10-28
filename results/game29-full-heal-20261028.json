@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-28",
+  "live_transaction_verified": true,
+  "source_game": "outputs/league-campaign-20261028-29/game",
+  "source_field_ledger_sha256": "95708ff8bd517c62f833e27dab5e55432b174120dd5874391d73b045be1b6ee8",
+  "at": "2026-10-28T05:07:00.695888+00:00",
+  "context": {
+    "phase": "overworld_medicine_wait",
+    "objective": "Wait.",
+    "available_actions": [
+      "wait"
+    ],
+    "overworld_hyper_profile": "red-en-overworld-hyper-victory2f-v1-candidate",
+    "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+    "overworld_hyper_stage": "complete",
+    "overworld_hyper_reason": "closed_two_fresh_world",
+    "overworld_hyper_calls": 32,
+    "overworld_hyper_elapsed_seconds": 20.666666666666668,
+    "candidate_only": true,
+    "overworld_medicine_complete": true,
+    "medicine_receipt": {
+      "item": 52,
+      "quantity": 1,
+      "target_species": 35,
+      "target_index": 0,
+      "hp_before": 117,
+      "hp_after": 117,
+      "closed_frame": 6593,
+      "status_before": 8,
+      "status_after": 0,
+      "reviewed_fainted_bench": [
+        7
+      ]
+    },
+    "field_move_complete": true,
+    "field_move_kind": "recovery-full-heal",
+    "recovery_full_heal_owner_step": "league28-fnt-recovery-00"
+  },
+  "party": [
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 38,
+      "hp": 117,
+      "max_hp": 117,
+      "exp": 58020,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        19,
+        31
+      ],
+      "pp": [
+        35,
+        9,
+        15,
+        20
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 42,
+      "hp": 203,
+      "max_hp": 203,
+      "exp": 97367,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        13,
+        20,
+        10,
+        13
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 37,
+      "hp": 0,
+      "max_hp": 125,
+      "exp": 43881,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        4,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 43,
+      "hp": 177,
+      "max_hp": 177,
+      "exp": 105912,
+      "status": 0,
+      "moves": [
+        57,
+        34,
+        58,
+        109
+      ],
+      "pp": [
+        0,
+        12,
+        8,
+        10
+      ]
+    }
+  ],
+  "timing": {
+    "wall_seconds": 1541.843,
+    "model_wait_seconds": 16.547,
+    "review_pause_seconds": 1519.203,
+    "non_review_session_seconds": 22.64,
+    "emulated_seconds": 109.867
+  },
+  "full_heal_before": 10,
+  "full_heal_after": 9,
+  "hyper_potions_unchanged": 5,
+  "revive_performed": false,
+  "next_stop": {
+    "frame": 7233,
+    "location": {
+      "map_id": 198,
+      "x": 21,
+      "y": 15
+    },
+    "reason": "victory_later_boulder_initial_fixed_mechanism_unverified",
+    "source_stone_diffs": [
+      {
+        "slot": 8,
+        "expected": [
+          13,
+          12
+        ],
+        "actual": [
+          13,
+          13
+        ]
+      }
+    ],
+    "review_sha256": "1ca24415b4dd99a733047963b3b8df9f064d56f1bed5e7f293de1e275bb73abd",
+    "readonly_preflight_sha256": "48b19783531d936ea9bbe505cd44a424ec09e7a1de6a0d2c4ba00871402b28dd"
+  },
+  "elite_four_complete": false,
+  "cloud_classification_fallback": false,
+  "strata_configuration_changed": false,
+  "limitations": [
+    "原controller內candidate_only是候選按鍵hint標記；本結果另以真SDK/圖/消耗/兩fresh世界收據驗實機，不以單一旗標宣稱成功。",
+    "後續stone8版型review/nav修正仍在開發，未列此FullHeal驗收。"
+  ]
+}

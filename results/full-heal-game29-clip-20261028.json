@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-28",
+  "status": "root_visual_reviewed",
+  "source_video_sha256": "b05f9e98237013bea9e8c778c612dccb25e7e83ad2be0d67f4b14f64df187df7",
+  "source_segment": 1,
+  "source_global_emulated_frames": [
+    5392,
+    7272
+  ],
+  "source_frames": 470,
+  "fps": 60,
+  "speed": 4,
+  "playback_seconds": 7.833333333333333,
+  "file": "outputs/blog-assets/full-heal-game29-20261028/full-heal-normal-ui-4x.mp4",
+  "sha256": "b64029253d2e975509584ebaab56ab3021e300df3457d249aaa90b0b677bae87",
+  "limitations": [
+    "真PyBoy已封片段；後製4倍速不代表端到端決策速度。",
+    "影片起點在選單流程中，不包含第一次Start按鍵。",
+    "尼多王仍倒下；未宣稱護士復活或四天王勝利。"
+  ],
+  "qa_images": [
+    {
+      "file": "outputs/blog-assets/full-heal-game29-20261028/qa-030.png",
+      "sha256": "d27068ceb9ebaf18ebe9c71bcd109c997e1f32babaef92f69ea291bc4128e34c"
+    },
+    {
+      "file": "outputs/blog-assets/full-heal-game29-20261028/qa-180.png",
+      "sha256": "64f591751878eedd561f9ce8fa883ee682ebacabb3f371fcaebe7c546a44ac56"
+    },
+    {
+      "file": "outputs/blog-assets/full-heal-game29-20261028/qa-210.png",
+      "sha256": "691e5b602c2945ea99ab25f6c965a454b7ec48f82dfe160e50041852612ee29d"
+    },
+    {
+      "file": "outputs/blog-assets/full-heal-game29-20261028/qa-240.png",
+      "sha256": "287403d2132f0c009b2a410a62d280df96055cea506950f8c2352f5c6e859218"
+    },
+    {
+      "file": "outputs/blog-assets/full-heal-game29-20261028/qa-270.png",
+      "sha256": "4c72d8fcf35c256aa81bea2a15a95d7688a86363c0fbcace714a9d8da808fecf"
+    },
+    {
+      "file": "outputs/blog-assets/full-heal-game29-20261028/qa-315.png",
+      "sha256": "4787d6932e55947be3cff28e174c015945968f74e4a4656b9d1f0137e9cd28a2"
+    },
+    {
+      "file": "outputs/blog-assets/full-heal-game29-20261028/qa-460.png",
+      "sha256": "83950e229629320f3640dcd21e4e7446d66700c26a0eb907a6b9d2b2fa918f1b"
+    }
+  ],
+  "visual_review": "真實選袋、Fearow party及完整health returned文字、FullHeal10→9、關袋續走已從原影片取樣核對。"
+}

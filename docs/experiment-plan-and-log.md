@@ -1294,3 +1294,35 @@ regression5修完前次7個unknownplan KeyError/1個unused target test漂移後�
 
 game29當前仍5353、198(11,13)、Fearow38 PSN8滿HP，FullHeal52×10尚未用，Nido0。正在source-bound正常FullHeal子交易開發。逐鍵offline Laya/cache與既有Strata核准SHA不變，無新模型API；工程開發/審查另計。最新資料準備依白名單安全備份，完成以遠端SHA收據為準。
 
+## 76. 2026-10-28 正常FullHeal真完成；導航漏物件使輔助石移一格，原controller停在7233
+
+game29台北13:07:00.695888正常完成field FullHeal：Start/ITEM/FULL HEAL/USE/選Fearow、真完整FEAROW's health returned文字（'s是$BD單格）、source Delay50+RedrawDelay3後真A、回袋B/StartB與兩fresh世界。FullHeal52由10→9、Fearow38 PSN8→0，HP117/117、PP/EXP/其他bag及Nido37 FNT0/125全保持；Hyper5沒動。共32calls、pure frameclock20.667模擬秒；field ledger有真SDK/消耗/關窗收據，不能只看hint的candidate_only標記。311項相關formal測試與102候選、來源缺檔由root僅取pinned公開use_party.asm並核573bytes/tree/gitblob；沒有ROM下載或新模型API。
+
+13:07:04.748798、frame7233、3F(21,15)，原3f_hole owner的initial_fixed_mechanism_unverified停。root no-input clone真progress相同，唯slot8 source(13,12)實際(13,13)，targetslot10仍22,15、首石7仍3,5、gate1=29、eventfalse、tile42、Strengthactive、idletrue。world_map.read_npc_obstacles只依plan.blocked交集作anchor，194/198沒錨點回None；game28 log36209..36409在13,11多次DOWN，真導航將輔助石下推1格。這是來源障礙資料缺口，不是Laya分類錯。正在stage修導航獨立source anchors＋完整hiddentoggle來源，避免把落穴後hidden石仍當障礙；具名7233版型review只允已核slot8位置，原CASES/contract/pushes保持，保old errorhistory/calls/started/pending/last_packet及預算，第一輪只WAIT/fresh，未採納/未稱落石已完。
+
+FullHeal後正式global regression6真9762 passed，pytest197.19秒（wrapper200.703），350份來源/fixture前後一致；manifest c40dec550c78b74b2558117eddc35b2ccf20557c769542fc87e18988c84a2257、stdout4251b3940fcaf4c7d4134b3d1ca3dc98a98f38b80981626253ae69c09c81760d。此切點包含FullHeal，不含未採7233版型/nav候選，不能用測試代表四天王勝利。先前safe備份a11c2679fe09a325fc7123d31df97877f86bacdb/559檔已核遠端SHA，GitHub Tests run40634922281於12:56:24台北success；該公開版為9656切點，不稱新增FullHeal已推送。
+
+docs/battle-lessons已補末入蛾換人/來源障礙教訓，供未來Strata高階策略讀取；目前逐鍵offline Laya/cache、Strata config不變，工程雲端開發/審查另計。私人log與公開時間軸持續，三段4倍速影片已核並留本機，網站未發布、未到護士或四天王。
+
+## 77. 2026-10-28 三樓落石實機完成；正常落洞白屏需有界原生等待
+
+13:46:25.475156（台北）game29原3f_hole owner實際推石入洞完成，fieldledger記push_index1/contact/dust/真goal閉合；slot8固定13,13復核、兩fresh WAIT與原RIGHT均由原controller執行，未改原19步/CASES/contract、封包或預算。導航已採來源獨立anchors、實際currentNPC與真hidden旗標。正式456相關測試14.57秒通過；先前9762全套切點不包含此新改。
+
+13:46:25.627784，frame7513/(198,23,15)玩家踏落洞，原生GBFadeOutWhite白屏被新導航closed_world_required停檢。root no-input clone13sample/240tick，不送鍵不保存未來狀態；relative8已map19422,16，relative160起閉world true，所有progress維持。原正式程序仍停7513，不冒稱clone是正式過關。正stage來源限定600emuFrame/20WAIT gate，原hole完成收據/落點序列/原生成員資源綁定，避免下一個Strength在落點尚未畫完就啟動。這是正常轉場等待策略缺口，不是分類模型或ROM錯誤。
+
+另從已封game29video001做一段7.833秒4倍速FullHeal影片，7張原影片QA核完整FEAROW's health returned!/袋量10→9/續走；影片起點已在選單，未包含最初Start，不將後製加速冒稱決策加速。此前兩個里程碑39分鐘含工程復核，不能當通關速度。新影片與原圖只留本機，curated JSON公開。四天王/護士/全隊45均尚未完成，逐鍵offline Laya/cache、Strata配置不變。
+
+## 78. 2026-10-28 原生落洞、2F怪力與出口開關14次推石真完成
+
+台北14:08:54.279866，game29 frame7513起只WAIT、600frame/20WAIT上限的新原生fall gate真閉合2F22,16的兩fresh世界；原3Fhole controller/receipt/capsule及33peer互斥不變，未修改19步plan。14:08:58.496447正常選Snorlax怪力，14:09:02.572593真完成2f_switch2向左14push與gate/event/goal；Nido仍0/125，其餘五健康、FullHeal9/Hyper5未變。320候選聯跑（87真診斷重播＋88自足source合成＋145既有）13.01秒；root正式相關544passed/23.34秒。新fall helper SHA cecdb4cf2d5aac5d6add9f656b7133fb9788a3775e2d84f7e697f4b7bc9786d6，formaltest c53ac3e0af5a3464d8f63be0aa96103579ee4fe1ec241a313ab091b6a5378d6a。stage-only診斷proof沒有上傳；正式tests自足不依outputs、無skip。root查真disabled t32 cells=[]、初期目的tileset0、自然phaseoverworld與轉場清Strength，避免把正常loading當失敗。
+
+frame10833/(198,25,14)上3F樓梯時新map byte先寫，但XY/物件數仍2F來源13，strict nav header拒。root noinput clone12sample相對16frame到19827,15/count10，24起idle，所有progress相同；未送鍵未保存未來。不需重做機關，正補source限定普通導航settle WAIT，嚴格NPC閉合讀到真新圖後才能方向鍵。正式global7全套正在跑，不能先稱通過。公開curated results/victory2f-exit-switch-20261028.json記三實機時間。護士/全隊45/四天王未完成；逐鍵offline Laya/cache，無GPT分類，工程雲端開發審查另計。
+
+## 79. 2026-10-28 正常護士復活Nido、六隻滿PP；19步救援完成，TM24收尾待修
+
+兩個source限定ladder settle只WAIT240frame/8fresh上限，idle/flags5=0/真NPC閉合後交原導航，已真穿過3F→2F出口及Route23到Indigo。台北14:21:26.283758記錄frame15817首次全六滿HP/status/PP（仍護士對話）；14:21:26.775290/frame16713關護士對話並真DOWN，14:21:26.822164/frame16753在7,8真UP，14:21:26.892588/frame16793回1747,7、19步EOF。這是log/observation時點，非HP位元改變瞬間。Nido0/125→125/125，FullHeal9/Hyper5/錢53245/TM24一份療前後保持，原game29 action1..290 frame連續、沒有倒帶。
+
+global regression7真9926pass/1fail206.69秒，356source前後一致，失敗為test_npc_hidden_obstacles原source fixture少新增194198而KeyError194。由公有釘版6ASM逐SHA/blob驗證，獨立枚舉228 toggle、source物件slots/座標，保留既有fixture全部metadata/5maps，新增兩floor，未抄formaltable作expected；新fixture SHA c8b5902ff007c0591c6c1555eba6b6871fad9dfb6220fb85d74aa12cf6ad9dc5。root採用初次誤用object_map欄位而assertion前KeyError停住，當時2新檔已複製但parent/fixture/plan/game未動；重驗335pass/1samefail。修真objects欄、重核bytes/SHA後採，336相關正式pass/15.45秒；完整新suite待跑，未把9762舊green當新完整green。
+
+19步真完成才退役reviewed_fnt_recovery/recovery_field_medicine/field_medicine_interrupt與舊resume/native/guard markers，封存16793原plan/review/checkpoint，再單TMjob league27-lapras-thunderbolt-20261028（名稱legacy，native仍game29）。frame19073已真Lapras[57,34,58,85] PP[15,15,10,15]、TM24消失，但native_return出現短暫▷ITEM Start而非預期bag，pure未知頁鎖停。root noinput8sample證t1Start、t8混繪bag、t16..160完整bag，所有progress相同、未輸入未保存未來。正補source-bound redraw WAIT，仍須原bagB/StartB/兩fresh閉合才算交易完成，不直接跳關窗或重建owner/退款。護士證據cutoff與新TM狀態分開，source原始快照只本機。四天王/全六45尚未；逐鍵offline Laya/cache，無GPT分類。
+

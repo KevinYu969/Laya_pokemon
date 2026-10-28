@@ -693,6 +693,549 @@
         "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
         "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm"
       ]
+    },
+    "194": {
+      "map_name": "VictoryRoad2F",
+      "source_object_count": 13,
+      "objects": [
+        {
+          "slot": 6,
+          "index": 91,
+          "source_object": "VICTORYROAD2F_MOLTRES",
+          "source_toggle": "TOGGLE_MOLTRES",
+          "source_initial_state": "ON",
+          "source_position": [
+            11,
+            5
+          ],
+          "flag_address": 54705,
+          "flag_bit": 3,
+          "flag_mask": 8
+        },
+        {
+          "slot": 7,
+          "index": 92,
+          "source_object": "VICTORYROAD2F_TM_SUBMISSION",
+          "source_toggle": "TOGGLE_VICTORY_ROAD_2F_ITEM_1",
+          "source_initial_state": "ON",
+          "source_position": [
+            27,
+            5
+          ],
+          "flag_address": 54705,
+          "flag_bit": 4,
+          "flag_mask": 16
+        },
+        {
+          "slot": 8,
+          "index": 93,
+          "source_object": "VICTORYROAD2F_FULL_HEAL",
+          "source_toggle": "TOGGLE_VICTORY_ROAD_2F_ITEM_2",
+          "source_initial_state": "ON",
+          "source_position": [
+            18,
+            9
+          ],
+          "flag_address": 54705,
+          "flag_bit": 5,
+          "flag_mask": 32
+        },
+        {
+          "slot": 9,
+          "index": 94,
+          "source_object": "VICTORYROAD2F_TM_MEGA_KICK",
+          "source_toggle": "TOGGLE_VICTORY_ROAD_2F_ITEM_3",
+          "source_initial_state": "ON",
+          "source_position": [
+            9,
+            11
+          ],
+          "flag_address": 54705,
+          "flag_bit": 6,
+          "flag_mask": 64
+        },
+        {
+          "slot": 10,
+          "index": 95,
+          "source_object": "VICTORYROAD2F_GUARD_SPEC",
+          "source_toggle": "TOGGLE_VICTORY_ROAD_2F_ITEM_4",
+          "source_initial_state": "ON",
+          "source_position": [
+            11,
+            0
+          ],
+          "flag_address": 54705,
+          "flag_bit": 7,
+          "flag_mask": 128
+        },
+        {
+          "slot": 13,
+          "index": 96,
+          "source_object": "VICTORYROAD2F_BOULDER3",
+          "source_toggle": "TOGGLE_VICTORY_ROAD_2F_BOULDER",
+          "source_initial_state": "ON",
+          "source_position": [
+            23,
+            16
+          ],
+          "flag_address": 54706,
+          "flag_bit": 0,
+          "flag_mask": 1
+        }
+      ],
+      "all_source_objects": [
+        {
+          "slot": 1,
+          "source_object": "VICTORYROAD2F_HIKER",
+          "source_position": [
+            12,
+            9
+          ],
+          "sprite": "SPRITE_HIKER",
+          "source_line": 31,
+          "source_constant_line": 2
+        },
+        {
+          "slot": 2,
+          "source_object": "VICTORYROAD2F_SUPER_NERD1",
+          "source_position": [
+            21,
+            13
+          ],
+          "sprite": "SPRITE_SUPER_NERD",
+          "source_line": 32,
+          "source_constant_line": 3
+        },
+        {
+          "slot": 3,
+          "source_object": "VICTORYROAD2F_COOLTRAINER_M",
+          "source_position": [
+            19,
+            8
+          ],
+          "sprite": "SPRITE_COOLTRAINER_M",
+          "source_line": 33,
+          "source_constant_line": 4
+        },
+        {
+          "slot": 4,
+          "source_object": "VICTORYROAD2F_SUPER_NERD2",
+          "source_position": [
+            4,
+            2
+          ],
+          "sprite": "SPRITE_SUPER_NERD",
+          "source_line": 34,
+          "source_constant_line": 5
+        },
+        {
+          "slot": 5,
+          "source_object": "VICTORYROAD2F_SUPER_NERD3",
+          "source_position": [
+            26,
+            3
+          ],
+          "sprite": "SPRITE_SUPER_NERD",
+          "source_line": 35,
+          "source_constant_line": 6
+        },
+        {
+          "slot": 6,
+          "source_object": "VICTORYROAD2F_MOLTRES",
+          "source_position": [
+            11,
+            5
+          ],
+          "sprite": "SPRITE_BIRD",
+          "source_line": 36,
+          "source_constant_line": 7
+        },
+        {
+          "slot": 7,
+          "source_object": "VICTORYROAD2F_TM_SUBMISSION",
+          "source_position": [
+            27,
+            5
+          ],
+          "sprite": "SPRITE_POKE_BALL",
+          "source_line": 37,
+          "source_constant_line": 8
+        },
+        {
+          "slot": 8,
+          "source_object": "VICTORYROAD2F_FULL_HEAL",
+          "source_position": [
+            18,
+            9
+          ],
+          "sprite": "SPRITE_POKE_BALL",
+          "source_line": 38,
+          "source_constant_line": 9
+        },
+        {
+          "slot": 9,
+          "source_object": "VICTORYROAD2F_TM_MEGA_KICK",
+          "source_position": [
+            9,
+            11
+          ],
+          "sprite": "SPRITE_POKE_BALL",
+          "source_line": 39,
+          "source_constant_line": 10
+        },
+        {
+          "slot": 10,
+          "source_object": "VICTORYROAD2F_GUARD_SPEC",
+          "source_position": [
+            11,
+            0
+          ],
+          "sprite": "SPRITE_POKE_BALL",
+          "source_line": 40,
+          "source_constant_line": 11
+        },
+        {
+          "slot": 11,
+          "source_object": "VICTORYROAD2F_BOULDER1",
+          "source_position": [
+            4,
+            14
+          ],
+          "sprite": "SPRITE_BOULDER",
+          "source_line": 41,
+          "source_constant_line": 12
+        },
+        {
+          "slot": 12,
+          "source_object": "VICTORYROAD2F_BOULDER2",
+          "source_position": [
+            5,
+            5
+          ],
+          "sprite": "SPRITE_BOULDER",
+          "source_line": 42,
+          "source_constant_line": 13
+        },
+        {
+          "slot": 13,
+          "source_object": "VICTORYROAD2F_BOULDER3",
+          "source_position": [
+            23,
+            16
+          ],
+          "sprite": "SPRITE_BOULDER",
+          "source_line": 43,
+          "source_constant_line": 14
+        }
+      ],
+      "expected_list_prefix": [
+        6,
+        91,
+        7,
+        92,
+        8,
+        93,
+        9,
+        94,
+        10,
+        95,
+        13,
+        96,
+        255
+      ],
+      "source_only_not_snapshot": true,
+      "source_proof": {
+        "objects": {
+          "path": "data/maps/objects/VictoryRoad2F.asm",
+          "bytes": 2168,
+          "sha256": "e3a503cc86a345f61ba5cbb8b1ad1fffd25e6c2639514be9a705b4bddf2cffb9",
+          "git_blob_sha1": "c4de36839535066f21f6f5c79045f8a40381fc61",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/VictoryRoad2F.asm",
+          "text": "\tobject_const_def\n\tconst_export VICTORYROAD2F_HIKER\n\tconst_export VICTORYROAD2F_SUPER_NERD1\n\tconst_export VICTORYROAD2F_COOLTRAINER_M\n\tconst_export VICTORYROAD2F_SUPER_NERD2\n\tconst_export VICTORYROAD2F_SUPER_NERD3\n\tconst_export VICTORYROAD2F_MOLTRES\n\tconst_export VICTORYROAD2F_TM_SUBMISSION\n\tconst_export VICTORYROAD2F_FULL_HEAL\n\tconst_export VICTORYROAD2F_TM_MEGA_KICK\n\tconst_export VICTORYROAD2F_GUARD_SPEC\n\tconst_export VICTORYROAD2F_BOULDER1\n\tconst_export VICTORYROAD2F_BOULDER2\n\tconst_export VICTORYROAD2F_BOULDER3\n\nVictoryRoad2F_Object:\n\tdb $7d ; border block\n\n\tdef_warp_events\n\twarp_event  0,  8, VICTORY_ROAD_1F, 3\n\twarp_event 29,  7, LAST_MAP, 4\n\twarp_event 29,  8, LAST_MAP, 4\n\twarp_event 23,  7, VICTORY_ROAD_3F, 1\n\twarp_event 25, 14, VICTORY_ROAD_3F, 3\n\twarp_event 27,  7, VICTORY_ROAD_3F, 2\n\twarp_event  1,  1, VICTORY_ROAD_3F, 4\n\n\tdef_bg_events\n\n\tdef_object_events\n\tobject_event 12,  9, SPRITE_HIKER, STAY, LEFT, TEXT_VICTORYROAD2F_HIKER, OPP_BLACKBELT, 9\n\tobject_event 21, 13, SPRITE_SUPER_NERD, STAY, LEFT, TEXT_VICTORYROAD2F_SUPER_NERD1, OPP_JUGGLER, 2\n\tobject_event 19,  8, SPRITE_COOLTRAINER_M, STAY, DOWN, TEXT_VICTORYROAD2F_COOLTRAINER_M, OPP_TAMER, 5\n\tobject_event  4,  2, SPRITE_SUPER_NERD, STAY, DOWN, TEXT_VICTORYROAD2F_SUPER_NERD2, OPP_POKEMANIAC, 6\n\tobject_event 26,  3, SPRITE_SUPER_NERD, STAY, LEFT, TEXT_VICTORYROAD2F_SUPER_NERD3, OPP_JUGGLER, 5\n\tobject_event 11,  5, SPRITE_BIRD, STAY, UP, TEXT_VICTORYROAD2F_MOLTRES, MOLTRES, 50\n\tobject_event 27,  5, SPRITE_POKE_BALL, STAY, NONE, TEXT_VICTORYROAD2F_TM_SUBMISSION, TM_SUBMISSION\n\tobject_event 18,  9, SPRITE_POKE_BALL, STAY, NONE, TEXT_VICTORYROAD2F_FULL_HEAL, FULL_HEAL\n\tobject_event  9, 11, SPRITE_POKE_BALL, STAY, NONE, TEXT_VICTORYROAD2F_TM_MEGA_KICK, TM_MEGA_KICK\n\tobject_event 11,  0, SPRITE_POKE_BALL, STAY, NONE, TEXT_VICTORYROAD2F_GUARD_SPEC, GUARD_SPEC\n\tobject_event  4, 14, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_VICTORYROAD2F_BOULDER1\n\tobject_event  5,  5, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_VICTORYROAD2F_BOULDER2\n\tobject_event 23, 16, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_VICTORYROAD2F_BOULDER3\n\n\tdef_warps_to VICTORY_ROAD_2F\n"
+        },
+        "toggle_table": {
+          "path": "data/maps/toggleable_objects.asm",
+          "bytes": 15465,
+          "sha256": "8dc2fafaebe2ee98c83eca34d486d861117ce95b6c6f94da7760b7b1c88f8cf4",
+          "git_blob_sha1": "90f9e6892ba779ebaa6bdfead00335cf72a8fb8b",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
+          "line_start": 202,
+          "line_end": 208,
+          "excerpt": "\ttoggleable_objects_for VICTORY_ROAD_2F\n\ttoggle_object_state VICTORYROAD2F_MOLTRES,       ON\n\ttoggle_object_state VICTORYROAD2F_TM_SUBMISSION, ON\n\ttoggle_object_state VICTORYROAD2F_FULL_HEAL,     ON\n\ttoggle_object_state VICTORYROAD2F_TM_MEGA_KICK,  ON\n\ttoggle_object_state VICTORYROAD2F_GUARD_SPEC,    ON\n\ttoggle_object_state VICTORYROAD2F_BOULDER3,      ON\n"
+        },
+        "toggle_constants": {
+          "path": "constants/toggle_constants.asm",
+          "bytes": 14670,
+          "sha256": "b028dd3cbcc2e6ef0135ab282d7fbf5ed41213f83555466d5d96b4c9d5e3812b",
+          "git_blob_sha1": "64712306d6b47395c000ce73ee27d5a469fd07f2",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm",
+          "line_start": 175,
+          "line_end": 181,
+          "excerpt": "\ttoggle_consts_for VICTORY_ROAD_2F\n\tconst TOGGLE_MOLTRES                       ; 5B X\n\tconst TOGGLE_VICTORY_ROAD_2F_ITEM_1        ; 5C X\n\tconst TOGGLE_VICTORY_ROAD_2F_ITEM_2        ; 5D X\n\tconst TOGGLE_VICTORY_ROAD_2F_ITEM_3        ; 5E X\n\tconst TOGGLE_VICTORY_ROAD_2F_ITEM_4        ; 5F X\n\tconst TOGGLE_VICTORY_ROAD_2F_BOULDER       ; 60\n"
+        },
+        "map_constants": {
+          "path": "constants/map_constants.asm",
+          "bytes": 16842,
+          "sha256": "4129ef4e6908267e554c0308254f2269f1fb8f75b5c529faad6fd14c92119271",
+          "git_blob_sha1": "fe0bd9f53e2fb4905f9b46031db6697149cbbdbd",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/map_constants.asm",
+          "line_start": 316,
+          "line_end": 316,
+          "excerpt": "\tmap_const VICTORY_ROAD_2F,               15,  9 ; $C2\n"
+        },
+        "index_derivation": "Enumerate actual const_def/const and actual toggle table rows globally; cross-check all 228 entries and map groups; no numeric comments or runtime calibration table used as expected data.",
+        "slot_derivation": "One-based exported object order under object_const_def; independently cross-checked against all object_event rows and TEXT_<object> symbols.",
+        "flag_derivation": {
+          "base_preserved_from_existing_fixture": 54694,
+          "byte_formula": "base + index // 8",
+          "bit_formula": "index % 8",
+          "mask_formula": "1 << (index % 8)",
+          "arithmetic_source": {
+            "path": "engine/overworld/toggleable_objects.asm",
+            "bytes": 3737,
+            "sha256": "8d53800e0e970f8f2b886821cf884f2116ff09a6450c00f2d3178e09cfc4da92",
+            "git_blob_sha1": "bfb3576ca2ee851de6e9cb0bd18437ea1a409912",
+            "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/toggleable_objects.asm"
+          }
+        }
+      },
+      "sources": [
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/VictoryRoad2F.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/map_constants.asm"
+      ]
+    },
+    "198": {
+      "map_name": "VictoryRoad3F",
+      "source_object_count": 10,
+      "objects": [
+        {
+          "slot": 5,
+          "index": 120,
+          "source_object": "VICTORYROAD3F_MAX_REVIVE",
+          "source_toggle": "TOGGLE_VICTORY_ROAD_3F_ITEM_1",
+          "source_initial_state": "ON",
+          "source_position": [
+            26,
+            5
+          ],
+          "flag_address": 54709,
+          "flag_bit": 0,
+          "flag_mask": 1
+        },
+        {
+          "slot": 6,
+          "index": 121,
+          "source_object": "VICTORYROAD3F_TM_EXPLOSION",
+          "source_toggle": "TOGGLE_VICTORY_ROAD_3F_ITEM_2",
+          "source_initial_state": "ON",
+          "source_position": [
+            7,
+            7
+          ],
+          "flag_address": 54709,
+          "flag_bit": 1,
+          "flag_mask": 2
+        },
+        {
+          "slot": 10,
+          "index": 122,
+          "source_object": "VICTORYROAD3F_BOULDER4",
+          "source_toggle": "TOGGLE_VICTORY_ROAD_3F_BOULDER",
+          "source_initial_state": "ON",
+          "source_position": [
+            22,
+            15
+          ],
+          "flag_address": 54709,
+          "flag_bit": 2,
+          "flag_mask": 4
+        }
+      ],
+      "all_source_objects": [
+        {
+          "slot": 1,
+          "source_object": "VICTORYROAD3F_COOLTRAINER_M1",
+          "source_position": [
+            28,
+            5
+          ],
+          "sprite": "SPRITE_COOLTRAINER_M",
+          "source_line": 25,
+          "source_constant_line": 2
+        },
+        {
+          "slot": 2,
+          "source_object": "VICTORYROAD3F_COOLTRAINER_F1",
+          "source_position": [
+            7,
+            13
+          ],
+          "sprite": "SPRITE_COOLTRAINER_F",
+          "source_line": 26,
+          "source_constant_line": 3
+        },
+        {
+          "slot": 3,
+          "source_object": "VICTORYROAD3F_COOLTRAINER_M2",
+          "source_position": [
+            6,
+            14
+          ],
+          "sprite": "SPRITE_COOLTRAINER_M",
+          "source_line": 27,
+          "source_constant_line": 4
+        },
+        {
+          "slot": 4,
+          "source_object": "VICTORYROAD3F_COOLTRAINER_F2",
+          "source_position": [
+            13,
+            3
+          ],
+          "sprite": "SPRITE_COOLTRAINER_F",
+          "source_line": 28,
+          "source_constant_line": 5
+        },
+        {
+          "slot": 5,
+          "source_object": "VICTORYROAD3F_MAX_REVIVE",
+          "source_position": [
+            26,
+            5
+          ],
+          "sprite": "SPRITE_POKE_BALL",
+          "source_line": 29,
+          "source_constant_line": 6
+        },
+        {
+          "slot": 6,
+          "source_object": "VICTORYROAD3F_TM_EXPLOSION",
+          "source_position": [
+            7,
+            7
+          ],
+          "sprite": "SPRITE_POKE_BALL",
+          "source_line": 30,
+          "source_constant_line": 7
+        },
+        {
+          "slot": 7,
+          "source_object": "VICTORYROAD3F_BOULDER1",
+          "source_position": [
+            22,
+            3
+          ],
+          "sprite": "SPRITE_BOULDER",
+          "source_line": 31,
+          "source_constant_line": 8
+        },
+        {
+          "slot": 8,
+          "source_object": "VICTORYROAD3F_BOULDER2",
+          "source_position": [
+            13,
+            12
+          ],
+          "sprite": "SPRITE_BOULDER",
+          "source_line": 32,
+          "source_constant_line": 9
+        },
+        {
+          "slot": 9,
+          "source_object": "VICTORYROAD3F_BOULDER3",
+          "source_position": [
+            24,
+            10
+          ],
+          "sprite": "SPRITE_BOULDER",
+          "source_line": 33,
+          "source_constant_line": 10
+        },
+        {
+          "slot": 10,
+          "source_object": "VICTORYROAD3F_BOULDER4",
+          "source_position": [
+            22,
+            15
+          ],
+          "sprite": "SPRITE_BOULDER",
+          "source_line": 34,
+          "source_constant_line": 11
+        }
+      ],
+      "expected_list_prefix": [
+        5,
+        120,
+        6,
+        121,
+        10,
+        122,
+        255
+      ],
+      "source_only_not_snapshot": true,
+      "source_proof": {
+        "objects": {
+          "path": "data/maps/objects/VictoryRoad3F.asm",
+          "bytes": 1735,
+          "sha256": "17c90dbf2c31ef089b6ec7cf9c8338110d6b87a80a988a3b0e595ca9fb9d2dd1",
+          "git_blob_sha1": "d56f9d65f401c2c9338c77753a64bff21073efe9",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/VictoryRoad3F.asm",
+          "text": "\tobject_const_def\n\tconst_export VICTORYROAD3F_COOLTRAINER_M1\n\tconst_export VICTORYROAD3F_COOLTRAINER_F1\n\tconst_export VICTORYROAD3F_COOLTRAINER_M2\n\tconst_export VICTORYROAD3F_COOLTRAINER_F2\n\tconst_export VICTORYROAD3F_MAX_REVIVE\n\tconst_export VICTORYROAD3F_TM_EXPLOSION\n\tconst_export VICTORYROAD3F_BOULDER1\n\tconst_export VICTORYROAD3F_BOULDER2\n\tconst_export VICTORYROAD3F_BOULDER3\n\tconst_export VICTORYROAD3F_BOULDER4\n\nVictoryRoad3F_Object:\n\tdb $7d ; border block\n\n\tdef_warp_events\n\twarp_event 23,  7, VICTORY_ROAD_2F, 4\n\twarp_event 26,  8, VICTORY_ROAD_2F, 6\n\twarp_event 27, 15, VICTORY_ROAD_2F, 5\n\twarp_event  2,  0, VICTORY_ROAD_2F, 7\n\n\tdef_bg_events\n\n\tdef_object_events\n\tobject_event 28,  5, SPRITE_COOLTRAINER_M, STAY, LEFT, TEXT_VICTORYROAD3F_COOLTRAINER_M1, OPP_COOLTRAINER_M, 2\n\tobject_event  7, 13, SPRITE_COOLTRAINER_F, STAY, RIGHT, TEXT_VICTORYROAD3F_COOLTRAINER_F1, OPP_COOLTRAINER_F, 2\n\tobject_event  6, 14, SPRITE_COOLTRAINER_M, STAY, LEFT, TEXT_VICTORYROAD3F_COOLTRAINER_M2, OPP_COOLTRAINER_M, 3\n\tobject_event 13,  3, SPRITE_COOLTRAINER_F, STAY, RIGHT, TEXT_VICTORYROAD3F_COOLTRAINER_F2, OPP_COOLTRAINER_F, 3\n\tobject_event 26,  5, SPRITE_POKE_BALL, STAY, NONE, TEXT_VICTORYROAD3F_MAX_REVIVE, MAX_REVIVE\n\tobject_event  7,  7, SPRITE_POKE_BALL, STAY, NONE, TEXT_VICTORYROAD3F_TM_EXPLOSION, TM_EXPLOSION\n\tobject_event 22,  3, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_VICTORYROAD3F_BOULDER1\n\tobject_event 13, 12, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_VICTORYROAD3F_BOULDER2\n\tobject_event 24, 10, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_VICTORYROAD3F_BOULDER3\n\tobject_event 22, 15, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, TEXT_VICTORYROAD3F_BOULDER4\n\n\tdef_warps_to VICTORY_ROAD_3F\n"
+        },
+        "toggle_table": {
+          "path": "data/maps/toggleable_objects.asm",
+          "bytes": 15465,
+          "sha256": "8dc2fafaebe2ee98c83eca34d486d861117ce95b6c6f94da7760b7b1c88f8cf4",
+          "git_blob_sha1": "90f9e6892ba779ebaa6bdfead00335cf72a8fb8b",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
+          "line_start": 249,
+          "line_end": 252,
+          "excerpt": "\ttoggleable_objects_for VICTORY_ROAD_3F\n\ttoggle_object_state VICTORYROAD3F_MAX_REVIVE,   ON\n\ttoggle_object_state VICTORYROAD3F_TM_EXPLOSION, ON\n\ttoggle_object_state VICTORYROAD3F_BOULDER4,     ON\n"
+        },
+        "toggle_constants": {
+          "path": "constants/toggle_constants.asm",
+          "bytes": 14670,
+          "sha256": "b028dd3cbcc2e6ef0135ab282d7fbf5ed41213f83555466d5d96b4c9d5e3812b",
+          "git_blob_sha1": "64712306d6b47395c000ce73ee27d5a469fd07f2",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm",
+          "line_start": 222,
+          "line_end": 225,
+          "excerpt": "\ttoggle_consts_for VICTORY_ROAD_3F\n\tconst TOGGLE_VICTORY_ROAD_3F_ITEM_1        ; 78 X\n\tconst TOGGLE_VICTORY_ROAD_3F_ITEM_2        ; 79 X\n\tconst TOGGLE_VICTORY_ROAD_3F_BOULDER       ; 7A\n"
+        },
+        "map_constants": {
+          "path": "constants/map_constants.asm",
+          "bytes": 16842,
+          "sha256": "4129ef4e6908267e554c0308254f2269f1fb8f75b5c529faad6fd14c92119271",
+          "git_blob_sha1": "fe0bd9f53e2fb4905f9b46031db6697149cbbdbd",
+          "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/map_constants.asm",
+          "line_start": 328,
+          "line_end": 328,
+          "excerpt": "\tmap_const VICTORY_ROAD_3F,               15,  9 ; $C6\n"
+        },
+        "index_derivation": "Enumerate actual const_def/const and actual toggle table rows globally; cross-check all 228 entries and map groups; no numeric comments or runtime calibration table used as expected data.",
+        "slot_derivation": "One-based exported object order under object_const_def; independently cross-checked against all object_event rows and TEXT_<object> symbols.",
+        "flag_derivation": {
+          "base_preserved_from_existing_fixture": 54694,
+          "byte_formula": "base + index // 8",
+          "bit_formula": "index % 8",
+          "mask_formula": "1 << (index % 8)",
+          "arithmetic_source": {
+            "path": "engine/overworld/toggleable_objects.asm",
+            "bytes": 3737,
+            "sha256": "8d53800e0e970f8f2b886821cf884f2116ff09a6450c00f2d3178e09cfc4da92",
+            "git_blob_sha1": "bfb3576ca2ee851de6e9cb0bd18437ea1a409912",
+            "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/overworld/toggleable_objects.asm"
+          }
+        }
+      },
+      "sources": [
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/VictoryRoad3F.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/toggleable_objects.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/toggle_constants.asm",
+        "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/map_constants.asm"
+      ]
     }
   },
   "source_files": [
@@ -840,6 +1383,20 @@
       "path": "data/maps/objects/SilphCo11F.asm",
       "sha256": "8c1b9dfaaf8644b973cc02a2f9c91437eeb8fdc1e3af4e4d3df59d7ffcfb0438",
       "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/SilphCo11F.asm"
+    },
+    {
+      "path": "data/maps/objects/VictoryRoad2F.asm",
+      "bytes": 2168,
+      "sha256": "e3a503cc86a345f61ba5cbb8b1ad1fffd25e6c2639514be9a705b4bddf2cffb9",
+      "git_blob_sha1": "c4de36839535066f21f6f5c79045f8a40381fc61",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/VictoryRoad2F.asm"
+    },
+    {
+      "path": "data/maps/objects/VictoryRoad3F.asm",
+      "bytes": 1735,
+      "sha256": "17c90dbf2c31ef089b6ec7cf9c8338110d6b87a80a988a3b0e595ca9fb9d2dd1",
+      "git_blob_sha1": "d56f9d65f401c2c9338c77753a64bff21073efe9",
+      "url": "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/maps/objects/VictoryRoad3F.asm"
     }
   ]
 }

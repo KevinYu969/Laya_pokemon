@@ -1,0 +1,591 @@
+{
+  "schema": "laya-indigo-nurse-cutoff-receipt-v1",
+  "date": "2026-10-28",
+  "publication_status": "root_reviewed",
+  "generated_at_utc": "2026-10-28T06:27:45.883232+00:00",
+  "cutoff": {
+    "frame": 16793,
+    "location": {
+      "map_id": 174,
+      "x": 7,
+      "y": 7
+    },
+    "reason": "route_extension_required",
+    "route_step": "complete",
+    "log_recorded_at_utc": "2026-10-28T06:21:26.892588+00:00",
+    "log_recorded_at_taipei": "2026-10-28T14:21:26.892588+08:00",
+    "plan_sha256": "d1020cca77a93b1d7edc4d2ea6d01902f50d44428388a83c86d2d6394f52a42f",
+    "review_source_sha256": "c08411c992a1ac7258c0cf6edb4e2a475f86154e62ee934148d46d37c6a0fcb8",
+    "snapshot_taken_before_later_tm_work": true
+  },
+  "timestamp_semantics": "step的at是該行紀錄時間；state.frame是該行所含觀測frame，logged_action是該行動作。紀錄未提供獨立的逐幀牆鐘觀測時間，不把at當HP位元改變、療程完成或勝利的精確瞬間。",
+  "events": [
+    {
+      "kind": "nurse_interaction_started",
+      "meaning": "在護士前正常A互動；當時NIDOKING仍倒下且部分PP未補。",
+      "log_recorded_at_utc": "2026-10-28T06:21:25.172184+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:21:25.172184+08:00",
+      "source": "steps-004.jsonl",
+      "source_step": 276,
+      "observation_frame": 15137,
+      "phase": "overworld",
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "route_step": "league28-fnt-recovery-16",
+      "visible_text_candidates": [],
+      "logged_action": "a",
+      "emulated_frames_for_action": 40
+    },
+    {
+      "kind": "accept_healing_option",
+      "meaning": "文字候選顯示▶HEAL/CANCEL，記錄A確認，為接受治療的語意YES；未由本任務核對實際像素YES字樣。",
+      "log_recorded_at_utc": "2026-10-28T06:21:26.228497+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:21:26.228497+08:00",
+      "source": "steps-004.jsonl",
+      "source_step": 281,
+      "observation_frame": 15689,
+      "phase": "dialogue",
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "route_step": null,
+      "visible_text_candidates": [
+        "            ▶HEAL",
+        "             CANCEL",
+        " POKéMON back to",
+        " perfect health!"
+      ],
+      "logged_action": "a",
+      "emulated_frames_for_action": 128
+    },
+    {
+      "kind": "first_logged_full_party_observation",
+      "meaning": "首次動作紀錄內的觀測已全六HP/status/PP滿；仍在護士對話，不能當對話已關閉。",
+      "log_recorded_at_utc": "2026-10-28T06:21:26.283758+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:21:26.283758+08:00",
+      "source": "steps-004.jsonl",
+      "source_step": 282,
+      "observation_frame": 15817,
+      "phase": "dialogue",
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "route_step": null,
+      "visible_text_candidates": [
+        " OK. We'll need",
+        " your POKéMON."
+      ],
+      "logged_action": "a",
+      "emulated_frames_for_action": 128
+    },
+    {
+      "kind": "last_nurse_goodbye_confirm",
+      "meaning": "末段告別對話記錄A；下一筆才見空白世界。",
+      "log_recorded_at_utc": "2026-10-28T06:21:26.728302+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:21:26.728302+08:00",
+      "source": "steps-004.jsonl",
+      "source_step": 288,
+      "observation_frame": 16585,
+      "phase": "dialogue",
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "route_step": null,
+      "visible_text_candidates": [
+        " We hope to see",
+        " you again!"
+      ],
+      "logged_action": "a",
+      "emulated_frames_for_action": 128
+    },
+    {
+      "kind": "first_post_nurse_world_and_tail17_down",
+      "meaning": "首筆護士後overworld、文字空白且全滿；執行原尾端17 DOWN。",
+      "log_recorded_at_utc": "2026-10-28T06:21:26.775290+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:21:26.775290+08:00",
+      "source": "steps-004.jsonl",
+      "source_step": 289,
+      "observation_frame": 16713,
+      "phase": "overworld",
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "route_step": "league28-fnt-recovery-17",
+      "visible_text_candidates": [],
+      "logged_action": "down",
+      "emulated_frames_for_action": 40
+    },
+    {
+      "kind": "tail18_up",
+      "meaning": "真觀測已在(7,8)，記錄原尾端18 UP。",
+      "log_recorded_at_utc": "2026-10-28T06:21:26.822164+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:21:26.822164+08:00",
+      "source": "steps-004.jsonl",
+      "source_step": 290,
+      "observation_frame": 16753,
+      "phase": "overworld",
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 8
+      },
+      "route_step": "league28-fnt-recovery-18",
+      "visible_text_candidates": [],
+      "logged_action": "up",
+      "emulated_frames_for_action": 40
+    }
+  ],
+  "healing_change": {
+    "last_logged_unhealed_observation_frame": 15689,
+    "first_logged_full_observation_frame": 15817,
+    "actual_change_frame_interval": "(15689,15817]",
+    "actual_wall_clock_instant_utc": null,
+    "first_post_dialogue_closed_world_frame": 16713,
+    "fully_healed_at_cutoff": true,
+    "party_after": [
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 38,
+        "hp": 117,
+        "max_hp": 117,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          19,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          15,
+          20
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 42,
+        "hp": 203,
+        "max_hp": 203,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 37,
+        "hp": 125,
+        "max_hp": 125,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 43,
+        "hp": 177,
+        "max_hp": 177,
+        "status": 0,
+        "moves": [
+          57,
+          34,
+          58,
+          109
+        ],
+        "pp": [
+          15,
+          15,
+          10,
+          10
+        ]
+      }
+    ],
+    "pp_before": {
+      "FEAROW": [
+        35,
+        9,
+        15,
+        20
+      ],
+      "SNORLAX": [
+        13,
+        20,
+        10,
+        13
+      ],
+      "EEVEE": [
+        35,
+        15,
+        30,
+        30
+      ],
+      "VENUSAUR": [
+        25,
+        30,
+        10,
+        10
+      ],
+      "NIDOKING": [
+        20,
+        4,
+        25,
+        35
+      ],
+      "LAPRAS": [
+        0,
+        12,
+        8,
+        10
+      ]
+    },
+    "nidoking_hp_before": 0,
+    "nidoking_hp_after": 125,
+    "all_party_status_after": 0
+  },
+  "resources": {
+    "baseline_observation_frame": 15137,
+    "cutoff_observation_frame": 16793,
+    "inventory_unchanged_during_nurse_and_tail": true,
+    "money_unchanged_during_nurse_and_tail": true,
+    "money_before": 53245,
+    "money_after": 53245,
+    "inventory_at_cutoff": [
+      {
+        "item": 4,
+        "quantity": 6
+      },
+      {
+        "item": 42,
+        "quantity": 1
+      },
+      {
+        "item": 49,
+        "quantity": 1
+      },
+      {
+        "item": 63,
+        "quantity": 1
+      },
+      {
+        "item": 196,
+        "quantity": 1
+      },
+      {
+        "item": 224,
+        "quantity": 1
+      },
+      {
+        "item": 74,
+        "quantity": 1
+      },
+      {
+        "item": 72,
+        "quantity": 1
+      },
+      {
+        "item": 40,
+        "quantity": 1
+      },
+      {
+        "item": 73,
+        "quantity": 1
+      },
+      {
+        "item": 3,
+        "quantity": 9
+      },
+      {
+        "item": 198,
+        "quantity": 1
+      },
+      {
+        "item": 199,
+        "quantity": 1
+      },
+      {
+        "item": 48,
+        "quantity": 1
+      },
+      {
+        "item": 1,
+        "quantity": 1
+      },
+      {
+        "item": 197,
+        "quantity": 1
+      },
+      {
+        "item": 43,
+        "quantity": 1
+      },
+      {
+        "item": 52,
+        "quantity": 9
+      },
+      {
+        "item": 18,
+        "quantity": 5
+      }
+    ],
+    "full_heal_remaining": 9,
+    "hyper_potion_remaining": 5,
+    "tm24_remaining_at_cutoff": 1
+  },
+  "continuity": {
+    "game_id": "game29",
+    "original_source_state_sha256": "f6e17ed50660e1a2f99b560c970d540a9bbe916e479491a25eda16a0388da27d",
+    "model_load_count": 1,
+    "logged_actions": 290,
+    "checked_action_rows": 290,
+    "state_frames_contiguous_through_recorded_actions": true,
+    "last_action_observed_frame": 16753,
+    "last_action_emulated_frames": 40,
+    "review_frame": 16793,
+    "no_frame_regression_observed": true,
+    "cloud_fallback": false,
+    "strata_configuration_changed": false,
+    "note": "同一game29封存紀錄中未見倒帶或重開；這是動作紀錄連續性證據，不擴大為對未記錄操作的證明。"
+  },
+  "remaining": {
+    "elite_four_complete": false,
+    "champion_observed": false,
+    "hall_of_fame_confirmed": null,
+    "tm24_teaching_after_cutoff_not_included": true,
+    "training_calibration_not_claimed": true
+  },
+  "video_metadata_only": {
+    "video002": {
+      "sealed_metadata_record": {
+        "at": "2026-10-28T06:08:53.965351+00:00",
+        "segment": 2,
+        "timing": {
+          "wall_seconds": 5255.093,
+          "model_wait_seconds": 20.267,
+          "review_pause_seconds": 5226.016,
+          "non_review_session_seconds": 29.077,
+          "emulated_seconds": 125.867
+        },
+        "video": {
+          "filename": "video-002.mp4",
+          "fps": 15,
+          "frames": 70,
+          "playback_seconds": 4.666666666666667,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "suitable_for_2f_boulder_or_nurse": false,
+      "reason": "該片累積模擬時間結束125.867秒；2F推石完成169.867秒，護士相關252.267至279.867秒，均晚於其區間。"
+    },
+    "video003": {
+      "sealed_metadata_record": {
+        "at": "2026-10-28T06:21:14.124905+00:00",
+        "segment": 3,
+        "timing": {
+          "wall_seconds": 5995.234,
+          "model_wait_seconds": 25.174,
+          "review_pause_seconds": 5956.078,
+          "non_review_session_seconds": 39.156,
+          "emulated_seconds": 181.2
+        },
+        "video": {
+          "filename": "video-003.mp4",
+          "fps": 15,
+          "frames": 830,
+          "playback_seconds": 55.333333333333336,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "cumulative_emulated_start_seconds": 125.86666666666666,
+      "cumulative_emulated_end_seconds": 181.2,
+      "suitable_2f_boulder_candidate": true,
+      "nurse_included": false
+    },
+    "nurse_segment": {
+      "segment": 4,
+      "at_cutoff_seal_record_present": false,
+      "cumulative_emulated_start_seconds": 181.2,
+      "cumulative_emulated_end_at_cutoff_seconds": 279.867,
+      "note": "summary當前segment=4，封存segments ledger只有0..3；不能宣稱video004已封片。"
+    },
+    "actual_video_files_opened_or_decoded": false
+  },
+  "context_field_milestones": [
+    {
+      "kind": "reviewed-native-fall",
+      "case": null,
+      "log_recorded_at_utc": "2026-10-28T06:08:54.279866+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:08:54.279866+08:00",
+      "cumulative_emulated_seconds": 128.533
+    },
+    {
+      "kind": "victory-strength",
+      "case": null,
+      "log_recorded_at_utc": "2026-10-28T06:08:58.496447+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:08:58.496447+08:00",
+      "cumulative_emulated_seconds": 137.867
+    },
+    {
+      "kind": "victory-later-boulder",
+      "case": "2f_switch2",
+      "log_recorded_at_utc": "2026-10-28T06:09:02.572593+00:00",
+      "log_recorded_at_taipei": "2026-10-28T14:09:02.572593+08:00",
+      "cumulative_emulated_seconds": 169.867
+    }
+  ],
+  "provenance": [
+    {
+      "label": "review-request.json",
+      "source_byte_length": 12509,
+      "source_sha256": "c08411c992a1ac7258c0cf6edb4e2a475f86154e62ee934148d46d37c6a0fcb8",
+      "archived_as_tail": false,
+      "archived_line_count": 453
+    },
+    {
+      "label": "summary.json",
+      "source_byte_length": 997,
+      "source_sha256": "e7683d6771d5182ac4f5a11030a05f708d7d719e502837c02f817ba2f9a54297",
+      "archived_as_tail": false,
+      "archived_line_count": 31
+    },
+    {
+      "label": "field-moves.jsonl",
+      "source_byte_length": 27515,
+      "source_sha256": "62fa2d74ff74b7dcdf46caea69600125db4ff085db6f5bee0323e631d2c57dd8",
+      "archived_as_tail": false,
+      "archived_line_count": 5
+    },
+    {
+      "label": "captures.jsonl",
+      "source_byte_length": 10487,
+      "source_sha256": "61983d10e7fa9ab24d8653203b7ece9f1f70545cccf385b2be22f96b55d07c9b",
+      "archived_as_tail": true,
+      "archived_line_count": 22
+    },
+    {
+      "label": "segments.jsonl",
+      "source_byte_length": 1496,
+      "source_sha256": "2ac679ada7abda31f1429c856ff1e36b1200e70ac75fb93c9d6e911802425f8d",
+      "archived_as_tail": false,
+      "archived_line_count": 4
+    },
+    {
+      "label": "steps-000.jsonl",
+      "source_byte_length": 420947,
+      "source_sha256": "5d44429053d331f7e2321aa8b91aed5eb04458164bce90b3648d558266eecc42",
+      "archived_as_tail": true,
+      "archived_line_count": 49
+    },
+    {
+      "label": "steps-001.jsonl",
+      "source_byte_length": 412266,
+      "source_sha256": "bafae5edfa9f7ab5754401ca4089c69ea5ea442a81fcd1356d428446081dc608",
+      "archived_as_tail": true,
+      "archived_line_count": 47
+    },
+    {
+      "label": "steps-002.jsonl",
+      "source_byte_length": 65033,
+      "source_sha256": "f2338602853c069eba19ba30155c474cdbdeb7c5424602d184ceca9b10cbf1dc",
+      "archived_as_tail": true,
+      "archived_line_count": 7
+    },
+    {
+      "label": "steps-003.jsonl",
+      "source_byte_length": 767454,
+      "source_sha256": "5bc1a4772333d1e62b4ae5aaafe2d83ff2ba90ad09b29a02a7d034376e9aa5aa",
+      "archived_as_tail": true,
+      "archived_line_count": 83
+    },
+    {
+      "label": "steps-004.jsonl",
+      "source_byte_length": 927218,
+      "source_sha256": "b56b5d742acce4f5abfe9d2c54c39be31f6258fda2f39ac79888653c20112a7c",
+      "archived_as_tail": true,
+      "archived_line_count": 104
+    }
+  ],
+  "limitations": [
+    "護士沒有另造field_move_complete收據；以正常互動紀錄、PP/HP/status恢復、尾端兩步與EOF觀測驗收。",
+    "HEAL/CANCEL是文字候選，未在本任務讀取實際影像核對YES字樣。",
+    "video只讀封片metadata，未開影片、轉檔或確認物理檔可解碼。",
+    "summary.recorded_at是原session記錄時間，不能當此護士完成時間。",
+    "本草稿固定截止frame16793，後續TM、訓練與新版review皆不包含。"
+  ]
+}

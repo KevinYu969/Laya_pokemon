@@ -1,0 +1,228 @@
+{
+  "date": "2026-10-28",
+  "generated_at_utc": "2026-10-28T06:36:10.020647+00:00",
+  "status": "root_visual_reviewed",
+  "root_visual_approval": true,
+  "file": "outputs/blog-assets/victory2f-switch-20261028/victory2f-fall-strength-14push-4x.mp4",
+  "bytes": 616090,
+  "sha256": "8312d5a1cd7f15be4da94de21ddf57bbe48815a4daa8e56d8caae336a4df910c",
+  "source": {
+    "game_id": "game29",
+    "file": "video-003.mp4",
+    "segment": 3,
+    "bytes": 205015,
+    "sha256": "20a7019b9c7352887c5568e80a4f6eda29c73433e9c5fcf95fbec144f6b05932",
+    "sealed_metadata": {
+      "at": "2026-10-28T06:21:14.124905+00:00",
+      "segment": 3,
+      "timing": {
+        "wall_seconds": 5995.234,
+        "model_wait_seconds": 25.174,
+        "review_pause_seconds": 5956.078,
+        "non_review_session_seconds": 39.156,
+        "emulated_seconds": 181.2
+      },
+      "video": {
+        "filename": "video-003.mp4",
+        "fps": 15,
+        "frames": 830,
+        "playback_seconds": 55.333333333333336,
+        "timing": "emulated_time",
+        "audio": false
+      }
+    },
+    "fps": 15,
+    "frame_count": 830,
+    "width": 160,
+    "height": 144,
+    "exact_playback_seconds": 55.333333333333336
+  },
+  "result": {
+    "speed_multiplier": 4,
+    "fps": 60,
+    "frame_count": 830,
+    "width": 160,
+    "height": 144,
+    "exact_playback_seconds": 13.833333333333334,
+    "audio": false,
+    "codec": "libx264",
+    "crf": 0,
+    "transform": "Timestamp-only setpts=(PTS-STARTPTS)/4; no trim, crop, scale, overlay, interpolation, insertion or omission."
+  },
+  "source_global_emulated_frame_boundaries": [
+    7552,
+    10872
+  ],
+  "global_offset_derivation": {
+    "emulated_fps": 60,
+    "prior_segments": [
+      {
+        "segment": 0,
+        "frames": 1348,
+        "fps": 15
+      },
+      {
+        "segment": 1,
+        "frames": 470,
+        "fps": 15
+      },
+      {
+        "segment": 2,
+        "frames": 70,
+        "fps": 15
+      }
+    ],
+    "formula": "sum(prior segment video frames * 60 / video fps)",
+    "note": "Zero-based emulated-stream boundaries derived from sealed metadata, not a separately calibrated first-video-pixel PyBoy frame timestamp."
+  },
+  "objective_verification": {
+    "source_decode_frame_count": 830,
+    "output_decode_frame_count": 830,
+    "all_830_decoded_yuv420p_frame_md5_equal_in_order": true,
+    "source_and_output_ordered_frame_md5_list_sha256": "78d82d6b01b3a62d1d6104b0c2ec9e9cc89e79896a39c343106d9a80fbbc6064",
+    "original_dimensions_preserved": true,
+    "decoded_frame_size_bytes": 34560,
+    "source_fps_verified": 15,
+    "output_fps_verified": 60,
+    "metadata_durations_within_one_frame": true,
+    "source_bytes_unchanged": true
+  },
+  "ffmpeg": {
+    "version": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+    "binary_obtained_by": "imageio_ffmpeg.get_ffmpeg_exe",
+    "arguments": [
+      "-map",
+      "0:v:0",
+      "-an",
+      "-sn",
+      "-dn",
+      "-vf",
+      "setpts=(PTS-STARTPTS)/4",
+      "-r",
+      "60",
+      "-fps_mode",
+      "cfr",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "veryfast",
+      "-crf",
+      "0",
+      "-pix_fmt",
+      "yuv420p",
+      "-movflags",
+      "+faststart"
+    ]
+  },
+  "qa_original_frames": [
+    {
+      "file": "qa-source-frame-0100.png",
+      "source_frame_index_zero_based": 100,
+      "role": "native-strength-menu-candidate",
+      "source_local_playback_seconds": 6.666666666666667,
+      "result_local_playback_seconds": 1.6666666666666667,
+      "nominal_global_emulated_frame_boundary": 7952,
+      "width": 160,
+      "height": 144,
+      "bytes": 9110,
+      "sha256": "4974b6ba94bdcd3eb9d03dbc0b7e8ebf120f50227a8f0267d4219780c3b7b1a9",
+      "origin": "decoded original video003; PNG only; no resize or overlay",
+      "visual_approval": "pending_root_visual_review"
+    },
+    {
+      "file": "qa-source-frame-0125.png",
+      "source_frame_index_zero_based": 125,
+      "role": "native-strength-used-prompt-candidate",
+      "source_local_playback_seconds": 8.333333333333334,
+      "result_local_playback_seconds": 2.0833333333333335,
+      "nominal_global_emulated_frame_boundary": 8052,
+      "width": 160,
+      "height": 144,
+      "bytes": 9245,
+      "sha256": "b617fc90c0279f91a2d1fc6bf72eebc5952b12a45e3466be2758f4601454ecaa",
+      "origin": "decoded original video003; PNG only; no resize or overlay",
+      "visual_approval": "pending_root_visual_review"
+    },
+    {
+      "file": "qa-source-frame-0180.png",
+      "source_frame_index_zero_based": 180,
+      "role": "strength-complete-before-pushes-candidate",
+      "source_local_playback_seconds": 12.0,
+      "result_local_playback_seconds": 3.0,
+      "nominal_global_emulated_frame_boundary": 8272,
+      "width": 160,
+      "height": 144,
+      "bytes": 14408,
+      "sha256": "c87ae14e1ff52a2a273aa6b2805ef1e5828b52ad78b004f8b209d57000b77e25",
+      "origin": "decoded original video003; PNG only; no resize or overlay",
+      "visual_approval": "pending_root_visual_review"
+    },
+    {
+      "file": "qa-source-frame-0520.png",
+      "source_frame_index_zero_based": 520,
+      "role": "owned-boulder-pushes-in-progress-candidate",
+      "source_local_playback_seconds": 34.666666666666664,
+      "result_local_playback_seconds": 8.666666666666666,
+      "nominal_global_emulated_frame_boundary": 9632,
+      "width": 160,
+      "height": 144,
+      "bytes": 12268,
+      "sha256": "60f1306745d5b3cd45708c31f8f39fedd90c4a0bbb6fc4e0bd30c9e37c498550",
+      "origin": "decoded original video003; PNG only; no resize or overlay",
+      "visual_approval": "pending_root_visual_review"
+    },
+    {
+      "file": "qa-source-frame-0680.png",
+      "source_frame_index_zero_based": 680,
+      "role": "after-14push-completion-candidate",
+      "source_local_playback_seconds": 45.333333333333336,
+      "result_local_playback_seconds": 11.333333333333334,
+      "nominal_global_emulated_frame_boundary": 10272,
+      "width": 160,
+      "height": 144,
+      "bytes": 11806,
+      "sha256": "353f99c7e28ebbfaf871dfc2d5e123d8613558a5637f74170e6f82fda010eb51",
+      "origin": "decoded original video003; PNG only; no resize or overlay",
+      "visual_approval": "pending_root_visual_review"
+    }
+  ],
+  "relevant_field_ledger_events": [
+    {
+      "log_recorded_at_utc": "2026-10-28T06:08:54.279866+00:00",
+      "kind": "reviewed-native-fall",
+      "case": null,
+      "emulated_seconds": 128.533,
+      "push_index": null,
+      "native_script_seen": null
+    },
+    {
+      "log_recorded_at_utc": "2026-10-28T06:08:58.496447+00:00",
+      "kind": "victory-strength",
+      "case": null,
+      "emulated_seconds": 137.867,
+      "push_index": null,
+      "native_script_seen": null
+    },
+    {
+      "log_recorded_at_utc": "2026-10-28T06:09:02.572593+00:00",
+      "kind": "victory-later-boulder",
+      "case": "2f_switch2",
+      "emulated_seconds": 169.867,
+      "push_index": 14,
+      "native_script_seen": true
+    }
+  ],
+  "provenance": {
+    "segments_source_sha256": "2ac679ada7abda31f1429c856ff1e36b1200e70ac75fb93c9d6e911802425f8d",
+    "field_moves_source_sha256": "62fa2d74ff74b7dcdf46caea69600125db4ff085db6f5bee0323e631d2c57dd8",
+    "metadata_cutoff_frame": 16793
+  },
+  "limitations": [
+    "已封video003整段：原生落洞、2F Strength、14推及之後走樓梯到復核停點；包含當時停點，未剪去失敗或等待。",
+    "沒有護士或四天王內容，不代表護士完成、四天王勝利或通關。",
+    "後製4倍速只是時間軸重排，不代表端到端模型決策或遊戲通關速度。",
+    "五張QA取自原片、未美化；事件角色是待root目視確認的候選標籤，不是本工具視覺批准。",
+    "影片與QA僅本機產出，未上傳；root將另行目視並撰寫公開收據。"
+  ],
+  "root_visual_notes": "已核5張來源影格：Snorlax選Strength、原生used STRENGTH文字、推前／途中／14推後石位，當時Nidoking仍FNT；正式field帳本另驗14push。無護士或四天王宣稱。"
+}

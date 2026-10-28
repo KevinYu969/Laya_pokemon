@@ -357,12 +357,31 @@ def _other_objects(objects,slot):
     return tuple((o["slot"],o["x"],o["y"],o["picture"],o["text"],o["hidden"]) for o in objects if o["slot"]!=slot)
 
 
+SOURCE_LAYOUT='source'
+REVIEWED_HOLE_LAYOUT='reviewed_3f_hole_aux8_13_13_20261028'
+
+
+def valid_source_layout(case_key,source_layout):
+    return type(source_layout) is str and (source_layout==SOURCE_LAYOUT
+        or case_key=='3f_hole' and source_layout==REVIEWED_HOLE_LAYOUT)
+
+
+def initial_source_stones(case_key,source_layout):
+    if not valid_source_layout(case_key,source_layout):return None
+    # Fixed reviewed alternative only; CASES/contract/push geometry are immutable.
+    if source_layout==REVIEWED_HOLE_LAYOUT:
+        return {7:(3,5),8:(13,13),9:(24,10),10:(22,15)}
+    return CASES[case_key]['source_stones']
+
+
 class VictoryLaterBoulderController:
-    def __init__(self,case_key,*,reviewed_fainted_bench=()):
+    def __init__(self,case_key,*,reviewed_fainted_bench=(),source_layout=SOURCE_LAYOUT):
         if type(reviewed_fainted_bench) is not tuple or any(type(v) is not int for v in reviewed_fainted_bench) or reviewed_fainted_bench not in ((),(7,)):
             raise ValueError('Only the explicitly reviewed Nidoking bench is supported')
         self.reviewed_fainted_bench=reviewed_fainted_bench
         if type(case_key) is not str or case_key not in CASES:raise ValueError("Only four fixed later-boulder case keys")
+        if not valid_source_layout(case_key,source_layout):raise ValueError('Only one reviewed 3F-hole auxiliary layout')
+        self.source_layout=self.source_layout_contract=source_layout
         self.case_key=case_key;self.case=deepcopy(CASES[case_key]);self.contract=deepcopy(self.case)
         self.pushes=self.case["pushes"];self.owner=None;self.started=self.last_now=self.step_started=None
         self.calls=self.waits=self.requests=0;self.last_frame=-1;self.last_packet=None;self.error=None
@@ -397,7 +416,10 @@ class VictoryLaterBoulderController:
     def context(self,state,*,text,grid,signal,previous,now,owner,overworld_ready=False):
         if self.error:return self._fail("sticky")
         c=self.case;frame=state.get("frame") if isinstance(state,dict) else None
-        if (c!=self.contract or c!=CASES.get(self.case_key) or self.pushes!=c["pushes"]
+        layout=getattr(self,'source_layout',SOURCE_LAYOUT)
+        if (not valid_source_layout(self.case_key,layout)
+                or layout!=getattr(self,'source_layout_contract',SOURCE_LAYOUT)
+                or c!=self.contract or c!=CASES.get(self.case_key) or self.pushes!=c["pushes"]
                 or not isinstance(owner,str) or not owner or self.owner is not None and owner!=self.owner
                 or not _int(frame,0,2**63-1) or frame<self.last_frame or type(now) not in (int,float)
                 or not math.isfinite(now) or now<0 or self.last_now is not None and now<self.last_now):
@@ -509,7 +531,7 @@ class VictoryLaterBoulderController:
                     or any(a[k]!=v for k,v in c["gate_binding"].items())
                     or _hidden(flags,0x60)!=(self.case_key!="2f_switch2")
                     or _hidden(flags,0x7A)!=(self.case_key=="2f_switch2")
-                    or any((objects[s-1]["x"],objects[s-1]["y"])!=p for s,p in c["source_stones"].items())):
+                    or any((objects[s-1]["x"],objects[s-1]["y"])!=p for s,p in initial_source_stones(self.case_key,layout).items())):
                 return self._fail("initial_fixed_mechanism_unverified")
             self.baseline=current;self.flags_baseline=a["flags1"];self.object_baseline=_other_objects(objects,c["slot"])
         if self.suspended:self.baseline=current;self.suspended=False;self.battle_returns+=1

@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-28",
+  "scope": "完整正式tests；含正常補藥中斷、TM24、具名FNT中心救援、野生戰鬥教訓、FullHeal、3F固定版型/NPC導航與原生落洞WAIT",
+  "command": "workspace-python -B -X utf8 -m pytest tests -p no:cacheprovider --basetemp=<LOCAL_VALIDATION_TEMP> -q",
+  "exit_code": 1,
+  "passed": 9926,
+  "wall_seconds": 210.078,
+  "source_files": 356,
+  "source_unchanged": true,
+  "changed_paths": [],
+  "manifest_sha256": "0026dae6c531bcfb11959776367f57aecc180723d95620e84697615cd10703dc",
+  "stdout_sha256": "97ed193055cb23b9aaf8882fa2d3cb6a89e48672c5a69739b135282bd57dc7aa",
+  "live_game_validation": false,
+  "limitations": [
+    "此為程式/fixture回歸，不等同四天王通關。",
+    "原始log含本機診斷路徑，僅保留本機；公開收據不含原始log。"
+  ]
+}

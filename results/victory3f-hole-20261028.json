@@ -1,0 +1,318 @@
+{
+  "schema": "laya-public-milestone-receipt-v1",
+  "date": "2026-10-28",
+  "generated_at_utc": "2026-10-28T05:50:15.805382+00:00",
+  "publication_status": "root_reviewed",
+  "scope": "2026-10-28 正常FullHeal、正式3F落石與尚待修復的落洞轉場切點",
+  "milestones": [
+    {
+      "id": "full-heal",
+      "status": "live_transaction_verified",
+      "at_utc": "2026-10-28T05:07:00.695888+00:00",
+      "at_taipei": "2026-10-28T13:07:00.695888+08:00",
+      "sources": [
+        "S1",
+        "S8"
+      ],
+      "target": "FEAROW",
+      "status_before": 8,
+      "status_after": 0,
+      "hp_before": 117,
+      "hp_after": 117,
+      "full_heal_count_before": 10,
+      "full_heal_count_after": 9,
+      "hyper_potions_unchanged": 5,
+      "revive_performed": false,
+      "fainted_party_member": {
+        "species_name": "NIDOKING",
+        "hp": 0,
+        "max_hp": 125
+      }
+    },
+    {
+      "id": "3f-hole-boulder",
+      "status": "live_field_ledger_complete",
+      "at_utc": "2026-10-28T05:46:25.475156+00:00",
+      "at_taipei": "2026-10-28T13:46:25.475156+08:00",
+      "sources": [
+        "S1",
+        "S2",
+        "S5",
+        "S7"
+      ],
+      "case": "3f_hole",
+      "owner_step": "league28-fnt-recovery-01",
+      "push_index": 1,
+      "contact_arm_seen": true,
+      "dust_seen": true,
+      "native_script_seen": false,
+      "party_unchanged_since_full_heal_receipt": true
+    }
+  ],
+  "repair_review": {
+    "at_utc": "2026-10-28T05:46:23.894539+00:00",
+    "at_taipei": "2026-10-28T13:46:23.894539+08:00",
+    "sources": [
+      "S2",
+      "S5",
+      "S7"
+    ],
+    "problem": "輔助石8的實際位置為(13,13)，與來源預期(13,12)不同；復核紀錄指出來源anchor缺漏讓導航誤認沒有NPC。",
+    "approved_scope": "僅復核frame7233原owner的一次固定配置差異，保留原步驟、封包與預算，核准以真WAIT後原RIGHT續行，導航讀取實際NPC與隱藏旗標。",
+    "source_read_valid": true,
+    "full_progress_equal": true,
+    "preflight_no_input": true,
+    "preflight_no_future_state_saved": true
+  },
+  "validation_report": {
+    "source": "S2",
+    "reported_passed": 456,
+    "reported_seconds": 14.57,
+    "scope": "related formal tests",
+    "full_suite_claimed": false,
+    "rerun_by_receipt_task": false
+  },
+  "formal_stop": {
+    "at_utc": "2026-10-28T05:46:25.627784+00:00",
+    "at_taipei": "2026-10-28T13:46:25.627784+08:00",
+    "sources": [
+      "S3",
+      "S4"
+    ],
+    "frame": 7513,
+    "location": {
+      "map_id": 198,
+      "x": 23,
+      "y": 15
+    },
+    "reason": "victory_navigation_closed_world_required",
+    "phase": "campaign_review",
+    "available_actions": [
+      "wait"
+    ],
+    "controller_waypoint": null,
+    "elite_four_complete": false,
+    "champion_observed": false,
+    "hall_of_fame_confirmed": null,
+    "summary_recorded_at_is_not_stop_time": true
+  },
+  "no_input_clone_preflight": {
+    "source": "S6",
+    "status": "clone_only_not_live_completion",
+    "source_frame": 7513,
+    "at_utc": null,
+    "at_taipei": null,
+    "timestamp_note": "來源未記錄牆鐘時間；樣本frame為副本內的相對frame，不能當正式frame或正式完成時間。",
+    "no_input": true,
+    "no_future_saved": true,
+    "sample_count": 13,
+    "samples": [
+      {
+        "clone_relative_frame": 1,
+        "location": {
+          "map_id": 198,
+          "x": 23,
+          "y": 15
+        },
+        "ready": false,
+        "boulder_read_valid": true,
+        "boulder_read_error": null
+      },
+      {
+        "clone_relative_frame": 2,
+        "location": {
+          "map_id": 198,
+          "x": 23,
+          "y": 15
+        },
+        "ready": false,
+        "boulder_read_valid": true,
+        "boulder_read_error": null
+      },
+      {
+        "clone_relative_frame": 8,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": false,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 16,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": false,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 24,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": false,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 32,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": false,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 48,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": false,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 64,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": false,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 96,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": false,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 128,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": false,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 160,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": true,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 192,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": true,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      },
+      {
+        "clone_relative_frame": 240,
+        "location": {
+          "map_id": 194,
+          "x": 22,
+          "y": 16
+        },
+        "ready": true,
+        "boulder_read_valid": false,
+        "boulder_read_error": "byte_slot_or_toggle_invalid"
+      }
+    ],
+    "interpretation": "副本在相對frame8已觀察到(194,22,16)，相對frame160起ready；僅支持落洞後等待的前置研究，未推進正式遊戲。",
+    "boulder_reader_limit": "轉至地圖194後，原3F專用boulder讀取回報byte_slot_or_toggle_invalid，不能把該讀取當作新地圖的有效石頭證據。"
+  },
+  "timing_caveats": [
+    "Full Heal到3F hole的牆鐘差包含工程及復核暫停，不能當通關速度。",
+    "帳本時刻、summary.recorded_at與無輸入副本相對frame代表不同量，未混算速度。"
+  ],
+  "limitations": [
+    "四天王及冠軍尚未完成；未宣稱全破。",
+    "456項是復核紀錄所報的相關正式測試，未獨立重跑，未宣稱全套測試通過。",
+    "3F正式完成收據的native_script_seen為false；依正式帳本記錄完成，不擴大為所有原生腳本皆已驗證。",
+    "原始事件位元與八徽章讀值不等於本次執行新增里程碑。",
+    "公開精選資料未收錄來源路徑、主機識別、原始記憶體快照或個人名稱。"
+  ],
+  "provenance": [
+    {
+      "id": "S1",
+      "label": "正式野外操作完成帳本",
+      "byte_length": 3827,
+      "sha256": "d85b265d49d442231b96c53cf3ffdaf17247986d233f638e182aad544ddce030"
+    },
+    {
+      "id": "S2",
+      "label": "正式復核紀錄",
+      "byte_length": 915,
+      "sha256": "ecdbc72add491400bb6a0f86c07e0b5918c71bf7952d1713932305cd64c8b7d0"
+    },
+    {
+      "id": "S3",
+      "label": "frame 7513 正式待復核快照",
+      "byte_length": 12491,
+      "sha256": "40bcfe4dcd399cb837dc05821484da4aa0f9df07579174e078529bf77f39cd0a"
+    },
+    {
+      "id": "S4",
+      "label": "正式執行摘要",
+      "byte_length": 1026,
+      "sha256": "f9e8bbba846d523e46288612c5c0dcaa5c9d7c8d4888f5cd4fc655dad9332095"
+    },
+    {
+      "id": "S5",
+      "label": "frame 7233 唯讀前置檢查",
+      "byte_length": 1795,
+      "sha256": "48b19783531d936ea9bbe505cd44a424ec09e7a1de6a0d2c4ba00871402b28dd"
+    },
+    {
+      "id": "S6",
+      "label": "frame 7513 無輸入副本前置檢查",
+      "byte_length": 313612,
+      "sha256": "858dc6a8ed19b9f29aec39ce30cebcc95983451cac1fa8532ceb291e094af0a4"
+    },
+    {
+      "id": "S7",
+      "label": "frame 7233 固定復核封包",
+      "byte_length": 1053,
+      "sha256": "1bb32f1a1c45becd9fab60c4f1718f90e9a1d075469f92bbe8f9a1e32db9496b"
+    },
+    {
+      "id": "S8",
+      "label": "Full Heal 正式驗收收據",
+      "byte_length": 4558,
+      "sha256": "3ead2246b590d091234f933b9d2ec40323e8724f55d09f7a8b6ae5110a26b37d"
+    }
+  ]
+}

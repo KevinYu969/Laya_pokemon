@@ -9,8 +9,8 @@ import json
 from pathlib import Path
 import time
 
-PURE_SHA256="d61b5b4d3aafc02ce926f3151784ab711242027cfdabdfb9fc2956bcd7c31ee5"
-PURE_CRLF_SHA256="d2615d336750f3b8944f8ce964b4af2cd0678d5c1f0182c52c10489b5de535b2"
+PURE_SHA256="11994d4d546baafb5c691705d1b6bcfa9f26afb2f731f055cb2545d397c73bcf"
+PURE_CRLF_SHA256="b2632795e3986bd6b4e7dfd2558194960b11e76e6a685815bc88a9aabe460f70"
 PURE_SHA256S=(PURE_SHA256,PURE_CRLF_SHA256)
 
 
@@ -128,7 +128,7 @@ def _completion(key,c,controller,position,signal,text,grid,frame):
     return grid["tiles"][15][23]==0x22 and raw["gate1"]==0x1D
 
 
-def context(pyboy,state,plan,step_id,text,grid,previous,*,now=None,reviewed_fainted_bench=()):
+def context(pyboy,state,plan,step_id,text,grid,previous,*,now=None,reviewed_fainted_bench=(),source_layout='source'):
     """Bind one exact case/step/job; do not infer Strength or floor transitions."""
     active=_active()
     if active is None:return _review("registries_unverified"),step_id
@@ -146,6 +146,7 @@ def context(pyboy,state,plan,step_id,text,grid,previous,*,now=None,reviewed_fain
         return (_review("intent_changed"),step_id) if step_id in _BINDINGS or active else None
     if not _explicit(step):return _review("explicit_case_unverified"),step_id
     key=step["boulder_case"];c=boulder.CASES[key]
+    if not boulder.valid_source_layout(key,source_layout):return _review('source_layout_unverified'),step_id
     try:
         if "training_job" not in plan or plan["training_job"] is None:raise ValueError("missing job")
         binding=(MECHANIC,_canonical(step),_canonical(plan["training_job"]))
@@ -171,9 +172,12 @@ def context(pyboy,state,plan,step_id,text,grid,previous,*,now=None,reviewed_fain
         if not verified_blank_transaction_world(text,grid):return _review("initial_closed_world_required"),step_id
         if not isinstance(signal,dict) or signal.get("read_valid") is not True:
             return _review("initial_signal_unverified"),step_id
-        controller=boulder.VictoryLaterBoulderController(key,reviewed_fainted_bench=reviewed_fainted_bench)
+        controller=boulder.VictoryLaterBoulderController(key,reviewed_fainted_bench=reviewed_fainted_bench,source_layout=source_layout)
         _CONTROLLERS[step_id]=controller;_BINDINGS[step_id]=binding
     if getattr(controller,'reviewed_fainted_bench',())!=reviewed_fainted_bench:return _review('bound_recovery_allowance_changed'),step_id
+    if (getattr(controller,'source_layout','source')!=source_layout
+            or getattr(controller,'source_layout_contract','source')!=source_layout):
+        return _review('bound_source_layout_changed'),step_id
     controller.__class__=boulder.VictoryLaterBoulderController
     result=controller.context(state,text=text,grid=grid,signal=signal,previous=previous,
         now=time.monotonic() if now is None else now,owner=step_id,overworld_ready=ui_overworld_ready(text,grid))

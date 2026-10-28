@@ -89,3 +89,42 @@ def test_field_entry_defers_to_true_previous_dispatch(monkeypatch):
     monkeypatch.setattr(observation,'read_visible_text',forbidden)
     monkeypatch.setattr(r,'read_world_grid',forbidden)
     assert r.field_context(object(),{}, {'steps':[]},'original') is None
+
+
+@pytest.mark.parametrize('entry',('switch','attrition'))
+def test_full_heal_preflight_precedes_ui_and_receives_independent_evidence(monkeypatch,entry):
+    pb=object();s={'frame':5353};p={'steps':[]};previous=['a'];calls=[]
+    result=({'phase':'campaign_review','available_actions':['wait'],'review_reason':'blocked'},'original')
+    monkeypatch.setattr(r.recovery_field_medicine,'applies',lambda *a,**k:True)
+    def gate(*args,**kwargs):calls.append((args,kwargs));return result
+    monkeypatch.setattr(r.recovery_field_medicine,'preflight',gate)
+    monkeypatch.setattr(r.recovery_field_medicine,'context',forbidden)
+    monkeypatch.setattr(r.owned_field_medicine,'preflight',forbidden)
+    monkeypatch.setattr(observation,'read_visible_text',forbidden)
+    monkeypatch.setattr(r,'read_world_grid',forbidden)
+    attrition={'review_reason':'party_attrition_requires_center'}
+    out=(r.switch_context(pb,s,p,'original',previous) if entry=='switch' else
+        r.attrition_transition_context(pb,s,p,'original',attrition,previous))
+    assert out is result and len(calls)==1
+    args,kwargs=calls[0];assert args==(pb,s,p,'original')
+    assert kwargs['native_owner'] is pb and kwargs['game_id']=='game29'
+    assert kwargs['source_evidence'] is r._RECOVERY_FULL_HEAL_EVIDENCE
+    assert set(kwargs['peer_owners'])==r.owned_field_medicine.PEER_NAMES
+    assert kwargs['attrition'] is (attrition if entry=='attrition' else None)
+
+
+def test_completed_full_heal_none_never_falls_through_to_old_coordinator(monkeypatch):
+    pb=object();s={'location':{'map_id':198,'x':12,'y':13}};p={};previous=['right'];seen=[]
+    monkeypatch.setattr(r.recovery_field_medicine,'applies',lambda *a,**k:True)
+    monkeypatch.setattr(r.recovery_field_medicine,'preflight',lambda *a,**k:None)
+    def done(*args,**kwargs):seen.append(args);return None
+    monkeypatch.setattr(r.recovery_field_medicine,'context',done)
+    monkeypatch.setattr(r.owned_field_medicine,'applies',forbidden)
+    monkeypatch.setattr(observation,'read_visible_text',lambda _: 'actual-text')
+    monkeypatch.setattr(r,'read_world_grid',lambda *_:'actual-grid')
+    assert r._owned_field_medicine_context(pb,s,p,'original',previous) is None
+    assert seen==[(pb,s,p,'original','actual-text','actual-grid',previous)]
+
+
+def test_unmarked_old_no_cursor_plan_is_not_stolen_by_new_profile():
+    assert r.recovery_field_medicine.applies({},None,shared=r.owned_field_medicine) is False

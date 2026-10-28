@@ -19,6 +19,7 @@ ADDRESSES=dict(map_id=0xD35E,x=0xD362,y=0xD361,raw=0xD057,battle_type=0xD05A,
 SCRIPT_ADDRESSES={194:0xD63F,198:0xD640}
 OWNED_CASE_MAP={'2f_switch1':194,'2f_switch2':194,'3f_switch1':198,'3f_hole':198}
 OWNED_KIND='owned_later_boulder_hyper_v1'
+RECOVERY_KIND='recovery_full_heal'
 
 
 def _int(value,lo=0,hi=2**63-1):return type(value) is int and lo<=value<=hi
@@ -40,7 +41,18 @@ def _owned_intent(intent):
         and type(intent['capsule_sha256']) is str and re.fullmatch(r'[0-9a-f]{64}',intent['capsule_sha256']) is not None)
 
 
-def _intent(intent):return any(ui._exact(intent,x) for x in INTENTS) or _owned_intent(intent)
+def _RECOVERY_INTENT(intent):
+    if type(intent) is not dict or set(intent)!=set(('kind','map_id','target','item','quantity',
+            'target_species','status_before','status_after','reviewed_fainted_bench','owner_step_id','capsule_sha256')):
+        return False
+    expected=dict(kind=RECOVERY_KIND,map_id=198,target=[11,13],item=52,quantity=1,
+        target_species=35,status_before=8,status_after=0,reviewed_fainted_bench=[7],
+        owner_step_id='league28-fnt-recovery-00',capsule_sha256=intent.get('capsule_sha256'))
+    return (ui._exact(intent,expected) and type(intent['capsule_sha256']) is str
+        and re.fullmatch(r'[0-9a-f]{64}',intent['capsule_sha256']) is not None)
+
+
+def _intent(intent):return any(ui._exact(intent,x) for x in INTENTS) or _owned_intent(intent) or _RECOVERY_INTENT(intent)
 
 
 def _location(intent):
@@ -49,6 +61,10 @@ def _location(intent):
 
 
 def _authority(intent,authority):
+    if _RECOVERY_INTENT(intent):
+        return ui._exact(authority,dict(kind=RECOVERY_KIND,owner_step_id=intent['owner_step_id'],
+            capsule_sha256=intent['capsule_sha256'],location=_location(intent),reviewed_fainted_bench=[7],
+            status_before=8,status_after=0))
     if not _owned_intent(intent):return authority is None
     return ui._exact(authority,dict(owner_step_id=intent['owner_step_id'],case_key=intent['case_key'],
         capsule_sha256=intent['capsule_sha256'],location=_location(intent)))
@@ -106,6 +122,69 @@ def _closed_world(text,grid,frame,location=LOCATION):
     except (KeyError,IndexError,TypeError):return False
 
 
+def recovery_party(p):
+    """Exact field recovery schema; never repair FNT HP to reuse a live-only parser."""
+    if (type(p) is not dict or p.get('profile')!='gen1-wrapper-ram-progress-v1-unvalidated'
+            or p.get('initialization_candidate') is not True or p.get('party_read_valid') is not True
+            or not _int(p.get('party_count'),6,6) or type(p.get('party')) is not list or len(p['party'])!=6):
+        return None
+    party=p['party']
+    for m in party:
+        if (type(m) is not dict or not _int(m.get('species'),1,190) or m['species'] not in ui._SPECIES
+                or m.get('species_name')!=ui._SPECIES[m['species']] or not _int(m.get('level'),1,100)
+                or not _int(m.get('exp'),0,0xFFFFFF) or not _int(m.get('hp'),0,999)
+                or not _int(m.get('max_hp'),1,999) or m['hp']>m['max_hp']
+                or type(m.get('status')) is not int or m['status'] not in ui._STATUS
+                or type(m.get('moves')) is not list or len(m['moves'])!=4
+                or type(m.get('pp')) is not list or len(m['pp'])!=4
+                or any(not _int(v,0,165) for v in m['moves']) or any(not _int(v,0,255) for v in m['pp'])
+                or m['moves'][0]==0 or any(move==0 and (pp!=0 or any(m['moves'][j+1:]))
+                    for j,(move,pp) in enumerate(zip(m['moves'],m['pp'])))):
+            return None
+        if m['species']==7:
+            if m['hp']!=0 or m['status']!=0:return None
+        elif m['species']==35:
+            if m['hp']!=m['max_hp'] or m['status'] not in (8,0):return None
+        elif m['hp']!=m['max_hp'] or m['status']!=0:return None
+    if {m['species'] for m in party}!=ui.ROSTER:return None
+    ref=reference()
+    if ref.get('source_commit')!=SOURCE_COMMIT:return None
+    for m in party:
+        for move,pp in zip(m['moves'],m['pp']):
+            key=move_key(move) if move else None
+            if move and (key is None or (pp&63)>ref['moves'][key]['pp']*(5+(pp>>6))//5):return None
+    return party
+
+
+def _recovery_party_view(party,cursor=None,marker='▶',receipt=None):
+    rows=[list(r) for r in ui._party_view(party,cursor,marker,receipt)]
+    for i,m in enumerate(party):
+        if m['hp']==0:rows[2*i][17:20]=list('FNT')
+    return tuple(''.join(r) for r in rows)
+
+
+def _recovery_effect_rows(text):
+    """Accept one physical FEAROW's cell only; exact full effect template follows."""
+    if (type(text) is not dict or text.get('profile')!=ui.TEXT_PROFILE or text.get('read_valid') is not True
+            or text.get('alignment_verified') is not True or text.get('read_error') is not None
+            or text.get('window_visible') is not True):return None
+    cells=text.get('cells')
+    if (type(cells) not in (list,tuple) or len(cells)!=18
+            or any(type(row) not in (list,tuple) or len(row)!=20 for row in cells)):return None
+    rows=[]
+    for y,row in enumerate(cells):
+        out=[]
+        for x,v in enumerate(row):
+            if v=="'s" and (x,y)==(7,14) and ''.join(row[1:7]).upper()=='FEAROW':out.append(ui._S)
+            elif type(v) is not str or len(v)!=1 or v==ui._S:return None
+            else:out.append(v.upper())
+        rows.append(''.join(out))
+    raw=[''.join(row) for row in cells]
+    selected=[(i,row.rstrip()) for i,row in enumerate(raw) if re.search(r'[A-Za-z0-9]{2,}',row)][:12]
+    if text.get('lines')!=[r for _,r in selected] or text.get('line_rows')!=[i for i,_ in selected]:return None
+    return tuple(rows)
+
+
 class _Views:
     _start=hm.HMTeachingController._start
     _bag=hm.HMTeachingController._bag
@@ -151,6 +230,7 @@ class OverworldHyperController:
         return self._hint(action,reason)
 
     def _resources(self,p):
+        if _RECOVERY_INTENT(self.contract):return self._recovery_resources(p)
         party=ui._party(p);items=ui._inventory(p.get('inventory')) if type(p) is dict else None
         if (party is None or len(party)!=6 or len({m['species'] for m in party})!=6 or {m['species'] for m in party}!=ui.ROSTER
                 or any(m['hp']<=0 or type(m['status']) is not int or m['status']!=0 for m in party)
@@ -183,6 +263,31 @@ class OverworldHyperController:
         if self.stage=='effect' and not self.effect_selected:return 'actual_target_a_required'
         if self.stage=='effect' and ui._exact(p,self.baseline):return None
         return None if ui._exact(p,self.after) else 'unexpected_effect_or_resource_change'
+
+    def _recovery_resources(self,p):
+        party=recovery_party(p);items=ui._inventory(p.get('inventory')) if type(p) is dict else None
+        if (party is None or items is None or not _int(p.get('money'),0,999999)
+                or p.get('player_name_raw')!='KEVIN' or not _int(p.get('badges_raw'),255,255)
+                or any(ui._name(i['item']) in (None,'?????') for i in items)):
+            return 'recovery_resources_or_reviewed_bench_unverified'
+        if self.baseline is None:
+            targets=[i for i,m in enumerate(party) if m['species']==35]
+            if len(targets)!=1 or party[targets[0]]['status']!=8:return 'exact_poisoned_fearow_required'
+            if not any(i['item']==52 for i in items):return 'full_heal_missing'
+            self.target_index=targets[0];self.name='FEAROW';self.player_name='KEVIN'
+            self.baseline=deepcopy(p);self.items=deepcopy(items);self.after=deepcopy(p)
+            self.after['party'][self.target_index]['status']=0
+            for i,item in enumerate(self.after['inventory']):
+                if item['item']==52:
+                    item['quantity']-=1
+                    if item['quantity']==0:self.after['inventory'].pop(i)
+                    break
+            self.after_items=deepcopy(self.after['inventory'])
+        if self.stage not in ('effect','closing_bag','closing_start','world','complete'):
+            return None if ui._exact(p,self.baseline) else 'premature_or_unrelated_recovery_resource_change'
+        if self.stage=='effect' and not self.effect_selected:return 'actual_target_a_required'
+        if self.stage=='effect' and ui._exact(p,self.baseline):return None
+        return None if ui._exact(p,self.after) else 'unexpected_recovery_effect_or_resource_change'
 
     def _views(self,items):
         views=[];v=_Views(self.player_name,items,self.bag_offset or 0,self.bag_cursor or 0)
@@ -222,7 +327,7 @@ class OverworldHyperController:
                 or signal.get('read_valid') is not True or signal.get('read_error') is not None
                 or type(signal.get('owner_id')) is not int or signal['owner_id']!=id(owner)
                 or any(not _int(signal.get(k)) or signal[k]!=frame for k in ('observation_frame','frame_before','frame_after'))):return self._fail('same_frame_reader_unverified')
-        if (_owned_intent(self.contract) and (type(signal.get('source_map_id')) is not int
+        if ((_owned_intent(self.contract) or _RECOVERY_INTENT(self.contract)) and (type(signal.get('source_map_id')) is not int
                 or signal['source_map_id']!=location['map_id'] or type(signal.get('script_address')) is not int
                 or signal['script_address']!=SCRIPT_ADDRESSES[location['map_id']])):
             return self._fail('owned_script_reader_unverified')
@@ -257,7 +362,7 @@ class OverworldHyperController:
         error=self._resources(p)
         if error:return self._fail(error)
         world=_closed_world(text,grid,frame,location)
-        rows=hm._rows(text)
+        rows=_recovery_effect_rows(text) if _RECOVERY_INTENT(self.contract) and self.stage=='effect' else hm._rows(text)
         if self.stage=='initial':
             if not world:return self._fail('initial_closed_world_required')
             return self._offer('start','start','open_normal_start')
@@ -266,15 +371,18 @@ class OverworldHyperController:
             if self.closed_frame is None:self.closed_frame=frame;return self._wait('first_closed_world_frame')
             if frame<=self.closed_frame:return self._wait('second_fresh_world_required',count=False)
             self.complete=True;self.stage='complete'
-            self.receipt=dict(item=18,quantity=1,target_species=self.contract['target_species'],target_index=self.target_index,
+            self.receipt=dict(item=self.contract['item'],quantity=1,target_species=self.contract['target_species'],target_index=self.target_index,
                 hp_before=self.baseline['party'][self.target_index]['hp'],hp_after=self.after['party'][self.target_index]['hp'],closed_frame=frame)
+            if _RECOVERY_INTENT(self.contract):self.receipt.update(status_before=8,status_after=0,reviewed_fainted_bench=[7])
             return self._hint('wait','closed_two_fresh_world',overworld_medicine_complete=True,medicine_receipt=deepcopy(self.receipt))
         if rows is None:return self._fail('native_text_unverified')
         if world:return self._fail('world_before_transaction_closed')
         if rows==(' '*20,)*18:return self._wait('bounded_source_transition_blank')
         items=self.after_items if self.stage in ('closing_bag','closing_start','world','complete') else self.items
-        if self.stage=='effect':return self._effect(rows,p,frame)
-        party_views=[('party',(i,marker),ui._party_view(p['party'],i,marker)) for i in range(6) for marker in ('▶','▷')]
+        if self.stage=='effect':
+            return self._fullheal_effect(rows,p,frame) if _RECOVERY_INTENT(self.contract) else self._effect(rows,p,frame)
+        party_renderer=_recovery_party_view if _RECOVERY_INTENT(self.contract) else ui._party_view
+        party_views=[('party',(i,marker),party_renderer(p['party'],i,marker)) for i in range(6) for marker in ('▶','▷')]
         views=self._views(items)+(party_views if self.stage=='party' else [])
         matches=[(kind,key) for kind,key,view in views if rows==view]
         if len(matches)!=1:
@@ -302,10 +410,10 @@ class OverworldHyperController:
             if self.stage!='bag':return self._fail('unexpected_bag_page')
             current=off+cur;pending=self._cursor('bag',current)
             if pending:return pending
-            wanted=next(i for i,item in enumerate(self.items) if item['item']==18)
+            wanted=next(i for i,item in enumerate(self.items) if item['item']==self.contract['item'])
             if current==wanted:
                 self.bag_offset,self.bag_cursor=off,cur
-                return self._offer('a','use','select_exact_hyper_potion')
+                return self._offer('a','use','select_exact_full_heal' if _RECOVERY_INTENT(self.contract) else 'select_exact_hyper_potion')
             return self._offer('down' if current<wanted else 'up','bag','navigate_actual_hyper',('bag',current,current+(1 if current<wanted else -1)))
         if kind=='use':
             y,marker=key
@@ -324,6 +432,22 @@ class OverworldHyperController:
             if index==self.target_index:return self._offer('a','effect','apply_once_to_exact_species')
             return self._offer('down' if index<self.target_index else 'up','party','navigate_exact_target',('party',index,index+(1 if index<self.target_index else -1)))
         return self._fail('unexpected_source_page')
+
+    def _fullheal_effect(self,rows,p,frame):
+        full=_recovery_party_view(self.after['party'],receipt=('FEAROW'+ui._S,'HEALTH RETURNED!'))
+        if rows==full:
+            if not ui._exact(p,self.after):return self._fail('fullheal_done_without_exact_status_and_item_consumption')
+            if self.receipt_full_frame is None:self.receipt_full_frame=frame
+            if frame-self.receipt_full_frame<54:return self._wait('source_fullheal_done_delay50_plus_redraw')
+            return self._offer('a','closing_bag','ack_source_done_once')
+        self.receipt_full_frame=None
+        before=_recovery_party_view(self.baseline['party'],self.target_index,'▶')
+        inactive_before=_recovery_party_view(self.baseline['party'],self.target_index,'▷')
+        inactive_after=_recovery_party_view(self.after['party'],self.target_index,'▷')
+        if ui._exact(p,self.baseline) and rows==before:return self._wait('actual_fullheal_use_input_native_processing')
+        if any(ui._partial(rows,v) for v in (inactive_before,inactive_after,full)):
+            return self._wait('source_fullheal_effect_partial_no_input')
+        return self._fail('fullheal_effect_page_unverified')
 
     def _effect(self,rows,p,frame):
         after=self.after['party'];old=self.baseline['party'];delta=after[self.target_index]['hp']-old[self.target_index]['hp']
