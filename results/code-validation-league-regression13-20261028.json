@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-28",
+  "scope": "完整正式tests；合併遠端reader與headless live後，含weak sendout原生換人與clock修復",
+  "command": "workspace-python -B -X utf8 -m pytest tests -p no:cacheprovider --basetemp=<LOCAL_VALIDATION_TEMP> -q",
+  "exit_code": 0,
+  "passed": 10359,
+  "wall_seconds": 292.797,
+  "source_files": 388,
+  "source_unchanged": true,
+  "changed_paths": [],
+  "manifest_sha256": "cc90b42ab40eaca3c1976ff420acd7e14a565788dd8a79a9420651d7842091e1",
+  "stdout_sha256": "f9738a0b89d743cca7573c2435ecd20c15187065d633dd6550b2fcb451298244",
+  "live_game_validation": false,
+  "limitations": [
+    "此為程式/fixture回歸，不等同四天王通關。",
+    "原始log含本機診斷路徑，僅保留本機；公開收據不含原始log。"
+  ]
+}
