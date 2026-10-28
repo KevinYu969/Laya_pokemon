@@ -220,8 +220,10 @@ def validate_budget(budget,now):
         and budget.get("error") is None,"job_budget_expired_invalid_or_sticky_error")
     require(hexsha(budget.get("expected_plan_sha256")) and hexsha(budget.get("calibration_sha256")) and hexsha(budget.get("active_sha256"))
         and type(budget.get("last_frame")) is int and budget["last_frame"]>=-1
-        and budget["appends"]==(2*budget["outings"]-1 if budget["phase"]=="outbound_batch" else 2*budget["outings"])
-        and (budget["phase"]!="center" or budget["appends"]==budget["outings"]==0),"job_budget_hash_or_phase_invalid")
+        and ((budget["phase"]=="center" and budget["appends"]==budget["outings"]==0)
+            or (budget["phase"]=="outbound_batch" and budget["outings"]<=budget["appends"]<=2*budget["outings"]-1)
+            or (budget["phase"]=="returning" and budget["outings"]+1<=budget["appends"]<=2*budget["outings"])),
+        "job_budget_hash_or_phase_invalid")
 
 
 def plan_budget(budget):return {k:budget[k] for k in ("job","target","started_wall","deadline_wall","max_seconds","max_outings","outings","appends","phase")}
@@ -239,6 +241,25 @@ def outbound():
         +segment("route_north_edge_to_east_cave_door",34)[:-1]
         +[move(34,(14,31),next_map=194,terminal=True),move(194,(29,7)),move(194,(28,7)),move(194,(28,7)),
           dict(kind="interact",mechanic="league_training_batch",map_id=194,target=[28,7],training_intent=deepcopy(BATCH_INTENT))])
+
+
+def continue_batch(player):
+    require(player in ({"map_id":194,"x":28,"y":7},{"map_id":194,"x":28,"y":8}),"batch_endpoint_unknown")
+    target=[player["x"],player["y"]]
+    # Zero displacement anchor leaves ordinary main lead_context in control.
+    return [move(194,target),dict(kind="interact",mechanic="league_training_batch",map_id=194,
+        target=list(target),training_intent=deepcopy(BATCH_INTENT))]
+
+
+def receipt_needs_center(progress,proof):
+    from laya_pokemon import league_training_batch as training
+    current=training.resources(progress)
+    receipt=proof.get("batch_receipt")
+    require(current is not None and isinstance(receipt,dict)
+        and type(receipt.get("needs_center")) is bool,"batch_center_requirement_missing")
+    actual=training.needs_center(current)
+    require(receipt["needs_center"] is actual,"batch_center_requirement_disagrees")
+    return actual
 
 
 def recovery(player):
@@ -433,9 +454,12 @@ def propose(snapshot,budget,calibration,now):
         require(state["training_world_proof"]["full_party_healed"] is True,"normal_nurse_closed_receipt_required")
         require(budget["outings"]<MAX_OUTINGS,"outings_budget_exhausted")
         updated["outings"]+=1;updated["phase"]="outbound_batch";steps=outbound()
-    else:
+    elif receipt_needs_center(progress,receipt):
         steps=recovery(loc);updated["phase"]="returning"
         require(len(steps)+8<=128 and all(not (m["status"]&8) or m["hp"]>40 for m in party),"poison_recovery_margin_requires_root_review")
+    else:
+        require(budget["outings"]<MAX_OUTINGS,"outings_budget_exhausted")
+        updated["outings"]+=1;steps=continue_batch(loc)
     updated["appends"]+=1;updated["last_frame"]=state["frame"];updated["last_review_stamp"]=snapshot["stamp"]
     updated["last_wall"]=now
     updated["last_review_sha256"]=digest(snapshot["raw"][2]);updated["last_progress"]=deepcopy(progress)
@@ -498,7 +522,9 @@ def history_budget(rows,now):
                 and candidate["calibration_sha256"]==seed["calibration_sha256"]
                 and candidate["active_sha256"]==seed["active_sha256"]
                 and candidate["last_wall"]>=budget["last_wall"] and candidate["last_frame"]>budget["last_frame"]
-                and budget["outings"]<=candidate["outings"]<=budget["outings"]+1,"ledger_budget_was_reset")
+                and ((candidate["phase"]=="outbound_batch" and candidate["outings"]==budget["outings"]+1)
+                    or (budget["phase"]=="outbound_batch" and candidate["phase"]=="returning"
+                        and candidate["outings"]==budget["outings"])),"ledger_budget_was_reset")
             budget=deepcopy(candidate);pending=None;reviewed_candidate=None
         else:raise ReviewRequired("ledger_kind_unknown")
     require(pending is None and reviewed_candidate is None,"uncommitted_reserve_requires_root_review")

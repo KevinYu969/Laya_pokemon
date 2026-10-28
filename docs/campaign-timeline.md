@@ -545,3 +545,11 @@ frame10833上3F樓梯，地圖byte已198但XY仍前圖(25,14)、物件數13尚�
 19:11:11停770673的合字頁「The enemy's weak」：遊戲內已切Lapras19，舊Nidoking血條尚未重畫。依固定原始碼次序、真D014／CC2F與精確實體字格接入過渡WAIT；具名保留原錯誤／switch及field成本。19:29:56.646745真EOF772537、EXP708／PP2、無新倒下，已續正常回補與均衡訓練。[實機收據](../results/wild-switch-source-completed-20261028.json)。1708項相關與12subtests通過。
 
 [完整回歸12](../results/code-validation-league-regression12-20261028.json)為10311項、59subtests、382來源前後不變；該cut早於本次weak送出修正，沒有混稱全套已覆蓋新修正。
+
+## 使用者中斷後的輪迴檢討 — 2026-10-28
+
+20:23依Kevin要求停止自動排程並保留原PyBoy。確認原supervisor把每個single_wild結束都接回中心，沒有用needs_center決定回程；最近20趟19趟不需補給、11趟滿血、2趟EXP0，總EXP6437／PP19，回程牆鐘中位14.535秒。這是排程設計疏漏，不能當成有效率的長期訓練。
+
+Kevin選擇修成健康原地接新單戰、需要補給才回中心；已補兩個既驗tile明示起點與正常首位輪訓，217項／10subtests通過。舊測試原本斷言一戰必返，現已改成健康續戰與低血回補各自的明確案例，成本／毒狀態負例保持。
+
+原第157趟returning已commit，故僅完成那一次回補；20:37:56真護士1632833、全隊滿HP／status／PP。舊排程保持停止，新版尚未實機。原4小時時段20:45到期，正待新的30分鐘驗證或直接聯盟的選擇，沒有自行延長。[審核與修正收據](../results/training-loop-audit-and-fix-20261028.json)。四天王／冠軍尚未過。

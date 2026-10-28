@@ -9,7 +9,7 @@
 [Quickstart / English overview](docs/reader-quickstart.md#english-overview) · [公開檢查範圍](docs/public-review-20261028.md)
 
 
-**2026-10-28 實際進度：已抵石英高原，持續均衡練隊，四天王尚未破關。** 冠軍之路機關、正常護士回補與倒下隊員救援已完成。拉普拉斯十萬伏特、伊布37級Bite均已實機驗收；伊布與大嘴雀已正常換人分經驗。19:03回補時隊伍等級為37／42／37／39／37／44。[最新時間與問題紀錄](docs/league-progress.md)。
+**2026-10-28 實際進度：八徽章、已抵石英高原；四天王尚未破關，目前保持暫停。** 已中斷固定「打一怪就回中心」的低效率排程，改為健康時原地接下一戰，217項相關測試通過，待新版實測。20:37正常護士回補時，隊伍等級39／42／39／40／39／45、全隊滿血滿PP。[最新時間與問題紀錄](docs/league-progress.md)。
 
 
 [![Tests](https://github.com/KevinYu969/Laya_pokemon/actions/workflows/tests.yml/badge.svg)](https://github.com/KevinYu969/Laya_pokemon/actions/workflows/tests.yml)
@@ -22,7 +22,7 @@
 
 **八枚徽章、聯盟前勁敵 BLUE 已擊敗。** 2026-10-28台北10:35:51實際觸發勁敵勝利事件，拉普拉斯與卡比獸皆42級，用2瓶Hyper Potion、未見新倒下，隨後正常回中心全隊補滿。[本場紀錄](docs/league-progress.md)保留確切時間、資源與修補問題；其餘四人35–37級仍待均衡培養，四天王、冠軍與名人堂尚未完成。
 
-**已抵達石英高原**：正常護士復原六隻HP／狀態／PP。連續訓練已包含正常換人分經驗與伊布學Bite；過早確認提示的卡點也已修復並沿原戰鬥完成。失敗會停檢、保存教訓後續行，四天王尚未勝。[重要關卡時間](docs/league-progress.md)持續記錄。
+**已抵達石英高原**：拉普拉斯十萬伏特、伊布Bite、正常換人分經驗與護士回補已實機驗收。單怪往返問題已修碼，舊排程停止，新版連戰尚待實機驗收；[問題與重要關卡時間](docs/league-progress.md)持續記錄。
 
 第八館坂木勝利時間仍為2026-10-25台北20:24:35，該館零補藥、零新增倒下，正常取得TM27。[第八館收據](results/eighth-gym-campaign-20261025.json)與[完整戰影片驗收](results/giovanni-gym8-clips-20261025.json)保留原始切點。
 

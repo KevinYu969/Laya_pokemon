@@ -182,11 +182,15 @@ def closed_world(text,grid,player,frame):
 
 
 class TrainingBatch:
-    def __init__(self,intent=INTENT):
+    def __init__(self,intent=INTENT,*,start=TILES[0]):
         if (type(intent) is not dict or intent != INTENT or set(intent) != set(INTENT)
                 or any(type(intent[k]) is not type(v) for k,v in INTENT.items())
                 or any(type(n) is not int for p in intent["tiles"] for n in p)):
             raise ValueError("只接受固定194兩格、45級checkpoint的單場批次")
+        if (type(start) is not tuple or len(start)!=2
+                or any(type(n) is not int for n in start) or start not in TILES):
+            raise ValueError("只接受已驗證兩格的明示起點")
+        self.start=start;self.start_contract=start
         self.intent=deepcopy(intent);self.contract=deepcopy(intent);self.owner=None
         self.started=self.last_now=None;self.calls=self.waits=self.requests=self.displacements=0
         self.last_frame=-1;self.last_packet=None;self.error=None;self.pending=None
@@ -325,7 +329,12 @@ class TrainingBatch:
     def context(self,state,*,text,grid,signal,previous,now,owner):
         if self.error:return self.fail("sticky")
         frame=state.get("frame") if isinstance(state,dict) else None
-        if (self.intent!=self.contract or not isinstance(owner,str) or not owner
+        # Old warm owners predate this field and retain the original fixed start.
+        start=getattr(self,'start',TILES[0]);start_contract=getattr(self,'start_contract',TILES[0])
+        if (type(start) is not tuple or len(start)!=2 or any(type(n) is not int for n in start)
+                or start not in TILES or type(start_contract) is not tuple
+                or any(type(n) is not int for n in start_contract) or start!=start_contract
+                or self.intent!=self.contract or not isinstance(owner,str) or not owner
                 or self.owner is not None and owner!=self.owner or not integer(frame,0,2**63-1)
                 or frame<self.last_frame or type(now) not in (int,float) or not math.isfinite(now)
                 or now<0 or self.last_now is not None and now<self.last_now):
@@ -407,6 +416,7 @@ class TrainingBatch:
             return self.fail("party_or_source_progress_unverified")
         if any(m["hp"]==0 for m in current["party"]):return self.fail("fainted_party_requires_review")
         if self.baseline is None:
+            if player!=start:return self.fail("initial_start_tile_unverified")
             if not closed:return self.fail("initial_blank_idle_source_world_required")
             if needs_center(current):return self.fail("initial_party_requires_center")
             self.baseline=current

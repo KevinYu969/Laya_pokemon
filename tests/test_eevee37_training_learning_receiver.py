@@ -20,8 +20,8 @@ from pathlib import Path
 import pytest
 import laya_pokemon
 
-PURE_LF_SHA256 = '77520e26f3f016fd5893838ddfe061198b3a71e20757c7d60b1278e7fefaee18'
-PURE_CRLF_SHA256 = '46147c7d6bb92bbd9dd7afd82e81774068310fdd5b8aa50820346186cc613082'
+PURE_LF_SHA256 = '2d7aa3db864b8eca7347a02a4be7aac38516aec2c1a5186b4a7bb23ba6469507'
+PURE_CRLF_SHA256 = '15e3a3335229e656a857cecdbee1b193f899c6cebf4d1b7742a2ed548c84174c'
 
 
 @pytest.fixture(autouse=True)

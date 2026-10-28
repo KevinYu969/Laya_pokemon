@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import time
 
-PURE_SHA256S = ('77520e26f3f016fd5893838ddfe061198b3a71e20757c7d60b1278e7fefaee18', '46147c7d6bb92bbd9dd7afd82e81774068310fdd5b8aa50820346186cc613082')
+PURE_SHA256S = ('2d7aa3db864b8eca7347a02a4be7aac38516aec2c1a5186b4a7bb23ba6469507', '15e3a3335229e656a857cecdbee1b193f899c6cebf4d1b7742a2ed548c84174c')
 
 
 def _load_exact():
@@ -255,7 +255,7 @@ def _explicit(step):
     intent=step.get("training_intent")
     return (step.get("kind")=="interact" and step.get("mechanic")==MECHANIC
         and type(step.get("map_id")) is int and step["map_id"]==194
-        and type(step.get("target")) is list and step["target"]==[28,7]
+        and type(step.get("target")) is list and tuple(step["target"]) in batch.TILES
         and all(type(n) is int for n in step["target"])
         and type(intent) is dict and intent==batch.INTENT and set(intent)==set(batch.INTENT)
         and all(type(intent[k]) is type(v) for k,v in batch.INTENT.items())
@@ -330,6 +330,11 @@ def _zero_completion_proven(controller,pyboy,step_id,step,job,state,signal,resul
                 or _canonical(result.get('training_batch_receipt'))!=_canonical(r)
                 or type(history) is not list or len(history)!=1 or type(e) is not dict):return False
         ack,wild,closed=origin['ack'],origin['wild'],origin['closed'];p=e.get('pending');cancel=r.get('cancelled_walk');loc=state['location']
+        start=getattr(c,'start',batch.TILES[0])
+        if (type(start) is not tuple or len(start)!=2 or any(type(n) is not int for n in start)
+                or start not in batch.TILES or start!=getattr(c,'start_contract',batch.TILES[0])
+                or start!=tuple(step['target']) or type(p) is not dict
+                or tuple(p.get('player',()))!=start):return False
         if (type(ack) is not dict or type(wild) is not dict or type(closed) is not dict or type(p) is not dict
                 or set(p)!={'action','player','expected','frame','executed'}
                 or set(e)!={'pending','snapshot','player','frame','ack_frame','raw','kind','active'}
@@ -414,20 +419,24 @@ def context(pyboy,state,plan,step_id,text,grid,previous,*,now=None):
             or any(not batch.integer(loc.get(k)) for k in ("map_id","x","y"))):
         return _review("frame_or_location_unverified",step_id)
     position={k:loc[k] for k in ("map_id","x","y")}
-    if controller is None and position!=START:return None
+    start=tuple(step['target'])
+    if controller is not None and (getattr(controller,'start',batch.TILES[0])!=start
+            or getattr(controller,'start_contract',batch.TILES[0])!=start):
+        return _review("original_start_contract_changed",step_id)
+    if controller is None and position!={'map_id':194,'x':start[0],'y':start[1]}:return None
     from pyboy.plugins import game_wrapper_pokemon_gen1_constants as sdk
     signal=batch.read_training_observation(pyboy,frame,sdk)
     if controller is None:
         current=batch.resources(signal.get("progress"))
         if (signal.get("read_valid") is not True or current is None
-                or not batch.closed_world(text,grid,(28,7),frame) or signal.get("idle") is not True):
+                or not batch.closed_world(text,grid,start,frame) or signal.get("idle") is not True):
             return _review("initial_source_world_unverified",step_id)
         weakest=min(current["party"],key=lambda m:(m["level"],m["exp"]))
         if (type(plan.get("lead_species")) is not int or plan["lead_species"]!=weakest["species"]
                 or current["party"][0]["species"]!=weakest["species"]):
             return _review("true_lowest_lead_not_ready",step_id)
         if min(m["level"] for m in current["party"])>=45:return _review("all_six_45_checkpoint_review",step_id)
-        controller=batch.TrainingBatch(step["training_intent"])
+        controller=batch.TrainingBatch(step["training_intent"],start=start)
         _CONTROLLERS[step_id]=controller;_BINDINGS[step_id]=binding;_OWNERS[step_id]=pyboy
         controller._zero_bridge_origin=dict(native=pyboy,controller=controller,binding=_BINDINGS[step_id],ack=None,wild=None,closed=None)
     controller.__class__=batch.TrainingBatch

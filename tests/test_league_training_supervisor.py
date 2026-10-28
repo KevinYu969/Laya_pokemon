@@ -84,11 +84,13 @@ def rejected(fn,fragment):
 
 def batch_snapshot(out,*,frame=200,p=None,outcome="complete_single_wild",location=None):
     p=progress() if p is None else deepcopy(p);location=location or dict(map_id=194,x=28,y=8)
+    from laya_pokemon import league_training_batch as training
     completed=dict(field_move_complete=True,field_move_kind="league-training-batch",training_batch_complete=True,
         training_batch_job=s.JOB,training_batch_owner_step=out["plan"]["steps"][-1]["id"],source_commit=s.SOURCE_COMMIT,
         training_batch_outcome=outcome,training_batch_displacements=32 if outcome=="complete_no_encounter" else 1,
         training_batch_receipt=dict(closed_frames=[frame-5,frame-4],wild_count=0 if outcome=="complete_no_encounter" else 1,
-            total_exp_gain=0 if outcome=="complete_no_encounter" else 120))
+            total_exp_gain=0 if outcome=="complete_no_encounter" else 120,
+            needs_center=training.needs_center(training.resources(p))))
     receipt=s.project_completed_batch(out["plan"],completed,dict(frame=frame-4,location=location,progress=p))
     return snapshot(out["plan"],frame=frame,loc=location,p=p,batch=receipt)
 
@@ -135,9 +137,9 @@ def test_initial_full_center_builds_lowest_lead_move_then_one_owned_batch():
     assert out["plan"]["blocked"]==snap["plan"]["blocked"]
 
 
-def test_complete_single_wild_builds_normal_marked_recovery_then_full_pp_nurse():
+def test_low_hp_single_wild_builds_normal_marked_recovery_then_full_pp_nurse():
     snap,budget,c=start();out=s.propose(snap,budget,c,2001)
-    p=progress();p["party"][2]["exp"]+=120;p["party"][2]["hp"]-=4;p["party"][2]["pp"][0]-=1
+    p=progress();p["party"][2]["exp"]+=120;p["party"][2]["hp"]=80;p["party"][2]["pp"][0]-=1
     end=batch_snapshot(out,p=p);back=s.propose(end,out["budget"],c,2100)
     steps=back["plan"]["steps"][len(out["plan"]["steps"]):]
     assert steps[0]["target"]==[28,7] and all(x["recovery_route"] is True for x in steps)
@@ -150,22 +152,27 @@ def test_complete_single_wild_builds_normal_marked_recovery_then_full_pp_nurse()
 
 def test_center_full_heal_closure_starts_next_outing_with_fresh_lowest_lead():
     snap,budget,c=start();out=s.propose(snap,budget,c,2001)
-    p=progress();p["party"][2]["exp"]+=120
+    p=progress();p["party"][2]["exp"]+=120;p["party"][2]["hp"]=80
     back=s.propose(batch_snapshot(out,p=p),out["budget"],c,2100)
+    p["party"][2]["hp"]=p["party"][2]["max_hp"]
     center=snapshot(back["plan"],frame=300,p=p)
     next_out=s.propose(center,back["budget"],c,2200)
     assert next_out["plan"]["lead_species"]==154
     assert next_out["budget"]["outings"]==2 and next_out["budget"]["deadline_wall"]==2000+s.MAX_SECONDS
 
 
-def test_no_encounter_batch_still_returns_instead_of_adding_extra_laps():
+def test_healthy_no_encounter_starts_a_new_budgeted_batch_without_nurse_trip():
     snap,budget,c=start();out=s.propose(snap,budget,c,2001)
     end=batch_snapshot(out,outcome="complete_no_encounter")
     end["review"]["state"]["training_batch_proof"]["displacements"]=32
     end["raw"][2]=s.encode(end["review"])
     back=s.propose(end,out["budget"],c,2100)
-    assert back["budget"]["phase"]=="returning"
-    assert back["plan"]["steps"][-1]["kind"]=="heal"
+    assert back["budget"]["phase"]=="outbound_batch"
+    assert back["budget"]["outings"]==out["budget"]["outings"]+1
+    assert back["budget"]["deadline_wall"]==out["budget"]["deadline_wall"]
+    new=back["plan"]["steps"][len(out["plan"]["steps"]):]
+    assert len(new)==2 and new[0]["target"]==new[1]["target"]==[28,8]
+    assert new[-1]["mechanic"]=="league_training_batch"
 
 
 @pytest.mark.parametrize("name",["round_trip_verified","single_wild_verified","normal_nurse_verified"])

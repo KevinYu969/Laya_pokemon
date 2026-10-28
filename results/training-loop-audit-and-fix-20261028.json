@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-28",
+  "status": "old_scheduler_stopped_code_fixed_runtime_window_pending",
+  "audit": {
+    "sample_fields": 20,
+    "needs_center_true": 1,
+    "needs_center_false": 19,
+    "zero_exp_fields": 2,
+    "total_exp": 6437,
+    "total_pp_spent": 19,
+    "full_hp_fields": 11,
+    "normal_return_pairs": 19,
+    "median_return_wall_seconds": 14.535,
+    "first_at": "2026-10-28T12:12:17.636641+00:00",
+    "last_at": "2026-10-28T12:23:01.151857+00:00"
+  },
+  "root_cause": "single_wild completion unconditionally entered recovery; receipt needs_center was ignored",
+  "fix": [
+    "Recheck typed receipt against current resources.",
+    "When healthy, append a fresh batch at current verified tile, with normal lead rotation.",
+    "Return for low HP, status or low attack PP.",
+    "Preserve existing attempt counters, seed and original deadline."
+  ],
+  "validation": {
+    "passed": 217,
+    "subtests": 10,
+    "seconds": 4.82
+  },
+  "runtime_verified": false,
+  "stopped_at_taipei": "2026-10-28T20:23:02.880304+08:00",
+  "stopped_frame": 1627897,
+  "normal_nurse_after_one_committed_recovery": {
+    "at_taipei": "2026-10-28T20:37:56.794747+08:00",
+    "frame": 1632833,
+    "map_id": 174,
+    "x": 7,
+    "y": 7,
+    "all_party_full": true
+  },
+  "party_levels": [
+    39,
+    42,
+    39,
+    40,
+    39,
+    45
+  ],
+  "original_training_window_expired": true,
+  "new_training_window_approved": false,
+  "cloud_classification": false,
+  "elite_four_complete": false,
+  "champion_complete": false
+}

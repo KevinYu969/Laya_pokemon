@@ -1428,3 +1428,18 @@ Kevin明確回覆同意保留兩邊、只無衝突才整合。先以既有白名
 
 cache程式與整理收據在上述876備份後才實裝，將由下一次白名單備份提交；最新成功SHA只在CURRENT-STATE／本機備份驗證中更新，避免把尚未推送的版本寫成已上線。本文與本機影片繼續累積，未另作網站發布。
 
+
+## 88. 2026-10-28 Kevin指出單怪回中心輪迴；中斷、實測審核與連戰修正
+
+Kevin要求中斷並重新確認，因為畫面長期只在中心與打一怪之間循環。立即停止watch8原兩個排程程序（沒有關掉原PyBoy），用既有REVIEW控制暫停，20:23:02.880304真operator_review1627897／map194(28,7)。原ROM／存檔／模型不動。當時全隊滿血：Venusaur39、Snorlax42、Eevee39、Fearow40、Nidoking39、Lapras45。
+
+原因是我的排程設計疏漏：把安全校準用single_wild controller直接接成長期訓練。pure第一戰完就complete_single_wild本身有明確界線；真正錯在supervisor原來不讀receipt.needs_center，outbound完成就無條件recovery，最後護士require_full_pp。32是位移上限，不是32場戰鬥。這不是遊戲強制要回中心。最近20個真field EOF樣本（20:12:17.636641至20:23:01.151857）中，19次needs_center=false、11次全隊滿血、2次EXP0，總EXP6437／PP19；19對可配護士回程的牆鐘中位14.535秒。只打1怪便浪費往返，確實拖慢破關。私人審核結果one-wild-loop-audit-user-stop-20261028.json保留逐場證據。
+
+Kevin明確選擇「修正為連續多場訓練後挑戰聯盟」。新policy：原field收據及目前resources重新計算needs_center相符且false才原地追加全新單戰controller；低HP≤2/3、異常、可傷害招PP總量<3才正常回補。每戰仍有真source驗收與EXP／PP／資源守恆，不把一個controller重設成多戰，不退calls／waits，不重seed。當前結束tile28,7或28,8就作新明示起點，不能先走回28,7導致新遇怪無owner；新增零位移普通move anchor，讓原main正常首位輪訓後才開新batch。outbound→outbound合法進ledger、attempt仍+1，原1000／14400秒／45目標與初始calibration pins保留。
+
+初次213pass／4fail是舊測試缺needs_center收據，且三項仍斷言錯誤的一戰必返行為。補真布林收據，原低血／正常護士案例明確設HP=2/3再回補並恢復滿血；健康未遇怪案例改驗原地下一attempt且deadline／計數不退，沒有移除毒狀態或成本負例。217項／10subtests／4.82秒通過，含新8起點、6policy及舊batch／supervisor／EOF／學招接收／分享鎖／FNT／parent。這是程式驗證，尚未宣稱新版連戰已實機通過。
+
+中斷時原第157趟已commit returning appends314，所以沒有取消未完成路線或捏造centre狀態。向Kevin說明後只恢復這一次已承諾回補，原自動排程仍停止；20:37:56.794747正常護士EOF1632833、map174(7,7)，六人HP／status／PP全滿。目前維持此原PyBoy暫停。原20:45:10.2817838四小時工程訓練時段已到期，沒有自動延長或回填歷史時間；新版已測好，已提出「新策略最多30分鐘、達標提前轉聯盟」或「直接補給後挑戰」問題，尚待Kevin回覆。不得把先前的策略選擇冒稱成已批准新增時間。
+
+新Lapras46 HydroPump放棄候選另外交source核對；聯盟購買與三室戰後用藥pure／owned bridge候選已stage測試，但均未購買／部署／使用，不能當成實機成果。四天王／冠軍未完，分類仍本機Laya/cache、無GPT逐鍵呼叫。額外Qwen文件檢索health check曾fetch failed，未傳文件，與既有離線遊戲無關；沒有估計不可得token。快取與上次備份1305076／CI40684347906已成功；本節連戰修正待隨後正常白名單備份。
+
