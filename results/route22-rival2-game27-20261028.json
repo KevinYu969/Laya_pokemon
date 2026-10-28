@@ -1,0 +1,1277 @@
+{
+  "profile": "route22-rival2-game27-ledger-audit-v1",
+  "reviewed_on": "2026-10-28",
+  "source_game": "outputs/league-campaign-20261028-27/game",
+  "scope": {
+    "initial_frame": 1,
+    "last_action_frame": 27817,
+    "closed_review_frame": 27857,
+    "total_actions": 296,
+    "description": "新game27自戰前page3續行至本場勁敵原生退場；不是從開局總耗時，不涵蓋之後新行程。"
+  },
+  "milestones": {
+    "first_false_to_true_event": {
+      "at_utc": "2026-10-28T02:35:51.966781+00:00",
+      "at_taipei": "2026-10-28T10:35:51.966781+08:00",
+      "frame": 26977,
+      "step": 286,
+      "source": "steps-002.jsonl",
+      "action": "wait",
+      "phase": "league_native_wait",
+      "text": [
+        " That loosened me"
+      ],
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "timing": {
+        "wall_seconds": 1695.969,
+        "model_wait_seconds": 57.112,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 89.985,
+        "emulated_seconds": 450.267
+      }
+    },
+    "victory_dialogue": {
+      "at_utc": "2026-10-28T02:35:51.419070+00:00",
+      "at_taipei": "2026-10-28T10:35:51.419070+08:00",
+      "frame": 26337,
+      "step": 281,
+      "source": "steps-002.jsonl",
+      "action": "a",
+      "phase": "battle_dialogue",
+      "text": [
+        "          LAPRAS",
+        "               42",
+        "           172/172",
+        " KEVIN defeated",
+        " BLUE!"
+      ],
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "timing": {
+        "wall_seconds": 1695.422,
+        "model_wait_seconds": 57.112,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 89.438,
+        "emulated_seconds": 441.067
+      }
+    },
+    "reward_dialogue": {
+      "at_utc": "2026-10-28T02:35:51.913851+00:00",
+      "at_taipei": "2026-10-28T10:35:51.913851+08:00",
+      "frame": 26849,
+      "step": 285,
+      "source": "steps-002.jsonl",
+      "action": "a",
+      "phase": "battle_dialogue",
+      "text": [
+        "          LAPRAS",
+        "               42",
+        "           172/172",
+        " KEVIN got ¥3445",
+        " for winning!     ▼"
+      ],
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "timing": {
+        "wall_seconds": 1695.922,
+        "model_wait_seconds": 57.112,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 89.938,
+        "emulated_seconds": 449.6
+      }
+    },
+    "native_exit_closed": {
+      "at_utc": "2026-10-28T02:35:53.078695+00:00",
+      "at_taipei": "2026-10-28T10:35:53.078695+08:00",
+      "frame": 27857,
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "battle_raw": 0,
+      "visible_text": [],
+      "review_reason": "route_extension_required"
+    }
+  },
+  "party": [
+    {
+      "species": 19,
+      "name": "LAPRAS",
+      "initial": {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 41,
+        "hp": 169,
+        "max_hp": 169,
+        "exp": 88128,
+        "status": 0,
+        "moves": [
+          57,
+          34,
+          58,
+          109
+        ],
+        "pp": [
+          14,
+          15,
+          10,
+          10
+        ]
+      },
+      "final": {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 42,
+        "hp": 172,
+        "max_hp": 172,
+        "exp": 96434,
+        "status": 0,
+        "moves": [
+          57,
+          34,
+          58,
+          109
+        ],
+        "pp": [
+          11,
+          15,
+          4,
+          10
+        ]
+      },
+      "level_delta": 1,
+      "exp_delta": 8306,
+      "all_fields_unchanged": false
+    },
+    {
+      "species": 132,
+      "name": "SNORLAX",
+      "initial": {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 41,
+        "hp": 198,
+        "max_hp": 198,
+        "exp": 91196,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      "final": {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 42,
+        "hp": 122,
+        "max_hp": 203,
+        "exp": 93372,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          12
+        ]
+      },
+      "level_delta": 1,
+      "exp_delta": 2176,
+      "all_fields_unchanged": false
+    },
+    {
+      "species": 102,
+      "name": "EEVEE",
+      "initial": {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      "final": {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      "level_delta": 0,
+      "exp_delta": 0,
+      "all_fields_unchanged": true
+    },
+    {
+      "species": 154,
+      "name": "VENUSAUR",
+      "initial": {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      "final": {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      "level_delta": 0,
+      "exp_delta": 0,
+      "all_fields_unchanged": true
+    },
+    {
+      "species": 35,
+      "name": "FEAROW",
+      "initial": {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 37,
+        "hp": 114,
+        "max_hp": 114,
+        "exp": 51794,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          19,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          15,
+          20
+        ]
+      },
+      "final": {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 37,
+        "hp": 114,
+        "max_hp": 114,
+        "exp": 51794,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          19,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          15,
+          20
+        ]
+      },
+      "level_delta": 0,
+      "exp_delta": 0,
+      "all_fields_unchanged": true
+    },
+    {
+      "species": 7,
+      "name": "NIDOKING",
+      "initial": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 42404,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      "final": {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 36,
+        "hp": 121,
+        "max_hp": 121,
+        "exp": 42404,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      "level_delta": 0,
+      "exp_delta": 0,
+      "all_fields_unchanged": true
+    }
+  ],
+  "inventory": {
+    "hyper_potion": {
+      "item": 18,
+      "initial": 10,
+      "final": 8,
+      "consumed": 2
+    },
+    "full_heal": {
+      "item": 52,
+      "initial": 10,
+      "final": 10,
+      "consumed": 0
+    },
+    "money": {
+      "initial": 45390,
+      "final": 48835,
+      "gain": 3445
+    }
+  },
+  "fixed_damage_prompt": {
+    "at_utc": "2026-10-28T02:35:26.314750+00:00",
+    "at_taipei": "2026-10-28T10:35:26.314750+08:00",
+    "frame": 14161,
+    "step": 135,
+    "source": "steps-001.jsonl",
+    "action": "a",
+    "phase": "battle_dialogue",
+    "text": [
+      " GYARADOS",
+      "     47",
+      "          LAPRAS",
+      "               41",
+      "            99/169",
+      " It's super",
+      " effective!       ▼"
+    ],
+    "location": {
+      "map_id": 33,
+      "x": 29,
+      "y": 4
+    },
+    "timing": {
+      "wall_seconds": 1670.328,
+      "model_wait_seconds": 47.111,
+      "review_pause_seconds": 1605.984,
+      "non_review_session_seconds": 64.344,
+      "emulated_seconds": 238.133
+    },
+    "risk": {
+      "enemy_species": "GYARADOS",
+      "move": "DRAGON_RAGE",
+      "move_id": 82,
+      "damage": 40,
+      "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+      "unreadable_waits": 0,
+      "native_prompt_history": [
+        {
+          "frame": 14161,
+          "kind": "super_effective",
+          "arrow": true,
+          "unreadable_waits_before": 31
+        }
+      ],
+      "native_prompt_blink_waits": 0
+    },
+    "visible_hp": {
+      "hp": 99,
+      "max_hp": 169
+    },
+    "party_hp": 139,
+    "party_hp_rewritten": false,
+    "enemy_turn_resolved": false,
+    "survival_approved": false,
+    "live_fixed40_switches": [],
+    "note": "真A解除了精確原生縮寫prompt；本場未出現固定40觸發換人，不能當成該分支實戰驗收。"
+  },
+  "medicine_transactions": [
+    {
+      "at_utc": "2026-10-28T02:35:34.490276+00:00",
+      "at_taipei": "2026-10-28T10:35:34.490276+08:00",
+      "frame": 17377,
+      "step": 178,
+      "source": "steps-002.jsonl",
+      "action": "a",
+      "phase": "trainer_medicine_menu",
+      "text": [
+        "   LAPRAS     42",
+        "▶             31/172",
+        "   SNORLAX    41",
+        "             198/198",
+        "   EEVEE      35",
+        "              90/ 90",
+        "   VENUSAUR   35",
+        "             111/111",
+        "   FEAROW     37",
+        "             114/114",
+        "   NIDOKING   36",
+        "             121/121"
+      ],
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "timing": {
+        "wall_seconds": 1678.5,
+        "model_wait_seconds": 51.269,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 72.516,
+        "emulated_seconds": 290.267
+      },
+      "owner": "route22-rival2-native-battle-20261025-medicine-ui-16537",
+      "active_species": 19,
+      "item": 18,
+      "quantity": 1,
+      "handoff": {
+        "at_utc": "2026-10-28T02:35:34.994809+00:00",
+        "at_taipei": "2026-10-28T10:35:34.994809+08:00",
+        "frame": 17737,
+        "step": 187,
+        "source": "steps-002.jsonl",
+        "action": "wait",
+        "phase": "trainer_medicine_wait",
+        "text": [
+          " ALAKAZAM",
+          "     50",
+          "          LAPRAS",
+          "               42",
+          "           172/172",
+          " Enemy ALAK"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 1679.0,
+          "model_wait_seconds": 51.269,
+          "review_pause_seconds": 1605.984,
+          "non_review_session_seconds": 73.016,
+          "emulated_seconds": 296.267
+        }
+      }
+    },
+    {
+      "at_utc": "2026-10-28T02:35:46.868136+00:00",
+      "at_taipei": "2026-10-28T10:35:46.868136+08:00",
+      "frame": 23017,
+      "step": 242,
+      "source": "steps-002.jsonl",
+      "action": "a",
+      "phase": "trainer_medicine_menu",
+      "text": [
+        "   LAPRAS     42",
+        "             172/172",
+        "   SNORLAX    41",
+        "▶             45/198",
+        "   EEVEE      35",
+        "              90/ 90",
+        "   VENUSAUR   35",
+        "             111/111",
+        "   FEAROW     37",
+        "             114/114",
+        "   NIDOKING   36",
+        "             121/121"
+      ],
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "timing": {
+        "wall_seconds": 1690.875,
+        "model_wait_seconds": 56.425,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 84.891,
+        "emulated_seconds": 384.267
+      },
+      "owner": "route22-rival2-native-battle-20261025-medicine-ui-22897",
+      "active_species": 132,
+      "item": 18,
+      "quantity": 1,
+      "handoff": {
+        "at_utc": "2026-10-28T02:35:47.476834+00:00",
+        "at_taipei": "2026-10-28T10:35:47.476834+08:00",
+        "frame": 23417,
+        "step": 252,
+        "source": "steps-002.jsonl",
+        "action": "wait",
+        "phase": "trainer_medicine_wait",
+        "text": [
+          " CHARIZARD",
+          "     PAR",
+          "          SNORLAX",
+          "               41",
+          "           198/198",
+          " Enemy CHAR"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 1691.484,
+          "model_wait_seconds": 56.425,
+          "review_pause_seconds": 1605.984,
+          "non_review_session_seconds": 85.5,
+          "emulated_seconds": 390.933
+        }
+      }
+    }
+  ],
+  "ordinary_low_hp_switch_offers": [
+    {
+      "at_utc": "2026-10-28T02:35:32.494774+00:00",
+      "at_taipei": "2026-10-28T10:35:32.494774+08:00",
+      "frame": 16537,
+      "step": 157,
+      "source": "steps-002.jsonl",
+      "action": "down",
+      "phase": "trainer_medicine_menu",
+      "text": [
+        " ALAKAZAM",
+        "     50",
+        "          LAPRAS",
+        "               42",
+        "            31/172",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "timing": {
+        "wall_seconds": 1676.5,
+        "model_wait_seconds": 50.596,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 70.516,
+        "emulated_seconds": 276.267
+      },
+      "target_species": 132
+    },
+    {
+      "at_utc": "2026-10-28T02:35:46.642075+00:00",
+      "at_taipei": "2026-10-28T10:35:46.642075+08:00",
+      "frame": 22897,
+      "step": 239,
+      "source": "steps-002.jsonl",
+      "action": "down",
+      "phase": "trainer_medicine_menu",
+      "text": [
+        " CHARIZARD",
+        "     PAR",
+        "          SNORLAX",
+        "               41",
+        "            45/198",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "timing": {
+        "wall_seconds": 1690.656,
+        "model_wait_seconds": 56.425,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 84.672,
+        "emulated_seconds": 382.267
+      },
+      "target_species": 19
+    }
+  ],
+  "actual_switch_hud_receipts": [
+    {
+      "enemy": "ALAKAZAM",
+      "active_species_name": "SNORLAX",
+      "first_hud_after_switch": {
+        "at_utc": "2026-10-28T02:35:39.386805+00:00",
+        "at_taipei": "2026-10-28T10:35:39.386805+08:00",
+        "frame": 18657,
+        "step": 199,
+        "source": "steps-002.jsonl",
+        "action": "a",
+        "phase": "battle_dialogue",
+        "text": [
+          " ALAKAZAM",
+          "     50",
+          "          SNORLAX",
+          "               41",
+          "           198/198",
+          " Go! SNORLAX!"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 1683.391,
+          "model_wait_seconds": 54.284,
+          "review_pause_seconds": 1605.984,
+          "non_review_session_seconds": 77.407,
+          "emulated_seconds": 313.067
+        }
+      }
+    },
+    {
+      "enemy": "CHARIZARD",
+      "active_species_name": "LAPRAS",
+      "first_hud_after_switch": {
+        "at_utc": "2026-10-28T02:35:49.390000+00:00",
+        "at_taipei": "2026-10-28T10:35:49.390000+08:00",
+        "frame": 24337,
+        "step": 264,
+        "source": "steps-002.jsonl",
+        "action": "a",
+        "phase": "battle_dialogue",
+        "text": [
+          " CHARIZARD",
+          "     PAR",
+          "          LAPRAS",
+          "               42",
+          "           172/172",
+          " Do it! LAPRAS!"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 1693.391,
+          "model_wait_seconds": 57.097,
+          "review_pause_seconds": 1605.984,
+          "non_review_session_seconds": 87.407,
+          "emulated_seconds": 407.733
+        }
+      }
+    }
+  ],
+  "enemy_knockouts": [
+    {
+      "enemy": "PIDGEOT",
+      "first_full_fainted_text": {
+        "at_utc": "2026-10-28T02:20:07.050410+00:00",
+        "at_taipei": "2026-10-28T10:20:07.050410+08:00",
+        "frame": 3881,
+        "step": 43,
+        "source": "steps-001.jsonl",
+        "action": "a",
+        "phase": "battle_dialogue",
+        "text": [
+          "          LAPRAS",
+          "               41",
+          "           169/169",
+          " Enemy PIDGEOT",
+          " fainted!         ▼"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 751.063,
+          "model_wait_seconds": 42.625,
+          "review_pause_seconds": 703.078,
+          "non_review_session_seconds": 47.985,
+          "emulated_seconds": 66.8
+        }
+      }
+    },
+    {
+      "enemy": "RHYHORN",
+      "first_full_fainted_text": {
+        "at_utc": "2026-10-28T02:20:12.794993+00:00",
+        "at_taipei": "2026-10-28T10:20:12.794993+08:00",
+        "frame": 5617,
+        "step": 60,
+        "source": "steps-001.jsonl",
+        "action": "a",
+        "phase": "battle_dialogue",
+        "text": [
+          "          LAPRAS",
+          "               41",
+          "           169/169",
+          " Enemy RHYHORN",
+          " fainted!         ▼"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 756.813,
+          "model_wait_seconds": 46.313,
+          "review_pause_seconds": 703.078,
+          "non_review_session_seconds": 53.735,
+          "emulated_seconds": 95.733
+        }
+      }
+    },
+    {
+      "enemy": "EXEGGCUTE",
+      "first_full_fainted_text": {
+        "at_utc": "2026-10-28T02:20:14.852305+00:00",
+        "at_taipei": "2026-10-28T10:20:14.852305+08:00",
+        "frame": 7225,
+        "step": 76,
+        "source": "steps-001.jsonl",
+        "action": "a",
+        "phase": "battle_dialogue",
+        "text": [
+          "          LAPRAS",
+          "               41",
+          "           169/169",
+          " Enemy EXEGGCUTE",
+          " fainted!"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 758.875,
+          "model_wait_seconds": 46.345,
+          "review_pause_seconds": 703.078,
+          "non_review_session_seconds": 55.797,
+          "emulated_seconds": 122.533
+        }
+      }
+    },
+    {
+      "enemy": "GYARADOS",
+      "first_full_fainted_text": {
+        "at_utc": "2026-10-28T02:35:26.626659+00:00",
+        "at_taipei": "2026-10-28T10:35:26.626659+08:00",
+        "frame": 14289,
+        "step": 136,
+        "source": "steps-002.jsonl",
+        "action": "a",
+        "phase": "battle_dialogue",
+        "text": [
+          "          LAPRAS",
+          "               41",
+          "            99/169",
+          " Enemy GYARADOS",
+          " fainted!         ▼"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 1670.641,
+          "model_wait_seconds": 47.111,
+          "review_pause_seconds": 1605.984,
+          "non_review_session_seconds": 64.657,
+          "emulated_seconds": 240.267
+        }
+      }
+    },
+    {
+      "enemy": "ALAKAZAM",
+      "first_full_fainted_text": {
+        "at_utc": "2026-10-28T02:35:42.152902+00:00",
+        "at_taipei": "2026-10-28T10:35:42.152902+08:00",
+        "frame": 20729,
+        "step": 220,
+        "source": "steps-002.jsonl",
+        "action": "a",
+        "phase": "battle_dialogue",
+        "text": [
+          "          SNORLAX",
+          "               41",
+          "           198/198",
+          " Enemy ALAKAZAM",
+          " fainted!         ▼"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 1686.156,
+          "model_wait_seconds": 54.3,
+          "review_pause_seconds": 1605.984,
+          "non_review_session_seconds": 80.172,
+          "emulated_seconds": 347.6
+        }
+      }
+    },
+    {
+      "enemy": "CHARIZARD",
+      "first_full_fainted_text": {
+        "at_utc": "2026-10-28T02:35:50.636224+00:00",
+        "at_taipei": "2026-10-28T10:35:50.636224+08:00",
+        "frame": 25569,
+        "step": 275,
+        "source": "steps-002.jsonl",
+        "action": "a",
+        "phase": "battle_dialogue",
+        "text": [
+          "          LAPRAS",
+          "               42",
+          "           172/172",
+          " Enemy CHARIZARD",
+          " fainted!"
+        ],
+        "location": {
+          "map_id": 33,
+          "x": 29,
+          "y": 4
+        },
+        "timing": {
+          "wall_seconds": 1694.641,
+          "model_wait_seconds": 57.112,
+          "review_pause_seconds": 1605.984,
+          "non_review_session_seconds": 88.657,
+          "emulated_seconds": 428.267
+        }
+      }
+    }
+  ],
+  "safety": {
+    "checked_party_observations": 297,
+    "all_party_reads_valid": true,
+    "all_rosters_six": true,
+    "party_hp_zero_observations": [],
+    "lost_transition_observations": [],
+    "no_new_faint_observed": true,
+    "limitation": "取樣ledger可證未觀察到FNT，不聲稱逐一未取樣幀證明。"
+  },
+  "runtime": {
+    "action_counts": {
+      "passive_wait": 65,
+      "uncached_choice": 16,
+      "cache_hit": 215
+    },
+    "ledger_uncached_choice_seconds": 17.295892,
+    "instrumented_model_wait_seconds": 57.112,
+    "total_emulated_frames": 27856,
+    "first_action_model_wait_seconds": 39.344,
+    "model_load_seconds_observed": 33.46345039998414,
+    "model_wait_definition": {
+      "source": "src/laya_pokemon/campaign.py:145-146,236",
+      "includes": "整次LayaPolicy初始化的run_with_window_events牆鐘，加上每次policy.choose的run_with_window_events牆鐘；也包含快取/被動WAIT等呼叫包裝成本。",
+      "ledger_model_ms": "各decision自報的model_ms；此場16個未快取動作合計17.295892秒。",
+      "difference_estimated": false
+    },
+    "endpoint_review_timing": {
+      "wall_seconds": 1697.094,
+      "model_wait_seconds": 57.112,
+      "review_pause_seconds": 1605.984,
+      "non_review_session_seconds": 91.11,
+      "emulated_seconds": 464.267
+    },
+    "last_action_timing": {
+      "wall_seconds": 1696.828,
+      "model_wait_seconds": 57.112,
+      "review_pause_seconds": 1605.984,
+      "non_review_session_seconds": 90.844,
+      "emulated_seconds": 464.267
+    },
+    "cloud_fallback": false,
+    "strata_configuration_changed": false,
+    "model_load_count_observed": 1,
+    "timing_note": "endpoint review的91.110秒與較早summary91.094秒相差16毫秒，屬採樣端點差異；採review封口值。non_review是運作時間，非純推論或純模型遊玩時間。16次ledger model_ms合計17.295892秒，儀表model_wait57.112秒含整次初始化與全部choose包裝牆鐘（frame1已有39.344秒）；兩者不能混稱。未估計各項未列動作時間的分攤。"
+  },
+  "elite_four_complete": false,
+  "champion_complete": false,
+  "hall_of_fame_complete": false,
+  "keyframes": [
+    {
+      "at": "2026-10-28T02:20:15.700498+00:00",
+      "kind": "battle-GYARADOS",
+      "file": "keyframes/00008-battle-GYARADOS.png",
+      "sha256": "ab4cd10f02ea2e96770718c0bc8479bdca846a9e8dc244f099a7bda65e49914f",
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "text": [
+        " GYARADOS",
+        "     47",
+        "          LAPRAS",
+        "               41",
+        "           169/169",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "timing": {
+        "wall_seconds": 759.719,
+        "model_wait_seconds": 46.345,
+        "review_pause_seconds": 703.078,
+        "non_review_session_seconds": 56.641,
+        "emulated_seconds": 133.867
+      },
+      "local_copy": ".local/staged-rival27-evidence-20261028/keyframes/00008-battle-GYARADOS.png",
+      "visually_reviewed": false
+    },
+    {
+      "at": "2026-10-28T02:20:22.983160+00:00",
+      "kind": "review-fixed_damage_visible_wait_exhausted",
+      "file": "keyframes/00009-review-fixed_damage_visible_wait_exhausted.png",
+      "sha256": "4a776bbd2b1dd3d13d964e0ff9716f2a49bc1c8e2f03cc9acb3aa8c1ca352fe9",
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "text": [
+        " GYARADOS",
+        "     47",
+        "          LAPRAS",
+        "               41",
+        "            99/169",
+        " It's super",
+        " effective!       ▼"
+      ],
+      "timing": {
+        "wall_seconds": 767.0,
+        "model_wait_seconds": 47.095,
+        "review_pause_seconds": 703.078,
+        "non_review_session_seconds": 63.922,
+        "emulated_seconds": 236.0
+      },
+      "local_copy": ".local/staged-rival27-evidence-20261028/keyframes/00009-review-fixed_damage_visible_wait_exhausted.png",
+      "visually_reviewed": true
+    },
+    {
+      "at": "2026-10-28T02:35:26.789631+00:00",
+      "kind": "level-up",
+      "file": "keyframes/00010-level-up.png",
+      "sha256": "e82431f33035b2e8cb5127bef984f85c77efdd5cea91122a354933f8ad3c8efb",
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "text": [
+        "          LAPRAS",
+        "               42",
+        "           102/172",
+        " LAPRAS grew",
+        " to level 42!"
+      ],
+      "timing": {
+        "wall_seconds": 1670.797,
+        "model_wait_seconds": 47.111,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 64.813,
+        "emulated_seconds": 242.4
+      },
+      "local_copy": ".local/staged-rival27-evidence-20261028/keyframes/00010-level-up.png",
+      "visually_reviewed": false
+    },
+    {
+      "at": "2026-10-28T02:35:29.456308+00:00",
+      "kind": "battle-ALAKAZAM",
+      "file": "keyframes/00012-battle-ALAKAZAM.png",
+      "sha256": "6654d9e66545e52da40b99f517808eea1fcd96146886c73bb7f8f514825b2cb2",
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "text": [
+        " ALAKAZAM",
+        "     50",
+        "          LAPRAS",
+        "               42",
+        "           102/172",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "timing": {
+        "wall_seconds": 1673.469,
+        "model_wait_seconds": 49.049,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 67.485,
+        "emulated_seconds": 255.867
+      },
+      "local_copy": ".local/staged-rival27-evidence-20261028/keyframes/00012-battle-ALAKAZAM.png",
+      "visually_reviewed": false
+    },
+    {
+      "at": "2026-10-28T02:35:45.187078+00:00",
+      "kind": "battle-CHARIZARD",
+      "file": "keyframes/00013-battle-CHARIZARD.png",
+      "sha256": "4c71abcae65709f95c2bd0f508bc17ec69010ed3ed116c60389b1f4e6c940f4d",
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "text": [
+        " CHARIZARD",
+        "     53",
+        "          SNORLAX",
+        "               41",
+        "           198/198",
+        "         ▶FIGHT",
+        "          ITEM  RUN"
+      ],
+      "timing": {
+        "wall_seconds": 1689.188,
+        "model_wait_seconds": 56.378,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 83.204,
+        "emulated_seconds": 361.067
+      },
+      "local_copy": ".local/staged-rival27-evidence-20261028/keyframes/00013-battle-CHARIZARD.png",
+      "visually_reviewed": false
+    },
+    {
+      "at": "2026-10-28T02:35:51.052372+00:00",
+      "kind": "level-up",
+      "file": "keyframes/00014-level-up.png",
+      "sha256": "c0815611678a3cb0979d69053616a1147fde21ae318d1f2c9642a9f035fc2449",
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "text": [
+        "          LAPRAS",
+        "               42",
+        "           172/172",
+        " SNORLAX grew",
+        " to level 42!"
+      ],
+      "timing": {
+        "wall_seconds": 1695.063,
+        "model_wait_seconds": 57.112,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 89.079,
+        "emulated_seconds": 434.667
+      },
+      "local_copy": ".local/staged-rival27-evidence-20261028/keyframes/00014-level-up.png",
+      "visually_reviewed": false
+    },
+    {
+      "at": "2026-10-28T02:35:51.326415+00:00",
+      "kind": "trainer-defeated",
+      "file": "keyframes/00016-trainer-defeated.png",
+      "sha256": "6c96ea7b6a2650c6d8dc036cd971307689be248c4ad08b20c17b7b227f2d62ed",
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "text": [
+        "          LAPRAS",
+        "               42",
+        "           172/172",
+        " KEVIN defeated",
+        " BLUE!"
+      ],
+      "timing": {
+        "wall_seconds": 1695.328,
+        "model_wait_seconds": 57.112,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 89.344,
+        "emulated_seconds": 438.933
+      },
+      "local_copy": ".local/staged-rival27-evidence-20261028/keyframes/00016-trainer-defeated.png",
+      "visually_reviewed": true
+    },
+    {
+      "at": "2026-10-28T02:35:53.086745+00:00",
+      "kind": "review-route_extension_required",
+      "file": "keyframes/00017-review-route_extension_required.png",
+      "sha256": "21fcf39079403d30402653b9560b9a5eae85e5ad3f2d90e1c6147b25efb8719c",
+      "location": {
+        "map_id": 33,
+        "x": 29,
+        "y": 4
+      },
+      "text": [],
+      "timing": {
+        "wall_seconds": 1697.094,
+        "model_wait_seconds": 57.112,
+        "review_pause_seconds": 1605.984,
+        "non_review_session_seconds": 91.11,
+        "emulated_seconds": 464.267
+      },
+      "local_copy": ".local/staged-rival27-evidence-20261028/keyframes/00017-review-route_extension_required.png",
+      "visually_reviewed": false
+    }
+  ],
+  "source_file_sha256": {
+    "outputs/league-campaign-20261028-27/game/steps-000.jsonl": {
+      "sha256_at_audit": "174afa30042e307bfd4accdf250511ee559ebb6e101c22d84abf03d6cf4f3516",
+      "bytes_at_audit": 137766,
+      "consumed_frame_max": 27817,
+      "consumed_prefix_sha256": "174afa30042e307bfd4accdf250511ee559ebb6e101c22d84abf03d6cf4f3516",
+      "consumed_prefix_bytes": 137766,
+      "snapshot": "source-prefix/steps-000.jsonl",
+      "note": "主程序可繼續append；判讀限定保存的原始行prefix。"
+    },
+    "outputs/league-campaign-20261028-27/game/steps-001.jsonl": {
+      "sha256_at_audit": "61289ea66c70e10b282dd17bf08551fdbee64a4c613677e4e606fa3d5591cc99",
+      "bytes_at_audit": 1033837,
+      "consumed_frame_max": 27817,
+      "consumed_prefix_sha256": "61289ea66c70e10b282dd17bf08551fdbee64a4c613677e4e606fa3d5591cc99",
+      "consumed_prefix_bytes": 1033837,
+      "snapshot": "source-prefix/steps-001.jsonl",
+      "note": "主程序可繼續append；判讀限定保存的原始行prefix。"
+    },
+    "outputs/league-campaign-20261028-27/game/steps-002.jsonl": {
+      "sha256_at_audit": "8fa2f310e1df65d1da531dc928fd98f514d61a21660d4a6d33e28ef58bedced7",
+      "bytes_at_audit": 1422551,
+      "consumed_frame_max": 27817,
+      "consumed_prefix_sha256": "1850697410d16768906bcab37fb41008278b8bf5fd8806e5133a52e2a9bdb2c8",
+      "consumed_prefix_bytes": 1413613,
+      "snapshot": "source-prefix/steps-002.jsonl",
+      "note": "主程序可繼續append；判讀限定保存的原始行prefix。"
+    },
+    "outputs/league-campaign-20261028-27/game/review-request.json": {
+      "sha256": "da3c646b87264f778c2c5b9fc8bf27fa931e066f2147e84ace45f60e377b7743",
+      "bytes": 12507,
+      "snapshot": "review-rival-end-snapshot.json",
+      "note": "父層保存之原始27857 review副本；現行review已繼續更新，不能以現檔hash反證本歷史封口。"
+    },
+    "src/laya_pokemon/battle.py": {
+      "sha256": "b929c706f79fc39bcfcbaacf9ba7a54703a532faa3ce48b1e4bdf0f2a80e1927",
+      "bytes": 72469
+    },
+    "src/laya_pokemon/progress.py": {
+      "sha256": "bacf8a5edc871d1913481899fffeea2cb32cb009236e75f78b5da18773fe5ecc",
+      "bytes": 17646
+    },
+    "src/laya_pokemon/team_strategy.py": {
+      "sha256": "c8d42973ca0164c5cd466069cb1b608543fc4241389d8a31f50dc96898c80f0b",
+      "bytes": 7714
+    },
+    "src/laya_pokemon/campaign.py": {
+      "sha256": "eefd9c586f782614e97d1d5f07ab0436c90b9e4a95513c264354c517209cb49a",
+      "bytes": 18003
+    }
+  },
+  "validation": {
+    "assertions": "首事件false→true、原生退場、296動作、17.295892秒ledger未快取model_ms、三類動作加總、六人EXP/等級與HP/物品消耗、17截圖清單與8份PNG hash皆已assert通過",
+    "readonly": true,
+    "changed_game_or_plan": false,
+    "called_model_api": false,
+    "read_rom_or_state": false
+  },
+  "limitations": [
+    "僅核本場game27，未把舊game26退出到恢復間算成連續遊玩。",
+    "目前資料不證明四天王、冠軍或名人堂完成。",
+    "戰術殘留switch_no_attack_pp字串不等於真缺PP；換人與補藥用實際UI/party/item閉合證據判讀。",
+    "未新增影片或改正式紀錄；由父層驗收後採用。"
+  ],
+  "parent_review": {
+    "status": "accepted",
+    "date": "2026-10-28",
+    "source_receipt_sha256": "41015aab2419eac445b27dcb47b9a11621314f24319f4ac0c19170a715caf793",
+    "ledger_prefix_rechecked": true,
+    "victory_png_visually_reviewed": true,
+    "note": "真擊敗BLUE、事件及原生退場分列；固定40換人本戰未觸發，四天王未勝。"
+  }
+}

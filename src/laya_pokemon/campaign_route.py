@@ -43,6 +43,8 @@ from . import silph_giovanni_wait
 importlib.reload(silph_giovanni_wait)
 from . import league_native_wait
 importlib.reload(league_native_wait)
+from . import e4_coordinate
+importlib.reload(e4_coordinate)
 from . import sabrina_native_warp
 importlib.reload(sabrina_native_warp)
 from . import lapras_bridge
@@ -77,13 +79,162 @@ from . import mansion_statue_bridge
 importlib.reload(mansion_statue_bridge)
 from . import mansion_secret_key_bridge
 importlib.reload(mansion_secret_key_bridge)
+from . import (victory_strength_bridge,victory_first_boulder_bridge,
+               victory_later_boulders_bridge,route23_bridge,route23_land_guards_bridge,
+               league_training_batch_bridge)
+_LEAGUE_FIELDS=(victory_strength_bridge,victory_first_boulder_bridge,
+               victory_later_boulders_bridge,route23_bridge,route23_land_guards_bridge,
+               league_training_batch_bridge)
+for _bridge in _LEAGUE_FIELDS:importlib.reload(_bridge)
+del _bridge
+from . import league_training_supervisor,league_training_proof
+importlib.reload(league_training_supervisor)
+importlib.reload(league_training_proof)
+_TRAINING_BATCH_PROOFS=globals().get('_TRAINING_BATCH_PROOFS',{})
 importlib.reload(campaign_safety)
 importlib.reload(capture_closing_gate)
 for controller in _GYM_CONTROLLERS.values():controller._last_now=None
 
 
+def _native_wait_clock(step_id,frame):
+    """延續既有clock，只加入真正前進的模擬幀；工程停檢不退款或耗預算。"""
+    c=league_native_wait._WAITS.get(step_id)
+    if c is None:return None
+    last_frame,last_now=getattr(c,'last_frame',None),getattr(c,'last_now',None)
+    if (type(frame) is int and type(last_frame) is int and 0<=last_frame<=frame
+            and league_native_wait._clock(last_now)):
+        return last_now+(frame-last_frame)/60
+    return float('nan')  # 交純controller拒絕；不得以新wall clock修復非法舊欄位。
+
+
+def _league_field_context(pyboy,state,plan,step_id,step,previous):
+    """新聯盟field共用入口；先保原owner及互斥，再讀UI，不代替各交易驗收。"""
+    def review(reason):
+        return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                 'review_reason':'league_field_'+reason},step_id)
+    active=[]
+    for bridge in _LEAGUE_FIELDS:
+        owners=bridge._active()
+        if owners is None:return review('registry_unverified')
+        if owners:active.append((bridge,owners))
+    if len(active)>1:return review('multiple_owners_active')
+    if active and active[0][1]!={step_id}:return review('owner_changed')
+    matches=[b for b in _LEAGUE_FIELDS if b.applies(step_id,step)]
+    if not matches:return None
+    if len(matches)!=1:return review('multiple_intents_or_owners')
+    bridge=matches[0]
+    legacy=(battle_medicine_bridge,trainer_medicine_ui_bridge,mansion_secret_key_bridge,
+        mansion_statue_bridge,mansion_transition_ready,mansion_native_landing,
+        route21_water_bridge,pallet_surf_bridge,fly_pallet_bridge,fly_viridian_bridge,
+        safari_entry,hm_teaching_bridge,vending_bridge,saffron_guard_bridge,
+        silph_card_bridge,lapras_bridge,player_pc_bridge,cinnabar_purchase_bridge,campaign_transactions)
+    for peer in legacy:
+        bindings=getattr(peer,'_BINDINGS',None);done=getattr(peer,'_COMPLETED',None)
+        controllers=getattr(peer,'_CONTROLLERS',{})
+        if type(bindings) is not dict or type(done) is not set or type(controllers) is not dict:
+            return review('peer_registry_unverified')
+        if (set(bindings)|set(controllers))-done:return review('other_transaction_active')
+    if type(capture_transaction._SESSIONS) is not dict:return review('capture_registry_unverified')
+    if (safari_entry._RUN_CONTROLLER is not None
+            or any(type(s) is not dict or s.get('done') is not True for s in capture_transaction._SESSIONS.values())
+            or any(c.waiting for c in league_native_wait._WAITS.values())):
+        return review('other_transaction_active')
+    from .observation import read_visible_text
+    result=bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+        read_world_grid(pyboy,state['location']),previous)
+    return _retain_training_batch_proof(state,plan,result)
+
+
+def _retain_training_batch_proof(state,plan,result):
+    """只在真bridge完成當輪投影；不在EOF回推，也保存attrition收尾的完成。"""
+    if (result is None or plan.get('training_job')!=league_training_supervisor.JOB
+            or plan.get('training_supervisor')!=league_training_proof.MARKER):return result
+    context,next_id=result
+    if context.get('field_move_kind')!='league-training-batch' or context.get('field_move_complete') is not True:return result
+    try:
+        projection=league_training_supervisor.project_completed_batch(plan,context,state)
+        key=context['training_batch_owner_step']
+        if key in _TRAINING_BATCH_PROOFS and _TRAINING_BATCH_PROOFS[key]!=projection:
+            raise ValueError('original_batch_projection_changed')
+        _TRAINING_BATCH_PROOFS[key]=projection
+    except Exception:
+        return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                 'review_reason':'league_training_true_batch_projection_unverified'},next_id)
+    return result
+
+
+def _training_proof_owner_guard(pyboy,plan):
+    """已開EOF owner不可藉改marker、plan或tail開始另一段送鍵。"""
+    active=league_training_proof._active()
+    if active is None:return league_training_proof._review('registries_unknown'),'complete'
+    if not active:return None
+    key=next(iter(active));c=league_training_proof._SESSIONS.get(key)
+    try:
+        valid=(len(active)==1 and c is not None and league_training_proof._OWNERS.get(key) is pyboy
+            and plan.get('training_supervisor')==league_training_proof.MARKER
+            and plan.get('training_job')==league_training_proof.JOB
+            and c.binding==league_training_proof.canonical(plan))
+    except Exception:valid=False
+    if not valid:return league_training_proof._fail(key,'active_owner_plan_or_session_changed'),'complete'
+    if not _training_peers_clear():return league_training_proof._fail(key,'active_field_or_legacy_owner'),'complete'
+    if c.error is not None:return league_training_proof._review(c.error),'complete'
+    return None
+
+
+def _training_peers_clear():
+    peers=(battle_medicine_bridge,trainer_medicine_ui_bridge,mansion_secret_key_bridge,
+        mansion_statue_bridge,mansion_transition_ready,mansion_native_landing,route21_water_bridge,
+        pallet_surf_bridge,fly_pallet_bridge,fly_viridian_bridge,safari_entry,hm_teaching_bridge,
+        vending_bridge,saffron_guard_bridge,silph_card_bridge,lapras_bridge,player_pc_bridge,
+        cinnabar_purchase_bridge,campaign_transactions)
+    try:
+        if any(b._active() is None or bool(b._active()) for b in _LEAGUE_FIELDS):return False
+        for b in peers:
+            bindings=getattr(b,'_BINDINGS',None);done=getattr(b,'_COMPLETED',None);controllers=getattr(b,'_CONTROLLERS',{})
+            if type(bindings) is not dict or type(done) is not set or type(controllers) is not dict:return False
+            if (set(bindings)|set(controllers))-done:return False
+        if (safari_entry._RUN_CONTROLLER is not None or type(capture_transaction._SESSIONS) is not dict
+                or any(type(s) is not dict or s.get('done') is not True for s in capture_transaction._SESSIONS.values())
+                or any(c.waiting for c in league_native_wait._WAITS.values())
+                or any(c.stage!='complete' for c in _FIELD_CONTROLLERS.values())
+                or any(c.state!='complete' for c in _GYM_CONTROLLERS.values())):return False
+    except Exception:return False
+    return True
+
+
+def _training_eof_context(pyboy,state,plan):
+    if not league_training_proof.applies(plan):return None
+    from .observation import read_visible_text
+    from .rocket_movement import read_rocket_movement
+    step=plan.get('steps',[])[-1] if plan.get('steps') else {}
+    key=(league_training_proof.JOB,step.get('id'))
+    if not _training_peers_clear():return league_training_proof._fail(key,'active_field_or_legacy_owner')
+    try:
+        return league_training_proof.context(state,plan,text=read_visible_text(pyboy),
+            grid=read_world_grid(pyboy,state['location']),
+            movement=read_rocket_movement(pyboy,observation_frame=state.get('frame')),
+            native_owner=pyboy,peers_clear=True,
+            full_party_healed=healthy(state['progress'],require_full_pp=True),validation=league_training_supervisor,
+            stored_batch_proof=_TRAINING_BATCH_PROOFS.get(step.get('id')))
+    except Exception:
+        return league_training_proof._fail(key,'readonly_world_getter_failed')
+
+
+def _e4_coordinate_context(pyboy,state,step,text,previous):
+    """接同frame已release的原生owner；保原生終點見證後才普通走近NPC。"""
+    c=league_native_wait._WAITS.get(step.get('id'));point=state.get('location',{})
+    at_target=[point.get('x'),point.get('y')]==step.get('target')
+    grid=read_world_grid(pyboy,point) if at_target else None
+    return e4_coordinate.at_target(pyboy,state,step,text,grid,previous,
+        native_controller=c,now=getattr(c,'last_now',None))
+
+
 def switch_context(pyboy,state,plan,step_id,previous):
+    proof_guard=_training_proof_owner_guard(pyboy,plan)
+    if proof_guard is not None:return proof_guard
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    league_field=_league_field_context(pyboy,state,plan,step_id,step,previous)
+    if league_field is not None:return league_field
     active_medicine=trainer_medicine_ui_bridge._active()
     if active_medicine:
         bindings=trainer_medicine_ui_bridge._BINDINGS
@@ -101,11 +252,19 @@ def switch_context(pyboy,state,plan,step_id,previous):
              or step_id in league_native_wait._WAITS))
     if native_active or native_ready:
         from .observation import read_visible_text
-        native=league_native_wait.context(pyboy,state,step,read_visible_text(pyboy),previous)
+        native_text=read_visible_text(pyboy)
+        native=league_native_wait.context(pyboy,state,step,native_text,previous,
+            now=_native_wait_clock(step_id,state.get('frame')),
+            review_capsule=plan.get('native_dialogue_review'),
+            checkpoint_resume_capsule=plan.get('checkpoint_resume_capsule'),
+            final_a_review_capsule=plan.get('native_final_a_review'))
         if native is not None:
             if native.get('phase')=='overworld' and native.get('available_actions')==['wait']:
                 native={**native,'phase':'league_native_wait'}
             return native,step_id
+        if step['map_id'] in e4_coordinate.CONFIG and not satisfied(step,state['progress']):
+            coordinate=_e4_coordinate_context(pyboy,state,step,native_text,previous)
+            if coordinate is not None:return coordinate,step_id
     if fly_viridian_bridge.applies(step_id,step):
         active_fly=set(fly_viridian_bridge._BINDINGS)-fly_viridian_bridge._COMPLETED
         if active_fly and active_fly!={step_id}:
@@ -270,8 +429,17 @@ def switch_context(pyboy,state,plan,step_id,previous):
     return context,next_id
 
 
-def attrition_transition_context(pyboy,state,plan,step_id,attrition):
+def attrition_transition_context(pyboy,state,plan,step_id,attrition,previous=()):
     """只將已綁Lapras的來源命名未初始化過渡交專屬reader；其他損耗照常停。"""
+    proof_guard=_training_proof_owner_guard(pyboy,plan)
+    if proof_guard is not None:return proof_guard
+    active_eof=league_training_proof._active()
+    if active_eof:return league_training_proof._fail(next(iter(active_eof)),'attrition_during_eof'),'complete'
+    if league_training_batch_bridge._active()=={step_id}:
+        from .observation import read_visible_text
+        closure=league_training_batch_bridge.pre_attrition_closure_context(pyboy,state,plan,step_id,attrition,
+            read_visible_text(pyboy),read_world_grid(pyboy,state['location']),previous)
+        if closure is not None:return _retain_training_batch_proof(state,plan,closure)
     if (not isinstance(attrition,dict)
             or attrition.get('review_reason')!='party_attrition_state_unverified'
             or attrition.get('party_attrition',{}).get('issue')!='party_read_not_verified'):
@@ -283,7 +451,10 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition):
 
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
+    proof_guard=_training_proof_owner_guard(pyboy,plan)
+    if proof_guard is not None:return proof_guard
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
+    if any(b.applies(step_id,step) for b in _LEAGUE_FIELDS):return None
     if (any(c.waiting for c in league_native_wait._WAITS.values())
             or league_native_wait._signature(step) is not None):
         return None  # 原生走位與intro只交有真previous的switch，不由field提早接管。
@@ -696,6 +867,13 @@ def waypoint(pyboy,state,plan,step_id,previous):
         target=_via_target(plan,step,(x,y))
         target={'x':target[0],'y':target[1]}
         if 'await_script_event' in step and [x,y]==list(target.values()):
+            if step['map_id'] in e4_coordinate.CONFIG:
+                from .observation import read_visible_text
+                coordinate=_e4_coordinate_context(pyboy,state,step,read_visible_text(pyboy),previous)
+                if coordinate is None:
+                    coordinate={'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
+                                'review_reason':'e4_coordinate_target_context_missing','route_step':step['id']}
+                return coordinate,step['id']
             return coordinate_script_wait(state,step),step['id']
         if step['kind']=='heal' and healthy(progress,require_full_pp=step.get('require_full_pp') is True):index+=1;continue
         if step['kind']=='move' and [x,y]==list(target.values()) and 'next_map' not in step:index+=1;continue
@@ -744,4 +922,6 @@ def waypoint(pyboy,state,plan,step_id,previous):
                     'goal':step['id'],'route_step':step['id'],'world_path_hint':hint},step['id']
         return {'phase':'overworld','objective':'Wait.','available_actions':['wait','b'],'navigation_warning':'no_verified_path',
                 'goal':step['id'],'route_step':step['id']},step['id']
+    training_proof=_training_eof_context(pyboy,state,plan)
+    if training_proof is not None:return training_proof,'complete'
     return {'phase':'campaign_review','review_reason':'route_extension_required','route_step':'complete'},'complete'

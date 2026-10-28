@@ -406,3 +406,32 @@ Key6步只有一次檢查球A、收據階段5WAIT，沒有補不存在的prompt�
 | 15:37:57.467582 | 正常到夏伯前，尚未對話開戰 |
 
 [收據與問題](cinnabar-supply-and-lapras38.md)分列牆鐘、工程停檢、模擬及後製倍速。
+
+## 勁敵 BLUE 與聯盟前補給 — 2026-10-28 台北
+
+| 時間 | 實際里程碑 |
+|---|---|
+| 10:35:51.419070 | 真畫面 KEVIN defeated BLUE! |
+| **10:35:51.966781** | Route22 第二次勁敵勝利事件首次 false→true |
+| 10:35:53.078695 | 原生退場閉合；LP42／Snorlax42，六人存活 |
+| 10:41:08.707797 | 正常回常磐中心，全六人HP／status／PP補滿 |
+
+[本場收據](../results/route22-rival2-game27-20261028.json)分列296動作、兩瓶Hyper、速度與工程停檢；尚未勝四天王。舊game26僅viewer存活，退出時間未知，新game27從最新checkpoint起新時基，不能算三天連續遊玩。
+
+## Route23與冠軍之路實際完成時間 — 2026-10-28 台北
+
+| 時間 | 已核閉合事件 |
+|---|---|
+| 10:58:57.143317 | route23-land-guard cascade |
+| 11:00:06.081303 | route23-land-guard thunder |
+| 11:00:08.016868 | route23-land-guard rainbow |
+| 11:00:11.428800 | route23-surf  |
+| 11:04:17.073002 | route23-water  |
+| 11:04:19.232912 | route23-land-guard volcano |
+| 11:04:22.016776 | route23-land-guard earth |
+| 11:04:25.415429 | victory-strength  |
+| 11:04:40.106032 | victory-first-boulder  |
+| 11:10:15.402985 | victory-strength  |
+| 11:10:16.802921 | victory-later-boulder 2f_switch1 |
+
+11:14:30.134452，第二層(20,13)戰後健康閘門暫停；LP43剩27/177，Snorlax42剩90/203，六人皆存活、Hyper8尚未在野外使用。正在補上正常野外道具流程，再續三樓。這不是四天王勝利。[進度收據](../results/route23-victory2f-progress-20261028.json)保留來源與資源。

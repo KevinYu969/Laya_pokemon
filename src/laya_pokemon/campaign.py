@@ -192,7 +192,7 @@ def main():
             attrition=attrition_context(state,plan,step_id)
             field=None
             if attrition:
-                field=campaign_route.attrition_transition_context(emulator,state,plan,step_id,attrition)
+                field=campaign_route.attrition_transition_context(emulator,state,plan,step_id,attrition,previous=previous)
                 if not field:
                     state.update(attrition);pause(attrition['review_reason'],state,plan_sha);continue
             if not field:field=campaign_route.field_context(emulator,state,plan,step_id)
@@ -230,7 +230,7 @@ def main():
             for marker,kind in [('GREW','level-up'),('EVOLVED','evolution'),('WAS CAUGHT','capture'),('BADGE','badge-dialogue'),('DEFEATED','trainer-defeated'),('LEARNED','move-learned')]:
                 if marker in text:journal.capture(emulator,kind,state,timing())
             position=(mid,state.get('location',{}).get('x'),state.get('location',{}).get('y'),state.get('goal'))
-            stalled=stalled+1 if state['phase']=='overworld' and position==last_pos else 0;last_pos=position
+            stalled=stalled+1 if state['phase']=='overworld' and position==last_pos and state.get('suppress_navigation_stall') is not True else 0;last_pos=position
             if stalled>=25:stalled=0;pause('navigation_stall',state,plan_sha);continue
             if live_view:live_view.update_summary(state)
             before=time.monotonic();decision=run_with_window_events(emulator,lambda:policy.choose(state),time.perf_counter()+60,WindowEvent.PAUSE,WindowEvent.UNPAUSE);stats['model_wait_seconds']+=time.monotonic()-before

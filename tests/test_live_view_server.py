@@ -1,6 +1,7 @@
 """本機即時顯示器只可讀兩份指定輸出，不可瀏覽遊戲檔案。"""
 from http.client import HTTPResponse
 from io import BytesIO
+import json
 import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
@@ -54,3 +55,23 @@ def test_viewer_reports_not_ready_instead_of_inventing_game_state(live_server):
     (run/'live-frame.json').write_text('{partial', encoding='utf-8')
     assert request(port, '/api/status')[0] == 503
     assert request(port, '/', method='POST')[0] == 501
+
+
+def test_locked_frame_publish_still_shows_real_campaign_pause_without_changing_pixels_or_party(live_server):
+    run,handler=live_server
+    old=dict(frame=98194,status='running',phase='battle_dialogue',party=[{'hp':90}],at='2026-10-28T03:14:29+00:00')
+    (run/'live-frame.json').write_text(json.dumps(old),encoding='utf-8')
+    (run/'live-frame.png').write_bytes(b'actual-stale-pixels')
+    (run/'summary.json').write_text(json.dumps(dict(status='paused_for_review',review_reason='party_attrition_requires_center',private='never expose')),encoding='utf-8')
+    body=json.loads(request(handler,'/api/status')[2])
+    assert body=={**old,'status':'paused_for_review','review_reason':'party_attrition_requires_center'}
+    assert request(handler,'/live-frame.png')[2]==b'actual-stale-pixels'
+    assert request(handler,'/summary.json')[0]==404
+
+
+@pytest.mark.parametrize('status,expected',[('running','running'),('failed','stopped'),('stopped','stopped')])
+def test_campaign_status_does_not_copy_stale_reason_or_exception_details(live_server,status,expected):
+    run,handler=live_server
+    (run/'live-frame.json').write_text('{"frame":9,"status":"paused_for_review"}',encoding='utf-8')
+    (run/'summary.json').write_text(json.dumps(dict(status=status,review_reason='old_reason',exception='private')),encoding='utf-8')
+    assert json.loads(request(handler,'/api/status')[2])==dict(frame=9,status=expected,review_reason=None)

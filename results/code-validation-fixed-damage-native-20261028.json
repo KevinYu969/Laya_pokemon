@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-28",
+  "returncode": 0,
+  "command": [
+    "pytest",
+    "tests/test_fixed_damage_risk.py",
+    "tests/test_fixed_damage_native_prompt.py",
+    "-q",
+    "--basetemp",
+    "outputs/pytest-fixed40-native-20261028-a"
+  ],
+  "tests_tail": "........................................................................ [ 79%]\n...................                                                      [100%]\n============================== warnings summary ===============================\n.venv\\Lib\\site-packages\\sdl2\\_internal.py:24\n  .venv\\Lib\\site-packages\\sdl2\\_internal.py:24: UserWarning: Using SDL2 binaries from pysdl2-dll 2.32.10\n    warnings.warn(msg, warntype)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n91 passed, 1 warning in 3.10s\n",
+  "scope": "僅固定40既有保護與原生縮寫提示，非完整回歸",
+  "files": {
+    "src/laya_pokemon/battle.py": "b929c706f79fc39bcfcbaacf9ba7a54703a532faa3ce48b1e4bdf0f2a80e1927",
+    "tests/test_fixed_damage_native_prompt.py": "9c82ba3885439f033eceada768888e28e3692744e2466fd6da2099ad511eccee"
+  }
+}

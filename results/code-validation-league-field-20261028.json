@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-28",
+  "returncode": 2,
+  "command": [
+    "pytest",
+    "tests/test_route23_land_guards.py",
+    "tests/test_league_training_batch.py",
+    "-q",
+    "--basetemp",
+    "outputs/pytest-league-field-20261028-a"
+  ],
+  "tests_tail": "\n=================================== ERRORS ====================================\n____________ ERROR collecting tests/test_league_training_batch.py _____________\ntests\\test_league_training_batch.py:20: in <module>\n    assert HERE.name==\"staged-league-training-runtime-20261028\" and HERE.parent.name==\".local\"\nE   AssertionError: assert ('tests' == 'staged-league-training-runtime-20261028')\nE    +  where 'tests' = WindowsPath('tests').name\n============================== warnings summary ===============================\n.venv\\Lib\\site-packages\\sdl2\\_internal.py:24\n  .venv\\Lib\\site-packages\\sdl2\\_internal.py:24: UserWarning: Using SDL2 binaries from pysdl2-dll 2.32.10\n    warnings.warn(msg, warntype)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nERROR tests/test_league_training_batch.py - AssertionError: assert ('tests' =...\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 warning, 1 error in 1.56s\n",
+  "scope": "五名Route23陸路守衛及有限單場野戰訓練，尚非路線接線或實機驗收",
+  "files": {
+    "src/laya_pokemon/route23_land_guards.py": "8a22d9a748ed33401bc35080fee26e5d64ed5dc217d085e73c67a86b77d123d4",
+    "src/laya_pokemon/route23_land_guards_bridge.py": "be52c1a43ea338e16ef08e5d8f5445fb8b62eef53854a7455d6baae4e145bf97",
+    "tests/test_route23_land_guards.py": "6fad68a963b4127cbade225f1dd0be01ee1ef21554c1b3e28f630fd7b5d1854f",
+    "src/laya_pokemon/league_training_batch.py": "f8d4a1c2be865974b15615c3377b63a21927fb291ceca4ca0a3247d8657b2309",
+    "src/laya_pokemon/league_training_batch_bridge.py": "520d0ab0c540de3f8ba7c42de94e2b306c32e93bc0db609348b567ff80d5fe8e",
+    "tests/test_league_training_batch.py": "df80a488417391f923da161336dd89b53d3160d565a3fa09f2e6ec557192cdbc"
+  }
+}

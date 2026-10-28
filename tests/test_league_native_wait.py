@@ -13,7 +13,7 @@ from pyboy.plugins import game_wrapper_pokemon_gen1_constants as sdk
 import pytest
 
 ROOT=Path(laya_pokemon.__file__).resolve().parents[2]
-STAGE=ROOT/'.local/staged-league-native-wait-20261025'
+STAGE=ROOT/'.local/staged-route22-reviewed-adoption-20261028'
 
 
 def source_for_test(path):
@@ -42,6 +42,24 @@ def native_text(first=None,*,window=False):
         tilemap_background=Tiles(),tilemap_window=Tiles())
     text=observation.read_visible_text(game)
     assert text['read_valid'] and text['alignment_verified'];return text
+
+
+def dialogue_text(first,second='',arrow=True):
+    contractions=("'d","'l","'s","'t","'v","'r","'m")
+    cells=[[' ']*20 for _ in range(18)]
+    for y,value in ((14,first),(16,second)):
+        x=1
+        while value:
+            token=next((c for c in contractions if value.startswith(c)),value[0])
+            cells[y][x]=token;x+=1;value=value[len(token):]
+    if arrow:cells[16][18]='▼'
+    reverse={}
+    for code,char in sdk.POKEMON_TEXT_DECODING.items():
+        if type(code) is int and 0<=code<=255:reverse.setdefault(char,code)
+    class Tiles:
+        def __getitem__(self,xy):x,y=xy;return reverse[cells[y][x]]
+    game=SimpleNamespace(memory={0xFF40:0xB1},screen=SimpleNamespace(tilemap_position_list=[(0,0,0,0)]*144),tilemap_background=Tiles(),tilemap_window=Tiles())
+    result=observation.read_visible_text(game);assert result['read_valid'];return result
 
 
 class Memory:
@@ -74,11 +92,15 @@ class Session:
                 moves=[33,34,58,109],pp=[20,15,10,10]) for s,n in
                 ((19,'LAPRAS'),(132,'SNORLAX'),(102,'EEVEE'),(154,'VENUSAUR'),(35,'FEAROW'),(7,'NIDOKING'))])
         self.text=native_text();self.state=None;self.signal=None
+        self.progress.update(player_name_raw='KEVIN',money=1000,inventory=[dict(item=18,quantity=9)])
     def sync(self):
         cfg=self.m.CONFIG[self.location['map_id']];v=self.values;memory=self.game.memory.values
         memory.update({0xD35E:self.location['map_id'],0xD362:self.location['x'],0xD361:self.location['y'],
             0xD057:v['raw'],0xD05A:v['battle_type'],0xD059:v['current'],0xD05D:v['trainer'],
             0xD356:v['badges'],0xD730:v['status5'],0xCD38:v['simulated'],0xCD6B:v['ignored'],cfg['script']:v['script']})
+        reverse={char:code for code,char in sdk.POKEMON_TEXT_DECODING.items() if type(code) is int and 0<=code<=255 and type(char) is str and len(char)==1}
+        for address,name in ((0xD158,'KEVIN'),(0xD34A,'BLUE')):
+            memory.update({address+i:(reverse[name[i]] if i<len(name) else 0x50) for i in range(11)})
         for i in self.events:memory[0xD747+i//8]=0
         for i,on in self.events.items():memory[0xD747+i//8]|=int(on)<<(i%8)
         self.progress['story_event_bits'][cfg['event']]=self.events[cfg['won']]
@@ -93,7 +115,7 @@ class Session:
         out=self.m.context(self.game,self.state,self.step,self.text,previous,now=self.now)
         assert before==(self.state,self.step,self.text,self.game.memory.values)
         if out is not None:
-            assert out['available_actions']==['wait'] and not out.get('field_move_complete')
+            assert out['available_actions']==(['a','wait'] if out.get('source_native_dialogue') else ['wait']) and not out.get('field_move_complete')
             assert not out.get('battle_medicine_complete') and not out.get('victory_confirmed')
         return out
 
@@ -104,29 +126,42 @@ def test_exact_stage_and_formal_paths(control):
     with pytest.raises(RuntimeError):source_for_test(STAGE/'not_allowed.py')
 
 
-@pytest.mark.parametrize('script',[4,5])
-def test_empty_native_dialogue_window_waits_before_first_printed_character(control,script):
-    s=Session(control);s.values['script']=script;s.text=native_text(window=True)
-    assert s.text['lines']==[] and s.text['window_visible'] is True
-    out=s.call();owner=control._WAITS[s.step['id']]
-    assert out['native_wait_reason']=='empty_native_dialogue_window' and out['available_actions']==['wait']
-    calls=owner.calls
-    assert s.call()['native_wait_reason']=='empty_native_dialogue_window'
-    assert control._WAITS[s.step['id']] is owner and owner.calls==calls+1
+BEFORE=[('BLUE: What?','KEVIN! What a'),('KEVIN! What a','surprise to see'),
+    ('surprise to see','you here!'),("So you're going to",'POKéMON LEAGUE?'),
+    ('You collected all','the BADGEs too?'),('the BADGEs too?',"That's cool!"),
+    ("Then I'll whip you",'KEVIN as a'),('KEVIN as a','warm up for'),
+    ('warm up for','POKéMON LEAGUE!'),('Come on!','')]
+AFTER=[('That loosened me',"up! I'm ready for"),("up! I'm ready for",'POKéMON LEAGUE!'),
+    ('KEVIN, you need','more practice!'),('But hey, you know',"that! I'm out of"),
+    ("that! I'm out of",'here. Smell ya!')]
+
+
+def complete_dialogue(s,pages):
+    previous=[]
+    for i,(a,b) in enumerate(pages):
+        final=i==len(pages)-1;s.text=dialogue_text(a,b,arrow=not final)
+        r=s.call(previous=previous)
+        if final:
+            assert r['available_actions']==['wait']
+            assert s.call(fresh=False,previous=previous)['available_actions']==['wait']
+            r=s.call(previous=['wait'])
+        assert r['available_actions']==['a','wait'] and r['source_native_dialogue']
+        assert r['native_dialogue_page']==i
+        previous=['a']
 
 
 def test_route22_native_second_rival_lifecycle_no_false_completion(control):
     s=Session(control);assert s.call()['native_wait_reason']=='rival_native_approach_or_intro'
     s.values.update(script=4,status5=1);assert s.call()['available_actions']==['wait']
-    s.values['status5']=0;s.text=native_text('BLUE wants',window=True);assert s.call() is None
+    s.values['status5']=0;complete_dialogue(s,BEFORE)
     s.values.update(raw=2,script=5);s.text=native_text()
-    assert s.call()['native_wait_reason']=='blank_trainer_intro'
+    assert s.call(previous=['a'])['native_wait_reason']=='blank_trainer_intro'
     s.text=native_text('BLUE wants',window=True);assert s.call() is None
-    s.text=native_text();assert s.call() is None  # no repeated intro ownership during battle
-    s.values.update(raw=0,script=5);s.events[0x526]=True;s.text=native_text('I was careless!',window=True)
-    assert s.call() is None
+    s.text=native_text();assert s.call() is None
+    s.values.update(raw=0,script=5);s.events[0x526]=True
+    complete_dialogue(s,AFTER)
     s.values.update(script=6,status5=1);s.text=native_text()
-    assert s.call()['native_wait_reason']=='rival_native_exit'
+    assert s.call(previous=['a'])['native_wait_reason']=='rival_native_exit'
     s.values.update(script=7,status5=0);s.events.update({0x521:False,0x527:False})
     assert s.call() is None and s.game.memory.reads.count(0xD60A)>=18
 
@@ -281,3 +316,80 @@ def test_after_intro_handoff_existing_battle_owns_native_contractions_and_animat
 def test_unhashable_step_id_is_bounded_review(control):
     s=Session(control);s.step['id']=[]
     assert s.call()['review_reason'].endswith('fixed_step_required')
+
+
+def before_session(control):
+    s=Session(control);s.values['script']=4;return s
+
+
+def test_empty_native_window_and_exact_prefix_wait_instead_of_legacy_handoff(control):
+    s=before_session(control);s.text=native_text(window=True)
+    assert s.call()['available_actions']==['wait']
+    s.text=dialogue_text('BL',arrow=False);assert s.call()['native_wait_reason']=='native_dialogue_printing'
+    s.text=dialogue_text('BLUE: What?','KEVIN! What a',arrow=False)
+    assert s.call()['native_wait_reason']=='native_dialogue_prompt_blink'
+    s.text=dialogue_text('BLUE: What?','KEVIN! What a')
+    assert s.call()['available_actions']==['a','wait']
+    assert s.call(fresh=False)['available_actions']==['wait']
+
+
+@pytest.mark.parametrize('bad',['wrong_name','missing_char','upper_pollution','wrong_contraction_position'])
+def test_source_page_exact_positions_and_names_are_required(control,bad):
+    s=before_session(control)
+    s.text=dialogue_text('GARY: What?' if bad=='wrong_name' else 'BLUE: What?','KEVIN! What a')
+    if bad=='missing_char':s.text['cells'][14][2]=' '
+    elif bad=='upper_pollution':s.text['cells'][3][3]='A'
+    elif bad=='wrong_contraction_position':s.text['cells'][14][2]="'s"
+    if bad!='wrong_name':
+        rows=[''.join(r) for r in s.text['cells']];idx=[i for i,r in enumerate(rows) if __import__('re').search(r'[A-Za-z0-9]{2,}',r)][:12]
+        s.text.update(lines=[rows[i].rstrip() for i in idx],line_rows=idx)
+    assert s.call()['phase']=='campaign_review'
+
+
+def test_native_page_cannot_advance_without_actual_previous_a(control):
+    s=before_session(control);s.text=dialogue_text(*BEFORE[0]);s.call()
+    s.text=dialogue_text(*BEFORE[1]);assert s.call(previous=['wait'])['review_reason'].endswith('native_page_changed_without_actual_a')
+
+
+def test_actual_a_waits_on_old_page_and_tolerates_native_arrow_blink(control):
+    s=before_session(control);s.text=dialogue_text(*BEFORE[0]);s.call()
+    s.text=dialogue_text(*BEFORE[0],arrow=False)
+    assert s.call(previous=['a'])['native_wait_reason']=='native_dialogue_after_actual_a'
+    s.text=dialogue_text(*BEFORE[1]);assert s.call(previous=['wait'])['native_dialogue_page']==1
+
+
+def offer_before_done(s):
+    for i,pair in enumerate(BEFORE[:-1]):
+        s.text=dialogue_text(*pair);assert s.call(previous=['a'] if i else [])['available_actions'][0]=='a'
+    s.text=dialogue_text(*BEFORE[-1],arrow=False)
+    assert s.call(previous=['a'])['available_actions']==['wait']
+    assert s.call(previous=['wait'])['available_actions'][0]=='a'
+
+
+def test_final_done_never_invents_arrow_and_needs_actual_a_before_battle(control):
+    s=before_session(control);offer_before_done(s)
+    s.values.update(raw=2,script=5);s.text=native_text()
+    assert s.call(previous=['wait'])['review_reason'].endswith('native_dialogue_advanced_without_actual_a')
+
+
+def test_final_done_arrow_is_rejected_and_partial_resets_stability(control):
+    s=before_session(control)
+    for i,pair in enumerate(BEFORE[:-1]):
+        s.text=dialogue_text(*pair);s.call(previous=['a'] if i else [])
+    s.text=dialogue_text(*BEFORE[-1],arrow=True)
+    assert s.call(previous=['a'])['review_reason'].endswith('native_done_unexpected_arrow')
+
+
+def test_source_names_are_really_double_read_and_unterminated_name_fails(control):
+    s=before_session(control);s.text=dialogue_text(*BEFORE[0]);assert s.call()['available_actions'][0]=='a'
+    assert s.game.memory.reads.count(0xD158)==2 and s.game.memory.reads.count(0xD34A)==2
+    other=before_session(control);control._WAITS.clear()
+    other.game.memory.hook=lambda a,v:0x80 if 0xD34A<=a<0xD34A+11 else v
+    assert other.call()['phase']=='campaign_review'
+
+
+def test_after_done_needs_actual_a_before_native_exit(control):
+    s=Session(control);s.values['script']=5;s.events[0x526]=True
+    complete_dialogue(s,AFTER)
+    s.values.update(script=6,status5=1);s.text=native_text()
+    assert s.call(previous=['wait'])['review_reason'].endswith('native_dialogue_advanced_without_actual_a')

@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-28",
+  "status": "passed",
+  "test_passed": 87,
+  "pytest_seconds": 3.28,
+  "command": ".venv/Scripts/python.exe -B -X utf8 -m pytest -q -x --tb=short tests/test_league_native_wait.py tests/test_route22_reviewed_adoption.py tests/test_campaign_native_wait_clock.py tests/test_campaign_trainer_medicine_route.py -p no:cacheprovider",
+  "source_snapshot_phase": "after_tests_only",
+  "source_sha256": {
+    "src/laya_pokemon/league_native_wait.py": "d492bd8c1f842c7b03c296a250b4f1d5f5409a94371f6a2f84c933dfb7880f21",
+    "src/laya_pokemon/campaign_route.py": "8dfa93c608a8bc5a8769fab8d681ee98d6ff9ae6835dba3f3531e78b80b490d7",
+    "tests/test_league_native_wait.py": "e429ecf04ea9f8502752e718c251adb0fc4345b6b76d55754e332fc36a013283",
+    "tests/test_route22_reviewed_adoption.py": "fb8a7b7d2d3c618c1431e95d9c96e736f6bb5dd12c3f4bd9d87c4be10addee87",
+    "tests/test_campaign_native_wait_clock.py": "1de948122159ac70e3ba361fd4e81d7c402a7ed69157884b5644f5ede49c9100",
+    "tests/test_campaign_trainer_medicine_route.py": "e8260c2cf69606cd2d5585fa79a4bd81befc3f8fc356f6ba0b02715daf2ffef8"
+  },
+  "scope": "Route22具名page3熱接、原錯誤/已用預算保留、原生縮寫/sourcepages/fresh真WAIT、箭頭blink不提早A、active-frame clock及既有med分派；實機另驗。"
+}

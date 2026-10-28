@@ -1,7 +1,7 @@
 <!-- 自動匯出的公開備份；請於私人主檔更新，再重新匯出。 -->
 ---
 type: note
-updated: 2026-10-25
+updated: 2026-10-28
 author: codex
 ---
 
@@ -1207,4 +1207,48 @@ GitHub安全備份b7e7969／453白名單檔遠端已核，但CI40185466855有2�
 逐館檢討：Surf實際依屬性有效收掉五隻，零藥效率優於夏伯；新的通用UI-only/半血門檻/條件傷害policy已正式接線，但此戰未用藥，不能當成通用用藥實機成功。第一次完整回歸因新增registry使舊peer完整性測試漏列而1fail/1378pass；正式補齊active owner在任何foreignUI前攔下，測試涵蓋第18peer，最終8075/38.82秒完整通過、源碼前後hash保持。第一次wrapper PowerShell quoting失敗未跑測試，改私有完整腳本後真執行，未捏造收據。
 
 GitHub安全備份6ff673f4cc977f6c8b8c4b0ba2610b36d8375a86共475白名單檔、遠端SHA核對；CI40192966390當時running，未冒稱全綠。第66節素材62MP4/199PNG含QA仍本機、網站未發布、SDL未修。下一步正常全隊補滿，再Route22勁敵/冠軍之路與平衡培養，繼續四天王、冠軍、名人堂；八徽章不是全程完成。
+
+## 68. 2026-10-28 接續四天王目標，核對原勁敵停點與第八館完整影片
+
+Kevin重新要求本機Laya接續紅版直到四天王，逐鍵分類不用GPT額度；工程修復/審查另計。已重做私人設備preflight，原game26與8767 HTTP200仍在，主程序停frame107929/map33(29,4)、raw0/script4，畫面真「So you're going to / POKéMON LEAGUE? ▼」。八徽章255、全六人正常全補，LP41/169、Snorlax41/198、Eevee35/90、Venusaur35/111、Fearow37/114、Nido36/121；尚未勝此場勁敵或四天王。未回讀戰前、未重啟遊戲，也不把三天工程/人類等待寫成模型純遊玩時間。
+
+根因核實：read_visible_text保留原生單tile多字元縮寫，you're的'r長度2，而舊native _text只收len1，因而native_packet_unverified。10/25候選d7bf…雖有source頁序與53合成測試，但lazy before.page=0；主程序已在page3、舊sticky error仍在，且getter新增names導致同frame schema不同，不能直接替換假裝能續行。正在做具名page3接續：同原owner保存原error/計數/clock、精確來源/名字/旗標驗證、先一個真WAIT得fresh frame，再銜接當前頁；新的未知錯誤仍須sticky。保留原107377空Window提前handoff與107929縮寫兩停點，不全域忽略錯誤。
+
+第八館新素材已父層核hash並實看12格：完整3986幀原速265.733333秒/4倍66.433333秒，2片MP4、12遊戲PNG+1QA；含五名對手、Surf克制、升41、defeatedGIOVANNI、EARTHBADGE、TM27/FISSURE。結果results/giovanni-gym8-clips-20261025.json，素材累計64MP4/212PNG含QA，影片仍本機、網站未發布、SDL未修。正式破館日期仍10/25，不改寫成驗收日10/28。
+
+10/25安全備份e76be7a66ac1ff6963a8de3258f4433ce0a44ea7核496白名單檔，10/26與10/27排程無新變更且遠端一致。最新已知成功CI仍6ff673f/40192966390；後加程式分別針對性驗證，不能用8075完整回歸數冒稱所有新碼全測。怪力四站/推石/Route23水路已各候選凍結測試，仍待正式接線與真機；Source另找到Indigo可正常反入VR2F普通地板練等之候選，準備先真往返校準再最低等級輪換，不能讓主力一人升級就冒稱全隊達標。
+
+## 69. 2026-10-28 更正程序存活判斷：最新檢查點恢復、勁敵實戰及固定傷害文字停檢
+
+更正第68節「原game26仍在、未重啟遊戲」：該判斷僅依8767 HTTP200，後續核對實際程序才確認畫面服務仍在、game26遊戲程序已停止。最後舊診斷在2026-10-25 21:17，實際退出時間未知，不能把10/25至10/28算為連續遊玩，也不能聲稱保留已消失的controller實例或計數。舊最新checkpoint為frame107929、Route22(29,4)、戰前page3。先以無按鍵clone核對完整progress相同，原始檢查點SHA f375e0ad98b5382f616c071accadc7c6ed7e8793ea1a7a2f8ac970b448d45a2d未改；另立game27與新時基，沒有讀更早存檔或改RAM。
+
+game27以持續背景程序啟動，8767改連新遊戲的真PyBoy framebuffer；仍是網頁即時畫面，SDL桌面原生視窗尚未修。Route22精確來源頁序、KEVIN/BLUE與旗標驗證後，本機Laya接續對話，並已真實進入勁敵戰鬥。第一個新停點frame1177是最後done頁A在929送出、1057進場時沒有保存ACK；動作紀錄證明A已實按128幀，修正只恢復該具名ACK，舊錯誤、計數與時鐘保留在歷史。另修正空raw2進場Window先WAIT，沒有從黑畫面推定可戰鬥。native/final-A針對性102案通過，尚未冒稱所有新碼已有完整回歸。
+
+最新實戰停點frame14161：GYARADOS47、真畫面「It's super / effective! ▼」，LP41畫面99/169，Party當下139/169、EXP92104、Ice Beam PP4；六人尚未見新FNT。既有Dragon Rage固定40傷害保護仍在，31次不可讀後主動停檢。根因是單一原生tile解成多字元's，被len1字碼檢查拒絕；正在製作精確來源prompt修復，不能把Party139改成畫面99假造同步，不能清除固定40傷害風險或把未知頁當A。勁敵、四天王、冠軍尚未宣告勝利。
+
+新遊戲逐鍵仍是地端Laya/快取，cloud_fallback=false；Strata配置未更換，重用已核對的既有決策，不因工程修補呼叫GPT分類。工程審查使用本次Codex額度，與遊戲逐鍵分類分開記錄。Laya載入時出現checkpoint temperature0.10058被既有程式夾到0.5的警告，相關confidence尚未校準，不能當可靠成功機率。耗時後續須分開記真戰鬥模擬時間、排除停檢的運作時間及含工程等待的牆鐘。
+
+## 70. 2026-10-28 勁敵BLUE真勝、兩名42級與正常全隊補給
+
+台北10:35:51.419070真畫面KEVIN defeated BLUE，10:35:51.966781 frame26977勝利事件首次true；10:35:53.078695 frame27857原生退場閉合。來源結果results/route22-rival2-game27-20261028.json、docs/league-progress.md。LP41→42 EXP88128→96434（+8306），Snorlax41→42 EXP91196→93372（+2176）；本場初始LP88128，不能沿用上館88096。伊布35、妙蛙花35、大嘴雀37、尼多王36四員所有欄位保持，仍未全隊均衡。
+
+Hyper10→8、FullHeal10保持，獎金45390→48835（+3445）；兩次真用藥含quantity-1、HP動畫與閉合handoff，原先通用用藥終於有本場實機證據。297隊伍觀測六人有效、未見新HP0/lost_transition。Alakazam期LP→Snorlax、Charizard期再回LP，固定40專屬換人本戰未觸發，不能冒稱驗收。原生's修補14161真A後繼續完成Gyarados戰，保139Party／99visible及原DragonRage風險，沒有寫HP。
+
+296動作＝16新Laya/215cache/65被動；ledger model_ms共17.295892秒，儀表model_wait57.112另含LayaPolicy初始化和choose包裝牆鐘，load33.463另列，不將兩種測量混稱純思考。封口牆鐘1697.094、停檢1605.984、非停檢91.110、模擬464.267秒；這不是全遊戲通關耗時。cloud_fallback=false、配置保持、load1；工程審查另計。固定40新增26+舊65=91案3.10秒通過；聯盟陸路/單wild/購藥registry測試212案15.60、central入口27案0.50，完整回歸正在另做，不能用8075舊數代替。
+
+回中心父層先誤填23,24屋頂via，停於常磐西邊界，唯讀clone核真地圖：23,24無路，23,25門正常32步；移除錯via，保留兩次停點，無鍵clone不另存未來狀態。10:41:08.707797 frame33873已正常六人全補HP/status/PP。續常磐西出／Route22正門，現已通過岩石徽章門到Route23第一瀑布徽章守衛，41073終頁停event_before_final_actual_a；正核原生done與事件期序，不把bit變化偽造成按過A。四天王、冠軍、名人堂仍未完成。
+
+## 71. 2026-10-28 全徽章通行、衝浪與冠軍之路兩開關；43級戰後先補給
+
+實際閉合時間（台北）：10:58:57.143317瀑布守衛；11:00:06.081303雷電、11:00:08.016868彩虹、11:00:11.428800正常Surf入水；11:04:17.073002水路含靈魂/沼澤守衛，11:04:19.232912火山、11:04:22.016776地球；11:04:25.415429 1F怪力、11:04:40.106032首顆18推石開關；11:10:15.402985 2F怪力、11:10:16.802921 2F首開關。results/route23-victory2f-progress-20261028.json保11筆真field閉合收據，docs/league-progress.md及時間軸已記。沒有把石頭落穴當成玩家已下樓，也未稱三樓或四天王已勝。
+
+守衛根因已核固定來源：Route23內PrintText(done)返回後先設自己passed bit/script2，外層DisplayTextID才WaitForTextScrollButtonPress再關窗；不是done就自關窗。舊控制器把事件硬排在final A之後，41073誤停。具名同owner修復保原packet/flags baseline/started/calls及錯誤歷史，先WAIT取fresh，再完整兩fresh終頁、真A、script0與兩world才complete；工程停檢只從原lastnow加真frame差，不退款或重開。Land183案14.82秒；water80案5.56秒，真兩守衛水路已完成。
+
+1F走路在原via3,3實際連三方向受阻，保留失敗邊與停點80121，從真3,2改走北側2,2→2,1到梯，未改RAM或回讀。LP升43；2F途中再真勝訓練家後，台北11:14:30.134452 frame98321/map194(20,13)健康閘門停檢：LP27/177 EXP105912、Snorlax90/203 EXP97367，其他四員仍35/35/37/36、全六存活，Hyper8/FullHeal10。野外正常藥品流程尚未驗收，先保停點、完成道具控制再續路；不把這段寫成全隊均衡已完成。
+
+正式完整回歸9059項/144.03秒通過，310份來源前後SHA一致；公開切點收據results/code-validation-league-regression2-20261028.json已去私人路徑。第一次full collection因新test重綁canonical module污染reload失敗，改正式import真module後完整通過；不隱去舊失敗。9059切點不含後加water20與訓練supervisor/proof：後者獨立審出8個parent缺口（peer必須在UI前、active EOF新peer、attrition fallback及readers/healthy例外），root修後187案1.54秒通過。訓練supervisor仍預設dry-run，未具真往返/單wild/護士校準，不可啟用或稱45達標。
+
+Viewer遇影格JSON讀取鎖時可能漏掉暫停狀態，已讓server只從campaign摘要補status/reason、保持真PNG與影格/隊伍原資料；24案0.67秒通過。只重啟8767 viewer，game27未重開；新可見頁已核顯示健康停檢。影像/JSON是兩檔發布，標記與圖可能略有延遲，不拿網頁播放時間當通關時間。
+
+策略研究已核Lapras可用TM24(item224)學Thunderbolt85；root接受用85取代ConfuseRay109、保Surf/BodySlam/IceBeam，為科拿四名水系提供電2倍覆蓋。這是既有Zapdos預留的明記例外，因當前隊伍可立即受益；仍須均衡練隊、不保證一擊。成功才消耗TM一份，不能套HM保留規則；目前只在開發候選，尚未真正學會。逐鍵仍offline Laya/cache、cloud_fallback=false，工程審查另計。新備份尚待本輪整理，不能拿e76當新增程式已公開。
 

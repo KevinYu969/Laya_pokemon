@@ -28,7 +28,9 @@ PEERS = ('mansion_secret_key_bridge', 'mansion_statue_bridge', 'mansion_transiti
          'fly_pallet_bridge', 'safari_entry', 'hm_teaching_bridge', 'vending_bridge',
          'saffron_guard_bridge', 'silph_card_bridge', 'lapras_bridge', 'player_pc_bridge',
          'campaign_transactions', 'battle_medicine_bridge', 'fly_viridian_bridge',
-         'trainer_medicine_ui_bridge')
+         'trainer_medicine_ui_bridge','victory_strength_bridge','victory_first_boulder_bridge',
+         'victory_later_boulders_bridge','route23_bridge','route23_land_guards_bridge',
+         'league_training_batch_bridge')
 
 
 def forbidden(*args, **kwargs):
@@ -43,6 +45,10 @@ def env(monkeypatch):
         module = getattr(route, name)
         monkeypatch.setattr(module, '_BINDINGS', {})
         monkeypatch.setattr(module, '_COMPLETED', set())
+        if name in {b.__name__.rsplit('.',1)[-1] for b in route._LEAGUE_FIELDS}:
+            monkeypatch.setattr(module,'_CONTROLLERS',{})
+            if hasattr(module,'_ERRORS'):monkeypatch.setattr(module,'_ERRORS',{})
+            if hasattr(module,'_OWNERS'):monkeypatch.setattr(module,'_OWNERS',{})
     monkeypatch.setattr(route.safari_entry, '_RUN_CONTROLLER', None)
     monkeypatch.setattr(route.capture_transaction, '_SESSIONS', {})
     monkeypatch.setattr(route.battle_medicine_bridge, '_CONTROLLERS', {})
@@ -93,7 +99,7 @@ def test_peer_fixture_covers_every_other_imported_binding_registry(env):
     actual = {name for name, module in vars(route).items()
               if isinstance(module, ModuleType) and module is not env.bridge
               and hasattr(module, '_BINDINGS') and hasattr(module, '_COMPLETED')}
-    assert actual == set(PEERS) and len(actual) == 18
+    assert actual == set(PEERS) and len(actual) == 24
 
 
 @pytest.mark.parametrize('name', PEERS)
@@ -106,7 +112,10 @@ def test_each_active_peer_blocks_before_ui_or_purchase_dispatch(env, monkeypatch
     monkeypatch.setattr(env.bridge, 'context', forbidden)
     before = deepcopy(peer._BINDINGS)
     result=route.switch_context(env.game, env.state, env.plan, 'medicine', ['left', 'wait'])
-    if name=='trainer_medicine_ui_bridge':
+    if name in {b.__name__.rsplit('.',1)[-1] for b in route._LEAGUE_FIELDS}:
+        assert result[0]['phase']=='campaign_review' and result[0]['available_actions']==['wait']
+        assert result[0]['review_reason']=='league_field_owner_changed'
+    elif name=='trainer_medicine_ui_bridge':
         assert result[0]['phase']=='campaign_review' and result[0]['available_actions']==['wait']
         assert result[0]['review_reason']=='trainer_medicine_owner_changed'
     elif name=='battle_medicine_bridge':

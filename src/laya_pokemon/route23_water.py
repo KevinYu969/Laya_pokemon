@@ -125,20 +125,43 @@ class Route23WaterController:
         self.stage='walking'
         return self._hint(action,'verified_next_source_cell')
 
+    def _guard_event_order(self,rows,text,signal,g):
+        """PrintText(done) returns before own bit/script2; outer text display still needs A."""
+        expected=self.flags|(1<<g['bit']);flags=signal['guard_flags']
+        if flags not in (self.flags,expected):return self._fail('guard_foreign_event_changed')
+        if g.get('event_seen') is True and flags!=expected:return self._fail('guard_own_event_regressed')
+        pending=g.get('pending')
+        entered_done=(g['page']==3 or g['page']==2 and pending is not None and pending.get('executed') is True)
+        done=_guard_page(rows,g['badge'],3) if text.get('window_visible') is True else None
+        if flags==expected:
+            if not entered_done or done is None or done['arrow']:
+                return self._fail('guard_event_before_source_done_page')
+            g['event_seen']=True
+        if signal['route23_script']==2:
+            if flags!=expected or not entered_done or done is None or done['arrow']:
+                return self._fail('guard_reset_before_source_done_event')
+            g['script2_seen']=True
+        return None
+
     def _guard_context(self,text,signal,previous,frame,now):
         g=self.guard;rows=surf._rows(text)
         if rows is None or text.get('window_visible') is not True:return self._fail('guard_decoder_or_window_unverified')
-        if self.flags!=signal['guard_flags']:return self._fail('guard_event_before_final_native_ack')
-        if signal['route23_script']!=0:return self._fail('guard_script_before_final_native_ack')
         if g['pending'] is not None:
             p=g['pending']
             if not p['executed']:
                 if frame>p['frame'] and previous and previous[-1]=='a':p['executed']=True
-                elif rows==p['rows']:return self._hint('a','retry_unexecuted_guard_candidate')
+                elif rows==p['rows']:
+                    order_error=self._guard_event_order(rows,text,signal,g)
+                    if order_error is not None:return order_error
+                    return self._hint('a','retry_unexecuted_guard_candidate')
                 else:return self._fail('guard_page_changed_without_actual_a')
+            order_error=self._guard_event_order(rows,text,signal,g)
+            if order_error is not None:return order_error
             if rows==p['rows'] or _guard_page(rows,g['badge'],g['page']) is not None:
                 return self._wait('await_native_guard_page_after_actual_a')
             g['page']+=1;g['pending']=None;g['done_frame']=None
+        order_error=self._guard_event_order(rows,text,signal,g)
+        if order_error is not None:return order_error
         if g['page']>3:return self._fail('guard_unknown_extra_page')
         page=_guard_page(rows,g['badge'],g['page'])
         if page is None:return self._fail('unknown_or_polluted_guard_page')
@@ -222,10 +245,19 @@ class Route23WaterController:
         if fp is None or fp!=self.fingerprint:return self._fail('nonbattle_party_inventory_or_money_changed')
         if self.guard:
             g=self.guard;last=g.get('pending');expected=self.flags|(1<<g['bit'])
-            # event只可在最後done頁的實際A後設；原生script2再回0，兩個新frame閉合。
+            # PrintText(done)返回先設bit/script2；外層DisplayTextID終頁仍等真A。
+            # 事件提前不是閉合；同原guard/water pending，真A後兩fresh world才前進。
+            if signal['guard_flags'] not in (self.flags,expected):return self._fail('guard_foreign_event_changed')
+            if g.get('event_seen') is True and signal['guard_flags']!=expected:return self._fail('guard_own_event_regressed')
             if last and g['page']==3 and not last['executed'] and previous and previous[-1]=='a' and frame>last['frame']:last['executed']=True
             if signal['guard_flags']==expected and last and g['page']==3 and last['executed']:
                 if pos!=target[:3] or mode!=2:return self._fail('guard_exit_position_or_mode_changed')
+                rows=surf._rows(text)
+                done=_guard_page(rows,g['badge'],3) if rows is not None and rows!=surf._blank() else None
+                if rows is None or rows!=surf._blank() and (done is None or done['arrow']):
+                    return self._fail('guard_unknown_page_after_final_actual_a')
+                g['event_seen']=True
+                if signal['route23_script']==2:g['script2_seen']=True
                 if (signal['route23_script']!=0 or not _blank(text) or surf._idle(movement,frame) is not True
                         or not _grid(grid,target,frame)):
                     g['closed_frame']=None;return self._wait('native_guard_script_finishing')

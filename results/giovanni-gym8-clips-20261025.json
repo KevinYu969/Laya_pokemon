@@ -1,0 +1,570 @@
+{
+  "schema": "giovanni-gym8-media-audit-v1",
+  "date": "2026-10-25",
+  "language": "zh-Hant",
+  "title": "正常擊敗第八館坂木、取得地球徽章與TM27",
+  "source_run": "league-campaign-20261025-26",
+  "completed_at_taipei": "2026-10-25T20:24:35.361695+08:00",
+  "parent_review": {
+    "status": "accepted",
+    "reviewed_on": "2026-10-28",
+    "source_receipt_sha256": "989381c81ccd19cecaaddcfeab24c45228bce416b1937c4928990802ca589dea",
+    "hashes_rechecked": true,
+    "qa_contact_sheet_visually_reviewed": true,
+    "note": "父層已實看12格：館主5名對手、Surf克制、LP41、KEVIN擊敗坂木、EARTHBADGE、TM27/FISSURE；只代表第八館，未稱聯盟已勝。"
+  },
+  "published": false,
+  "main_scope": {
+    "main_frame_range": [
+      78041,
+      93985
+    ],
+    "actions_included": [
+      1303,
+      1441
+    ],
+    "endpoint_observation_step": 1442,
+    "emulated_frames": 15944,
+    "recorded_frames": 3986,
+    "first_action": "在坂木面前正常UP轉向，接著A開戰",
+    "source_ranges": [
+      {
+        "segment": 17,
+        "source_frames_zero_based_half_open": [
+          620,
+          630
+        ]
+      },
+      {
+        "segment": 18,
+        "source_frames_zero_based_half_open": [
+          0,
+          3976
+        ]
+      }
+    ],
+    "action_counts": {
+      "actions": 139,
+      "new_laya": 4,
+      "cache": 135,
+      "passive": 0,
+      "actual_keys": {
+        "up": 1,
+        "a": 129,
+        "wait": 5,
+        "b": 4
+      }
+    },
+    "last_following_action_excluded": true,
+    "no_clone_frames_used": true,
+    "ledger_endpoint_timing_deltas_seconds": {
+      "wall_seconds": 148.469,
+      "review_pause_seconds": 139.422,
+      "non_review_session_seconds": 9.047,
+      "model_wait_seconds": 2.127
+    },
+    "prior_review_endpoint_timing_deltas_seconds": {
+      "wall_seconds": 532.032,
+      "model_wait_seconds": 2.783,
+      "review_pause_seconds": 522.297,
+      "non_review_session_seconds": 9.735,
+      "emulated_seconds": 265.733
+    },
+    "prior_review_timing_scope": "端點為前一走路動作結束至第八館review，包含開戰前工程停檢；非停檢/模擬時間另列，不是全程通關或影片時長。",
+    "badges_before": 127,
+    "badges_after": 255,
+    "lapras_level_before": 39,
+    "lapras_level_after": 41,
+    "lapras_exp_before": 79527,
+    "lapras_exp_after": 88096,
+    "surf_pp_before": 15,
+    "surf_pp_after": 7,
+    "hyper_potions_used": 0,
+    "full_heals_used": 0,
+    "six_positive_hp_in_all_observations": true,
+    "other_five_full_dict_unchanged_all_observations": true,
+    "tm27_item": 227,
+    "tm27_quantity": 1,
+    "money_before": 40440,
+    "money_after": 45390
+  },
+  "verified_campaign_result": {
+    "path": "results/eighth-gym-campaign-20261025.json",
+    "sha256": "fb2962ece998a7b7e32b16b026a1f3bb81281b049e52f0464ab8de989b580a4d"
+  },
+  "closed_video_sources": [
+    {
+      "path": "outputs/league-campaign-20261025-26/game/video-017.mp4",
+      "sha256": "8ad2459a1b979f9952b5ce59958295046aa0351289f8747838d93bc7b4c74d3f",
+      "bytes": 193997,
+      "closure": {
+        "at": "2026-10-25T12:24:26.553102+00:00",
+        "segment": 17,
+        "timing": {
+          "wall_seconds": 9921.907,
+          "model_wait_seconds": 17.627,
+          "review_pause_seconds": 9861.437,
+          "non_review_session_seconds": 60.47,
+          "emulated_seconds": 1301.333
+        },
+        "video": {
+          "filename": "video-017.mp4",
+          "fps": 15,
+          "frames": 630,
+          "playback_seconds": 42.0,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "1f7e123e05d7aaa6dd3ac6f2bb1d8a9a05f4e69b47746cc88267b00ce6c632b1",
+      "main_frame_span": [
+        75561,
+        78081
+      ],
+      "selected_source_frames_zero_based_half_open": [
+        620,
+        630
+      ],
+      "ledger": {
+        "path": "outputs/league-campaign-20261025-26/game/steps-017.jsonl",
+        "sha256": "08001ea1b010f94e9519979656cd81a6d27cb128078bcf870c594477b4559c49"
+      },
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "42.000000",
+          "nb_frames": "630",
+          "nb_read_frames": "630"
+        }
+      }
+    },
+    {
+      "path": "outputs/league-campaign-20261025-26/game/video-018.mp4",
+      "sha256": "feb374f830efc650e48d92a406f6fc496f25df22e12768ddf79f97498163a9ae",
+      "bytes": 1312052,
+      "closure": {
+        "at": "2026-10-25T12:26:55.004577+00:00",
+        "segment": 18,
+        "timing": {
+          "wall_seconds": 10070.36,
+          "model_wait_seconds": 19.754,
+          "review_pause_seconds": 10000.859,
+          "non_review_session_seconds": 69.501,
+          "emulated_seconds": 1567.067
+        },
+        "video": {
+          "filename": "video-018.mp4",
+          "fps": 15,
+          "frames": 3986,
+          "playback_seconds": 265.73333333333335,
+          "timing": "emulated_time",
+          "audio": false
+        }
+      },
+      "closure_record_sha256": "c53e8c968f50fcfcbd5c9dc8e0a4bc40ce3b1bbcd667bc0d46cac4c2a57ebd92",
+      "main_frame_span": [
+        78081,
+        94025
+      ],
+      "selected_source_frames_zero_based_half_open": [
+        0,
+        3976
+      ],
+      "ledger": {
+        "path": "outputs/league-campaign-20261025-26/game/steps-018.jsonl",
+        "sha256": "52d30096f8845aed6f092862e358793e9e9fa3820414b0c23c2379cf58059b44"
+      },
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "265.733333",
+          "nb_frames": "3986",
+          "nb_read_frames": "3986"
+        }
+      }
+    }
+  ],
+  "clips": [
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/giovanni-full-battle-and-reward-1x.mp4",
+      "sha256": "be21d60cf84d74a24d520a8c00f7f77d72f4492f12cb1192d2f81069229f33e3",
+      "bytes": 2449882,
+      "frames": 3986,
+      "width": 480,
+      "height": 432,
+      "fps": 15,
+      "speed": 1.0,
+      "duration_seconds": 265.73333333333335,
+      "audio": false,
+      "speed_basis": "emulated_time",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "15/1",
+          "duration": "265.733333",
+          "nb_frames": "3986",
+          "nb_read_frames": "3986"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/giovanni-full-battle-and-reward-4x.mp4",
+      "sha256": "3c5b6adc956e87374706de06534124e08e343e13ac4d3a6cfc1cd91e1f8e6b23",
+      "bytes": 2449845,
+      "frames": 3986,
+      "width": 480,
+      "height": 432,
+      "fps": 60,
+      "speed": 4.0,
+      "duration_seconds": 66.43333333333334,
+      "audio": false,
+      "speed_basis": "post_production_4x",
+      "full_decode": {
+        "xerror_full_decode": true,
+        "ffprobe": {
+          "width": 480,
+          "height": 432,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "60/1",
+          "duration": "66.433333",
+          "nb_frames": "3986",
+          "nb_read_frames": "3986"
+        }
+      },
+      "all_frames_in_source_order": true,
+      "every_yuv420p_frame_matches_source": true,
+      "consecutive_pts": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/01-giovanni-challenge.png",
+      "title": "坂木原生開戰",
+      "sha256": "d8e8899a7b83b4678ac355a75134e876adc03d6b109f933fe30207370a57be0b",
+      "observation_step": 1319,
+      "observation_campaign_frame": 79913,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 467,
+      "source_segment": 18,
+      "source_frame": 457,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 31.133333333333333,
+      "rgb24_sha256": "1091df33086983e09951f59d6d4e780f8729cd10c30fcdf024ed605f192a9d8d",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " GIOVANNI wants",
+        " to fight!        ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/02-rhyhorn-surf.png",
+      "title": "Surf攻擊45級獨角犀牛",
+      "sha256": "9feb7b4c21d463ec83c6002366408a4116a046a74a2072fe72ea8ac706319125",
+      "observation_step": 1326,
+      "observation_campaign_frame": 80633,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 647,
+      "source_segment": 18,
+      "source_frame": 637,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 43.13333333333333,
+      "rgb24_sha256": "f7bccfd29fe3210437705127cde950643d3bb41cdfa2bdd54f7486d3c28e651b",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " RHYHORN",
+        "     45",
+        "          LAPRAS",
+        "               39",
+        "           160/160",
+        " LAPRAS",
+        " used SURF!"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/03-rhyhorn-super-effective.png",
+      "title": "Surf對獨角犀牛效果絕佳",
+      "sha256": "3783ee02a90ec22223f8c72fc796e94ce7178217ffc5d1933caeef40f758ced1",
+      "observation_step": 1330,
+      "observation_campaign_frame": 81145,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 775,
+      "source_segment": 18,
+      "source_frame": 765,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 51.666666666666664,
+      "rgb24_sha256": "fe60242596156cfb93a8ba84471a038c24dcf0eb3dc70aaafd0a0287f5deacf2",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " RHYHORN",
+        "     45",
+        "          LAPRAS",
+        "               39",
+        "           160/160",
+        " It's super",
+        " effective!       ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/04-dugtrio-move-selection.png",
+      "title": "對42級三地鼠選擇Surf",
+      "sha256": "3cfebd7adb7c26cb53e3ba9a023f0ac549a80bfd820f361fbb9c79b2ea9ce49c",
+      "observation_step": 1341,
+      "observation_campaign_frame": 82377,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 1083,
+      "source_segment": 18,
+      "source_frame": 1073,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 72.2,
+      "rgb24_sha256": "0f67eeb51779827a54359e60fddffc8cd1642bbb37a940bb61c0378aafc01d5f",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " DUGTRIO",
+        "     42",
+        "          LAPRAS",
+        "               40",
+        " TYPE/",
+        "  WATER    164/164",
+        "     14/15",
+        "     ▶SURF",
+        "      BODY SLAM",
+        "      ICE BEAM",
+        "      CONFUSE RAY"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/05-nidoqueen-retaliation.png",
+      "title": "尼多后反擊、拉普拉斯正常承受傷害",
+      "sha256": "1ec6fbe216b10f04cf12426c900a1f8064700b815e0714bc47cd86df52a73c97",
+      "observation_step": 1362,
+      "observation_campaign_frame": 84713,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 1667,
+      "source_segment": 18,
+      "source_frame": 1657,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 111.13333333333334,
+      "rgb24_sha256": "c14a9a4754ceba4615ec0f6a27bf9141eb4e5483cfaea9fedd4dd5df10482827",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " NIDOQUEEN",
+        "     44",
+        "          LAPRAS",
+        "               40",
+        "           138/164",
+        " Enemy NIDOQUEEN",
+        " used BODY SLAM!"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/06-nidoking-super-effective.png",
+      "title": "Surf對尼多王效果絕佳",
+      "sha256": "5a01c0b8e537c7fd3323b24b10a945bed5b63c612bc2dcee7526f82cb5b5b2ab",
+      "observation_step": 1385,
+      "observation_campaign_frame": 87305,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 2315,
+      "source_segment": 18,
+      "source_frame": 2305,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 154.33333333333334,
+      "rgb24_sha256": "d19c53d6e7f5cdda181841d1ed852df475e9f11909a2169b0a54b14f8336d794",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " NIDOKING",
+        "     45",
+        "          LAPRAS",
+        "               40",
+        "           138/164",
+        " It's super",
+        " effective!       ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/07-rhydon-super-effective.png",
+      "title": "Surf對50級鑽角犀獸效果絕佳",
+      "sha256": "a6255a31c604ad21865b67d185a6b8b20e1165d8b412a82ff60e53b4f42d474e",
+      "observation_step": 1412,
+      "observation_campaign_frame": 90145,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 3025,
+      "source_segment": 18,
+      "source_frame": 3015,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 201.66666666666666,
+      "rgb24_sha256": "60f0a6a4f73d2b606fdb645427e688ad0467ac13b8c5768b8f6f574aed99ad14",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " RHYDON",
+        "     50",
+        "          LAPRAS",
+        "               40",
+        "           138/164",
+        " It's super",
+        " effective!       ▼"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/08-lapras-level41.png",
+      "title": "拉普拉斯正常升到41級",
+      "sha256": "a827f3f802b690b951b4c7f144abf1573e20b6fbb37cde6f0bdf3503f40b5f51",
+      "observation_step": 1415,
+      "observation_campaign_frame": 90529,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 3121,
+      "source_segment": 18,
+      "source_frame": 3111,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 208.06666666666666,
+      "rgb24_sha256": "f0a36950645e179a0514b84960519b6791f87998dbc7eefc0c976ed527d9500b",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               41",
+        "           143/169",
+        " LAPRAS grew",
+        " to level 41!"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/09-kevin-defeated-giovanni.png",
+      "title": "KEVIN擊敗坂木",
+      "sha256": "cd94b1c4711c492042d744aaae0f401759d82bb8a331a1417d71aa91594d9f2a",
+      "observation_step": 1417,
+      "observation_campaign_frame": 90785,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 3185,
+      "source_segment": 18,
+      "source_frame": 3175,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 212.33333333333334,
+      "rgb24_sha256": "5364b45bcf63b381d8e9868437ed0131eebf060b8b2f61409a4a0b640cdb79d4",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               41",
+        "           143/169",
+        " KEVIN defeated",
+        " GIOVANNI!"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/10-earthbadge.png",
+      "title": "取得第八枚EARTHBADGE",
+      "sha256": "d4e74871217925df26202c5c008ff63e31dfcd151a0a4c1291ca3eea13ba2c45",
+      "observation_step": 1423,
+      "observation_campaign_frame": 91553,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 3377,
+      "source_segment": 18,
+      "source_frame": 3367,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 225.13333333333333,
+      "rgb24_sha256": "a852e46f60e44ef5fd0baa006f85d63fb421ef471c0f234b8adadd75c745a4c1",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        "          LAPRAS",
+        "               41",
+        "           143/169",
+        " As proof, here is",
+        " the EARTHBADGE!"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/11-received-tm27.png",
+      "title": "正常取得TM27",
+      "sha256": "74557fd298c9401b8431124776432600c4ffde384061ee72521ecb3204be1764",
+      "observation_step": 1435,
+      "observation_campaign_frame": 93089,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 3761,
+      "source_segment": 18,
+      "source_frame": 3751,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 250.73333333333332,
+      "rgb24_sha256": "f51bb5088419f419352577b8b232e1bdbfa1ff8ae66e76b7a9c3fe75bb4eb743",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " KEVIN received",
+        " TM27!"
+      ]
+    },
+    {
+      "path": "outputs/videos/giovanni-gym8-20261025/12-tm27-fissure.png",
+      "title": "TM27為FISSURE的原生說明",
+      "sha256": "f81b919af61cf6dc73f10628868f2d7b42343915a728c7f0ab58b54a200ec954",
+      "observation_step": 1437,
+      "observation_campaign_frame": 93345,
+      "observation_basis": "main_closed_ledger",
+      "clip_frame": 3825,
+      "source_segment": 18,
+      "source_frame": 3815,
+      "width": 480,
+      "height": 432,
+      "relative_1x_seconds": 255.0,
+      "rgb24_sha256": "edd68b07943e9bb903d0a8c826da63ebf902a71585d5e8bff0c40165b6c1a97a",
+      "source_and_both_clips_rgb_exact": true,
+      "ledger_visible_text": [
+        " TM27 is FISSURE!",
+        " It will take out ▼"
+      ]
+    }
+  ],
+  "qa": {
+    "path": "outputs/videos/giovanni-gym8-20261025/qa-contact-sheet.png",
+    "sha256": "2c849aa3e58c066095d9f0c623fed83ad78fae508fd8d72becce87552d82fdd3",
+    "width": 1920,
+    "height": 1422
+  },
+  "editing": "每4模擬幀取1真幀；1x15fps與後製4x60fps保留同樣3986真幀；跨封口連接無重複、無遺漏、無插幀或補畫。",
+  "limitations": [
+    "1x265.733333秒是模擬時間；4x66.433333秒是後製播放時間，不等於模型推理延遲、真實牆鐘或整個紅版通關耗時。",
+    "影片從UP轉向後第一個取樣開始，完整保留坂木開場、五隻對手、命中失敗與反擊、升級、勝利與獎勵；未刪除不順利的戰鬥畫面。",
+    "review端點532.032秒包含開戰前工程停檢；ledger送鍵前後的148.469秒不含先前同frame等待，兩者scope不同，不可混用。",
+    "僅拉普拉斯39→41級，其他五名資料守恆；未宣稱全隊41級、學新招、冠軍之路或四大天王已完成。",
+    "零用藥與所有觀測六名HP正值只涵蓋本次範圍，不會把第七館10瓶HyperPotion消耗抹除。",
+    "只讀已自然封口17與18及固定ledger；排除93985後下一動作，不讀開啟中MP4、ROM或存檔，不操作或停止遊戲。",
+    "全部PNG是影片真像素，ledger文字只作稽核註記；沒有重繪文字或把RAM解碼資訊標成視覺AI。",
+    "素材仍在私人本機，父層審查待完成；未發布、上傳GitHub或網站。"
+  ],
+  "frame_mapping_audit": {
+    "path": "outputs/research/giovanni-gym8-media-audit-20261025.json",
+    "sha256": "a0a9fce91370c7c8352e1f0b2a5d6684a3c45f212bdf695bc51c7739079bb2c1"
+  },
+  "validation": {
+    "closed_sources_full_decode": true,
+    "outputs_full_decode": true,
+    "every_output_frame_yuv_matches_source": true,
+    "all_pts_consecutive": true,
+    "png_source_and_both_clips_rgb_exact": true,
+    "new_mp4_count": 2,
+    "new_formal_png_count": 12,
+    "new_qa_png_count": 1,
+    "all_audio_absent": true
+  }
+}

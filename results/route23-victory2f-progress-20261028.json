@@ -1,0 +1,484 @@
+{
+  "date": "2026-10-28",
+  "status": "victory_road_2f_health_review_elite_four_pending",
+  "source_game": "outputs/league-campaign-20261028-27/game",
+  "source_field_ledger_sha256": "d5b7df13f7b1091c487c7ae8ee92bd14d144d16153c5d22b1648267d8c092b45",
+  "source_review_sha256": "ac94c8db8c124fdde17b258c959cc4ff07713831fb6aefaef8c67478e3d380b0",
+  "milestones": [
+    {
+      "at_taipei": "2026-10-28T10:58:57.143317+08:00",
+      "kind": "route23-land-guard",
+      "case": "cascade",
+      "context": {
+        "phase": "route23_land_guard",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "route23_land_guard_complete": true,
+        "route23_land_guard_case": "cascade",
+        "route23_land_guard_page": 3,
+        "route23_land_guard_stage": "complete",
+        "route23_land_guard_tactic": "verified_land_guard_native_closure",
+        "route23_land_guard_script2_seen": true,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "field_move_complete": true,
+        "field_move_kind": "route23-land-guard",
+        "route23_land_guard_owner": "league27-cascade-guard"
+      },
+      "timing": {
+        "wall_seconds": 3081.141,
+        "model_wait_seconds": 67.877,
+        "review_pause_seconds": 2958.702,
+        "non_review_session_seconds": 122.439,
+        "emulated_seconds": 687.2
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:00:06.081303+08:00",
+      "kind": "route23-land-guard",
+      "case": "thunder",
+      "context": {
+        "phase": "route23_land_guard",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "route23_land_guard_complete": true,
+        "route23_land_guard_case": "thunder",
+        "route23_land_guard_page": 3,
+        "route23_land_guard_stage": "complete",
+        "route23_land_guard_tactic": "verified_land_guard_native_closure",
+        "route23_land_guard_script2_seen": true,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "field_move_complete": true,
+        "field_move_kind": "route23-land-guard",
+        "route23_land_guard_owner": "league27-thunder-guard"
+      },
+      "timing": {
+        "wall_seconds": 3150.078,
+        "model_wait_seconds": 67.877,
+        "review_pause_seconds": 3024.639,
+        "non_review_session_seconds": 125.439,
+        "emulated_seconds": 717.2
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:00:08.016868+08:00",
+      "kind": "route23-land-guard",
+      "case": "rainbow",
+      "context": {
+        "phase": "route23_land_guard",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "route23_land_guard_complete": true,
+        "route23_land_guard_case": "rainbow",
+        "route23_land_guard_page": 3,
+        "route23_land_guard_stage": "complete",
+        "route23_land_guard_tactic": "verified_land_guard_native_closure",
+        "route23_land_guard_script2_seen": true,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "field_move_complete": true,
+        "field_move_kind": "route23-land-guard",
+        "route23_land_guard_owner": "league27-rainbow-guard"
+      },
+      "timing": {
+        "wall_seconds": 3152.016,
+        "model_wait_seconds": 67.877,
+        "review_pause_seconds": 3024.639,
+        "non_review_session_seconds": 127.377,
+        "emulated_seconds": 737.867
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:00:11.428800+08:00",
+      "kind": "route23-surf",
+      "case": null,
+      "context": {
+        "phase": "route23_surf_complete",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "route23_surf_stage": "complete",
+        "route23_surf_tactic": "verified_native_route23_surf",
+        "route23_surf_complete": true,
+        "surf_entry_complete": true,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "field_move_complete": true,
+        "field_move_kind": "route23-surf"
+      },
+      "timing": {
+        "wall_seconds": 3155.422,
+        "model_wait_seconds": 70.455,
+        "review_pause_seconds": 3024.639,
+        "non_review_session_seconds": 130.783,
+        "emulated_seconds": 745.2
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:04:17.073002+08:00",
+      "kind": "route23-water",
+      "case": null,
+      "context": {
+        "phase": "overworld",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "route23_water_complete": true,
+        "route23_water_index": 36,
+        "route23_water_stage": "complete",
+        "route23_water_tactic": "verified_route23_landfall",
+        "route23_water_battle_handoff": false,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "field_move_complete": true,
+        "field_move_kind": "route23-water"
+      },
+      "timing": {
+        "wall_seconds": 3401.063,
+        "model_wait_seconds": 73.142,
+        "review_pause_seconds": 3262.764,
+        "non_review_session_seconds": 138.299,
+        "emulated_seconds": 791.2
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:04:19.232912+08:00",
+      "kind": "route23-land-guard",
+      "case": "volcano",
+      "context": {
+        "phase": "route23_land_guard",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "route23_land_guard_complete": true,
+        "route23_land_guard_case": "volcano",
+        "route23_land_guard_page": 3,
+        "route23_land_guard_stage": "complete",
+        "route23_land_guard_tactic": "verified_land_guard_native_closure",
+        "route23_land_guard_script2_seen": true,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "field_move_complete": true,
+        "field_move_kind": "route23-land-guard",
+        "route23_land_guard_owner": "league27-volcano-guard"
+      },
+      "timing": {
+        "wall_seconds": 3403.234,
+        "model_wait_seconds": 73.157,
+        "review_pause_seconds": 3262.764,
+        "non_review_session_seconds": 140.47,
+        "emulated_seconds": 813.867
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:04:22.016776+08:00",
+      "kind": "route23-land-guard",
+      "case": "earth",
+      "context": {
+        "phase": "route23_land_guard",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "route23_land_guard_complete": true,
+        "route23_land_guard_case": "earth",
+        "route23_land_guard_page": 3,
+        "route23_land_guard_stage": "complete",
+        "route23_land_guard_tactic": "verified_land_guard_native_closure",
+        "route23_land_guard_script2_seen": true,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "field_move_complete": true,
+        "field_move_kind": "route23-land-guard",
+        "route23_land_guard_owner": "league27-earth-guard"
+      },
+      "timing": {
+        "wall_seconds": 3406.016,
+        "model_wait_seconds": 73.157,
+        "review_pause_seconds": 3262.764,
+        "non_review_session_seconds": 143.252,
+        "emulated_seconds": 842.533
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:04:25.415429+08:00",
+      "kind": "victory-strength",
+      "case": null,
+      "context": {
+        "phase": "victory_strength_complete",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "victory_strength_complete": true,
+        "victory_strength_stage": "complete",
+        "victory_strength_tactic": "verified_native_strength_active_here",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "victory_strength_case": "1f_entry",
+        "seen_used_full": false,
+        "seen_can_prompt": true,
+        "prompt_ack": true,
+        "field_move_complete": true,
+        "field_move_kind": "victory-strength"
+      },
+      "timing": {
+        "wall_seconds": 3409.406,
+        "model_wait_seconds": 75.252,
+        "review_pause_seconds": 3262.764,
+        "non_review_session_seconds": 146.642,
+        "emulated_seconds": 856.533
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:04:40.106032+08:00",
+      "kind": "victory-first-boulder",
+      "case": null,
+      "context": {
+        "phase": "victory_first_boulder_complete",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "first_boulder_complete": true,
+        "first_boulder_tactic": "verified_fixed_first_boulder_switch",
+        "first_boulder_push_index": 18,
+        "suppress_navigation_stall": true,
+        "suppress_blocked_edge_learning": true,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "contact_arm_seen": true,
+        "native_script_seen": true,
+        "dust_seen": true,
+        "field_move_complete": true,
+        "field_move_kind": "victory-first-boulder",
+        "first_boulder_owner_step": "league27-victory1f-first-boulder"
+      },
+      "timing": {
+        "wall_seconds": 3424.094,
+        "model_wait_seconds": 75.94,
+        "review_pause_seconds": 3262.764,
+        "non_review_session_seconds": 161.33,
+        "emulated_seconds": 1060.0
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:10:15.402985+08:00",
+      "kind": "victory-strength",
+      "case": null,
+      "context": {
+        "phase": "victory_strength_complete",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "victory_strength_complete": true,
+        "victory_strength_stage": "complete",
+        "victory_strength_tactic": "verified_native_strength_active_here",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "victory_strength_case": "2f_entry",
+        "seen_used_full": false,
+        "seen_can_prompt": true,
+        "prompt_ack": true,
+        "field_move_complete": true,
+        "field_move_kind": "victory-strength"
+      },
+      "timing": {
+        "wall_seconds": 3759.391,
+        "model_wait_seconds": 81.863,
+        "review_pause_seconds": 3572.608,
+        "non_review_session_seconds": 186.783,
+        "emulated_seconds": 1347.333
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:10:16.802921+08:00",
+      "kind": "victory-later-boulder",
+      "case": "2f_switch1",
+      "context": {
+        "phase": "victory_later_boulder_complete",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "later_boulder_complete": true,
+        "later_boulder_case": "2f_switch1",
+        "later_boulder_tactic": "verified_fixed_later_boulder",
+        "later_boulder_push_index": 5,
+        "suppress_navigation_stall": true,
+        "suppress_blocked_edge_learning": true,
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "contact_arm_seen": true,
+        "native_script_seen": true,
+        "dust_seen": true,
+        "field_move_complete": true,
+        "field_move_kind": "victory-later-boulder",
+        "later_boulder_owner_step": "league27-victory2f-switch1"
+      },
+      "timing": {
+        "wall_seconds": 3760.797,
+        "model_wait_seconds": 81.893,
+        "review_pause_seconds": 3572.608,
+        "non_review_session_seconds": 188.189,
+        "emulated_seconds": 1368.0
+      }
+    }
+  ],
+  "checkpoint_frame": 98321,
+  "location": {
+    "map_id": 194,
+    "x": 20,
+    "y": 13
+  },
+  "party": [
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 43,
+      "hp": 27,
+      "max_hp": 177,
+      "exp": 105912,
+      "status": 0,
+      "moves": [
+        57,
+        34,
+        58,
+        109
+      ],
+      "pp": [
+        0,
+        12,
+        8,
+        10
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 42,
+      "hp": 90,
+      "max_hp": 203,
+      "exp": 97367,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        13,
+        20,
+        10,
+        13
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 37,
+      "hp": 114,
+      "max_hp": 114,
+      "exp": 51794,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        19,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        15,
+        20
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 121,
+      "max_hp": 121,
+      "exp": 42404,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    }
+  ],
+  "money": 51740,
+  "hyper_potions": 8,
+  "new_faint_observed": false,
+  "cloud_fallback": false,
+  "strata_configuration_changed": false,
+  "elite_four_complete": false,
+  "limitations": [
+    "完整9059回歸是較早切點；水路20案及supervisor/proof/parent後加測試另列。",
+    "後方四名仍35/35/37/36，尚未達成均衡45。",
+    "原生SDL未修，8767為真PyBoy畫面；工程停檢不可當連續遊玩或模型推論。"
+  ]
+}

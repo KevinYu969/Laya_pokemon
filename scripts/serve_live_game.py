@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -27,7 +28,7 @@ small{color:#abc0ad}a{color:#b4ec9a}@media(max-width:780px){.layout{grid-templat
 <small>隊伍與座標為最近一次控制器觀測，畫面可能略晚。檢討暫停時會顯示原因；此頁只顯示畫面，不發送按鍵。頁面播放時間不能當通關耗時。</small></section></div></main>
 <script>
 const el=id=>document.getElementById(id);let busy=false,latest=null,lastFrame=null;
-function age(){if(!latest)return;const seconds=Math.max(0,(Date.now()-Date.parse(latest.at))/1000);const paused=latest.status==='paused_for_review';el('freshness').textContent=seconds<5?'最近影格：'+seconds.toFixed(1)+' 秒前':(paused?'檢討暫停；':'串流暫無更新；')+'最近影格 '+Math.floor(seconds)+' 秒前';}
+function age(){if(!latest)return;const seconds=Math.max(0,(Date.now()-Date.parse(latest.at))/1000);const paused=latest.status==='paused_for_review';el('status').textContent=paused?'已保存，等待檢討':latest.status==='stopped'?'遊戲已停止':seconds>=5?'影格暫無更新':'PyBoy 影格更新中';el('freshness').textContent=seconds<5?'最近影格：'+seconds.toFixed(1)+' 秒前':(paused?'檢討暫停；':'串流暫無更新；')+'最近影格 '+Math.floor(seconds)+' 秒前';}
 async function refresh(){if(busy)return;busy=true;try{const r=await fetch('/api/status',{cache:'no-store'});if(!r.ok)throw Error('等待 PyBoy 發布');latest=await r.json();
 el('status').textContent=latest.status==='paused_for_review'?'已保存，等待檢討':latest.status==='stopped'?'遊戲已停止':'PyBoy 即時執行中';
 el('metrics').textContent='影格 '+latest.frame+'\n階段 '+(latest.phase||'初始化')+'\n'+(latest.location?'地圖 '+latest.location.map_id+'・座標 '+latest.location.x+', '+latest.location.y:'')+(latest.review_reason?'\n檢討 '+latest.review_reason:'');
@@ -36,6 +37,22 @@ el('party').replaceChildren(...(latest.party||[]).map(p=>{const div=document.cre
 }catch(e){el('status').textContent='等待遊戲影格';el('freshness').textContent=e.message;}finally{busy=false;}}
 setInterval(refresh,250);setInterval(age,1000);refresh();
 </script></html>'''
+
+
+def current_status_payload(run: Path, payload: bytes):
+    """影格檔遇Windows讀取鎖時仍以campaign摘要顯示真暫停；不改圖/影格/隊伍。"""
+    metadata=json.loads(payload)
+    if not isinstance(metadata,dict):raise ValueError('frame metadata must be an object')
+    try:summary=json.loads((run/'summary.json').read_bytes())
+    except (OSError,ValueError,UnicodeError):return payload
+    if not isinstance(summary,dict):return payload
+    status=summary.get('status')
+    if status not in {'running','paused_for_review','stopped','failed'}:return payload
+    reason=summary.get('review_reason')
+    metadata['status']='stopped' if status=='failed' else status
+    metadata['review_reason']=(reason if status=='paused_for_review' and isinstance(reason,str)
+        and re.fullmatch(r'[a-z][a-z0-9_]{0,127}',reason) else None)
+    return json.dumps(metadata,ensure_ascii=False).encode('utf-8')
 
 
 def handler_for(run: Path):
@@ -51,7 +68,7 @@ def handler_for(run: Path):
                 except (FileNotFoundError, PermissionError):
                     self.send_error(503, 'Waiting for PyBoy frame'); return
                 if route == '/api/status':
-                    try: json.loads(payload)
+                    try: payload=current_status_payload(run,payload)
                     except (ValueError, UnicodeError):
                         self.send_error(503, 'Frame metadata updating'); return
                 content_type = 'application/json; charset=utf-8' if route == '/api/status' else 'image/png'

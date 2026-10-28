@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-28",
+  "returncode": 0,
+  "command": [
+    "pytest",
+    "tests/test_route23_land_guards.py",
+    "tests/test_route23_event_order.py",
+    "tests/test_league_field_route.py",
+    "-q",
+    "--basetemp",
+    "outputs/pytest-route23-land-event-20261028-a"
+  ],
+  "tests_tail": "........................................................................ [ 39%]\n........................................................................ [ 78%]\n.......................................                                  [100%]\n============================== warnings summary ===============================\n.venv\\Lib\\site-packages\\sdl2\\_internal.py:24\n  .venv\\Lib\\site-packages\\sdl2\\_internal.py:24: UserWarning: Using SDL2 binaries from pysdl2-dll 2.32.10\n    warnings.warn(msg, warntype)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n183 passed, 1 warning in 14.82s\n",
+  "scope": "原生旗標先於外層final A與具名41073修復／入口互斥，尚非完整回歸",
+  "files": {
+    "src/laya_pokemon/route23_land_guards.py": "4a3c9a877113fbc246f9185e95867b478310224b5035d1ad3f8062fed61ee8d9",
+    "src/laya_pokemon/route23_land_guards_bridge.py": "ef28c9733569a8c72b5c94f3ea0714e8fe181ff2a4d03ba8c0316048482000ef",
+    "tests/test_route23_event_order.py": "203fcc57e7041667fe9980d809e27ae0ce34da72f33b3412779811ea09bfbbf4"
+  }
+}

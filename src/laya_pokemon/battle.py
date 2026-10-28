@@ -310,6 +310,92 @@ def _clear_fixed_damage_risk():
         _no_pp_switch = None
 
 
+def _fixed_damage_native_prompt(text):
+    """Only complete source-position native 's prompts after real Dragon Rage."""
+    risk=_fixed_damage_risk
+    if (not isinstance(risk,dict) or risk.get('source_commit')!=FIXED_DAMAGE_SOURCE_COMMIT
+            or risk.get('move')!='DRAGON_RAGE' or type(risk.get('move_id')) is not int or risk['move_id']!=82
+            or type(risk.get('damage')) is not int or risk['damage']!=40
+            or not isinstance(text,dict) or text.get('profile')!=_VISIBLE_PROFILE
+            or text.get('read_valid') is not True or text.get('alignment_verified') is not True
+            or text.get('read_error') is not None or type(text.get('window_visible')) is not bool):return None
+    cells=text.get('cells')
+    if (not isinstance(cells,(list,tuple)) or len(cells)!=18
+            or any(not isinstance(row,(list,tuple)) or len(row)!=20 for row in cells)
+            or any(type(c) is not str for row in cells for c in row)):return None
+    multi=[(x,y,c) for y,row in enumerate(cells) for x,c in enumerate(row) if len(c)!=1]
+    if len(multi)!=1 or multi[0][2]!="'s":return None
+    from .team_strategy import species_key,reference,normalize
+    enemy=species_key(risk.get('enemy_species'))
+    if enemy is None:return None
+    upper=[''.join(row).upper() for row in cells[:12]]
+    visible=[name for name in reference()['species'] if normalize(name) in {normalize(row.strip()) for row in upper[:4]}]
+    if visible!=[enemy]:return None
+    raw=[''.join(row) for row in cells]
+    selected=[(i,row.rstrip()) for i,row in enumerate(raw) if re.search(r'[A-Za-z0-9]{2,}',row)][:12]
+    if text.get('lines')!=[row for _,row in selected] or text.get('line_rows')!=[i for i,_ in selected]:return None
+    patterns=[('super_effective',"It's super",'effective!',3),
+              ('not_very_effective',"It's not very",'effective...',3),
+              ('enemy_attack_missed','Enemy '+enemy+"'s",'attack missed!',7+len(enemy))]
+    for kind,first,second,x in patterns:
+        if multi[0]!=(x,14,"'s"):continue
+        expected=[[' ']*20 for _ in range(6)]
+        for y,value in ((2,first),(4,second)):
+            at=1
+            while value:
+                token="'s" if value.startswith("'s") else value[0]
+                expected[y][at]=token;at+=1;value=value[len(token):]
+        arrow=cells[16][18]
+        if arrow not in (' ','▼'):return None
+        expected[4][18]=arrow
+        if tuple(tuple(c.upper() for c in row) for row in cells[12:])!=tuple(tuple(c.upper() for c in row) for row in expected):continue
+        native=[list(row) for row in cells];native[14][x]='s'
+        return dict(kind=kind,arrow=arrow=='▼',rows=[''.join(row).upper() for row in native],native_cell=[x,14,"'s"])
+    return None
+
+
+def _fixed_damage_native_prompt_context(text,battle_state,party):
+    """Dismiss a real prompt only; never repair Party HP or infer damage/turn completion."""
+    prompt=_fixed_damage_native_prompt(text)
+    if prompt is None:return None
+    from .team_strategy import species_key,normalize
+    risk=_fixed_damage_risk;frame=battle_state.get('observation_frame')
+    if (type(battle_state.get('raw')) is not int or battle_state['raw']!=2
+            or battle_state.get('kind')!='trainer' or battle_state.get('active') is not True
+            or species_key(battle_state.get('opponent_species'))!=risk['enemy_species']
+            or type(frame) is not int or frame<0
+            or 'observation_frame' in text and (type(text['observation_frame']) is not int or text['observation_frame']!=frame)):
+        return _fixed_damage_review('fixed_damage_native_prompt_frame_or_battle_unverified')
+    if (not isinstance(party,(list,tuple)) or not 1<=len(party)<=6
+            or not all(_fixed_damage_mon_valid(m) and m['hp']>0 for m in party)):
+        return _fixed_damage_review('fixed_damage_native_prompt_party_or_faint_unverified')
+    rows=prompt['rows'];names={normalize(row.strip()) for row in rows[6:10]}
+    active=[m for m in party if normalize(species_key(m['species'])) in names]
+    health=[tuple(map(int,m.groups())) for row in rows[8:12]
+            if (m:=re.fullmatch(r'\s*(\d+)\s*/\s*(\d+)\s*',row[10:]))]
+    if (len(active)!=1 or len(health)!=1 or not 0<health[0][0]<=health[0][1]
+            or health[0][1]!=active[0]['max_hp']):return _fixed_damage_review('fixed_damage_native_prompt_visible_hp_unverified')
+    if type(risk.get('unreadable_waits')) is not int or risk['unreadable_waits']<0:
+        return _fixed_damage_review('fixed_damage_native_prompt_wait_counter_unverified')
+    history=risk.setdefault('native_prompt_history',[])
+    if not isinstance(history,list):return _fixed_damage_review('fixed_damage_native_prompt_history_unverified')
+    if not any(isinstance(v,dict) and (v.get('frame'),v.get('kind'),v.get('arrow'))==(frame,prompt['kind'],prompt['arrow']) for v in history):
+        history.append(dict(frame=frame,kind=prompt['kind'],arrow=prompt['arrow'],unreadable_waits_before=risk['unreadable_waits']))
+    risk['unreadable_waits']=0  # Consecutive decoder-failure count, not a lifetime transaction budget.
+    if not prompt['arrow']:
+        risk['native_prompt_blink_waits']=risk.get('native_prompt_blink_waits',0)+1
+        if risk['native_prompt_blink_waits']>30:return _fixed_damage_review('fixed_damage_native_prompt_blink_wait_exhausted')
+        return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],
+            battle_tactic='wait_source_fixed_damage_prompt_arrow',observed_fixed_damage=dict(risk))
+    risk['native_prompt_blink_waits']=0
+    return dict(phase='battle_dialogue',objective='Confirm the current selection.',available_actions=['a','wait'],
+        battle_tactic='dismiss_source_fixed_damage_native_prompt',observed_fixed_damage=dict(risk),
+        native_fixed_damage_prompt=prompt['kind'],native_contraction_cell=prompt['native_cell'],
+        visible_player_hp=dict(hp=health[0][0],max_hp=health[0][1]),party_player_hp=active[0]['hp'],
+        party_hp_rewritten=False,prompt_does_not_identify_current_move=True,
+        enemy_turn_resolved=False,survival_approved=False)
+
+
 def _fixed_damage_rows(text):
     """一般warning不是失敗；必須有本次decoder完整讀取／對齊的明確證據。"""
     if (not isinstance(text, dict) or text.get('profile') != _VISIBLE_PROFILE
@@ -320,7 +406,8 @@ def _fixed_damage_rows(text):
     if (not isinstance(cells, (list, tuple)) or len(cells) != 18
             or any(not isinstance(row, (str, list, tuple)) or len(row) != 20
                    or any(not isinstance(c, str) or len(c) != 1 for c in row) for row in cells)):
-        return None
+        native=_fixed_damage_native_prompt(text)
+        return native['rows'] if native is not None else None
     return [''.join(row).upper() for row in cells]
 
 
@@ -715,6 +802,8 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
     if disabled_error:
         return {'phase': 'strategy_review', 'objective': 'Wait.', 'available_actions': ['wait'],
                 'review_reason': disabled_error, 'player_disabled_move': signal}
+    native_prompt=_fixed_damage_native_prompt_context(text,battle_state,party)
+    if native_prompt is not None:return native_prompt
     if _fixed_damage_risk:
         if _fixed_damage_rows(text) is None:
             _fixed_damage_risk['unreadable_waits'] += 1
