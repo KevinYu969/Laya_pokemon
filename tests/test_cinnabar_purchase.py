@@ -360,7 +360,7 @@ def test_intent_mutation_cannot_reset_owner_or_budget():
 
 
 def test_source_receipts_and_scroll_algorithm_are_fixed_primary():
-    fixture=json.loads((REPO/"tests/data/lavender-mart-source-fixture.json").read_text())
+    fixture=json.loads((REPO/"tests/data/lavender-mart-source-fixture.json").read_text(encoding="utf-8"))
     assert fixture["commit"]==cp.SOURCE_COMMIT
     for name in ("home/list_menu.asm","engine/events/pokemart.asm","data/items/marts.asm","data/items/prices.asm"):
         d=fixture["files"][name];assert hashlib.sha256(d["text"].encode()).hexdigest()==d["sha256"]

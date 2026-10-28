@@ -195,6 +195,7 @@ def play_game(args) -> None:
     from .cli import environment
     from .policy import LayaPolicy, RandomPolicy, SimpleRulePolicy
     from .video import VideoRecorder
+    from .live_frame import LiveFramePublisher
     from .observation import PROFILE
     from .runtime import enable_offline_runtime
     from .progress import FULL_MISSION_OBJECTIVE, FULL_MISSION_MILESTONES
@@ -240,6 +241,7 @@ def play_game(args) -> None:
         "limitation": "Limited button-control demo; no validated navigation/dialogue/battle success evaluator."}
     write_json(output / "metadata.json", metadata)
     emulator = recorder = None
+    live_view = LiveFramePublisher(output) if getattr(args, "live_view", False) else None
     sampled_frames = 0
     started = time.perf_counter()
     deadline = started + RUN_TIME_LIMIT_SECONDS
@@ -253,6 +255,8 @@ def play_game(args) -> None:
     def frame_ready(frame):
         nonlocal sampled_frames
         sampled_frames += 1
+        if live_view:
+            live_view.publish(frame, emulator.frame_count)
         if recorder and sampled_frames % 2 == 0:
             recorder.append(frame)
 
@@ -301,6 +305,9 @@ def play_game(args) -> None:
                 metadata.update(kind='pokemon_first_gym_campaign', stage='持續訓練、前往尼比市與挑戰第一道館',
                                 success_scope='first_gym', limitation='Controller-assisted local gameplay; full-game completion not verified.')
             state = observe(emulator, args.objective, args.player_name, previous_actions, args.opening_route, starter, route_stage)
+            if live_view:
+                live_view.update_summary(state)
+                live_view.publish(emulator.screen.ndarray, emulator.frame_count)
             state["strategy_starter"] = starter
             state["strategy_stage"] = route_stage
             state["strategy_sha256"] = hashlib.sha256(strategy_bytes).hexdigest()
@@ -360,6 +367,14 @@ def play_game(args) -> None:
             except Exception as error:
                 cleanup_errors.append({"resource": "video", "type": type(error).__name__, "error": str(error)})
         if emulator:
+            if live_view:
+                try:
+                    review = metadata.get("stop_reason") == "strategy_review_required"
+                    live_view.update_status("paused_for_review" if review else "stopped",
+                                            review_reason="strategy_review_required" if review else None)
+                    live_view.publish(emulator.screen.ndarray, emulator.frame_count, force=True)
+                except Exception as error:
+                    cleanup_errors.append({"resource": "live_view", "type": type(error).__name__, "error": str(error)})
             try:
                 emulator.screen.image.save(output / "last-frame.png")
                 with (output / "final.state").open("wb") as stream:

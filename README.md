@@ -1,5 +1,13 @@
 # Laya × 寶可夢：從本機部署到可重現實測
 
+## 想在自己的電腦上試試看？
+
+從 [讀者安裝與遊玩指南](docs/reader-quickstart.md) 開始。CPU 就能執行 Laya；高階決策可選固定控制器、依 RAM 建議下載的 Ollama 模型，或自己的雲端 API。新入口會提供瀏覽器即時畫面、影片與接續存檔，不需要作者的 Qwen / RTX 5090。
+
+請自備有權使用的英文 Red ROM。這是持續開發的實驗程式，新手入口先跑開局與首館流程；八枚徽章是作者經過除錯與人工檢討後的成果，不是下載即保證無人通關。
+
+[Quickstart / English overview](docs/reader-quickstart.md#english-overview) · [公開檢查範圍](docs/public-review-20261028.md)
+
 
 **2026-10-28 實際進度：已抵石英高原，六隻經正常護士補滿，四天王尚未破關。** 冠軍之路落石與出口機關、倒下隊員救援已完成。拉普拉斯十萬伏特已完整驗收，正以最低等級隊員首發進行野怪／護士往返校準。[最新時間與問題紀錄](docs/league-progress.md)。
 
