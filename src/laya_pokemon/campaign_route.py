@@ -14,6 +14,8 @@ from . import victory_road_navigation
 importlib.reload(victory_road_navigation)
 from . import victory_ladder_settle
 importlib.reload(victory_ladder_settle)
+from . import victory_east_entry
+importlib.reload(victory_east_entry)
 read_world_grid,world_direction=world_map.read_world_grid,world_map.world_direction
 _LEARNED_EDGES=globals().get('_LEARNED_EDGES',{})
 _LAST_ATTEMPT=globals().get('_LAST_ATTEMPT')
@@ -167,6 +169,144 @@ _TM24_RETURN_REVIEW_CAPSULE = {'evidence': {'preflight_sha256': 'f855a3fa75e03e6
 _TM24_RETURN_PLAN_CANONICAL_SHA256 = '080360fac74b6bbbd7d4c63e78ba3230736ba48f9512a8094064a0afb3a27dd6'
 
 
+_BATCH_TURN_REVIEW_CAPSULE = {'actual_action_frame': 23673,
+ 'baseline_sha256': '6689f9d51ce7ab8165e3179491a2dad02bbf205868d2dca5e99a7fa6ce393046',
+ 'binding_sha256': '93c365a277428572faa3ca72b2ef86c380938ebab0846653a94c2e98f3436080',
+ 'calls': 149,
+ 'displacements': 2,
+ 'evidence': {'preflight_sha256': 'e7f633c1021dc393419c18bc8c2ba31c1329fdbd85df48e0a432b524fb775123',
+              'review_sha256': '447706ef6bb895538d1b23c49b1c1264deae1d70ad884f3af0208a24dbd7c6b6',
+              'state_sha256': 'e76501526abd833119eb32830f89613a6b5e82ee84bb28b0cc0983eb16317b14'},
+ 'first_wild_frame': 23713,
+ 'game_id': 'game29',
+ 'historical_walk_sha256': '8b8d77cf6152da6f3690b4983d2e26c760a31b841af215c1fe56809975a678bf',
+ 'historical_wild_sha256': 'cf08750b3fdf5ea37ea0a7f2ccd1f8b654d9b861748fedd133cfb05fa564011f',
+ 'kind': 'reviewed_training_turn_return30833_v1',
+ 'last_frame': 30833,
+ 'original_step_id': 'root-calibration-game29-20261028-out-067',
+ 'pending': {'action': 'down',
+             'executed': True,
+             'expected': [28, 8],
+             'frame': 23673,
+             'player': [28, 7]},
+ 'plan_bytes_sha256': '432b4056ceeb469d62539d5b68659bc03357c467b2aef4f06f1a383582fc9f7e',
+ 'requests': 3,
+ 'source_location': {'map_id': 194, 'x': 28, 'y': 7},
+ 'source_packet_sha256': '757bd2f50d6e129a47e7fedc7cddc903a34fada3f094f6df51306cd72573a2bf',
+ 'source_progress_sha256': '727b0bec570b16b1c511fc7dc6103bfe8938904a940fadf9ec18538a9b9b498a',
+ 'waits': 129}
+_BATCH_TURN_PLAN_CANONICAL_SHA256 = '74e1eb74747aa8e120e5d1216d776d03667b2be905fdbf4ce4e7b428258f6a46'
+_BATCH_TURN_NATIVE_WITNESS_SHA256 = 'ee037a62d72a361f9f39eb551df0de0222b10bd99d3c5002edd02980d2899013'
+
+
+_TRAINING_ESCAPE_STEP = 'league-six-party45-game29-20261028-025-067'
+_TRAINING_ESCAPE_CAP_BYTES_SHA = '65078447b775b6c9dca8d2797e00f7aa43cb5e397d41f836edd1200c9e12bfa4'
+_TRAINING_ESCAPE_CAP_CANONICAL_SHA = '9e71713eaa0434b173a4333745e04a231efd1dbcd19932e3d61da0e79f89cb3a'
+
+
+def _read_training_escape_review_capsule():
+    from pathlib import Path
+    from hashlib import sha256
+    import json
+    root=Path(__file__).resolve().parents[2]
+    raw=(root/'.local/training160497-reviewed-abort.json').read_bytes()
+    if sha256(raw).hexdigest()!=_TRAINING_ESCAPE_CAP_BYTES_SHA:raise ValueError('capsule_bytes_changed')
+    cap=json.loads(raw)
+    if owned_field_medicine.canonical_sha256(cap)!=_TRAINING_ESCAPE_CAP_CANONICAL_SHA:raise ValueError('capsule_changed')
+    for label,key,suffix in [('review','original_review_sha256','json'),('state','source_state_sha256','state'),('plan','plan_bytes_sha256','json')]:
+        proof=(root/f'.local/gym-reviewed-history/training160497-before-diagnostic-{label}.{suffix}').read_bytes()
+        if sha256(proof).hexdigest()!=cap[key]:raise ValueError('original_evidence_changed')
+    escape=cap['source_escape']
+    if escape['file']!='steps-030.jsonl' or escape['line_number']!=29:raise ValueError('escape_source_changed')
+    line=(root/'outputs/league-campaign-20261028-29/game/steps-030.jsonl').read_bytes().splitlines()[28]
+    if sha256(line).hexdigest()!=escape['line_sha256'] or json.loads(line)!=escape['record']:
+        raise ValueError('escape_record_changed')
+    return cap
+
+
+def _training_escape_abort_review_context(pyboy,state,plan,step_id):
+    """Root's named no-reward escape review; never records a victory."""
+    b=league_training_batch_bridge;key=_TRAINING_ESCAPE_STEP
+    records=getattr(b,'_REVIEWED_ABORTS',None)
+    if type(records) is dict and records.get(key,{}).get('done') is True and step_id!=key:return None
+    c=b._CONTROLLERS.get(key) if type(b._CONTROLLERS) is dict else None
+    if c is None or getattr(c,'error',None)!='league_training_batch_single_wild_reward_or_pp_bound_unverified':return None
+    def reject(reason):
+        return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+            review_reason='training_escape_abort_parent_'+reason),step_id
+    try:
+        peers=_field_medicine_peers();done=type(records) is dict and records.get(key,{}).get('done') is True
+        expected=set() if done else {key}
+        if (step_id!=key or type(peers) is not dict or set(peers)!=owned_field_medicine.PEER_NAMES
+                or any(type(v) is not set or (v!=expected if k=='league_training_batch' else bool(v)) for k,v in peers.items())
+                or owned_field_medicine._active()!=set() or b._active()!=expected
+                or b._OWNERS.get(key) is not pyboy or any(x is not b and x._active()!=set() for x in _LEAGUE_FIELDS)):
+            return reject('owner_or_peers_unverified')
+        cap=_read_training_escape_review_capsule()
+        h=owned_field_medicine.canonical_sha256
+        if (type(state) is not dict or type(state.get('frame')) is not int or not 160497<=state['frame']<=160577
+                or pyboy.frame_count!=state['frame'] or h(plan)!=cap['plan_sha256']
+                or id(c)!=cap['controller_identity'] or id(pyboy)!=cap['native_identity']):
+            return reject('native_plan_or_frame_unverified')
+        from .observation import read_visible_text
+        text=read_visible_text(pyboy);grid=read_world_grid(pyboy,state['location'])
+        return b.reviewed_abort(pyboy,state,plan,key,text,grid,cap,
+            expected_capsule_sha256=_TRAINING_ESCAPE_CAP_CANONICAL_SHA,
+            original_controller=c,original_binding=b._BINDINGS.get(key),
+            original_pending=c.pending,original_last_packet=c.last_packet)
+    except (OSError,AttributeError,KeyError,TypeError,ValueError,IndexError):
+        return reject('evidence_or_preflight_unverified')
+
+
+
+
+def _training_turn_return_review_context(pyboy,state,plan,step_id,previous):
+    """只復核已真遇怪取消移動的30833，原等待數不清零。"""
+    b=league_training_batch_bridge;c=b._CONTROLLERS.get(step_id) if type(b._CONTROLLERS) is dict else None
+    if c is None or getattr(c,'error',None)!='league_training_batch_wait_budget_exhausted':return None
+    def reject(reason):
+        return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+            review_reason='training_turn_return_parent_'+reason),step_id
+    try:
+        cap=_BATCH_TURN_REVIEW_CAPSULE;h=owned_field_medicine.canonical_sha256
+        peers=_field_medicine_peers()
+        if (type(peers) is not dict or set(peers)!=owned_field_medicine.PEER_NAMES
+                or any(type(v) is not set or (v!={step_id} if k=='league_training_batch' else bool(v))
+                       for k,v in peers.items()) or owned_field_medicine._active()!=set()
+                or b._active()!={step_id} or type(b._ERRORS) is not dict or b._ERRORS
+                or b._OWNERS.get(step_id) is not pyboy
+                or any(x is not b and x._active()!=set() for x in _LEAGUE_FIELDS)
+                or step_id!=cap['original_step_id'] or h(plan)!=_BATCH_TURN_PLAN_CANONICAL_SHA256
+                or type(state) is not dict or state.get('frame')!=30833 or pyboy.frame_count!=30833
+                or c.last_frame!=30833 or h(c.last_packet)!=cap['source_packet_sha256']
+                or h(c.baseline)!=cap['baseline_sha256'] or h(c.pending)!=h(cap['pending'])
+                or h(b._BINDINGS.get(step_id))!=cap['binding_sha256']):
+            return reject('owner_plan_or_original_packet_unverified')
+        # 原程序唯讀快照的identity只在本機，不把程序識別放進公開設定。
+        from pathlib import Path
+        import json
+        witness=json.loads((Path(__file__).resolve().parents[2]/'.local/batch30833-native-witness.json').read_text(encoding='utf-8'))
+        if (h(witness)!=_BATCH_TURN_NATIVE_WITNESS_SHA256 or witness['controller_identity']!=id(c)
+                or witness['native_identity']!=id(pyboy) or h(cap)!=h(b.batch.TURN_RETURN_REVIEW)):
+            return reject('same_native_controller_unverified')
+        from pyboy.plugins import game_wrapper_pokemon_gen1_constants as sdk
+        from .progress import read_progress
+        from .observation import read_visible_text
+        frame=pyboy.frame_count;text=read_visible_text(pyboy);grid=read_world_grid(pyboy,state['location'])
+        signal=b.batch.read_training_observation(pyboy,frame,sdk);progress=read_progress(pyboy,sdk)
+        old=c.last_packet
+        if (pyboy.frame_count!=frame or h(progress)!=cap['source_progress_sha256']
+                or h(progress)!=h(state['progress']) or h(text)!=h(old[1]) or h(grid)!=h(old[2])
+                or h(signal)!=h(old[3]) or h(previous)!=h(old[4]) or old[5]!=step_id
+                or state['location']!=cap['source_location']
+                or h(state['battle_state'])!=h(old[0]['battle_state'])):
+            return reject('fresh_source_world_unverified')
+        c.__class__=b.batch.TrainingBatch
+        return c.review_cancelled_turn_return(review_capsule=cap,source_evidence=cap['evidence']),step_id
+    except (OSError,AttributeError,KeyError,TypeError,ValueError,IndexError):
+        return reject('preflight_unverified')
+
+
 def _tm24_return_review_context(pyboy,state,plan,step_id,previous):
     """僅19073已學招/消耗後的重繪誤判；保同owner與已花預算。"""
     b=tm24_teaching_bridge;c=b._CONTROLLERS.get(step_id) if type(b._CONTROLLERS) is dict else None
@@ -211,6 +351,23 @@ def _tm24_return_review_context(pyboy,state,plan,step_id,previous):
         return result,step_id
     except (AttributeError,KeyError,TypeError,ValueError,IndexError,StopIteration):
         return reject()
+
+
+def _victory_east_entry_context(pyboy,state,plan,step_id):
+    """校準與每趟訓練的東入口載圖僅WAIT，原導航仍驗真到達。"""
+    loc=state.get('location') if type(state) is dict else None
+    if not victory_east_entry.applies(plan,step_id,loc):return None
+    kwargs=dict(shared=owned_field_medicine,native_owner=pyboy,
+        game_id='game29',peer_owners=_field_medicine_peers())
+    gate=victory_east_entry.preflight(pyboy,state,plan,step_id,**kwargs)
+    if gate is not None:return gate
+    from .observation import read_visible_text
+    text=read_visible_text(pyboy);grid=read_world_grid(pyboy,loc)
+    ready=campaign_transactions.verified_blank_transaction_world(text,grid)
+    npcs=victory_road_navigation.read_victory_road_npcs(pyboy,grid,loc,
+        world_map_module=world_map,boulder_module=victory_later_boulders_bridge.boulder,
+        overworld_ready=ready)
+    return victory_east_entry.context(pyboy,state,plan,step_id,text,grid,npcs,**kwargs)
 
 
 def _victory_ladder_settle_context(pyboy,state,plan,step_id):
@@ -296,6 +453,12 @@ def _league_field_context(pyboy,state,plan,step_id,step,previous):
             source_evidence=reviewed_hole_layout.EVIDENCE,peer_owners=_field_medicine_peers())
         gate=reviewed_hole_layout.preflight(pyboy,state,plan,step_id,**layout_kwargs)
         if gate is not None:return gate
+    if bridge is league_training_batch_bridge:
+        reviewed_batch=_training_turn_return_review_context(pyboy,state,plan,step_id,previous)
+        if reviewed_batch is not None:return reviewed_batch
+        batch_controller=bridge._CONTROLLERS.get(step_id)
+        if getattr(batch_controller,'cancelled_walk_review_history',None):
+            kwargs['now']=owned_field_medicine.frame_clock(batch_controller,state.get('frame'))
     if bridge is tm24_teaching_bridge:
         reviewed_tm=_tm24_return_review_context(pyboy,state,plan,step_id,previous)
         if reviewed_tm is not None:return reviewed_tm
@@ -464,8 +627,12 @@ def _e4_coordinate_context(pyboy,state,step,text,previous):
 
 
 def switch_context(pyboy,state,plan,step_id,previous):
+    escape_abort=_training_escape_abort_review_context(pyboy,state,plan,step_id)
+    if escape_abort is not None:return escape_abort
     proof_guard=_training_proof_owner_guard(pyboy,plan)
     if proof_guard is not None:return proof_guard
+    east_entry=_victory_east_entry_context(pyboy,state,plan,step_id)
+    if east_entry is not None:return east_entry
     ladder=_victory_ladder_settle_context(pyboy,state,plan,step_id)
     if ladder is not None:return ladder
     native_fall=_reviewed_native_fall_context(pyboy,state,plan,step_id)
@@ -669,10 +836,51 @@ def switch_context(pyboy,state,plan,step_id,previous):
     return context,next_id
 
 
+def _training_batch_eof_attrition_context(pyboy,state,plan,step_id,attrition):
+    """Let a verified completed batch finish its WAIT/EOF before returning to nurse."""
+    if (step_id!='complete' or type(plan) is not dict
+            or plan.get('training_job')!=league_training_supervisor.JOB
+            or plan.get('training_supervisor')!=league_training_proof.MARKER
+            or type(attrition) is not dict or attrition.get('review_reason')!='party_attrition_requires_center'
+            or attrition.get('party_attrition',{}).get('fainted_party_indices')!=[]):return None
+    steps=plan.get('steps');step=steps[-1] if type(steps) is list and steps else {}
+    if step.get('mechanic')!='league_training_batch':return None
+    def reject():
+        return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+            review_reason='training_completed_batch_attrition_proof_unverified'),'complete'
+    try:
+        stored=_TRAINING_BATCH_PROOFS.get(step['id']);v=league_training_supervisor
+        if (not _training_peers_clear() or type(stored) is not dict
+                or stored.get('job')!=v.JOB or stored.get('owner_step')!=step['id']
+                or stored.get('step_sha256')!=v.canonical_sha(step)
+                or stored.get('location')!=state.get('location')
+                or stored.get('progress_sha256')!=v.canonical_sha(state['progress'])):return reject()
+        v.validate_party(state['progress']);v._stored_receipt(stored)
+        frame=state['frame'];last=stored['closed_frames'][-1]
+        if type(frame) is not int or type(last) is not int or frame<last:return reject()
+        if frame>last:return _training_eof_context(pyboy,state,plan),'complete'
+        from .observation import read_visible_text
+        from pyboy.plugins import game_wrapper_pokemon_gen1_constants as sdk
+        b=league_training_batch_bridge.batch
+        signal=b.read_training_observation(pyboy,frame,sdk)
+        if (signal.get('read_valid') is not True or signal.get('idle') is not True
+                or signal.get('progress')!=state['progress'] or signal.get('battle')!=state['battle_state']
+                or not b.closed_world(read_visible_text(pyboy),read_world_grid(pyboy,state['location']),
+                    (state['location']['x'],state['location']['y']),frame)):return reject()
+        return dict(phase='training_batch_owned',objective='Wait.',available_actions=['wait'],
+            training_completed_batch_attrition_wait=True,suppress_navigation_stall=True,
+            suppress_blocked_edge_learning=True),'complete'
+    except (AttributeError,KeyError,TypeError,ValueError,IndexError,league_training_supervisor.ReviewRequired):return reject()
+
+
 def attrition_transition_context(pyboy,state,plan,step_id,attrition,previous=()):
     """只將已綁Lapras的來源命名未初始化過渡交專屬reader；其他損耗照常停。"""
+    escape_abort=_training_escape_abort_review_context(pyboy,state,plan,step_id)
+    if escape_abort is not None:return escape_abort
     proof_guard=_training_proof_owner_guard(pyboy,plan)
     if proof_guard is not None:return proof_guard
+    completed_batch=_training_batch_eof_attrition_context(pyboy,state,plan,step_id,attrition)
+    if completed_batch is not None:return completed_batch
     active_eof=league_training_proof._active()
     if active_eof:return league_training_proof._fail(next(iter(active_eof)),'attrition_during_eof'),'complete'
     medicine=_owned_field_medicine_context(pyboy,state,plan,step_id,previous,attrition)
@@ -703,8 +911,12 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition,previous=())
 
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
+    escape_abort=_training_escape_abort_review_context(pyboy,state,plan,step_id)
+    if escape_abort is not None:return escape_abort
     proof_guard=_training_proof_owner_guard(pyboy,plan)
     if proof_guard is not None:return proof_guard
+    east_entry=_victory_east_entry_context(pyboy,state,plan,step_id)
+    if east_entry is not None:return east_entry
     ladder=_victory_ladder_settle_context(pyboy,state,plan,step_id)
     if ladder is not None:return ladder
     native_fall=_reviewed_native_fall_context(pyboy,state,plan,step_id)
@@ -1073,6 +1285,10 @@ def _reviewed_npc_edge_retry(state,step,grid,npcs,ready):
 
 def waypoint(pyboy,state,plan,step_id,previous):
     global _LAST_ATTEMPT
+    escape_abort=_training_escape_abort_review_context(pyboy,state,plan,step_id)
+    if escape_abort is not None:return escape_abort
+    east_entry=_victory_east_entry_context(pyboy,state,plan,step_id)
+    if east_entry is not None:return east_entry
     ladder=_victory_ladder_settle_context(pyboy,state,plan,step_id)
     if ladder is not None:return ladder
     native_fall=_reviewed_native_fall_context(pyboy,state,plan,step_id)
@@ -1155,6 +1371,8 @@ def waypoint(pyboy,state,plan,step_id,previous):
                 world_map_module=world_map,boulder_module=victory_later_boulders_bridge.boulder,
                 overworld_ready=ready)
             if not npcs or npcs.get('read_valid') is not True:
+                east_entry=_victory_east_entry_context(pyboy,state,plan,step['id'])
+                if east_entry is not None:return east_entry
                 ladder=_victory_ladder_settle_context(pyboy,state,plan,step['id'])
                 if ladder is not None:return ladder
                 return {'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],

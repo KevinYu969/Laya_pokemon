@@ -137,6 +137,8 @@ def test_same_frame_conflicting_used_and_effect_pages_cannot_create_danger(b):
 @pytest.mark.parametrize('evidence',['none','super_without_used','player_used','wrong_enemy','unknown_move','incomplete_super'])
 def test_missing_or_misattributed_enemy_evidence_does_not_disable_normal_retreat(b,evidence):
     mons=party()
+    # No healthy super-effective support: this isolates the observed-danger rule.
+    mons[4]['hp']=mons[4]['max_hp']//2
     used={'player_used':('NIDOKING used','BUBBLEBEAM!'),
           'wrong_enemy':('Enemy GOLBAT','used PSYBEAM!'),
           'unknown_move':('Enemy VENOMOTH','used UNKNOWN!')}
@@ -149,6 +151,7 @@ def test_missing_or_misattributed_enemy_evidence_does_not_disable_normal_retreat
 
 def test_no_impairment_still_retreats_normally_even_after_observed_super_effective(b):
     mons=party();observe(b,mons,impairment='none')
+    mons[4]['hp']=mons[4]['max_hp']//2
     out=call(b,mons,220,command=True)
     assert out.get('battle_tactic')=='retreat',out
 

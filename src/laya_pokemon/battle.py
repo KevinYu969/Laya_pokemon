@@ -138,6 +138,66 @@ def _wild_retreat_support(mon,active,enemy,observed_move):
             and effective_power(move,mon['species'],enemy)>0 for move,pp in zip(mon['moves'],mon['pp'])))
 
 
+
+def _healthy_wild_score(mon, enemy):
+    """The actual damage chooser must select a reliable super-effective attack."""
+    from .team_strategy import reference, move_key, choose_damage_move, effective_power
+    chosen = choose_damage_move(mon['species'], mon['moves'], mon['pp'], enemy)
+    entry = reference()['moves'].get(move_key(chosen), {})
+    ordinary = {'NO_ADDITIONAL_EFFECT', 'PARALYZE_SIDE_EFFECT1', 'PARALYZE_SIDE_EFFECT2',
+                'FREEZE_SIDE_EFFECT1', 'POISON_SIDE_EFFECT1', 'POISON_SIDE_EFFECT2',
+                'BURN_SIDE_EFFECT1', 'BURN_SIDE_EFFECT2', 'FLINCH_SIDE_EFFECT1', 'FLINCH_SIDE_EFFECT2'}
+    if (entry.get('effect') not in ordinary or entry.get('power', 0) <= 1
+            or entry.get('accuracy', 0) < 90 or (_wild_retreat_multiplier(chosen, enemy) or 0) <= 1):
+        return 0
+    return effective_power(chosen, mon['species'], enemy) * mon['level']
+
+
+def _healthy_wild_support(mon, active, enemy):
+    return (mon['species'] != active['species'] and mon['status'] == 0
+            and mon['hp'] * 4 >= mon['max_hp'] * 3
+            and _healthy_wild_score(mon, enemy) > max(1, _trainer_half_score(active, enemy)) * 2.5)
+
+
+def _healthy_wild_command(text, battle_state, party, rows, active, enemy, *, capture_tactic, capture_focus):
+    """Replace only a verified low-HP/resisted wild RUN with a bounded support switch."""
+    global _wild_retreat_switch
+    from copy import deepcopy
+    from .team_strategy import choose_damage_move
+    if (capture_focus or capture_tactic != 'not_capture' or _fixed_damage_risk or _no_pp_switch
+            or _wild_retreat_switch or active is None or enemy is None):
+        return None
+    checked = _wild_retreat_rows(text, battle_state)
+    identity = _wild_retreat_identity(checked, battle_state, party) if checked else None
+    if (identity is None or checked != rows or identity[0] != enemy
+            or identity[1]['species'] != active['species']
+            or identity[2] != (active['hp'], active['max_hp'])
+            or not _trainer_half_command_layout(checked)):
+        return None
+    if choose_damage_move(active['species'], active['moves'], active['pp'], enemy) is None:
+        return None  # Existing no-attack-PP protection owns that case.
+    low_hp = active['hp'] * 2 <= active['max_hp']
+    resisted = _all_available_attacks_resisted(active, enemy)
+    if not low_hp and not resisted:
+        return None
+    supports = [mon for mon in party if _healthy_wild_support(mon, active, enemy)]
+    target = max(supports, key=lambda mon: _healthy_wild_score(mon, enemy), default=None)
+    if target is None:
+        return None  # Preserve the existing RUN fallback.
+    frame = battle_state['observation_frame']
+    _wild_retreat_switch = dict(enemy_species=enemy, active_species=active['species'],
+        target_species=target['species'], active_before=deepcopy(active),
+        party_species=tuple(mon['species'] for mon in party), observed_move=None,
+        support_policy='healthy_wild_advantage_v1', trigger='low_hp' if low_hp else 'all_attacks_resisted',
+        member_selected=False, switch_requested=False, started_frame=frame, last_frame=frame,
+        last_packet=deepcopy((text, battle_state, party)), calls=1, waits=0, error=None)
+    return {**_selection_hint(rows, (16, 14), 'command'),
+        'battle_tactic': 'switch_healthy_wild_support', 'party_target_species': target['species'],
+        'enemy_species': enemy, 'wild_support_trigger': _wild_retreat_switch['trigger'],
+        'wild_support_score': _healthy_wild_score(target, enemy),
+        'wild_active_score': _trainer_half_score(active, enemy)}
+
+
 def _wild_retreat_pending(text,battle_state,party,rows):
     global _wild_retreat_lesson,_wild_retreat_switch
     from copy import deepcopy
@@ -166,7 +226,10 @@ def _wild_retreat_pending(text,battle_state,party,rows):
             and (command and _trainer_half_command_layout(rows) or lower in sent)):
         _wild_retreat_clear()
         return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],battle_tactic='verified_wild_switch_handoff')
-    if not _wild_retreat_support(target,record['active_before'],record['enemy_species'],record['observed_move']):
+    supported = (_healthy_wild_support(target, record['active_before'], record['enemy_species'])
+        if record.get('support_policy') == 'healthy_wild_advantage_v1' else
+        _wild_retreat_support(target, record['active_before'], record['enemy_species'], record['observed_move']))
+    if not supported:
         return _wild_retreat_review('pending_support_no_longer_healthy')
     if command:
         if (identity is None or identity[1]['species']!=record['active_species']
@@ -208,7 +271,7 @@ def _wild_retreat_wait(record,reason):
     return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],battle_tactic=reason)
 
 
-def _wild_retreat_observe(text,battle_state,party):
+def _wild_retreat_observe(text,battle_state,party,*,capture_focus=False):
     global _wild_retreat_lesson
     from copy import deepcopy
     from .team_strategy import species_key,move_key
@@ -216,7 +279,11 @@ def _wild_retreat_observe(text,battle_state,party):
             or battle_state.get('kind')!='wild' or battle_state.get('active') is not True):
         _wild_retreat_clear();return None
     rows=_wild_retreat_rows(text,battle_state)
-    if _wild_retreat_switch:return _wild_retreat_pending(text,battle_state,party,rows)
+    if _wild_retreat_switch:
+        if (_wild_retreat_switch.get('support_policy') == 'healthy_wild_advantage_v1'
+                and (capture_focus or _fixed_damage_risk or _no_pp_switch)):
+            return _wild_retreat_review('healthy_support_priority_changed')
+        return _wild_retreat_pending(text,battle_state,party,rows)
     if rows is None:return None
     identity=_wild_retreat_identity(rows,battle_state,party)
     if identity is None:
@@ -1076,7 +1143,7 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
         pending = _trainer_half_pending(text,battle_state,party)
         if pending is not None:
             return pending
-    wild_context = _wild_retreat_observe(text,battle_state,party)
+    wild_context = _wild_retreat_observe(text,battle_state,party,capture_focus=capture_focus)
     if wild_context is not None:return wild_context
     cells = text.get("cells", [])
     if half_opted and (not isinstance(cells,(list,tuple)) or len(cells)!=18
@@ -1192,6 +1259,9 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
         if fight and item and run:
             wild_context = _wild_retreat_command(text,battle_state,party,rows,active,enemy,health,capture['tactic'])
             if wild_context is not None:return wild_context
+            healthy_context = _healthy_wild_command(text,battle_state,party,rows,active,enemy,
+                capture_tactic=capture['tactic'],capture_focus=capture_focus)
+            if healthy_context is not None:return healthy_context
             if resisted_retreat:
                 result = _selection_hint(rows, run, 'command')
                 result.update(battle_tactic='retreat', **resisted_retreat)

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-28",
+  "scope": "完整正式tests；含正常補藥中斷、TM24、具名FNT救援、全部UI/入口等待及兩個training邊界出口修正",
+  "command": "workspace-python -B -X utf8 -m pytest tests -p no:cacheprovider --basetemp=<LOCAL_VALIDATION_TEMP> -q",
+  "exit_code": 0,
+  "passed": 10061,
+  "wall_seconds": 106.468,
+  "source_files": 364,
+  "source_unchanged": true,
+  "changed_paths": [],
+  "manifest_sha256": "0954a93b5bdbee196cbdd7adeb8212abaf5cdf37371e8bd6d9f23e6941ca6f6a",
+  "stdout_sha256": "4b6e39084b52018e3a278e484afa27705fea4ce68cc9ffd7c2de00b308e46117",
+  "live_game_validation": false,
+  "limitations": [
+    "此為程式/fixture回歸，不等同四天王通關。",
+    "原始log含本機診斷路徑，僅保留本機；公開收據不含原始log。",
+    "此切點不含後續訓練轉身遇敵閉合與首次seed前初始上限修正。"
+  ],
+  "pytest_seconds": 104.35
+}

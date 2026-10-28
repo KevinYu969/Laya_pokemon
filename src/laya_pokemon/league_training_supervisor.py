@@ -1,7 +1,7 @@
 """預設dry-run的純JSON單次排程候選；來源／合成限定，未實機／未批准。
 
 不初始化模擬器、不讀ROM/state、不發鍵。每次最多追加一段plan；所有鍵仍由
-主runner本機Laya。跨次job固定900秒／40次出行，錯誤與未完成reserve永不自修。
+主runner本機Laya。首次啟用前固定14400秒／1000次出行，錯誤與未完成reserve永不自修。
 """
 from __future__ import annotations
 import argparse
@@ -35,13 +35,13 @@ JOB="league-six-party45-game29-20261028"
 SOURCE_COMMIT="a53671100ec22e5394ff26ec028d0812a238dae2"
 ROUTE_SHA="a8255f3c4ce4d07ac89f9fd655b244565dd786ddf3f628a83b64615c0fe5aef8"
 ROUTE_SHA256S=(ROUTE_SHA,"be91b93aead4d1229d326d38595f756d726d4667e821dc3970071ad117e0c22d")
-BATCH_RECEIPT_SHA="567793ed75c10f9f60d572eb77a7437877296ad7645b4deedf36e87e3001cba5"
-BATCH_PURE_SHA="f8d4a1c2be865974b15615c3377b63a21927fb291ceca4ca0a3247d8657b2309"
-BATCH_BRIDGE_SHA="78bf4bf1e9a974fc971469a34ffa8656000dd8baa882b68f6a8a55fc8ea6a84c"
+BATCH_RECEIPT_SHA="bfc0a52a7b93d635684d25448fbf5700dd888404c062005f10dfc7221c7f6c36"
+BATCH_PURE_SHA="a1738fcbd0ac9794c6b8bf15645dd15d7397bfc5d2d480483381849fdd42728a"
+BATCH_BRIDGE_SHA="67a102ee8be6286a8c21a0089be04ce959939488560ad2fbc97bc8b0aba7d32b"
 REFERENCE_SHA="248c70e24eda08e57e818e8ace37877d3452dda417d0c04dbb21e0dc64b1941b"
 REFERENCE_SHA256S=(REFERENCE_SHA,"d427fd277d23235bc25ef4da6fd68a20e5b1f4412f807815a496ef58d9e8b330")
 PROOF_PROFILE="red-en-league-training-world-v1"
-MAX_SECONDS,MAX_OUTINGS,TARGET=900,40,45
+MAX_SECONDS,MAX_OUTINGS,TARGET=14400,1000,45
 BUDGET_KEY="league_training_supervisor_budget"
 ROSTER={19,132,102,154,35,7}
 NAMES={19:"LAPRAS",132:"SNORLAX",102:"EEVEE",154:"VENUSAUR",35:"FEAROW",7:"NIDOKING"}
@@ -262,6 +262,77 @@ def continuity(before,after):
             and mon["max_hp"]>=prior["max_hp"] and mon["moves"]==prior["moves"],"xp_regressed_or_move_change_requires_review")
 
 
+def _typed_closed_receipt(outcome,count,receipt,location):
+    """Pure JSON semantics only; provenance is established by the original bridge."""
+    require(type(outcome) is str and outcome in ('complete_single_wild','complete_no_encounter')
+        and integer(count,0,32) and isinstance(receipt,dict),'completed_batch_receipt_invalid')
+    frames=receipt.get('closed_frames')
+    require(type(frames) is list and len(frames)==2 and all(integer(f) for f in frames)
+        and frames[0]<frames[1],'completed_batch_receipt_invalid')
+    if outcome=='complete_no_encounter':
+        require(count==32 and type(receipt.get('wild_count')) is int and receipt['wild_count']==0
+            and type(receipt.get('total_exp_gain')) is int and receipt['total_exp_gain']==0,
+            'completed_batch_receipt_invalid')
+    else:
+        require(type(receipt.get('wild_count')) is int and receipt['wild_count']==1
+            and integer(receipt.get('total_exp_gain'),1,8192),'completed_batch_receipt_invalid')
+    if 'cancelled_walk' in receipt or receipt.get('walk_resolution')=='cancelled_before_displacement':
+        cancelled=receipt.get('cancelled_walk')
+        require(type(cancelled) is dict
+            and all(type(cancelled.get(k)) is int and cancelled[k]==count
+                    for k in ('displacements_before','displacements_after'))
+            and type(cancelled.get('closed_frames')) is list and len(cancelled['closed_frames'])==2
+            and all(integer(f) for f in cancelled['closed_frames']) and cancelled['closed_frames']==frames,
+            'cancelled_count_or_frames_invalid')
+    if count!=0:return
+    require(outcome=='complete_single_wild' and receipt.get('walk_resolution')=='cancelled_before_displacement'
+        and receipt.get('displacement_occurred') is False and integer(receipt.get('total_pp_spent'),0,128)
+        and type(receipt.get('needs_center')) is bool,'zero_cancel_receipt_invalid')
+    before,after=receipt.get('levels_before'),receipt.get('levels_after')
+    require(type(before) is list and type(after) is list and len(before)==len(after)==6
+        and all(integer(v,1,100) for v in before+after)
+        and all(0<=n-o<=1 for o,n in zip(before,after)),'zero_cancel_receipt_invalid')
+    c=receipt.get('cancelled_walk')
+    require(type(c) is dict and set(c)=={'kind','wild_frame','actual_ack_frame','pending','wild_player',
+        'displacement_occurred','closed_frames','displacements_before','displacements_after'}
+        and c.get('kind')=='observed_turn_before_displacement' and c.get('displacement_occurred') is False
+        and all(type(c.get(k)) is int and c[k]==0 for k in ('displacements_before','displacements_after'))
+        and type(c.get('closed_frames')) is list and len(c['closed_frames'])==2
+        and all(integer(f) for f in c['closed_frames'])
+        and c.get('closed_frames')==frames,'zero_cancel_receipt_invalid')
+    p=c.get('pending')
+    require(type(p) is dict and set(p)=={'action','player','expected','frame','executed'}
+        and p.get('executed') is True and type(p.get('action')) is str,'zero_cancel_receipt_invalid')
+    points=(p.get('player'),p.get('expected'),c.get('wild_player'))
+    require(all(type(v) in (list,tuple) and len(v)==2 and all(type(n) is int for n in v)
+        and tuple(v) in ((28,7),(28,8)) for v in points),'zero_cancel_receipt_invalid')
+    source,target,wild=map(tuple,points)
+    require(source!=target and source==wild and p['action']==('down' if source==(28,7) else 'up')
+        and integer(p.get('frame')) and integer(c.get('actual_ack_frame')) and integer(c.get('wild_frame'))
+        and p['frame']<c['actual_ack_frame']<=c['wild_frame']<frames[0]<frames[1]
+        and type(location) is dict and set(location)=={'map_id','x','y'}
+        and all(type(v) is int for v in location.values())
+        and location==dict(map_id=194,x=source[0],y=source[1]),'zero_cancel_receipt_invalid')
+
+
+def _stored_receipt(stored):
+    present=('batch_receipt' in stored,'batch_receipt_sha256' in stored)
+    require(present[0]==present[1],'stored_batch_proof_changed_or_missing:owned_batch_closed_receipt_required')
+    if present[0]:
+        receipt=stored['batch_receipt']
+        require(type(receipt) is dict and hexsha(stored['batch_receipt_sha256'])
+            and canonical_sha(receipt)==stored['batch_receipt_sha256']
+            and receipt.get('closed_frames')==stored.get('closed_frames'),'stored_batch_proof_changed_or_missing:owned_batch_closed_receipt_required')
+        _typed_closed_receipt(stored.get('outcome'),stored.get('displacements'),receipt,stored.get('location'))
+    else:
+        # Already persisted positive projections remain valid; missing evidence
+        # can never grant the newly admitted zero branch.
+        require(stored.get('outcome') in ('complete_single_wild','complete_no_encounter')
+            and integer(stored.get('displacements'),1,32)
+            and (stored['outcome']!='complete_no_encounter' or stored['displacements']==32),
+            'stored_batch_proof_changed_or_missing:owned_batch_closed_receipt_required')
+
+
 def project_completed_batch(plan,context,completion_state):
     """root須在真bridge完成當輪呼叫；只投影已驗controller輸出，不從EOF猜成功。"""
     step=plan["steps"][-1];receipt=context.get("training_batch_receipt")
@@ -271,18 +342,15 @@ def project_completed_batch(plan,context,completion_state):
         and context.get("training_batch_owner_step")==step["id"] and context.get("source_commit")==SOURCE_COMMIT
         and isinstance(receipt,dict),"real_completed_bridge_context_required")
     outcome=context.get("training_batch_outcome");count=context.get("training_batch_displacements");frames=receipt.get("closed_frames")
-    require(outcome in ("complete_single_wild","complete_no_encounter") and integer(count,1,32)
-        and isinstance(frames,list) and len(frames)==2 and all(integer(f) for f in frames)
-        and frames[0]<frames[1]==completion_state.get("frame")
-        and ((outcome=="complete_single_wild" and receipt.get("wild_count")==1
-              and integer(receipt.get("total_exp_gain"),1,8192))
-             or (outcome=="complete_no_encounter" and count==32 and receipt.get("wild_count")==0
-                 and type(receipt.get("total_exp_gain")) is int and receipt["total_exp_gain"]==0)),"completed_batch_receipt_invalid")
+    _typed_closed_receipt(outcome,count,receipt,completion_state.get('location'))
+    require(integer(completion_state.get('frame')) and frames[1]==completion_state['frame'],
+            'completed_batch_receipt_invalid')
     validate_party(completion_state.get("progress"));loc=completion_state.get("location")
     require(loc in ({"map_id":194,"x":28,"y":7},{"map_id":194,"x":28,"y":8}),"completion_location_invalid")
     return dict(job=JOB,owner_step=step["id"],outcome=outcome,displacements=count,source_commit=SOURCE_COMMIT,
         closed_frames=list(frames),location=deepcopy(loc),progress_sha256=canonical_sha(completion_state["progress"]),
-        step_sha256=canonical_sha(step))
+        step_sha256=canonical_sha(step),batch_receipt=json.loads(json.dumps(receipt,allow_nan=False)),
+        batch_receipt_sha256=canonical_sha(receipt))
 
 
 def eof_batch_proof(plan,state,stored):
@@ -292,7 +360,9 @@ def eof_batch_proof(plan,state,stored):
         and stored.get("step_sha256")==canonical_sha(step) and stored.get("location")==state.get("location")
         and stored.get("progress_sha256")==canonical_sha(state["progress"])
         and isinstance(stored.get("closed_frames"),list) and len(stored["closed_frames"])==2
-        and integer(stored["closed_frames"][1]) and state["frame"]>stored["closed_frames"][1],"stored_batch_proof_changed_or_missing")
+        and all(integer(f) for f in stored['closed_frames']) and stored['closed_frames'][0]<stored['closed_frames'][1]
+        and integer(state.get('frame')) and state['frame']>stored['closed_frames'][1],"stored_batch_proof_changed_or_missing")
+    _stored_receipt(stored)
     return deepcopy(stored)
 
 
@@ -329,7 +399,7 @@ def propose(snapshot,budget,calibration,now):
         require(isinstance(receipt,dict) and receipt.get("job")==JOB
             and receipt.get("owner_step")==plan["steps"][-1]["id"]
             and receipt.get("outcome") in ("complete_single_wild","complete_no_encounter")
-            and integer(receipt.get("displacements"),1,32)
+            and integer(receipt.get("displacements"),0,32)
             and (receipt["outcome"]!="complete_no_encounter" or receipt["displacements"]==32)
             and receipt.get("source_commit")==SOURCE_COMMIT
             and isinstance(receipt.get("closed_frames"),list) and len(receipt["closed_frames"])==2

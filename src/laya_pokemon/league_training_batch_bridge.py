@@ -1,12 +1,12 @@
 """單場訓練候選橋接；只讀，不送鍵／tick／寫plan；未實機驗證或批准。"""
+from copy import deepcopy
 from hashlib import sha256
 import importlib.util
 import json
 from pathlib import Path
 import time
 
-PURE_SHA256S = ("f8d4a1c2be865974b15615c3377b63a21927fb291ceca4ca0a3247d8657b2309",
-               "1257a965b7ce5f72def561e357a104cfa8f70f6d16014dc5e813416b3000a96c")
+PURE_SHA256S = ('a1738fcbd0ac9794c6b8bf15645dd15d7397bfc5d2d480483381849fdd42728a', '3673aaf481caf3c62d4e11887c094b6b15e88fa1558532a7fdfac8effc07f487')
 
 
 def _load_exact():
@@ -30,6 +30,7 @@ _BINDINGS=globals().get("_BINDINGS",{})
 _COMPLETED=globals().get("_COMPLETED",set())
 _ERRORS=globals().get("_ERRORS",{})
 _OWNERS=globals().get("_OWNERS",{})
+_REVIEWED_ABORTS=globals().get("_REVIEWED_ABORTS",{})
 _FORBIDDEN={"event","item","badge","terminal","next_map","await_script_event","recovery_route"}
 _BATTLE_PHASES={"battle_menu","battle_bag","battle_animation","battle_dialogue",
                 "learning_menu","dialogue","strategy_review","campaign_review"}
@@ -38,8 +39,10 @@ _ACTIONS={"up","down","left","right","a","b","start","wait"}
 
 def _active():
     if (type(_CONTROLLERS) is not dict or type(_BINDINGS) is not dict
-            or type(_COMPLETED) is not set or type(_ERRORS) is not dict or type(_OWNERS) is not dict):return None
-    return (set(_CONTROLLERS)|set(_BINDINGS)|set(_OWNERS))-_COMPLETED
+            or type(_COMPLETED) is not set or type(_ERRORS) is not dict or type(_OWNERS) is not dict
+            or type(_REVIEWED_ABORTS) is not dict):return None
+    if any(not _abort_record_valid(k,r) for k,r in _REVIEWED_ABORTS.items()):return None
+    return (set(_CONTROLLERS)|set(_BINDINGS)|set(_OWNERS))-_COMPLETED-{k for k,r in _REVIEWED_ABORTS.items() if r['done']}
 
 
 def _review(reason,step_id):
@@ -59,6 +62,189 @@ def applies(step_id,step):
 
 def _canonical(value):
     return json.dumps(value,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False)
+
+
+_ABORT_ERROR="league_training_batch_single_wild_reward_or_pp_bound_unverified"
+_ABORT_FIELDS=('owner','intent','contract','started','last_now','calls','waits','requests',
+    'displacements','last_frame','error','pending','baseline','seen_wild','suspended',
+    'returned_world_seen','closed_frame','closed_resources','closed_player','final_player',
+    'complete','outcome','receipt','pending_ack_frame','wild_walk_evidence',
+    'closed_cancelled_walk','cancelled_walk_history','cancelled_walk_closure_review',
+    'cancelled_walk_review_history')
+
+
+def _digest(value):
+    return sha256(_canonical(value).encode('utf-8')).hexdigest()
+
+
+def _abort_snapshot(c):
+    return _canonical({k:getattr(c,k,None) for k in _ABORT_FIELDS})
+
+
+def _abort_record_valid(step_id,r):
+    try:
+        c=r['controller']
+        return (type(step_id) is str and type(r) is dict
+            and _CONTROLLERS.get(step_id) is c and _OWNERS.get(step_id) is r['native']
+            and _BINDINGS.get(step_id) is r['binding'] and c.pending is r['pending']
+            and c.last_packet is r['last_packet'] and c.baseline is r['baseline']
+            and step_id not in _COMPLETED and c.complete is False and c.error==_ABORT_ERROR
+            and _abort_snapshot(c)==r['snapshot'] and _digest(c.last_packet)==r['packet_sha256']
+            and (step_id in _ERRORS,_ERRORS.get(step_id))==r['bridge_error']
+            and _digest(r['capsule'])==r['capsule_sha256']
+            and type(r['done']) is bool and type(r['closed_frames']) is list
+            and len(r['closed_frames'])==(2 if r['done'] else 1)
+            and all(type(f) is int for f in r['closed_frames'])
+            and r['closed_frames'][0]==160497
+            and (not r['done'] or 160497<r['closed_frames'][1]<=160577))
+    except (KeyError,TypeError,ValueError,AttributeError,RecursionError):return False
+
+
+def _abort_wait(step_id):
+    done=_REVIEWED_ABORTS[step_id]['done']
+    out=dict(phase='campaign_review' if done else 'training_batch_owned',
+        objective='Wait.',available_actions=['wait'],training_batch_aborted=done,
+        training_batch_complete=False,training_batch_owner_step=step_id,
+        training_batch_tactic='reviewed_abort_closed_world' if done else 'reviewed_abort_await_second_world',
+        suppress_navigation_stall=True,suppress_blocked_edge_learning=True)
+    if done:out['review_reason']='training_batch_reviewed_abort_ready_for_recovery'
+    return out,step_id
+
+
+def reviewed_abort(pyboy,state,plan,step_id,text,grid,capsule,*,expected_capsule_sha256,
+                   original_controller,original_binding,original_pending,original_last_packet):
+    """Root-authorized named retreat; preserve failure, never manufacture completion.
+
+    Root first independently pins the capsule from actual RUN/escape, review and
+    checkpoint evidence, proves all 33 peers (only this batch), native identity and
+    full current plan. The digest is integrity, not evidence of an actual escape.
+    No input, clock advancement, controller call, budget refund or EOF receipt.
+    """
+    try:
+        if _active() is None:return _review('abort_registry_unverified',step_id)
+        if (type(capsule) is dict and step_id!=capsule.get('step_id')
+                and _REVIEWED_ABORTS.get(capsule.get('step_id'),{}).get('done') is True):return None
+        prior=_REVIEWED_ABORTS.get(step_id)
+        c=_CONTROLLERS.get(step_id)
+        capkeys={'kind','game_id','source_frame','source_location','step_id','job','original_error',
+            'original_plan','plan_bytes_sha256','plan_sha256','binding_sha256','baseline_sha256',
+            'progress_sha256','packet_sha256','pending','pending_sha256','counters','counters_sha256',
+            'baseline','controller_identity','native_identity','source_escape','original_review_sha256',
+            'source_state_sha256','root_review'}
+        if (type(capsule) is not dict or set(capsule)!=capkeys
+                or type(expected_capsule_sha256) is not str or len(expected_capsule_sha256)!=64
+                or _digest(capsule)!=expected_capsule_sha256
+                or capsule['kind']!='reviewed_training_escape160497_v1' or capsule['game_id']!='game29'
+                or type(capsule['source_frame']) is not int or capsule['source_frame']!=160497
+                or type(step_id) is not str or not step_id or capsule['step_id']!=step_id
+                or capsule['original_error']!=_ABORT_ERROR
+                or type(capsule['controller_identity']) is not int or capsule['controller_identity']!=id(c)
+                or type(capsule['native_identity']) is not int or capsule['native_identity']!=id(pyboy)
+                or any(type(capsule.get(k)) is not str or len(capsule[k])!=64
+                       or any(ch not in '0123456789abcdef' for ch in capsule[k])
+                       for k in ('plan_bytes_sha256','original_review_sha256','source_state_sha256'))
+                or _active()!=(set() if prior and prior['done'] else {step_id})
+                or prior is not None and prior['capsule_sha256']!=expected_capsule_sha256
+                or c is not original_controller or c is None
+                or _OWNERS.get(step_id) is not pyboy or _BINDINGS.get(step_id) is not original_binding
+                or c.pending is not original_pending or c.last_packet is not original_last_packet
+                or c.owner!=step_id or c.error!=_ABORT_ERROR or c.complete is not False
+                or c.seen_wild is not True or c.suspended is not True or c.returned_world_seen is not True
+                or c.receipt is not None or c.outcome is not None or c.closed_frame is not None
+                or c.closed_resources is not None or c.closed_player is not None
+                or type(c.pending) is not dict or c.pending.get('executed') is not True
+                or type(c.last_packet) is not tuple or len(c.last_packet)!=6):
+            return _review('reviewed_abort_authority_or_identity_unverified',step_id)
+        ids=[s.get('id') for s in plan['steps'] if type(s) is dict]
+        matches=[s for s in plan['steps'] if type(s) is dict and s.get('id')==step_id]
+        counters={k:getattr(c,k,None) for k in ('started','last_now','last_frame','calls','waits','requests','displacements')}
+        loc={'map_id':194,'x':28,'y':8};frame=state.get('frame') if type(state) is dict else None
+        if (plan.get('mode')!='league_campaign' or len(ids)!=len(plan['steps'])
+                or any(type(i) is not str or not i for i in ids) or len(ids)!=len(set(ids))
+                or len(matches)!=1 or not _explicit(matches[0]) or _digest(plan)!=capsule['plan_sha256']
+                or _digest(capsule['original_plan'])!=capsule['plan_sha256']
+                or type(plan.get('training_job')) is not str or not plan['training_job']
+                or plan['training_job']!=capsule['job']
+                or original_binding!=(MECHANIC,_canonical(matches[0]),plan['training_job'])
+                or _digest(original_binding)!=capsule['binding_sha256']
+                or _digest(c.baseline)!=capsule['baseline_sha256']
+                or _digest(c.last_packet)!=capsule['packet_sha256']
+                or _digest(capsule['baseline'])!=capsule['baseline_sha256']
+                or _digest(c.pending)!=capsule['pending_sha256']
+                or _digest(capsule['pending'])!=capsule['pending_sha256']
+                or _digest(counters)!=capsule['counters_sha256']
+                or type(capsule['counters']) is not dict or set(capsule['counters'])!=set(counters)
+                or any(type(v) is not int or v<0 for k,v in capsule['counters'].items() if k not in ('started','last_now'))
+                or any(type(capsule['counters'][k]) not in (int,float) for k in ('started','last_now'))
+                or counters!=capsule['counters'] or c.last_frame!=160497
+                or type(frame) is not int or not 160497<=frame<=160577
+                or prior is None and frame!=160497
+                or type(pyboy.frame_count) is not int or pyboy.frame_count!=frame
+                or type(state) is not dict or type(state.get('frame')) is not int or state['frame']!=frame
+                or state.get('location')!=loc or capsule['source_location']!=loc
+                or any(type(v) is not int for v in capsule['source_location'].values())
+                or _digest(state.get('progress'))!=capsule['progress_sha256']):
+            return _review('reviewed_abort_binding_or_snapshot_unverified',step_id)
+        escape=capsule['source_escape'];es=escape['record']['state'];eb=es['battle_state']
+        if (type(escape.get('line_number')) is not int or escape['line_number']<=0
+                or type(escape.get('line_sha256')) is not str or len(escape['line_sha256'])!=64
+                or type(es.get('frame')) is not int or not 0<es['frame']<160497
+                or es.get('location')!=loc or type(eb.get('raw')) is not int or eb['raw']!=1
+                or eb.get('kind')!='wild' or eb.get('active') is not True
+                or 'Got away safely!' not in [v.strip() for v in es.get('visible_text_candidates',[]) if type(v) is str]
+                or capsule['root_review'].get('reward_exp')!=0
+                or capsule['root_review'].get('pp_spent')!=3
+                or capsule['root_review'].get('hp_lost')!=65
+                or capsule['root_review'].get('original_counter_refund') is not False
+                or capsule['root_review'].get('original_error_cleared') is not False
+                or type(capsule['root_review'].get('source_frame_wait_limit')) is not int
+                or capsule['root_review']['source_frame_wait_limit']!=80):
+            return _review('reviewed_abort_escape_evidence_unverified',step_id)
+        from pyboy.plugins import game_wrapper_pokemon_gen1_constants as sdk
+        signal=batch.read_training_observation(pyboy,frame,sdk)
+        current=batch.resources(state.get('progress'));native=signal.get('battle',{})
+        oldstate,oldtext,oldgrid,oldsignal,previous,owner=c.last_packet
+        if (signal.get('read_valid') is not True or signal.get('idle') is not True
+                or signal.get('location')!=loc or signal.get('progress')!=state.get('progress')
+                or type(native.get('raw')) is not int or native['raw']!=0
+                or native.get('kind')!='none' or native.get('active') is not False
+                or native.get('observation_frame')!=frame or state.get('battle_state')!=native
+                or not batch.closed_world(text,grid,(28,8),frame)
+                or current is None or any(m['hp']<=0 or m['status']!=0 for m in current['party'])
+                or oldstate.get('frame')!=160497 or oldstate.get('location')!=loc
+                or oldstate.get('progress')!=state.get('progress') or owner!=step_id
+                or not batch.closed_world(oldtext,oldgrid,(28,8),160497)
+                or oldsignal.get('read_valid') is not True or oldsignal.get('idle') is not True
+                or oldsignal.get('progress')!=signal.get('progress')
+                or batch.validate_wild_delta(c.baseline,current)[0]
+                   !='single_wild_reward_or_pp_bound_unverified'):
+            return _review('reviewed_abort_current_world_unverified',step_id)
+        # This named abort admits exactly no reward, HP loss, and three used PP.
+        before=c.baseline;spent=lost=0
+        if any(before[k]!=current[k] for k in before if k!='party'):
+            return _review('reviewed_abort_nonbattle_resources_changed',step_id)
+        for old,new in zip(before['party'],current['party']):
+            if ({k:v for k,v in old.items() if k not in ('hp','pp')}
+                    !={k:v for k,v in new.items() if k not in ('hp','pp')}
+                    or new['hp']>old['hp']):return _review('reviewed_abort_party_changed',step_id)
+            lost+=old['hp']-new['hp']
+            for a,b in zip(old['pp'],new['pp']):
+                if a>>6!=b>>6 or (b&63)>(a&63):return _review('reviewed_abort_pp_gain',step_id)
+                spent+=(a&63)-(b&63)
+        if spent!=3 or lost!=65:
+            return _review('reviewed_abort_retreat_delta_unverified',step_id)
+        if prior is not None:
+            if frame>prior['closed_frames'][-1] and not prior['done']:
+                prior['closed_frames'].append(frame);prior['done']=True
+            return _abort_wait(step_id)
+        record=dict(controller=c,native=pyboy,binding=original_binding,pending=original_pending,
+            last_packet=original_last_packet,baseline=c.baseline,snapshot=_abort_snapshot(c),
+            packet_sha256=_digest(c.last_packet),bridge_error=(step_id in _ERRORS,_ERRORS.get(step_id)),
+            capsule=deepcopy(capsule),capsule_sha256=expected_capsule_sha256,closed_frames=[frame],done=False)
+        _REVIEWED_ABORTS[step_id]=record
+        return _abort_wait(step_id)
+    except (KeyError,TypeError,ValueError,AttributeError,IndexError,RecursionError):
+        return _review('reviewed_abort_unverified',step_id)
 
 
 def _explicit(step):
@@ -90,12 +276,108 @@ def _handoff(state,result,step_id):
     return out
 
 
-def context(pyboy,state,plan,step_id,text,grid,previous):
+def _remember_zero_source(controller,pyboy,step_id,signal,previous,pending,executed_before,seen_before,frame,state,text,grid,result):
+    """Private original-object witnesses, captured only from the real bridge turn."""
+    origin=getattr(controller,'_zero_bridge_origin',None)
+    if (type(origin) is not dict or origin.get('native') is not pyboy
+            or origin.get('controller') is not controller or origin.get('binding') is not _BINDINGS.get(step_id)):return
+    if (seen_before is False and type(pending) is dict and executed_before is False and pending.get('executed') is True
+            and type(previous) in (list,tuple) and previous and previous[-1]==pending.get('action')):
+        origin['ack']=dict(pending=pending,snapshot=_canonical(pending),frame=frame,action=previous[-1])
+    native=signal.get('battle') if type(signal) is dict else None
+    if (seen_before is False and origin.get('wild') is None and controller.seen_wild is True and type(native) is dict
+            and type(native.get('raw')) is int and native['raw']==1
+            and native.get('kind')=='wild' and native.get('active') is True
+            and type(native.get('observation_frame')) is int and native['observation_frame']==frame):
+        evidence=getattr(controller,'wild_walk_evidence',None)
+        origin['wild']=dict(pending=pending,evidence=evidence,snapshot=_canonical(evidence),
+            frame=frame,location=dict(signal['location']),raw=native['raw'],kind=native['kind'],active=native['active'])
+    if (controller.error is None and result.get('training_batch_complete') is False
+            and controller.displacements==0 and controller.seen_wild is True and controller.suspended is True
+            and controller.closed_frame==frame and controller.pending is pending and type(pending) is dict
+            and signal.get('idle') is True and batch.closed_world(text,grid,(state['location']['x'],state['location']['y']),frame)
+            and type(native) is dict and type(native.get('raw')) is int and native['raw']==0
+            and native.get('kind')=='none' and native.get('active') is False):
+        current=batch.resources(signal.get('progress'))
+        if current is not None and current==controller.closed_resources:
+            origin['closed']=dict(pending=pending,frame=frame,location=dict(signal['location']),
+                resources=deepcopy(current),cancelled=deepcopy(getattr(controller,'closed_cancelled_walk',None)))
+
+
+def _zero_completion_proven(controller,pyboy,step_id,step,job,state,signal,result,frame):
+    """SHA cannot establish provenance; validate the original live object chain."""
+    try:
+        c=controller;r=c.receipt;e=getattr(c,'wild_walk_evidence',None)
+        origin=getattr(c,'_zero_bridge_origin',None);history=getattr(c,'cancelled_walk_history',None)
+        if (type(origin) is not dict or set(origin)!={'native','controller','binding','ack','wild','closed'}
+                or origin['native'] is not pyboy or origin['controller'] is not c
+                or origin['binding'] is not _BINDINGS.get(step_id)
+                or origin['binding']!=(MECHANIC,_canonical(step),job) or _OWNERS.get(step_id) is not pyboy
+                or _CONTROLLERS.get(step_id) is not c or c.owner!=step_id
+                or type(c.displacements) is not int or c.displacements!=0
+                or c.outcome!='complete_single_wild' or c.seen_wild is not True
+                or c.returned_world_seen is not True or c.complete is not True
+                or c.pending is not None or c.suspended is not False
+                or getattr(c,'cancelled_walk_closure_review',None) is not None
+                or type(r) is not dict or r.get('walk_resolution')!='cancelled_before_displacement'
+                or r.get('displacement_occurred') is not False or type(r.get('wild_count')) is not int or r['wild_count']!=1
+                or type(result.get('training_batch_displacements')) is not int or result['training_batch_displacements']!=0
+                or result.get('training_batch_outcome')!=c.outcome
+                or _canonical(result.get('training_batch_receipt'))!=_canonical(r)
+                or type(history) is not list or len(history)!=1 or type(e) is not dict):return False
+        ack,wild,closed=origin['ack'],origin['wild'],origin['closed'];p=e.get('pending');cancel=r.get('cancelled_walk');loc=state['location']
+        if (type(ack) is not dict or type(wild) is not dict or type(closed) is not dict or type(p) is not dict
+                or set(p)!={'action','player','expected','frame','executed'}
+                or set(e)!={'pending','snapshot','player','frame','ack_frame','raw','kind','active'}
+                or wild.get('pending') is not p or ack.get('pending') is not p or wild.get('evidence') is not e
+                or ack.get('snapshot')!=_canonical(p) or wild.get('snapshot')!=_canonical(e)
+                or type(p['executed']) is not bool or p['executed'] is not True
+                or any(type(v) not in (list,tuple) or len(v)!=2 or any(type(n) is not int for n in v)
+                       or tuple(v) not in batch.TILES for v in (p['player'],p['expected'],e['player']))
+                or tuple(p['expected'])==tuple(p['player']) or tuple(e['player'])!=tuple(p['player'])
+                or p['action']!=('down' if tuple(p['player'])==batch.TILES[0] else 'up')
+                or _canonical(e['snapshot'])!=_canonical(p)
+                or type(e['raw']) is not int or e['raw']!=1 or e['kind']!='wild' or e['active'] is not True
+                or any(type(v) is not int or v<0 for v in (p['frame'],e['ack_frame'],e['frame'],c.closed_frame,frame))
+                or not p['frame']<e['ack_frame']<=e['frame']<c.closed_frame<frame
+                or type(c.pending_ack_frame) is not int or c.pending_ack_frame!=e['ack_frame']
+                or type(ack.get('frame')) is not int or type(wild.get('frame')) is not int
+                or ack.get('frame')!=e['ack_frame'] or ack.get('action')!=p['action']
+                or wild.get('frame')!=e['frame'] or type(wild.get('raw')) is not int or wild['raw']!=1
+                or wild.get('kind')!='wild' or wild.get('active') is not True
+                or type(wild.get('location')) is not dict or set(wild['location'])!={'map_id','x','y'}
+                or any(type(v) is not int for v in wild['location'].values())
+                or wild.get('location')!={'map_id':194,'x':p['player'][0],'y':p['player'][1]}
+                or type(cancel) is not dict or cancel.get('kind')!='observed_turn_before_displacement'
+                or _canonical(cancel)!=_canonical(history[0])
+                or cancel.get('displacement_occurred') is not False
+                or any(type(cancel.get(k)) is not int or cancel[k]!=0 for k in ('displacements_before','displacements_after'))
+                or _canonical(cancel.get('pending'))!=_canonical(p)
+                or _canonical(cancel.get('wild_player'))!=_canonical(p['player'])
+                or type(cancel.get('actual_ack_frame')) is not int or cancel['actual_ack_frame']!=e['ack_frame']
+                or type(cancel.get('wild_frame')) is not int or cancel['wild_frame']!=e['frame']
+                or any(type(v) is not list or len(v)!=2 or any(type(n) is not int for n in v)
+                       for v in (cancel.get('closed_frames'),r.get('closed_frames')))
+                or cancel.get('closed_frames')!=[c.closed_frame,frame] or r.get('closed_frames')!=[c.closed_frame,frame]
+                or type(c.closed_player) is not tuple or any(type(v) is not int for v in c.closed_player)
+                or closed.get('pending') is not p or type(closed.get('frame')) is not int or closed['frame']!=c.closed_frame
+                or closed.get('location')!=loc or _canonical(closed.get('cancelled'))!=_canonical(c.closed_cancelled_walk)
+                or c.closed_player!=tuple(p['player']) or loc!={'map_id':194,'x':p['player'][0],'y':p['player'][1]}):return False
+        current=batch.resources(state['progress']);source=batch.resources(signal.get('progress'))
+        if current is None or current!=source or current!=c.closed_resources or current!=closed.get('resources'):return False
+        reason,delta=batch.validate_wild_delta(c.baseline,current)
+        return (reason is None and all(_canonical(r.get(k))==_canonical(v) for k,v in delta.items())
+                and type(r.get('total_exp_gain')) is int and r['total_exp_gain']>0)
+    except (KeyError,TypeError,ValueError,AttributeError,IndexError):return False
+
+
+def context(pyboy,state,plan,step_id,text,grid,previous,*,now=None):
     """真getter＋原生決策包；同owner/pending/baseline/clock/error跨reload保留。"""
     active=_active()
     if active is None:return _review("registries_unverified",step_id)
     if not isinstance(step_id,str) or not step_id:return _review("step_id_unverified",step_id)
     if active and active!={step_id}:return _review("owner_changed",step_id)
+    if step_id in _REVIEWED_ABORTS:return _abort_wait(step_id)
     if step_id in _ERRORS:return _review("sticky_bridge_error",step_id)
     if (not isinstance(plan,dict) or plan.get("mode")!="league_campaign"
             or not isinstance(plan.get("steps"),list)):
@@ -143,10 +425,15 @@ def context(pyboy,state,plan,step_id,text,grid,previous):
         if min(m["level"] for m in current["party"])>=45:return _review("all_six_45_checkpoint_review",step_id)
         controller=batch.TrainingBatch(step["training_intent"])
         _CONTROLLERS[step_id]=controller;_BINDINGS[step_id]=binding;_OWNERS[step_id]=pyboy
+        controller._zero_bridge_origin=dict(native=pyboy,controller=controller,binding=_BINDINGS[step_id],ack=None,wild=None,closed=None)
     controller.__class__=batch.TrainingBatch
+    pending_before=controller.pending
+    executed_before=type(pending_before) is dict and pending_before.get('executed') is True
+    seen_before=controller.seen_wild
     result=controller.context(state,text=text,grid=grid,signal=signal,previous=previous,
-                              now=time.monotonic(),owner=step_id)
+                              now=time.monotonic() if now is None else now,owner=step_id)
     if not isinstance(result,dict):return _review("controller_result_unverified",step_id)
+    _remember_zero_source(controller,pyboy,step_id,signal,previous,pending_before,executed_before,seen_before,frame,state,text,grid,result)
     if result.get("training_batch_battle_handoff") is True:return _handoff(state,result,step_id),step_id
     if result.get("training_batch_complete") is True:
         if (controller.error or controller.pending is not None or controller.suspended
@@ -155,6 +442,22 @@ def context(pyboy,state,plan,step_id,text,grid,previous):
                 or signal.get("idle") is not True or controller.receipt is None
                 or result.get("training_batch_outcome") not in ("complete_single_wild","complete_no_encounter")):
             return _review("completion_receipt_unverified",step_id)
+        if controller.displacements==0 or result.get('training_batch_displacements')==0:
+            if not _zero_completion_proven(controller,pyboy,step_id,step,job,state,signal,result,frame):
+                return _review('zero_cancel_original_provenance_unverified',step_id)
+        cancelled=controller.receipt.get('walk_resolution')=='cancelled_before_displacement'
+        if cancelled:
+            history=getattr(controller,'cancelled_walk_history',None)
+            if (not batch.integer(controller.displacements,0,batch.INTENT['max_displacements'])
+                    or controller.receipt.get('displacement_occurred') is not False
+                    or type(history) is not list or not history
+                    or controller.receipt.get('cancelled_walk')!=history[-1]
+                    or history[-1].get('displacements_before')!=controller.displacements
+                    or history[-1].get('displacements_after')!=controller.displacements
+                    or history[-1].get('closed_frames')!=controller.receipt.get('closed_frames')):
+                return _review('cancelled_turn_completion_receipt_unverified',step_id)
+        elif not batch.integer(controller.displacements,1,batch.INTENT['max_displacements']):
+            return _review('completion_displacement_bound_unverified',step_id)
         _COMPLETED.add(step_id)
         result={**result,"field_move_complete":True,"field_move_kind":"league-training-batch",
                 "training_batch_owner_step":step_id,"training_batch_job":job}
@@ -163,7 +466,7 @@ def context(pyboy,state,plan,step_id,text,grid,previous):
     return {**result,"training_batch_owner_step":step_id},step_id
 
 
-def pre_attrition_closure_context(pyboy,state,plan,step_id,attrition,text,grid,previous):
+def pre_attrition_closure_context(pyboy,state,plan,step_id,attrition,text,grid,previous,*,now=None):
     """只讓已綁wild owner做WAIT驗收；其他損耗、FNT、未知仍由原閘停。"""
     if (not isinstance(attrition,dict) or attrition.get("review_reason")!="party_attrition_requires_center"
             or _active()!={step_id}):return None
@@ -174,7 +477,7 @@ def pre_attrition_closure_context(pyboy,state,plan,step_id,attrition,text,grid,p
         return None
     frame=state.get("frame");loc=state.get("location",{})
     if not batch.closed_world(text,grid,(loc.get("x"),loc.get("y")),frame):return None
-    owned=context(pyboy,state,plan,step_id,text,grid,previous)
+    owned=context(pyboy,state,plan,step_id,text,grid,previous,now=now)
     if owned is None:return None
     out,next_id=owned
     if out.get("available_actions")!=["wait"]:

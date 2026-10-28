@@ -1,0 +1,660 @@
+{
+  "date": "2026-10-28",
+  "cutoff_frame": 160497,
+  "status": "root_reviewed_training_pause_after_escape",
+  "initial_frame": 41969,
+  "completed_round_trips": 12,
+  "completed_wilds": 11,
+  "no_encounter_batches": 1,
+  "real_zero_displacement_wilds": 1,
+  "total_exp_gain": 3151,
+  "venusaur": {
+    "level_before": 35,
+    "level_after": 36,
+    "exp_before": 37098,
+    "exp_after": 40249
+  },
+  "proofs": [
+    {
+      "at": "2026-10-28T08:45:15.609674+00:00",
+      "step": "league-six-party45-game29-20261028-001-067",
+      "outcome": "complete_single_wild",
+      "displacements": 1,
+      "receipt": {
+        "total_exp_gain": 200,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          46297,
+          46337
+        ],
+        "walk_resolution": "cancelled_before_displacement",
+        "displacement_occurred": false,
+        "cancelled_walk": {
+          "kind": "observed_turn_before_displacement",
+          "wild_frame": 44769,
+          "actual_ack_frame": 44769,
+          "pending": {
+            "action": "up",
+            "player": [
+              28,
+              8
+            ],
+            "expected": [
+              28,
+              7
+            ],
+            "frame": 44729,
+            "executed": true
+          },
+          "wild_player": [
+            28,
+            8
+          ],
+          "displacement_occurred": false,
+          "closed_frames": [
+            46297,
+            46337
+          ],
+          "displacements_before": 1,
+          "displacements_after": 1
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T08:45:29.662790+00:00",
+      "step": "league-six-party45-game29-20261028-003-067",
+      "outcome": "complete_single_wild",
+      "displacements": 1,
+      "receipt": {
+        "total_exp_gain": 200,
+        "total_pp_spent": 2,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          56825,
+          56865
+        ],
+        "walk_resolution": "cancelled_before_displacement",
+        "displacement_occurred": false,
+        "cancelled_walk": {
+          "kind": "observed_turn_before_displacement",
+          "wild_frame": 53473,
+          "actual_ack_frame": 53473,
+          "pending": {
+            "action": "up",
+            "player": [
+              28,
+              8
+            ],
+            "expected": [
+              28,
+              7
+            ],
+            "frame": 53433,
+            "executed": true
+          },
+          "wild_player": [
+            28,
+            8
+          ],
+          "displacement_occurred": false,
+          "closed_frames": [
+            56825,
+            56865
+          ],
+          "displacements_before": 1,
+          "displacements_after": 1
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T08:45:43.020991+00:00",
+      "step": "league-six-party45-game29-20261028-005-067",
+      "outcome": "complete_single_wild",
+      "displacements": 11,
+      "receipt": {
+        "total_exp_gain": 276,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          66233,
+          66273
+        ]
+      }
+    },
+    {
+      "at": "2026-10-28T08:45:48.749243+00:00",
+      "step": "league-six-party45-game29-20261028-007-067",
+      "outcome": "complete_single_wild",
+      "displacements": 10,
+      "receipt": {
+        "total_exp_gain": 200,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          75425,
+          75465
+        ],
+        "walk_resolution": "cancelled_before_displacement",
+        "displacement_occurred": false,
+        "cancelled_walk": {
+          "kind": "observed_turn_before_displacement",
+          "wild_frame": 73769,
+          "actual_ack_frame": 73769,
+          "pending": {
+            "action": "down",
+            "player": [
+              28,
+              7
+            ],
+            "expected": [
+              28,
+              8
+            ],
+            "frame": 73729,
+            "executed": true
+          },
+          "wild_player": [
+            28,
+            7
+          ],
+          "displacement_occurred": false,
+          "closed_frames": [
+            75425,
+            75465
+          ],
+          "displacements_before": 10,
+          "displacements_after": 10
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T08:45:54.097058+00:00",
+      "step": "league-six-party45-game29-20261028-009-067",
+      "outcome": "complete_single_wild",
+      "displacements": 0,
+      "receipt": {
+        "total_exp_gain": 276,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          84393,
+          84433
+        ],
+        "walk_resolution": "cancelled_before_displacement",
+        "displacement_occurred": false,
+        "cancelled_walk": {
+          "kind": "observed_turn_before_displacement",
+          "wild_frame": 82521,
+          "actual_ack_frame": 82521,
+          "pending": {
+            "action": "down",
+            "player": [
+              28,
+              7
+            ],
+            "expected": [
+              28,
+              8
+            ],
+            "frame": 82481,
+            "executed": true
+          },
+          "wild_player": [
+            28,
+            7
+          ],
+          "displacement_occurred": false,
+          "closed_frames": [
+            84393,
+            84433
+          ],
+          "displacements_before": 0,
+          "displacements_after": 0
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T08:46:00.879730+00:00",
+      "step": "league-six-party45-game29-20261028-011-067",
+      "outcome": "complete_single_wild",
+      "displacements": 5,
+      "receipt": {
+        "total_exp_gain": 294,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          93689,
+          93729
+        ],
+        "walk_resolution": "cancelled_before_displacement",
+        "displacement_occurred": false,
+        "cancelled_walk": {
+          "kind": "observed_turn_before_displacement",
+          "wild_frame": 91689,
+          "actual_ack_frame": 91689,
+          "pending": {
+            "action": "up",
+            "player": [
+              28,
+              8
+            ],
+            "expected": [
+              28,
+              7
+            ],
+            "frame": 91649,
+            "executed": true
+          },
+          "wild_player": [
+            28,
+            8
+          ],
+          "displacement_occurred": false,
+          "closed_frames": [
+            93689,
+            93729
+          ],
+          "displacements_before": 5,
+          "displacements_after": 5
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T08:46:08.128092+00:00",
+      "step": "league-six-party45-game29-20261028-013-067",
+      "outcome": "complete_single_wild",
+      "displacements": 3,
+      "receipt": {
+        "total_exp_gain": 276,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          102777,
+          102817
+        ]
+      }
+    },
+    {
+      "at": "2026-10-28T08:46:15.478883+00:00",
+      "step": "league-six-party45-game29-20261028-015-067",
+      "outcome": "complete_single_wild",
+      "displacements": 1,
+      "receipt": {
+        "total_exp_gain": 601,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          112081,
+          112121
+        ],
+        "walk_resolution": "cancelled_before_displacement",
+        "displacement_occurred": false,
+        "cancelled_walk": {
+          "kind": "observed_turn_before_displacement",
+          "wild_frame": 109953,
+          "actual_ack_frame": 109953,
+          "pending": {
+            "action": "up",
+            "player": [
+              28,
+              8
+            ],
+            "expected": [
+              28,
+              7
+            ],
+            "frame": 109913,
+            "executed": true
+          },
+          "wild_player": [
+            28,
+            8
+          ],
+          "displacement_occurred": false,
+          "closed_frames": [
+            112081,
+            112121
+          ],
+          "displacements_before": 1,
+          "displacements_after": 1
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T08:46:22.501865+00:00",
+      "step": "league-six-party45-game29-20261028-017-067",
+      "outcome": "complete_no_encounter",
+      "displacements": 32,
+      "receipt": {
+        "total_exp_gain": 0,
+        "total_pp_spent": 0,
+        "needs_center": false,
+        "wild_count": 0,
+        "closed_frames": [
+          120457,
+          120497
+        ]
+      }
+    },
+    {
+      "at": "2026-10-28T08:46:29.578277+00:00",
+      "step": "league-six-party45-game29-20261028-019-067",
+      "outcome": "complete_single_wild",
+      "displacements": 9,
+      "receipt": {
+        "total_exp_gain": 276,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          128209,
+          128249
+        ],
+        "walk_resolution": "cancelled_before_displacement",
+        "displacement_occurred": false,
+        "cancelled_walk": {
+          "kind": "observed_turn_before_displacement",
+          "wild_frame": 126337,
+          "actual_ack_frame": 126337,
+          "pending": {
+            "action": "up",
+            "player": [
+              28,
+              8
+            ],
+            "expected": [
+              28,
+              7
+            ],
+            "frame": 126297,
+            "executed": true
+          },
+          "wild_player": [
+            28,
+            8
+          ],
+          "displacement_occurred": false,
+          "closed_frames": [
+            128209,
+            128249
+          ],
+          "displacements_before": 9,
+          "displacements_after": 9
+        }
+      }
+    },
+    {
+      "at": "2026-10-28T08:46:40.745385+00:00",
+      "step": "league-six-party45-game29-20261028-021-067",
+      "outcome": "complete_single_wild",
+      "displacements": 1,
+      "receipt": {
+        "total_exp_gain": 276,
+        "total_pp_spent": 2,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          137681,
+          137721
+        ]
+      }
+    },
+    {
+      "at": "2026-10-28T08:46:50.540220+00:00",
+      "step": "league-six-party45-game29-20261028-023-067",
+      "outcome": "complete_single_wild",
+      "displacements": 11,
+      "receipt": {
+        "total_exp_gain": 276,
+        "total_pp_spent": 1,
+        "levels_before": [
+          35,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "levels_after": [
+          36,
+          42,
+          35,
+          38,
+          37,
+          43
+        ],
+        "needs_center": false,
+        "wild_count": 1,
+        "closed_frames": [
+          147385,
+          147425
+        ],
+        "walk_resolution": "cancelled_before_displacement",
+        "displacement_occurred": false,
+        "cancelled_walk": {
+          "kind": "observed_turn_before_displacement",
+          "wild_frame": 145257,
+          "actual_ack_frame": 145257,
+          "pending": {
+            "action": "up",
+            "player": [
+              28,
+              8
+            ],
+            "expected": [
+              28,
+              7
+            ],
+            "frame": 145217,
+            "executed": true
+          },
+          "wild_player": [
+            28,
+            8
+          ],
+          "displacement_occurred": false,
+          "closed_frames": [
+            147385,
+            147425
+          ],
+          "displacements_before": 11,
+          "displacements_after": 11
+        }
+      }
+    }
+  ],
+  "failed_outing": {
+    "outings": 13,
+    "at": "2026-10-28T08:47:01.388726+00:00",
+    "reason": "league_training_batch_single_wild_reward_or_pp_bound_unverified",
+    "opponent": "GOLBAT",
+    "opponent_level": 40,
+    "trainee": "EEVEE",
+    "trainee_level": 35,
+    "exp_gain": 0,
+    "hp_before": 90,
+    "hp_after": 25,
+    "quick_attack_pp_spent": 3,
+    "failed_run_observed": true,
+    "eventual_safe_escape_observed": true,
+    "blackout": false,
+    "all_party_positive_hp": true
+  },
+  "cloud_classification": false,
+  "strata_configuration_changed": false,
+  "elite_four_complete": false,
+  "limitations": [
+    "原13趟失敗保留，不稱KO或抹除消耗。",
+    "12趟是正常護士回補實績，非通關或全隊45。",
+    "後續中止復核與策略修復尚未完成。"
+  ]
+}

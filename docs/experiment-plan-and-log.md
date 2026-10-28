@@ -1336,3 +1336,41 @@ fullreg8真10001passed100.42秒（wrapper102.328），361sources前後保持，m
 
 首次訓練校準未seed/enable，job仍league-six-party45-game29-20261028，markers vr2-east-balanced45-v1、root-calibration IDs不佔supervisor專有prefix。已正常把最低35/EXP36804的Venus154換首，其他隊員38/42/35/37/43全健康。source outbound中心target7,11站warp不再按DOWN而stall21033；readonly world_direction原targetNone、新target7,12出DOWN/map_exit，primary9ASM證MART底邊需held方向；recovery洞口同改19430,7真RIGHT（原source route JSON仍保warptile）。91相關pass，原21033只源綁該幀/全progress/真grid的一次正常DOWN旗標解除舊consecutive stall，不動field預算。現在已真出城到洞口，23433新map194但舊XY14,31/headerRoute23 23/72/10/count7，12sample clone無鍵t16到29,7，t48真idle/NPC/closedworld而movement4保standing warp；進度全不變。正做可重用來源入洞240frame/8WAIT，尚未真wild或護士往返，不造校準、不啟用900/40預算。7200/300初始budget提案僅stage，未採；正常升級新招會撞batch immutable moves，列後續實測風險。四天王/冠軍/全六45仍未完成；逐鍵本機offline Laya/cache，工程雲端另計。
 
+## 81. 2026-10-28 首場野怪真勝＋正常護士往返；轉身遇敵修復與訓練預算來源
+
+2026-10-28台北15:33:26.954164首次觀測野戰後EXP增加；16:19:08.553547，game29原league-training-batch正式完成單場訓練收尾，closed_frames[30873,30913]、EOF30953於16:19:08.606212、map194(28,7)。Venusaur35 EXP36804→37098（+294）、RazorLeaf PP25→24、HP111保持；其餘五員資源維持、沒有新增倒下。原真位移2保持2，沒有把轉身遇敵多算成第3步。首次原pending DOWN於23673，23713已在來源28,7遇wild，因紅版先檢查轉向遇敵而未真的移到28,8；原controller持續等待位移，30833用盡129 waits。原始失敗與時間保留。
+
+新增真ACK/first-wild/原controller及native歸屬、兩fresh閉合world的具名review，原controller class熱更並核原packet/pending/clock/calls不重建；只清此具名wait error，記history，最多4 fresh calls/240新增frames且舊MAX仍生效。最終以cancelled_before_displacement閉合，不虛構方向ACK或位移；149calls/129waits/3requests/2disp→151/130/3/2，保起始時計，工程暫停另列。相關234項27.55秒真通過。純batch現在也支援第一轉向即遇怪時真0位移，但receiver投影/EOF仍需完整原生收據驗證，正在最小補全，尚未因此宣稱已長跑。
+
+台北16:24:44.485395，正常RIGHT出洞→Route23→石英高原護士完成，EOF35209 map174(7,7)、closed35169/35209。六人HP111/203/90/117/125/177全滿、status0、所有PP全恢復，EXP不退；正常野怪/回城/護士完整第一輪已校準。返回plan使用原來源邊界target194(30,7)，沒有傳送、RAM改寫或存檔洗結果。最終影格是真PyBoy串流8767；原生SDL仍未修復。
+
+先前fullreg9為10061passed104.35秒（wrapper106.468）、364sources前後相同，manifest0954a93b5bdbee196cbdd7adeb8212abaf5cdf37371e8bd6d9f23e6941ca6f6a、stdout4b6e39084b52018e3a278e484afa27705fea4ce68cc9ffd7c2de00b308e46117；包含可重用194入口WAIT與邊界修正，不含之後轉向遇敵修復。公開備份b408476d7d9ce9180e02ce57b201c0aa3d6080da/585files、遠端SHA已核，GitHub CI40650181043真success，該公開cut亦未含後續入口/轉向修復。
+
+初始900秒/40趟未曾enable、seed、reserve，STARTED/LEDGER/LOCK皆無，plan無BUDGET或JOB專有prefix。23份primary ASM逐一匹配固定a536 tree，依真EXP/成長式/單參戰/無EXP_ALL計六人到45仍欠191137EXP，該區單場加權mean453.29296875、最高977；40趟連最高都僅39080不足，300趟期望135988亦不足。故首次seed前將固定初始上限改14400秒/1000趟，仍同job、target45，不修改既花預算；46相關測試通過後另加歷史900/40不能遷移退款測試待後續回歸。此上限是容許範圍，不保證時間/RNG達標；60秒timeout、Strata配置不變。訓練策略仍最低(level,exp)正常換首，後續學新招變動先停檢，不可假裝moves沒變。
+
+四天王/冠軍/名人堂尚未完成。逐鍵分類由本機offline Laya/cache，cloud_fallback=false；雲端工程開發、審查及來源整理另計，不把它混成分類免費或純模型推論耗時。
+
+## 82. 2026-10-28 本機連跑12輪、妙蛙花36；第13趟伊布撤退停檢
+
+2026-10-28台北16:45:10.281783起，同game29/job正式首次seed固定14400秒/1000趟。首個預設sandbox背景程序未存活且完全未seed，核原PyBoy存活後由既有授權私人本機背景啟動，沒有雙writer或刪seed。原deadline為20:45:10.281783；工程停檢也不退款。固定校準先無副作用propose通過，再enable，保留真首輪/護士收據與獨立249相關64.65s/1既有SDL提示。
+
+至16:46:56.424678已正常完成12輪回護士，11場有效wild+1場32真位移無遇敵。Venus35 EXP37098→40249（+3151）升36，HPmax111→114；其他五員EXP保持，正常最低者選為Eevee35首發。第五正式wild真0位移/EXP276已通過原bridge/native witness→JSON完整receipt+SHA→EOF雙fresh→回護士，並非僅合成測試；同時保留首輪2真位移不灌成3。前12場收據合計200/200/276/200/276/294/276/601/0/276/276/276=3151。
+
+第13趟16:47:01.388726停160497 map194(28,8)、raw0。真對手Golbat40；Eevee35使用3次QuickAttack，HP90→50→25、PP30→27、EXP仍43317。159689可見Can't escape!，160073被confused，160201再次RUN，160369於16:47:01.349084完整Got away safely!。這是正常撤退，並無新FNT或黑屏敗北；但訓練無EXP，故原pure報single_wild_reward_or_pp_bound_unverified合理，watch立即停檢，不冒稱戰勝或清error。已記教訓：中性攻擊也能造成重傷，現野戰換人規則只接受先observed超剋才觸發，須在可核對低HP/抗性且有健康明顯強勢支援時正常換人，不該反覆硬打→逃跑。
+
+同原controller唯讀診斷保calls56/waits0/requests4/displacements3、pending UP155161來源28,8/預期28,7已ACK、started348412.921/last_now348415.406、error原樣。首次診斷被attrition優先攔下，補接只讀attrition入口才取得snapshot，兩次均原160497無遊戲鍵；暫時hook已完全恢復原bytes。正做具名root review中止此無獎勵batch，兩fresh world後正常回護士；保原registry/error/pending/clock/calls，另外記abort，不放入成功_COMPLETED。只將同job appends25→26返回補給，原outings13/start/deadline不變，尚未真正排入或續行，不先宣稱已回補。
+
+完整正式回歸10168passed/1既有SDL提示，179.68s（wrapper181.61s）、366sources前後不變，manifestefdefaa2262d90b74206d019d35b10c9661256485bbf539d488649fba8b7f03c、stdoutd7399d7a33bf0252492fb5e820003d7e2f80f3bef14fc20f68e97919f0d7b3b7。此切點含zero receiver/轉向修復/初始14400-1000，不含之後逃跑中止與低HP支援策略。四天王/冠軍仍未完，本機Laya/cache逐鍵，cloud_fallback=false，Strata配置不變；雲端工程審查另計。
+
+## 83. 2026-10-28 具名中止無獎勵撤退、真回護士；健康支援已實機分EXP
+
+17:09:54.184739，原game29第13趟160497→160537兩fresh真閉合world，reviewed_abort_ready_for_recovery。原c calls56/waits0/requests4/disp3、pendingUP、lastpacket/baseline/started/error等完全不改，只在_REVIEWED_ABORTS另記done，不放成功_COMPLETED、field_complete=false、無勝利/EXP。parent完整33peer只self、原native/controller/binding/cap/原plan+review+state/真160369 escape行SHA先核，4入口包含attrition均接；只兩fresh/80frameWAIT。282相關27.73s真過。首個parent插入腳本誤以waypoint有proof_guard而中止，bridge/test已複製、parent尚未寫；改用已觀察3guard加waypoint實際入口後完成，未盲目重跑。
+
+root在原ledger標準reserve/commit追加normalrecovery026，appends25→26、outings13/start/deadline20:45:10.281783完全保留，另存root audit。17:11:24.616935，164833正常護士、六人HP/status/PP全滿，沒有存檔回讀或RAM修改。原calibration bytes不重寫；新bridge/parent/battle由root另審版本hash，以runtime-review凍結執行來源，原job耗時不退款。新watch第14趟成功開始。
+
+健康支援策略source版f7ede9946e8dbaa382ae712f4e7e8e400ddc2629134b72b508a7155a9d69915a採用：完整wild HUD/HP、低HP或全招抗性、status0/HP>=75%且實際chooser選高命中普通超剋招、score>2.5倍才普通PKMN/SWITCH；保持capture/fixed40/noPP優先及原有界pending。初次541pass/7fail因舊測試有健康Fearow而新獨立policy合理生效，兩個舊source-lesson測試只把Fearow設半血，仍原RUN斷言以隔離無健康支援情境；548pass/12subtests/6.05s，原負例保留。不是憑空加observed_enemy_move，也未放寬EXP0guard。
+
+17:13:08.214494真第14趟field完成173281，正常換Fearow支援後Eevee EXP43317→43744、Fearow58020→58447，各+427，總854、PP5，無FNT；伊布HP32/90、大嘴雀85/117，其他成員保持。field完成後maincontinue仍同幀，先遇低HPattrition，使EOF無法開始，並非戰鬥或分類失敗。新增只允原完成投影/全資源hash/位置/正常原native/world/peer清空的同幀WAIT，再沿原EOF雙fresh、不重造field收據；132相關3.29s真通過（含真SDK fixture→同幀WAIT→140/180原EOF及負例）。17:21:42.557302正式EOF173361，正常回護士循環於17:22:56重新開始，同原job/deadline。
+
+全套reg11真10220passed120.42秒/1SDL提示/12subtests（wrapper122.328）、369source不變，manifest40129235cb1c1e6f8e35426afc3930255e0a5f86acaae163a6c769754f3eaf7a、stdout6ad9516aa373c700f14509ff6a75a435db1e446711514472e81f4225b82bca1b。此cut含abort/healthy，不含後續完成batch低HP EOF修正；後者另132相關，未混報。聯盟路線primary40檔已核但只有stage；Lobby無Hyper/PP商品、現補藥只Hyper/FullHeal、Champion事件早於可見Hall，列需實機審查缺口，不宣稱可直通。伊布37Bite完整UI候選另stage，尚未接live/未改moves guard。四天王/冠軍/名人堂未完，本機Laya/cache逐鍵，雲端工程審查另計。
+

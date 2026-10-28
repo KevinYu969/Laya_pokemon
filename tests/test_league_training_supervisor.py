@@ -107,7 +107,7 @@ def test_enable_without_exact_hashes_stops_before_live_snapshot(monkeypatch):
 
 
 def test_frozen_source_route_and_fixed_game_job_target_are_new():
-    assert s.TARGET==45 and s.MAX_SECONDS==900 and s.MAX_OUTINGS==40
+    assert s.TARGET==45 and s.MAX_SECONDS==14400 and s.MAX_OUTINGS==1000
     assert s.GAME_REL=="outputs/league-campaign-20261028-29/game"
     assert "35" not in s.JOB and "20261024" not in s.JOB
     assert s.ROUTE["training_map_id"]==194
@@ -130,7 +130,7 @@ def test_initial_full_center_builds_lowest_lead_move_then_one_owned_batch():
     assert steps[-2]["kind"]=="move" and steps[-2]["target"]==[28,7]
     assert steps[-1]["mechanic"]=="league_training_batch" and steps[-1]["training_intent"]==s.BATCH_INTENT
     assert out["budget"]["outings"]==1 and out["budget"]["phase"]=="outbound_batch"
-    assert out["budget"]["started_wall"]==2000 and out["budget"]["deadline_wall"]==2900
+    assert out["budget"]["started_wall"]==2000 and out["budget"]["deadline_wall"]==2000+s.MAX_SECONDS
     assert snap["plan"]["steps"]==initial_plan()["steps"] and budget["appends"]==0
     assert out["plan"]["blocked"]==snap["plan"]["blocked"]
 
@@ -143,7 +143,7 @@ def test_complete_single_wild_builds_normal_marked_recovery_then_full_pp_nurse()
     assert steps[0]["target"]==[28,7] and all(x["recovery_route"] is True for x in steps)
     assert steps[-1]["kind"]=="heal" and steps[-1]["map_id"]==174 and steps[-1]["target"]==[7,7]
     assert steps[-1]["face"]=="up" and steps[-1]["require_full_pp"] is True
-    assert back["budget"]["outings"]==1 and back["budget"]["deadline_wall"]==2900
+    assert back["budget"]["outings"]==1 and back["budget"]["deadline_wall"]==2000+s.MAX_SECONDS
     assert back["budget"]["phase"]=="returning"
     assert not {x["id"] for x in steps}&{x["id"] for x in out["plan"]["steps"]}
 
@@ -155,7 +155,7 @@ def test_center_full_heal_closure_starts_next_outing_with_fresh_lowest_lead():
     center=snapshot(back["plan"],frame=300,p=p)
     next_out=s.propose(center,back["budget"],c,2200)
     assert next_out["plan"]["lead_species"]==154
-    assert next_out["budget"]["outings"]==2 and next_out["budget"]["deadline_wall"]==2900
+    assert next_out["budget"]["outings"]==2 and next_out["budget"]["deadline_wall"]==2000+s.MAX_SECONDS
 
 
 def test_no_encounter_batch_still_returns_instead_of_adding_extra_laps():
@@ -194,18 +194,26 @@ def test_inconsistent_or_incomplete_paused_json_stops(mutate,fragment):
     rejected(lambda:s.snapshot_from_bytes([s.encode(v) for v in values]),fragment)
 
 
-@pytest.mark.parametrize("now",[1999.,2900.,3000.,float("nan"),False])
+@pytest.mark.parametrize("now",[1999.,2000.+s.MAX_SECONDS,2001.+s.MAX_SECONDS,float("nan"),False])
 def test_budget_proof_never_refunds_or_extends_same_job(now):
     snap,budget,c=start();rejected(lambda:s.propose(snap,budget,c,now),"job_budget")
 
 
-def test_40_outings_or_sticky_error_stop_without_reset():
-    snap,budget,c=start();budget.update(outings=40,appends=80,phase="returning")
+def test_preseed_cap_change_does_not_migrate_or_refund_historical_budget():
+    snap,budget,c=start()
+    budget.update(max_seconds=900,max_outings=40,deadline_wall=2900)
+    original=deepcopy(budget)
+    rejected(lambda:s.propose(snap,budget,c,2001),"job_budget")
+    assert budget==original
+
+
+def test_initial_outing_ceiling_or_sticky_error_stop_without_reset():
+    snap,budget,c=start();budget.update(outings=s.MAX_OUTINGS,appends=2*s.MAX_OUTINGS,phase="returning")
     snap["plan"][s.BUDGET_KEY]=s.plan_budget(budget);snap["raw"][0]=s.encode(snap["plan"])
     snap["review"]["plan_sha256"]=s.digest(snap["raw"][0]);snap["raw"][2]=s.encode(snap["review"])
     budget["expected_plan_sha256"]=s.digest(snap["raw"][0])
-    # 出行數滿額即使budget格式完整，仍不得開第41趟；其owned tail由root生成。
-    snap["plan"]["steps"][-1]["id"]=s.JOB+"-080-000"
+    # 出行數滿額即使budget格式完整，仍不得開第1001趟；其owned tail由root生成。
+    snap["plan"]["steps"][-1]["id"]=s.JOB+f"-{2*s.MAX_OUTINGS:03}-000"
     snap["raw"][0]=s.encode(snap["plan"]);snap["review"]["plan_sha256"]=s.digest(snap["raw"][0]);snap["raw"][2]=s.encode(snap["review"])
     budget["expected_plan_sha256"]=s.digest(snap["raw"][0])
     rejected(lambda:s.propose(snap,budget,c,2001),"outings_budget")
@@ -274,7 +282,7 @@ def test_append_only_seed_reserve_commit_proves_persistent_budget_and_crash_stop
     reserve=dict(kind="reserve",job=s.JOB,plan_sha256=out["budget"]["expected_plan_sha256"])
     commit=dict(kind="commit",job=s.JOB,budget=out["budget"])
     restored=s.history_budget([seed,reserve,commit],2100)
-    assert restored["deadline_wall"]==2900 and restored["outings"]==1
+    assert restored["deadline_wall"]==2000+s.MAX_SECONDS and restored["outings"]==1
     rejected(lambda:s.history_budget([seed,reserve],2100),"uncommitted_reserve")
     rejected(lambda:s.history_budget([seed,reserve,commit,dict(kind="error",job=s.JOB)],2100),"sticky_job_error")
     altered=deepcopy(commit);altered["budget"]["started_wall"]+=100;altered["budget"]["deadline_wall"]+=100

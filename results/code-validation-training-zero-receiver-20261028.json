@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-28",
+  "scope": "正式zero receiver/原batch/supervisor47/EOF proof/turn return相關；root獨立重跑",
+  "passed": 249,
+  "pytest_seconds": 64.65,
+  "warnings": 1,
+  "warning_reason": "既有SDL2 binaries提示",
+  "command": "workspace-python -B -X utf8 -m pytest tests/test_training_zero_receiver.py tests/test_league_training_supervisor.py tests/test_league_training_batch.py tests/test_league_training_proof.py tests/test_training_turn_return.py -q",
+  "source_hashes": {
+    "src/laya_pokemon/league_training_batch.py": "a1738fcbd0ac9794c6b8bf15645dd15d7397bfc5d2d480483381849fdd42728a",
+    "src/laya_pokemon/league_training_batch_bridge.py": "67a102ee8be6286a8c21a0089be04ce959939488560ad2fbc97bc8b0aba7d32b"
+  },
+  "stage_independent_validation": {
+    "passed": 284,
+    "seconds": 26.81,
+    "zero_specific_cases": 53
+  },
+  "live_zero_displacement_verified": false,
+  "limitations": [
+    "回歸不等於實機零位移已發生或聯盟通關。",
+    "真首輪為2實際位移；零位移由原bridge至JSON至EOF雙fresh至回程proposal的自足案例驗證。",
+    "完整正式tests另立切點，不把這249項稱成全套。"
+  ]
+}

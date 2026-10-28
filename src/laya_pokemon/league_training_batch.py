@@ -5,6 +5,8 @@
 module初始化一次凍結受信任package data；context沒有檔案I/O。
 """
 from copy import deepcopy
+from hashlib import sha256
+import json
 from types import MappingProxyType
 from laya_pokemon.team_strategy import reference as _package_reference
 import math
@@ -33,6 +35,14 @@ ADDRESSES = dict(map_id=0xD35E, x=0xD362, y=0xD361, tileset=0xD367,
     mode=0xD700, misc=0xCD60, joy_ignore=0xCD6B, walk_counter=0xCFC5,
     simulated=0xCD38, movement_flags=0xD736)
 _ACTIONS = frozenset(("up","down","left","right","a","b","start","wait"))
+
+TURN_RETURN_REVIEW = {'kind': 'reviewed_training_turn_return30833_v1', 'game_id': 'game29', 'original_step_id': 'root-calibration-game29-20261028-out-067', 'plan_bytes_sha256': '432b4056ceeb469d62539d5b68659bc03357c467b2aef4f06f1a383582fc9f7e', 'binding_sha256': '93c365a277428572faa3ca72b2ef86c380938ebab0846653a94c2e98f3436080', 'baseline_sha256': '6689f9d51ce7ab8165e3179491a2dad02bbf205868d2dca5e99a7fa6ce393046', 'source_packet_sha256': '757bd2f50d6e129a47e7fedc7cddc903a34fada3f094f6df51306cd72573a2bf', 'source_progress_sha256': '727b0bec570b16b1c511fc7dc6103bfe8938904a940fadf9ec18538a9b9b498a', 'source_location': {'map_id': 194, 'x': 28, 'y': 7}, 'pending': {'action': 'down', 'player': [28, 7], 'expected': [28, 8], 'frame': 23673, 'executed': True}, 'actual_action_frame': 23673, 'first_wild_frame': 23713, 'historical_walk_sha256': '8b8d77cf6152da6f3690b4983d2e26c760a31b841af215c1fe56809975a678bf', 'historical_wild_sha256': 'cf08750b3fdf5ea37ea0a7f2ccd1f8b654d9b861748fedd133cfb05fa564011f', 'evidence': {'review_sha256': '447706ef6bb895538d1b23c49b1c1264deae1d70ad884f3af0208a24dbd7c6b6', 'state_sha256': 'e76501526abd833119eb32830f89613a6b5e82ee84bb28b0cc0983eb16317b14', 'preflight_sha256': 'e7f633c1021dc393419c18bc8c2ba31c1329fdbd85df48e0a432b524fb775123'}, 'last_frame': 30833, 'calls': 149, 'waits': 129, 'requests': 3, 'displacements': 2}
+REVIEW_CLOSURE_FRAMES,REVIEW_CLOSURE_CALLS=240,4
+
+
+def _review_sha(value):
+    return sha256(json.dumps(value,sort_keys=True,separators=(',',':'),
+                             ensure_ascii=False,allow_nan=False).encode()).hexdigest()
 
 
 def integer(value, low=0, high=255):
@@ -177,6 +187,9 @@ class TrainingBatch:
         self.returned_world_seen=False
         self.closed_resources=None;self.closed_player=None;self.final_player=None
         self.complete=False;self.outcome=None;self.receipt=None
+        self.pending_ack_frame=None;self.wild_walk_evidence=None
+        self.closed_cancelled_walk=None;self.cancelled_walk_history=[]
+        self.cancelled_walk_closure_review=None;self.cancelled_walk_review_history=[]
 
     def hint(self,action="wait",tactic="wait",**extra):
         return dict(phase="training_batch_complete" if self.complete else "training_batch_owned",
@@ -194,15 +207,113 @@ class TrainingBatch:
 
     def wait(self,reason,**extra):
         self.waits += 1
+        review=getattr(self,'cancelled_walk_closure_review',None)
+        if review is not None:
+            if type(review) is not dict or not integer(review.get('waits'),0,REVIEW_CLOSURE_CALLS):
+                return self.fail('review_closure_metadata_unverified')
+            review['waits']+=1
+            return (self.fail('review_closure_wait_budget_exhausted') if review['waits']>REVIEW_CLOSURE_CALLS
+                    else self.hint(tactic=reason,**extra))
         return self.fail("wait_budget_exhausted") if self.waits>MAX_WAITS else self.hint(tactic=reason,**extra)
 
     def offer(self,player,frame):
+        if getattr(self,'cancelled_walk_closure_review',None) is not None:
+            return self.fail('review_closure_must_not_offer_walk')
         self.requests+=1
         if self.requests>MAX_REQUESTS:return self.fail("request_budget_exhausted")
         action="down" if player==TILES[0] else "up"
         expected=TILES[1] if player==TILES[0] else TILES[0]
         self.pending=dict(action=action,player=player,expected=expected,frame=frame,executed=False)
+        self.pending_ack_frame=None
         return self.hint(action,"offer_fixed_tile_displacement")
+
+    def review_cancelled_turn_return(self,*,review_capsule,source_evidence):
+        """Only the named warm error; root first proves native/binding/full peers.
+
+        No historical flag is fabricated. The independent pinned actual walk/wild
+        logs remain reviewed historical evidence, distinct from new observations.
+        Preserve original counters/clock/pending/packet; only closure may continue.
+        """
+        try:
+            cap=TURN_RETURN_REVIEW
+            if (_review_sha(review_capsule)!=_review_sha(cap)
+                    or _review_sha(source_evidence)!=_review_sha(cap['evidence'])
+                    or self.error!='league_training_batch_wait_budget_exhausted'
+                    or self.owner!=cap['original_step_id'] or _review_sha(self.intent)!=_review_sha(INTENT)
+                    or self.intent!=self.contract or self.seen_wild is not True or self.suspended is not True
+                    or self.returned_world_seen is not False or self.complete is not False
+                    or any(getattr(self,k) is not None for k in
+                           ('closed_frame','closed_resources','closed_player','final_player','outcome','receipt'))
+                    or _review_sha(self.pending)!=_review_sha(cap['pending'])
+                    or type(self.last_packet) is not tuple or len(self.last_packet)!=6
+                    or _review_sha(self.last_packet)!=cap['source_packet_sha256']
+                    or _review_sha(self.baseline)!=cap['baseline_sha256']
+                    or any(type(getattr(self,k)) is not int or getattr(self,k)!=cap[k]
+                           for k in ('last_frame','calls','waits','requests','displacements'))
+                    or any(type(v) not in (int,float) or not math.isfinite(v) or v<0
+                           for v in (self.started,self.last_now))
+                    or not 0<=self.last_now-self.started<=MAX_SECONDS or self.calls>=MAX_CALLS
+                    or getattr(self,'cancelled_walk_closure_review',None) is not None
+                    or getattr(self,'cancelled_walk_review_history',None) not in (None,[])
+                    or getattr(self,'cancelled_walk_history',None) not in (None,[])):
+                return self.fail('cancelled_turn_review_unverified')
+            state,text,grid,signal,previous,owner=self.last_packet
+            current=resources(state.get('progress'));source_current=resources(signal.get('progress'))
+            raw=signal.get('raw');battle=state.get('battle_state')
+            if (owner!=self.owner or state.get('frame')!=cap['last_frame']
+                    or state.get('location')!=cap['source_location']
+                    or _review_sha(state.get('progress'))!=cap['source_progress_sha256']
+                    or current is None or current!=source_current
+                    or not isinstance(raw,dict) or signal.get('idle') is not True or not _idle(raw)
+                    or not isinstance(battle,dict) or battle.get('raw')!=0 or battle.get('kind')!='none'
+                    or battle.get('active') is not False or battle.get('observation_frame')!=cap['last_frame']
+                    or not closed_world(text,grid,tuple(self.pending['player']),cap['last_frame'])
+                    or validate_wild_delta(self.baseline,current)[0] is not None):
+                return self.fail('cancelled_turn_review_packet_unverified')
+            preserved={k:deepcopy(getattr(self,k)) for k in
+                ('owner','started','last_now','calls','waits','requests','displacements','last_frame','pending')}
+            entry=dict(old_error=self.error,capsule=deepcopy(review_capsule),preserved=preserved,
+                original_packet_sha256=_review_sha(self.last_packet),baseline_sha256=_review_sha(self.baseline))
+            if getattr(self,'cancelled_walk_review_history',None) is None:self.cancelled_walk_review_history=[]
+            self.cancelled_walk_review_history.append(entry)
+            if getattr(self,'cancelled_walk_history',None) is None:self.cancelled_walk_history=[]
+            self.cancelled_walk_closure_review=dict(capsule=deepcopy(review_capsule),pending=self.pending,
+                snapshot=deepcopy(self.pending),source_frame=self.last_frame,calls=0,waits=0,
+                history_sha256=_review_sha(entry),done=False)
+            self.error=None
+            return self.hint(tactic='reviewed_turn_return_closure_only')
+        except (KeyError,TypeError,ValueError,AttributeError,IndexError,RecursionError):
+            return self.fail('cancelled_turn_review_unverified')
+
+    def _cancelled_turn_evidence(self):
+        """First actual wild at the ACKed walk's source, never a battle-key ACK."""
+        p=self.pending;e=getattr(self,'wild_walk_evidence',None)
+        review=getattr(self,'cancelled_walk_closure_review',None)
+        if review is not None:
+            history=getattr(self,'cancelled_walk_review_history',None)
+            if (type(review) is not dict or review.get('pending') is not p or review.get('snapshot')!=p
+                    or type(history) is not list or len(history)!=1
+                    or _review_sha(history[0])!=review.get('history_sha256')
+                    or _review_sha(review.get('capsule'))!=_review_sha(TURN_RETURN_REVIEW)):
+                return None
+            cap=review['capsule']
+            return dict(kind='reviewed_original_turn_before_displacement',wild_frame=cap['first_wild_frame'],
+                actual_action_frame=cap['actual_action_frame'],actual_ack_frame=cap['first_wild_frame'],
+                pending=deepcopy(p),wild_player=list(p['player']),displacement_occurred=False,
+                historical_walk_sha256=cap['historical_walk_sha256'],historical_wild_sha256=cap['historical_wild_sha256'])
+        if (not self.seen_wild or not self.suspended or type(p) is not dict or p.get('executed') is not True
+                or type(e) is not dict or e.get('pending') is not p or e.get('snapshot')!=p
+                or e.get('player')!=p.get('player') or e.get('raw')!=1 or e.get('active') is not True
+                or e.get('kind')!='wild' or not integer(e.get('frame'),0,2**63-1)
+                or not integer(e.get('ack_frame'),0,2**63-1)
+                or not integer(p.get('frame'),0,2**63-1) or not p['frame']<e['ack_frame']<=e['frame']
+                or p.get('player') not in TILES or p.get('expected') not in TILES
+                or p['expected']==p['player']
+                or p.get('action')!=('down' if p['player']==TILES[0] else 'up')):
+            return None
+        return dict(kind='observed_turn_before_displacement',wild_frame=e['frame'],
+            actual_ack_frame=e['ack_frame'],pending=deepcopy(p),wild_player=list(e['player']),
+            displacement_occurred=False)
 
     def context(self,state,*,text,grid,signal,previous,now,owner):
         if self.error:return self.fail("sticky")
@@ -257,12 +368,30 @@ class TrainingBatch:
         if (not self.seen_wild and self.pending and not self.pending["executed"]
                 and frame>self.pending["frame"] and previous and previous[-1]==self.pending["action"]):
             self.pending["executed"]=True
+            self.pending_ack_frame=frame
         if is_wild:
+            if getattr(self,'cancelled_walk_closure_review',None) is not None:
+                return self.fail('review_closure_new_battle_forbidden')
             if self.baseline is None or self.pending is None:return self.fail("wild_without_owned_walk")
             if self.returned_world_seen:return self.fail("second_wild_after_verified_return")
+            if not self.seen_wild:
+                self.wild_walk_evidence=dict(pending=self.pending,snapshot=deepcopy(self.pending),
+                    player=player,frame=frame,ack_frame=getattr(self,'pending_ack_frame',None),
+                    raw=battle['raw'],kind=battle['kind'],active=battle['active'])
             self.seen_wild=self.suspended=True;self.closed_frame=None;self.closed_resources=None;self.closed_player=None
             return self.hint(tactic="owned_single_wild",training_batch_battle_handoff=True)
         closed=signal["idle"] and closed_world(text,grid,player,frame)
+        review=getattr(self,'cancelled_walk_closure_review',None)
+        if review is not None:
+            if (type(review) is not dict or review.get('done') is not False
+                    or not integer(review.get('calls'),0,REVIEW_CLOSURE_CALLS)
+                    or not integer(review.get('source_frame'),0,2**63-1)
+                    or not 0<frame-review['source_frame']<=REVIEW_CLOSURE_FRAMES
+                    or review['calls']>=REVIEW_CLOSURE_CALLS or not closed
+                    or player!=tuple(TURN_RETURN_REVIEW['pending']['player'])
+                    or _review_sha(state.get('progress'))!=TURN_RETURN_REVIEW['source_progress_sha256']):
+                return self.fail('review_closure_only_world_or_budget_unverified')
+            review['calls']+=1
         if self.suspended and not closed:
             self.closed_frame=None;self.closed_resources=None;self.closed_player=None
             return self.wait("owned_learning_dialogue_or_return",training_batch_battle_handoff=True)
@@ -280,6 +409,7 @@ class TrainingBatch:
         if not closed:
             self.closed_frame=None;self.closed_resources=None;self.closed_player=None
             return self.wait("await_blank_idle_source_world")
+        cancelled=None
         if self.pending:
             pending=self.pending
             if not pending["executed"]:
@@ -290,7 +420,10 @@ class TrainingBatch:
                 return self.hint(pending["action"],"retry_same_unexecuted_pending")
             if player!=pending["expected"]:
                 if player!=pending["player"]:return self.fail("foreign_displacement")
-                return self.wait("executed_walk_await_coordinate_receipt")
+                if self.suspended:
+                    cancelled=self._cancelled_turn_evidence()
+                    if cancelled is None:return self.fail('wild_source_return_without_turn_ack_proof')
+                else:return self.wait("executed_walk_await_coordinate_receipt")
             if not self.suspended:
                 self.displacements+=1;self.pending=None
                 if self.displacements<INTENT["max_displacements"]:return self.offer(player,frame)
@@ -302,15 +435,28 @@ class TrainingBatch:
         else:receipt=dict(total_exp_gain=0,total_pp_spent=0,needs_center=False)
         if self.closed_frame is None:
             self.closed_frame=frame;self.closed_resources=current;self.closed_player=player
+            self.closed_cancelled_walk=deepcopy(cancelled)
             return self.wait("first_closed_source_world")
         if self.closed_player!=player:return self.fail("closed_world_position_changed")
         if self.closed_resources!=current:return self.fail("closed_world_resources_changed")
+        if getattr(self,'closed_cancelled_walk',None)!=cancelled:return self.fail('closed_walk_resolution_changed')
         if frame<=self.closed_frame:return self.fail("fresh_closure_frame_required")
         if self.suspended:
-            self.displacements+=1;self.pending=None;self.suspended=False
+            if cancelled is None:self.displacements+=1
+            else:
+                history=getattr(self,'cancelled_walk_history',None)
+                if type(history) is not list:return self.fail('cancelled_walk_history_unverified')
+                history.append(dict(cancelled,closed_frames=[self.closed_frame,frame],
+                    displacements_before=self.displacements,displacements_after=self.displacements))
+            self.pending=None;self.suspended=False
             self.outcome="complete_single_wild"
         else:self.outcome="complete_no_encounter"
-        if not 1<=self.displacements<=INTENT["max_displacements"]:return self.fail("displacement_bound_unverified")
+        if not (0 if cancelled is not None else 1)<=self.displacements<=INTENT["max_displacements"]:
+            return self.fail("displacement_bound_unverified")
         self.receipt={**receipt,"wild_count":int(self.seen_wild),"closed_frames":[self.closed_frame,frame]}
+        if cancelled is not None:self.receipt.update(walk_resolution='cancelled_before_displacement',
+            displacement_occurred=False,cancelled_walk=deepcopy(self.cancelled_walk_history[-1]))
+        if getattr(self,'cancelled_walk_closure_review',None) is not None:
+            self.cancelled_walk_closure_review['done']=True
         self.complete=True
         return self.hint(tactic="two_fresh_closed_source_worlds")

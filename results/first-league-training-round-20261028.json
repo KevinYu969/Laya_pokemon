@@ -1,0 +1,610 @@
+{
+  "schema": "laya-public-first-live-training-round-v1",
+  "date": "2026-10-28",
+  "status": "root_reviewed_live_round_trip",
+  "game_id": "game29",
+  "cutoff_frame": 35209,
+  "timestamp_semantics": "時間均取實際log的at；action行的state.frame是行內觀測、action是該行動作，不把log時間當逐幀牆鐘或精確KO瞬間。同frame30953的歷史EOF與稍後返程動作保留各自真時間。",
+  "events": [
+    {
+      "kind": "center_lead_preparation",
+      "meaning": "出發前在174(7,7)正常開選單調整最低首位，起點frame19233。",
+      "log_recorded_at_utc": "2026-10-28T07:03:29.581565+00:00",
+      "log_recorded_at_taipei": "2026-10-28T15:03:29.581565+08:00",
+      "observation_frame": 19233,
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "phase": "party_menu",
+      "action_step": 352,
+      "logged_action": "start",
+      "source_label": "steps-006.jsonl",
+      "source_line": 4,
+      "original_line_sha256": "ce4ce8b3be93d8b27f625ac19c162047a1d09d774bf07865695302cdde2f0e81"
+    },
+    {
+      "kind": "outbound_departure",
+      "meaning": "已觀測VENUSAUR為首位，從護士前空白世界記錄DOWN離開。",
+      "log_recorded_at_utc": "2026-10-28T07:03:30.930959+00:00",
+      "log_recorded_at_taipei": "2026-10-28T15:03:30.930959+08:00",
+      "observation_frame": 19873,
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "phase": "overworld",
+      "action_step": 368,
+      "logged_action": "down",
+      "source_label": "steps-007.jsonl",
+      "source_line": 16,
+      "original_line_sha256": "f646f89038682a1b9c39009e4243f6e5cf49bcafd140d9f114379d20ed377fea"
+    },
+    {
+      "kind": "normal_cave_left",
+      "meaning": "洞口落點194(29,7)記錄正常LEFT，下一筆真觀測23553到(28,7)。",
+      "log_recorded_at_utc": "2026-10-28T07:33:25.569112+00:00",
+      "log_recorded_at_taipei": "2026-10-28T15:33:25.569112+08:00",
+      "observation_frame": 23513,
+      "location": {
+        "map_id": 194,
+        "x": 29,
+        "y": 7
+      },
+      "phase": "overworld",
+      "action_step": 459,
+      "logged_action": "left",
+      "source_label": "steps-009.jsonl",
+      "source_line": 2,
+      "original_line_sha256": "ca1312290e2af6a29962ba74024e2008752647f095b6c52c1e0ebffc479ca77e"
+    },
+    {
+      "kind": "batch_starts",
+      "meaning": "194(28,7)原controller開始兩格batch，真計數0。",
+      "log_recorded_at_utc": "2026-10-28T07:33:25.935810+00:00",
+      "log_recorded_at_taipei": "2026-10-28T15:33:25.935810+08:00",
+      "observation_frame": 23593,
+      "location": {
+        "map_id": 194,
+        "x": 28,
+        "y": 7
+      },
+      "phase": "training_batch_owned",
+      "action_step": 461,
+      "logged_action": "down",
+      "source_label": "steps-009.jsonl",
+      "source_line": 4,
+      "original_line_sha256": "a524c36becb9e2626766125162377ae124ab6e8dceda2afeb049d98832ab8b95"
+    },
+    {
+      "kind": "actual_wild_observed",
+      "meaning": "首次真wild觀測frame23713；該次DOWN是轉身先遇敵，未新增第三次位移。",
+      "log_recorded_at_utc": "2026-10-28T07:33:26.318857+00:00",
+      "log_recorded_at_taipei": "2026-10-28T15:33:26.318857+08:00",
+      "observation_frame": 23713,
+      "location": {
+        "map_id": 194,
+        "x": 28,
+        "y": 7
+      },
+      "phase": "battle_animation",
+      "action_step": 464,
+      "logged_action": "wait",
+      "source_label": "steps-009.jsonl",
+      "source_line": 7,
+      "original_line_sha256": "2609f8bb40b3290294b96ac93cd87d8bee4842c8c9f5065126e8e6f087b2b1df"
+    },
+    {
+      "kind": "first_positive_exp_observed",
+      "meaning": "首次紀錄觀測到VENUSAUR EXP37098；仍在戰後對話，不把此時間當精確KO瞬間。",
+      "log_recorded_at_utc": "2026-10-28T07:33:26.954164+00:00",
+      "log_recorded_at_taipei": "2026-10-28T15:33:26.954164+08:00",
+      "observation_frame": 25585,
+      "location": {
+        "map_id": 194,
+        "x": 28,
+        "y": 7
+      },
+      "phase": "battle_dialogue",
+      "action_step": 480,
+      "logged_action": "a",
+      "source_label": "steps-009.jsonl",
+      "source_line": 23,
+      "original_line_sha256": "8d6a17a57ff14842c599945a981c00996aef1e271b6465b0c41fa87cf48251ee"
+    },
+    {
+      "kind": "batch_two_fresh_closure_complete",
+      "meaning": "正式field ledger記錄單場完成；雙fresh closure30873/30913。",
+      "log_recorded_at_utc": "2026-10-28T08:19:08.553547+00:00",
+      "log_recorded_at_taipei": "2026-10-28T16:19:08.553547+08:00",
+      "observation_frame": 30913,
+      "location": {
+        "map_id": 194,
+        "x": 28,
+        "y": 7
+      },
+      "source_label": "field-moves.jsonl"
+    },
+    {
+      "kind": "wild_eof",
+      "meaning": "第一個batch EOF另有兩個世界30913/30953，保持戰後PP少1。",
+      "log_recorded_at_utc": "2026-10-28T08:19:08.606212+00:00",
+      "log_recorded_at_taipei": "2026-10-28T16:19:08.606212+08:00",
+      "observation_frame": 30953,
+      "location": {
+        "map_id": 194,
+        "x": 28,
+        "y": 7
+      },
+      "source_label": "wild-eof-review-30953"
+    },
+    {
+      "kind": "return_resumes",
+      "meaning": "同一frame30953在工程暫停後才記錄RIGHT返程，與先前EOF時間分開。",
+      "log_recorded_at_utc": "2026-10-28T08:24:41.921822+00:00",
+      "log_recorded_at_taipei": "2026-10-28T16:24:41.921822+08:00",
+      "observation_frame": 30953,
+      "location": {
+        "map_id": 194,
+        "x": 28,
+        "y": 7
+      },
+      "phase": "overworld",
+      "action_step": 612,
+      "logged_action": "right",
+      "source_label": "steps-011.jsonl",
+      "source_line": 3,
+      "original_line_sha256": "0943485a9059c2b16d70d0899139c3f241306ce72173455bfc76f937a4d5b676"
+    },
+    {
+      "kind": "normal_nurse_interaction",
+      "meaning": "回174(7,7)記錄A開始正常護士互動。",
+      "log_recorded_at_utc": "2026-10-28T08:24:43.981301+00:00",
+      "log_recorded_at_taipei": "2026-10-28T16:24:43.981301+08:00",
+      "observation_frame": 33593,
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "phase": "overworld",
+      "action_step": 678,
+      "logged_action": "a",
+      "source_label": "steps-012.jsonl",
+      "source_line": 66,
+      "original_line_sha256": "f66136c30d404bfcf0684aba66b70b01d2791bfa4c4dba521da93b041a5a2478"
+    },
+    {
+      "kind": "nurse_accepts_healing",
+      "meaning": "HEAL選項的A確認；只描述文字候選與真動作，不宣稱讀取像素YES。",
+      "log_recorded_at_utc": "2026-10-28T08:24:44.191940+00:00",
+      "log_recorded_at_taipei": "2026-10-28T16:24:44.191940+08:00",
+      "observation_frame": 34145,
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "phase": "dialogue",
+      "action_step": 683,
+      "logged_action": "a",
+      "source_label": "steps-012.jsonl",
+      "source_line": 71,
+      "original_line_sha256": "7f59db573b50329b8d0102ffd191e11da90c039f2f29e7b9be78700fb08dbc6d"
+    },
+    {
+      "kind": "first_restored_pp_observation",
+      "meaning": "VENUSAUR PP24→25，EXP37098保留，仍在護士對話。",
+      "log_recorded_at_utc": "2026-10-28T08:24:44.217646+00:00",
+      "log_recorded_at_taipei": "2026-10-28T16:24:44.217646+08:00",
+      "observation_frame": 34273,
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "phase": "dialogue",
+      "action_step": 684,
+      "logged_action": "a",
+      "source_label": "steps-012.jsonl",
+      "source_line": 72,
+      "original_line_sha256": "78904c6b7f7e7ca7a18e0185e1a10c31d421adb25b4abaad62eab5f689b55581"
+    },
+    {
+      "kind": "first_return_closed_world",
+      "meaning": "護士告別後首個空白世界35169，記錄WAIT等待第二fresh世界。",
+      "log_recorded_at_utc": "2026-10-28T08:24:44.445630+00:00",
+      "log_recorded_at_taipei": "2026-10-28T16:24:44.445630+08:00",
+      "observation_frame": 35169,
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "phase": "league_training_wait",
+      "action_step": 691,
+      "logged_action": "wait",
+      "source_label": "steps-012.jsonl",
+      "source_line": 79,
+      "original_line_sha256": "98fa17f96afbc12d40eac2f0a4571fc21bdc9ff958cf6657b3271da57bbd36ab"
+    },
+    {
+      "kind": "return_eof",
+      "meaning": "第二fresh世界35209，正式return EOF，全六HP/status/PP滿。",
+      "log_recorded_at_utc": "2026-10-28T08:24:44.485395+00:00",
+      "log_recorded_at_taipei": "2026-10-28T16:24:44.485395+08:00",
+      "observation_frame": 35209,
+      "location": {
+        "map_id": 174,
+        "x": 7,
+        "y": 7
+      },
+      "source_label": "return-review-35209"
+    }
+  ],
+  "outbound": {
+    "preparation_frame": 19233,
+    "departure_frame": 19873,
+    "source_location": {
+      "map_id": 174,
+      "x": 7,
+      "y": 7
+    },
+    "lead_species": "VENUSAUR",
+    "batch_start_frame": 23593,
+    "batch_start_location": {
+      "map_id": 194,
+      "x": 28,
+      "y": 7
+    },
+    "normal_left_observed_from_frame": 23513,
+    "normal_left_destination_observed_frame": 23553
+  },
+  "wild": {
+    "first_actual_wild_frame": 23713,
+    "wild_count": 1,
+    "exp_before": 36804,
+    "exp_after": 37098,
+    "total_exp_gain": 294,
+    "venusaur_level_before": 35,
+    "venusaur_level_after": 35,
+    "venusaur_hp_before": 111,
+    "venusaur_hp_after": 111,
+    "status_before": 0,
+    "status_after": 0,
+    "pp_before": [
+      25,
+      30,
+      10,
+      10
+    ],
+    "pp_after": [
+      24,
+      30,
+      10,
+      10
+    ],
+    "total_pp_spent": 1,
+    "actual_total_displacements": 2,
+    "cancelled_direction_did_not_add_displacement": true,
+    "turn_before_displacement": {
+      "actual_action_frame": 23673,
+      "actual_ack_frame": 23713,
+      "wild_frame": 23713,
+      "origin": [
+        28,
+        7
+      ],
+      "expected": [
+        28,
+        8
+      ],
+      "displacements_before": 2,
+      "displacements_after": 2
+    },
+    "batch_closed_frames": [
+      30873,
+      30913
+    ],
+    "eof_closed_frames": [
+      30913,
+      30953
+    ],
+    "eof_frame": 30953
+  },
+  "return_nurse": {
+    "eof_frame": 35209,
+    "location": {
+      "map_id": 174,
+      "x": 7,
+      "y": 7
+    },
+    "closed_world_frames": [
+      35169,
+      35209
+    ],
+    "full_party_healed": true,
+    "venusaur_pp_first_restored_observation_frame": 34273,
+    "venusaur_pp_after": [
+      25,
+      30,
+      10,
+      10
+    ],
+    "venusaur_exp_after": 37098,
+    "party": [
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "exp": 37098,
+        "hp": 111,
+        "max_hp": 111,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 42,
+        "exp": 97367,
+        "hp": 203,
+        "max_hp": 203,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          15,
+          20,
+          10,
+          15
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "exp": 43317,
+        "hp": 90,
+        "max_hp": 90,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 38,
+        "exp": 58020,
+        "hp": 117,
+        "max_hp": 117,
+        "status": 0,
+        "moves": [
+          64,
+          65,
+          19,
+          31
+        ],
+        "pp": [
+          35,
+          20,
+          15,
+          20
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 37,
+        "exp": 43881,
+        "hp": 125,
+        "max_hp": 125,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 43,
+        "exp": 105912,
+        "hp": 177,
+        "max_hp": 177,
+        "status": 0,
+        "moves": [
+          57,
+          34,
+          58,
+          85
+        ],
+        "pp": [
+          15,
+          15,
+          10,
+          15
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "baseline_is_post_tm24_teaching": true,
+    "inventory_unchanged_across_round": true,
+    "money_unchanged_across_round": true,
+    "money_before": 53245,
+    "money_after": 53245,
+    "only_party_delta_after_nurse": "VENUSAUR EXP +294; party order fixed during departure/batch/return; all other party fields equal departure baseline"
+  },
+  "timing": {
+    "actual_log_timestamp_span_seconds": 4873.554436,
+    "observed_frame_span": [
+      19873,
+      35209
+    ],
+    "pure_emulated_frame_interval_seconds": 255.6,
+    "cumulative_timing_counter_deltas": {
+      "wall_seconds": 4873.515,
+      "review_pause_seconds": 4860.874,
+      "non_review_session_seconds": 12.641,
+      "model_wait_seconds": 2.063,
+      "emulated_seconds": 254.933
+    },
+    "note": "cumulative timing是紀錄點計數，action行內觀測frame與行後計數邊界不同；不要混算端到端速度。工程/復核pause計數佔大部分牆鐘，純emu時間不可當實際等待。 此區分僅為誠實說明紀錄，不退款或變更已啟動的牆鐘預算。"
+  },
+  "continuity": {
+    "checked_action_step_range": [
+      352,
+      691
+    ],
+    "checked_action_rows": 340,
+    "observed_frames_contiguous": true,
+    "last_action_frame": 35169,
+    "last_action_emulated_frames": 40,
+    "eof_frame": 35209,
+    "live_game_advanced_or_modified_by_receipt_task": false
+  },
+  "remaining": {
+    "elite_four_complete": false,
+    "champion_observed": false,
+    "hall_of_fame_confirmed": null,
+    "all_six_level45": false,
+    "supervisor_enable_or_budget_approval_not_claimed": true
+  },
+  "provenance": [
+    {
+      "label": "return-review-35209",
+      "byte_length": 33357,
+      "sha256": "524a6b24c9ce126b967d561942cae1adcea34a0497ed3cc654a70e036682846f"
+    },
+    {
+      "label": "wild-review-30953",
+      "byte_length": 43680,
+      "sha256": "1d86d44513f8fc2fb252787b04e5cff130fb5947ef5f4ec377c6d0340c973b23"
+    },
+    {
+      "label": "steps-000.jsonl",
+      "byte_length": 420947,
+      "sha256": "5d44429053d331f7e2321aa8b91aed5eb04458164bce90b3648d558266eecc42"
+    },
+    {
+      "label": "steps-001.jsonl",
+      "byte_length": 412266,
+      "sha256": "bafae5edfa9f7ab5754401ca4089c69ea5ea442a81fcd1356d428446081dc608"
+    },
+    {
+      "label": "steps-002.jsonl",
+      "byte_length": 65033,
+      "sha256": "f2338602853c069eba19ba30155c474cdbdeb7c5424602d184ceca9b10cbf1dc"
+    },
+    {
+      "label": "steps-003.jsonl",
+      "byte_length": 767454,
+      "sha256": "5bc1a4772333d1e62b4ae5aaafe2d83ff2ba90ad09b29a02a7d034376e9aa5aa"
+    },
+    {
+      "label": "steps-004.jsonl",
+      "byte_length": 937070,
+      "sha256": "23a1e1a78d9171a7349394f449452805fd61540831598c839d3b84359440a871"
+    },
+    {
+      "label": "steps-005.jsonl",
+      "byte_length": 566360,
+      "sha256": "a246ce131271b56273f3baac0eb7ff5e0750d5157efa20ba317e5887698eba24"
+    },
+    {
+      "label": "steps-006.jsonl",
+      "byte_length": 37263,
+      "sha256": "a6d5fb791c512a4b11b135d20c31be4ed3df4d547692a207c65253b1a08907fe"
+    },
+    {
+      "label": "steps-007.jsonl",
+      "byte_length": 402102,
+      "sha256": "b7cf7fcbcbc850ea7454995e960e142b83aee6f1194e21a62aadecfd04d7cfc6"
+    },
+    {
+      "label": "steps-008.jsonl",
+      "byte_length": 535283,
+      "sha256": "9842476741ef0cd1ea94ccb85aae0d0d9b6b0c7c7cd95979defad23b3a110aec"
+    },
+    {
+      "label": "steps-009.jsonl",
+      "byte_length": 1350066,
+      "sha256": "9117caeeaa2cbce8c914ecc521f01b7e55ed7923ff2358af15e4711ce8c71042"
+    },
+    {
+      "label": "steps-010.jsonl",
+      "byte_length": 45733,
+      "sha256": "23f1e8c74d994fa8cef5f84f4b1380c5df495efee851c0b0fa8190853242d701"
+    },
+    {
+      "label": "steps-011.jsonl",
+      "byte_length": 28010,
+      "sha256": "92c73b57275c90cf786c9b7624bfc7ab79b3ef97f940c5d9c14a38b20a02c9b3"
+    },
+    {
+      "label": "steps-012.jsonl",
+      "byte_length": 696224,
+      "sha256": "c7eae9a3201783e0fdf5c368c5cc463f2c64c4e05f9d8f4a207f84e2113b21b9"
+    },
+    {
+      "label": "field-moves.jsonl",
+      "byte_length": 33079,
+      "sha256": "2aa14f06a06389a68b11e4024b9986d76aab191b95bebabfabeb2fadfd49c80f"
+    },
+    {
+      "label": "captures.jsonl",
+      "byte_length": 15076,
+      "sha256": "71ffa255ef21d3d5bfdd1ce2913cc3b482c4ef67ee774f6b62d9fe314faca092"
+    },
+    {
+      "label": "segments.jsonl",
+      "byte_length": 4432,
+      "sha256": "9f7a65673dac66ae0bb0110aaab6c2a4e1d439906ee5225e9de2f57ded35adfe"
+    }
+  ],
+  "limitations": [
+    "此為精選公開事實收據草稿，不是supervisor正式enable calibration檔，未加入root批准欄位。",
+    "首輪包含工程與復核停點；不呈現為從頭到尾無暫停或無修復的一次順跑。",
+    "raw/controller candidate flags不代替真receipt；本稿依實際EXP/PP、位移與fresh-world/護士觀測描述完成。",
+    "未讀或公開原始JSON畫面、raw模型輸出、完整來源路徑或主機識別。",
+    "截止35209，後續訓練／預算／進程不在本稿。"
+  ],
+  "root_reviewed": true,
+  "source_draft_sha256": "28a315ce2d58bcdd53fa3869ee2bdc49b6785eb1c13145a9c616adf386025821"
+}
