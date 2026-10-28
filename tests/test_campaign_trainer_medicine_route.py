@@ -16,7 +16,7 @@ def env(monkeypatch):
 
 
 def test_original_previous_reaches_switch_and_field_never_claims_it(env,monkeypatch):
-    step,plan,text=env;seen=[];state=object();pb=object();previous=['up','a']
+    step,plan,text=env;seen=[];state={};pb=object();previous=['up','a']
     def dispatch(*args):
         seen.append(args);return dict(phase='trainer_medicine_menu'),step['id']
     monkeypatch.setattr(route.trainer_medicine_dispatch,'context',dispatch)

@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-28",
+  "reviewed_base": "b408476",
+  "implementation_commit": "c3940775f6c176810219bd8e24ae8faed74a344e",
+  "environment": {
+    "os": "Windows",
+    "python": "3.11.15",
+    "fresh_venv": true,
+    "requirements": "requirements-lock.txt",
+    "pip_check": "passed"
+  },
+  "full_tests": {
+    "passed": 10037,
+    "failed": 0,
+    "seconds": 214.96
+  },
+  "history_scan": {
+    "commits": 44,
+    "unique_blobs": 979,
+    "credential_pattern_matches": 0,
+    "private_endpoint_matches": 0,
+    "triage": "One synthetic secret fixture; one historical user path already redacted in current tree."
+  },
+  "real_game": {
+    "backend": "offline_fixed_stage_plus_laya_cpu",
+    "fresh_opening": true,
+    "episodes": [
+      {
+        "episode": "game-00",
+        "completed_steps": 37,
+        "stop_reason": "wall_clock_limit",
+        "video_seconds": 26.666667,
+        "state_sha256": "4931e5c42f4d901cbff3c54ceedc8b1e2254ac2655cf353ed2f438e15fe363d0",
+        "live_status": "stopped"
+      },
+      {
+        "episode": "game-01",
+        "completed_steps": 121,
+        "stop_reason": "wall_clock_limit",
+        "video_seconds": 80.666667,
+        "state_sha256": "b0a5eb7274bfef9654a3ab876b2ac3aa4c9e793d0f074669461572befecde820",
+        "live_status": "stopped"
+      }
+    ],
+    "stop_reason": "episode_budget",
+    "same_viewer_port_across_episodes": true,
+    "viewer_checks": {
+      "status": 200,
+      "frame": 200,
+      "rom": 404,
+      "settings_traversal": 404
+    }
+  },
+  "limits": [
+    "No paid cloud requests or replacement model gameplay benchmark.",
+    "Two short episodes verify opening/resume, not first-gym or eight-gym completion.",
+    "Windows tested; macOS/Linux not device-tested.",
+    "Pattern scan is not exhaustive security certification."
+  ]
+}
