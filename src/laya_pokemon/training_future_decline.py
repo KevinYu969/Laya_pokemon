@@ -1,4 +1,4 @@
-"""Three fixed Red natural declines. Pure hints; no dispatch, receipt authority or I/O."""
+"""Four fixed Red natural declines. Pure hints; no dispatch, receipt authority or I/O."""
 from copy import deepcopy
 import re
 
@@ -9,7 +9,8 @@ from .team_strategy import normalize, reference, species_key
 SOURCE_COMMIT='a53671100ec22e5394ff26ec028d0812a238dae2'
 CASES={(154,43):('GROWTH',74,(75,15,73,22)),
        (35,43):('AGILITY',97,(64,65,19,31)),
-       (102,45):('TAKE_DOWN',36,(44,28,98,39))}
+       (102,45):('TAKE_DOWN',36,(44,28,98,39)),
+       (19,46):('HYDRO_PUMP',56,(57,34,58,85))}
 ROSTER={154,35,102,132,7,19}
 MAX_CALLS,MAX_WAITS=180,30
 _SESSION=globals().get('_SESSION')

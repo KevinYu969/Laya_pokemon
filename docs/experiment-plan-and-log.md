@@ -1443,3 +1443,5 @@ Kevin明確選擇「修正為連續多場訓練後挑戰聯盟」。新policy：
 
 新Lapras46 HydroPump放棄候選另外交source核對；聯盟購買與三室戰後用藥pure／owned bridge候選已stage測試，但均未購買／部署／使用，不能當成實機成果。四天王／冠軍未完，分類仍本機Laya/cache、無GPT逐鍵呼叫。額外Qwen文件檢索health check曾fetch failed，未傳文件，與既有離線遊戲無關；沒有估計不可得token。快取與上次備份1305076／CI40684347906已成功；本節連戰修正待隨後正常白名單備份。
 
+
+2026-10-28 追加：Lapras46 HydroPump56已由兩份固定primary／兩位source覆核確認，新增正常放棄case保留Surf／BodySlam／IceBeam／Thunderbolt。2個新case與原future／Bite相關共33項、38subtests、0.74秒通過；Bite fb5來源未動。這是避免後續自然46級再次卡住的程式修正，遊戲仍停在1632833，沒有新增時段或實機執行。
