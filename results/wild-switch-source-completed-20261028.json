@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-28",
+  "status": "real_native_sendout_repaired_original_battle_complete",
+  "stopped_frame": 770673,
+  "completed_at_taipei": "2026-10-28T19:29:56.646745+08:00",
+  "eof_frame": 772537,
+  "closed_frames": [
+    772417,
+    772457
+  ],
+  "total_exp_gain": 708,
+  "total_pp_spent": 2,
+  "issue": "The enemy's weak source contraction and stale HUD during completed native switch",
+  "source_native_target": {
+    "species": 19,
+    "party_index": 5
+  },
+  "source_original_hud_species": 7,
+  "no_game_key_during_diagnostic": true,
+  "original_field_spent": {
+    "calls": 47,
+    "waits": 0,
+    "requests": 18,
+    "displacements": 17
+  },
+  "original_switch_spent": {
+    "calls": 10,
+    "waits": 1
+  },
+  "original_error_preserved_in_review_history": true,
+  "no_state_reload": true,
+  "related_validation": {
+    "passed": 1708,
+    "subtests": 12,
+    "seconds": 12.15
+  },
+  "elite_four_complete": false,
+  "champion_complete": false,
+  "cloud_classification": false
+}

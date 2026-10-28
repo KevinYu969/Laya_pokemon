@@ -9,6 +9,7 @@ import importlib
 import re
 
 from . import snorlax_harden_skip
+from . import eevee37_learning_proof
 importlib.reload(snorlax_harden_skip)
 
 from .party_control import command
@@ -21,6 +22,7 @@ SOURCES = [f'https://github.com/pret/pokered/blob/{SOURCE_COMMIT}/{path}' for pa
 MAX_SAFE_WAITS = 30
 _SESSION = globals().get('_SESSION')
 _CASES = {
+    (102, 37): (44, (33, 28, 98, 39), True),
     (9, 30): (75, (77, 15, 73, 22), True),
     # 固定紅版 source 是32級，不是30級；尼多力諾此案例僅提供計畫。
     (167, 32): (31, (43, 33, 30, 40), False),
@@ -43,6 +45,19 @@ _DID_NOT = ('IVYSAURDIDNOTLEARNRAZORLEAF', 'DIDNOTLEARNRAZORLEAF', 'LEARNRAZORLE
 
 # 只有這些精確自然案例能共用既有正常忘招流程；不接受任意名字／招式。
 _REPLACEMENTS = {
+    (102, 37): {
+        'before': (33, 28, 98, 39), 'after': (44, 28, 98, 39), 'slot': 0,
+        'old': 'TACKLE', 'new': 'BITE', 'old_id': 33,
+        'old_tactic': 'tackle', 'new_tactic': 'bite', 'require_intro_prompt': True,
+        'intro': ('EEVEEISTRYINGTOLEARNBITE', 'TRYINGTOLEARNBITE', 'BITE',
+                  'BUTEEVEECANTLEARNMORETHAN4MOVES', 'EEVEECANTLEARNMORETHAN4MOVES',
+                  'CANTLEARNMORETHAN4MOVES', 'THAN4MOVES'),
+        'delete': ('DELETEANOLDERMOVETOMAKEROOMFORBITE', 'MOVETOMAKEROOMFORBITE', 'FORBITE'),
+        'abandon': ('ABANDONLEARNINGBITE', 'STOPLEARNINGBITE', 'LEARNINGBITE', 'BITE'),
+        'forgot': ('EEVEEFORGOTTACKLE', 'FORGOTTACKLE', 'TACKLE'),
+        'learned': ('EEVEELEARNEDBITE', 'LEARNEDBITE', 'BITE'),
+        'did_not': ('EEVEEDIDNOTLEARNBITE', 'DIDNOTLEARNBITE', 'LEARNBITE'),
+    },
     (9, 30): {
         'before': (77, 15, 73, 22), 'after': (75, 15, 73, 22), 'slot': 0,
         'old': 'POISONPOWDER', 'new': 'RAZOR_LEAF', 'old_id': 77,
@@ -121,6 +136,9 @@ def candidate_plan(species, level, moves):
             or not isinstance(moves, (list, tuple))
             or any(type(move) is not int for move in moves)):
         return {'decision': 'review', 'reason': 'lapras38_learning_values_not_typed_integers'}
+    if (species, level) == (102, 37) and (type(species) is not int or type(level) is not int
+            or not isinstance(moves, (list, tuple)) or any(type(move) is not int for move in moves)):
+        return {'decision': 'review', 'reason': 'eevee37_values_not_typed_integers'}
     case = _CASES.get((species, level))
     if case is None:
         if (species, level) == (167, 30):
@@ -138,7 +156,16 @@ def candidate_plan(species, level, moves):
         return {'decision': 'review', 'reason': 'natural_learning_source_not_verified'}
     if tuple(moves) != before:
         return {'decision': 'review', 'reason': 'natural_learning_initial_moves_not_verified'}
-    result = learn_move_plan(species, list(before), new, level=level)
+    if (species, level) == (102, 37):
+        bite = ref['moves']['BITE']
+        if any(bite.get(key) != value for key, value in {'id': 44, 'type': 'NORMAL',
+                'power': 60, 'accuracy': 100, 'pp': 25, 'effect': 'FLINCH_SIDE_EFFECT1'}.items()):
+            return {'decision': 'review', 'reason': 'eevee37_bite_source_properties_changed'}
+        # Exact root-reviewed event decision; the general heuristic prefers another slot.
+        result = {'decision': 'replace', 'replace_index': 0, 'forget': 'TACKLE', 'move': 'BITE',
+                  'reason': 'reviewed_eevee37_bite_for_tackle_only; requires_actual_dispatch_ack'}
+    else:
+        result = learn_move_plan(species, list(before), new, level=level)
     return {**result, 'natural_level': level, 'new_move_id': new,
             'ui_candidate_implemented': calibrated, 'sources': SOURCES}
 
@@ -211,7 +238,7 @@ def _forget_action(rows):
         return _fail('natural_learning_forget_active_cursor_unreadable')
     target_row = 8 + profile['slot']
     action = 'a' if active[0][1] == target_row else 'up' if active[0][1] > target_row else 'down'
-    if action == 'a':
+    if action == 'a' and _SESSION.get('replacement_case') != (102, 37):
         _SESSION['stage'] = 'forget_selected'
     return _hint(action, 'forget_only_verified_' + profile['old_tactic'], forgotten_move=profile['old_id'],
                  protected_moves=[move for i, move in enumerate(before) if i != profile['slot']],
@@ -341,7 +368,7 @@ def _fearow_skip(rows, progress):
     return _fail('fearow_skip_page_unknown')
 
 
-def context(text, progress):
+def _source_context(text, progress):
     """接受可見20×18文字與唯讀progress；未知自然個案不接管。"""
     global _SESSION
     specific = snorlax_harden_skip.context(text, progress)
@@ -498,8 +525,9 @@ def context(text, progress):
                 return _fail('natural_learning_and_without_verified_forgot')
             if '...' not in lower and '▼' not in lower:
                 return _wait('await_complete_and_message')
-            _SESSION['stage'] = 'and_message'
-            _SESSION['and_requested'] = True
+            if _SESSION.get('replacement_case') != (102, 37):
+                _SESSION['stage'] = 'and_message'
+                _SESSION['and_requested'] = True
             return _hint('a', 'advance_verified_learning_and')
         if _prefix(compact, profile['learned']) and stage == 'and_message':
             if compact == learned_page and ('!' in lower or '▼' in lower):
@@ -550,7 +578,7 @@ def context(text, progress):
         action = _choice(rows, 'YES')
         if action is None:
             return _fail('natural_learning_yes_no_cursor_unreadable')
-        if action == 'a':
+        if action == 'a' and _SESSION.get('replacement_case') != (102, 37):
             _SESSION['delete_yes_requested'] = True
             _SESSION['stage'] = 'await_forget'
         return _hint(action, 'accept_verified_' + profile['old_tactic'] + '_replacement', menu_label='YES')
@@ -561,10 +589,26 @@ def context(text, progress):
     if stage == 'intro' and _prefix(compact, profile['intro']):
         if profile.get('require_intro_prompt') is True and not _SESSION['seen_move']:
             if compact == learner_name + 'ISTRYINGTOLEARN' and '▼' in lower:
-                return _hint('a', 'advance_verified_ice_beam_initial_prompt')
-            return _wait('await_ice_beam_initial_prompt')
+                return _hint('a', 'advance_verified_' + profile['new_tactic'] + '_initial_prompt')
+            return _wait('await_' + profile['new_tactic'] + '_initial_prompt')
         # 首屏已核對唯一學習者；僅已完整訊息或▼可前進，其餘逐字等待。
         if '▼' in lower or '!' in lower or compact == learner_name + 'ISTRYINGTOLEARN':
             return _hint('a', 'advance_verified_natural_learning_intro')
         return _wait('await_natural_learning_text')
     return _fail('natural_learning_page_unknown')
+
+
+def _eevee37_source_session():
+    return _SESSION
+
+
+def _eevee37_clear_source_session():
+    global _SESSION
+    _SESSION = None
+
+
+def context(text, progress, *, learning_binding=None):
+    """Existing callers remain valid; Eevee37 requires the trusted normal dispatch binding."""
+    return eevee37_learning_proof.guarded_context(text, progress, binding=learning_binding,
+        core=_source_context, get_session=_eevee37_source_session,
+        clear_session=_eevee37_clear_source_session, text_profile=snorlax_harden_skip.TEXT_PROFILE)

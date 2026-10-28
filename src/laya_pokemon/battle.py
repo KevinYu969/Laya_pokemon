@@ -4,10 +4,13 @@ from __future__ import annotations
 from numbers import Integral
 import re
 import importlib
-from . import levelup_control, levelup_moves, ditto_transform
+from . import levelup_control, levelup_moves, ditto_transform, eevee37_dispatch_adapter, training_future_decline
 importlib.reload(levelup_control)
 importlib.reload(levelup_moves)
+importlib.reload(levelup_moves.eevee37_learning_proof)
+importlib.reload(eevee37_dispatch_adapter)
 importlib.reload(ditto_transform)
+importlib.reload(training_future_decline)
 
 
 # wram.asm: wIsInBattle、單 byte wPartyGainExpFlags、wCurOpponent；後者由 PyBoy 定位 D059。
@@ -74,6 +77,42 @@ def _wild_retreat_page(cells,first,second=''):
     return [[c.upper() for c in row] for row in cells[12:]]==[[c.upper() for c in row] for row in expected]
 
 
+def _wild_retreat_weak_page(cells,pending,*,complete=False):
+    """Only the source weak-enemy sendout page, at its physical text positions."""
+    from .team_strategy import species_key
+    if (type(pending) is not dict or pending.get('member_selected') is not True
+            or pending.get('switch_requested') is not True or species_key(pending.get('target_species')) is None):return False
+    if any(c!=' ' for y in (12,13,15,17) for c in cells[y]):return False
+    def tokens(value,row):
+        out=[];x=1
+        while value:
+            token=next((t for t in ("'s","'m") if value.startswith(t) and row[x]==t),value[0])
+            out.append(token);x+=1;value=value[len(token):]
+        return out
+    actual=[];expected=[]
+    for y,value in ((14,"The enemy's weak!"),(16,"Get'm! "+species_key(pending['target_species'])+'!')):
+        if cells[y][0]!=' ':return False
+        row=list(cells[y][1:])
+        while row and row[-1]==' ':row.pop()
+        full=tokens(value,cells[y])
+        if len(row)>len(full) or [c.upper() for c in row]!=[c.upper() for c in full[:len(row)]]:return False
+        actual.append(row);expected.append(full)
+    if not ''.join(actual[0]).upper().startswith("THE ENEMY'S"):return False
+    if actual[0]!=expected[0] and actual[1]:return False
+    return not complete or actual==expected
+
+
+def _wild_switch_native_valid(battle_state,target,index):
+    source=battle_state.get('wild_switch_native')
+    return (type(source) is dict and source.get('profile')=='red-en-wild-switch-active-v1'
+        and source.get('source_commit')==DISABLE_SOURCE_COMMIT and source.get('read_valid') is True
+        and type(source.get('observation_frame')) is int
+        and source['observation_frame']==battle_state.get('observation_frame')
+        and type(source.get('raw')) is int and source['raw']==1
+        and type(source.get('species')) is int and source['species']==target
+        and type(source.get('party_index')) is int and source['party_index']==index)
+
+
 def _wild_retreat_rows(text,battle_state):
     if (not isinstance(text,dict) or text.get('profile')!=_VISIBLE_PROFILE
             or text.get('read_valid') is not True or text.get('alignment_verified') is not True
@@ -95,6 +134,8 @@ def _wild_retreat_rows(text,battle_state):
                 and isinstance(pending,dict) and pending.get('switch_requested')):
             from .team_strategy import species_key
             allowed=_wild_retreat_page(cells,"Get'm! "+species_key(pending['target_species'])+'!')
+        if not allowed and set((x,y,c) for x,y,c in multiple)<={(10,14,"'s"),(4,16,"'m")}:
+            allowed=_wild_retreat_weak_page(cells,pending)
         if not allowed:return None
     raw=[''.join(row) for row in cells]
     selected=[(i,row.rstrip()) for i,row in enumerate(raw) if re.search(r'[A-Za-z0-9]{2,}',row)][:12]
@@ -154,13 +195,14 @@ def _healthy_wild_score(mon, enemy):
 
 
 def _healthy_wild_support(mon, active, enemy):
+    margin = .75 if active['hp'] * 3 <= active['max_hp'] * 2 else 2.5
     return (mon['species'] != active['species'] and mon['status'] == 0
             and mon['hp'] * 4 >= mon['max_hp'] * 3
-            and _healthy_wild_score(mon, enemy) > max(1, _trainer_half_score(active, enemy)) * 2.5)
+            and _healthy_wild_score(mon, enemy) > max(1, _trainer_half_score(active, enemy)) * margin)
 
 
 def _healthy_wild_command(text, battle_state, party, rows, active, enemy, *, capture_tactic, capture_focus):
-    """Replace only a verified low-HP/resisted wild RUN with a bounded support switch."""
+    """Use verified healthy type support before a weak trainee risks another hit."""
     global _wild_retreat_switch
     from copy import deepcopy
     from .team_strategy import choose_damage_move
@@ -176,10 +218,8 @@ def _healthy_wild_command(text, battle_state, party, rows, active, enemy, *, cap
         return None
     if choose_damage_move(active['species'], active['moves'], active['pp'], enemy) is None:
         return None  # Existing no-attack-PP protection owns that case.
-    low_hp = active['hp'] * 2 <= active['max_hp']
+    low_hp = active['hp'] * 3 <= active['max_hp'] * 2
     resisted = _all_available_attacks_resisted(active, enemy)
-    if not low_hp and not resisted:
-        return None
     supports = [mon for mon in party if _healthy_wild_support(mon, active, enemy)]
     target = max(supports, key=lambda mon: _healthy_wild_score(mon, enemy), default=None)
     if target is None:
@@ -188,7 +228,8 @@ def _healthy_wild_command(text, battle_state, party, rows, active, enemy, *, cap
     _wild_retreat_switch = dict(enemy_species=enemy, active_species=active['species'],
         target_species=target['species'], active_before=deepcopy(active),
         party_species=tuple(mon['species'] for mon in party), observed_move=None,
-        support_policy='healthy_wild_advantage_v1', trigger='low_hp' if low_hp else 'all_attacks_resisted',
+        support_policy='healthy_wild_advantage_v1',
+        trigger='low_hp' if low_hp else 'all_attacks_resisted' if resisted else 'clear_type_advantage',
         member_selected=False, switch_requested=False, started_frame=frame, last_frame=frame,
         last_packet=deepcopy((text, battle_state, party)), calls=1, waits=0, error=None)
     return {**_selection_hint(rows, (16, 14), 'command'),
@@ -231,6 +272,16 @@ def _wild_retreat_pending(text,battle_state,party,rows):
         _wild_retreat_support(target, record['active_before'], record['enemy_species'], record['observed_move']))
     if not supported:
         return _wild_retreat_review('pending_support_no_longer_healthy')
+    if record['switch_requested'] and _wild_retreat_weak_page(text['cells'],record):
+        index=next(i for i,m in enumerate(party) if m['species']==target['species'])
+        if (not _wild_switch_native_valid(battle_state,target['species'],index) or identity is None
+                or identity[1]['species'] not in (record['active_species'],target['species'])
+                or identity[2]!=(identity[1]['hp'],identity[1]['max_hp'])):
+            return _wild_retreat_review('pending_sendout_native_or_hud_unverified')
+        if identity[1]['species']==target['species'] and _wild_retreat_weak_page(text['cells'],record,complete=True):
+            _wild_retreat_clear()
+            return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],battle_tactic='verified_wild_switch_handoff')
+        return _wild_retreat_wait(record,'await_source_weak_enemy_sendout')
     if command:
         if (identity is None or identity[1]['species']!=record['active_species']
                 or identity[2]!=(identity[1]['hp'],identity[1]['max_hp'])
@@ -269,6 +320,58 @@ def _wild_retreat_wait(record,reason):
     record['waits']+=1
     if record['waits']>25:return _wild_retreat_review('pending_wait_budget_exhausted')
     return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],battle_tactic=reason)
+
+
+def _wild_switch_sha(value):
+    import hashlib,json
+    return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),
+        ensure_ascii=False,allow_nan=False).encode('utf-8')).hexdigest()
+
+
+def review_wild_switch770673(pyboy,text,battle_state,party,cap,*,expected_capsule_sha256,original_pending):
+    """Root-proved original batch/native/cap only; preserve the same switch record."""
+    from copy import deepcopy
+    try:
+        record=_wild_retreat_switch;probe=_read_wild_switch_native(pyboy)
+        raw_text=deepcopy(text);observed=raw_text.pop('observation_frame',770673)
+        if (record is not original_pending or type(record) is not dict or type(cap) is not dict
+                or _wild_switch_sha(cap)!=expected_capsule_sha256
+                or cap.get('kind')!='reviewed_wild_switch770673_v1' or cap.get('game_id')!='game29'
+                or cap.get('native_identity')!='original_training_batch_native_game29'
+                or type(cap.get('switch_identity')) is not int or cap['switch_identity']!=id(record)
+                or cap.get('source_frame')!=770673 or type(cap.get('source_frame')) is not int
+                or type(pyboy.frame_count) is not int or pyboy.frame_count!=770673 or observed!=770673
+                or record.get('error')!='pending_observation_or_owner_changed' or cap.get('original_error')!=record['error']
+                or _wild_switch_sha(record)!=cap.get('original_switch_sha256')
+                or _wild_switch_sha(cap.get('original_switch'))!=cap.get('original_switch_sha256')
+                or record.get('enemy_species')!='MAROWAK' or record.get('active_species')!=7 or record.get('target_species')!=19
+                or record.get('started_frame')!=770185 or record.get('last_frame')!=770545
+                or record.get('calls')!=10 or record.get('waits')!=1
+                or record.get('member_selected') is not True or record.get('switch_requested') is not True
+                or record.get('support_policy')!='healthy_wild_advantage_v1' or record.get('trigger')!='low_hp'
+                or _wild_switch_sha(party)!=cap.get('party_sha256') or _wild_switch_sha(raw_text)!=cap.get('text_sha256')
+                or not _trainer_half_party_valid(party) or tuple(m['species'] for m in party)!=record['party_species']
+                or battle_state.get('observation_frame')!=770673 or type(battle_state.get('raw')) is not int
+                or battle_state['raw']!=1 or battle_state.get('kind')!='wild' or battle_state.get('active') is not True
+                or battle_state.get('opponent_species')!='MAROWAK'
+                or battle_state.get('wild_switch_native')!=probe or not _wild_switch_native_valid(battle_state,19,5)
+                or cap.get('native_active_species')!=19 or cap.get('native_active_party_index')!=5
+                or _wild_retreat_rows(text,battle_state) is None or not _wild_retreat_weak_page(text['cells'],record)
+                or record.get('reviewed_transition_history')):return None
+        rows=_wild_retreat_rows(text,battle_state);identity=_wild_retreat_identity(rows,battle_state,party)
+        target=party[5]
+        if (identity is None or identity[1]['species']!=7 or identity[2]!=(identity[1]['hp'],identity[1]['max_hp'])
+                or not _healthy_wild_support(target,record['active_before'],'MAROWAK')):return None
+        entry=dict(kind=cap['kind'],capsule_sha256=expected_capsule_sha256,source_frame=770673,
+            old_error=record['error'],original_switch_sha256=cap['original_switch_sha256'],
+            diagnostic_sha256=cap.get('diagnostic_sha256'),source_evidence_sha256=deepcopy(cap.get('source_evidence_sha256')),
+            preserved=dict(started_frame=record['started_frame'],last_frame=record['last_frame'],
+                calls=record['calls'],waits=record['waits']),native_active=deepcopy(probe))
+        _wild_switch_sha(entry)  # Validate receipt data before any mutation.
+        record['reviewed_transition_history']=[entry];record['error']=None
+        return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],
+            battle_tactic='reviewed_source_weak_enemy_sendout',suppress_navigation_stall=True)
+    except (KeyError,ValueError,TypeError,AttributeError,IndexError):return None
 
 
 def _wild_retreat_observe(text,battle_state,party,*,capture_focus=False):
@@ -950,6 +1053,24 @@ def _all_available_attacks_resisted(active, enemy):
     return evidence or None
 
 
+def _read_wild_switch_native(pyboy):
+    """Source LoadBattleMonFromParty precedes sendout text and the new HUD."""
+    frame=getattr(pyboy,'frame_count',None)
+    unknown=dict(profile='red-en-wild-switch-active-v1',source_commit=DISABLE_SOURCE_COMMIT,
+        observation_frame=frame,read_valid=False)
+    try:
+        def sample():return tuple(pyboy.memory[a] for a in (BATTLE_STATE_ADDRESS,PLAYER_BATTLE_SPECIES_ADDRESS,PLAYER_PARTY_INDEX_ADDRESS))
+        first,second=sample(),sample()
+        if (type(frame) is not int or frame<0 or pyboy.frame_count!=frame or first!=second
+                or any(not isinstance(v,Integral) or isinstance(v,bool) or not 0<=v<=255 for v in first)):
+            return unknown
+        raw,species,index=map(int,first)
+        from .team_strategy import species_key
+        if raw!=1 or species_key(species) is None or not 0<=index<6:return unknown
+        return dict(unknown,read_valid=True,raw=raw,species=species,party_index=index)
+    except (AttributeError,KeyError,TypeError,ValueError,IndexError):return unknown
+
+
 def read_battle_state(pyboy) -> dict:
     """只讀旗標；未知值不當作非戰鬥，亦不從此旗標推論勝利。"""
     raw = pyboy.memory[BATTLE_STATE_ADDRESS]
@@ -989,6 +1110,8 @@ def read_battle_state(pyboy) -> dict:
         # 真實唯讀reader明確啟用；legacy合成呼叫不帶此欄仍維持原政策。
         # 此marker不是UI／HP／敵人證據，battle_context仍須逐項驗證。
         result['trainer_half_hp_profile'] = TRAINER_HALF_HP_PROFILE
+    if raw==1 and type(_wild_retreat_switch) is dict and _wild_retreat_switch.get('switch_requested') is True:
+        result['wild_switch_native']=_read_wild_switch_native(pyboy)
     return result
 
 
@@ -1423,6 +1546,8 @@ def poisonpowder_skip_context(text,party):
 def learning_context(text, party, progress=None):
     """有四招的學招流程暫停並留下計畫；待真實忘招畫面校準後才能執行。"""
     from .team_strategy import normalize, reference, learn_move_plan
+    future=training_future_decline.context(text,party,progress)
+    if future is not None:return future
     specific=levelup_control.skip_context(text,party)
     if specific:return specific
     skip=poisonpowder_skip_context(text,party)
@@ -1431,7 +1556,18 @@ def learning_context(text, party, progress=None):
         if progress.get('party') != party:
             return {'phase':'strategy_review','objective':'Wait.','available_actions':['wait'],
                     'review_reason':'natural_learning_progress_party_mismatch'}
-        natural=levelup_moves.context(text,progress)
+        adapter=eevee37_dispatch_adapter
+        owned=adapter._CONTEXT
+        if owned is not None and owned['bridge']._active()==set():
+            adapter.unregister_closed_context(owned['native'])
+        learning_binding=adapter.current_binding(text,progress)
+        rejected=adapter.review_context()
+        if rejected:return rejected
+        source_text=dict(text,observation_frame=learning_binding['frame']) if learning_binding is not None else text
+        natural=levelup_moves.context(source_text,progress,learning_binding=learning_binding)
+        adapter.remember_learning_hint(learning_binding,natural)
+        rejected=adapter.review_context()
+        if rejected:return rejected
         if natural:return natural
     upper = " ".join(text.get("lines", [])).upper()
     compact = normalize(upper)

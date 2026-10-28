@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-28",
+  "status": "real_learning_batch_and_normal_nurse_completed",
+  "source_frame": 617241,
+  "closed_at_taipei": "2026-10-28T19:01:43.547021+08:00",
+  "eof_frame": 619929,
+  "learned_moves": {
+    "species": "EEVEE",
+    "natural_level": 37,
+    "forgotten": 33,
+    "learned": 44,
+    "new_pp": 25
+  },
+  "observed_prompt_frames": [
+    619481,
+    619601
+  ],
+  "actual_dismiss_ack": {
+    "request_id": "league-six-party45-game29-20261028-115-067:learn:13",
+    "action": "a",
+    "requested_frame": 619601,
+    "executed_frame": 619641,
+    "owner_step": "league-six-party45-game29-20261028-115-067"
+  },
+  "handoff_frame": 619681,
+  "handoff_kind": "source_verified_peer_exp_prompt",
+  "batch_closed_frames": [
+    619849,
+    619889
+  ],
+  "total_exp_gain": 200,
+  "total_pp_spent": 1,
+  "reviewed_dismiss_closure": {
+    "waits": 5,
+    "requests": 1,
+    "retry_history": []
+  },
+  "old_error_preserved": "source_wait_budget_exhausted",
+  "old_spent_preserved": {
+    "calls": 55,
+    "waits": 31,
+    "started": 617241
+  },
+  "proof_receipt_sha256": "a7f3707566630f2c01a6c68d0d6f80f71024b214f596a001761a9de913ab2795",
+  "nurse": {
+    "at_taipei": "2026-10-28T19:03:24.337924+08:00",
+    "frame": 624945,
+    "full_party_healed": true
+  },
+  "party_levels": [
+    37,
+    42,
+    37,
+    39,
+    37,
+    44
+  ],
+  "classification": "local Laya/cache",
+  "cloud_fallback": false,
+  "elite_four_complete": false,
+  "champion_complete": false,
+  "limitations": [
+    "實機學招式、原訓練收據與正常護士完成；不是四天王通關。",
+    "原始ROM、存檔、私人輸出與影片均不隨此收據上傳。"
+  ]
+}

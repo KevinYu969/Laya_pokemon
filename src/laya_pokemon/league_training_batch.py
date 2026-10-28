@@ -126,7 +126,14 @@ def needs_center(current):
         for m in current["party"])
 
 
-def validate_wild_delta(before,after):
+def validate_wild_delta(before,after,approved_learning=None):
+    if approved_learning is not None:
+        from laya_pokemon import league_training_learning_receiver as receiver
+        try:
+            return None,receiver.approved_delta(before,after,approved_learning,normalize=resources,
+                base_validator=validate_wild_delta,needs_center=needs_center)
+        except (ValueError,KeyError,TypeError,AttributeError) as exc:
+            return 'learning_approval_or_delta_invalid:'+str(exc),None
     """明示保守收據：物品、金錢、招式／成員改變一律 review，無獎勵不冒稱成功。"""
     if any(before[k] != after[k] for k in before if k != "party"):
         return "bag_money_or_world_change_requires_review", None
@@ -430,7 +437,8 @@ class TrainingBatch:
                 self.final_player=player
         if self.suspended:
             self.returned_world_seen=True  # UI可重置雙frame候選，不能抹掉已返場的歷史。
-            reason,receipt=validate_wild_delta(self.baseline,current)
+            reason,receipt=validate_wild_delta(self.baseline,current,
+                approved_learning=getattr(self,'approved_learning',None))
             if reason:return self.fail(reason)
         else:receipt=dict(total_exp_gain=0,total_pp_spent=0,needs_center=False)
         if self.closed_frame is None:

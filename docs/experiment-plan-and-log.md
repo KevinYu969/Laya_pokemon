@@ -1374,3 +1374,44 @@ root在原ledger標準reserve/commit追加normalrecovery026，appends25→26、o
 
 全套reg11真10220passed120.42秒/1SDL提示/12subtests（wrapper122.328）、369source不變，manifest40129235cb1c1e6f8e35426afc3930255e0a5f86acaae163a6c769754f3eaf7a、stdout6ad9516aa373c700f14509ff6a75a435db1e446711514472e81f4225b82bca1b。此cut含abort/healthy，不含後續完成batch低HP EOF修正；後者另132相關，未混報。聯盟路線primary40檔已核但只有stage；Lobby無Hyper/PP商品、現補藥只Hyper/FullHeal、Champion事件早於可見Hall，列需實機審查缺口，不宣稱可直通。伊布37Bite完整UI候選另stage，尚未接live/未改moves guard。四天王/冠軍/名人堂未完，本機Laya/cache逐鍵，雲端工程審查另計。
 
+
+## 84. 2026-10-28 訓練檔案分享鎖修復、伊布瀕死教訓與37級學招式停點
+
+17:37前原第26趟reserve因Windows os.replace WinError5停下。保留原error/reserve及唯一temp，核對原plan、temp、完整ledger與鎖後完成同一筆交易；沒有重seed、退還已花預算或建立假趟次。新增只對該replace的PermissionError最多8次、每次0.05秒且每次重新核對來源/鎖/期限的重試，103相關測試2.04秒通過。原job起點16:45:10.2817838、14400秒、1000趟與20:45:10.2817838期限不變。
+
+17:39:19.242204，第35趟伊布36級HP48/93，面對Marowak40繼續Quick Attack後遭Bone Club瀕死（380721）；沒有觀察到暴擊文字，不推斷暴擊。Lapras普通換入Surf取勝，17:39:21.524527取得708 EXP，伊布0 EXP；沒有全隊失敗。382449因party_attrition停止。具名root審查中止原失敗batch，保留原controller/baseline/pending/errorNone/已花calls及時計，另記abort而非成功。18:13:01.006421兩fresh382449/382489可正常返回；18:14:08.284862正常護士EOF387585，全六人HP/status/PP恢復，沒有寫RAM、重載存檔或回溯。
+
+教訓：半血才換人對高傷害野怪太晚。健康支援策略改為即使滿血，只要完整HUD核實、健康無異常bench有可靠超剋招且實際chooser分數超過現任2.5倍，就正常換人；低HP門檻提高至2/3，保留捕捉、固定傷害40與無PP優先順序。551相關測試6.06秒、12 subtests通過；FNT/parent/EOF/share等170項4.87秒通過。這些是具體失敗後修正，不把Lapras單獨獲獎算成全隊升級成功。
+
+18:16:05.285367 watch5續原job；18:23:30.062891實機frame617241，伊布自然升37，停在「EEVEE is trying to learn」。此時隊伍等級37/42/37/39/37/44，尚未選招。工程整合正常UI學Bite取代Tackle、真dispatcher ACK與原訓練收據接收；截至本段記錄，93項canonical UI/adapter/batch與34 subtests通過，尚未實機按下學招式選項，不宣稱已學會。工程review暫停不重設原field spent；後續只以新模擬器frame推進原field active clock，整體job牆鐘期限照常流逝。
+
+GitHub備份另遇non-fast-forward：本機已保留a38db90，遠端c9c9731含另兩筆reader說明更新，唯一同名修改README。遵照既有備份規則，未force、未merge/rebase或自動解衝突；已向Kevin提出保留兩邊且僅無衝突才整合的待答問題，遊戲工作不受影響。素材、ROM、存檔、私人輸出未推送。即時PyBoy framebuffer維持本機8767；分類/逐鍵仍本機Laya/cache、cloud_fallback=false，Strata配置未改。八徽章已完成，四天王、冠軍與名人堂仍未完成。
+
+
+## 85. 2026-10-28 伊布37真學Bite、修復過早確認提示，原訓練收據與護士閉合
+
+18:47恢復原game29/native，經真實正常Delete YES／四招選單選Tackle／And頁、逐次原dispatcher ACK，伊布招式實際成[44,28,98,39]、Bite PP25。原訓練c在617241已記舊封包，所以首次可信學習接管只回同幀hint、不再重入原batch；後續新frame沿原c/frame_clock，原baseline/started/spent不重設，20:45:10總牆鐘期限不變。原proof只有完成並單次consume才可授權精確Tackle→Bite；JSON不能給授權，也不憑招式改變就宣稱學習流程完成。canonical UI/adapter/batch 93項＋34subtests通過，receiver/supervisor/proof/舊學招326項＋10subtests通過。
+
+實機618121/618161完整Learned文字已有!，但618161尚未出現▼時按A（原request12，真執行至618201），遊戲沒有關頁；618241才首觀測▼，後續只WAIT而耗盡31次，18:47:55.092051停619401。具體教訓：文字完整及已送A不等於遊戲已接受輸入，需可操作提示和真關頁。未重做戰鬥、未回讀存檔。封存619401原plan/review/state/summary與steps100四條原事件，具名root審查保留原proof/core與ACK list、55calls/31waits/started617241及舊pending/ACK/兩learned frames在歷史，僅重開最多8次WAIT／2個新A的關頁子流程，仍受原160calls/3600frames限制。新動作要求完整Learned＋▼與兩fresh觀測；原歷史不退款。當前_SESSION實際registry identity也核對才遷移。
+
+19:01:43.547021真正完成EOF619929：新fresh learned frames619481/619601，原dispatcher request13在619601按A、619641執行完，619681看見來源可核的Lapras EXP提示並交還戰鬥；原batch完整閉合，總EXP200、PP1。reviewed closure只用5WAIT／1新A，舊失敗ACK與error仍在學習收據歷史；原opaque authority投影及EOF／同job continuity均驗過。19:03:24.337924正常石英護士EOF624945，六人HP/status/PP全滿；等級37/42/37/39/37/44，下一首位按正常隊伍選單換為較缺EXP的Nidoking。
+
+整合中也遇兩個測試接線問題：普通closure stub不接受無用途now=None，改成只有學習clock存在才傳，不放寬實際guard，47項重過；PowerShell字串引號使來源pin更新指令失敗，12個adapter測試按規則拒絕舊pin，改明確patch proof SHA後95項／44subtests／2.74秒通過，未在該失敗測試切點送出新遊戲鍵。proof f33f570c020cd69961f93189d81af080d5b042bedff3296576f430c780e9b509；levelup來源fb5保持，future選招將獨立模組以免破壞Bite契約。
+
+新影片兩段：14秒正常換Fearow、Drill Peck超有效、Eevee/Fearow各427 EXP；17.8秒正常走回護士並HEAL。來源15fps→展示60fps，僅PTS四倍，840／1068全部影格像素SHA與來源相同，10張QA由素材agent實看、root再看超有效頁並核兩影片SHA。檔在本機outputs/blog-assets/training-20261028，影片被gitignore；公開只整理results/training-media-20261028.json。沒有網站發布。四天王／冠軍仍未完成，分類仍本機Laya/cache、cloud_fallback=false，雲端只做工程審查與驗證。
+
+
+## 86. 2026-10-28 原生換人弱敵鼓勵訊息、同源合字與畫面延遲修正
+
+19:05啟watch6原job持續訓練至第73趟。19:11:11.995051停770673、wild_retreat_pending_observation_or_owner_changed：Nidoking37 69/125對Marowak40，原switch已經一般選單選Lapras並按SWITCH，畫面正在印「The enemy's we」。全六存活，不是敗北或換人失敗。原rows解碼只白名單其他既知合字位置，原生單tile `'s`位於(10,14)被誤拒；同時缺少這個source送出頁家族。
+
+先封存原plan/review/state/summary，再暫時加入只讀診斷hook，兩次fresh getter同frame770673，僅返回campaign_review，不送遊戲鍵或推進frame；原parent bytes已恢復f5623f497ee56d37e7c62a289ee93f0043f8736bd4a184919146bebf5fac3b9b。診斷真D014=19（Lapras），畫面還顯示Nidoking，符合固定a536 core流程先LoadBattleMonFromParty、PrintSendOutMonMessage後DrawPlayerHUD。原switch identity/calls10/waits1/started770185/last770545/selected與requested保持；field原calls47/waits0/requests18/disp17/errorNone保持。
+
+修正只在既有requested wild switch接受source精確「The enemy's weak!／Get'm! LAPRAS!」逐字prefix、指定's/'m實體格；真雙讀D014/CC2F、frame/raw單野戰/目標19及唯一index5一致，才WAIT到原新HUD或完整送出頁；任意多字元格與未知頁仍拒。具名770673 root cap核原native owner、原switch identity／hash、完整33peers、原plan／四原件、spent與headroom，原error移到歷史、原record不重建也不退計數。同幀遷移只WAIT不再送舊field packet；原field clock綁到整個batch真完成，不能在switch子流程交還就改回牆鐘。總job期限20:45:10照常流逝。
+
+19:29:56.646745真完成原野戰EOF772537：原closed frames772417/772457，EXP708、PP2；正常換Lapras後贏，沒有新FNT或存檔回讀。watch7再續原job回護士與輪流訓練。戰鬥／野戰／capture／fixed40／noPP及parent clock共1708項、12subtests、12.15秒通過，另53項parent/clock/FNT 1.35秒通過。私人原始診斷與cap只本機；公開收據另整理。新的clock registry保留原switch物件及歷史，正常完成後標done。
+
+完整reg12此前真10311 passed、59 subtests、1既有SDL提示，pytest118.10秒／wrapper119.906秒，382份source前後不變；manifest fb7a80149724f7151831e6a7b248e45f36ba13461c7bd08383b8ae96f460cceb，stdout f62567aadeff4201cf0a56a9b6085e7e2a44e3c0dbccdf8f947c7cf2c70683ab。此cut包含真Bite receiver／prompt修復／future三選招，不包含本節後續weak sendout修正，後者另1708相關，沒有混報全套覆蓋。
+
+固定primary六檔另核：Venusaur43 Growth、Fearow43 Agility、Eevee45 TakeDown採正常Delete NO→Abandon YES→DidNotLearn，精確原四招與全資源不變才可完成，獨立module不動Bite fb5來源；6候選及244整合項通過，尚待各自然事件實機。石英正常商店Full Restore6/Revive4候選另stage，24primary吻合a536、20測試／獨立覆核通過，未接線、未購買，不宣稱已備貨。全隊仍訓練中，四天王／冠軍未完成；逐鍵本機Laya/cache，GPT僅工程審查，沒有GPT分類呼叫。GitHub分岔仍待Kevin既有問題回覆，未force或自行整合。
+

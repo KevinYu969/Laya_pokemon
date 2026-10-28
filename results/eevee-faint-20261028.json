@@ -1,0 +1,69 @@
+{
+  "baseline_rewritten": false,
+  "blackout": false,
+  "cloud_classification": false,
+  "correction": {
+    "full_hp_support_score_margin": 2.5,
+    "healthy_support_hp_fraction": "3/4",
+    "low_hp_support_score_margin": 0.75,
+    "low_hp_threshold_fraction": "2/3",
+    "normal_healthy_type_support_can_switch_at_full_hp": true,
+    "related_passed": 551,
+    "related_seconds": 6.06
+  },
+  "critical_hit_confirmed": false,
+  "date": "2026-10-28",
+  "elite_four_complete": false,
+  "fainted_species": [
+    102
+  ],
+  "game": "game29",
+  "lapras_ko_and_exp_observed": 708,
+  "limitations": [
+    "本收據截止於真倒下與停檢，不冒稱已完成正常回護士。",
+    "沒有觀測到要害訊息，不能把倒下歸因為要害。",
+    "策略修正已純測試，尚未在此停點後實機續行。"
+  ],
+  "observed_enemy_move": "BONE_CLUB",
+  "opponent": "MAROWAK",
+  "opponent_level": 40,
+  "original_deadline_unchanged": true,
+  "outing": 35,
+  "owner_step": "league-six-party45-game29-20261028-069-067",
+  "preceding_hp": {
+    "hp": 48,
+    "max_hp": 93
+  },
+  "remaining_five_alive": true,
+  "review_frame": 382449,
+  "source_events": [
+    {
+      "at": "2026-10-28T09:39:21.438134+00:00",
+      "frame": 382193,
+      "role": "enemy_ko",
+      "source_line_sha256": "ad948157a4afd93a224d724f81ddc6e392d0b41c13747dfd5b928eb031524c9d"
+    },
+    {
+      "at": "2026-10-28T09:39:19.242204+00:00",
+      "frame": 380721,
+      "role": "faint",
+      "source_line_sha256": "763f286a7be28ac3c652766a2b9e65aadb323d8e826bb69eddaca5d2cc4e293f"
+    },
+    {
+      "at": "2026-10-28T09:39:21.524527+00:00",
+      "frame": 382321,
+      "role": "reward",
+      "source_line_sha256": "8aef067f90339369267253b447577de8e02e041da3b27d8253c7743763931209"
+    }
+  ],
+  "source_location": {
+    "map_id": 194,
+    "x": 28,
+    "y": 7
+  },
+  "status": "reviewed_trainee_faint_recovery_pending",
+  "successful_training_batch": false,
+  "trainee": "EEVEE",
+  "trainee_exp_this_battle": 0,
+  "trainee_level": 36
+}

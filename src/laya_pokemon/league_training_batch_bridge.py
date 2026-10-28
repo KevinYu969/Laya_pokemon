@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import time
 
-PURE_SHA256S = ('a1738fcbd0ac9794c6b8bf15645dd15d7397bfc5d2d480483381849fdd42728a', '3673aaf481caf3c62d4e11887c094b6b15e88fa1558532a7fdfac8effc07f487')
+PURE_SHA256S = ('77520e26f3f016fd5893838ddfe061198b3a71e20757c7d60b1278e7fefaee18', '46147c7d6bb92bbd9dd7afd82e81774068310fdd5b8aa50820346186cc613082')
 
 
 def _load_exact():
@@ -82,6 +82,8 @@ def _abort_snapshot(c):
 
 
 def _abort_record_valid(step_id,r):
+    if type(r) is dict and r.get('kind')=='reviewed_eevee_faint382449_to_indigo_v1':
+        return _fnt_abort_record_valid(step_id,r)
     try:
         c=r['controller']
         return (type(step_id) is str and type(r) is dict
@@ -101,6 +103,8 @@ def _abort_record_valid(step_id,r):
 
 
 def _abort_wait(step_id):
+    if _REVIEWED_ABORTS[step_id].get('kind')=='reviewed_eevee_faint382449_to_indigo_v1':
+        return _fnt_abort_wait(step_id)
     done=_REVIEWED_ABORTS[step_id]['done']
     out=dict(phase='campaign_review' if done else 'training_batch_owned',
         objective='Wait.',available_actions=['wait'],training_batch_aborted=done,
@@ -365,7 +369,7 @@ def _zero_completion_proven(controller,pyboy,step_id,step,job,state,signal,resul
                 or c.closed_player!=tuple(p['player']) or loc!={'map_id':194,'x':p['player'][0],'y':p['player'][1]}):return False
         current=batch.resources(state['progress']);source=batch.resources(signal.get('progress'))
         if current is None or current!=source or current!=c.closed_resources or current!=closed.get('resources'):return False
-        reason,delta=batch.validate_wild_delta(c.baseline,current)
+        reason,delta=batch.validate_wild_delta(c.baseline,current,approved_learning=_learning_evidence(c,pyboy,step_id))
         return (reason is None and all(_canonical(r.get(k))==_canonical(v) for k,v in delta.items())
                 and type(r.get('total_exp_gain')) is int and r['total_exp_gain']>0)
     except (KeyError,TypeError,ValueError,AttributeError,IndexError):return False
@@ -427,6 +431,9 @@ def context(pyboy,state,plan,step_id,text,grid,previous,*,now=None):
         _CONTROLLERS[step_id]=controller;_BINDINGS[step_id]=binding;_OWNERS[step_id]=pyboy
         controller._zero_bridge_origin=dict(native=pyboy,controller=controller,binding=_BINDINGS[step_id],ack=None,wild=None,closed=None)
     controller.__class__=batch.TrainingBatch
+    if ((step_id in _LEARNING or getattr(controller,'approved_learning',None) is not None)
+            and _learning_evidence(controller,pyboy,step_id) is None):
+        return _review('original_learning_approval_changed_or_missing',step_id)
     pending_before=controller.pending
     executed_before=type(pending_before) is dict and pending_before.get('executed') is True
     seen_before=controller.seen_wild
@@ -483,3 +490,251 @@ def pre_attrition_closure_context(pyboy,state,plan,step_id,attrition,text,grid,p
     if out.get("available_actions")!=["wait"]:
         return _review("attrition_closure_must_only_wait",step_id)
     return out,next_id
+
+
+# Appended to the pinned bridge by build_candidate.py; no file/native mutations.
+_FNT_KIND = 'reviewed_eevee_faint382449_to_indigo_v1'
+_FNT_CAP_SHA = 'e6d1633738687c674bb5914ec78b8339499ad9a9fefcdab9c2e304f4c46d7c4e'
+_FNT_STEP = 'league-six-party45-game29-20261028-069-067'
+_FNT_ERRORS = (None, 'league_training_batch_fainted_party_requires_review')
+
+
+def _fnt_review(reason,step_id):
+    # A failed audit must not change c.error, _ERRORS or the original transaction.
+    record=_REVIEWED_ABORTS.get(step_id) if type(_REVIEWED_ABORTS) is dict else None
+    if type(record) is dict and record.get('kind')==_FNT_KIND:
+        record['review_error']=record.get('review_error') or reason
+        reason=record['review_error']
+    return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+        review_reason='training_batch_reviewed_fnt_abort_'+reason,
+        training_batch_complete=False,training_batch_aborted=False),step_id
+
+
+def _fnt_abort_record_valid(step_id,r):
+    try:
+        c=r['controller'];frames=r['closed_frames'];cap=r['capsule']
+        return (step_id==_FNT_STEP and type(r) is dict and r.get('kind')==_FNT_KIND
+            and _CONTROLLERS.get(step_id) is c and _OWNERS.get(step_id) is r['native']
+            and _BINDINGS.get(step_id) is r['binding'] and c.pending is r['pending']
+            and c.last_packet is r['last_packet'] and c.baseline is r['baseline']
+            and step_id not in _COMPLETED and c.complete is False
+            and c.error==r['retained_error'] and c.error in _FNT_ERRORS
+            and _abort_snapshot(c)==r['snapshot'] and _digest(c.last_packet)==r['packet_sha256']
+            and _digest(c.baseline)==cap['baseline_sha256']
+            and (step_id in _ERRORS,_ERRORS.get(step_id))==r['bridge_error']
+            and r['capsule_sha256']==_FNT_CAP_SHA and _digest(cap)==_FNT_CAP_SHA
+            and type(r['done']) is bool and type(frames) is list
+            and len(frames)==(2 if r['done'] else 1)
+            and all(type(f) is int for f in frames) and frames[0]==382449
+            and (not r['done'] or 382449<frames[1]<=382529)
+            and r['abort_frame']==frames[-1] and type(r['abort_packet_sha256']) is str
+            and len(r['abort_packet_sha256'])==64
+            and (r.get('review_error') is None or type(r['review_error']) is str and bool(r['review_error']))
+            and (not r['done'] or r.get('review_error') is None))
+    except (KeyError,TypeError,ValueError,AttributeError,RecursionError):return False
+
+
+def _fnt_abort_wait(step_id):
+    r=_REVIEWED_ABORTS[step_id]
+    if r.get('review_error'):return _fnt_review(r['review_error'],step_id)
+    done=r['done']
+    out=dict(phase='campaign_review' if done else 'training_batch_owned',objective='Wait.',
+        available_actions=['wait'],training_batch_aborted=done,training_batch_complete=False,
+        training_batch_owner_step=step_id,training_batch_abort_kind=_FNT_KIND,
+        training_batch_retained_error=r['retained_error'],
+        training_batch_tactic='reviewed_fnt_abort_closed_world' if done else 'reviewed_fnt_abort_await_second_world',
+        suppress_navigation_stall=True,suppress_blocked_edge_learning=True)
+    if done:out['review_reason']='training_batch_reviewed_fnt_abort_ready_for_recovery'
+    return out,step_id
+
+
+def _fnt_source_events_valid(cap):
+    try:
+        events=cap['source_events'];frames=[]
+        for key in ('faint','enemy_ko','reward'):
+            event=events[key];state=event['record']['state'];native=state['battle_state']
+            if (type(event.get('line_number')) is not int or event['line_number']<=0
+                    or type(event.get('line_sha256')) is not str or len(event['line_sha256'])!=64
+                    or type(state.get('frame')) is not int or type(native.get('raw')) is not int
+                    or native['raw']!=1 or native.get('kind')!='wild' or native.get('active') is not True
+                    or native.get('opponent_species')!='MAROWAK'
+                    or native.get('wild_opponent_species')!='MAROWAK'):return False
+            frames.append(state['frame'])
+        if frames!=[380721,382193,382321]:return False
+        def visible(key):return ' '.join(str(v).strip() for v in events[key]['record']['state']['visible_text_candidates'])
+        return ('EEVEE fainted!' in visible('faint') and 'Enemy MAROWAK fainted!' in visible('enemy_ko')
+            and 'LAPRAS gained 708 EXP. Points!' in visible('reward'))
+    except (KeyError,TypeError,ValueError,AttributeError):return False
+
+
+def reviewed_fnt_abort(pyboy,state,plan,step_id,text,grid,capsule,*,expected_capsule_sha256,
+                       original_controller,original_binding,original_pending,original_last_packet):
+    """One root-reviewed named faint, not successful training or a cleared failure.
+
+    Root first pins the complete cap, clears all peers except this original batch,
+    and supplies the original registry objects. Only two fresh WAIT observations
+    are admitted. This API never calls TrainingBatch.context or alters its state.
+    Ordinary exact070 recovery/lead UI/ledger handling belongs to the parent.
+    """
+    try:
+        prior=_REVIEWED_ABORTS.get(_FNT_STEP) if type(_REVIEWED_ABORTS) is dict else None
+        if step_id!=_FNT_STEP and prior and prior.get('done') is True:return None
+        active=_active()
+        if active is None:return _fnt_review('original_registry_unverified',step_id)
+        if (type(capsule) is not dict or expected_capsule_sha256!=_FNT_CAP_SHA or _digest(capsule)!=_FNT_CAP_SHA
+                or capsule.get('kind')!=_FNT_KIND or capsule.get('game_id')!='game29'
+                or type(step_id) is not str or step_id!=_FNT_STEP or capsule.get('step_id')!=step_id
+                or type(capsule.get('source_frame')) is not int or capsule['source_frame']!=382449
+                or capsule.get('source_location')!={'map_id':194,'x':28,'y':7}
+                or capsule.get('fainted_species')!=102 or capsule.get('healthy_lead_species')!=19
+                or capsule['root_review'].get('refund') is not False
+                or capsule['root_review'].get('baseline_rewritten') is not False
+                or capsule['root_review'].get('blackout') is not False
+                or capsule['root_review'].get('faint_retained') is not True
+                or not _fnt_source_events_valid(capsule)):
+            return _fnt_review('root_cap_unverified',step_id)
+        c=_CONTROLLERS.get(step_id);prior=_REVIEWED_ABORTS.get(step_id)
+        if (active!=(set() if prior and prior['done'] else {step_id})
+                or c is None or c is not original_controller or _OWNERS.get(step_id) is not pyboy
+                or _BINDINGS.get(step_id) is not original_binding or c.pending is not original_pending
+                or c.last_packet is not original_last_packet or c.owner!=step_id or c.error not in _FNT_ERRORS
+                or c.complete is not False or c.seen_wild is not True or c.suspended is not True
+                or c.returned_world_seen is not False or c.receipt is not None or c.outcome is not None
+                or any(getattr(c,k) is not None for k in ('closed_frame','closed_resources','closed_player','final_player'))
+                or type(c.pending) is not dict or c.pending.get('executed') is not True
+                or type(c.last_packet) is not tuple or len(c.last_packet)!=6
+                or type(c.last_frame) is not int or not 0<=c.last_frame<=382449):
+            return _fnt_review('original_owner_or_controller_unverified',step_id)
+        ids=[s.get('id') for s in plan['steps'] if type(s) is dict]
+        matches=[s for s in plan['steps'] if type(s) is dict and s.get('id')==step_id]
+        if (plan.get('mode')!='league_campaign' or len(ids)!=len(plan['steps']) or len(ids)!=len(set(ids))
+                or len(matches)!=1 or not _explicit(matches[0]) or plan.get('training_job')!=capsule['job']
+                or _digest(plan)!=capsule['plan_sha256'] or _digest(capsule['original_plan'])!=capsule['plan_sha256']
+                or original_binding!=(MECHANIC,_canonical(matches[0]),capsule['job'])
+                or _digest(original_binding)!=capsule['binding_sha256']
+                or _digest(c.baseline)!=capsule['baseline_sha256']
+                or _digest(capsule['baseline'])!=capsule['baseline_sha256']
+                or _digest(capsule['recovery_steps'])!=capsule['recovery_steps_sha256']):
+            return _fnt_review('original_plan_binding_or_baseline_unverified',step_id)
+        frame=state.get('frame') if type(state) is dict else None
+        loc={'map_id':194,'x':28,'y':7}
+        if (type(frame) is not int or not 382449<=frame<=382529 or prior is None and frame!=382449
+                or type(pyboy.frame_count) is not int or pyboy.frame_count!=frame
+                or state.get('location')!=loc or _digest(state.get('progress'))!=capsule['progress_sha256']
+                or any(type(v) is not int for v in state['location'].values())):
+            return _fnt_review('fresh_frame_or_source_progress_unverified',step_id)
+        from pyboy.plugins import game_wrapper_pokemon_gen1_constants as sdk
+        signal=batch.read_training_observation(pyboy,frame,sdk)
+        native=signal.get('battle',{});current=batch.resources(state.get('progress'))
+        if (signal.get('read_valid') is not True or signal.get('idle') is not True
+                or signal.get('observation_frame')!=frame or signal.get('location')!=loc
+                or signal.get('progress')!=state.get('progress') or state.get('progress')!=capsule['progress']
+                or type(native.get('raw')) is not int or native['raw']!=0 or native.get('kind')!='none'
+                or native.get('active') is not False or type(native.get('observation_frame')) is not int
+                or native['observation_frame']!=frame or state.get('battle_state')!=native
+                or not batch.closed_world(text,grid,(28,7),frame) or current is None
+                or len(current['party'])!=6 or {m['species'] for m in current['party']}!=batch.ROSTER
+                or [m['species'] for m in current['party'] if m['hp']==0]!=[102]
+                or any(m['status']!=0 or m['hp']<=0 and m['species']!=102 for m in current['party'])):
+            return _fnt_review('closed_native_world_or_unique_faint_unverified',step_id)
+        if prior is not None:
+            if not _fnt_abort_record_valid(step_id,prior):return _fnt_review('frozen_record_changed',step_id)
+            if prior.get('review_error'):return _fnt_review(prior['review_error'],step_id)
+            if frame<prior['closed_frames'][-1]:return _fnt_review('fresh_frame_regressed',step_id)
+            packet_sha=_digest((state,text,grid,signal))
+            if frame==prior['abort_frame'] and packet_sha!=prior['abort_packet_sha256']:
+                return _fnt_review('same_frame_observation_conflict',step_id)
+            if not prior['done'] and frame>prior['closed_frames'][0]:
+                prior['closed_frames'].append(frame);prior['done']=True
+                prior['abort_frame']=frame;prior['abort_packet_sha256']=packet_sha
+            return _fnt_abort_wait(step_id)
+        record=dict(kind=_FNT_KIND,controller=c,native=pyboy,binding=original_binding,pending=original_pending,
+            last_packet=original_last_packet,baseline=c.baseline,snapshot=_abort_snapshot(c),
+            packet_sha256=_digest(c.last_packet),bridge_error=(step_id in _ERRORS,_ERRORS.get(step_id)),
+            retained_error=c.error,capsule=deepcopy(capsule),capsule_sha256=_FNT_CAP_SHA,
+            closed_frames=[frame],abort_frame=frame,abort_packet_sha256=_digest((state,text,grid,signal)),
+            done=False,review_error=None)
+        _REVIEWED_ABORTS[step_id]=record
+        return _fnt_abort_wait(step_id)
+    except (KeyError,TypeError,ValueError,AttributeError,IndexError,RecursionError):
+        return _fnt_review('input_or_source_unverified',step_id)
+
+
+# Appended to the original bridge; no dispatch or baseline rewriting.
+_LEARNING=globals().get('_LEARNING',{})
+
+
+def _learning_origin_valid(approval,*,completed=False):
+    try:
+        from laya_pokemon import eevee37_learning_proof as learning
+        c=approval.controller;key=c.owner;r=_LEARNING[key]
+        return (type(_LEARNING) is dict and r['approval'] is approval and r['controller'] is c
+            and _CONTROLLERS.get(key) is c and _OWNERS.get(key) is r['native'] is approval.native
+            and _BINDINGS.get(key) is r['binding'] is approval.binding
+            and c.baseline is r['baseline'] is approval.baseline and _digest(c.baseline)==r['baseline_sha256']
+            and getattr(c,'approved_learning',None) is approval and c.error is None and key not in _REVIEWED_ABORTS
+            and approval.receipt==r['receipt'] and approval.receipt_sha==r['receipt_sha256']
+            and c.intent==c.contract and r['binding']==(MECHANIC,_canonical(r['step']),r['job'])
+            and (not completed or c.complete is True and key in _COMPLETED)
+            and learning.original_controller(r['learning_binding']) is r['proof'] is approval.proof
+            and r['proof'].consumed is True
+            and learning.completed_receipt(r['learning_binding'],controller=r['proof'],consume=False)==r['receipt']
+            and _digest(r['receipt'])==r['receipt_sha256'])
+    except (KeyError,ValueError,TypeError,AttributeError):return False
+
+
+def _learning_evidence(controller,pyboy,step_id):
+    r=_LEARNING.get(step_id) if type(_LEARNING) is dict else None
+    if r is None:return None
+    approval=r.get('approval')
+    return approval if (r.get('controller') is controller and r.get('native') is pyboy
+                        and _learning_origin_valid(approval)) else None
+
+
+def consume_owned_eevee37_learning(pyboy,plan,step_id,*,original_controller,original_binding,
+                                    original_proof,learning_binding):
+    """Only the trusted caller invokes this after the original UI controller completes."""
+    try:
+        from laya_pokemon import eevee37_learning_proof as learning
+        from laya_pokemon import league_training_learning_receiver as receiver
+        c=_CONTROLLERS.get(step_id);binding=_BINDINGS.get(step_id)
+        matches=[s for s in plan['steps'] if type(s) is dict and s.get('id')==step_id]
+        if (c is not original_controller or c is None or binding is not original_binding
+                or _OWNERS.get(step_id) is not pyboy or c.owner!=step_id or c.error is not None
+                or step_id in _ERRORS or step_id in _REVIEWED_ABORTS or plan.get('training_job')!=receiver.JOB
+                or len(matches)!=1 or not _explicit(matches[0])
+                or binding!=(MECHANIC,_canonical(matches[0]),receiver.JOB)
+                or learning_binding.get('native_owner') is not pyboy
+                or learning_binding.get('job')!=receiver.JOB or learning_binding.get('owner_step')!=step_id
+                or learning_binding.get('step_sha256')!=_digest(matches[0])
+                or learning_binding.get('batch_binding_sha256')!=_digest(binding)
+                or learning_binding.get('controller_source_sha256')!=learning.CONTROLLER_SOURCE_SHA256
+                or learning.original_controller(learning_binding) is not original_proof):return None
+        if step_id in _LEARNING:return _learning_evidence(c,pyboy,step_id)
+        if (c.complete is not False or c.seen_wild is not True or c.suspended is not True
+                or c.closed_frame is not None or c.returned_world_seen is not False
+                or type(c.baseline) is not dict or getattr(c,'approved_learning',None) is not None):return None
+        peek=learning.completed_receipt(learning_binding,controller=original_proof,consume=False)
+        receiver.proof_semantics(peek,batch.resources,expected_owner=step_id,expected_step_sha=_digest(matches[0]),
+            expected_binding_sha=_digest(binding),expected_controller_sha=learning.CONTROLLER_SOURCE_SHA256)
+        after=receiver.resources(peek['after_resources'],batch.resources)
+        receiver.calculate(c.baseline,after,peek,normalize=batch.resources,base_validator=batch.validate_wild_delta,
+                           needs_center=batch.needs_center)
+        if (type(pyboy.frame_count) is not int or learning_binding.get('frame')!=pyboy.frame_count
+                or pyboy.frame_count<peek['handoff_frame']):return None
+        consumed=learning.completed_receipt(learning_binding,controller=original_proof,consume=True)
+        if consumed!=peek:return None
+        frozen_binding={**learning_binding,'battle_state':deepcopy(learning_binding.get('battle_state'))}
+        r=dict(controller=c,native=pyboy,binding=binding,baseline=c.baseline,baseline_sha256=_digest(c.baseline),
+            proof=original_proof,learning_binding=frozen_binding,receipt=deepcopy(consumed),
+            receipt_sha256=_digest(consumed),step=deepcopy(matches[0]),job=receiver.JOB)
+        approval=receiver.mint(controller=c,native=pyboy,binding=binding,baseline=c.baseline,
+            proof=original_proof,receipt=consumed,verify_origin=_learning_origin_valid)
+        r['approval']=approval;_LEARNING[step_id]=r;c.approved_learning=approval
+        return _learning_evidence(c,pyboy,step_id)
+    except (KeyError,ValueError,TypeError,AttributeError):return None
+
+
+def completed_learning_authority(pyboy,step_id):
+    c=_CONTROLLERS.get(step_id)
+    return _learning_evidence(c,pyboy,step_id) if c is not None and c.complete is True else None

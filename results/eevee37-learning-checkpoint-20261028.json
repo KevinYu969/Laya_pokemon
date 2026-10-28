@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-28",
+  "status": "learned_bite_dismissal_review_pending",
+  "live_game": true,
+  "source_frame": 619401,
+  "milestones": [
+    {
+      "at_taipei": "2026-10-28T18:14:08.284862+08:00",
+      "kind": "normal_nurse_full_party",
+      "frame": 387585
+    },
+    {
+      "at_taipei": "2026-10-28T18:23:30.062891+08:00",
+      "kind": "natural_eevee_level37_trying",
+      "frame": 617241
+    }
+  ],
+  "actual_move_change": {
+    "species": "EEVEE",
+    "level": 37,
+    "before": [
+      33,
+      28,
+      98,
+      39
+    ],
+    "after": [
+      44,
+      28,
+      98,
+      39
+    ],
+    "new_pp": 25
+  },
+  "issue": {
+    "kind": "early_dismiss_action_not_consumed_by_native",
+    "action_source_frame": 618161,
+    "actual_execution_end_frame": 618201,
+    "first_observed_prompt_arrow_after_action": 618241,
+    "original_error": "eevee37_source_wait_budget_exhausted"
+  },
+  "party_levels": [
+    37,
+    42,
+    37,
+    39,
+    37,
+    44
+  ],
+  "elite_four_complete": false,
+  "champion_complete": false,
+  "cloud_classification": false,
+  "limitations": [
+    "招式資料已真變動，提示關閉與原訓練收據仍待實機驗收。",
+    "此公開收據不包含ROM、存檔、原始畫面、私人路徑或主機識別。"
+  ]
+}

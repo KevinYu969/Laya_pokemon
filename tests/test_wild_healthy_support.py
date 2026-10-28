@@ -101,10 +101,31 @@ class CandidateTests(unittest.TestCase):
         self.assertEqual(out['review_reason'],'wild_retreat_pending_same_frame_conflict')
         self.assertEqual(call(mons,140)['available_actions'],['wait'])
 
-    def test_not_a_switch_when_active_above_half_and_not_resisted(self):
-        mons=party();mons[0]['hp']=50
-        self.assertEqual(call(mons)['battle_tactic'],'damage')
+    def test_already_strong_super_effective_active_does_not_switch(self):
+        mons=party()
+        self.assertEqual(call(mons,active=5)['battle_tactic'],'damage')
         self.assertIsNone(b._wild_retreat_switch)
+
+    def test_full_hp_trainee_switches_for_clear_reliable_type_advantage(self):
+        mons=party();mons[0]['hp']=90
+        out=call(mons,enemy='MAROWAK')
+        self.assertEqual(out['battle_tactic'],'switch_healthy_wild_support')
+        self.assertEqual(out['party_target_species'],19)
+        self.assertEqual(out['wild_support_trigger'],'clear_type_advantage')
+
+    def test_48_of_93_hp_does_not_wait_to_cross_half_against_marowak(self):
+        mons=party();mons[0].update(level=36,hp=48,max_hp=93)
+        out=call(mons,enemy='MAROWAK')
+        self.assertEqual(out['battle_tactic'],'switch_healthy_wild_support')
+        self.assertEqual(out['party_target_species'],19)
+        self.assertEqual(out['wild_support_trigger'],'low_hp')
+
+    def test_low_hp_snorlax_can_switch_without_requiring_two_and_half_times_power(self):
+        mons=party();mons[1]['hp']=100
+        out=call(mons,enemy='MACHOKE',active=1)
+        self.assertEqual(out['battle_tactic'],'switch_healthy_wild_support')
+        self.assertEqual(out['party_target_species'],35)
+        self.assertEqual(out['wild_support_trigger'],'low_hp')
 
     def test_resisted_full_hp_uses_healthy_super_effective_support(self):
         mons=party();mons[0]=deepcopy(mons[3]);mons.pop(3)

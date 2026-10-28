@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-28",
+  "game": "Pokémon Red, game29 recorded session",
+  "presentation_speed": 4,
+  "frame_policy": "Preserve every selected recorded frame in original order; no interpolation, duplication, or dropped frames. Lossless H.264 re-encode preserves all decoded yuv420p pixel hashes. PTS divided by four.",
+  "source_resolution": [
+    160,
+    144
+  ],
+  "source_fps": 15,
+  "display_fps": 60,
+  "clips": [
+    {
+      "file": "training-switch-exp-4x.mp4",
+      "sha256": "ca8b7520e6812b8597e366fa83f8662dff23f04e372eab402e00f8f3ff54604b",
+      "source_emulated_seconds": [
+        9032.0,
+        9088.0
+      ],
+      "frames": 840,
+      "playback_seconds": 14.0,
+      "pixel_framehash_match": true,
+      "ordered_pixel_hashes_sha256": "ecf6f785b3c69ed353724d1f8973b9c39d8c2bd29bfeda733b89de1dea6ce378",
+      "pts_spacing_seconds": 0.016666666666666666,
+      "segments": [
+        {
+          "segment": 89,
+          "video": "video-089.mp4",
+          "sha256": "4a1fa4de4562431596f65e8e12a49ebe69faa902716e6dd586c1ea11cf11ac93",
+          "segment_global_start_seconds": 8993.6,
+          "selected_frame_start": 576,
+          "selected_frame_end_exclusive": 1416,
+          "selected_first_pts_seconds": 38.4,
+          "selected_last_pts_seconds": 94.333333,
+          "source_frames": 1800
+        }
+      ],
+      "qa": [
+        {
+          "file": "training-switch-exp-4x-qa-party-switch.png",
+          "output_frame": 120,
+          "output_pts_seconds": 2.0,
+          "source_emulated_seconds": 9040.0
+        },
+        {
+          "file": "training-switch-exp-4x-qa-fearow-sendout.png",
+          "output_frame": 195,
+          "output_pts_seconds": 3.25,
+          "source_emulated_seconds": 9045.0
+        },
+        {
+          "file": "training-switch-exp-4x-qa-super-effective.png",
+          "output_frame": 450,
+          "output_pts_seconds": 7.5,
+          "source_emulated_seconds": 9062.0
+        },
+        {
+          "file": "training-switch-exp-4x-qa-eevee-exp.png",
+          "output_frame": 690,
+          "output_pts_seconds": 11.5,
+          "source_emulated_seconds": 9078.0
+        },
+        {
+          "file": "training-switch-exp-4x-qa-fearow-exp.png",
+          "output_frame": 720,
+          "output_pts_seconds": 12.0,
+          "source_emulated_seconds": 9080.0
+        }
+      ],
+      "ffprobe": {
+        "r_frame_rate": "60/1",
+        "avg_frame_rate": "60/1",
+        "time_base": "1/15360",
+        "duration": "14.000000",
+        "nb_frames": "840"
+      },
+      "visible_evidence": [
+        "EEVEE switches to FEAROW",
+        "DRILL PECK against MACHOKE",
+        "It’s super effective",
+        "EEVEE and FEAROW each gain 427 EXP",
+        "FEAROW grows to level 39"
+      ]
+    },
+    {
+      "file": "training-return-nurse-4x.mp4",
+      "sha256": "4d7a6a050019529400919483578c03708fd14349b788d4f6d1619dd2e6c5f13f",
+      "source_emulated_seconds": [
+        7892.0,
+        7963.2
+      ],
+      "frames": 1068,
+      "playback_seconds": 17.8,
+      "pixel_framehash_match": true,
+      "ordered_pixel_hashes_sha256": "2b01d0cd003620e89a19c24c8addf2410c364334302db1dd772c4fd94a4bcfa1",
+      "pts_spacing_seconds": 0.016666666666666666,
+      "segments": [
+        {
+          "segment": 79,
+          "video": "video-079.mp4",
+          "sha256": "66354933a259df356afe4c7a79b9fc921be096aff8b83c860ffb47574134b97c",
+          "segment_global_start_seconds": 7788.0,
+          "selected_frame_start": 1560,
+          "selected_frame_end_exclusive": 1804,
+          "selected_first_pts_seconds": 104.0,
+          "selected_last_pts_seconds": 120.2,
+          "source_frames": 1804
+        },
+        {
+          "segment": 80,
+          "video": "video-080.mp4",
+          "sha256": "8315ccf7dda2742fdaf2ee79b7369718e922565e84b83656404567546e4802df",
+          "segment_global_start_seconds": 7908.266666666666,
+          "selected_frame_start": 0,
+          "selected_frame_end_exclusive": 824,
+          "selected_first_pts_seconds": 0.0,
+          "selected_last_pts_seconds": 54.866667,
+          "source_frames": 1804
+        }
+      ],
+      "qa": [
+        {
+          "file": "training-return-nurse-4x-qa-normal-walk.png",
+          "output_frame": 75,
+          "output_pts_seconds": 1.25,
+          "source_emulated_seconds": 7897.0
+        },
+        {
+          "file": "training-return-nurse-4x-qa-outside-center.png",
+          "output_frame": 435,
+          "output_pts_seconds": 7.25,
+          "source_emulated_seconds": 7921.0
+        },
+        {
+          "file": "training-return-nurse-4x-qa-center-arrival.png",
+          "output_frame": 645,
+          "output_pts_seconds": 10.75,
+          "source_emulated_seconds": 7935.0
+        },
+        {
+          "file": "training-return-nurse-4x-qa-heal-selection.png",
+          "output_frame": 795,
+          "output_pts_seconds": 13.25,
+          "source_emulated_seconds": 7945.0
+        },
+        {
+          "file": "training-return-nurse-4x-qa-fighting-fit.png",
+          "output_frame": 996,
+          "output_pts_seconds": 16.6,
+          "source_emulated_seconds": 7958.4
+        }
+      ],
+      "ffprobe": {
+        "r_frame_rate": "60/1",
+        "avg_frame_rate": "60/1",
+        "time_base": "1/15360",
+        "duration": "17.800000",
+        "nb_frames": "1068"
+      },
+      "visible_evidence": [
+        "Normal overworld walking from cave exit via route to Pokémon Center",
+        "Nurse HEAL choice",
+        "Your Pokémon are fighting fit"
+      ]
+    }
+  ],
+  "limitations": [
+    "4倍為錄影片段展示速度，不代表模型決策或端到端執行速度。",
+    "保全來源影片已記錄的15fps影格；不宣稱涵蓋模擬器所有原生影格。",
+    "未宣稱已通關四天王。"
+  ],
+  "verification": {
+    "status": "passed",
+    "method": "Actual ffprobe frame PTS and counts checked; all selected decoded yuv420p SHA-256 frame hashes equal output in order; five extracted PNGs per clip inspected visually.",
+    "timeline_basis": "Segment starts use cumulative sealed segment frame counts divided by recorded 15fps, cross-checked against each metadata emulated_seconds within 0.002s; not native-frame/7200 division."
+  },
+  "publication_status": "local_media_ready_not_uploaded",
+  "notes_zh_tw": [
+    "兩片為真實PyBoy錄影；僅展示4倍速，不是即時通關耗時。",
+    "影片與截圖留在本機；GitHub只備份整理過的驗證收據。"
+  ]
+}

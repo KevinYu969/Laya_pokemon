@@ -95,6 +95,8 @@ for _bridge in _LEAGUE_FIELDS:importlib.reload(_bridge)
 del _bridge
 from . import owned_field_medicine
 importlib.reload(owned_field_medicine)
+from . import training_switch_review
+importlib.reload(training_switch_review)
 from . import league_recovery
 importlib.reload(league_recovery)
 from . import recovery_field_medicine
@@ -199,6 +201,66 @@ _BATCH_TURN_PLAN_CANONICAL_SHA256 = '74e1eb74747aa8e120e5d1216d776d03667b2be905f
 _BATCH_TURN_NATIVE_WITNESS_SHA256 = 'ee037a62d72a361f9f39eb551df0de0222b10bd99d3c5002edd02980d2899013'
 
 
+_TRAINING_FNT_STEP = 'league-six-party45-game29-20261028-069-067'
+_TRAINING_FNT_CAP_BYTES_SHA = 'd612826b098aa53a4997960d4cf599d6250bace8348c93b78f2073a5487722c6'
+_TRAINING_FNT_CAP_CANONICAL_SHA = 'e6d1633738687c674bb5914ec78b8339499ad9a9fefcdab9c2e304f4c46d7c4e'
+
+
+def _read_training_fnt_review_capsule():
+    from pathlib import Path
+    from hashlib import sha256
+    import json
+    root=Path(__file__).resolve().parents[2]
+    raw=(root/'.local/training382449-faint-review.json').read_bytes()
+    if sha256(raw).hexdigest()!=_TRAINING_FNT_CAP_BYTES_SHA:raise ValueError('fnt_capsule_bytes_changed')
+    cap=json.loads(raw)
+    if owned_field_medicine.canonical_sha256(cap)!=_TRAINING_FNT_CAP_CANONICAL_SHA:raise ValueError('fnt_capsule_changed')
+    for label,key,suffix in [('review','review_sha256','json'),('state','state_sha256','state'),('plan','plan_bytes_sha256','json')]:
+        proof=(root/f'.local/gym-reviewed-history/training382449-before-fnt-recovery-{label}.{suffix}').read_bytes()
+        if sha256(proof).hexdigest()!=cap[key]:raise ValueError('fnt_original_evidence_changed')
+    for role,file,line_no in [('faint','steps-064.jsonl',77),('enemy_ko','steps-065.jsonl',5),('reward','steps-065.jsonl',6)]:
+        event=cap['source_events'][role]
+        if event['file']!=file or event['line_number']!=line_no:raise ValueError('fnt_source_changed')
+        line=(root/'outputs/league-campaign-20261028-29/game'/file).read_bytes().splitlines()[line_no-1]
+        if sha256(line).hexdigest()!=event['line_sha256'] or json.loads(line)!=event['record']:
+            raise ValueError('fnt_source_record_changed')
+    return cap
+
+
+def _training_fnt_abort_review_context(pyboy,state,plan,step_id):
+    """Reviewed one-member faint; keep the failed batch and use normal nurse recovery."""
+    b=league_training_batch_bridge;key=_TRAINING_FNT_STEP
+    records=getattr(b,'_REVIEWED_ABORTS',None)
+    record=records.get(key) if type(records) is dict else None
+    if type(record) is dict and record.get('done') is True and step_id!=key:return None
+    c=b._CONTROLLERS.get(key) if type(b._CONTROLLERS) is dict else None
+    if c is None:return None
+    def reject(reason):
+        return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+            review_reason='training_fnt_abort_parent_'+reason),step_id
+    try:
+        peers=_field_medicine_peers();done=type(record) is dict and record.get('done') is True
+        expected=set() if done else {key}
+        if (step_id!=key or type(peers) is not dict or set(peers)!=owned_field_medicine.PEER_NAMES
+                or any(type(v) is not set or (v!=expected if k=='league_training_batch' else bool(v)) for k,v in peers.items())
+                or owned_field_medicine._active()!=set() or b._active()!=expected or b._OWNERS.get(key) is not pyboy
+                or any(x is not b and x._active()!=set() for x in _LEAGUE_FIELDS)):
+            return reject('owner_or_peers_unverified')
+        cap=_read_training_fnt_review_capsule()
+        if (type(state) is not dict or type(state.get('frame')) is not int or not 382449<=state['frame']<=382529
+                or pyboy.frame_count!=state['frame'] or owned_field_medicine.canonical_sha256(plan)!=cap['plan_sha256']):
+            return reject('native_plan_or_frame_unverified')
+        from .observation import read_visible_text
+        result=b.reviewed_fnt_abort(pyboy,state,plan,key,read_visible_text(pyboy),
+            read_world_grid(pyboy,state['location']),cap,expected_capsule_sha256=_TRAINING_FNT_CAP_CANONICAL_SHA,
+            original_controller=c,original_binding=b._BINDINGS.get(key),
+            original_pending=c.pending,original_last_packet=c.last_packet)
+        return _eevee37_closed_abort_cleanup(pyboy,result)
+    except (OSError,AttributeError,KeyError,TypeError,ValueError,IndexError):return reject('evidence_or_preflight_unverified')
+
+
+
+
 _TRAINING_ESCAPE_STEP = 'league-six-party45-game29-20261028-025-067'
 _TRAINING_ESCAPE_CAP_BYTES_SHA = '65078447b775b6c9dca8d2797e00f7aa43cb5e397d41f836edd1200c9e12bfa4'
 _TRAINING_ESCAPE_CAP_CANONICAL_SHA = '9e71713eaa0434b173a4333745e04a231efd1dbcd19932e3d61da0e79f89cb3a'
@@ -228,14 +290,15 @@ def _training_escape_abort_review_context(pyboy,state,plan,step_id):
     """Root's named no-reward escape review; never records a victory."""
     b=league_training_batch_bridge;key=_TRAINING_ESCAPE_STEP
     records=getattr(b,'_REVIEWED_ABORTS',None)
-    if type(records) is dict and records.get(key,{}).get('done') is True and step_id!=key:return None
+    record=records.get(key) if type(records) is dict else None
+    if type(record) is dict and record.get('done') is True and step_id!=key:return None
     c=b._CONTROLLERS.get(key) if type(b._CONTROLLERS) is dict else None
     if c is None or getattr(c,'error',None)!='league_training_batch_single_wild_reward_or_pp_bound_unverified':return None
     def reject(reason):
         return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
             review_reason='training_escape_abort_parent_'+reason),step_id
     try:
-        peers=_field_medicine_peers();done=type(records) is dict and records.get(key,{}).get('done') is True
+        peers=_field_medicine_peers();done=type(record) is dict and record.get('done') is True
         expected=set() if done else {key}
         if (step_id!=key or type(peers) is not dict or set(peers)!=owned_field_medicine.PEER_NAMES
                 or any(type(v) is not set or (v!=expected if k=='league_training_batch' else bool(v)) for k,v in peers.items())
@@ -250,10 +313,11 @@ def _training_escape_abort_review_context(pyboy,state,plan,step_id):
             return reject('native_plan_or_frame_unverified')
         from .observation import read_visible_text
         text=read_visible_text(pyboy);grid=read_world_grid(pyboy,state['location'])
-        return b.reviewed_abort(pyboy,state,plan,key,text,grid,cap,
+        result=b.reviewed_abort(pyboy,state,plan,key,text,grid,cap,
             expected_capsule_sha256=_TRAINING_ESCAPE_CAP_CANONICAL_SHA,
             original_controller=c,original_binding=b._BINDINGS.get(key),
             original_pending=c.pending,original_last_packet=c.last_packet)
+        return _eevee37_closed_abort_cleanup(pyboy,result)
     except (OSError,AttributeError,KeyError,TypeError,ValueError,IndexError):
         return reject('evidence_or_preflight_unverified')
 
@@ -401,6 +465,117 @@ def _reviewed_native_fall_context(pyboy,state,plan,step_id):
         read_visible_text(pyboy),read_world_grid(pyboy,state['location']),**kwargs)
 
 
+def _eevee37_closed_abort_cleanup(pyboy,result):
+    from . import eevee37_dispatch_adapter as adapter
+    if adapter._CONTEXT is not None and league_training_batch_bridge._active()==set():
+        if not adapter.unregister_closed_context(pyboy):return adapter.review_context(),result[1]
+    return result
+
+
+def _read_eevee37_dismiss_review():
+    from pathlib import Path
+    from hashlib import sha256
+    root=Path(__file__).resolve().parents[2]
+    raw=(root/'.local/eevee37-619401-reviewed-dismiss.json').read_bytes()
+    if sha256(raw).hexdigest()!='14528eff40b245f1d5c83be9a8dd11980164011d08a30ca249b28b31f159894c':
+        raise ValueError('original_dismiss_capsule_changed')
+    cap=json.loads(raw)
+    if owned_field_medicine.canonical_sha256(cap)!='8e3d36027ee4dc1d9f564f9a79f25e0aef97ec2cc480e0ade2abe30bb1e44eb9':
+        raise ValueError('original_dismiss_capsule_unverified')
+    for label,ext in (('plan','json'),('review','json'),('state','state'),('summary','json')):
+        data=(root/f'.local/gym-reviewed-history/eevee37-619401-before-dismiss-repair-{label}.{ext}').read_bytes()
+        if sha256(data).hexdigest()!=cap['source_evidence_sha256'][label]:
+            raise ValueError('original_dismiss_evidence_changed')
+    for frame,event in cap['source_events'].items():
+        if event['file']!='steps-100.jsonl' or frame not in ('618121','618161','618201','618241'):
+            raise ValueError('original_dismiss_event_unknown')
+        line=(root/'outputs/league-campaign-20261028-29/game/steps-100.jsonl').read_bytes().splitlines()[event['line_number']-1]
+        if sha256(line).hexdigest()!=event['line_sha256'] or json.loads(line)['state']['frame']!=int(frame):
+            raise ValueError('original_dismiss_event_changed')
+    return cap
+
+
+def _eevee37_owned_learning_context(pyboy,state,plan,step_id,text):
+    """Only the first verified Trying page opens this bounded learning handoff."""
+    from . import eevee37_dispatch_adapter as adapter,game,levelup_moves
+    b=league_training_batch_bridge
+    first=(state.get('phase')=='strategy_review'
+        and state.get('review_reason')=='eevee37_trusted_dispatch_binding_missing')
+    if adapter._CONTEXT is None and not first:return None,None
+    rejected=adapter.review_context()
+    if rejected:return rejected,None
+    c=b._CONTROLLERS.get(step_id)
+    if adapter._CONTEXT is None:
+        # Review time never resets spent work.  Only future emulator frames charge
+        # the original field clock; the supervisor's wall deadline still advances.
+        if (c is None or c.error is not None or c.calls>=b.batch.MAX_CALLS
+                or type(c.started) not in (int,float) or type(c.last_now) not in (int,float)
+                or not 0<=c.last_now-c.started<b.batch.MAX_SECONDS):
+            return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+                review_reason='eevee37_original_batch_headroom_missing'),None
+        if not adapter.register_trusted_context(pyboy,plan,step_id,batch_bridge=b,
+                levelup_module=levelup_moves,peer_owners=_field_medicine_peers()):
+            return adapter.review_context(),None
+        if not adapter.install_actual_dispatch_hook(pyboy,game.advance_action):
+            return adapter.review_context(),None
+        takeover=adapter.first_missing_binding_takeover(state,text,state.get('progress'))
+        # The original batch already recorded this exact frame and old packet.
+        # Return the trusted new UI hint without re-entering that batch frame.
+        if takeover is None:
+            takeover=dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+                review_reason='eevee37_first_trying_takeover_missing')
+        return takeover,None
+    try:
+        owned=adapter._validate_context()
+        if owned['native'] is not pyboy or owned['controller'] is not c or owned['step_id']!=step_id:
+            raise ValueError('original_owner_changed')
+        if adapter._sha(plan)!=owned['plan_sha']:raise ValueError('original_plan_changed')
+        obs=owned.get('observation');binding=obs.get('binding') if type(obs) is dict else None
+        proof=owned['proof'].original_controller(binding) if binding is not None else None
+        if (state.get('phase')=='strategy_review'
+                and state.get('review_reason')=='eevee37_source_wait_budget_exhausted'
+                and state.get('frame')==619401):
+            cap=_read_eevee37_dismiss_review()
+            if (cap['original_step_id']!=step_id or cap['source_progress']!=state.get('progress')
+                    or cap['source_location']!=state.get('location')
+                    or time.time()>=cap['original_deadline']
+                    or owned_field_medicine.canonical_sha256(plan)!=owned['plan_sha']):
+                raise ValueError('original_dismiss_review_state_changed')
+            if not adapter.register_trusted_context(pyboy,plan,step_id,batch_bridge=b,
+                    levelup_module=levelup_moves,peer_owners=_field_medicine_peers()):
+                return adapter.review_context(),None
+            binding=adapter.current_binding(text,state['progress'])
+            if binding is None:raise ValueError('reviewed_dismiss_fresh_binding_missing')
+            if levelup_moves._SESSION is not proof.core_session:
+                raise ValueError('reviewed_dismiss_original_core_registry_changed')
+            from pathlib import Path
+            audit=Path(__file__).resolve().parents[2]/'.local/eevee37-619401-runtime-migration-audit.json'
+            if not audit.exists():
+                record=dict(frame=binding['frame'],error=proof.error,calls=proof.calls,waits=proof.waits,
+                    started=proof.started,pending=proof.pending,dismiss_ack=proof.dismiss_ack,
+                    learned_frames=proof.learned_frames,core_session=proof.core_session,
+                    original_packet_sha256=adapter._sha(proof.last_packet),
+                    current_packet_sha256=adapter._sha((dict(text,observation_frame=binding['frame']),
+                        state['progress'],binding['battle_state'])))
+                with audit.open('x',encoding='utf-8') as stream:
+                    stream.write(json.dumps(record,ensure_ascii=False,sort_keys=True,indent=2)+'\n')
+            hint=owned['proof'].review_ignored_early_dismiss(binding,cap,
+                expected_capsule_sha256='8e3d36027ee4dc1d9f564f9a79f25e0aef97ec2cc480e0ade2abe30bb1e44eb9',
+                original_proof=proof,original_core_session=levelup_moves._SESSION,
+                text=text,progress=state['progress'])
+            if hint is None:raise ValueError('original_dismiss_migration_rejected')
+            return hint,None
+        if proof is not None and proof.complete is True:
+            approval=b.consume_owned_eevee37_learning(pyboy,plan,step_id,
+                original_controller=c,original_binding=owned['binding'],original_proof=proof,
+                learning_binding=binding)
+            if approval is None:raise ValueError('completed_original_learning_not_consumed')
+        return None,owned_field_medicine.frame_clock(c,state.get('frame'))
+    except (OSError,IndexError,KeyError,TypeError,ValueError,AttributeError):
+        return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+            review_reason='eevee37_owned_learning_handoff_unverified'),None
+
+
 def _league_field_context(pyboy,state,plan,step_id,step,previous):
     """新聯盟field共用入口；先保原owner及互斥，再讀UI，不代替各交易驗收。"""
     def review(reason):
@@ -468,8 +643,17 @@ def _league_field_context(pyboy,state,plan,step_id,step,previous):
         if reviewed is not None:return reviewed
         kwargs.update(source_layout=reviewed_hole_layout.LAYOUT,
             now=owned_field_medicine.frame_clock(bridge._CONTROLLERS[step_id],state.get('frame')))
+    if bridge is league_training_batch_bridge:
+        if training_switch_review.applies(state,step_id):
+            hint,clock=training_switch_review.context(pyboy,state,plan,step_id,text,
+                bridge=bridge,peers=_field_medicine_peers())
+            if hint is not None:return hint,step_id
+            if clock is not None:kwargs['now']=clock
+        hint,clock=_eevee37_owned_learning_context(pyboy,state,plan,step_id,text)
+        if hint is not None:return hint,step_id
+        if clock is not None:kwargs['now']=clock
     result=bridge.context(pyboy,state,plan,step_id,text,grid,previous,**kwargs)
-    return _retain_training_batch_proof(state,plan,result)
+    return _retain_training_batch_proof(state,plan,result,native_owner=pyboy)
 
 
 def _field_medicine_peers():
@@ -541,18 +725,25 @@ def _owned_field_medicine_context(pyboy,state,plan,step_id,previous,attrition=No
         read_world_grid(pyboy,state['location']),previous,**kwargs)
 
 
-def _retain_training_batch_proof(state,plan,result):
+def _retain_training_batch_proof(state,plan,result,*,native_owner=None):
     """只在真bridge完成當輪投影；不在EOF回推，也保存attrition收尾的完成。"""
     if (result is None or plan.get('training_job')!=league_training_supervisor.JOB
             or plan.get('training_supervisor')!=league_training_proof.MARKER):return result
     context,next_id=result
     if context.get('field_move_kind')!='league-training-batch' or context.get('field_move_complete') is not True:return result
     try:
-        projection=league_training_supervisor.project_completed_batch(plan,context,state)
         key=context['training_batch_owner_step']
+        authority=league_training_batch_bridge.completed_learning_authority(native_owner,key)
+        projection=league_training_supervisor.project_completed_batch(plan,context,state,
+            learning_authority=authority)
         if key in _TRAINING_BATCH_PROOFS and _TRAINING_BATCH_PROOFS[key]!=projection:
             raise ValueError('original_batch_projection_changed')
         _TRAINING_BATCH_PROOFS[key]=projection
+        if not training_switch_review.finish(native_owner,key,state['frame'],bridge=league_training_batch_bridge):
+            raise ValueError('original_switch_clock_completion_unverified')
+        from . import eevee37_dispatch_adapter as adapter
+        if adapter._CONTEXT is not None and not adapter.unregister_closed_context(native_owner):
+            raise ValueError('original_learning_unregister_rejected')
     except Exception:
         return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
                  'review_reason':'league_training_true_batch_projection_unverified'},next_id)
@@ -627,6 +818,8 @@ def _e4_coordinate_context(pyboy,state,step,text,previous):
 
 
 def switch_context(pyboy,state,plan,step_id,previous):
+    fnt_abort=_training_fnt_abort_review_context(pyboy,state,plan,step_id)
+    if fnt_abort is not None:return fnt_abort
     escape_abort=_training_escape_abort_review_context(pyboy,state,plan,step_id)
     if escape_abort is not None:return escape_abort
     proof_guard=_training_proof_owner_guard(pyboy,plan)
@@ -875,6 +1068,8 @@ def _training_batch_eof_attrition_context(pyboy,state,plan,step_id,attrition):
 
 def attrition_transition_context(pyboy,state,plan,step_id,attrition,previous=()):
     """只將已綁Lapras的來源命名未初始化過渡交專屬reader；其他損耗照常停。"""
+    fnt_abort=_training_fnt_abort_review_context(pyboy,state,plan,step_id)
+    if fnt_abort is not None:return fnt_abort
     escape_abort=_training_escape_abort_review_context(pyboy,state,plan,step_id)
     if escape_abort is not None:return escape_abort
     proof_guard=_training_proof_owner_guard(pyboy,plan)
@@ -896,10 +1091,26 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition,previous=())
             return _league_field_context(pyboy,state,plan,step_id,hyper_step,previous)
         return None
     if league_training_batch_bridge._active()=={step_id}:
+        peers=_field_medicine_peers()
+        if (type(peers) is not dict or set(peers)!=owned_field_medicine.PEER_NAMES
+                or any(type(v) is not set or v!=({step_id} if k=='league_training_batch' else set())
+                       for k,v in peers.items())):
+            return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+                review_reason='eevee37_attrition_peer_inventory_unverified'),step_id
         from .observation import read_visible_text
+        text=read_visible_text(pyboy)
+        switch_clock=None
+        if training_switch_review.applies(state,step_id):
+            hint,switch_clock=training_switch_review.context(pyboy,state,plan,step_id,text,
+                bridge=league_training_batch_bridge,peers=peers)
+            if hint is not None:return hint,step_id
+        hint,clock=_eevee37_owned_learning_context(pyboy,state,plan,step_id,text)
+        if hint is not None:return hint,step_id
+        if clock is None:clock=switch_clock
+        learning_clock={'now':clock} if clock is not None else {}
         closure=league_training_batch_bridge.pre_attrition_closure_context(pyboy,state,plan,step_id,attrition,
-            read_visible_text(pyboy),read_world_grid(pyboy,state['location']),previous)
-        if closure is not None:return _retain_training_batch_proof(state,plan,closure)
+            text,read_world_grid(pyboy,state['location']),previous,**learning_clock)
+        if closure is not None:return _retain_training_batch_proof(state,plan,closure,native_owner=pyboy)
     if (not isinstance(attrition,dict)
             or attrition.get('review_reason')!='party_attrition_state_unverified'
             or attrition.get('party_attrition',{}).get('issue')!='party_read_not_verified'):
@@ -911,6 +1122,8 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition,previous=())
 
 def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
+    fnt_abort=_training_fnt_abort_review_context(pyboy,state,plan,step_id)
+    if fnt_abort is not None:return fnt_abort
     escape_abort=_training_escape_abort_review_context(pyboy,state,plan,step_id)
     if escape_abort is not None:return escape_abort
     proof_guard=_training_proof_owner_guard(pyboy,plan)
@@ -1285,6 +1498,8 @@ def _reviewed_npc_edge_retry(state,step,grid,npcs,ready):
 
 def waypoint(pyboy,state,plan,step_id,previous):
     global _LAST_ATTEMPT
+    fnt_abort=_training_fnt_abort_review_context(pyboy,state,plan,step_id)
+    if fnt_abort is not None:return fnt_abort
     escape_abort=_training_escape_abort_review_context(pyboy,state,plan,step_id)
     if escape_abort is not None:return escape_abort
     east_entry=_victory_east_entry_context(pyboy,state,plan,step_id)

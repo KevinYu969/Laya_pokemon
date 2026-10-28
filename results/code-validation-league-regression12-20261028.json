@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-28",
+  "scope": "完整正式tests；含訓練EOF、分享鎖、瀕死教訓、真學Bite接收與prompt關頁、未來三選招",
+  "command": "workspace-python -B -X utf8 -m pytest tests -p no:cacheprovider --basetemp=<LOCAL_VALIDATION_TEMP> -q",
+  "exit_code": 0,
+  "passed": 10311,
+  "wall_seconds": 119.906,
+  "source_files": 382,
+  "source_unchanged": true,
+  "changed_paths": [],
+  "manifest_sha256": "fb7a80149724f7151831e6a7b248e45f36ba13461c7bd08383b8ae96f460cceb",
+  "stdout_sha256": "f62567aadeff4201cf0a56a9b6085e7e2a44e3c0dbccdf8f947c7cf2c70683ab",
+  "live_game_validation": false,
+  "limitations": [
+    "此為程式/fixture回歸，不等同四天王通關。",
+    "原始log含本機診斷路徑，僅保留本機；公開收據不含原始log。"
+  ]
+}

@@ -42,6 +42,9 @@ REFERENCE_SHA="248c70e24eda08e57e818e8ace37877d3452dda417d0c04dbb21e0dc64b1941b"
 REFERENCE_SHA256S=(REFERENCE_SHA,"d427fd277d23235bc25ef4da6fd68a20e5b1f4412f807815a496ef58d9e8b330")
 PROOF_PROFILE="red-en-league-training-world-v1"
 MAX_SECONDS,MAX_OUTINGS,TARGET=14400,1000,45
+# Root reviewed one existing reserve/error; hashes disclose no private paths.
+PLAN_SHARE_REVIEW_SHA256="74680621136553315f8902adc46712fd7fe5859ee6bf5378100bb408334c0181"
+PLAN_REPLACE_ATTEMPTS,PLAN_REPLACE_RETRY_SECONDS=8,0.05
 BUDGET_KEY="league_training_supervisor_budget"
 ROSTER={19,132,102,154,35,7}
 NAMES={19:"LAPRAS",132:"SNORLAX",102:"EEVEE",154:"VENUSAUR",35:"FEAROW",7:"NIDOKING"}
@@ -251,7 +254,7 @@ def recovery(player):
     return [dict(s,recovery_route=True) for s in steps]
 
 
-def continuity(before,after):
+def continuity(before,after,learning_permission=None):
     if before is None:return
     require(before["inventory"]==after["inventory"] and before["money"]==after["money"]
         and before["badges_raw"]==after["badges_raw"],"resources_changed_without_review")
@@ -259,7 +262,14 @@ def continuity(before,after):
     for mon in after["party"]:
         prior=old[mon["species"]]
         require(mon["level"]>=prior["level"] and mon["exp"]>=prior["exp"]
-            and mon["max_hp"]>=prior["max_hp"] and mon["moves"]==prior["moves"],"xp_regressed_or_move_change_requires_review")
+            and mon['max_hp']>=prior['max_hp'],'xp_regressed_or_move_change_requires_review')
+        if mon['moves']!=prior['moves']:
+            require(type(learning_permission) is _LearningContinuityPermit
+                and learning_permission.before_sha==canonical_sha(before)
+                and learning_permission.after_sha==canonical_sha(after)
+                and mon['species']==102 and prior['level']==36 and mon['level']==37
+                and prior['moves']==[33,28,98,39] and mon['moves']==[44,28,98,39],
+                'xp_regressed_or_move_change_requires_review')
 
 
 def _typed_closed_receipt(outcome,count,receipt,location):
@@ -284,6 +294,10 @@ def _typed_closed_receipt(outcome,count,receipt,location):
             and type(cancelled.get('closed_frames')) is list and len(cancelled['closed_frames'])==2
             and all(integer(f) for f in cancelled['closed_frames']) and cancelled['closed_frames']==frames,
             'cancelled_count_or_frames_invalid')
+    if 'learning' in receipt:
+        require(outcome=='complete_single_wild','learning_requires_single_wild')
+        delta,_,_=_learning_delta_json(receipt['learning'],frames=frames)
+        require(all(type(receipt.get(k)) is type(v) and receipt[k]==v for k,v in delta.items()),'learning_batch_totals_invalid')
     if count!=0:return
     require(outcome=='complete_single_wild' and receipt.get('walk_resolution')=='cancelled_before_displacement'
         and receipt.get('displacement_occurred') is False and integer(receipt.get('total_pp_spent'),0,128)
@@ -333,7 +347,7 @@ def _stored_receipt(stored):
             'stored_batch_proof_changed_or_missing:owned_batch_closed_receipt_required')
 
 
-def project_completed_batch(plan,context,completion_state):
+def project_completed_batch(plan,context,completion_state,learning_authority=None):
     """root須在真bridge完成當輪呼叫；只投影已驗controller輸出，不從EOF猜成功。"""
     step=plan["steps"][-1];receipt=context.get("training_batch_receipt")
     require(step.get("mechanic")=="league_training_batch" and plan.get("training_job")==JOB
@@ -343,6 +357,13 @@ def project_completed_batch(plan,context,completion_state):
         and isinstance(receipt,dict),"real_completed_bridge_context_required")
     outcome=context.get("training_batch_outcome");count=context.get("training_batch_displacements");frames=receipt.get("closed_frames")
     _typed_closed_receipt(outcome,count,receipt,completion_state.get('location'))
+    if 'learning' in receipt:
+        from laya_pokemon import league_training_learning_receiver as receiver
+        require(type(learning_authority) is receiver.ApprovedLearning,'original_learning_authority_required')
+        learning_authority.projection_authorized(receipt)
+        _,_,final=_learning_delta_json(receipt['learning'],frames=frames,step=step)
+        from laya_pokemon import league_training_batch as training
+        require(training.resources(completion_state.get('progress'))==final,'learning_completion_progress_changed')
     require(integer(completion_state.get('frame')) and frames[1]==completion_state['frame'],
             'completed_batch_receipt_invalid')
     validate_party(completion_state.get("progress"));loc=completion_state.get("location")
@@ -363,6 +384,10 @@ def eof_batch_proof(plan,state,stored):
         and all(integer(f) for f in stored['closed_frames']) and stored['closed_frames'][0]<stored['closed_frames'][1]
         and integer(state.get('frame')) and state['frame']>stored['closed_frames'][1],"stored_batch_proof_changed_or_missing")
     _stored_receipt(stored)
+    if 'learning' in stored.get('batch_receipt',{}):
+        _,_,final=_learning_delta_json(stored['batch_receipt']['learning'],frames=stored['closed_frames'],step=step)
+        from laya_pokemon import league_training_batch as training
+        require(training.resources(state['progress'])==final,'learning_eof_progress_changed')
     return deepcopy(stored)
 
 
@@ -383,16 +408,8 @@ def propose(snapshot,budget,calibration,now):
     else:
         require(BUDGET_KEY not in plan and calibration.get("initial_plan_sha256")==budget["expected_plan_sha256"]
             and not any(s["id"].startswith(JOB+"-") for s in plan["steps"]),"same_job_budget_cannot_restart")
-    party=validate_party(progress);continuity(budget["last_progress"],progress)
-    if all(m["level"]>=TARGET for m in party):
-        return dict(status="all_six_45_checkpoint_review",plan=None,budget=deepcopy(budget),target=TARGET)
-    updated=deepcopy(budget);loc=state["location"]
-    if budget["phase"] in ("center","returning"):
-        require(loc=={"map_id":174,"x":7,"y":7} and full_party(party),"full_nurse_center_required")
-        require(state["training_world_proof"]["full_party_healed"] is True,"normal_nurse_closed_receipt_required")
-        require(budget["outings"]<MAX_OUTINGS,"outings_budget_exhausted")
-        updated["outings"]+=1;updated["phase"]="outbound_batch";steps=outbound()
-    else:
+    learning_permission=None
+    if budget["phase"]=="outbound_batch":
         require(plan["steps"][-1].get("mechanic")=="league_training_batch","batch_tail_required")
         receipt=state.get("training_batch_proof")
         eof_batch_proof(plan,state,receipt)
@@ -406,6 +423,17 @@ def propose(snapshot,budget,calibration,now):
             and all(integer(f) for f in receipt["closed_frames"])
             and receipt["closed_frames"][0]>budget["last_frame"]
             and receipt["closed_frames"][0]<receipt["closed_frames"][1]<=state["training_world_proof"]["closed_frames"][0],"owned_batch_closed_receipt_required")
+        learning_permission=_learning_continuity_permit(budget["last_progress"],progress,plan,state,receipt)
+    party=validate_party(progress);continuity(budget["last_progress"],progress,learning_permission)
+    if all(m["level"]>=TARGET for m in party):
+        return dict(status="all_six_45_checkpoint_review",plan=None,budget=deepcopy(budget),target=TARGET)
+    updated=deepcopy(budget);loc=state["location"]
+    if budget["phase"] in ("center","returning"):
+        require(loc=={"map_id":174,"x":7,"y":7} and full_party(party),"full_nurse_center_required")
+        require(state["training_world_proof"]["full_party_healed"] is True,"normal_nurse_closed_receipt_required")
+        require(budget["outings"]<MAX_OUTINGS,"outings_budget_exhausted")
+        updated["outings"]+=1;updated["phase"]="outbound_batch";steps=outbound()
+    else:
         steps=recovery(loc);updated["phase"]="returning"
         require(len(steps)+8<=128 and all(not (m["status"]&8) or m["hp"]>40 for m in party),"poison_recovery_margin_requires_root_review")
     updated["appends"]+=1;updated["last_frame"]=state["frame"];updated["last_review_stamp"]=snapshot["stamp"]
@@ -433,16 +461,37 @@ def history_budget(rows,now):
         and rows[0].get("kind")=="seed" and rows[0].get("job")==JOB,"original_job_seed_missing")
     seed=rows[0].get("budget");validate_budget(seed,now)
     require(seed["appends"]==seed["outings"]==0 and seed["phase"]=="center" and seed["last_frame"]==-1,"original_seed_schema_invalid")
-    budget=deepcopy(seed);pending=None
-    for row in rows[1:]:
+    budget=deepcopy(seed);pending=None;reviewed_candidate=None
+    for index,row in enumerate(rows[1:],1):
         require(isinstance(row,dict) and row.get("job")==JOB,"ledger_owner_changed")
-        require(row.get("kind")!="error","sticky_job_error")
+        if row.get("kind")=="error":
+            # Only the exact root review immediately after this exact error can
+            # authorize the same already-reserved commit; keep the error row.
+            require(reviewed_candidate is None and pending is not None and index+2<len(rows),"sticky_job_error")
+            review,commit=rows[index+1:index+3]
+            require(type(review) is dict and canonical_sha(review)==PLAN_SHARE_REVIEW_SHA256
+                and review.get("kind")=="reviewed_commit_after_plan_share_violation"
+                and review.get("job")==JOB and type(review.get("winerror")) is int and review["winerror"]==5
+                and review.get("error_sha256")==canonical_sha(row)
+                and review.get("ledger_prefix_sha256")==canonical_sha(rows[:index+1])
+                and review.get("previous_budget_sha256")==canonical_sha(budget)
+                and review.get("previous_expected_plan_sha256")==budget["expected_plan_sha256"]
+                and review.get("reserve_plan_sha256")==pending
+                and type(commit) is dict and commit.get("kind")=="commit" and commit.get("job")==JOB
+                and review.get("candidate_budget_sha256")==canonical_sha(commit.get("budget")),"sticky_job_error")
+            reviewed_candidate=review["candidate_budget_sha256"]
+            continue
+        if row.get("kind")=="reviewed_commit_after_plan_share_violation":
+            require(reviewed_candidate is not None and index>1 and rows[index-1].get("kind")=="error"
+                and canonical_sha(row)==PLAN_SHARE_REVIEW_SHA256,"unbound_plan_share_review")
+            continue
         require(row.get("kind")!="terminal","terminal_job_requires_new_job")
         if row.get("kind")=="reserve":
             require(pending is None and hexsha(row.get("plan_sha256")),"uncommitted_reserve_or_hash_invalid")
             pending=row["plan_sha256"]
         elif row.get("kind")=="commit":
             candidate=row.get("budget");validate_budget(candidate,now)
+            require(reviewed_candidate is None or canonical_sha(candidate)==reviewed_candidate,"reviewed_candidate_changed")
             require(isinstance(pending,str) and pending==candidate.get("expected_plan_sha256")
                 and candidate["appends"]==budget["appends"]+1
                 and candidate["started_wall"]==seed["started_wall"] and candidate["deadline_wall"]==seed["deadline_wall"]
@@ -450,10 +499,23 @@ def history_budget(rows,now):
                 and candidate["active_sha256"]==seed["active_sha256"]
                 and candidate["last_wall"]>=budget["last_wall"] and candidate["last_frame"]>budget["last_frame"]
                 and budget["outings"]<=candidate["outings"]<=budget["outings"]+1,"ledger_budget_was_reset")
-            budget=deepcopy(candidate);pending=None
+            budget=deepcopy(candidate);pending=None;reviewed_candidate=None
         else:raise ReviewRequired("ledger_kind_unknown")
-    require(pending is None,"uncommitted_reserve_requires_root_review")
+    require(pending is None and reviewed_candidate is None,"uncommitted_reserve_requires_root_review")
     return budget
+
+
+def _replace_owned_plan(temporary,expected_bytes,final_check):
+    """Retry only replace's PermissionError; reprove every owned attempt."""
+    for attempt in range(PLAN_REPLACE_ATTEMPTS):
+        final_check()
+        require(temporary.read_bytes()==expected_bytes,"owned_plan_temp_changed_before_replace")
+        try:
+            os.replace(temporary,PLAN)
+            return
+        except PermissionError:
+            if attempt+1==PLAN_REPLACE_ATTEMPTS:raise
+            time.sleep(PLAN_REPLACE_RETRY_SECONDS)
 
 
 def _append(row):
@@ -517,8 +579,9 @@ def main(argv=None):
         final_check()
         _append(dict(kind="reserve",job=JOB,plan_sha256=result["budget"]["expected_plan_sha256"]))
         temporary=PLAN.with_name(".league-training-"+json.loads(token)["nonce"]+".tmp")
-        with temporary.open("xb") as stream:stream.write(encode(result["plan"]));stream.flush();os.fsync(stream.fileno())
-        final_check();os.replace(temporary,PLAN);temporary=None
+        plan_bytes=encode(result["plan"])
+        with temporary.open("xb") as stream:stream.write(plan_bytes);stream.flush();os.fsync(stream.fileno())
+        _replace_owned_plan(temporary,plan_bytes,final_check);temporary=None
         _append(dict(kind="commit",job=JOB,budget=result["budget"]))
         print(json.dumps(dict(status="one_bounded_plan_segment_queued",job=JOB,
             deadline_wall=budget["deadline_wall"],outings=result["budget"]["outings"]),ensure_ascii=False));return 0
@@ -528,6 +591,40 @@ def main(argv=None):
     finally:
         # 只移除本次自己建立且token仍相等的lock，不刪既有lock/user檔；殘留temp留root檢討。
         if LOCK.exists() and LOCK.read_text(encoding="utf-8")==token:LOCK.unlink()
+
+
+# Source-pure JSON checks; runtime origin authority is required at projection.
+class _LearningContinuityPermit:
+    def __init__(self,before,after,package):
+        self.before_sha=canonical_sha(before);self.after_sha=canonical_sha(after);self.package=deepcopy(package)
+
+
+def _learning_delta_json(package,*,frames=None,step=None):
+    from laya_pokemon import league_training_learning_receiver as receiver
+    from laya_pokemon import league_training_batch as training
+    from laya_pokemon import eevee37_learning_proof as learning
+    binding_sha=canonical_sha(('league_training_batch',json.dumps(step,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False),JOB)) if step is not None else None
+    try:
+        return receiver.validate_package(package,normalize=training.resources,base_validator=training.validate_wild_delta,
+            needs_center=training.needs_center,closed_frames=frames,expected_owner=step['id'] if step is not None else None,
+            expected_step_sha=canonical_sha(step) if step is not None else None,expected_binding_sha=binding_sha,
+            expected_controller_sha=learning.CONTROLLER_SOURCE_SHA256)
+    except (ValueError,KeyError,TypeError,AttributeError) as exc:
+        raise ReviewRequired('learning_receipt_invalid:'+str(exc)) from exc
+
+
+def _learning_continuity_permit(before,after,plan,state,stored):
+    # The caller has already validated the owned EOF before reaching this helper.
+    package=stored.get('batch_receipt',{}).get('learning') if type(stored) is dict else None
+    if package is None:return None
+    _,baseline,final=_learning_delta_json(package,frames=stored['closed_frames'],step=plan['steps'][-1])
+    from laya_pokemon import league_training_batch as training
+    require(training.resources(after)==final,'learning_final_progress_changed')
+    old=next(m for m in before['party'] if m['species']==102)
+    start=next(m for m in baseline['party'] if m['species']==102)
+    require(old['level']==start['level']==36 and old['moves']==start['moves']==[33,28,98,39]
+        and old['exp']<=start['exp'],'learning_continuity_baseline_invalid')
+    return _LearningContinuityPermit(before,after,package)
 
 
 if __name__=="__main__":
