@@ -10,8 +10,8 @@ from pathlib import Path
 import time
 
 
-PURE_SHA256="6c3df8932f7f37d32bf29a75ab4b579f40fec7f2ea3e47683603b2b2008a03bb"
-PURE_CRLF_SHA256="ffe1cf5c5e59061435c1387310631bc077530ffc47a3804ad994412664e1f06c"
+PURE_SHA256="a0512b8fa4d1aeeee8890debe4b956b6eca27b249b4a5b192db678c3b1bfdcd7"
+PURE_CRLF_SHA256="0157e88f26de77d4148803dc940e55d6f2dbcba9d5aee7d3fc7a3f6804c60a61"
 PURE_SHA256S=(PURE_SHA256,PURE_CRLF_SHA256)
 
 
@@ -77,7 +77,7 @@ def _explicit(step):
         and all(type(v) is int for v in step["target"]) and not _FORBIDDEN.intersection(step))
 
 
-def context(pyboy, state, plan, step_id, text, grid, previous):
+def context(pyboy, state, plan, step_id, text, grid, previous,*,reviewed_fainted_bench=()):
     """保留真previous與同frame封包；只有原controller的完整原生閉合收據能前進。"""
     active = _active()
     if active is None:return _review("registries_unverified"),step_id
@@ -136,9 +136,11 @@ def context(pyboy, state, plan, step_id, text, grid, previous):
             return _review("initial_closed_world_required"), step_id
         if not isinstance(signal, dict) or signal.get("read_valid") is not True:
             return _review("initial_signal_unverified"), step_id
-        controller = victory_strength.VictoryStrengthController(step["strength_intent"])
+        controller = victory_strength.VictoryStrengthController(step['strength_intent'],reviewed_fainted_bench=reviewed_fainted_bench)
         _CONTROLLERS[step_id] = controller
         _BINDINGS[step_id] = binding
+    if getattr(controller,'reviewed_fainted_bench',())!=reviewed_fainted_bench:
+        return _review('bound_recovery_allowance_changed'),step_id
     controller.__class__ = victory_strength.VictoryStrengthController
     result = controller.context(text, state.get("progress"), location=loc,
         battle_state=state.get("battle_state"), grid=grid, signal=signal, frame=frame,

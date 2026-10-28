@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-28",
+  "scope": "完整正式tests；含正常補藥中斷、TM24、具名FNT中心救援及野生戰鬥教訓",
+  "command": "workspace-python -B -X utf8 -m pytest tests -p no:cacheprovider --basetemp=<LOCAL_VALIDATION_TEMP> -q",
+  "exit_code": 1,
+  "passed": 9648,
+  "wall_seconds": 187.64,
+  "source_files": 347,
+  "source_unchanged": true,
+  "changed_paths": [],
+  "manifest_sha256": "2cf0611ed8faf8fdd555f0e67f190deb2627575556ca557c8f5668ca892f2175",
+  "stdout_sha256": "88f4fc3cc2a154f9b05a42b18174d0957d4928996cffad898f618b5f571ff2db",
+  "live_game_validation": false,
+  "limitations": [
+    "此為程式/fixture回歸，不等同四天王通關。",
+    "原始log含本機診斷路徑，僅保留本機；公開收據不含原始log。"
+  ]
+}

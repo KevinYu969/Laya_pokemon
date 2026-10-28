@@ -81,12 +81,16 @@ from . import mansion_secret_key_bridge
 importlib.reload(mansion_secret_key_bridge)
 from . import (victory_strength_bridge,victory_first_boulder_bridge,
                victory_later_boulders_bridge,route23_bridge,route23_land_guards_bridge,
-               league_training_batch_bridge)
+               league_training_batch_bridge,overworld_hyper_bridge,tm24_teaching_bridge)
 _LEAGUE_FIELDS=(victory_strength_bridge,victory_first_boulder_bridge,
                victory_later_boulders_bridge,route23_bridge,route23_land_guards_bridge,
-               league_training_batch_bridge)
+               league_training_batch_bridge,overworld_hyper_bridge,tm24_teaching_bridge)
 for _bridge in _LEAGUE_FIELDS:importlib.reload(_bridge)
 del _bridge
+from . import owned_field_medicine
+importlib.reload(owned_field_medicine)
+from . import league_recovery
+importlib.reload(league_recovery)
 from . import league_training_supervisor,league_training_proof
 importlib.reload(league_training_supervisor)
 importlib.reload(league_training_proof)
@@ -112,6 +116,9 @@ def _league_field_context(pyboy,state,plan,step_id,step,previous):
     def review(reason):
         return ({'phase':'campaign_review','objective':'Wait.','available_actions':['wait'],
                  'review_reason':'league_field_'+reason},step_id)
+    medicine_owners=owned_field_medicine._active()
+    if medicine_owners is None:return review('registry_unverified')
+    if medicine_owners:return review('other_transaction_active')
     active=[]
     for bridge in _LEAGUE_FIELDS:
         owners=bridge._active()
@@ -140,9 +147,77 @@ def _league_field_context(pyboy,state,plan,step_id,step,previous):
             or any(c.waiting for c in league_native_wait._WAITS.values())):
         return review('other_transaction_active')
     from .observation import read_visible_text
+    kwargs={'peer_owners':()} if bridge is tm24_teaching_bridge else {}
+    recovery_bench=league_recovery.allowance(plan,step_id,state.get('progress'))
+    if recovery_bench and bridge in (victory_strength_bridge,victory_later_boulders_bridge):
+        kwargs['reviewed_fainted_bench']=recovery_bench
+    if bridge is victory_later_boulders_bridge:
+        controller=bridge._CONTROLLERS.get(step_id)
+        if getattr(controller,'medical_interruption_history',None):
+            kwargs['now']=owned_field_medicine.frame_clock(controller,state.get('frame'))
     result=bridge.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
-        read_world_grid(pyboy,state['location']),previous)
+        read_world_grid(pyboy,state['location']),previous,**kwargs)
     return _retain_training_batch_proof(state,plan,result)
+
+
+def _field_medicine_peers():
+    """僅讀owner登記；專用補血入口須在讀UI之前核完整互斥。"""
+    inventory={}
+    fields=(('victory_later_boulder',victory_later_boulders_bridge),
+        ('overworld_hyper',overworld_hyper_bridge),('victory_strength',victory_strength_bridge),
+        ('victory_first_boulder',victory_first_boulder_bridge),('route23',route23_bridge),
+        ('route23_land_guards',route23_land_guards_bridge),('league_training_batch',league_training_batch_bridge),
+        ('league_training_proof',league_training_proof))
+    for name,bridge in fields:
+        try:
+            owners=bridge._active()
+            if name=='league_training_proof' and type(owners) is set:
+                owners={'training-proof'} if owners else set()
+            inventory[name]=owners
+        except Exception:inventory[name]=None
+    tm=globals().get('tm24_teaching_bridge')
+    try:inventory['tm24_teaching']=tm._active() if tm is not None else set()
+    except Exception:inventory['tm24_teaching']=None
+    legacy=(('battle_medicine',battle_medicine_bridge),('trainer_medicine_ui',trainer_medicine_ui_bridge),
+        ('mansion_secret_key',mansion_secret_key_bridge),('mansion_statue',mansion_statue_bridge),
+        ('mansion_transition_ready',mansion_transition_ready),('mansion_native_landing',mansion_native_landing),
+        ('route21_water',route21_water_bridge),('pallet_surf',pallet_surf_bridge),('fly_pallet',fly_pallet_bridge),
+        ('fly_viridian',fly_viridian_bridge),('safari_entry',safari_entry),('hm_teaching',hm_teaching_bridge),
+        ('vending',vending_bridge),('saffron_guard',saffron_guard_bridge),('silph_card',silph_card_bridge),
+        ('lapras',lapras_bridge),('player_pc',player_pc_bridge),('cinnabar_purchase',cinnabar_purchase_bridge),
+        ('campaign_transactions',campaign_transactions))
+    for name,bridge in legacy:
+        bindings=getattr(bridge,'_BINDINGS',None);done=getattr(bridge,'_COMPLETED',None)
+        controllers=getattr(bridge,'_CONTROLLERS',{});errors=getattr(bridge,'_ERRORS',{})
+        if (type(bindings) is not dict or type(done) is not set or type(controllers) is not dict
+                or type(errors) is not dict):inventory[name]=None
+        else:inventory[name]=((set(bindings)|set(controllers))-done)|set(errors)
+    try:
+        inventory['safari_run']=set() if safari_entry._RUN_CONTROLLER is None else {'safari-run'}
+        sessions=capture_transaction._SESSIONS
+        inventory['capture_transaction']=(None if type(sessions) is not dict else
+            {'capture-session'} if any(type(v) is not dict or v.get('done') is not True for v in sessions.values()) else set())
+        waits=league_native_wait._WAITS
+        inventory['native_wait']=(None if type(waits) is not dict else
+            {'native-wait'} if any(c.waiting for c in waits.values()) else set())
+        inventory['legacy_field']=(None if type(_FIELD_CONTROLLERS) is not dict else
+            {'legacy-field'} if any(c.stage!='complete' for c in _FIELD_CONTROLLERS.values()) else set())
+        inventory['legacy_gym']=(None if type(_GYM_CONTROLLERS) is not dict else
+            {'legacy-gym'} if any(c.state!='complete' for c in _GYM_CONTROLLERS.values()) else set())
+    except Exception:
+        for name in ('safari_run','capture_transaction','native_wait','legacy_field','legacy_gym'):inventory[name]=None
+    return inventory
+
+
+def _owned_field_medicine_context(pyboy,state,plan,step_id,previous,attrition=None):
+    if not owned_field_medicine.applies(plan,step_id):return None
+    kwargs=dict(game_id='game28',native_owner=pyboy,later_bridge=victory_later_boulders_bridge,
+        hyper_bridge=overworld_hyper_bridge,peer_owners=_field_medicine_peers(),attrition=attrition)
+    gate=owned_field_medicine.preflight(pyboy,state,plan,step_id,**kwargs)
+    if gate is not None:return gate
+    from .observation import read_visible_text
+    return owned_field_medicine.context(pyboy,state,plan,step_id,read_visible_text(pyboy),
+        read_world_grid(pyboy,state['location']),previous,**kwargs)
 
 
 def _retain_training_batch_proof(state,plan,result):
@@ -188,6 +263,7 @@ def _training_peers_clear():
         vending_bridge,saffron_guard_bridge,silph_card_bridge,lapras_bridge,player_pc_bridge,
         cinnabar_purchase_bridge,campaign_transactions)
     try:
+        if owned_field_medicine._active() is None or bool(owned_field_medicine._active()):return False
         if any(b._active() is None or bool(b._active()) for b in _LEAGUE_FIELDS):return False
         for b in peers:
             bindings=getattr(b,'_BINDINGS',None);done=getattr(b,'_COMPLETED',None);controllers=getattr(b,'_CONTROLLERS',{})
@@ -232,6 +308,8 @@ def _e4_coordinate_context(pyboy,state,step,text,previous):
 def switch_context(pyboy,state,plan,step_id,previous):
     proof_guard=_training_proof_owner_guard(pyboy,plan)
     if proof_guard is not None:return proof_guard
+    medicine=_owned_field_medicine_context(pyboy,state,plan,step_id,previous)
+    if medicine is not None:return medicine
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
     league_field=_league_field_context(pyboy,state,plan,step_id,step,previous)
     if league_field is not None:return league_field
@@ -435,6 +513,18 @@ def attrition_transition_context(pyboy,state,plan,step_id,attrition,previous=())
     if proof_guard is not None:return proof_guard
     active_eof=league_training_proof._active()
     if active_eof:return league_training_proof._fail(next(iter(active_eof)),'attrition_during_eof'),'complete'
+    medicine=_owned_field_medicine_context(pyboy,state,plan,step_id,previous,attrition)
+    if medicine is not None:return medicine
+    hyper_steps=plan.get('steps',[]) if type(plan) is dict else []
+    hyper_step=next((x for x in hyper_steps if type(x) is dict and x.get('id')==step_id),None) if type(hyper_steps) is list else None
+    if overworld_hyper_bridge.applies(step_id,hyper_step):
+        # 先過同一完整互斥，才讀畫面；只有原明示藥步與無FNT的requires_center可進。
+        if (isinstance(attrition,dict) and attrition.get('review_reason')=='party_attrition_requires_center'
+                and attrition.get('party_attrition',{}).get('fainted_party_indices')==[]
+                and isinstance(state.get('progress',{}).get('party'),list)
+                and all(type(m.get('hp')) is int and m['hp']>0 and m.get('status')==0 for m in state['progress']['party'])):
+            return _league_field_context(pyboy,state,plan,step_id,hyper_step,previous)
+        return None
     if league_training_batch_bridge._active()=={step_id}:
         from .observation import read_visible_text
         closure=league_training_batch_bridge.pre_attrition_closure_context(pyboy,state,plan,step_id,attrition,
@@ -453,6 +543,7 @@ def field_context(pyboy,state,plan,step_id):
     """僅精確field步驟可接管HM UI；其他未知學招仍由主程序暫停。"""
     proof_guard=_training_proof_owner_guard(pyboy,plan)
     if proof_guard is not None:return proof_guard
+    if owned_field_medicine.applies(plan,step_id):return None
     step=next((s for s in plan['steps'] if s['id']==step_id),None)
     if any(b.applies(step_id,step) for b in _LEAGUE_FIELDS):return None
     if (any(c.waiting for c in league_native_wait._WAITS.values())

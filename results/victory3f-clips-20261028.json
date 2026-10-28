@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-28",
+  "status": "root_visual_reviewed",
+  "source_video": "outputs/league-campaign-20261028-28/game/video-002.mp4",
+  "source_video_sha256": "9514b942977f0ddfbbeb1ab44eeafe9e2cf44755135cb2b06d0c50e044027cbb",
+  "source_segment": 2,
+  "source_global_emulated_frame_offset": 15736,
+  "source_fps": 15,
+  "source_capture_every_emulated_frames": 4,
+  "clips": [
+    {
+      "file": "outputs/blog-assets/victory3f-recovery-20261028/hyper-normal-ui-4x.mp4",
+      "caption": "正常Hyper選單補血，保留同一推石交易",
+      "speed": 4,
+      "fps": 60,
+      "frames": 350,
+      "playback_seconds": 5.833333333333333,
+      "source_global_emulated_frames": [
+        15736,
+        17136
+      ],
+      "source_video_frame_range_half_open": [
+        0,
+        350
+      ],
+      "sha256": "7e2ae1c6bfeab41d72c347592787834008f7bca843d50158553cd1a61aaf456a",
+      "qa_images": [
+        "outputs/blog-assets/victory3f-recovery-20261028/hyper-normal-ui-4x-qa-middle.png",
+        "outputs/blog-assets/victory3f-recovery-20261028/hyper-normal-ui-4x-qa-end.png",
+        "outputs/blog-assets/victory3f-recovery-20261028/hyper-normal-ui-4x-qa-healed-party.png"
+      ]
+    },
+    {
+      "file": "outputs/blog-assets/victory3f-recovery-20261028/victory3f-first-switch-4x.mp4",
+      "caption": "補藥後繼續移動推石，完成三樓首開關",
+      "speed": 4,
+      "fps": 60,
+      "frames": 1624,
+      "playback_seconds": 27.066666666666666,
+      "source_global_emulated_frames": [
+        17136,
+        23632
+      ],
+      "source_video_frame_range_half_open": [
+        350,
+        1974
+      ],
+      "sha256": "7d45c8634938d0c6cce961b747218708bc87ccd127fdda274e02d913cc20236a",
+      "qa_images": [
+        "outputs/blog-assets/victory3f-recovery-20261028/victory3f-first-switch-4x-qa-middle.png",
+        "outputs/blog-assets/victory3f-recovery-20261028/victory3f-first-switch-4x-qa-end.png"
+      ]
+    },
+    {
+      "file": "outputs/blog-assets/victory3f-recovery-20261028/faint-lesson-fearow-switch-4x.mp4",
+      "caption": "尼多王逃跑失敗倒下，換大嘴雀鑽孔啄擊勝；失敗教訓",
+      "speed": 4,
+      "fps": 60,
+      "frames": 654,
+      "playback_seconds": 10.9,
+      "source_global_emulated_frames": [
+        30192,
+        32808
+      ],
+      "source_video_frame_range_half_open": [
+        3614,
+        4268
+      ],
+      "sha256": "b3361a22ea3249db5f0a63a690e05414c073ca9f8ccbdcb4454e9a2cd6f57339",
+      "qa_images": [
+        "outputs/blog-assets/victory3f-recovery-20261028/faint-lesson-fearow-switch-4x-qa-middle.png",
+        "outputs/blog-assets/victory3f-recovery-20261028/faint-lesson-fearow-switch-4x-qa-end.png",
+        "outputs/blog-assets/victory3f-recovery-20261028/faint-lesson-fearow-switch-4x-qa-drill-peck.png"
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "outputs/blog-assets/victory3f-recovery-20261028/00011-owned-overworld-hyper-verified.png",
+      "sha256": "f4fe5314b9ab1a4063ca06b93a8766e64e52a58f27f458adb1edafa487c1fc2f"
+    },
+    {
+      "file": "outputs/blog-assets/victory3f-recovery-20261028/00012-victory-later-boulder-verified.png",
+      "sha256": "8382468a5958dc1009780092b5e915ef21d6b9d561898a19170504473147614f"
+    },
+    {
+      "file": "outputs/blog-assets/victory3f-recovery-20261028/00016-review-party_attrition_requires_center.png",
+      "sha256": "5ee74669d2890ee0dd22f1df4341379998b3d47e8ad8b39bdb06eef071cf599e"
+    }
+  ],
+  "limitations": [
+    "只使用已封片且有ledger的真PyBoy片段；不取未完成video003。",
+    "4x僅後製加速，不將工程停檢或模型等待混入遊戲影片。",
+    "尼多王倒下片保留失敗，不宣稱當時無損或四天王已勝。",
+    "素材留本機，不隨Git備份上傳。"
+  ],
+  "root_review": "已核3張真keyframe、8張影片擷取核對圖，包含Nido recovered by64/121HP及Fearow used DrillPeck；影片框數/60fps/480x432皆核。",
+  "website_published": false,
+  "binary_assets_uploaded": false
+}

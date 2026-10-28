@@ -23,7 +23,7 @@ elif SOURCE_PATH.parent.name=="laya_pokemon" and SOURCE_PATH.parent.parent.name=
     ROUTE_PATH=ROOT/"src/laya_pokemon/data/league_training_route.json"
 else:raise RuntimeError("只接受精確staged或formal supervisor來源路徑")
 STAGE=ROOT/".local/staged-league-training-supervisor-20261028"
-GAME_REL="outputs/league-campaign-20261028-27/game"
+GAME_REL="outputs/league-campaign-20261028-29/game"
 PLAN_REL=".local/league-plan.json"
 GAME=ROOT/GAME_REL
 PLAN=ROOT/PLAN_REL
@@ -31,7 +31,7 @@ ACTIVE=ROOT/".local/active-campaign.json"
 LOCK=STAGE/"supervisor.lock"
 LEDGER=STAGE/"job-ledger.jsonl"
 STARTED=STAGE/"job-started.json"
-JOB="league-six-party45-game27-20261028"
+JOB="league-six-party45-game29-20261028"
 SOURCE_COMMIT="a53671100ec22e5394ff26ec028d0812a238dae2"
 ROUTE_SHA="a8255f3c4ce4d07ac89f9fd655b244565dd786ddf3f628a83b64615c0fe5aef8"
 ROUTE_SHA256S=(ROUTE_SHA,"be91b93aead4d1229d326d38595f756d726d4667e821dc3970071ad117e0c22d")

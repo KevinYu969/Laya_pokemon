@@ -1252,3 +1252,45 @@ Viewer遇影格JSON讀取鎖時可能漏掉暫停狀態，已讓server只從camp
 
 策略研究已核Lapras可用TM24(item224)學Thunderbolt85；root接受用85取代ConfuseRay109、保Surf/BodySlam/IceBeam，為科拿四名水系提供電2倍覆蓋。這是既有Zapdos預留的明記例外，因當前隊伍可立即受益；仍須均衡練隊、不保證一擊。成功才消耗TM一份，不能套HM保留規則；目前只在開發候選，尚未真正學會。逐鍵仍offline Laya/cache、cloud_fallback=false，工程審查另計。新備份尚待本輪整理，不能拿e76當新增程式已公開。
 
+## 72. 2026-10-28 最新檔接續game28、正常補藥與三樓推石停檢
+
+第71節關於game27仍在執行的敘述僅適用當時觀測；之後以完整程序清單核對game27確已結束，沒有最終異常可確認死因，不能把viewer有HTTP/舊圖當作遊戲仍活。由最新98321存檔唯讀複本tick1驗證全部progress相同，保留來源hash後接續game28，並非回讀舊進度；新段的影格、模型載入及控制器由新段起算，不能宣稱原owner/計數恢復。
+
+台北11:49:39.547933，game28兩次正常Start→ITEM→Hyper→隊伍→HP動畫→真確認→關窗→兩fresh世界已驗收：Lapras27→177、Snorlax90→203，Hyper8→6；LP Surf仍0PP，沒有把HP補藥寫成PP回復。正常隊伍選單換Nidoking36首位，接原20,13以後路線到3F，使用怪力並繼續首石。台北11:51:53.849645，frame15697/map198(18,1)逃離Venomoth40後，Nido57/121健康閘門停檢，六人均存活、無新增FNT；Sno203/203、LP177/177，其餘隊員滿血。Nido36、Sno42、Eevee35、Venusaur35、Fearow37、Lapras43，均衡45仍未達成，四天王未勝。
+
+補血與解謎交接的缺口：推石owner在wild中暫交戰鬥，世界回來後健康閘門早於原owner收尾；直接替換plan會失去原pending/石頭位置與基線。候選以明記同game/frame/step/job/hash的capsule，原owner先接受真wild返回，保留新pending未送鍵，再只允許一瓶正常Hyper子交易。真HP+200上限及物品-1、其他資源與石頭/開關/怪力位置均核對後，才記教訓、更新控制器資源基線並接續原按鍵；不改遊戲RAM，不退款原預算。此段尚在開發/測試，不能宣稱三樓補血或石頭已完。
+
+8767真PyBoy頁已再次可見，程序32416/28800當次核存在，但影格15697正確標示停檢；原生SDL仍未修。9,204完整回歸及1,215乾淨LF子集為較早固定切點，不包含後加Hyper/此補藥中斷；Hyper及中央入口159項另測通過。公開備份62ab572已核539檔與遠端SHA，不代表後加程式已上傳。
+
+本輪曾委派本機Qwen整理4條文件教訓，只提供上述已核事實、不允許讀寫檔案；端點回fetch failed，未產生草稿，API未提供token用量，沒有轉GPT完成逐鍵分類。雲端parent另行核對收據並寫本紀錄；工程審查用量和遊戲分類分列。
+
+## 73. 2026-10-28 三樓真開關與尼多王倒下教訓；中心救援不能只放行interact
+
+game28台北12:13:19.659303真完成原推石owner之正常Hyper子交易：Nido57→121、Hyper6→5，原controller/pending/started/calls/步序未重開；最後B未當方向ACK。12:13:28.729757三樓首開關真complete，關鍵圖00011/00012已root視覺核。後續Nido升37；12:13:40.383647 frame32809/map198(6,1)，Nido0/125，其他5人存活且滿HP，Health gate停。
+
+真失敗鏈：Venomoth40 PSYBEAM超效、StunSpore PAR與confusion，Nido78→自傷62後仍固定RUN，Cant escape後PSYBEAM含critical→FNT。Fearow正常換入，一發DrillPeck超效擊倒並獲788EXP。新增wild可見教訓只在敵招USED與完整超效配對、主力PAR/HUD互證或混亂/已逃跑失敗時，優先正常換status0、HP>half、有PP超效攻擊且對已觀察敵招更耐受隊友；一般RUN/捕捉/noPP/Disable不變。root另審出fixed40 active risk且尚無pending時優先序缺口，補guard後49候選／212相關formal回歸通過。沒有把測試當成該分支已實際觸發。
+
+來源audit證實無純移動出洞鏈：返回1F會reset首開關，保留原石(2,10)一顆就阻路；不是closed terrain完全不連。前往Indigo仍需3F落石與2F最後開關。故root正式做具名19步中心救援：只Nido7已核FNT、五名存活無status，普通怪力/推石到護士；Fearow35正常換首，每步核fixed JOB、原frame32809/review/stateSHA、完整19步source固定ID/map/target/via/warp/terminal與lead，不能重算stepsSHA擴權。兩pure默认仍拒FNT，只有exact tuple(7,)；Snorlax必活、真選Strength、FNT顯示依目前fresh party與真17欄source格式。geometry/events/資源收據不放寬、不改RAM。正常護士治癒後診間下7,8/上7,7留兩fresh全六HP/PP證據再結束。
+
+兩次獨立審查指出root初版缺口並修：普通move/heal會先被legacy recovery flag豁免，改marker專用validator在所有早退與legacy前；via/next_map/terminal可自重算SHA，改整個expected_steps固定；float7/6/255與unknownspecieslist型別漏洞修exact int及先型別再set；terminal healthy不足以驗身份，改共用完整6-roster/count/readvalid/name/badges/status/type與fullHP，unknownPP例外failclosed。499項相關正式回歸21.42秒通過。來源audit保留反例與舊失敗，未抹掉錯誤。
+
+## 74. 2026-10-28 Windows原生存取違規、最新檔game29恢復與中毒停檢
+
+台北12:33:51.302797 Windows Application Event1000確認PID28800（game28原生Python）在python311.dll例外0xc0000005；1001亦報APPCRASH。沒有Python最終例外/final存檔。這次有原生故障證據，不再只稱無法確認；但仍不能由最後PIL/np錄影stack推出根因是PIL，更不能稱OOM（當次未查到System2004）。
+
+僅取最新checkpoint47809，no-input clone tick1與同frame原log完整progress相同：map198(11,13)剛進Weepinbell43 trainer、Fearow37/114狀態0，Nido0、其餘滿。最後串流51374與存檔差3565幀/約59.42模擬秒，坦白有未保存範圍；未選更舊存檔或稱無損。保來源hash後接game29新時基，不稱warm owner/模型counter接回。沿用原Strata核准與設定SHA，沒有新API，逐鍵仍offline Laya/cache。
+
+game29採原生160x144錄影，避免實跑高頻PIL resize，放大交後製；2秒checkpoint、每7200模擬幀封片，原生程序外加supervisor記exit code及失敗status。這是有界穩定性改善，尚未證根因已修。真正新段在17.625秒內行進5352模擬幀，其中model_wait13.890、load/choose待機另計；不能把此比率當全遊戲通關速度。
+
+台北12:41:36.461091，game29真完成該trainer獲¥1505，Fearow升38 EXP58020、HP117/117、PSN8；Nido37仍0/125，其餘4滿，FullHeal10/Hyper5。新status guard依設計停在frame5353/map198(11,13)，正補正常野外FullHeal流程，未冒稱已治癒／到護士／四天王勝利。8767已接game29真畫面，可見PSN停檢。
+
+完整regression4固定347檔前後一致：9648 passed、8 failed（7個原Lapras未知plan無steps時新Hyper入口KeyError，1個unused訓練候選test仍game27）；root修plan.get安全讀與尚未啟用/無ledger的候選及test改綁game29後，相關98通過，完整重跑未完成。不要把舊9204或此次9648寫成當前全綠。public收據保失敗數，不含原診斷私人路徑；原log留本機。網站未發布，四天王/均衡45尚未完成。
+
+## 75. 2026-10-28 完整9656回歸真通過與三段4倍速素材驗收
+
+regression5修完前次7個unknownplan KeyError/1個unused target test漂移後完整重跑：9656 passed、1個既有SDL warning、pytest185.73秒（wrapper188.813），347份src/scripts/tests來源與fixture前後SHA一致，root記錄時再核一次仍同。manifest SHA5e2f33e665cfe9c42cdd722f0aff15b3acc0639d6fe66ea193e153333dd7a3ac、stdout d59aab692d8c3c48febfa39c8385e9245dcdbcd192d326e7a1fa535e09018df4。公開results/code-validation-league-regression5-20261028.json不含原診斷路徑。切點涵TM24/補血中斷/FNT救援/野生教訓/原生錄影flags，不含尚未採納的FullHeal候選；不能把程式測試稱成四天王勝利。
+
+已只取game28正常closed video002（4278幀、15fps、每4個模擬幀取樣，起始global emu15736），製3段4倍速、60fps、480x432：正常Hyper350幀5.833秒；補血後推石1624幀27.067秒（含真途中戰鬥）；Nido倒下/換Fearow取勝654幀10.9秒。trim使用精確source video frame半開區間與global emulated frames，不用wall/review時間估影片、不混工程停檢。逐段count_frames/fps/尺寸及SHA已核；source game3張PNG、8張影片核對圖已root視覺檢查，含Nido recovered by64、121/121和Fearow usedDrillPeck。原始失敗保留，不剪成無損成功或宣稱四天王已過。素材在outputs/blog-assets/victory3f-recovery-20261028，公開results/victory3f-clips-20261028.json只列manifest，二進位留本機未上Git/網站。
+
+game29當前仍5353、198(11,13)、Fearow38 PSN8滿HP，FullHeal52×10尚未用，Nido0。正在source-bound正常FullHeal子交易開發。逐鍵offline Laya/cache與既有Strata核准SHA不變，無新模型API；工程開發/審查另計。最新資料準備依白名單安全備份，完成以遠端SHA收據為準。
+

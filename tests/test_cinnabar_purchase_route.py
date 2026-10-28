@@ -6,6 +6,7 @@ from types import ModuleType, SimpleNamespace
 
 import pytest
 import laya_pokemon
+from tm24_parent_fixture import seed_tm24_peer
 
 
 ROOT = Path(laya_pokemon.__file__).resolve().parents[2]
@@ -30,7 +31,7 @@ PEERS = ('mansion_secret_key_bridge', 'mansion_statue_bridge', 'mansion_transiti
          'campaign_transactions', 'battle_medicine_bridge', 'fly_viridian_bridge',
          'trainer_medicine_ui_bridge','victory_strength_bridge','victory_first_boulder_bridge',
          'victory_later_boulders_bridge','route23_bridge','route23_land_guards_bridge',
-         'league_training_batch_bridge')
+         'league_training_batch_bridge','overworld_hyper_bridge','tm24_teaching_bridge')
 
 
 def forbidden(*args, **kwargs):
@@ -49,6 +50,7 @@ def env(monkeypatch):
             monkeypatch.setattr(module,'_CONTROLLERS',{})
             if hasattr(module,'_ERRORS'):monkeypatch.setattr(module,'_ERRORS',{})
             if hasattr(module,'_OWNERS'):monkeypatch.setattr(module,'_OWNERS',{})
+            if hasattr(module,'_REGISTRY_ERROR'):monkeypatch.setattr(module,'_REGISTRY_ERROR',None)
     monkeypatch.setattr(route.safari_entry, '_RUN_CONTROLLER', None)
     monkeypatch.setattr(route.capture_transaction, '_SESSIONS', {})
     monkeypatch.setattr(route.battle_medicine_bridge, '_CONTROLLERS', {})
@@ -99,13 +101,18 @@ def test_peer_fixture_covers_every_other_imported_binding_registry(env):
     actual = {name for name, module in vars(route).items()
               if isinstance(module, ModuleType) and module is not env.bridge
               and hasattr(module, '_BINDINGS') and hasattr(module, '_COMPLETED')}
-    assert actual == set(PEERS) and len(actual) == 24
+    assert actual == set(PEERS) and len(actual) == 26
 
 
 @pytest.mark.parametrize('name', PEERS)
 def test_each_active_peer_blocks_before_ui_or_purchase_dispatch(env, monkeypatch, name):
     peer = getattr(route, name)
-    peer._BINDINGS['existing-owner'] = {'retained': True}
+    if name=='tm24_teaching_bridge':
+        seed_tm24_peer(peer,'existing-owner')
+    elif name=='overworld_hyper_bridge':
+        peer._BINDINGS['existing-owner']={'step':{'retained':True},'training_job':'job','job_canonical':'"job"','error':None}
+        peer._CONTROLLERS['existing-owner']=object();peer._OWNERS['existing-owner']=object()
+    else:peer._BINDINGS['existing-owner'] = {'retained': True}
     from laya_pokemon import observation
     monkeypatch.setattr(observation, 'read_visible_text', forbidden)
     monkeypatch.setattr(route, 'read_world_grid', forbidden)
@@ -132,7 +139,12 @@ def test_each_active_peer_blocks_before_ui_or_purchase_dispatch(env, monkeypatch
 def test_completed_peers_and_finished_capture_do_not_block_new_purchase(env):
     for name in PEERS:
         peer = getattr(route, name)
-        peer._BINDINGS['old'] = ('original',)
+        if name=='tm24_teaching_bridge':
+            seed_tm24_peer(peer,'old',complete=True)
+        elif name=='overworld_hyper_bridge':
+            peer._BINDINGS['old']={'step':{},'training_job':'job','job_canonical':'"job"','error':None}
+            peer._CONTROLLERS['old']=object();peer._OWNERS['old']=object()
+        else:peer._BINDINGS['old'] = ('original',)
         peer._COMPLETED.add('old')
     route.capture_transaction._SESSIONS['old-capture'] = {'done': True}
     assert route.switch_context(env.game, env.state, env.plan, 'medicine', ['wait']) is env.result

@@ -71,6 +71,16 @@ def attrition_context(state, plan, step_id):
             return _review('party_attrition_state_unverified',step_id,issue='training_party_moves_or_status_unverified')
         training_needs_center=any(hp*3<=maximum*2 or mon['status'] or attack_pp(mon)<3
                                   for mon,(hp,maximum) in zip(party,health))
+    if 'reviewed_fnt_recovery' in plan:
+        from . import league_recovery
+        if not league_recovery.valid_plan(plan):
+            return _review('party_attrition_state_unverified',step_id,issue='reviewed_recovery_plan_changed')
+        if league_recovery.admitted(plan,step_id,progress)==(7,):return None
+        from .campaign_route import healthy
+        try:full_healed=healthy(progress,require_full_pp=True)
+        except Exception:full_healed=False
+        if league_recovery.healed_terminal(plan,step_id,state,full_party_healed=full_healed):return None
+        return _review('party_attrition_requires_center',step_id,issue='reviewed_recovery_party_changed',fainted_party_indices=fainted)
     if not fainted and not low_lead and not training_needs_center:
         return None
     if not fainted:

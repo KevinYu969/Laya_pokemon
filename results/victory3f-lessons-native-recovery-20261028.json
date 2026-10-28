@@ -1,0 +1,205 @@
+{
+  "date": "2026-10-28",
+  "status": "victory_road_3f_switch1_complete_reviewed_center_recovery_pending",
+  "milestones": [
+    {
+      "at": "2026-10-28T04:13:19.659303+00:00",
+      "kind": "owned-overworld-hyper"
+    },
+    {
+      "at": "2026-10-28T04:13:28.729757+00:00",
+      "kind": "victory-later-boulder",
+      "case": "3f_switch1"
+    }
+  ],
+  "evidence": {
+    "field_ledger_sha256": "f82f0575c6e8ba58270634cb64cc66f7c217a14161f901e9df7a5c88b487027a",
+    "fnt_review_sha256": "81e66c2c3f90a388c91e1f53b13c3525bb5d936dca22cd4cd17f97730d230313",
+    "poison_review_sha256": "042cc762cf2702d5bd72b064365caa3604f44f4aa2cf8b476ee7fce8335968d6"
+  },
+  "faint_lesson": {
+    "game": "game28",
+    "frame": 32809,
+    "map_id": 198,
+    "x": 6,
+    "y": 1,
+    "species": 7,
+    "evidence": [
+      "PSYBEAM超效、PAR、confusion",
+      "62/125時選RUN，Cant escape後再承受PSYBEAM含critical而FNT",
+      "Fearow換入DrillPeck超效擊倒Venomoth40並獲788EXP"
+    ],
+    "adopted_strategy": "已觀察敵招超效且主力麻痺/混亂/逃跑失敗時，優先正常換健康、攻防屬性更適合隊友；保留一般RUN與fixed40優先。"
+  },
+  "native_crash": {
+    "at_taipei": "2026-10-28T12:33:51.302797+08:00",
+    "exception_code": "0xc0000005",
+    "module": "python311.dll",
+    "process_id": 28800
+  },
+  "recovery": {
+    "source_frame": 47809,
+    "last_observed_frame": 51374,
+    "unsaved_observed_frame_gap": 3565,
+    "new_game": "game29",
+    "full_progress_equal_to_saved_frame_log": true,
+    "original_controller_recovered": false,
+    "root_cause_fixed": false,
+    "mitigation": [
+      "原生160x144錄影；放大留後製",
+      "2秒檢查點與7200模擬幀短片封存",
+      "外層監督記錄exit code並標示停止"
+    ]
+  },
+  "current_checkpoint": {
+    "game": "game29",
+    "frame": 5353,
+    "at": "2026-10-28T04:41:36.461091+00:00",
+    "location": {
+      "map_id": 198,
+      "x": 11,
+      "y": 13
+    },
+    "party": [
+      {
+        "species": 35,
+        "species_name": "FEAROW",
+        "level": 38,
+        "hp": 117,
+        "max_hp": 117,
+        "exp": 58020,
+        "status": 8,
+        "moves": [
+          64,
+          65,
+          19,
+          31
+        ],
+        "pp": [
+          35,
+          9,
+          15,
+          20
+        ]
+      },
+      {
+        "species": 132,
+        "species_name": "SNORLAX",
+        "level": 42,
+        "hp": 203,
+        "max_hp": 203,
+        "exp": 97367,
+        "status": 0,
+        "moves": [
+          70,
+          133,
+          156,
+          34
+        ],
+        "pp": [
+          13,
+          20,
+          10,
+          13
+        ]
+      },
+      {
+        "species": 102,
+        "species_name": "EEVEE",
+        "level": 35,
+        "hp": 90,
+        "max_hp": 90,
+        "exp": 43317,
+        "status": 0,
+        "moves": [
+          33,
+          28,
+          98,
+          39
+        ],
+        "pp": [
+          35,
+          15,
+          30,
+          30
+        ]
+      },
+      {
+        "species": 154,
+        "species_name": "VENUSAUR",
+        "level": 35,
+        "hp": 111,
+        "max_hp": 111,
+        "exp": 36804,
+        "status": 0,
+        "moves": [
+          75,
+          15,
+          73,
+          22
+        ],
+        "pp": [
+          25,
+          30,
+          10,
+          10
+        ]
+      },
+      {
+        "species": 7,
+        "species_name": "NIDOKING",
+        "level": 37,
+        "hp": 0,
+        "max_hp": 125,
+        "exp": 43881,
+        "status": 0,
+        "moves": [
+          61,
+          57,
+          30,
+          40
+        ],
+        "pp": [
+          20,
+          4,
+          25,
+          35
+        ]
+      },
+      {
+        "species": 19,
+        "species_name": "LAPRAS",
+        "level": 43,
+        "hp": 177,
+        "max_hp": 177,
+        "exp": 105912,
+        "status": 0,
+        "moves": [
+          57,
+          34,
+          58,
+          109
+        ],
+        "pp": [
+          0,
+          12,
+          8,
+          10
+        ]
+      }
+    ],
+    "hyper_potions": 5,
+    "full_heals": 10,
+    "normal_field_full_heal_complete": false
+  },
+  "validation": {
+    "recovery_related_passed": 499,
+    "wild_related_passed": 212,
+    "full_regression4_passed": 9648,
+    "full_regression4_failed": 8,
+    "full4_failures": "7個未知plan缺steps觸發KeyError、1個訓練target仍綁舊game27；修正後相關98通過，尚待整體重跑"
+  },
+  "elite_four_complete": false,
+  "cloud_classification_fallback": false,
+  "strata_configuration_changed": false
+}

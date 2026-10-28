@@ -10,7 +10,7 @@ import math
 
 SOURCE_COMMIT="a53671100ec22e5394ff26ec028d0812a238dae2"
 PROFILE="red-en-league-training-world-v1"
-JOB="league-six-party45-game27-20261028"
+JOB="league-six-party45-game29-20261028"
 MARKER="vr2-east-balanced45-v1"
 MAX_FRAMES,MAX_CALLS=3600,120
 _SESSIONS=globals().get("_SESSIONS",{})

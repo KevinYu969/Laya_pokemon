@@ -358,7 +358,10 @@ def _other_objects(objects,slot):
 
 
 class VictoryLaterBoulderController:
-    def __init__(self,case_key):
+    def __init__(self,case_key,*,reviewed_fainted_bench=()):
+        if type(reviewed_fainted_bench) is not tuple or any(type(v) is not int for v in reviewed_fainted_bench) or reviewed_fainted_bench not in ((),(7,)):
+            raise ValueError('Only the explicitly reviewed Nidoking bench is supported')
+        self.reviewed_fainted_bench=reviewed_fainted_bench
         if type(case_key) is not str or case_key not in CASES:raise ValueError("Only four fixed later-boulder case keys")
         self.case_key=case_key;self.case=deepcopy(CASES[case_key]);self.contract=deepcopy(self.case)
         self.pushes=self.case["pushes"];self.owner=None;self.started=self.last_now=self.step_started=None
@@ -483,7 +486,7 @@ class VictoryLaterBoulderController:
         if self.suspended:
             if not _wild_return(self.baseline,current):return self._fail("wild_return_resource_change_unverified")
         elif self.baseline is not None and current!=self.baseline:return self._fail("resources_changed_outside_owned_wild_battle")
-        if any(m["hp"]<=0 or m["status"]!=0 for m in current["party"]):return self._fail("attrition_requires_owned_review")
+        if any((m['hp']<=0 and m['species'] not in getattr(self,'reviewed_fainted_bench',())) or m['status']!=0 for m in current['party']):return self._fail('attrition_requires_owned_review')
         if self.object_baseline is not None and _other_objects(objects,c["slot"])!=self.object_baseline:
             return self._fail("other_bound_objects_changed")
         self.contact_arm_seen|=bool(a["misc"]&64);self.native_script_seen|=bool(a["flags5"]&1);self.dust_seen|=bool(a["misc"]&2)

@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-28",
+  "status": "victory_road_3f_health_review",
+  "game": "outputs/league-campaign-20261028-28/game",
+  "source_review_sha256": "81f88afec23c246a98e67a1572ce011948b30044c2c9408a45415821e6dad25a",
+  "source_fields_sha256": "54d04c63774e5f5d89c9a9091ac4fcd96d6e374706328c15ef4608b87f8b08b8",
+  "milestones": [
+    {
+      "at_taipei": "2026-10-28T11:49:34.232028+08:00",
+      "kind": "overworld-hyper",
+      "context": {
+        "phase": "overworld_medicine_wait",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "overworld_hyper_profile": "red-en-overworld-hyper-victory2f-v1-candidate",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "overworld_hyper_stage": "complete",
+        "overworld_hyper_reason": "closed_two_fresh_world",
+        "overworld_hyper_calls": 39,
+        "overworld_hyper_elapsed_seconds": 25.333333333333343,
+        "candidate_only": true,
+        "overworld_medicine_complete": true,
+        "medicine_receipt": {
+          "item": 18,
+          "quantity": 1,
+          "target_species": 19,
+          "target_index": 0,
+          "hp_before": 27,
+          "hp_after": 177,
+          "closed_frame": 1521
+        },
+        "field_move_complete": true,
+        "field_move_kind": "overworld-hyper"
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:49:35.259177+08:00",
+      "kind": "overworld-hyper",
+      "context": {
+        "phase": "overworld_medicine_wait",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "overworld_hyper_profile": "red-en-overworld-hyper-victory2f-v1-candidate",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "overworld_hyper_stage": "complete",
+        "overworld_hyper_reason": "closed_two_fresh_world",
+        "overworld_hyper_calls": 18,
+        "overworld_hyper_elapsed_seconds": 11.33333333333333,
+        "candidate_only": true,
+        "overworld_medicine_complete": true,
+        "medicine_receipt": {
+          "item": 18,
+          "quantity": 1,
+          "target_species": 132,
+          "target_index": 1,
+          "hp_before": 90,
+          "hp_after": 203,
+          "closed_frame": 2201
+        },
+        "field_move_complete": true,
+        "field_move_kind": "overworld-hyper"
+      }
+    },
+    {
+      "at_taipei": "2026-10-28T11:51:40.074725+08:00",
+      "kind": "victory-strength",
+      "context": {
+        "phase": "victory_strength_complete",
+        "objective": "Wait.",
+        "available_actions": [
+          "wait"
+        ],
+        "controller_menu_verified": false,
+        "victory_strength_complete": true,
+        "victory_strength_stage": "complete",
+        "victory_strength_tactic": "verified_native_strength_active_here",
+        "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+        "victory_strength_case": "3f_entry",
+        "seen_used_full": false,
+        "seen_can_prompt": true,
+        "prompt_ack": true,
+        "field_move_complete": true,
+        "field_move_kind": "victory-strength"
+      }
+    }
+  ],
+  "frame": 15697,
+  "location": {
+    "map_id": 198,
+    "x": 18,
+    "y": 1
+  },
+  "party": [
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 36,
+      "hp": 57,
+      "max_hp": 121,
+      "exp": 43092,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        9,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 42,
+      "hp": 203,
+      "max_hp": 203,
+      "exp": 97367,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        13,
+        20,
+        10,
+        13
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 37,
+      "hp": 114,
+      "max_hp": 114,
+      "exp": 51794,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        19,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        15,
+        20
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 43,
+      "hp": 177,
+      "max_hp": 177,
+      "exp": 105912,
+      "status": 0,
+      "moves": [
+        57,
+        34,
+        58,
+        109
+      ],
+      "pp": [
+        0,
+        12,
+        8,
+        10
+      ]
+    }
+  ],
+  "hyper_potions": 6,
+  "latest_checkpoint_recovery": true,
+  "source_game27_frame": 98321,
+  "game27_exit_cause": "unconfirmed",
+  "elite_four_complete": false,
+  "cloud_classification_fallback": false,
+  "strata_configuration_changed": false,
+  "limitations": [
+    "3F推石中正常補藥子交易仍在開發，未稱補藥完成。",
+    "原生SDL未修；8767為真PyBoy影格串流，暫停應顯示暫停。",
+    "四名較低等級隊員仍未均衡至45；四天王與冠軍尚未完成。"
+  ]
+}

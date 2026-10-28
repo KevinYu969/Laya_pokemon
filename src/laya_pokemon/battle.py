@@ -39,6 +39,255 @@ TRAINER_HALF_HP_PROFILE = 'red-en-trainer-half-hp-v1'
 _TRAINER_HALF_REASON = 'trainer_half_hp_support'
 
 
+# Narrow wild-only lesson: verified enemy super-effectiveness + impaired lead.
+_wild_retreat_lesson = globals().get('_wild_retreat_lesson')
+_wild_retreat_switch = globals().get('_wild_retreat_switch')
+
+
+def _wild_retreat_clear():
+    global _wild_retreat_lesson, _wild_retreat_switch
+    _wild_retreat_lesson = _wild_retreat_switch = None
+
+
+def _wild_retreat_review(reason):
+    record = _wild_retreat_switch or _wild_retreat_lesson
+    if isinstance(record,dict):
+        record['error'] = record.get('error') or reason
+        reason = record['error']
+    return dict(phase='strategy_review', objective='Wait.', available_actions=['wait'],
+        review_reason='wild_retreat_' + reason)
+
+
+def _wild_retreat_page(cells,first,second=''):
+    """Exact lower source page; only physical 's/'t/'m literals may be tokens."""
+    expected=[[' ']*20 for _ in range(6)]
+    for y,value in ((2,first),(4,second)):
+        x=1
+        while value:
+            token=next((t for t in ("'s","'t","'m") if value.startswith(t)),value[0])
+            # Accept either native contraction tile or ordinary one-char cells.
+            if len(token)>1 and cells[y+12][x] != token:token=value[0]
+            if x>=20:return False
+            expected[y][x]=token;x+=1;value=value[len(token):]
+    if cells[16][18] not in (' ','▼'):return False
+    expected[4][18]=cells[16][18]
+    return [[c.upper() for c in row] for row in cells[12:]]==[[c.upper() for c in row] for row in expected]
+
+
+def _wild_retreat_rows(text,battle_state):
+    if (not isinstance(text,dict) or text.get('profile')!=_VISIBLE_PROFILE
+            or text.get('read_valid') is not True or text.get('alignment_verified') is not True
+            or text.get('read_error') is not None or type(text.get('window_visible')) is not bool
+            or type(battle_state.get('observation_frame')) is not int or battle_state['observation_frame']<0
+            or 'observation_frame' in text and (type(text['observation_frame']) is not int
+                or text['observation_frame']!=battle_state['observation_frame'])):return None
+    cells=text.get('cells')
+    if (not isinstance(cells,(list,tuple)) or len(cells)!=18
+            or any(not isinstance(row,(list,tuple,str)) or len(row)!=20 for row in cells)
+            or any(type(c) is not str or not c for row in cells for c in row)):return None
+    multiple=[(x,y,c) for y,row in enumerate(cells) for x,c in enumerate(row) if len(c)!=1]
+    if multiple:
+        allowed=(len(multiple)==1 and (multiple[0]==(3,14,"'s")
+            and _wild_retreat_page(cells,"It's super",'effective!')
+            or multiple[0]==(4,14,"'t") and _wild_retreat_page(cells,"Can't escape!")))
+        pending=_wild_retreat_switch
+        if (not allowed and len(multiple)==1 and multiple[0]==(4,14,"'m")
+                and isinstance(pending,dict) and pending.get('switch_requested')):
+            from .team_strategy import species_key
+            allowed=_wild_retreat_page(cells,"Get'm! "+species_key(pending['target_species'])+'!')
+        if not allowed:return None
+    raw=[''.join(row) for row in cells]
+    selected=[(i,row.rstrip()) for i,row in enumerate(raw) if re.search(r'[A-Za-z0-9]{2,}',row)][:12]
+    if text.get('lines')!=[row for _,row in selected] or text.get('line_rows')!=[i for i,_ in selected]:return None
+    return [row.upper() for row in raw]
+
+
+def _wild_retreat_identity(rows,battle_state,party):
+    from .team_strategy import species_key, normalize, reference
+    if (type(battle_state.get('raw')) is not int or battle_state['raw']!=1
+            or battle_state.get('kind')!='wild' or battle_state.get('active') is not True
+            or not _trainer_half_party_valid(party)):return None
+    enemy=species_key(battle_state.get('opponent_species'))
+    if enemy is None or species_key(battle_state.get('wild_opponent_species',enemy))!=enemy:return None
+    visible=[key for key in reference()['species'] if normalize(key) in {normalize(r.strip()) for r in rows[:4]}]
+    active=[m for m in party if normalize(species_key(m['species'])) in {normalize(r.strip()) for r in rows[6:10]}]
+    health=[tuple(map(int,match.groups())) for row in rows[8:12]
+        if (match:=re.fullmatch(r'\s*(\d+)\s*/\s*(\d+)\s*',row[10:]))]
+    if (visible!=[enemy] or len(active)!=1 or len(health)!=1 or not 0<health[0][0]<=health[0][1]
+            or health[0][1]!=active[0]['max_hp'] or rows[8].strip()!=_trainer_half_status(active[0])):return None
+    return enemy,active[0],health[0]
+
+
+def _wild_retreat_multiplier(move,defender):
+    from .team_strategy import reference,move_key,species_key
+    key=move_key(move);species=species_key(defender);ref=reference()
+    if key is None or species is None or ref['moves'][key]['power']<=1:return None
+    attack_type=ref['moves'][key]['type'];value=1.
+    for target_type in ref['species'][species]['types']:
+        value*=next((factor for a,b,factor in ref['type_matchups'] if a==attack_type and b==target_type),1)
+    return value
+
+
+def _wild_retreat_support(mon,active,enemy,observed_move):
+    from .team_strategy import effective_power
+    defensive=_wild_retreat_multiplier(observed_move,mon['species'])
+    old_defensive=_wild_retreat_multiplier(observed_move,active['species'])
+    return (mon['species']!=active['species'] and mon['hp']*2>mon['max_hp'] and mon['status']==0
+        and defensive is not None and old_defensive is not None and defensive<old_defensive
+        and any(pp&63 and (_wild_retreat_multiplier(move,enemy) or 0)>1
+            and effective_power(move,mon['species'],enemy)>0 for move,pp in zip(mon['moves'],mon['pp'])))
+
+
+def _wild_retreat_pending(text,battle_state,party,rows):
+    global _wild_retreat_lesson,_wild_retreat_switch
+    from copy import deepcopy
+    from .team_strategy import species_key
+    record=_wild_retreat_switch
+    if record.get('error'):return _wild_retreat_review(record['error'])
+    if (rows is None or not _trainer_half_party_valid(party)
+            or tuple(m['species'] for m in party)!=record['party_species']
+            or species_key(battle_state.get('opponent_species'))!=record['enemy_species']):
+        return _wild_retreat_review('pending_observation_or_owner_changed')
+    frame=battle_state['observation_frame'];packet=deepcopy((text,battle_state,party))
+    if frame<record['last_frame']:return _wild_retreat_review('pending_frame_regressed')
+    if frame==record['last_frame']:
+        if packet!=record['last_packet']:return _wild_retreat_review('pending_same_frame_conflict')
+        return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],battle_tactic='wait_same_wild_switch_frame')
+    record['last_frame']=frame;record['last_packet']=packet;record['calls']+=1
+    if record['calls']>120 or frame-record['started_frame']>3600:return _wild_retreat_review('pending_budget_exhausted')
+    target=next(m for m in party if m['species']==record['target_species'])
+    identity=_wild_retreat_identity(rows,battle_state,party)
+    command=all(_label(rows,label) for label in ('FIGHT','ITEM','RUN'))
+    lower=' '.join(' '.join(rows[12:]).replace('▼',' ').split())
+    wanted=species_key(target['species']);old=species_key(record['active_species'])
+    sent=(f'GO! {wanted}!',f'DO IT! {wanted}!',f"GET'M! {wanted}!")
+    if (record['switch_requested'] and identity and identity[1]['species']==target['species']
+            and identity[2]==(target['hp'],target['max_hp'])
+            and (command and _trainer_half_command_layout(rows) or lower in sent)):
+        _wild_retreat_clear()
+        return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],battle_tactic='verified_wild_switch_handoff')
+    if not _wild_retreat_support(target,record['active_before'],record['enemy_species'],record['observed_move']):
+        return _wild_retreat_review('pending_support_no_longer_healthy')
+    if command:
+        if (identity is None or identity[1]['species']!=record['active_species']
+                or identity[2]!=(identity[1]['hp'],identity[1]['max_hp'])
+                or not _trainer_half_command_layout(rows)):
+            return _wild_retreat_review('pending_command_unverified')
+        if record['switch_requested']:return _wild_retreat_review('switch_not_observed')
+        hint=_selection_hint(rows,(16,14),'command')
+        return {**hint,'battle_tactic':'switch_observed_wild_danger','party_target_species':target['species']}
+    index=next(i for i,m in enumerate(party) if m['species']==target['species'])
+    if any('SWITCH' in row or 'STATS' in row or 'CANCEL' in row for row in rows[12:]):
+        if rows!=_trainer_half_party_view(party,index,True):return _wild_retreat_review('pending_switch_menu_unverified')
+        if not record['member_selected']:return _wild_retreat_review('member_not_selected')
+        if record['switch_requested']:return _wild_retreat_wait(record,'await_actual_wild_switch')
+        record['switch_requested']=True
+        return {**_selection_hint(rows,(13,12),'party'),'battle_tactic':'switch_observed_wild_danger','party_target_species':target['species']}
+    cursors=[(x,y,c) for y,row in enumerate(rows) for x,c in enumerate(row) if c in ('▶','▷','▼')]
+    if len(cursors)==1 and cursors[0][0]==0 and cursors[0][1]%2==1 and cursors[0][1]//2<len(party):
+        current=cursors[0][1]//2
+        if rows!=_trainer_half_party_view(party,current,inactive=cursors[0][2]=='▷'):
+            return _wild_retreat_review('pending_party_menu_unverified')
+        if cursors[0][2]=='▷' or record['member_selected']:return _wild_retreat_wait(record,'await_party_switch_submenu')
+        if current==index:
+            record['member_selected']=True;action='a';objective='Confirm the current selection.'
+        else:action='down' if current<index else 'up';objective='Move '+action.upper()+'.'
+        return dict(phase='battle_menu',objective=objective,available_actions=[action,'wait'],
+            controller_menu_verified=True,battle_tactic='switch_observed_wild_danger',party_target_species=target['species'])
+    if record['switch_requested']:
+        messages=(f'{old} ENOUGH! COME BACK!',f'{old} OK! COME BACK!',f'{old} GOOD! COME BACK!',f'{old} COME BACK!',*sent)
+        if lower in messages:
+            return dict(phase='battle_dialogue',objective='Confirm the current selection.',available_actions=['a','wait'],battle_tactic='verified_wild_switch_dialogue')
+        if not lower or any(message.startswith(lower) for message in messages):return _wild_retreat_wait(record,'await_complete_wild_switch_dialogue')
+    return _wild_retreat_review('pending_unknown_ui')
+
+
+def _wild_retreat_wait(record,reason):
+    record['waits']+=1
+    if record['waits']>25:return _wild_retreat_review('pending_wait_budget_exhausted')
+    return dict(phase='battle_animation',objective='Wait.',available_actions=['wait'],battle_tactic=reason)
+
+
+def _wild_retreat_observe(text,battle_state,party):
+    global _wild_retreat_lesson
+    from copy import deepcopy
+    from .team_strategy import species_key,move_key
+    if (type(battle_state.get('raw')) is not int or battle_state['raw']!=1
+            or battle_state.get('kind')!='wild' or battle_state.get('active') is not True):
+        _wild_retreat_clear();return None
+    rows=_wild_retreat_rows(text,battle_state)
+    if _wild_retreat_switch:return _wild_retreat_pending(text,battle_state,party,rows)
+    if rows is None:return None
+    identity=_wild_retreat_identity(rows,battle_state,party)
+    if identity is None:
+        # Party screens and transitions cannot establish or refresh enemy proof.
+        return None
+    enemy,active,health=identity;frame=battle_state['observation_frame']
+    lower=' '.join(' '.join(rows[12:]).replace('▼',' ').split())
+    record=_wild_retreat_lesson;packet=deepcopy((text,battle_state,party));created=False
+    owner=(enemy,active['species'],tuple(m['species'] for m in party))
+    if (not isinstance(record,dict) or record.get('owner')!=owner
+            or lower==f'WILD {enemy} APPEARED!'):
+        record=dict(owner=owner,last_frame=frame,last_packet=packet,pending_move=None,observed_move=None,
+            super_effective=False,confused=False,escape_failed=False,error=None)
+        _wild_retreat_lesson=record;created=True
+    if record.get('error'):return _wild_retreat_review(record['error'])
+    if frame<record['last_frame']:
+        _wild_retreat_clear();return None
+    if not created and frame==record['last_frame']:
+        if packet!=record['last_packet']:return _wild_retreat_review('observation_same_frame_conflict')
+        return None
+    record['last_frame']=frame;record['last_packet']=packet
+    match=re.fullmatch(r'ENEMY '+re.escape(enemy)+r' USED (.+)!',lower)
+    if match and _wild_retreat_page(text['cells'],'Enemy '+enemy,'used '+match[1]+'!'):
+        key=move_key(match[1]);record['pending_move']=key if key and (_wild_retreat_multiplier(key,active['species']) or 0)>1 else None
+        return None
+    if lower=="IT'S SUPER EFFECTIVE!":
+        if record['pending_move']:
+            record['observed_move']=record['pending_move'];record['super_effective']=True
+        record['pending_move']=None
+    elif lower.startswith(species_key(active['species'])+' USED '):record['pending_move']=None
+    elif lower in (species_key(active['species'])+' BECAME CONFUSED!',species_key(active['species'])+' IS CONFUSED!'):
+        record['confused']=True
+    elif lower=="CAN'T ESCAPE!":record['escape_failed']=True
+    elif lower in (species_key(active['species'])+' SNAPPED OUT OF CONFUSION!',
+                   species_key(active['species'])+' SNAPPED OUT OF ITS CONFUSION!'):record['confused']=False
+    elif all(_label(rows,label) for label in ('FIGHT','ITEM','RUN')):record['pending_move']=None
+    return None
+
+
+def _wild_retreat_command(text,battle_state,party,rows,active,enemy,health,capture_tactic):
+    global _wild_retreat_switch
+    from copy import deepcopy
+    from .team_strategy import effective_power,choose_damage_move
+    record=_wild_retreat_lesson
+    if (battle_state.get('kind')!='wild' or _fixed_damage_risk or _no_pp_switch or capture_tactic!='not_capture'
+            or not isinstance(record,dict) or not record.get('super_effective')):return None
+    if record.get('error'):return _wild_retreat_review(record['error'])
+    checked=_wild_retreat_rows(text,battle_state)
+    identity=_wild_retreat_identity(checked,battle_state,party) if checked else None
+    if (identity is None or identity[0]!=enemy or active is None or identity[1]['species']!=active['species']
+            or identity[2]!=(active['hp'],active['max_hp']) or not _trainer_half_command_layout(checked)):
+        return _wild_retreat_review('command_or_hud_unverified')
+    if record['owner']!=(enemy,active['species'],tuple(m['species'] for m in party)):return None
+    if choose_damage_move(active['species'],active['moves'],active['pp'],enemy) is None:return None
+    if not (active['status']==64 or record['confused'] or record['escape_failed']):return None
+    candidates=[m for m in party if _wild_retreat_support(m,active,enemy,record['observed_move'])]
+    if not candidates:return None
+    def score(mon):
+        return max((effective_power(move,mon['species'],enemy) for move,pp in zip(mon['moves'],mon['pp'])
+            if pp&63 and (_wild_retreat_multiplier(move,enemy) or 0)>1),default=0)*mon['level']
+    target=max(candidates,key=score);frame=battle_state['observation_frame']
+    _wild_retreat_switch=dict(enemy_species=enemy,active_species=active['species'],target_species=target['species'],
+        active_before=deepcopy(active),party_species=tuple(m['species'] for m in party),
+        observed_move=record['observed_move'],member_selected=False,switch_requested=False,
+        started_frame=frame,last_frame=frame,last_packet=deepcopy((text,battle_state,party)),calls=1,waits=0,error=None)
+    return {**_selection_hint(rows,(16,14),'command'),'battle_tactic':'switch_observed_wild_danger',
+        'party_target_species':target['species'],'enemy_species':enemy,
+        'observed_enemy_super_effective_move':record['observed_move'],
+        'wild_retreat_reason':'paralysis_confusion_or_failed_escape_with_observed_super_effectiveness'}
+
+
 def _trainer_half_review(reason):
     return {'phase': 'strategy_review', 'objective': 'Wait.', 'available_actions': ['wait'],
             'review_reason': 'trainer_half_hp_' + reason}
@@ -782,6 +1031,8 @@ def _ditto_ko_context(text, battle_state, party):
 def battle_context(text, battle_state, party=(), inventory=None, *, capture_focus=False) -> dict | None:
     """僅對已核對 ROM 的實驗性路線提供局部提示；不執行按鍵。"""
     global _no_pp_switch
+    if battle_state.get('kind')!='wild' or battle_state.get('active') is not True:
+        _wild_retreat_clear()
     half_opted = 'trainer_half_hp_profile' in battle_state
     if half_opted and (battle_state.get('trainer_half_hp_profile') != TRAINER_HALF_HP_PROFILE
                       or type(battle_state.get('raw')) is not int or battle_state['raw'] != 2
@@ -825,6 +1076,8 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
         pending = _trainer_half_pending(text,battle_state,party)
         if pending is not None:
             return pending
+    wild_context = _wild_retreat_observe(text,battle_state,party)
+    if wild_context is not None:return wild_context
     cells = text.get("cells", [])
     if half_opted and (not isinstance(cells,(list,tuple)) or len(cells)!=18
                       or any(not isinstance(row,(str,list,tuple)) or len(row)!=20 for row in cells)):
@@ -937,6 +1190,8 @@ def battle_context(text, battle_state, party=(), inventory=None, *, capture_focu
         if _fixed_damage_risk and any((fight, item, run)) and not all((fight, item, run)):
             return _fixed_damage_review('fixed_damage_command_not_complete')
         if fight and item and run:
+            wild_context = _wild_retreat_command(text,battle_state,party,rows,active,enemy,health,capture['tactic'])
+            if wild_context is not None:return wild_context
             if resisted_retreat:
                 result = _selection_hint(rows, run, 'command')
                 result.update(battle_tactic='retreat', **resisted_retreat)

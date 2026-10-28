@@ -210,7 +210,10 @@ def _world(grid,frame,intent=INTENT):
 
 
 class VictoryStrengthController:
-    def __init__(self,intent=INTENT):
+    def __init__(self,intent=INTENT,*,reviewed_fainted_bench=()):
+        if type(reviewed_fainted_bench) is not tuple or any(type(v) is not int for v in reviewed_fainted_bench) or reviewed_fainted_bench not in ((),(7,)):
+            raise ValueError('Only the explicitly reviewed Nidoking bench is supported')
+        self.reviewed_fainted_bench=reviewed_fainted_bench
         if _intent_key(intent) is None:
             raise ValueError("Only four fixed Victory Road Snorlax Strength stances")
         self.intent=deepcopy(intent);self.contract=deepcopy(intent)
@@ -251,7 +254,7 @@ class VictoryStrengthController:
     def _progress(self,p):
         party=_party(p);inv=_inventory(p.get("inventory")) if isinstance(p,dict) else None
         if (party is None or len(party)!=6 or len({m["species"] for m in party})!=6
-                or any(m["hp"]<=0 or m["status"]!=0 for m in party) or inv is None
+                or any((m['hp']<=0 and m['species'] not in getattr(self,'reviewed_fainted_bench',())) or m['status']!=0 for m in party) or inv is None
                 or not _int(p.get("money"),0,999999) or p.get("player_name_raw")!="KEVIN"
                 or not _int(p.get("badges_raw")) or not p["badges_raw"] & 8):
             return None
@@ -283,6 +286,7 @@ class VictoryStrengthController:
         r=[list(row) for row in _blank()]
         for i,m in enumerate(self.baseline["party"]):
             _put(r,3,2*i,m["species_name"]);_put(r,13,2*i,f'{m["level"]:3}')
+            if m['hp']==0:_put(r,17,2*i,'FNT')
             _put(r,13,2*i+1,f'{m["hp"]:3}/{m["max_hp"]:3}')
         _put(r,0,2*index+1,marker);_put(r,1,14,"Choose a POKéMON.")
         return _serial(r)

@@ -108,7 +108,7 @@ def test_enable_without_exact_hashes_stops_before_live_snapshot(monkeypatch):
 
 def test_frozen_source_route_and_fixed_game_job_target_are_new():
     assert s.TARGET==45 and s.MAX_SECONDS==900 and s.MAX_OUTINGS==40
-    assert s.GAME_REL=="outputs/league-campaign-20261028-27/game"
+    assert s.GAME_REL=="outputs/league-campaign-20261028-29/game"
     assert "35" not in s.JOB and "20261024" not in s.JOB
     assert s.ROUTE["training_map_id"]==194
 

@@ -1,5 +1,9 @@
 # Laya × 寶可夢：從本機部署到可重現實測
 
+
+**2026-10-28 實際進度：冠軍之路三樓首開關已過，四天王尚未破關。** 已把麻痺／混亂後逃跑失敗的教訓寫入本機策略；因尼多王倒下，正執行正常補給至中心的有限救援行程。game29已恢復真實畫面，原生當機原因與未保存範圍均明記。[最新時間與問題紀錄](docs/league-progress.md)。
+
+
 [![Tests](https://github.com/KevinYu969/Laya_pokemon/actions/workflows/tests.yml/badge.svg)](https://github.com/KevinYu969/Laya_pokemon/actions/workflows/tests.yml)
 
 用現有 NUC，把 **Laya 決策模型**接到 **PyBoy Game Boy 模擬器**，研究小模型如何從遊戲狀態選擇按鍵，以及整個控制迴圈的速度、穩定性與限制。
@@ -16,7 +20,7 @@
 
 - [最新學招、補給與問題紀錄](docs/cinnabar-supply-and-lapras38.md)：32隻野怪、拉普拉斯34→38，正常以冰凍光束替換唱歌；保衝浪／泰山壓頂／奇異之光。
 - 夏伯戰耗盡10份高級傷藥，其他五員逐370筆保持、沒有新增倒下。已檢討先補藥而未優先收尾的浪費，後續採半血門檻及有條件傷害判斷；不宣稱存活或一擊必勝。
-- [9,059項完整回歸切點](results/code-validation-league-regression2-20261028.json)144.03秒通過、310份來源測前後保持；後加水路與訓練證據測試另列，CI依頁首連結確認。逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
+- [9,656項完整回歸切點](results/code-validation-league-regression5-20261028.json)185.73秒通過，347份來源前後SHA一致；涵蓋TM24、正常補血中斷、具名FNT中心救援、野生戰鬥教訓與原生錄影參數，不含尚在開發的野外FullHeal。CI依頁首連結確認。逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
 - [七名館員逐場勝利時刻](docs/cinnabar-gym-review.md)保留16隻KO與正常補給；[本機PyBoy即時畫面](http://127.0.0.1:8767/)可看真遊戲影格。
 - 正式素材索引64片／212PNG含QA。新增[坂木完整戰原速／四倍兩片與13圖](results/giovanni-gym8-clips-20261025.json)，逐幀與畫面已核；勁敵新keyframes另行整理，影片留本機，網站未發布，原生SDL問題尚未修復。
 
@@ -257,3 +261,5 @@ cd Laya_pokemon
 - [PokemonRedExperiments 使用的 RAM 座標位址](https://github.com/PWhiddy/PokemonRedExperiments/blob/master/baselines/memory_addresses.py)。
 
 Laya 與 PyBoy 的程式、模型與商標各依上游條款。本專案未附遊戲 ROM、圖像資產或模型權重。
+
+新增[三段4倍速真PyBoy影片收據](results/victory3f-clips-20261028.json)：正常Hyper補血5.83秒、移動推石27.07秒、倒下後換人取勝10.90秒；3張原始截圖、8張核對圖均留本機，不隨Git上傳，也未發布至個人網站。

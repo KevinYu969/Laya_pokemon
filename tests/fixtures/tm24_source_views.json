@@ -1,0 +1,844 @@
+{
+  "profile": "tm24-source-view-fixtures-v1",
+  "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+  "party": [
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 42,
+      "exp": 74088,
+      "hp": 130,
+      "max_hp": 130,
+      "status": 0,
+      "moves": [
+        57,
+        34,
+        58,
+        109
+      ],
+      "pp": [
+        12,
+        8,
+        7,
+        9
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 40,
+      "exp": 64000,
+      "hp": 130,
+      "max_hp": 130,
+      "status": 0,
+      "moves": [
+        33,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        20,
+        20,
+        0,
+        0
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 40,
+      "exp": 64000,
+      "hp": 130,
+      "max_hp": 130,
+      "status": 0,
+      "moves": [
+        33,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        20,
+        20,
+        0,
+        0
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 40,
+      "exp": 64000,
+      "hp": 130,
+      "max_hp": 130,
+      "status": 0,
+      "moves": [
+        33,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        20,
+        20,
+        0,
+        0
+      ]
+    },
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 40,
+      "exp": 64000,
+      "hp": 130,
+      "max_hp": 130,
+      "status": 0,
+      "moves": [
+        33,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        20,
+        20,
+        0,
+        0
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 40,
+      "exp": 64000,
+      "hp": 130,
+      "max_hp": 130,
+      "status": 0,
+      "moves": [
+        33,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        20,
+        20,
+        0,
+        0
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "item": 20,
+      "quantity": 5
+    },
+    {
+      "item": 224,
+      "quantity": 1
+    },
+    {
+      "item": 199,
+      "quantity": 1
+    },
+    {
+      "item": 3,
+      "quantity": 20
+    }
+  ],
+  "money": 123456,
+  "player_name": "KEVIN",
+  "views": {
+    "blank": [
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "start2": [
+      "                    ",
+      "                    ",
+      "           ▶POKÉDEX ",
+      "                    ",
+      "            POKÉMON ",
+      "                    ",
+      "            ITEM    ",
+      "                    ",
+      "            KEVIN   ",
+      "                    ",
+      "            SAVE    ",
+      "                    ",
+      "            OPTION  ",
+      "                    ",
+      "            EXIT    ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "start4": [
+      "                    ",
+      "                    ",
+      "            POKÉDEX ",
+      "                    ",
+      "           ▶POKÉMON ",
+      "                    ",
+      "            ITEM    ",
+      "                    ",
+      "            KEVIN   ",
+      "                    ",
+      "            SAVE    ",
+      "                    ",
+      "            OPTION  ",
+      "                    ",
+      "            EXIT    ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "start6": [
+      "                    ",
+      "                    ",
+      "            POKÉDEX ",
+      "                    ",
+      "            POKÉMON ",
+      "                    ",
+      "           ▶ITEM    ",
+      "                    ",
+      "            KEVIN   ",
+      "                    ",
+      "            SAVE    ",
+      "                    ",
+      "            OPTION  ",
+      "                    ",
+      "            EXIT    ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "bag0": [
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "     ▶POTION        ",
+      "              × 5   ",
+      "      TM24          ",
+      "              × 1   ",
+      "      HM04          ",
+      "                    ",
+      "      GREAT BALL    ",
+      "              ×20   ",
+      "                    ",
+      "                    ",
+      "            EXIT    ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "bag1": [
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "      POTION        ",
+      "              × 5   ",
+      "     ▶TM24          ",
+      "              × 1   ",
+      "      HM04          ",
+      "                    ",
+      "      GREAT BALL    ",
+      "              ×20   ",
+      "                    ",
+      "                    ",
+      "            EXIT    ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "use": [
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "      POTION        ",
+      "              × 5   ",
+      "     ▷TM24          ",
+      "              × 1   ",
+      "      HM04          ",
+      "                    ",
+      "      GREAT B       ",
+      "              ▶USE  ",
+      "                    ",
+      "               TOSS ",
+      "            E       ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "party": [
+      "   LAPRAS     42    ",
+      "▶           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " USE TM ON WHICH    ",
+      "                    ",
+      " POKÉMON?           ",
+      "                    "
+    ],
+    "postbag": [
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "      POTION        ",
+      "              × 5   ",
+      "     ▶HM04          ",
+      "                    ",
+      "      GREAT BALL    ",
+      "              ×20   ",
+      "      CANCEL        ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "            EXIT    ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "boot": [
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "      POTION        ",
+      "              × 5   ",
+      "     ▷TM24          ",
+      "              × 1   ",
+      "      HM04          ",
+      "                    ",
+      "      GREAT B       ",
+      "              ▷USE  ",
+      "                    ",
+      "                    ",
+      " BOOTED UP A TM!    ",
+      "                    ",
+      "                  ▼ ",
+      "                    "
+    ],
+    "contained": [
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "      POTION        ",
+      "              × 5   ",
+      "     ▷TM24          ",
+      "              × 1   ",
+      "      HM04          ",
+      "                    ",
+      "      GREAT B       ",
+      "              ▷USE  ",
+      "                    ",
+      "                    ",
+      " IT CONTAINED       ",
+      "                    ",
+      " THUNDERBOLT!     ▼ ",
+      "                    "
+    ],
+    "teach": [
+      "                    ",
+      "                    ",
+      "                    ",
+      "                    ",
+      "      POTION        ",
+      "              × 5   ",
+      "     ▷TM24          ",
+      "                    ",
+      "      HM04     ▶YES ",
+      "                    ",
+      "      GREAT B   NO  ",
+      "                    ",
+      "                    ",
+      "                    ",
+      " TEACH THUNDERBOLT  ",
+      "                    ",
+      " TO A POKÉMON?      ",
+      "                    "
+    ],
+    "intro0": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " LAPRAS IS          ",
+      "                    ",
+      " TRYING TO LEARN  ▼ ",
+      "                    "
+    ],
+    "intro1": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " TRYING TO LEARN    ",
+      "                    ",
+      " THUNDERBOLT!     ▼ ",
+      "                    "
+    ],
+    "intro2": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " BUT, LAPRAS        ",
+      "                    ",
+      " CANT LEARN MORE  ▼ ",
+      "                    "
+    ],
+    "intro3": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " CANT LEARN MORE    ",
+      "                    ",
+      " THAN 4 MOVES!    ▼ ",
+      "                    "
+    ],
+    "delete_scroll": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " DELETE AN OLDER    ",
+      "                    ",
+      " MOVE TO MAKE ROOM▼ ",
+      "                    "
+    ],
+    "delete": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NO      ",
+      "   FEAROW      ▶YES ",
+      "            NO      ",
+      "   NIDOKING     NO  ",
+      "            AB      ",
+      "                    ",
+      "                    ",
+      " MOVE TO MAKE ROOM  ",
+      "                    ",
+      " FOR THUNDERBOLT?   ",
+      "                    "
+    ],
+    "poof_typing": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " 1, 2 AND...        ",
+      "                    ",
+      "                    ",
+      "                    "
+    ],
+    "poof": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " 1, 2 AND... POOF!  ",
+      "                    ",
+      "                  ▼ ",
+      "                    "
+    ],
+    "forgot": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " LAPRAS FORGOT      ",
+      "                    ",
+      " CONFUSE RAY!     ▼ ",
+      "                    "
+    ],
+    "and": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " AND...             ",
+      "                    ",
+      "                  ▼ ",
+      "                    "
+    ],
+    "learned_typing": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " LAPRAS LEARNED     ",
+      "                    ",
+      " THUNDERBOLT!       ",
+      "                    "
+    ],
+    "learned": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "            NOT ABLE",
+      "   FEAROW     40    ",
+      "            NOT ABLE",
+      "   NIDOKING   40    ",
+      "            ABLE    ",
+      "                    ",
+      "                    ",
+      " LAPRAS LEARNED     ",
+      "                    ",
+      " THUNDERBOLT!     ▼ ",
+      "                    "
+    ],
+    "forget8": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "                    ",
+      "   F ▶SURF          ",
+      "      BODY SLAM     ",
+      "   N  ICE BEAM      ",
+      "      CONFUSE RAY   ",
+      "                    ",
+      "                    ",
+      " WHICH MOVE SHOULD  ",
+      "                    ",
+      " BE FORGOTTEN?      ",
+      "                    "
+    ],
+    "forget9": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "                    ",
+      "   F  SURF          ",
+      "     ▶BODY SLAM     ",
+      "   N  ICE BEAM      ",
+      "      CONFUSE RAY   ",
+      "                    ",
+      "                    ",
+      " WHICH MOVE SHOULD  ",
+      "                    ",
+      " BE FORGOTTEN?      ",
+      "                    "
+    ],
+    "forget10": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "                    ",
+      "   F  SURF          ",
+      "      BODY SLAM     ",
+      "   N ▶ICE BEAM      ",
+      "      CONFUSE RAY   ",
+      "                    ",
+      "                    ",
+      " WHICH MOVE SHOULD  ",
+      "                    ",
+      " BE FORGOTTEN?      ",
+      "                    "
+    ],
+    "forget11": [
+      "   LAPRAS     42    ",
+      "▷           ABLE    ",
+      "   SNORLAX    40    ",
+      "            ABLE    ",
+      "   EEVEE      40    ",
+      "            NOT ABLE",
+      "   VENUSAUR   40    ",
+      "                    ",
+      "   F  SURF          ",
+      "      BODY SLAM     ",
+      "   N  ICE BEAM      ",
+      "     ▶CONFUSE RAY   ",
+      "                    ",
+      "                    ",
+      " WHICH MOVE SHOULD  ",
+      "                    ",
+      " BE FORGOTTEN?      ",
+      "                    "
+    ]
+  },
+  "schedule": [
+    {
+      "view": "blank",
+      "action": "wait"
+    },
+    {
+      "view": "blank",
+      "action": "start"
+    },
+    {
+      "view": "start2",
+      "action": "down"
+    },
+    {
+      "view": "start4",
+      "action": "down"
+    },
+    {
+      "view": "start6",
+      "action": "a"
+    },
+    {
+      "view": "bag0",
+      "action": "down"
+    },
+    {
+      "view": "bag1",
+      "action": "a"
+    },
+    {
+      "view": "use",
+      "action": "a"
+    },
+    {
+      "view": "boot",
+      "action": "a"
+    },
+    {
+      "view": "contained",
+      "action": "a"
+    },
+    {
+      "view": "teach",
+      "action": "a"
+    },
+    {
+      "view": "party",
+      "action": "a"
+    },
+    {
+      "view": "intro0",
+      "action": "a"
+    },
+    {
+      "view": "intro1",
+      "action": "a"
+    },
+    {
+      "view": "intro2",
+      "action": "a"
+    },
+    {
+      "view": "intro3",
+      "action": "a"
+    },
+    {
+      "view": "delete_scroll",
+      "action": "a"
+    },
+    {
+      "view": "delete",
+      "action": "a"
+    },
+    {
+      "view": "forget8",
+      "action": "down"
+    },
+    {
+      "view": "forget9",
+      "action": "down"
+    },
+    {
+      "view": "forget10",
+      "action": "down"
+    },
+    {
+      "view": "forget11",
+      "action": "a"
+    },
+    {
+      "view": "poof_typing",
+      "action": "wait"
+    },
+    {
+      "view": "poof",
+      "action": "a"
+    },
+    {
+      "view": "forgot",
+      "action": "a"
+    },
+    {
+      "view": "and",
+      "action": "a"
+    },
+    {
+      "view": "learned_typing",
+      "action": "wait"
+    },
+    {
+      "view": "learned",
+      "action": "a"
+    },
+    {
+      "view": "postbag",
+      "action": "b"
+    },
+    {
+      "view": "start6",
+      "action": "b"
+    },
+    {
+      "view": "blank",
+      "action": "wait"
+    },
+    {
+      "view": "blank",
+      "action": "wait"
+    }
+  ]
+}

@@ -67,6 +67,9 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--rom',required=True);parser.add_argument('--state',required=True);parser.add_argument('--plan',required=True);parser.add_argument('--output',required=True)
     parser.add_argument('--window',choices=['SDL2','GLFW','null'],default='SDL2')
     parser.add_argument('--live-view',action='store_true')
+    parser.add_argument('--video-scale',type=int,choices=(1,2,3),default=3)
+    parser.add_argument('--checkpoint-seconds',type=int,choices=(2,5,10),default=10)
+    parser.add_argument('--video-segment-frames',type=int,choices=(0,3600,7200),default=0)
     args=parser.parse_args();root=Path.cwd();rom=Path(args.rom).resolve();source=Path(args.state).resolve();plan_path=Path(args.plan).resolve();out=Path(args.output).resolve()
     if not all(p.is_relative_to(root) for p in [rom,source,plan_path]) or not out.is_relative_to(root/'outputs'):raise ValueError('輸入與輸出須在本專案')
     if parse_rom_header(rom)['sha256']!='5ca7ba01642a3b27b0cc0b5349b52792795b62d3ed977e98a09390659af96b7b':raise ValueError('ROM版本不符')
@@ -141,10 +144,11 @@ def main():
             if not resume_path.is_relative_to(root/'.local'):raise ValueError('學招恢復記錄只接受本機.local')
             from .levelup_control import restore_after_review
             restore_after_review(json.loads(resume_path.read_text(encoding='utf-8')),read_progress(emulator)['party'],sha256_file(source))
-        journal=Journal(out,read_progress(emulator));recorder=VideoRecorder(out/'video-000.mp4',fps=15,scale=3)
+        journal=Journal(out,read_progress(emulator));recorder=VideoRecorder(out/'video-000.mp4',fps=15,scale=args.video_scale)
+        stats.update(video_capture_scale=args.video_scale,actual_checkpoint_seconds=args.checkpoint_seconds,video_segment_frames=args.video_segment_frames)
         t=time.monotonic();policy=run_with_window_events(emulator,lambda:LayaPolicy(revision=PINNED_REVISION,threads=4,offline=True,cache=True),time.perf_counter()+60,WindowEvent.PAUSE,WindowEvent.UNPAUSE)
         stats['model_wait_seconds']+=time.monotonic()-t;stats['model_load_count']=1;stats['model_load_seconds']=policy.load_seconds
-        segment_started=time.monotonic();last_checkpoint=segment_started
+        segment_started=time.monotonic();last_checkpoint=segment_started;segment_emulated_start=stats['emulated_frames']
         while True:
             if (out/'STOP').exists():raise KeyboardInterrupt
             if (out/'REVIEW').exists():
@@ -249,9 +253,9 @@ def main():
             else:
                 stats['cache_hits']+=bool(decision.get('prediction_cache_hit'));stats['uncached_choices']+=not decision.get('prediction_cache_hit',False)
             append_jsonl(out/f'steps-{segment:03}.jsonl',{'at':utc_now(),'step':stats['actions'],'state':state,**decision,'emulated_frames':frames,'timing':timing()})
-            if time.monotonic()-last_checkpoint>=10:save('checkpoint.state');last_checkpoint=time.monotonic();persist()
-            if time.monotonic()-segment_started>=60:
-                save('segment-%03d.state'%segment);video=recorder.close();append_jsonl(out/'segments.jsonl',{'at':utc_now(),'segment':segment,'timing':timing(),'video':video});segment+=1;recorder=VideoRecorder(out/f'video-{segment:03}.mp4',fps=15,scale=3);segment_started=time.monotonic();persist()
+            if time.monotonic()-last_checkpoint>=args.checkpoint_seconds:save('checkpoint.state');last_checkpoint=time.monotonic();persist()
+            if (time.monotonic()-segment_started>=60 or args.video_segment_frames and stats['emulated_frames']-segment_emulated_start>=args.video_segment_frames):
+                save('segment-%03d.state'%segment);video=recorder.close();append_jsonl(out/'segments.jsonl',{'at':utc_now(),'segment':segment,'timing':timing(),'video':video});segment+=1;recorder=VideoRecorder(out/f'video-{segment:03}.mp4',fps=15,scale=args.video_scale);segment_started=time.monotonic();segment_emulated_start=stats['emulated_frames'];persist()
     except (KeyboardInterrupt,WindowClosed,TimeBudgetReached) as error:
         stats.update(status='saved_stopped',stop_reason=type(error).__name__)
     except Exception as error:
