@@ -230,7 +230,7 @@ def segment(name,mid):return [move(mid,p) for p in ROUTE["segments"][name]["coor
 
 def outbound():
     return ([move(174,(7,7))]+segment("lobby_nurse_to_left_exit",174)[:-1]
-        +[move(174,(7,11),next_map=9,terminal=True),move(9,(9,6))]
+        +[move(174,(7,12),next_map=9,terminal=True),move(9,(9,6))]
         +segment("city_landing_to_south_edge",9)
         +[move(9,(9,18),next_map=34,terminal=True)]
         +segment("route_north_edge_to_east_cave_door",34)[:-1]
@@ -241,7 +241,7 @@ def outbound():
 def recovery(player):
     require(player in ({"map_id":194,"x":28,"y":7},{"map_id":194,"x":28,"y":8}),"batch_endpoint_unknown")
     prefix=[move(194,(28,7))] if player["y"]==8 else []
-    steps=(prefix+[move(194,(29,7),next_map=34,terminal=True),move(34,(14,32))]
+    steps=(prefix+[move(194,(30,7),next_map=34,terminal=True),move(34,(14,32))]
         +segment("route_closed_cave_exit_to_north_edge",34)
         +[move(34,(9,-1),next_map=9,terminal=True)]
         +segment("city_south_edge_to_center_left_door",9)[:-1]

@@ -4,6 +4,8 @@
 來源白名單是工程候選，仍須真畫面校準。與既有 HM context 完全分開。
 """
 from copy import deepcopy
+from hashlib import sha256
+import json
 import math
 import re
 
@@ -26,6 +28,23 @@ BEFORE, AFTER = [57, 34, 58, 109], [57, 34, 58, 85]
 MAX_SECONDS, MAX_FRAMES, MAX_CALLS, MAX_WAITS = 60, 3600, 240, 160
 _BLANK = (' ' * 20,) * 18
 _ACTIONS = frozenset(('up', 'down', 'left', 'right', 'a', 'b', 'start', 'wait'))
+
+NATIVE_RETURN_REVIEW = dict(
+    kind='tm24_native_return_redraw_review19073_v1', game_id='game29', source_frame=19073,
+    source_location=dict(map_id=174, x=7, y=7),
+    original_step_id='game29-indigo-lapras-tm24-20261028',
+    original_step_sha256='471e9ed19fde89c4a661bf7fa7c70ab119d26517c66399c1cacba055863828aa',
+    training_job_sha256='b7e9ffa51e38f7901204e1e8b12ae00abecc42cdcbb37c398db7e4a51aebe6bf',
+    plan_bytes_sha256='fe52e2c3c979c27573c365daf9eff4c730befce1742908c313c841762a828f9e',
+    source_progress_sha256='7a6924ad5a0e0dd4fa82e92cf961044801ad2b84f6f95244a9c42c2c08e8341f',
+    evidence=dict(review_sha256='aba4a5b7bbc3c0317f1d99c44497f9fc1254f196a5b88e308de072a328936cda',
+        state_sha256='e42fe436f414122f47e7c8129d9a08797758a13cbfbd75a2b2bede197ffea716',
+        preflight_sha256='f855a3fa75e03e61d62346cf6b8d71c12fdc76dd19e14c95783c922958dbf547'))
+
+
+def _review_sha(value):
+    return sha256(json.dumps(value, sort_keys=True, separators=(',', ':'),
+                             ensure_ascii=False, allow_nan=False).encode()).hexdigest()
 
 
 def _int(value, low, high):
@@ -170,6 +189,55 @@ class TM24TeachingController:
             elif mon != after or not self.and_acked:
                 return 'unexpected_or_premature_move_pp_change'
         return None
+
+    def review_native_return_redraw(self, *, review_capsule, source_evidence):
+        """Parent first proves the same native/bridge/binding/full peer mutex.
+
+        This one named review changes only error/history. No context call, ACK,
+        pending replacement, packet replacement, clock change or budget refund.
+        """
+        try:
+            if (_review_sha(review_capsule) != _review_sha(NATIVE_RETURN_REVIEW)
+                    or _review_sha(source_evidence) != _review_sha(NATIVE_RETURN_REVIEW['evidence'])
+                    or self.error != 'tm24_unknown_or_out_of_stage_source_page'
+                    or self.stage != 'native_return' or self.last_frame != 19073
+                    or type(self.last_frame) is not int or self.pending is not None
+                    or self.cursor_expected is not None or self.closed_frame is not None
+                    or self.and_acked is not True or self.learned_acked is not True or self.consumed is not True
+                    or not _intent(self.intent) or self.party_before is None or self.inventory_before is None
+                    or type(self.calls) is not int or not 1 <= self.calls <= MAX_CALLS
+                    or type(self.waits) is not int or not 0 <= self.waits <= MAX_WAITS
+                    or type(self.start_frame) is not int or not 0 <= self.last_frame-self.start_frame <= MAX_FRAMES
+                    or any(type(v) not in (int,float) or not math.isfinite(v) or v < 0
+                           for v in (self.started_at,self.last_now))
+                    or not 0 <= self.last_now-self.started_at <= MAX_SECONDS
+                    or type(self.last_packet) is not tuple or len(self.last_packet) != 7
+                    or getattr(self, 'native_return_review_history', None) not in (None, [])):
+                return self._fail('native_return_review_unverified')
+            text, progress, location, battle, movement, ready, previous = self.last_packet
+            if (_rows(text) != _serial(self._start(6, '▷')) or ready is not False
+                    or any(type(location.get(k)) is not int or location[k] != v for k,v in LOCATION.items())
+                    or battle.get('kind') != 'none' or battle.get('active') is not False
+                    or type(battle.get('raw')) is not int or battle['raw'] != 0
+                    or type(battle.get('observation_frame')) is not int or battle['observation_frame'] != 19073
+                    or not _idle(movement,19073) or type(previous) not in (list,tuple)
+                    or not previous or previous[-1] != 'a'
+                    or _review_sha(progress) != review_capsule['source_progress_sha256']
+                    or any('observation_frame' in p and (type(p['observation_frame']) is not int
+                            or p['observation_frame'] != 19073) for p in (text,progress,location))
+                    or self._progress(progress) is not None):
+                return self._fail('native_return_review_packet_unverified')
+            preserved = {k: deepcopy(getattr(self,k)) for k in (
+                'stage','calls','waits','started_at','start_frame','last_now','last_frame',
+                'pending','cursor_expected','world_frame','closed_frame')}
+            self.native_return_review_history = [dict(
+                old_error=self.error, review_capsule=deepcopy(review_capsule), preserved=preserved,
+                original_packet_sha256=_review_sha(self.last_packet),
+                original_progress_sha256=_review_sha(progress))]
+            self.error = None
+            return dict(self._hint('wait','reviewed_native_return_redraw_wait'), tm24_native_return_reviewed=True)
+        except (KeyError,TypeError,ValueError,AttributeError,IndexError,RecursionError):
+            return self._fail('native_return_review_unverified')
 
     def context(self, text, progress, *, location, battle_state, movement, frame, now,
                 overworld_ready=False, previous=()):
@@ -407,12 +475,23 @@ class TM24TeachingController:
                         add('inactive', None, self._bag(offset, cursor, '▷', post=True))
         elif stage in ('bag', 'native_return'):
             post = stage == 'native_return'
+            redraw = (post and self.and_acked is True and self.learned_acked is True and self.consumed is True)
+            if redraw:
+                # Success restores inactive Start buffer2, then redraws the bag.
+                # It is never a Start action or a substitute for the real bag B.
+                add('inactive', None, self._start(6, '▷'))
             inventory = self.inventory_after if post else self.inventory_before
             for offset in range(max(1, len(inventory))):
                 for cursor in range(min(3, len(inventory) - offset + 1)):
                     for arrow in ((False, True) if offset + 3 < len(inventory) else (False,)):
                         add('bag', (offset, cursor), self._bag(offset, cursor, post=post, arrow=arrow))
                         add('inactive', None, self._bag(offset, cursor, '▷', post=post, arrow=arrow))
+                        if redraw:
+                            # BG copies one third per frame: OPTION may remain
+                            # until the bag frame is complete; cursor is not active.
+                            drawing = self._bag(offset, cursor, ' ', post=True, arrow=arrow)
+                            _put(drawing, 12, 12, 'OPTION')
+                            add('inactive', None, drawing)
         elif stage == 'use':
             for y in (11, 13):
                 add('use', y, self._use(y)); add('inactive', None, self._use(y, '▷'))

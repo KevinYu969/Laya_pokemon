@@ -1,7 +1,7 @@
 # Laya × 寶可夢：從本機部署到可重現實測
 
 
-**2026-10-28 實際進度：已抵石英高原，六隻經正常護士補滿，四天王尚未破關。** 冠軍之路落石與出口機關、倒下隊員救援已完成。拉普拉斯十萬伏特已寫入，正修原生選單重繪的收尾等待，再均衡練隊。[最新時間與問題紀錄](docs/league-progress.md)。
+**2026-10-28 實際進度：已抵石英高原，六隻經正常護士補滿，四天王尚未破關。** 冠軍之路落石與出口機關、倒下隊員救援已完成。拉普拉斯十萬伏特已完整驗收，正以最低等級隊員首發進行野怪／護士往返校準。[最新時間與問題紀錄](docs/league-progress.md)。
 
 
 [![Tests](https://github.com/KevinYu969/Laya_pokemon/actions/workflows/tests.yml/badge.svg)](https://github.com/KevinYu969/Laya_pokemon/actions/workflows/tests.yml)
@@ -14,13 +14,13 @@
 
 **八枚徽章、聯盟前勁敵 BLUE 已擊敗。** 2026-10-28台北10:35:51實際觸發勁敵勝利事件，拉普拉斯與卡比獸皆42級，用2瓶Hyper Potion、未見新倒下，隨後正常回中心全隊補滿。[本場紀錄](docs/league-progress.md)保留確切時間、資源與修補問題；其餘四人35–37級仍待均衡培養，四天王、冠軍與名人堂尚未完成。
 
-**已抵達石英高原**：冠軍之路機關與出口已完成，正常護士復原六隻HP／狀態／PP。拉普拉斯十萬伏特已寫入，選單收尾正修復；接著均衡練隊，四天王尚未勝。[重要關卡時間](docs/league-progress.md)持續記錄。
+**已抵達石英高原**：冠軍之路機關與出口已完成，正常護士復原六隻HP／狀態／PP。拉普拉斯十萬伏特已完整驗收；正校準全隊輪換訓練，四天王尚未勝。[重要關卡時間](docs/league-progress.md)持續記錄。
 
 第八館坂木勝利時間仍為2026-10-25台北20:24:35，該館零補藥、零新增倒下，正常取得TM27。[第八館收據](results/eighth-gym-campaign-20261025.json)與[完整戰影片驗收](results/giovanni-gym8-clips-20261025.json)保留原始切點。
 
 - [最新學招、補給與問題紀錄](docs/cinnabar-supply-and-lapras38.md)：32隻野怪、拉普拉斯34→38，正常以冰凍光束替換唱歌；保衝浪／泰山壓頂／奇異之光。
 - 夏伯戰耗盡10份高級傷藥，其他五員逐370筆保持、沒有新增倒下。已檢討先補藥而未優先收尾的浪費，後續採半血門檻及有條件傷害判斷；不宣稱存活或一擊必勝。
-- [9,762項完整回歸切點](results/code-validation-league-regression6-20261028.json)197.19秒通過，350份來源前後SHA一致，已含正常FullHeal；尚不含7233輔助石版型／導航修正。GitHub頁首CI依公開提交核對。逐鍵本機離線Laya／快取，工程開發與審查另計，Strata配置不變。
+- [10,001項完整回歸切點](results/code-validation-league-regression8-20261028.json)100.42秒通過，361份來源前後SHA一致，含TM重繪及型別修正；後續兩個邊界target修正另有91相關測試，未混入該全套切點。GitHub CI依實際公開提交核對。逐鍵本機Laya／快取，工程開發與審查另計，Strata配置不變。
 - [七名館員逐場勝利時刻](docs/cinnabar-gym-review.md)保留16隻KO與正常補給；[本機PyBoy即時畫面](http://127.0.0.1:8767/)可看真遊戲影格。
 - 正式素材索引64片／212PNG含QA。新增[坂木完整戰原速／四倍兩片與13圖](results/giovanni-gym8-clips-20261025.json)，逐幀與畫面已核；勁敵新keyframes另行整理，影片留本機，網站未發布，原生SDL問題尚未修復。
 

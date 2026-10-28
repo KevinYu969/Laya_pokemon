@@ -90,3 +90,13 @@ frame10833上3F樓梯，地圖byte已198但XY仍前圖(25,14)、物件數13尚�
 兩個來源限定的樓梯WAIT已實際讓Laya穿過3F與2F出口、走Route23到石英中心，原19步不變。完整回歸7為[9926通過／1失敗](../results/code-validation-league-regression7-20261028.json)206.69秒，356來源前後一致；唯一失敗是新增194/198未進既有toggle source fixture，已從6份釘版公開ASM獨立枚舉228條toggle補齊，保留所有原資料。336項正式相關測試15.45秒通過；更新後完整回歸另待執行。採用時root先用錯source-proof欄名object_map，檢查停住，修為真objects並重核SHA後再採；其間未恢復遊戲。
 
 原救援完成且全隊正常復原後，已歸檔／退役其plan markers，改新單步TM24工作。frame19073已觀測Lapras新四招[57,34,58,85]、PP[15,15,10,15]且TM消失，但native_return短暫▷ITEM再繪回背包被當未知頁，交易尚未驗完整關窗。無輸入副本證1→8→16影格自動從Start、混繪到真bag，進度全保持；正補該來源限定WAIT，不跳過原來bag B／Start B／兩fresh世界。均衡訓練與四天王仍未開始，逐鍵本機Laya/cache、無GPT分類。
+
+## 十萬伏特完整驗收與首次均衡校準 — 2026-10-28
+
+**14:58:39.241659（台北）**，原game29 TM24交易完整閉合：真learned A、僅消耗一份224、新招85/PP15，原Surf／Body Slam／Ice Beam及其他隊員資源保持，正常backpack B→Start B→雙fresh世界。[實機收據](../results/lapras-thunderbolt-live-20261028.json)。原生會恢復▷ITEM背景，再經分段繪圖回bag，故只補inactive／半繪WAIT，不放寬原數量欄或直接關Start。父層首次復核錯把自己的TM owner當成衝突，修為只允原唯一owner，其他33peer均不得活動；新129相關測試通過後才真續行。原owner、packet與已花預算保留。
+
+[完整10,001項回歸切點](../results/code-validation-league-regression8-20261028.json)100.42秒通過，361來源前後一致；包括上述TM、來源fixture及型別修正，不含後續出門邊界修正。前次[GitHub CI失敗](../results/code-validation-ci059-20261028.json)為9965通過／1失敗／1skip，原因是wrapper過早讀opaque state，已保紀錄並修復。先前備份059b3e0／579檔已核遠端SHA。
+
+本機已正常換最低等級／EXP的Venusaur35為首發，尚無新增野怪經驗。第一趟實測在中心7,11停，來源及唯讀格網證明需再DOWN；future out/back兩target修174(7,12)、194(30,7)，讓原邊界導航輸出真方向，不要求真的到圖外。91相關測試通過，原21033舊連續stall只允該源幀的一次真DOWN重試，不修改field預算。現已出城走到洞口，frame23433新map194但舊Route23 XY14,31/header23/72/10/7尚未載完，正補可重用的入洞有界WAIT；野怪／護士往返尚未校準，不先啟用supervisor。
+
+工程調度曾只傳訊給已完成worker而未觸發新工作，造成額外停檢；已明確重新啟動並確認running，不把該停頓列成模型推論。另新增[13.833秒2F怪力／14推四倍速影片收據](../results/victory2f-switch-clip-20261028.json)，830張解碼影格與原片同序相同、5QA已目視；影片留本機。全六45、四天王、冠軍仍未完成，逐鍵本機Laya/cache不使用GPT分類。

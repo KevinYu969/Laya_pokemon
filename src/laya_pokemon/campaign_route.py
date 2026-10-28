@@ -152,9 +152,71 @@ def _native_wait_clock(step_id,frame):
     return float('nan')  # 交純controller拒絕；不得以新wall clock修復非法舊欄位。
 
 
+_TM24_RETURN_REVIEW_CAPSULE = {'evidence': {'preflight_sha256': 'f855a3fa75e03e61d62346cf6b8d71c12fdc76dd19e14c95783c922958dbf547',
+              'review_sha256': 'aba4a5b7bbc3c0317f1d99c44497f9fc1254f196a5b88e308de072a328936cda',
+              'state_sha256': 'e42fe436f414122f47e7c8129d9a08797758a13cbfbd75a2b2bede197ffea716'},
+ 'game_id': 'game29',
+ 'kind': 'tm24_native_return_redraw_review19073_v1',
+ 'original_step_id': 'game29-indigo-lapras-tm24-20261028',
+ 'original_step_sha256': '471e9ed19fde89c4a661bf7fa7c70ab119d26517c66399c1cacba055863828aa',
+ 'plan_bytes_sha256': 'fe52e2c3c979c27573c365daf9eff4c730befce1742908c313c841762a828f9e',
+ 'source_frame': 19073,
+ 'source_location': {'map_id': 174, 'x': 7, 'y': 7},
+ 'source_progress_sha256': '7a6924ad5a0e0dd4fa82e92cf961044801ad2b84f6f95244a9c42c2c08e8341f',
+ 'training_job_sha256': 'b7e9ffa51e38f7901204e1e8b12ae00abecc42cdcbb37c398db7e4a51aebe6bf'}
+_TM24_RETURN_PLAN_CANONICAL_SHA256 = '080360fac74b6bbbd7d4c63e78ba3230736ba48f9512a8094064a0afb3a27dd6'
+
+
+def _tm24_return_review_context(pyboy,state,plan,step_id,previous):
+    """僅19073已學招/消耗後的重繪誤判；保同owner與已花預算。"""
+    b=tm24_teaching_bridge;c=b._CONTROLLERS.get(step_id) if type(b._CONTROLLERS) is dict else None
+    if c is None or getattr(c,'error',None)!='tm24_unknown_or_out_of_stage_source_page':return None
+    def reject():
+        return dict(phase='campaign_review',objective='Wait.',available_actions=['wait'],
+            review_reason='tm24_return_parent_preflight_unverified'),step_id
+    try:
+        cap=_TM24_RETURN_REVIEW_CAPSULE;h=owned_field_medicine.canonical_sha256
+        peers=_field_medicine_peers()
+        if (type(peers) is not dict or set(peers)!=owned_field_medicine.PEER_NAMES
+                or any(type(v) is not set or (v!={step_id} if k=='tm24_teaching' else bool(v))
+                       for k,v in peers.items()) or owned_field_medicine._active()!=set()
+                or b._registry_problem() or b._active()!={step_id}
+                or any(x is not b and x._active()!=set() for x in _LEAGUE_FIELDS)
+                or step_id!=cap['original_step_id'] or h(plan)!=_TM24_RETURN_PLAN_CANONICAL_SHA256
+                or type(state) is not dict or state.get('frame')!=19073 or pyboy.frame_count!=19073
+                or state.get('location')!=cap['source_location'] or c.last_frame!=19073
+                or not b._known_controller(c) or type(c.last_packet) is not tuple or len(c.last_packet)!=7
+                or getattr(c,'native_return_review_history',None)):
+            return reject()
+        owner=b._OWNERS.get(step_id);binding=b._BINDINGS.get(step_id)
+        step=next(s for s in plan['steps'] if s['id']==step_id)
+        if (type(owner) is not dict or owner.get('pyboy') is not pyboy or owner.get('controller') is not c
+                or binding!=dict(step=step,job=plan['training_job'])
+                or h(step)!=cap['original_step_sha256'] or h(plan['training_job'])!=cap['training_job_sha256']
+                or h(cap)!=h(b.tm24_teaching.NATIVE_RETURN_REVIEW)):
+            return reject()
+        from .progress import read_progress
+        from .observation import read_visible_text
+        before=pyboy.frame_count;text=read_visible_text(pyboy);progress=read_progress(pyboy)
+        grid=read_world_grid(pyboy,state['location'])
+        movement=b.read_rocket_movement(pyboy,observation_frame=before)
+        packet=(text,progress,state['location'],state['battle_state'],movement,
+                b._world_ready(text,grid,before),previous)
+        if (pyboy.frame_count!=before or h(progress)!=cap['source_progress_sha256']
+                or h(progress)!=h(state['progress']) or h(packet)!=h(c.last_packet)):
+            return reject()
+        # 與原bridge相同熱更方式；保留controller本體、binding與最後封包對象。
+        c.__class__=b.tm24_teaching.TM24TeachingController
+        result=c.review_native_return_redraw(review_capsule=cap,source_evidence=cap['evidence'])
+        return result,step_id
+    except (AttributeError,KeyError,TypeError,ValueError,IndexError,StopIteration):
+        return reject()
+
+
 def _victory_ladder_settle_context(pyboy,state,plan,step_id):
     """兩個固定樓梯先等待載圖穩定，之後仍由原導航驗目的地。"""
-    if not victory_ladder_settle.applies(step_id,state.get('location')):return None
+    location=state.get('location') if type(state) is dict else None
+    if not victory_ladder_settle.applies(step_id,location):return None
     kwargs=dict(shared=owned_field_medicine,recovery=league_recovery,
         native_owner=pyboy,game_id='game29',peer_owners=_field_medicine_peers())
     gate=victory_ladder_settle.preflight(pyboy,state,plan,step_id,**kwargs)
@@ -234,6 +296,9 @@ def _league_field_context(pyboy,state,plan,step_id,step,previous):
             source_evidence=reviewed_hole_layout.EVIDENCE,peer_owners=_field_medicine_peers())
         gate=reviewed_hole_layout.preflight(pyboy,state,plan,step_id,**layout_kwargs)
         if gate is not None:return gate
+    if bridge is tm24_teaching_bridge:
+        reviewed_tm=_tm24_return_review_context(pyboy,state,plan,step_id,previous)
+        if reviewed_tm is not None:return reviewed_tm
     text=read_visible_text(pyboy);grid=read_world_grid(pyboy,state['location'])
     if layout_kwargs is not None:
         reviewed=reviewed_hole_layout.context(pyboy,state,plan,step_id,text,grid,previous,**layout_kwargs)
@@ -1130,8 +1195,19 @@ def waypoint(pyboy,state,plan,step_id,previous):
             key=(mid,x,y,step['id'])
             if pyboy is not None and (_LAST_ATTEMPT is None or _LAST_ATTEMPT['key']!=key or _LAST_ATTEMPT['direction']!=hint['direction']):
                 _LAST_ATTEMPT={'key':key,'direction':hint['direction'],'misses':0}
+            # 唯一已復核的21033停檢：讓真邊界DOWN執行一次，解除舊連續停滯值。
+            # 下一frame回原30次停滯檢查；不修改任何field交易的預算或pending。
+            retry=(step['id']=='root-calibration-game29-20261028-out-004'
+                and state.get('frame')==21033 and pyboy is not None and pyboy.frame_count==21033
+                and plan.get('training_job')=='league-six-party45-game29-20261028'
+                and loc=={'map_id':174,'x':7,'y':11} and target=={'x':7,'y':12}
+                and ready is True and hint.get('kind')=='map_exit' and hint.get('direction')=='down'
+                and grid.get('observation_frame')==21033
+                and owned_field_medicine.canonical_sha256(progress)=='5dc6640dd6a7fd7800818a662ab1f9ccb3e966cf68bc32089c93a79fc4239eb0')
+            extra=({'suppress_navigation_stall':True,'suppress_blocked_edge_learning':True,
+                    'reviewed_boundary_exit_retry':True} if retry else {})
             return {'phase':'overworld','objective':f"Move {hint['direction'].upper()}.",'available_actions':['up','down','left','right','wait'],
-                    'goal':step['id'],'route_step':step['id'],'world_path_hint':hint},step['id']
+                    'goal':step['id'],'route_step':step['id'],'world_path_hint':hint,**extra},step['id']
         return {'phase':'overworld','objective':'Wait.','available_actions':['wait','b'],'navigation_warning':'no_verified_path',
                 'goal':step['id'],'route_step':step['id']},step['id']
     training_proof=_training_eof_context(pyboy,state,plan)

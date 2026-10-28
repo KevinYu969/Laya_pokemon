@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-28",
+  "head": "059b3e0ffa68af0c2ffd908e39f72a491f92ad91",
+  "run_id": 40645293476,
+  "job_id": 122672585614,
+  "url": "https://github.com/KevinYu969/Laya_pokemon/actions/runs/40645293476",
+  "conclusion": "failure",
+  "passed": 9965,
+  "failed": 1,
+  "skipped": 1,
+  "pytest_seconds": 122.88,
+  "failure": {
+    "test": "test_campaign_trainer_medicine_route.py::test_original_previous_reaches_switch_and_field_never_claims_it",
+    "reason": "新樓梯wrapper對非dict的opaque state先呼叫get而AttributeError"
+  },
+  "repair": "inactive wrapper先型別檢查，只讀dict location；active仍由原preflight拒絕未知state",
+  "related_validation": {
+    "passed": 59,
+    "seconds": 2.33
+  },
+  "full_fixed_cut": "code-validation-league-regression8-20261028.json"
+}

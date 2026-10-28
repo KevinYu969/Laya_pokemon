@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-28",
+  "at": "2026-10-28T06:58:39.241659+00:00",
+  "live_transaction_verified": true,
+  "field_ledger_sha256": "6fa53768c2a94808b8e05085e855b59ea32499a5b4636045ee08cae5113797a4",
+  "context": {
+    "phase": "tm24_complete",
+    "objective": "Wait.",
+    "available_actions": [
+      "wait"
+    ],
+    "tm24_controller": "teach_thunderbolt_lapras",
+    "tm24_stage": "complete",
+    "tm24_tactic": "complete_transaction_observed",
+    "source_commit": "a53671100ec22e5394ff26ec028d0812a238dae2",
+    "sources": [
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/items/item_effects.asm",
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/pokemon/learn_move.asm",
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_6.asm",
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/text/text_4.asm",
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/constants/item_constants.asm",
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/pokemon/base_stats/lapras.asm",
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/data/moves/moves.asm",
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/engine/menus/party_menu.asm",
+      "https://github.com/pret/pokered/blob/a53671100ec22e5394ff26ec028d0812a238dae2/home/list_menu.asm"
+    ],
+    "tm24_complete": true,
+    "machine_kind": "TM",
+    "item": 224,
+    "quantity_used": 1,
+    "moves_verified": [
+      57,
+      34,
+      58,
+      85
+    ],
+    "new_move_pp": 15,
+    "other_party_and_resources_unchanged": true,
+    "learned_actual_a_acked": true,
+    "first_closed_observation_frame": 19193,
+    "closed_observation_frame": 19233,
+    "field_move_complete": true,
+    "field_move_kind": "lapras-tm24"
+  },
+  "party": [
+    {
+      "species": 35,
+      "species_name": "FEAROW",
+      "level": 38,
+      "hp": 117,
+      "max_hp": 117,
+      "exp": 58020,
+      "status": 0,
+      "moves": [
+        64,
+        65,
+        19,
+        31
+      ],
+      "pp": [
+        35,
+        20,
+        15,
+        20
+      ]
+    },
+    {
+      "species": 132,
+      "species_name": "SNORLAX",
+      "level": 42,
+      "hp": 203,
+      "max_hp": 203,
+      "exp": 97367,
+      "status": 0,
+      "moves": [
+        70,
+        133,
+        156,
+        34
+      ],
+      "pp": [
+        15,
+        20,
+        10,
+        15
+      ]
+    },
+    {
+      "species": 102,
+      "species_name": "EEVEE",
+      "level": 35,
+      "hp": 90,
+      "max_hp": 90,
+      "exp": 43317,
+      "status": 0,
+      "moves": [
+        33,
+        28,
+        98,
+        39
+      ],
+      "pp": [
+        35,
+        15,
+        30,
+        30
+      ]
+    },
+    {
+      "species": 154,
+      "species_name": "VENUSAUR",
+      "level": 35,
+      "hp": 111,
+      "max_hp": 111,
+      "exp": 36804,
+      "status": 0,
+      "moves": [
+        75,
+        15,
+        73,
+        22
+      ],
+      "pp": [
+        25,
+        30,
+        10,
+        10
+      ]
+    },
+    {
+      "species": 7,
+      "species_name": "NIDOKING",
+      "level": 37,
+      "hp": 125,
+      "max_hp": 125,
+      "exp": 43881,
+      "status": 0,
+      "moves": [
+        61,
+        57,
+        30,
+        40
+      ],
+      "pp": [
+        20,
+        15,
+        25,
+        35
+      ]
+    },
+    {
+      "species": 19,
+      "species_name": "LAPRAS",
+      "level": 43,
+      "hp": 177,
+      "max_hp": 177,
+      "exp": 105912,
+      "status": 0,
+      "moves": [
+        57,
+        34,
+        58,
+        85
+      ],
+      "pp": [
+        15,
+        15,
+        10,
+        15
+      ]
+    }
+  ],
+  "timing": {
+    "wall_seconds": 8240.343,
+    "model_wait_seconds": 33.895,
+    "review_pause_seconds": 8185.109,
+    "non_review_session_seconds": 55.234,
+    "emulated_seconds": 320.533
+  },
+  "normal_nurse_already_verified": true,
+  "cloud_classification_fallback": false,
+  "elite_four_complete": false,
+  "limitations": [
+    "來自原game29正式完成帳本，與單看moves已變不同，另核真A ACK/消耗及正常關窗雙世界。",
+    "保原controller/lastpacket/pending/clock/calls，沒有重做學招或退款；工程停檢與遊戲時間分列。"
+  ]
+}

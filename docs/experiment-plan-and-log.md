@@ -1326,3 +1326,13 @@ global regression7真9926pass/1fail206.69秒，356source前後一致，失敗為
 
 19步真完成才退役reviewed_fnt_recovery/recovery_field_medicine/field_medicine_interrupt與舊resume/native/guard markers，封存16793原plan/review/checkpoint，再單TMjob league27-lapras-thunderbolt-20261028（名稱legacy，native仍game29）。frame19073已真Lapras[57,34,58,85] PP[15,15,10,15]、TM24消失，但native_return出現短暫▷ITEM Start而非預期bag，pure未知頁鎖停。root noinput8sample證t1Start、t8混繪bag、t16..160完整bag，所有progress相同、未輸入未保存未來。正補source-bound redraw WAIT，仍須原bagB/StartB/兩fresh閉合才算交易完成，不直接跳關窗或重建owner/退款。護士證據cutoff與新TM狀態分開，source原始快照只本機。四天王/全六45尚未；逐鍵offline Laya/cache，無GPT分類。
 
+## 80. 2026-10-28 TM24真完整閉合、10001全套切點；均衡校準已真換最低者但入口WAIT未完
+
+台北14:58:39.241659，game29原TM owner完成lapras-tm24，frame19233 EOF1747,7。真learnedA ACK、TM224消耗一份、Lapras43 moves[57,34,58,85] PP[15,15,10,15]，其餘3招/隊友/bag/money保持；已原bagB→StartB→兩freshworld。source9ASM/blob證成功先恢復Start▷ITEM背景，再10frame listdraw/Delay3回bag；只添inactive/半繪WAIT，原bag renderer數量/背景維持。parent初次把self TM owner也當peer衝突，修只允tm24_teaching={原step}、其餘peer空，129相關pass含self可讀fresh／foreign讀前拒；同controller class熱更、原lastpacket/pending/clock/calls保留，只記old errorhistory後clear唯一19073 parser error，無退款或重做學招。
+
+fullreg8真10001passed100.42秒（wrapper102.328），361sources前後保持，manifest1d9f4940dc45f30377933abcacf359e2ce0ce04f64c70a51f8ae61718bcc1151、stdoutbd734efb13fc2b49e918f4c610725af67739b0450eb070a55dd091bccc73b8b7。此cut含FullHeal/FNT/Nav/fall/ladder/TM/parent型別selfowner修正，不含後續兩edge target。公開備份059b3e0ffa68af0c2ffd908e39f72a491f92ad91/579file已核遠端；該CI40645293476/122672585614為9965pass1fail1skip/122.88s，root新ladderwrapper對opaque state先get造成AttributeError，已改inactive安全型別guard，59相關與reg8皆真通過，失敗收據未藏。
+
+原生Menu修復曾派send_message給已完成worker但未followup啟動，root察覺後承認並啟動/確認running，造成額外工程停檢，不能當模型慢。新2F 4x片13.833秒/830幀60fps，無損改PTS，830張decoded YUV與原片逐一同序相同，5原圖QA核真Strength/推石前中後；本機素材不隨Git上傳，curated已另驗。正常護士已記第79，後TM之source cutoff獨立。
+
+首次訓練校準未seed/enable，job仍league-six-party45-game29-20261028，markers vr2-east-balanced45-v1、root-calibration IDs不佔supervisor專有prefix。已正常把最低35/EXP36804的Venus154換首，其他隊員38/42/35/37/43全健康。source outbound中心target7,11站warp不再按DOWN而stall21033；readonly world_direction原targetNone、新target7,12出DOWN/map_exit，primary9ASM證MART底邊需held方向；recovery洞口同改19430,7真RIGHT（原source route JSON仍保warptile）。91相關pass，原21033只源綁該幀/全progress/真grid的一次正常DOWN旗標解除舊consecutive stall，不動field預算。現在已真出城到洞口，23433新map194但舊XY14,31/headerRoute23 23/72/10/count7，12sample clone無鍵t16到29,7，t48真idle/NPC/closedworld而movement4保standing warp；進度全不變。正做可重用來源入洞240frame/8WAIT，尚未真wild或護士往返，不造校準、不啟用900/40預算。7200/300初始budget提案僅stage，未採；正常升級新招會撞batch immutable moves，列後續實測風險。四天王/冠軍/全六45仍未完成；逐鍵本機offline Laya/cache，工程雲端另計。
+
